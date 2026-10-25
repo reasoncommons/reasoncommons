@@ -47,3 +47,7 @@ These seven mockups explore different visual paradigms for working with shared r
 ## A talk that performs the method
 
 [A five-act presentation](/talk/2r-research-group/slides.html) built so the audience experiences the Logical Thinking Process before hearing its name — each act opens on a question, and the reveal maps every act back to the tree that produced it.
+
+## Wisdom and AI
+
+[Wisdom and AI](/demos/reason-commons-in-use/wisdom-ai/index.html) joins the existing demonstrations: four source-question hierarchies and three small proposed reasoning trees, with source references and open questions.

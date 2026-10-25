@@ -201,7 +201,8 @@ class SiteTests(unittest.TestCase):
                     *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
-                    *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json"}
+                    *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
+                    *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "change", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -1124,11 +1125,11 @@ class GoalFirstOverviewTests(unittest.TestCase):
     def test_map_routes_have_html_goal_context_and_all_six_destinations(self):
         for record in self.records:
             slug=record["entry"]["slug"];page=self.outputs[slug+"/map.html"]
-            self.assertTrue(page.startswith("<!doctype html>"));self.assertIn("One goal, six questions",page)
-            self.assertEqual(page.count('class="mq"'),6)
+            self.assertTrue(page.startswith("<!doctype html>"));self.assertIn("One goal, " + ("six" if len(record["data"]["trees"]) == 6 else str(len(record["data"]["trees"]))) + " questions",page)
+            self.assertEqual(page.count('class="mq"'),len(record["data"]["trees"]))
             goal=next(n for n in record["data"]["trees"]["goal"]["nodes"] if n["kind"]=="goal")
             self.assertIn(pages.esc(goal["text"]),page)
-            for name in pages.TREE_ORDER:
+            for name in record["data"]["trees"]:
                 path=pages.TREES[name]["slug"]+".html"
                 self.assertIn('href="'+path+'"',page);self.assertIn(slug+"/"+path,self.outputs)
 
@@ -1151,7 +1152,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),50)
+        self.assertEqual(len(htmls),59)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)
@@ -1163,6 +1164,107 @@ class AssetDeliveryTests(unittest.TestCase):
             self.assertNotEqual(old[name],fresh[name],name)
             self.assertEqual(old[name].split("<body",1)[1],fresh[name].split("<body",1)[1],name)
         self.assertNotIn("asset_versions",site)
+
+
+class WisdomAIConventionsTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.site, records = build.load_site()
+        cls.record = next(r for r in records if r["entry"]["slug"] == "wisdom-ai")
+        cls.normalized = build.normalize(cls.record)
+        cls.commons = pages.Commons(cls.normalized)
+        cls.outputs = build.build_files(cls.site, records)
+
+    def test_public_web_source_cannot_be_mistaken_for_asserted_answers(self):
+        data, registry = deepcopy(self.record["data"]), deepcopy(self.record["registry"])
+        item = data["trees"]["goal"]["nodes"][0]
+        self.assertEqual(item["contributors"], [build.ASSISTANT])
+        self.assertEqual(item["accepted_by"], [])
+        item["source_refs"][0]["basis"] = "paraphrase"
+        with self.assertRaisesRegex(ValueError, "Invalid source locator"):
+            build.validate_reconstruction(data, registry)
+
+    def test_web_source_requires_reviewed_author_and_https_url(self):
+        for field, value in [("author", "unreviewed"), ("url", "javascript:alert(1)")]:
+            data, registry = deepcopy(self.record["data"]), deepcopy(self.record["registry"])
+            data["sources"][0][field] = registry["sources"][0][field] = value
+            with self.assertRaisesRegex(ValueError, "Invalid public web source"):
+                build.validate_reconstruction(data, registry)
+
+    def test_question_hierarchy_rejects_duplicate_ids_and_unreviewed_fields(self):
+        original = self.normalized["source_questions"]
+        for change in ("duplicate", "field", "url"):
+            data = deepcopy(original)
+            if change == "duplicate":
+                data["questions"][1]["id"] = data["questions"][0]["id"]
+            elif change == "field":
+                data["questions"][0]["private_note"] = "PRIVATE_CANARY"
+            else:
+                data["questions"][0]["source_url"] = "https://elsewhere.example/"
+            with self.assertRaises(ValueError):
+                build.validate_source_questions(data, self.record["data"]["sources"])
+
+    def test_unresolved_source_question_is_rejected(self):
+        record = deepcopy(self.record)
+        record["data"]["trees"]["goal"]["nodes"][0]["source_refs"][0]["locator"] = "A question absent from the source"
+        with self.assertRaisesRegex(ValueError, "Unresolved source question"):
+            build.normalize(record)
+
+    def test_all_original_questions_are_readable_without_javascript(self):
+        def flatten(nodes):
+            return [q for n in nodes for q in [n] + flatten(n["children"])]
+        questions = flatten(self.normalized["source_questions"]["questions"])
+        self.assertEqual(len(questions), 93)
+        self.assertEqual([len(flatten([q])) for q in self.normalized["source_questions"]["questions"]], [22, 18, 35, 18])
+        about = self.outputs["wisdom-ai/about.html"]
+        for q in questions:
+            self.assertIn(pages.esc(q["text"]), about)
+        self.assertIn('class="rc-outline"', about)
+        self.assertIn('id="source-questions"', about)
+        self.assertNotIn('class="canvas"', about)
+
+    def test_shared_assets_item_details_and_proposed_standing_are_used(self):
+        for name in ["goal", "in-the-way", "change", "items", "about"]:
+            page = self.outputs[f"wisdom-ai/{name}.html"]
+            self.assertIn('../styles.css?v=', page)
+            self.assertIn('../app.js?v=', page)
+            self.assertNotIn('<style>', page)
+            self.assertIn('Everything here is proposed', page)
+        self.assertIn('items.html#g-wise-ai', self.outputs['wisdom-ai/goal.html'])
+        self.assertIn('data-view-panel="outline"', self.outputs['wisdom-ai/goal.html'])
+        self.assertIn('AI inference · source questions', self.outputs['wisdom-ai/goal.html'])
+        self.assertNotIn('From Rufus Pollock', self.outputs['wisdom-ai/goal.html'])
+
+    def test_item_brief_preserves_the_correct_source_and_authorship(self):
+        page = self.outputs['wisdom-ai/items.html']
+        self.assertIn('Questions by', page)
+        self.assertNotIn('Ideas from', page)
+        self.assertNotIn('Gandhi 2.0', page)
+        self.assertNotIn('Check the supplied analysis', page)
+        brief = pages.brief(self.commons, 'g-wise-ai', self.site)
+        self.assertIn('Wisdom and AI', brief)
+        self.assertIn('source poses questions', brief)
+        self.assertNotIn('Gandhi', brief)
+
+    def test_partial_map_navigation_reaches_only_published_trees(self):
+        for name in ["goal", "in-the-way", "change"]:
+            page = self.outputs[f"wisdom-ai/{name}.html"]
+            for absent in ["conflict.html", "prerequisites.html", "actions.html"]:
+                self.assertNotIn('href="' + absent + '"', page)
+        self.assertIn('href="change.html"', self.outputs['wisdom-ai/in-the-way.html'])
+        self.assertIn('href="goal.html"', self.outputs['wisdom-ai/change.html'])
+        self.assertIn('Question 3 of 3', self.outputs['wisdom-ai/change.html'])
+
+    def test_release_keeps_private_receipts_out_and_preserves_reasoning(self):
+        exported = json.loads(self.outputs['wisdom-ai/reasoning.json'])
+        self.assertEqual(sum(len(t['nodes']) for t in exported['trees'].values()), 7)
+        self.assertEqual(sum(len(t['links']) for t in exported['trees'].values()), 4)
+        self.assertNotIn('change_acceptances', exported)
+        self.assertNotIn('source_context', exported)
+        for tree in exported['trees'].values():
+            for item in tree['nodes'] + tree['links']:
+                self.assertEqual(item['status'], 'proposed')
+                self.assertFalse(item['accepted_by'])
 
 
 if __name__ == '__main__':

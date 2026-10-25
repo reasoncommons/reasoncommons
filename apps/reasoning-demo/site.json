@@ -39,6 +39,24 @@
       }
     },
     {
+      "slug": "wisdom-ai",
+      "kind": "reconstruction",
+      "registry": "commons/wisdom-ai/publication.json",
+      "source": "../../ltp/wisdom-ai/reason-commons.yaml",
+      "name": "Wisdom and AI",
+      "byline": "From the Wisdom and AI research questions · proposed reasoning by AI",
+      "summary": "How should we approach AI wisely? Four source-question hierarchies and a small example of reasoning we could examine together.",
+      "description": "The research agenda asks about alignment, risk and pace, broader impacts and consciousness. This demonstration preserves those questions and proposes a goal, a causal hypothesis and a review practice as starting points for discussion.",
+      "scope": "Seven proposed statements and four proposed connections interpreted by the AI from a public research agenda. The source poses questions, not settled answers. The source author and David have not endorsed this reasoning; no trial, owner or observed outcome is recorded.",
+      "front_page": {
+        "headline": "Approach AI wisely.\nKeep choices revisable.",
+        "intro": "Explore the questions behind AI development and use, and a possible way to make choices that can change with the evidence.",
+        "question": "What would let an AI decision change when the evidence changes?",
+        "why": "An explicit example can help examine whether review points enable revision, and what else would need to be in place.",
+        "focus_ref": "f-review"
+      }
+    },
+    {
       "slug": "reason-commons",
       "kind": "real",
       "registry": "publication.json",

@@ -74,6 +74,8 @@ CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agr
 
 
 def credit_caveat(c):
+    if c.web_sources:
+        return "The source supplies research questions. The AI proposed every statement and connection; the source author has not endorsed them."
     if c.slug == "re-membering":
         return "Source credit does not establish agreement with this wording. Heath commented on an earlier map; this revision awaits her review and endorsement."
     return CREDIT_CAVEAT
@@ -131,6 +133,7 @@ class Commons:
         for tree in self.trees.values():
             for task in tree["backlog"]:
                 self.backlog[task["ref"]].append(task)
+        self.web_sources = bool(self.sources) and all(s.get("kind") == "web_page" for s in self.sources)
         self.source_by_id = {s["id"]: s for s in self.sources}
         self.forum = next((s for s in self.sources if "posts" in s), None)
         self.supplied_documents = bool(self.sources) and all(s.get("kind") == "supplied_document" for s in self.sources)
@@ -281,6 +284,8 @@ def credit_line(c, refs, numbers=True, link=False):
                 detail.append(noun if count == 1 else noun + "s")
             parts.append(text(c.authors[author]["name"]) + (f" ({'; '.join(detail)})" if detail else ""))
         return " · ".join(parts)
+    if c.web_sources:
+        return "AI inference · source questions"
     if direct:
         return "From " + named(direct, "posts") + (f" · related: {named(related, 'related')}" if related and numbers else "")
     if related:
@@ -290,6 +295,8 @@ def credit_line(c, refs, numbers=True, link=False):
 
 def linked_people(c, refs, link=True):
     """Every person an item or group of items draws on, each post linked to the forum (or plain text inside a link)."""
+    if c.web_sources:
+        return "the source research questions; interpretation by the AI"
     direct, related = credit_people(c, refs)
     parts = []
     for author, entry in {**direct, **related}.items():
@@ -303,8 +310,39 @@ def linked_people(c, refs, link=True):
     return names(parts) if parts else "the supplied analysis"
 
 
+def question_source_url(c, ref):
+    def find(nodes):
+        for node in nodes:
+            if node["text"].removeprefix("So: ").casefold() == ref["locator"].casefold():
+                return node["source_url"]
+            match = find(node["children"])
+            if match:
+                return match
+        return None
+    return find(c.source_questions.get("questions", [])) or c.source_by_id[ref["source_id"]]["url"]
+
+
+def source_question_outline(c):
+    data = c.source_questions
+    if not data:
+        return ""
+    def branch(node):
+        text = f'<a class="o-item" href="{esc(node["source_url"])}"><span class="o-kind">Source question</span><span class="o-text">{esc(node["text"])}</span></a>'
+        children = '<ul>' + ''.join(branch(ch) for ch in node["children"]) + '</ul>' if node["children"] else ''
+        return '<li>' + text + children + '</li>'
+    def size(node):
+        return 1 + sum(size(ch) for ch in node["children"])
+    count = sum(size(n) for n in data["questions"])
+    return (f'<section id="source-questions"><h3>The source’s research questions</h3><p class="lede">{esc(data["governing_question"])}</p>'
+            f'<p>{count} questions in four strands, preserving the source hierarchy. Branches group questions; they do not assert causal relationships. Captured {esc(data["retrieved_on"])}. The repeated summary is not duplicated.</p>'
+            + ''.join(f'<details class="background-details"><summary>{esc(n["text"])}</summary><div class="background-body"><ul class="rc-outline">{branch(n)}</ul></div></details>' for n in data['questions']) + '</section>')
+
+
 def source_row(c, ref):
     source = c.source_by_id[ref["source_id"]]
+    if source.get("kind") == "web_page":
+        return (f'<li><p><a href="{esc(question_source_url(c, ref))}">{esc(source["title"])}</a> · {esc(ref["locator"])}</p>'
+                f'<p class="muted">Inferred by the AI from a research question; the source does not establish this statement or connection.</p></li>')
     if "posts" in source:
         post = source["posts"][str(ref["post"])]
         where = f'<a href="{esc(post_url(c, ref["post"]))}">{esc(c.authors[ref["author"]]["name"])}, post {ref["post"]}</a> · {day(post["date"])}'
@@ -325,6 +363,8 @@ def source_row(c, ref):
 
 def source_brief(c, ref):
     source = c.source_by_id[ref["source_id"]]
+    if source.get("kind") == "web_page":
+        return f'{source["title"]}, {ref["locator"]} (AI inference from a research question): {question_source_url(c, ref)}'
     if "posts" in source:
         return f'{c.authors[ref["author"]]["name"]}, post {ref["post"]} ({ref["basis"]}): {post_url(c, ref["post"])}'
     if source.get("kind") == "supplied_document":
@@ -335,7 +375,12 @@ def source_brief(c, ref):
 
 
 def credits_table(c):
-    """Whose ideas the map draws on, counted from the credits on each item; the AI selected and worded all of them."""
+    """Whose ideas the map draws on; an inference from a question is the AI’s contribution."""
+    if c.web_sources:
+        statements, connections = c.counts()
+        return (f'<div class="table-wrap"><table class="people credits"><thead><tr><th scope="col">Contribution</th><th scope="col">Scope</th></tr></thead><tbody>'
+                f'<tr><th scope="row">AI assistant</th><td>Proposed all {statements} statements and {connections} connections</td></tr>'
+                f'<tr><th scope="row">Source author</th><td>Posed the research questions; has not endorsed this reasoning</td></tr></tbody></table></div><p class="fine">{esc(credit_caveat(c))}</p>')
     direct_n, related_n, analysis_only = defaultdict(lambda: [0, 0]), defaultdict(lambda: [0, 0]), [0, 0]
     for tree in c.trees.values():
         for index, key in ((0, "nodes"), (1, "links")):
@@ -457,6 +502,11 @@ def brief(c, ident, site):
         opening = f"This is the fictional example commons on the Reason Commons demonstration site; its people and reports are invented. I want to practise developing a contribution about one {noun}."
         closing = ("Use the reason-commons skill if you have it, and treat this as practice: there is no shared record behind this example. "
                    "Help me work out a question, an observation or a challenge, and keep it as a draft. Copying this brief submits nothing.")
+    elif c.web_sources:
+        opening = (f"I'm reading {c.name}, an illustrative AI interpretation of a public research agenda, and want to develop a contribution about one {noun}. "
+                   "The source poses questions; its author has not endorsed the AI's suggested answers or connections.")
+        closing = ("Use the reason-commons skill if available. Read the starting research question and distinguish it from the AI's inference. "
+                   "Help me draft a question, correction or challenge; don't treat my interest as endorsement or invent a trial commitment. Copying this brief submits nothing.")
     elif c.supplied_documents:
         opening = (f"I'm reading {c.name}, a proposed AI reconstruction from supplied documents, and want to develop a contribution about one {noun}. "
                    "The source author has not reviewed or endorsed this map; its wording and connections are the AI's reconstruction.")
@@ -492,6 +542,10 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
     if c and c.is_example:
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
+    elif c and c.web_sources:
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
+                  'The source poses research questions. The AI proposed the statements and connections below; the source author has not endorsed them. '
+                  '<a href="about.html#sources">Source questions and limits →</a></div></div>')
     elif c and c.supplied_documents:
         review = ('The source author commented on an earlier map; this revision awaits review and endorsement. '
                   if c.slug == "re-membering" else
@@ -546,7 +600,7 @@ def publication_tag(c):
 def commons_head(c, tab, heading=None):
     tag = publication_tag(c)
     statements, connections = c.counts()
-    tabs = [("index.html", "Overview", "overview", ""), ("map.html", "Map", "map", "6 questions"),
+    tabs = [("index.html", "Overview", "overview", ""), ("map.html", "Map", "map", f"{len(c.trees)} questions"),
             ("items.html", "Statements", "items", f"{statements} · {connections}")]
     if c.open_items():
         tabs.append(("questions.html", "Open questions", "questions", str(len(c.open_items()))))
@@ -589,14 +643,14 @@ def source_shelf(c):
     for number, source in enumerate(c.sources, 1):
         meta = source_meta(c, source)
         author = c.authors[source["author"]]["name"] if "author" in source else "Discussion" if "posts" in source else "Supplied analysis"
-        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
+        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Public research agenda" if source.get("kind") == "web_page" else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
         cards.append(f'<a class="document-card {esc(meta["style"])}" href="about.html#source-{esc(source["id"])}">'
                      f'<span class="paper-cover" aria-hidden="true"><span class="cover-number">{number:02d} / {len(c.sources):02d}</span>'
                      f'<svg viewBox="0 0 130 110">{revisions.ART[meta["style"]]}</svg><span class="cover-title">{esc(meta["title"])}</span>'
                      f'<span class="cover-author">{esc(author)}</span><span class="cover-foot">{esc(c.name)}</span></span>'
                      f'<span class="document-label">{esc(meta["title"])} <span aria-hidden="true">↗</span></span><span class="document-meta">{esc(medium)}</span></a>')
     note = ("Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence."
-            if c.supplied_documents else "The discussion, shared essays and supplied analyses play different roles; source descriptions distinguish them.")
+            if c.supplied_documents else "The public page poses research questions; it does not establish the AI’s suggested answers." if c.web_sources else "The discussion, shared essays and supplied analyses play different roles; source descriptions distinguish them.")
     return (f'<section class="source-shelf" aria-labelledby="source-shelf-title"><div class="shelf-head"><h2 id="source-shelf-title">Created from {plural(len(c.sources), "source")}</h2>'
             f'<a href="about.html#sources">Explore the sources →</a></div><div class="document-grid">{"".join(cards)}</div>'
             f'<p class="source-note">Document representations, not original covers. {esc(note)}</p></section>')
@@ -735,7 +789,7 @@ def home(site, commons):
 <aside class="hero-path" aria-label="The six questions a commons answers"><p class="path-title">Every commons answers six questions</p><ol class="path">{questions}</ol><p class="path-foot">Each answer sets up the next.</p></aside>
 </div></section>
 <section class="band" id="commons" aria-labelledby="commons-heading"><div class="wrap">
-<div class="band-head"><h2 id="commons-heading">Commons on this site</h2><p>Read accepted reasoning from our own collaboration, proposed reconstructions from a discussion and supplied talks, and an invented example that includes a trial and reports. Each record says where it comes from and who has accepted what.</p></div>
+<div class="band-head"><h2 id="commons-heading">Commons on this site</h2><p>Read accepted reasoning from our own collaboration, proposed reconstructions from a discussion, supplied talks and a research agenda, and an invented example that includes a trial and reports. Each record says where it comes from and who has accepted what.</p></div>
 <div class="cc-grid">{"".join(cards)}</div>
 </div></section>
 <section class="band band-steps" aria-labelledby="made-heading"><div class="wrap">
@@ -948,14 +1002,14 @@ def reconstruction_overview(c, site):
         elif kind == "wider":
             body = f'{strip(c)}<p><a class="text-link" href="map.html">Explore all six questions →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p>'
         else:
-            source_link = "The supplied talks and their limits →" if c.supplied_documents else "The thread, the essays and the analyses →"
+            source_link = "The supplied talks and their limits →" if c.supplied_documents else "The source questions and their limits →" if c.web_sources else "The thread, the essays and the analyses →"
             body = f'{credits_table(c)}<a class="text-link" href="about.html#sources">{source_link}</a>'
         anchor = ' id="credits"' if kind == "credits" else ""
         if kind == "account":
             account = f'<section class="ov ov-cards" id="source-account">{head}{body}</section>'
             continue
         sections.append(f'<section class="ov ov-{kind}"{anchor}>{head}{body}</section>')
-    origin = "From the talks to a shared question" if c.supplied_documents else "From a conversation to a shared question"
+    origin = "From the talks to a shared question" if c.supplied_documents else "From research questions to proposed reasoning" if c.web_sources else "From a conversation to a shared question"
     goal_heading = "One possible practical application" if account else "The proposed goal"
     hero = (f'<section class="goal-hero"><div class="gh-main"><p class="eyebrow">{goal_heading}</p><p class="gh-text">{esc(goal["text"])}</p>'
             f'<p class="gh-by"><span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p>'
@@ -1075,17 +1129,18 @@ def map_page(c, site):
                      f'<span class="mq-c">{plural(len(tree["nodes"]), "statement")} · {state}{f"<br>{detail}" if detail else ""}</span></a>')
     goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
     body = commons_head(c, "map", heading="compact") + f"""<div class="wrap">
-<section class="page-intro map-intro"><p class="eyebrow">Explore {esc(c.name)}</p><h1>One goal, six questions</h1><p class="lede">Choose a question to explore its reasoning, inspect a statement or bring a contribution.</p><blockquote class="map-goal"><span>The {"proposed " if c.is_reconstruction else ""}goal</span>{esc(goal["text"])}</blockquote><p class="fine">Diagrams use the published statements and connections. <a href="index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} →</a></p></section>
+<section class="page-intro map-intro"><p class="eyebrow">Explore {esc(c.name)}</p><h1>One goal, {"six" if len(c.trees) == 6 else len(c.trees)} questions</h1><p class="lede">Choose a question to explore its reasoning, inspect a statement or bring a contribution.</p><blockquote class="map-goal"><span>The {"proposed " if c.is_reconstruction else ""}goal</span>{esc(goal["text"])}</blockquote><p class="fine">Diagrams use the published statements and connections. <a href="index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} →</a></p></section>
 <div class="mq-grid">{"".join(cells)}</div>
 <section class="map-key"><h2>What the colours mean</h2><p>Small diagrams show the real shape of each part: boxes are statements coloured by their role, and lines are published connections. Loose boxes have no connection yet.</p>{role_legend(c)}</section>
 </div>"""
-    return shell(assets=site.get("asset_versions", {}), title=f"Map · {c.name} · Reason Commons", description=f"The six questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
+    return shell(assets=site.get("asset_versions", {}), title=f"Map · {c.name} · Reason Commons", description=f"The {'six' if len(c.trees) == 6 else len(c.trees)} questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
 
 
 def tree_page(c, name, site):
     tree = c.trees[name]
     info = TREES[name]
-    index = TREE_ORDER.index(name)
+    order = [n for n in TREE_ORDER if n in c.trees]
+    index = order.index(name)
     pieces, shapes, loose = c.shapes(name)
     nodes = {n["id"]: n for n in tree["nodes"]}
     diagram_parts, outline_parts, figures = [], [], []
@@ -1119,8 +1174,8 @@ def tree_page(c, name, site):
         parts = c.views[name]
         views = '<div class="tvs">' + "".join(view_section(c, name, view, f'{VIEW_NOUNS.get(name, "Part")} {i} of {len(parts)}') for i, view in enumerate(parts, 1)) + '</div>'
     open_count = len([i for i in tree["nodes"] + tree["links"] if c.backlog.get(i["id"]) or i["status"] == "disputed"])
-    previous = TREE_ORDER[index - 1] if index else None
-    following = TREE_ORDER[index + 1] if index + 1 < len(TREE_ORDER) else TREE_ORDER[0]
+    previous = order[index - 1] if index else None
+    following = order[index + 1] if index + 1 < len(order) else order[0]
     reading = info["read"] if tree["links"] else "Nothing here is connected yet: read each statement on its own."
     if c.supplied_documents and not tree["nodes"]:
         explanations = {
@@ -1132,9 +1187,9 @@ def tree_page(c, name, site):
         views = f'<section class="loose"><h2>Not established yet</h2><p>{esc(explanations[name])}</p><p><a href="questions.html">Review what needs to be established →</a></p></section>'
     pager = (f'<nav class="pager" aria-label="Questions">'
              + (f'<a class="pager-prev" href="{TREES[previous]["slug"]}.html"><span>← Question {index}</span>{esc(TREES[previous]["question"])}</a>' if previous else '<span></span>')
-             + f'<a class="pager-next" href="{TREES[following]["slug"]}.html"><span>{esc(info["next"])}</span>{esc(TREES[following]["question"])} →</a></nav>')
+             + f'<a class="pager-next" href="{TREES[following]["slug"]}.html"><span>{esc(info["next"] if len(order) == 6 else "Next: " + TREES[following]["question"])}</span>{esc(TREES[following]["question"])} →</a></nav>')
     body = commons_head(c, "map", heading=False) + f"""<div class="wrap">
-<section class="q-head"><div><p class="eyebrow">Question {index + 1} of 6 · {esc(info["step"])}</p><h1>{esc(info["question"])}</h1><p class="lede">{esc(info["about"])}</p></div>
+<section class="q-head"><div><p class="eyebrow">Question {index + 1} of {len(order)} · {esc(info["step"])}</p><h1>{esc(info["question"])}</h1><p class="lede">{esc(info["about"])}</p></div>
 <dl class="q-stats"><div><dt>Statements</dt><dd>{len(tree["nodes"])}</dd></div><div><dt>Connections</dt><dd>{len(tree["links"])}</dd></div>{f'<div><dt>Open questions</dt><dd>{open_count}</dd></div>' if open_count else ''}</dl></section>
 <div class="q-guide"><p><b>How to read it.</b> {esc(reading)}</p>{legend(c, name, shapes)}</div>
 {views}
@@ -1170,7 +1225,7 @@ def item_detail(c, ident, site):
         facts += [("Who", "Unassigned"), ("Proposed role", item["proposed_role"])]
     if c.is_reconstruction:
         direct, related = credit_people(c, item["source_refs"])
-        facts.append(("Ideas from", names(c.authors[a]["name"] for a in direct) or "The supplied analysis"))
+        facts.append(("Questions by" if c.web_sources else "Ideas from", names(c.authors[a]["name"] for a in direct) or "The supplied analysis"))
         if related:
             facts.append(("Related posts by", names(c.authors[a]["name"] for a in related)))
     if item["status"] == "accepted":
@@ -1226,6 +1281,7 @@ def item_detail(c, ident, site):
         sections.append(f'<section class="d-sec"><h3>History</h3><ul class="notes">{"".join(history)}</ul></section>')
     text = brief(c, ident, site)
     instruction = ("This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
+                   "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
                    "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.supplied_documents else
                    "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
                    "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
@@ -1268,7 +1324,7 @@ def items_page(c, site):
                       f'<a class="text-link" href="{TREES[name]["slug"]}.html">See the diagram →</a></h2><div class="items-list">{"".join(articles)}</div></section>')
     statements, connections = c.counts()
     body = commons_head(c, "items", heading=False) + f"""<div class="wrap items" id="statements">
-<section class="items-intro"><h1>Every statement and connection</h1><p class="lede">{plural(statements, "statement")} and {plural(connections, "connection")}, in the order of the six questions. Open one to see where it sits, who contributed it, who accepted it, and a brief for your AI.</p>
+<section class="items-intro"><h1>Every statement and connection</h1><p class="lede">{plural(statements, "statement")} and {plural(connections, "connection")}, in the order of the {"six questions" if len(c.trees) == 6 else str(len(c.trees)) + " published questions"}. Open one to see where it sits, who contributed it, who accepted it, and a brief for your AI.</p>
 <div class="search" hidden><label for="filter">Find a statement</label><input id="filter" type="search" placeholder="Try a word or a name" autocomplete="off"><p class="search-status" role="status"></p></div></section>
 {"".join(groups)}
 </div>"""
@@ -1432,6 +1488,8 @@ def about_page(c, site):
                'Nothing here describes a real school, street or person.</p></section>') if c.is_example else ""
     if c.is_reconstruction:
         def where(source):
+            if source.get("kind") == "web_page":
+                return f'<p>Research project led by {esc(c.authors[source["author"]]["name"])}. <a href="{esc(source["url"])}">Read the original page ↗</a></p>'
             if "posts" in source:
                 return f'<p><a href="{esc(source["url"])}">Read the thread ↗</a></p>'
             if source.get("kind") == "supplied_document":
@@ -1444,6 +1502,9 @@ def about_page(c, site):
         fiction = (f'<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from a public forum thread, {plural(essays, "essay")} shared in it and the supplied analyses of it. Every item credits the posts or essays it draws on, with links, and names the analysis page or section it comes from and whether a connection is an inference. The people credited have not reviewed or endorsed this selection.</p>'
                    + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. Those branches are now in the map as proposed changes with their risks, first steps and actions. Most of the first steps are the analysis’s own planning, so each obstacle carries a question to check at a host before relying on it.</p>'
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
+        if c.web_sources:
+            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>The source is a research agenda, not a set of settled answers. The goal, causal hypothesis and suggested review practice are illustrative AI interpretations. Source credit is not endorsement.</p>'
+                       + source_list + source_question_outline(c) + '</section>')
         if c.supplied_documents:
             fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. Heath has commented on an earlier map; the wording and connections in this revision await her review and endorsement.</p>'
                        + source_list
@@ -1461,6 +1522,8 @@ def about_page(c, site):
                 "Proposed and disputed reasoning, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. They are not published here.")
     if c.is_reconstruction:
         excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
+    if c.web_sources:
+        excluded = "The source questions are preserved above, but no answers from the source are implied. The AI’s proposed reasoning has not been endorsed. No trial, assigned owner, feedback commitment or observed result is recorded. Private collaboration notes and approval receipts are not included in the public release."
     if c.supplied_documents:
         excluded = "The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
     download = '<a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a>'
@@ -1482,7 +1545,7 @@ def about_page(c, site):
 <aside class="about-side"><p class="eyebrow">In this release</p><p class="big-count"><b>{statements}</b> statements <b>{connections}</b> connections</p>
 <div class="table-wrap"><table class="counts"><thead><tr><th scope="col">Question</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>
 <p>{download}</p>
-<p class="fine">{"The release contains exactly what these pages show, as JSON." if c.is_reconstruction else "The download holds exactly what these pages show, as JSON."}</p>{release_text}</aside>
+<p class="fine">{"The JSON contains the published reasoning; the original question hierarchies are preserved above." if c.web_sources else "The release contains exactly what these pages show, as JSON." if c.is_reconstruction else "The download holds exactly what these pages show, as JSON."}</p>{release_text}</aside>
 </div>
 <section class="about-people">{f'<h2 id="credits">Whose ideas these are</h2>{credits_table(c)}' if c.is_reconstruction else ''}<h2>People</h2>{people_table(c)}</section>
 </div>"""
