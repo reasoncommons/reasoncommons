@@ -6,6 +6,12 @@ The Map and all six detailed question pages were found to return a host-generate
 
 Revision 2 adds content-versioned asset references to all 50 generated HTML pages, including 39 additional generated paths, to trigger a complete HTML refresh through GitHub. David’s exact typed reply `Accept revision 2` was recorded at 2026-10-25T11:49:15Z and validated before those edits. All 93 demonstration tests, 62-file drift, website exports and 4,980 links/assets pass. The bodies of those 39 pages and all published reasoning JSON remain unchanged. The hosted preview renders the goal-first design and all six Map destinations; actual production restoration remains to verify after merge.
 
+## Production verification — complete
+
+[PR #100](https://github.com/reasoncommons/reasoncommons/pull/100) merged on 25 October 2026 at 11:58:44 UTC as `28ecec64263e1f7918c5322164c680100a546d6a`, with all three GitHub checks passing. The [live overview](https://reasoncommons.com/demos/reason-commons-in-use/re-membering/index.html) shows the goal, editorial invitation and contribution routes before optional source detail. The [live Map](https://reasoncommons.com/demos/reason-commons-in-use/re-membering/map.html) and all six detailed destinations now render their expected headings and diagrams; the Not found JSON error is gone. The existing graph and wording comparisons remain independently collapsed. Live desktop at 1440px and real 375px overview and Map checks show no horizontal overflow. Keyboard focus and contextual brief copying work; no contribution was submitted.
+
+The final implementation passes 93 demonstration tests, 157 reasoning/approval helper tests, 62-file generation drift, website exports and 4,980 links/assets. Production restoration used the GitHub publication refresh without hosting sign-in or changes to hosting credentials, settings or permissions. Implementation bead `reasoncommons-6g9` is complete. The existing assessment backlog remains open for newcomer comprehension, invitation usefulness and source-author fidelity; implementation completion does not establish participant benefit or endorse proposed reasoning.
+
 ---
 
 # Presentation integration: sources and feedback
