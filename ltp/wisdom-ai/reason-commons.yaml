@@ -8,33 +8,38 @@ source_context:
   url: https://ai.lifeitself.org/
   title: Wisdom and AI
   retrieved_on: '2026-10-25'
-  standing: Source questions are preserved separately. All statements and links below are assistant-proposed interpretations, not source answers or author endorsement.
+  standing: Original research questions remain separate questions. Existing AI proposals retain their attribution; the added and revised reasoning originates in David’s supplied analysis. All statements and links remain proposed, without endorsement or supporting empirical evidence.
+  analysis: David Joseph’s supplied six-tree review, 2026-10-25; keep its claims separately attributed from the original research agenda.
 trees:
   goal:
     nodes:
     - id: g-wise-ai
       kind: goal
-      text: People make informed, revisable choices about developing and using AI.
-      label: People make informed, revisable AI choices.
+      text: People and institutions approach AI development and use wisely, with defensible reasons for the aims, risks and responsibilities they accept.
+      label: People and institutions approach AI wisely, with defensible aims, risks and responsibilities.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Alignment: can we align AI, and what role can wisdom traditions play?'
+        basis: related
+    - id: g-understand
+      kind: necessary_condition
+      text: Decision makers understand relevant benefits, harms and uncertainties.
+      label: Decision makers understand benefits, harms and uncertainties.
       status: proposed
       contributions: &id001
       - by: assistant
         attribution: assistant
         mode: text
         note: Illustrative interpretation of the source research questions; not a claim made or endorsed by the source author.
-      source:
-        url: https://ai.lifeitself.org/
-        question: How should we integrate AI into our lives and societies?
-      source_refs:
-      - source_id: wisdom-ai
-        locator: How should we integrate AI into our lives and societies?
-        basis: inference
-    - id: g-understand
-      kind: necessary_condition
-      text: Decision makers understand relevant benefits, harms and uncertainties.
-      label: Decision makers understand benefits, harms and uncertainties.
-      status: proposed
-      contributions: *id001
       source:
         url: https://ai.lifeitself.org/
         question: How should we integrate AI into our lives and societies?
@@ -55,6 +60,91 @@ trees:
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
         basis: inference
+    - id: g-alignment
+      kind: necessary_condition
+      text: The intended ends are ethically defensible, and claims that AI will pursue them are adequately supported.
+      label: AI’s intended ends are defensible and its pursuit of them is adequately supported.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Alignment: can we align AI, and what role can wisdom traditions play?'
+        basis: related
+    - id: g-risk-pace
+      kind: necessary_condition
+      text: Development choices account for alignment uncertainty, catastrophic consequences and feasible alternatives.
+      label: Development choices account for alignment uncertainty, catastrophe and alternatives.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Risk and pace: given existential risk and the chance alignment fails, how should we approach AI development, and what do wisdom traditions suggest?'
+        basis: related
+    - id: g-broader-impacts
+      kind: necessary_condition
+      text: Adoption decisions account for human agency, relationships and institutions.
+      label: Adoption decisions account for agency, relationships and institutions.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Broader impacts: setting existential risk aside, how does AI change how we live, and what do wisdom traditions offer?'
+        basis: related
+    - id: g-consciousness
+      kind: necessary_condition
+      text: Treatment of AI responds responsibly to uncertainty about its possible moral standing.
+      label: Treatment of AI responds responsibly to uncertain moral standing.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Consciousness: could AI be conscious or a moral patient, and how should we relate to it? (a smaller strand)'
+        basis: related
+    - id: g-restraint
+      kind: necessary_condition
+      text: Decision makers can exercise restraint before consequences become irreversible.
+      label: Decision makers can restrain action before consequences become irreversible.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: 'Risk and pace: given existential risk and the chance alignment fails, how should we approach AI development, and what do wisdom traditions suggest?'
+        basis: related
     links:
     - id: g-understand-necessary
       from:
@@ -78,14 +168,120 @@ trees:
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
         basis: inference
+    - id: g-alignment-necessary
+      from:
+      - g-alignment
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: g-risk-pace-necessary
+      from:
+      - g-risk-pace
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: g-broader-impacts-necessary
+      from:
+      - g-broader-impacts
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: g-consciousness-necessary
+      from:
+      - g-consciousness
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: g-restraint-necessary
+      from:
+      - g-restraint
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 1
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
     backlog:
     - ref: g-wise-ai
       work: review_goal
-      label: Review the goal and whether both conditions are necessary.
+      label: Review the goal and justify each candidate necessary condition.
     - ref: g-understand
       work: investigate_wisdom
       label: Investigate what wisdom traditions contribute.
       note: Preserve disagreements between traditions and limits of analogy; the page asks rather than settles this.
+    - ref: g-alignment
+      work: investigate_wisdom
+      label: Examine traditions, disagreement, mechanisms and limits for this branch.
+      note: Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient.
+    - ref: g-risk-pace
+      work: investigate_wisdom
+      label: Examine traditions, disagreement, mechanisms and limits for this branch.
+      note: Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient.
+    - ref: g-broader-impacts
+      work: investigate_wisdom
+      label: Examine traditions, disagreement, mechanisms and limits for this branch.
+      note: Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient.
+    - ref: g-consciousness
+      work: investigate_wisdom
+      label: Examine traditions, disagreement, mechanisms and limits for this branch.
+      note: Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient.
   current_reality:
     nodes:
     - id: r-uncertainty
@@ -114,6 +310,227 @@ trees:
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
         basis: inference
+    - id: r-contested-ends
+      kind: cause
+      text: The ends sought through AI alignment may be contested.
+      label: AI alignment ends may be contested.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-implicit-values
+      kind: cause
+      text: Value choices in AI alignment may remain implicit.
+      label: AI alignment value choices may remain implicit.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-ethical-disagreement
+      kind: undesirable_effect
+      text: Some apparently technical alignment disagreements may conceal ethical disagreements.
+      label: Some technical alignment disagreements may conceal ethical disagreements.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-competitive-pressure
+      kind: cause
+      text: AI developers may face competitive pressure.
+      label: AI developers may face competitive pressure.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-restraint-disadvantage
+      kind: cause
+      text: AI developers may perceive restraint as putting them at a disadvantage.
+      label: Developers may see restraint as a competitive disadvantage.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-weak-coordination
+      kind: cause
+      text: Coordination that could support restraint may be weak.
+      label: Coordination that could support restraint may be weak.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-proceed-despite-risk
+      kind: undesirable_effect
+      text: Some actors may proceed with AI development despite recognising risks.
+      label: Some actors may proceed despite recognising AI risks.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-delegated-judgment
+      kind: cause
+      text: Some AI uses may delegate judgment that people would otherwise exercise.
+      label: Some AI uses may delegate human judgment.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-less-practice
+      kind: cause
+      text: Some AI uses may reduce opportunities for people to practise judgment.
+      label: Some AI uses may reduce opportunities to practise judgment.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-weakened-agency
+      kind: undesirable_effect
+      text: Some AI uses may weaken human agency.
+      label: Some AI uses may weaken human agency.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-moral-uncertainty
+      kind: cause
+      text: AI’s possible moral standing may remain uncertain.
+      label: AI’s possible moral standing may remain uncertain.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-missing-moral-criteria
+      kind: cause
+      text: Decision criteria for responding to AI’s possible moral standing may be absent.
+      label: Criteria for responding to possible AI moral standing may be absent.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: r-inconsistent-treatment
+      kind: undesirable_effect
+      text: Potentially important considerations about AI’s moral standing may receive inconsistent treatment.
+      label: Potentially important AI moral considerations may receive inconsistent treatment.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
     links:
     - id: r-uncertainty-decisions
       from:
@@ -126,11 +543,314 @@ trees:
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
         basis: inference
+      assumptions:
+      - by: david
+        text: Uncertainty could instead encourage restraint; the existing uncertainty branch is one hypothesis, not an established central explanation.
+    - id: r-alignment-hypothesis
+      from:
+      - r-contested-ends
+      - r-implicit-values
+      to: r-ethical-disagreement
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.
+    - id: r-race-hypothesis
+      from:
+      - r-competitive-pressure
+      - r-restraint-disadvantage
+      - r-weak-coordination
+      to: r-proceed-despite-risk
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.
+    - id: r-agency-hypothesis
+      from:
+      - r-delegated-judgment
+      - r-less-practice
+      to: r-weakened-agency
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.
+      - by: david
+        text: AI assistance could strengthen judgment rather than weaken agency; distinguish uses and conditions.
+    - id: r-moral-standing-hypothesis
+      from:
+      - r-moral-uncertainty
+      - r-missing-moral-criteria
+      to: r-inconsistent-treatment
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 2
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.
     backlog:
     - ref: r-uncertainty-decisions
       work: test_causality
       label: Test whether uncertainty contributes to poorly justified choices.
       note: Uncertainty could also prompt restraint or better deliberation; neither effect is established here.
+    - ref: r-alignment-hypothesis
+      work: test_causality
+      label: Find observations and a mechanism that distinguish this explanation.
+      note: No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram.
+    - ref: r-race-hypothesis
+      work: test_causality
+      label: Find observations and a mechanism that distinguish this explanation.
+      note: No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram.
+    - ref: r-agency-hypothesis
+      work: test_causality
+      label: Find observations and a mechanism that distinguish this explanation.
+      note: No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram.
+    - ref: r-moral-standing-hypothesis
+      work: test_causality
+      label: Find observations and a mechanism that distinguish this explanation.
+      note: No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram.
+  conflict:
+    nodes:
+    - id: c-defensible
+      kind: objective
+      text: For one capability and release decision still to be specified, AI development is defensible.
+      label: The still-unspecified AI development decision is defensible.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-benefits-security
+      kind: need
+      text: The selected development decision meets legitimate needs for timely benefits and security.
+      label: The decision meets needs for timely benefits and security.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-protection
+      kind: need
+      text: The selected development decision protects against unacceptable harm.
+      label: The decision protects against unacceptable harm.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-release-now
+      kind: prerequisite
+      text: Release the selected capability now.
+      label: Release the selected capability now.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-defer
+      kind: prerequisite
+      text: Defer release of the selected capability.
+      label: Defer release of the selected capability.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    links:
+    - id: c-benefits-necessary
+      from:
+      - c-benefits-security
+      to: c-defensible
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-protection-necessary
+      from:
+      - c-protection
+      to: c-defensible
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: c-release-assumed
+      from:
+      - c-release-now
+      to: c-benefits-security
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: Obtaining timely benefits or protecting security requires releasing this particular capability now, rather than a narrower capability, restricted access or another feasible option.
+    - id: c-deferral-assumed
+      from:
+      - c-defer
+      to: c-protection
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: Preventing unacceptable harm requires deferral; safeguards, coordination or narrower release could not adequately protect against it.
+    - id: c-release-conflict
+      from:
+      - c-release-now
+      to: c-defer
+      relation: conflicts_with
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 3
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    backlog:
+    - ref: c-defensible
+      work: specify_decision
+      label: Select an actor, capability, release decision and time horizon.
+      note: This is a candidate cloud, not a recognised conflict for an actual decision. Relevant participants have not confirmed either need.
+    - ref: c-release-conflict
+      work: examine_assumption
+      label: Test whether other options meet both needs and what slower development risks.
+      note: Consider narrower capabilities, restricted access, safeguards and coordinated restraint. Review points alone do not resolve the conflict.
   future_reality:
     nodes:
     - id: f-review
@@ -159,26 +879,1295 @@ trees:
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
         basis: inference
+    - id: f-usable-evidence
+      kind: existing_condition
+      text: Usable evidence about the decision and its consequences is available.
+      label: Usable evidence about the decision is available.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-authority-incentives
+      kind: existing_condition
+      text: Decision makers have authority and incentives to act on review findings.
+      label: Decision makers have authority and incentives to act.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-feasible-alternatives
+      kind: existing_condition
+      text: Feasible alternatives to the current decision are available.
+      label: Feasible alternatives are available.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-explicit-aims
+      kind: injection
+      text: Make ethical aims and disagreements explicit.
+      label: Make ethical aims and disagreements explicit.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      addresses:
+      - r-ethical-disagreement
+    - id: f-exposed-assumptions
+      kind: predicted_effect
+      text: Making ethical aims explicit may expose assumptions hidden inside evaluations.
+      label: Explicit aims may expose assumptions hidden inside evaluations.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-defensible-assessment
+      kind: desirable_effect
+      text: Alternatives can be assessed against defensible criteria.
+      label: Alternatives can be assessed against defensible criteria.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-specific-practice
+      kind: injection
+      text: Introduce a specified wisdom-derived practice with an identified mechanism and limits.
+      label: Introduce a specific wisdom-derived practice with a mechanism and limits.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-attention-motivation
+      kind: predicted_effect
+      text: The selected practice may change attention, motivation or judgment through the identified mechanism.
+      label: The practice may change attention, motivation or judgment through its mechanism.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-better-judgment
+      kind: desirable_effect
+      text: A relevant, specified aspect of decision making may improve.
+      label: A specified aspect of decision making may improve.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-coordination-safeguards
+      kind: injection
+      text: Establish proportionate safeguards or coordination for the selected decision.
+      label: Establish proportionate safeguards or coordination.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      addresses:
+      - r-proceed-despite-risk
+    - id: f-changed-options
+      kind: predicted_effect
+      text: Safeguards or coordination may change what actors can do or are motivated to do.
+      label: Safeguards or coordination may change actors’ options or motivation.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-practicable-restraint
+      kind: desirable_effect
+      text: Restraint or redirection becomes practicable.
+      label: Restraint or redirection becomes practicable.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-unwarranted-reassurance
+      kind: undesirable_effect
+      text: Formal review may create unwarranted reassurance.
+      label: Formal review may create unwarranted reassurance.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-premature-action
+      kind: undesirable_effect
+      text: Unwarranted reassurance may contribute to premature action.
+      label: Unwarranted reassurance may contribute to premature action.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-substantive-criteria
+      kind: injection
+      text: Require substantive criteria to be met; completing a review cannot substitute for meeting them.
+      label: Require substantive criteria; completing review is not enough.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      addresses:
+      - f-unwarranted-reassurance
+    - id: f-preaction-safeguards
+      kind: injection
+      text: Where harms could be irreversible, apply safeguards before the action.
+      label: Apply safeguards before actions whose harms could be irreversible.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      addresses:
+      - f-premature-action
     links:
     - id: f-review-revision
       from:
       - f-review
+      - f-usable-evidence
+      - f-authority-incentives
+      - f-feasible-alternatives
       to: f-revision
       relation: causes
       status: proposed
-      contributions: *id001
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
       source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
       - source_id: wisdom-ai
         locator: Should we change pace or trajectory, and can we?
-        basis: inference
+        basis: related
+    - id: f-aims-assumptions
+      from:
+      - f-explicit-aims
+      to: f-exposed-assumptions
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-assumptions-assessment
+      from:
+      - f-exposed-assumptions
+      to: f-defensible-assessment
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-practice-mechanism
+      from:
+      - f-specific-practice
+      to: f-attention-motivation
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-mechanism-judgment
+      from:
+      - f-attention-motivation
+      to: f-better-judgment
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-coordination-options
+      from:
+      - f-coordination-safeguards
+      to: f-changed-options
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-options-restraint
+      from:
+      - f-changed-options
+      to: f-practicable-restraint
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-review-reassurance
+      from:
+      - f-review
+      to: f-unwarranted-reassurance
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: f-reassurance-action
+      from:
+      - f-unwarranted-reassurance
+      to: f-premature-action
+      relation: contributes_to
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 4
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
     backlog:
     - ref: f-review-revision
       work: test_causality
-      label: Test whether review points enable consequential revision.
-      note: 'Review points alone may not suffice: decision makers need authority, usable evidence and feasible alternatives. No benefit has been observed.'
+      label: Test all four joint conditions and whether a stronger intervention exists.
+      note: Review is only one candidate. Usable evidence, authority and incentives, and feasible alternatives are proposed joint conditions, not a guarantee; reject this intervention if another diagnosis is better supported.
     - ref: f-review
       work: investigate_wisdom
       label: Investigate how wisdom traditions might shape review practice.
+    - ref: f-aims-assumptions
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-assumptions-assessment
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-practice-mechanism
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-mechanism-judgment
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-coordination-options
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-options-restraint
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-review-reassurance
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-reassurance-action
+      work: test_causality
+      label: Test this proposed mechanism and its credible alternatives.
+      note: The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test.
+    - ref: f-specific-practice
+      work: specify_practice
+      label: Select the tradition, practice, mechanism, limits and expected aspect of judgment.
+      note: No practice or tradition is selected by this draft. Invoking wisdom does not establish an effect.
+    - ref: f-substantive-criteria
+      work: design_guardrails
+      label: Define substantive criteria and safeguards before testing.
+      note: Completion of review must not become evidence that a risky decision is justified.
+  prerequisite:
+    nodes:
+    - id: p-test
+      kind: objective
+      text: One proposed decision practice can be responsibly tested in a defined setting.
+      label: One decision practice can be responsibly tested in a defined setting.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-obstacle-wise
+      kind: obstacle
+      text: “Wise” remains underspecified.
+      label: “Wise” remains underspecified.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-criteria
+      kind: intermediate_objective
+      text: Evaluation criteria, disagreements and unacceptable outcomes are explicit.
+      label: Evaluation criteria, disagreements and unacceptable outcomes are explicit.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-obstacle-diagnosis
+      kind: obstacle
+      text: The causal diagnosis is unsupported.
+      label: The causal diagnosis is unsupported.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-distinguish
+      kind: intermediate_objective
+      text: Evidence distinguishes the leading explanation from credible alternatives.
+      label: Evidence distinguishes the leading explanation from credible alternatives.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-obstacle-tradition
+      kind: obstacle
+      text: The contribution from a tradition is vague.
+      label: The contribution from a tradition is vague.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-practice
+      kind: intermediate_objective
+      text: A specific practice, proposed mechanism and limits are identified.
+      label: A specific practice, mechanism and limits are identified.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-obstacle-powers
+      kind: obstacle
+      text: The proposed change exceeds participants’ powers.
+      label: The proposed change exceeds participants’ powers.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-authority
+      kind: intermediate_objective
+      text: A feasible intervention and relevant decision authority are identified.
+      label: A feasible intervention and relevant decision authority are identified.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-obstacle-process
+      kind: obstacle
+      text: Success could be confused with completing the process.
+      label: Success could be confused with completing the process.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-measures
+      kind: intermediate_objective
+      text: Outcome measures, guardrails and reconsideration criteria are defined.
+      label: Outcome measures, guardrails and reconsideration criteria are defined.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    links:
+    - id: p-overcome-wise
+      from:
+      - p-criteria
+      to: p-obstacle-wise
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-overcome-diagnosis
+      from:
+      - p-distinguish
+      to: p-obstacle-diagnosis
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-overcome-tradition
+      from:
+      - p-practice
+      to: p-obstacle-tradition
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-overcome-powers
+      from:
+      - p-authority
+      to: p-obstacle-powers
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-overcome-process
+      from:
+      - p-measures
+      to: p-obstacle-process
+      relation: overcomes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-test-conditions
+      from:
+      - p-criteria
+      - p-distinguish
+      - p-practice
+      - p-authority
+      - p-measures
+      to: p-test
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: p-outcome-mechanism-selection
+      from:
+      - p-criteria
+      - p-practice
+      to: p-authority
+      relation: necessary_for
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 5
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    backlog:
+    - ref: p-obstacle-wise
+      work: check_locally
+      label: Check this candidate obstacle in the selected setting.
+      note: These are possible obstacles for a future bounded test, not observations of an existing group.
+    - ref: p-obstacle-diagnosis
+      work: check_locally
+      label: Check this candidate obstacle in the selected setting.
+      note: These are possible obstacles for a future bounded test, not observations of an existing group.
+    - ref: p-obstacle-tradition
+      work: check_locally
+      label: Check this candidate obstacle in the selected setting.
+      note: These are possible obstacles for a future bounded test, not observations of an existing group.
+    - ref: p-obstacle-powers
+      work: check_locally
+      label: Check this candidate obstacle in the selected setting.
+      note: These are possible obstacles for a future bounded test, not observations of an existing group.
+    - ref: p-obstacle-process
+      work: check_locally
+      label: Check this candidate obstacle in the selected setting.
+      note: These are possible obstacles for a future bounded test, not observations of an existing group.
+    - ref: p-test
+      work: select_setting
+      label: Select a bounded setting, decision and willing participants.
+      note: The dependencies are candidate requirements, not proof of sufficiency or a commitment to conduct a test.
+  transition:
+    nodes:
+    - id: t-1-condition
+      kind: existing_condition
+      text: The model discusses AI choices generally.
+      label: AI choices are discussed generally.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-1-action
+      kind: action
+      text: Select one actor, decision and time horizon.
+      label: Select one actor, decision and time horizon.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-1-effect
+      kind: expected_effect
+      text: The alternatives and responsibilities become concrete.
+      label: Alternatives and responsibilities become concrete.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-2-condition
+      kind: existing_condition
+      text: Important premises remain implicit.
+      label: Important premises remain implicit.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-2-action
+      kind: action
+      text: Record ethical aims, empirical claims and disagreements.
+      label: Record aims, empirical claims and disagreements.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-2-effect
+      kind: expected_effect
+      text: The decision’s justification becomes inspectable.
+      label: The decision’s justification becomes inspectable.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-3-condition
+      kind: existing_condition
+      text: Several explanations could fit.
+      label: Several explanations could fit.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-3-action
+      kind: action
+      text: Gather evidence that distinguishes the candidate explanations.
+      label: Gather evidence that distinguishes the explanations.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-3-effect
+      kind: expected_effect
+      text: The intervention can target a better-supported mechanism.
+      label: The intervention can target a better-supported mechanism.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-4-condition
+      kind: existing_condition
+      text: A bounded intervention is sufficiently justified.
+      label: A bounded intervention is sufficiently justified.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-4-action
+      kind: action
+      text: Specify and, only where appropriate, conduct a test with guardrails.
+      label: Specify a guarded test; conduct it only where appropriate.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+      assumptions:
+      - by: david
+        text: Run a test only when it is justified, authorised and safe. If a safe test is unavailable, gather information or improve safeguards instead. No provider has committed to a trial or an outcome report.
+    - id: t-4-effect
+      kind: expected_effect
+      text: Evidence becomes available about effects if a responsible test is conducted.
+      label: A responsible test can make evidence about effects available.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-5-condition
+      kind: existing_condition
+      text: Results are available.
+      label: Results are available.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-5-action
+      kind: action
+      text: Compare results with the recorded prediction and credible alternatives.
+      label: Compare results with the prediction and alternatives.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-5-effect
+      kind: expected_effect
+      text: The affected claims and next decision can be revised.
+      label: The affected claims and next decision can be revised.
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    links:
+    - id: t-1-produces
+      from:
+      - t-1-condition
+      - t-1-action
+      to: t-1-effect
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-1-precedes-next
+      from:
+      - t-1-effect
+      to: t-2-action
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-2-produces
+      from:
+      - t-2-condition
+      - t-2-action
+      to: t-2-effect
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-2-precedes-next
+      from:
+      - t-2-effect
+      to: t-3-action
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-3-produces
+      from:
+      - t-3-condition
+      - t-3-action
+      to: t-3-effect
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-3-precedes-next
+      from:
+      - t-3-effect
+      to: t-4-action
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-4-produces
+      from:
+      - t-4-condition
+      - t-4-action
+      to: t-4-effect
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-4-precedes-next
+      from:
+      - t-4-effect
+      to: t-5-action
+      relation: precedes
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    - id: t-5-produces
+      from:
+      - t-5-condition
+      - t-5-action
+      to: t-5-effect
+      relation: produces
+      status: proposed
+      contributions:
+      - by: david
+        attribution: explicit
+        mode: text
+        note: Proposed in David’s supplied six-tree analysis, 2026-10-25; capture and diagram labels prepared by the assistant. Not endorsement or supporting empirical evidence.
+      source_refs:
+      - source_id: map-analysis
+        locator: Section 6
+        basis: paraphrase
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: related
+    backlog:
+    - ref: t-1-action
+      work: confirm_action
+      label: Confirm prerequisites, authority and consent before assigning this action.
+      note: Owner and date are unassigned. This is a proposed step, not an action commitment or completed work.
+    - ref: t-2-action
+      work: confirm_action
+      label: Confirm prerequisites, authority and consent before assigning this action.
+      note: Owner and date are unassigned. This is a proposed step, not an action commitment or completed work.
+    - ref: t-3-action
+      work: confirm_action
+      label: Confirm prerequisites, authority and consent before assigning this action.
+      note: Owner and date are unassigned. This is a proposed step, not an action commitment or completed work.
+    - ref: t-4-action
+      work: confirm_action
+      label: Confirm prerequisites, authority and consent before assigning this action.
+      note: Owner and date are unassigned. This is a proposed step, not an action commitment or completed work.
+    - ref: t-5-action
+      work: confirm_action
+      label: Confirm prerequisites, authority and consent before assigning this action.
+      note: Owner and date are unassigned. This is a proposed step, not an action commitment or completed work.
 change_acceptances:
 - proposal_ref: wisdom-ai-demo
   proposal_revision: 1

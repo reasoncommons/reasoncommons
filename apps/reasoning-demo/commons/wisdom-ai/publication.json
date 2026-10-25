@@ -2,7 +2,7 @@
   "registry_version": 1,
   "publication_kind": "source_reconstruction",
   "release": {
-    "release_id": "2026-10-25.1",
+    "release_id": "2026-10-25.2",
     "snapshot_date": "2026-10-25",
     "title": "Wisdom and AI"
   },
@@ -10,12 +10,16 @@
     "david": "David Joseph"
   },
   "roles": {
-    "david": "Requested this demonstration; has not endorsed the proposed reasoning"
+    "david": "Authored the supplied six-tree analysis and requested its incorporation; all contributions remain proposed, without endorsement or action commitment"
   },
   "authors": {
     "rufus": {
       "name": "Rufus Pollock",
       "role": "Leads the Wisdom and AI research project at Life Itself; posed the source research questions and has not reviewed or endorsed this proposed reasoning"
+    },
+    "david": {
+      "name": "David Joseph",
+      "role": "Author of the supplied six-tree analysis of the initial map; its additions remain proposals, not empirical findings or endorsement"
     }
   },
   "selection": {
@@ -23,29 +27,150 @@
       "nodes": [
         "g-wise-ai",
         "g-understand",
-        "g-revise"
+        "g-revise",
+        "g-alignment",
+        "g-risk-pace",
+        "g-broader-impacts",
+        "g-consciousness",
+        "g-restraint"
       ],
       "links": [
         "g-understand-necessary",
-        "g-revise-necessary"
+        "g-revise-necessary",
+        "g-alignment-necessary",
+        "g-risk-pace-necessary",
+        "g-broader-impacts-necessary",
+        "g-consciousness-necessary",
+        "g-restraint-necessary"
       ]
     },
     "current_reality": {
       "nodes": [
         "r-uncertainty",
-        "r-decisions"
+        "r-decisions",
+        "r-contested-ends",
+        "r-implicit-values",
+        "r-ethical-disagreement",
+        "r-competitive-pressure",
+        "r-restraint-disadvantage",
+        "r-weak-coordination",
+        "r-proceed-despite-risk",
+        "r-delegated-judgment",
+        "r-less-practice",
+        "r-weakened-agency",
+        "r-moral-uncertainty",
+        "r-missing-moral-criteria",
+        "r-inconsistent-treatment"
       ],
       "links": [
-        "r-uncertainty-decisions"
+        "r-uncertainty-decisions",
+        "r-alignment-hypothesis",
+        "r-race-hypothesis",
+        "r-agency-hypothesis",
+        "r-moral-standing-hypothesis"
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        "c-defensible",
+        "c-benefits-security",
+        "c-protection",
+        "c-release-now",
+        "c-defer"
+      ],
+      "links": [
+        "c-benefits-necessary",
+        "c-protection-necessary",
+        "c-release-assumed",
+        "c-deferral-assumed",
+        "c-release-conflict"
       ]
     },
     "future_reality": {
       "nodes": [
         "f-review",
-        "f-revision"
+        "f-revision",
+        "f-usable-evidence",
+        "f-authority-incentives",
+        "f-feasible-alternatives",
+        "f-explicit-aims",
+        "f-exposed-assumptions",
+        "f-defensible-assessment",
+        "f-specific-practice",
+        "f-attention-motivation",
+        "f-better-judgment",
+        "f-coordination-safeguards",
+        "f-changed-options",
+        "f-practicable-restraint",
+        "f-unwarranted-reassurance",
+        "f-premature-action",
+        "f-substantive-criteria",
+        "f-preaction-safeguards"
       ],
       "links": [
-        "f-review-revision"
+        "f-review-revision",
+        "f-aims-assumptions",
+        "f-assumptions-assessment",
+        "f-practice-mechanism",
+        "f-mechanism-judgment",
+        "f-coordination-options",
+        "f-options-restraint",
+        "f-review-reassurance",
+        "f-reassurance-action"
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        "p-test",
+        "p-obstacle-wise",
+        "p-criteria",
+        "p-obstacle-diagnosis",
+        "p-distinguish",
+        "p-obstacle-tradition",
+        "p-practice",
+        "p-obstacle-powers",
+        "p-authority",
+        "p-obstacle-process",
+        "p-measures"
+      ],
+      "links": [
+        "p-overcome-wise",
+        "p-overcome-diagnosis",
+        "p-overcome-tradition",
+        "p-overcome-powers",
+        "p-overcome-process",
+        "p-test-conditions",
+        "p-outcome-mechanism-selection"
+      ]
+    },
+    "transition": {
+      "nodes": [
+        "t-1-condition",
+        "t-1-action",
+        "t-1-effect",
+        "t-2-condition",
+        "t-2-action",
+        "t-2-effect",
+        "t-3-condition",
+        "t-3-action",
+        "t-3-effect",
+        "t-4-condition",
+        "t-4-action",
+        "t-4-effect",
+        "t-5-condition",
+        "t-5-action",
+        "t-5-effect"
+      ],
+      "links": [
+        "t-1-produces",
+        "t-1-precedes-next",
+        "t-2-produces",
+        "t-2-precedes-next",
+        "t-3-produces",
+        "t-3-precedes-next",
+        "t-4-produces",
+        "t-4-precedes-next",
+        "t-5-produces"
       ]
     }
   },
@@ -58,40 +183,225 @@
       "url": "https://ai.lifeitself.org/",
       "title": "Wisdom and AI",
       "description": "A Second Renaissance research agenda led by Rufus Pollock of Life Itself. One governing question, four core questions and their subquestions explore alignment, risk and pace, broader impacts and consciousness. Wisdom traditions means especially Buddhism in this source, while inviting others. It asks questions rather than establishing answers. Captured 25 October 2026."
+    },
+    {
+      "id": "map-analysis",
+      "kind": "supplied_analysis",
+      "author": "david",
+      "url": "https://github.com/reasoncommons/reasoncommons/blob/main/docs/marketing/demos/wisdom-ai-analysis.md",
+      "title": "Analysis of the Wisdom and AI map",
+      "description": "David Joseph’s supplied review of the first map, 25 October 2026. Sections 1–6 propose a substantive goal, competing diagnoses, a candidate release conflict, conditional interventions and a negative branch, prerequisites and conditional transition steps. These are proposed contributions; the review supplies no empirical supporting observations, recognised decision, selected practice or test commitment."
     }
   ],
   "views": {
     "goal": [
       {
         "id": "goal-example",
-        "title": "An informed, revisable choice",
-        "summary": "A suggested goal and two conditions to review. These are AI interpretations, not conclusions from the source.",
+        "title": "Wise decisions need substantive judgment",
+        "summary": "Four research strands and three supporting conditions are candidates to justify, not established necessities or sufficient conditions.",
         "nodes": [
           "g-wise-ai",
           "g-understand",
-          "g-revise"
+          "g-revise",
+          "g-alignment",
+          "g-risk-pace",
+          "g-broader-impacts",
+          "g-consciousness",
+          "g-restraint"
         ]
       }
     ],
     "current_reality": [
       {
         "id": "current-reality-example",
-        "title": "A possible difficulty",
-        "summary": "A causal hypothesis that needs evidence; uncertainty can also prompt restraint or better deliberation.",
+        "title": "Uncertainty is one possible explanation",
+        "summary": "The existing uncertainty branch remains a hypothesis. Uncertainty could also encourage restraint.",
         "nodes": [
           "r-uncertainty",
           "r-decisions"
+        ]
+      },
+      {
+        "id": "contested-ends",
+        "title": "Contested ends and implicit values",
+        "summary": "Test whether apparently technical disagreements conceal ethical disagreements; the joint cause is not established.",
+        "nodes": [
+          "r-contested-ends",
+          "r-implicit-values",
+          "r-ethical-disagreement"
+        ]
+      },
+      {
+        "id": "competitive-pressure",
+        "title": "Recognised risk under competitive pressure",
+        "summary": "Pressure, perceived disadvantage and weak coordination form a candidate joint explanation. No supporting observations are supplied.",
+        "nodes": [
+          "r-competitive-pressure",
+          "r-restraint-disadvantage",
+          "r-weak-coordination",
+          "r-proceed-despite-risk"
+        ]
+      },
+      {
+        "id": "agency-and-practice",
+        "title": "Delegation and opportunities to practise judgment",
+        "summary": "Some uses might weaken agency; AI assistance could also strengthen judgment. Distinguish uses, mechanisms and conditions.",
+        "nodes": [
+          "r-delegated-judgment",
+          "r-less-practice",
+          "r-weakened-agency"
+        ]
+      },
+      {
+        "id": "moral-standing",
+        "title": "Moral uncertainty and missing criteria",
+        "summary": "Test whether uncertainty and absent criteria lead to inconsistent treatment, rather than treating this as a finding.",
+        "nodes": [
+          "r-moral-uncertainty",
+          "r-missing-moral-criteria",
+          "r-inconsistent-treatment"
+        ]
+      }
+    ],
+    "conflict": [
+      {
+        "id": "release-decision",
+        "title": "A candidate release decision",
+        "summary": "The actor, capability and release decision are still unspecified. Both needs require recognition by relevant participants; review points do not resolve this cloud by themselves.",
+        "nodes": [
+          "c-defensible",
+          "c-benefits-security",
+          "c-protection",
+          "c-release-now",
+          "c-defer"
         ]
       }
     ],
     "future_reality": [
       {
         "id": "future-reality-example",
-        "title": "A practice worth testing",
-        "summary": "Review points might enable revision, but authority, usable evidence and feasible alternatives may also be needed.",
+        "title": "Review can matter only with supporting conditions",
+        "summary": "Review points AND usable evidence AND authority and incentives AND feasible alternatives are proposed joint conditions. This is not a guarantee or an observed effect.",
         "nodes": [
           "f-review",
+          "f-usable-evidence",
+          "f-authority-incentives",
+          "f-feasible-alternatives",
           "f-revision"
+        ]
+      },
+      {
+        "id": "explicit-values",
+        "title": "Make aims and disagreements inspectable",
+        "summary": "Test the mechanism from explicit aims, through exposed assumptions, to assessment against defensible criteria.",
+        "nodes": [
+          "f-explicit-aims",
+          "f-exposed-assumptions",
+          "f-defensible-assessment"
+        ]
+      },
+      {
+        "id": "specific-practice",
+        "title": "Specify what a wisdom-derived practice would change",
+        "summary": "No particular practice or tradition has been selected. Its mechanism, limits and relevant aspect of judgment must be specified and tested.",
+        "nodes": [
+          "f-specific-practice",
+          "f-attention-motivation",
+          "f-better-judgment"
+        ]
+      },
+      {
+        "id": "coordination-and-restraint",
+        "title": "Change options and incentives",
+        "summary": "Proportionate safeguards or coordination might make restraint or redirection practicable. These are hypotheses, not confirmed effects.",
+        "nodes": [
+          "f-coordination-safeguards",
+          "f-changed-options",
+          "f-practicable-restraint"
+        ]
+      },
+      {
+        "id": "review-risk",
+        "title": "Review could create false reassurance",
+        "summary": "Formal review may create unwarranted reassurance and premature action. The two unconnected design requirements address those risks; intended coverage is not proof they work.",
+        "nodes": [
+          "f-review",
+          "f-unwarranted-reassurance",
+          "f-premature-action",
+          "f-substantive-criteria",
+          "f-preaction-safeguards"
+        ]
+      }
+    ],
+    "prerequisite": [
+      {
+        "id": "responsible-test",
+        "title": "What must be in place for a responsible test",
+        "summary": "These are candidate obstacles and requirements for an unselected setting. Clear outcomes and a plausible practice mechanism are needed before selecting a feasible intervention.",
+        "nodes": [
+          "p-test",
+          "p-obstacle-wise",
+          "p-criteria",
+          "p-obstacle-diagnosis",
+          "p-distinguish",
+          "p-obstacle-tradition",
+          "p-practice",
+          "p-obstacle-powers",
+          "p-authority",
+          "p-obstacle-process",
+          "p-measures"
+        ]
+      }
+    ],
+    "transition": [
+      {
+        "id": "step-1",
+        "title": "Choose one decision",
+        "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+        "nodes": [
+          "t-1-condition",
+          "t-1-action",
+          "t-1-effect"
+        ]
+      },
+      {
+        "id": "step-2",
+        "title": "Make premises inspectable",
+        "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+        "nodes": [
+          "t-2-condition",
+          "t-2-action",
+          "t-2-effect"
+        ]
+      },
+      {
+        "id": "step-3",
+        "title": "Distinguish the explanations",
+        "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+        "nodes": [
+          "t-3-condition",
+          "t-3-action",
+          "t-3-effect"
+        ]
+      },
+      {
+        "id": "step-4",
+        "title": "Specify a guarded test",
+        "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+        "nodes": [
+          "t-4-condition",
+          "t-4-action",
+          "t-4-effect"
+        ]
+      },
+      {
+        "id": "step-5",
+        "title": "Compare results and revise",
+        "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+        "nodes": [
+          "t-5-condition",
+          "t-5-action",
+          "t-5-effect"
         ]
       }
     ]
@@ -99,52 +409,73 @@
   "overview": [
     {
       "type": "cards",
-      "eyebrow": "A goal to review",
-      "title": "Make informed choices, and keep them revisable.",
-      "text": "The research agenda asks how we should develop and use AI wisely. This example proposes an operational goal and two possible necessary conditions.",
+      "eyebrow": "The proposed goal",
+      "title": "Make the aims, risks and responsibilities defensible.",
+      "text": "David’s analysis expands the goal across alignment, risk and pace, broader impacts and consciousness. Understanding, revision and restraint are supporting conditions to investigate.",
       "ids": [
         "g-wise-ai",
-        "g-understand",
-        "g-revise"
+        "g-alignment",
+        "g-risk-pace",
+        "g-broader-impacts",
+        "g-consciousness"
       ],
       "link": [
         "goal.html",
-        "Inspect the proposed goal →"
+        "Examine the goal and its conditions →"
       ]
     },
     {
       "type": "cards",
-      "eyebrow": "A hypothesis to test",
-      "title": "Can uncertainty leave choices poorly justified?",
-      "text": "This is one possible problem to investigate, not a finding established by the source. Uncertainty could instead prompt restraint or better deliberation.",
+      "eyebrow": "Competing explanations",
+      "title": "Find what sustains the problem in one setting.",
+      "text": "The uncertainty branch remains alongside hypotheses about contested ends, competition, delegation and moral uncertainty. The source questions establish none of these findings.",
       "ids": [
-        "r-uncertainty",
-        "r-decisions"
+        "r-decisions",
+        "r-ethical-disagreement",
+        "r-proceed-despite-risk",
+        "r-weakened-agency",
+        "r-inconsistent-treatment"
       ],
       "link": [
         "in-the-way.html",
-        "Examine the causal hypothesis →"
+        "Compare the hypotheses and their assumptions →"
       ]
+    },
+    {
+      "type": "clouds",
+      "eyebrow": "A candidate conflict",
+      "title": "Examine the needs behind release and restraint.",
+      "text": "For a capability and release decision still to be specified, test whether timely benefits and protection really require incompatible positions. Relevant participants have not recognised this cloud.",
+      "featured": "release-decision"
     },
     {
       "type": "cards",
-      "eyebrow": "A proposed change",
-      "title": "Revisit decisions as evidence changes.",
-      "text": "Explicit review points could make choices revisable. The link is still a hypothesis, and authority and feasible alternatives may be needed.",
+      "eyebrow": "Proposed changes and risks",
+      "title": "Make interventions answer the diagnosis.",
+      "text": "Review needs supporting conditions. Explicit aims, a specified wisdom-derived practice, and safeguards or coordination offer other hypotheses. Formal review could also create false reassurance and premature action.",
       "ids": [
         "f-review",
-        "f-revision"
+        "f-explicit-aims",
+        "f-specific-practice",
+        "f-coordination-safeguards",
+        "f-unwarranted-reassurance"
       ],
       "link": [
         "change.html",
-        "Inspect the suggested practice →"
+        "Inspect mechanisms, joint conditions and the negative branch →"
       ]
     },
     {
+      "type": "wider",
+      "eyebrow": "From reasoning to a bounded inquiry",
+      "title": "Establish what is needed before assigning action.",
+      "text": "The prerequisite and transition drafts identify candidate requirements and conditional steps. No actor, capability, test setting or wisdom practice has been selected; no owner, date or action commitment is recorded. A stronger diagnosis may lead us to reject review points."
+    },
+    {
       "type": "credits",
-      "eyebrow": "Source questions and interpretation",
-      "title": "Questions by the research project; proposed answers by the AI.",
-      "text": "The source’s four research strands are preserved under Sources and limits. Every statement and connection in this small example is an AI inference awaiting review, not source-author endorsement."
+      "eyebrow": "Questions, proposed answers and evidence",
+      "title": "Keep the research agenda and the supplied analysis distinct.",
+      "text": "Rufus Pollock’s research project supplies the original questions. David Joseph supplied the six-tree analysis and its proposed additions; the AI structured the map and originated the retained initial proposals. Neither source credit nor approval to implement endorses the reasoning. Supporting empirical evidence has not been supplied."
     }
   ],
   "retired": [],
@@ -172,18 +503,158 @@
           ]
         }
       ]
+    },
+    {
+      "release_id": "2026-10-25.2",
+      "date": "2026-10-25",
+      "title": "Expand all six trees from David’s analysis",
+      "summary": "The goal becomes substantive, competing explanations remain open, and conditional interventions follow the diagnosis. A candidate conflict, prerequisites and conditional steps complete the six views. All reasoning remains proposed; no evidence, selected setting, owner, date, trial or observed outcome is invented.",
+      "changes": [
+        {
+          "type": "revised",
+          "refs": [
+            "g-wise-ai"
+          ],
+          "before": "People make informed, revisable choices about developing and using AI.",
+          "note": "Replace the initial procedural goal with David’s proposed substantive goal."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "r-uncertainty-decisions"
+          ],
+          "note": "Retain uncertainty as one competing hypothesis and record that it could also encourage restraint."
+        },
+        {
+          "type": "revised",
+          "refs": [
+            "f-review-revision"
+          ],
+          "before": "Explicit review points alone were connected to consequential revision.",
+          "note": "Replace the direct connection with four joint conditions: review points, usable evidence, authority and incentives, and feasible alternatives."
+        },
+        {
+          "type": "added",
+          "refs": [
+            "g-alignment",
+            "g-risk-pace",
+            "g-broader-impacts",
+            "g-consciousness",
+            "g-restraint",
+            "g-alignment-necessary",
+            "g-risk-pace-necessary",
+            "g-broader-impacts-necessary",
+            "g-consciousness-necessary",
+            "g-restraint-necessary",
+            "r-contested-ends",
+            "r-implicit-values",
+            "r-ethical-disagreement",
+            "r-competitive-pressure",
+            "r-restraint-disadvantage",
+            "r-weak-coordination",
+            "r-proceed-despite-risk",
+            "r-delegated-judgment",
+            "r-less-practice",
+            "r-weakened-agency",
+            "r-moral-uncertainty",
+            "r-missing-moral-criteria",
+            "r-inconsistent-treatment",
+            "r-alignment-hypothesis",
+            "r-race-hypothesis",
+            "r-agency-hypothesis",
+            "r-moral-standing-hypothesis",
+            "c-defensible",
+            "c-benefits-security",
+            "c-protection",
+            "c-release-now",
+            "c-defer",
+            "c-benefits-necessary",
+            "c-protection-necessary",
+            "c-release-assumed",
+            "c-deferral-assumed",
+            "c-release-conflict",
+            "f-usable-evidence",
+            "f-authority-incentives",
+            "f-feasible-alternatives",
+            "f-explicit-aims",
+            "f-exposed-assumptions",
+            "f-defensible-assessment",
+            "f-specific-practice",
+            "f-attention-motivation",
+            "f-better-judgment",
+            "f-coordination-safeguards",
+            "f-changed-options",
+            "f-practicable-restraint",
+            "f-unwarranted-reassurance",
+            "f-premature-action",
+            "f-substantive-criteria",
+            "f-preaction-safeguards",
+            "f-aims-assumptions",
+            "f-assumptions-assessment",
+            "f-practice-mechanism",
+            "f-mechanism-judgment",
+            "f-coordination-options",
+            "f-options-restraint",
+            "f-review-reassurance",
+            "f-reassurance-action",
+            "p-test",
+            "p-obstacle-wise",
+            "p-criteria",
+            "p-obstacle-diagnosis",
+            "p-distinguish",
+            "p-obstacle-tradition",
+            "p-practice",
+            "p-obstacle-powers",
+            "p-authority",
+            "p-obstacle-process",
+            "p-measures",
+            "p-overcome-wise",
+            "p-overcome-diagnosis",
+            "p-overcome-tradition",
+            "p-overcome-powers",
+            "p-overcome-process",
+            "p-test-conditions",
+            "p-outcome-mechanism-selection",
+            "t-1-condition",
+            "t-1-action",
+            "t-1-effect",
+            "t-2-condition",
+            "t-2-action",
+            "t-2-effect",
+            "t-3-condition",
+            "t-3-action",
+            "t-3-effect",
+            "t-4-condition",
+            "t-4-action",
+            "t-4-effect",
+            "t-5-condition",
+            "t-5-action",
+            "t-5-effect",
+            "t-1-produces",
+            "t-1-precedes-next",
+            "t-2-produces",
+            "t-2-precedes-next",
+            "t-3-produces",
+            "t-3-precedes-next",
+            "t-4-produces",
+            "t-4-precedes-next",
+            "t-5-produces"
+          ],
+          "note": "Incorporate the supplied analysis across all six trees, preserving its attribution and unresolved reasoning."
+        }
+      ]
     }
   ],
   "source_questions": "source-questions.json",
   "snapshot": {
     "projection_version": 4,
-    "release_id": "2026-10-25.1",
+    "release_id": "2026-10-25.2",
     "snapshot_date": "2026-10-25",
     "title": "Wisdom and AI",
     "people": [
       {
         "name": "David Joseph",
-        "role": "Requested this demonstration; has not endorsed the proposed reasoning"
+        "role": "Authored the supplied six-tree analysis and requested its incorporation; all contributions remain proposed, without endorsement or action commitment"
       }
     ],
     "trees": {
@@ -195,18 +666,23 @@
             "accepted_by": [],
             "contributors": [
               {
-                "name": "AI assistant",
-                "role": "assistant"
+                "name": "David Joseph",
+                "role": "human"
               }
             ],
             "kind": "goal",
-            "text": "People make informed, revisable choices about developing and using AI.",
-            "label": "People make informed, revisable AI choices.",
+            "text": "People and institutions approach AI development and use wisely, with defensible reasons for the aims, risks and responsibilities they accept.",
+            "label": "People and institutions approach AI wisely, with defensible aims, risks and responsibilities.",
             "source_refs": [
               {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "wisdom-ai",
-                "locator": "How should we integrate AI into our lives and societies?",
-                "basis": "inference"
+                "locator": "Alignment: can we align AI, and what role can wisdom traditions play?",
+                "basis": "related"
               }
             ]
           },
@@ -249,6 +725,136 @@
                 "source_id": "wisdom-ai",
                 "locator": "Should we change pace or trajectory, and can we?",
                 "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "g-alignment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "The intended ends are ethically defensible, and claims that AI will pursue them are adequately supported.",
+            "label": "AI’s intended ends are defensible and its pursuit of them is adequately supported.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Alignment: can we align AI, and what role can wisdom traditions play?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-risk-pace",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Development choices account for alignment uncertainty, catastrophic consequences and feasible alternatives.",
+            "label": "Development choices account for alignment uncertainty, catastrophe and alternatives.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Risk and pace: given existential risk and the chance alignment fails, how should we approach AI development, and what do wisdom traditions suggest?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-broader-impacts",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Adoption decisions account for human agency, relationships and institutions.",
+            "label": "Adoption decisions account for agency, relationships and institutions.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Broader impacts: setting existential risk aside, how does AI change how we live, and what do wisdom traditions offer?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-consciousness",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Treatment of AI responds responsibly to uncertainty about its possible moral standing.",
+            "label": "Treatment of AI responds responsibly to uncertain moral standing.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Consciousness: could AI be conscious or a moral patient, and how should we relate to it? (a smaller strand)",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-restraint",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Decision makers can exercise restraint before consequences become irreversible.",
+            "label": "Decision makers can restrain action before consequences become irreversible.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Risk and pace: given existential risk and the chance alignment fails, how should we approach AI development, and what do wisdom traditions suggest?",
+                "basis": "related"
               }
             ]
           }
@@ -299,19 +905,183 @@
                 "basis": "inference"
               }
             ]
+          },
+          {
+            "id": "g-alignment-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "g-alignment"
+            ],
+            "to": "g-wise-ai",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-risk-pace-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "g-risk-pace"
+            ],
+            "to": "g-wise-ai",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-broader-impacts-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "g-broader-impacts"
+            ],
+            "to": "g-wise-ai",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-consciousness-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "g-consciousness"
+            ],
+            "to": "g-wise-ai",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "g-restraint-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "g-restraint"
+            ],
+            "to": "g-wise-ai",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 1",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
           }
         ],
         "backlog": [
           {
             "ref": "g-wise-ai",
             "work": "review_goal",
-            "label": "Review the goal and whether both conditions are necessary."
+            "label": "Review the goal and justify each candidate necessary condition."
           },
           {
             "ref": "g-understand",
             "work": "investigate_wisdom",
             "label": "Investigate what wisdom traditions contribute.",
             "note": "Preserve disagreements between traditions and limits of analogy; the page asks rather than settles this."
+          },
+          {
+            "ref": "g-alignment",
+            "work": "investigate_wisdom",
+            "label": "Examine traditions, disagreement, mechanisms and limits for this branch.",
+            "note": "Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient."
+          },
+          {
+            "ref": "g-risk-pace",
+            "work": "investigate_wisdom",
+            "label": "Examine traditions, disagreement, mechanisms and limits for this branch.",
+            "note": "Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient."
+          },
+          {
+            "ref": "g-broader-impacts",
+            "work": "investigate_wisdom",
+            "label": "Examine traditions, disagreement, mechanisms and limits for this branch.",
+            "note": "Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient."
+          },
+          {
+            "ref": "g-consciousness",
+            "work": "investigate_wisdom",
+            "label": "Examine traditions, disagreement, mechanisms and limits for this branch.",
+            "note": "Identify particular teachings or practices; do not assume traditions agree, their analogies transfer, or the candidate conditions are necessary or sufficient."
           }
         ]
       },
@@ -358,6 +1128,344 @@
                 "basis": "inference"
               }
             ]
+          },
+          {
+            "id": "r-contested-ends",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "The ends sought through AI alignment may be contested.",
+            "label": "AI alignment ends may be contested.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-implicit-values",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Value choices in AI alignment may remain implicit.",
+            "label": "AI alignment value choices may remain implicit.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-ethical-disagreement",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Some apparently technical alignment disagreements may conceal ethical disagreements.",
+            "label": "Some technical alignment disagreements may conceal ethical disagreements.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-competitive-pressure",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "AI developers may face competitive pressure.",
+            "label": "AI developers may face competitive pressure.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-restraint-disadvantage",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "AI developers may perceive restraint as putting them at a disadvantage.",
+            "label": "Developers may see restraint as a competitive disadvantage.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-weak-coordination",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Coordination that could support restraint may be weak.",
+            "label": "Coordination that could support restraint may be weak.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-proceed-despite-risk",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Some actors may proceed with AI development despite recognising risks.",
+            "label": "Some actors may proceed despite recognising AI risks.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-delegated-judgment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Some AI uses may delegate judgment that people would otherwise exercise.",
+            "label": "Some AI uses may delegate human judgment.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-less-practice",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Some AI uses may reduce opportunities for people to practise judgment.",
+            "label": "Some AI uses may reduce opportunities to practise judgment.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-weakened-agency",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Some AI uses may weaken human agency.",
+            "label": "Some AI uses may weaken human agency.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-moral-uncertainty",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "AI’s possible moral standing may remain uncertain.",
+            "label": "AI’s possible moral standing may remain uncertain.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-missing-moral-criteria",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Decision criteria for responding to AI’s possible moral standing may be absent.",
+            "label": "Criteria for responding to possible AI moral standing may be absent.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-inconsistent-treatment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Potentially important considerations about AI’s moral standing may receive inconsistent treatment.",
+            "label": "Potentially important AI moral considerations may receive inconsistent treatment.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
           }
         ],
         "links": [
@@ -376,11 +1484,162 @@
             ],
             "to": "r-decisions",
             "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "Uncertainty could instead encourage restraint; the existing uncertainty branch is one hypothesis, not an established central explanation.",
+                "by": "David Joseph"
+              }
+            ],
             "source_refs": [
               {
                 "source_id": "wisdom-ai",
                 "locator": "Should we change pace or trajectory, and can we?",
                 "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "r-alignment-hypothesis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "r-contested-ends",
+              "r-implicit-values"
+            ],
+            "to": "r-ethical-disagreement",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-race-hypothesis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "r-competitive-pressure",
+              "r-restraint-disadvantage",
+              "r-weak-coordination"
+            ],
+            "to": "r-proceed-despite-risk",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-agency-hypothesis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "r-delegated-judgment",
+              "r-less-practice"
+            ],
+            "to": "r-weakened-agency",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.",
+                "by": "David Joseph"
+              },
+              {
+                "text": "AI assistance could strengthen judgment rather than weaken agency; distinguish uses and conditions.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "r-moral-standing-hypothesis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "r-moral-uncertainty",
+              "r-missing-moral-criteria"
+            ],
+            "to": "r-inconsistent-treatment",
+            "relation": "contributes_to",
+            "assumptions": [
+              {
+                "text": "The proposed joint mechanism operates in the selected setting; relevant observations must distinguish it from credible alternatives.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 2",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
               }
             ]
           }
@@ -391,6 +1650,332 @@
             "work": "test_causality",
             "label": "Test whether uncertainty contributes to poorly justified choices.",
             "note": "Uncertainty could also prompt restraint or better deliberation; neither effect is established here."
+          },
+          {
+            "ref": "r-alignment-hypothesis",
+            "work": "test_causality",
+            "label": "Find observations and a mechanism that distinguish this explanation.",
+            "note": "No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram."
+          },
+          {
+            "ref": "r-race-hypothesis",
+            "work": "test_causality",
+            "label": "Find observations and a mechanism that distinguish this explanation.",
+            "note": "No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram."
+          },
+          {
+            "ref": "r-agency-hypothesis",
+            "work": "test_causality",
+            "label": "Find observations and a mechanism that distinguish this explanation.",
+            "note": "No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram."
+          },
+          {
+            "ref": "r-moral-standing-hypothesis",
+            "work": "test_causality",
+            "label": "Find observations and a mechanism that distinguish this explanation.",
+            "note": "No supporting observations are supplied. Test whether the problem occurs, under which conditions, and what sustains it; do not infer a central cause from the diagram."
+          }
+        ]
+      },
+      "conflict": {
+        "nodes": [
+          {
+            "id": "c-defensible",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "objective",
+            "text": "For one capability and release decision still to be specified, AI development is defensible.",
+            "label": "The still-unspecified AI development decision is defensible.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-benefits-security",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "The selected development decision meets legitimate needs for timely benefits and security.",
+            "label": "The decision meets needs for timely benefits and security.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-protection",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "The selected development decision protects against unacceptable harm.",
+            "label": "The decision protects against unacceptable harm.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-release-now",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Release the selected capability now.",
+            "label": "Release the selected capability now.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-defer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Defer release of the selected capability.",
+            "label": "Defer release of the selected capability.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "c-benefits-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "c-benefits-security"
+            ],
+            "to": "c-defensible",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-protection-necessary",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "c-protection"
+            ],
+            "to": "c-defensible",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-release-assumed",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "c-release-now"
+            ],
+            "to": "c-benefits-security",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Obtaining timely benefits or protecting security requires releasing this particular capability now, rather than a narrower capability, restricted access or another feasible option.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-deferral-assumed",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "c-defer"
+            ],
+            "to": "c-protection",
+            "relation": "necessary_for",
+            "assumptions": [
+              {
+                "text": "Preventing unacceptable harm requires deferral; safeguards, coordination or narrower release could not adequately protect against it.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "c-release-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "c-release-now"
+            ],
+            "to": "c-defer",
+            "relation": "conflicts_with",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 3",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "c-defensible",
+            "work": "specify_decision",
+            "label": "Select an actor, capability, release decision and time horizon.",
+            "note": "This is a candidate cloud, not a recognised conflict for an actual decision. Relevant participants have not confirmed either need."
+          },
+          {
+            "ref": "c-release-conflict",
+            "work": "examine_assumption",
+            "label": "Test whether other options meet both needs and what slower development risks.",
+            "note": "Consider narrower capabilities, restricted access, safeguards and coordinated restraint. Review points alone do not resolve the conflict."
           }
         ]
       },
@@ -437,6 +2022,434 @@
                 "basis": "inference"
               }
             ]
+          },
+          {
+            "id": "f-usable-evidence",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Usable evidence about the decision and its consequences is available.",
+            "label": "Usable evidence about the decision is available.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-authority-incentives",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Decision makers have authority and incentives to act on review findings.",
+            "label": "Decision makers have authority and incentives to act.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-feasible-alternatives",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Feasible alternatives to the current decision are available.",
+            "label": "Feasible alternatives are available.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-explicit-aims",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "injection",
+            "text": "Make ethical aims and disagreements explicit.",
+            "label": "Make ethical aims and disagreements explicit.",
+            "addresses": [
+              "r-ethical-disagreement"
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-exposed-assumptions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Making ethical aims explicit may expose assumptions hidden inside evaluations.",
+            "label": "Explicit aims may expose assumptions hidden inside evaluations.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-defensible-assessment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "Alternatives can be assessed against defensible criteria.",
+            "label": "Alternatives can be assessed against defensible criteria.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-specific-practice",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "injection",
+            "text": "Introduce a specified wisdom-derived practice with an identified mechanism and limits.",
+            "label": "Introduce a specific wisdom-derived practice with a mechanism and limits.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-attention-motivation",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "The selected practice may change attention, motivation or judgment through the identified mechanism.",
+            "label": "The practice may change attention, motivation or judgment through its mechanism.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-better-judgment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "A relevant, specified aspect of decision making may improve.",
+            "label": "A specified aspect of decision making may improve.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-coordination-safeguards",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "injection",
+            "text": "Establish proportionate safeguards or coordination for the selected decision.",
+            "label": "Establish proportionate safeguards or coordination.",
+            "addresses": [
+              "r-proceed-despite-risk"
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-changed-options",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Safeguards or coordination may change what actors can do or are motivated to do.",
+            "label": "Safeguards or coordination may change actors’ options or motivation.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-practicable-restraint",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "Restraint or redirection becomes practicable.",
+            "label": "Restraint or redirection becomes practicable.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-unwarranted-reassurance",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Formal review may create unwarranted reassurance.",
+            "label": "Formal review may create unwarranted reassurance.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-premature-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Unwarranted reassurance may contribute to premature action.",
+            "label": "Unwarranted reassurance may contribute to premature action.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-substantive-criteria",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "injection",
+            "text": "Require substantive criteria to be met; completing a review cannot substitute for meeting them.",
+            "label": "Require substantive criteria; completing review is not enough.",
+            "addresses": [
+              "f-unwarranted-reassurance"
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-preaction-safeguards",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "injection",
+            "text": "Where harms could be irreversible, apply safeguards before the action.",
+            "label": "Apply safeguards before actions whose harms could be irreversible.",
+            "addresses": [
+              "f-premature-action"
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
           }
         ],
         "links": [
@@ -446,20 +2459,252 @@
             "accepted_by": [],
             "contributors": [
               {
-                "name": "AI assistant",
-                "role": "assistant"
+                "name": "David Joseph",
+                "role": "human"
               }
             ],
             "from": [
-              "f-review"
+              "f-review",
+              "f-usable-evidence",
+              "f-authority-incentives",
+              "f-feasible-alternatives"
             ],
             "to": "f-revision",
             "relation": "causes",
             "source_refs": [
               {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
                 "source_id": "wisdom-ai",
                 "locator": "Should we change pace or trajectory, and can we?",
-                "basis": "inference"
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-aims-assumptions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-explicit-aims"
+            ],
+            "to": "f-exposed-assumptions",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-assumptions-assessment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-exposed-assumptions"
+            ],
+            "to": "f-defensible-assessment",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-practice-mechanism",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-specific-practice"
+            ],
+            "to": "f-attention-motivation",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-mechanism-judgment",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-attention-motivation"
+            ],
+            "to": "f-better-judgment",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-coordination-options",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-coordination-safeguards"
+            ],
+            "to": "f-changed-options",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-options-restraint",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-changed-options"
+            ],
+            "to": "f-practicable-restraint",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-review-reassurance",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-review"
+            ],
+            "to": "f-unwarranted-reassurance",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "f-reassurance-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "f-unwarranted-reassurance"
+            ],
+            "to": "f-premature-action",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 4",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
               }
             ]
           }
@@ -468,13 +2713,1295 @@
           {
             "ref": "f-review-revision",
             "work": "test_causality",
-            "label": "Test whether review points enable consequential revision.",
-            "note": "Review points alone may not suffice: decision makers need authority, usable evidence and feasible alternatives. No benefit has been observed."
+            "label": "Test all four joint conditions and whether a stronger intervention exists.",
+            "note": "Review is only one candidate. Usable evidence, authority and incentives, and feasible alternatives are proposed joint conditions, not a guarantee; reject this intervention if another diagnosis is better supported."
           },
           {
             "ref": "f-review",
             "work": "investigate_wisdom",
             "label": "Investigate how wisdom traditions might shape review practice."
+          },
+          {
+            "ref": "f-aims-assumptions",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-assumptions-assessment",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-practice-mechanism",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-mechanism-judgment",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-coordination-options",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-options-restraint",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-review-reassurance",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-reassurance-action",
+            "work": "test_causality",
+            "label": "Test this proposed mechanism and its credible alternatives.",
+            "note": "The source questions and review do not supply supporting empirical evidence. Specify the setting, mechanism and measurable effect before a test."
+          },
+          {
+            "ref": "f-specific-practice",
+            "work": "specify_practice",
+            "label": "Select the tradition, practice, mechanism, limits and expected aspect of judgment.",
+            "note": "No practice or tradition is selected by this draft. Invoking wisdom does not establish an effect."
+          },
+          {
+            "ref": "f-substantive-criteria",
+            "work": "design_guardrails",
+            "label": "Define substantive criteria and safeguards before testing.",
+            "note": "Completion of review must not become evidence that a risky decision is justified."
+          }
+        ]
+      },
+      "prerequisite": {
+        "nodes": [
+          {
+            "id": "p-test",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "objective",
+            "text": "One proposed decision practice can be responsibly tested in a defined setting.",
+            "label": "One decision practice can be responsibly tested in a defined setting.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-obstacle-wise",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "“Wise” remains underspecified.",
+            "label": "“Wise” remains underspecified.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-criteria",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Evaluation criteria, disagreements and unacceptable outcomes are explicit.",
+            "label": "Evaluation criteria, disagreements and unacceptable outcomes are explicit.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-obstacle-diagnosis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The causal diagnosis is unsupported.",
+            "label": "The causal diagnosis is unsupported.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-distinguish",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Evidence distinguishes the leading explanation from credible alternatives.",
+            "label": "Evidence distinguishes the leading explanation from credible alternatives.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-obstacle-tradition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The contribution from a tradition is vague.",
+            "label": "The contribution from a tradition is vague.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-practice",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "A specific practice, proposed mechanism and limits are identified.",
+            "label": "A specific practice, mechanism and limits are identified.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-obstacle-powers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The proposed change exceeds participants’ powers.",
+            "label": "The proposed change exceeds participants’ powers.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-authority",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "A feasible intervention and relevant decision authority are identified.",
+            "label": "A feasible intervention and relevant decision authority are identified.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-obstacle-process",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Success could be confused with completing the process.",
+            "label": "Success could be confused with completing the process.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-measures",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Outcome measures, guardrails and reconsideration criteria are defined.",
+            "label": "Outcome measures, guardrails and reconsideration criteria are defined.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "p-overcome-wise",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-criteria"
+            ],
+            "to": "p-obstacle-wise",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-overcome-diagnosis",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-distinguish"
+            ],
+            "to": "p-obstacle-diagnosis",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-overcome-tradition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-practice"
+            ],
+            "to": "p-obstacle-tradition",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-overcome-powers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-authority"
+            ],
+            "to": "p-obstacle-powers",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-overcome-process",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-measures"
+            ],
+            "to": "p-obstacle-process",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-test-conditions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-criteria",
+              "p-distinguish",
+              "p-practice",
+              "p-authority",
+              "p-measures"
+            ],
+            "to": "p-test",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "p-outcome-mechanism-selection",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "p-criteria",
+              "p-practice"
+            ],
+            "to": "p-authority",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 5",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "p-obstacle-wise",
+            "work": "check_locally",
+            "label": "Check this candidate obstacle in the selected setting.",
+            "note": "These are possible obstacles for a future bounded test, not observations of an existing group."
+          },
+          {
+            "ref": "p-obstacle-diagnosis",
+            "work": "check_locally",
+            "label": "Check this candidate obstacle in the selected setting.",
+            "note": "These are possible obstacles for a future bounded test, not observations of an existing group."
+          },
+          {
+            "ref": "p-obstacle-tradition",
+            "work": "check_locally",
+            "label": "Check this candidate obstacle in the selected setting.",
+            "note": "These are possible obstacles for a future bounded test, not observations of an existing group."
+          },
+          {
+            "ref": "p-obstacle-powers",
+            "work": "check_locally",
+            "label": "Check this candidate obstacle in the selected setting.",
+            "note": "These are possible obstacles for a future bounded test, not observations of an existing group."
+          },
+          {
+            "ref": "p-obstacle-process",
+            "work": "check_locally",
+            "label": "Check this candidate obstacle in the selected setting.",
+            "note": "These are possible obstacles for a future bounded test, not observations of an existing group."
+          },
+          {
+            "ref": "p-test",
+            "work": "select_setting",
+            "label": "Select a bounded setting, decision and willing participants.",
+            "note": "The dependencies are candidate requirements, not proof of sufficiency or a commitment to conduct a test."
+          }
+        ]
+      },
+      "transition": {
+        "nodes": [
+          {
+            "id": "t-1-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "The model discusses AI choices generally.",
+            "label": "AI choices are discussed generally.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-1-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Select one actor, decision and time horizon.",
+            "label": "Select one actor, decision and time horizon.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-1-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The alternatives and responsibilities become concrete.",
+            "label": "Alternatives and responsibilities become concrete.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-2-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Important premises remain implicit.",
+            "label": "Important premises remain implicit.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-2-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Record ethical aims, empirical claims and disagreements.",
+            "label": "Record aims, empirical claims and disagreements.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-2-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The decision’s justification becomes inspectable.",
+            "label": "The decision’s justification becomes inspectable.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-3-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Several explanations could fit.",
+            "label": "Several explanations could fit.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-3-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Gather evidence that distinguishes the candidate explanations.",
+            "label": "Gather evidence that distinguishes the explanations.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-3-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The intervention can target a better-supported mechanism.",
+            "label": "The intervention can target a better-supported mechanism.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-4-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "A bounded intervention is sufficiently justified.",
+            "label": "A bounded intervention is sufficiently justified.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-4-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Specify and, only where appropriate, conduct a test with guardrails.",
+            "label": "Specify a guarded test; conduct it only where appropriate.",
+            "assumptions": [
+              {
+                "text": "Run a test only when it is justified, authorised and safe. If a safe test is unavailable, gather information or improve safeguards instead. No provider has committed to a trial or an outcome report.",
+                "by": "David Joseph"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-4-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Evidence becomes available about effects if a responsible test is conducted.",
+            "label": "A responsible test can make evidence about effects available.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-5-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Results are available.",
+            "label": "Results are available.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-5-action",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Compare results with the recorded prediction and credible alternatives.",
+            "label": "Compare results with the prediction and alternatives.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-5-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The affected claims and next decision can be revised.",
+            "label": "The affected claims and next decision can be revised.",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "t-1-produces",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-1-condition",
+              "t-1-action"
+            ],
+            "to": "t-1-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-1-precedes-next",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-1-effect"
+            ],
+            "to": "t-2-action",
+            "relation": "precedes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-2-produces",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-2-condition",
+              "t-2-action"
+            ],
+            "to": "t-2-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-2-precedes-next",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-2-effect"
+            ],
+            "to": "t-3-action",
+            "relation": "precedes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-3-produces",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-3-condition",
+              "t-3-action"
+            ],
+            "to": "t-3-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-3-precedes-next",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-3-effect"
+            ],
+            "to": "t-4-action",
+            "relation": "precedes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-4-produces",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-4-condition",
+              "t-4-action"
+            ],
+            "to": "t-4-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-4-precedes-next",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-4-effect"
+            ],
+            "to": "t-5-action",
+            "relation": "precedes",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "t-5-produces",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "t-5-condition",
+              "t-5-action"
+            ],
+            "to": "t-5-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "map-analysis",
+                "locator": "Section 6",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "wisdom-ai",
+                "locator": "Should we change pace or trajectory, and can we?",
+                "basis": "related"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "t-1-action",
+            "work": "confirm_action",
+            "label": "Confirm prerequisites, authority and consent before assigning this action.",
+            "note": "Owner and date are unassigned. This is a proposed step, not an action commitment or completed work."
+          },
+          {
+            "ref": "t-2-action",
+            "work": "confirm_action",
+            "label": "Confirm prerequisites, authority and consent before assigning this action.",
+            "note": "Owner and date are unassigned. This is a proposed step, not an action commitment or completed work."
+          },
+          {
+            "ref": "t-3-action",
+            "work": "confirm_action",
+            "label": "Confirm prerequisites, authority and consent before assigning this action.",
+            "note": "Owner and date are unassigned. This is a proposed step, not an action commitment or completed work."
+          },
+          {
+            "ref": "t-4-action",
+            "work": "confirm_action",
+            "label": "Confirm prerequisites, authority and consent before assigning this action.",
+            "note": "Owner and date are unassigned. This is a proposed step, not an action commitment or completed work."
+          },
+          {
+            "ref": "t-5-action",
+            "work": "confirm_action",
+            "label": "Confirm prerequisites, authority and consent before assigning this action.",
+            "note": "Owner and date are unassigned. This is a proposed step, not an action commitment or completed work."
           }
         ]
       }
@@ -504,6 +4031,146 @@
             ]
           }
         ]
+      },
+      {
+        "release_id": "2026-10-25.2",
+        "date": "2026-10-25",
+        "title": "Expand all six trees from David’s analysis",
+        "summary": "The goal becomes substantive, competing explanations remain open, and conditional interventions follow the diagnosis. A candidate conflict, prerequisites and conditional steps complete the six views. All reasoning remains proposed; no evidence, selected setting, owner, date, trial or observed outcome is invented.",
+        "changes": [
+          {
+            "type": "revised",
+            "refs": [
+              "g-wise-ai"
+            ],
+            "before": "People make informed, revisable choices about developing and using AI.",
+            "note": "Replace the initial procedural goal with David’s proposed substantive goal."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "r-uncertainty-decisions"
+            ],
+            "note": "Retain uncertainty as one competing hypothesis and record that it could also encourage restraint."
+          },
+          {
+            "type": "revised",
+            "refs": [
+              "f-review-revision"
+            ],
+            "before": "Explicit review points alone were connected to consequential revision.",
+            "note": "Replace the direct connection with four joint conditions: review points, usable evidence, authority and incentives, and feasible alternatives."
+          },
+          {
+            "type": "added",
+            "refs": [
+              "g-alignment",
+              "g-risk-pace",
+              "g-broader-impacts",
+              "g-consciousness",
+              "g-restraint",
+              "g-alignment-necessary",
+              "g-risk-pace-necessary",
+              "g-broader-impacts-necessary",
+              "g-consciousness-necessary",
+              "g-restraint-necessary",
+              "r-contested-ends",
+              "r-implicit-values",
+              "r-ethical-disagreement",
+              "r-competitive-pressure",
+              "r-restraint-disadvantage",
+              "r-weak-coordination",
+              "r-proceed-despite-risk",
+              "r-delegated-judgment",
+              "r-less-practice",
+              "r-weakened-agency",
+              "r-moral-uncertainty",
+              "r-missing-moral-criteria",
+              "r-inconsistent-treatment",
+              "r-alignment-hypothesis",
+              "r-race-hypothesis",
+              "r-agency-hypothesis",
+              "r-moral-standing-hypothesis",
+              "c-defensible",
+              "c-benefits-security",
+              "c-protection",
+              "c-release-now",
+              "c-defer",
+              "c-benefits-necessary",
+              "c-protection-necessary",
+              "c-release-assumed",
+              "c-deferral-assumed",
+              "c-release-conflict",
+              "f-usable-evidence",
+              "f-authority-incentives",
+              "f-feasible-alternatives",
+              "f-explicit-aims",
+              "f-exposed-assumptions",
+              "f-defensible-assessment",
+              "f-specific-practice",
+              "f-attention-motivation",
+              "f-better-judgment",
+              "f-coordination-safeguards",
+              "f-changed-options",
+              "f-practicable-restraint",
+              "f-unwarranted-reassurance",
+              "f-premature-action",
+              "f-substantive-criteria",
+              "f-preaction-safeguards",
+              "f-aims-assumptions",
+              "f-assumptions-assessment",
+              "f-practice-mechanism",
+              "f-mechanism-judgment",
+              "f-coordination-options",
+              "f-options-restraint",
+              "f-review-reassurance",
+              "f-reassurance-action",
+              "p-test",
+              "p-obstacle-wise",
+              "p-criteria",
+              "p-obstacle-diagnosis",
+              "p-distinguish",
+              "p-obstacle-tradition",
+              "p-practice",
+              "p-obstacle-powers",
+              "p-authority",
+              "p-obstacle-process",
+              "p-measures",
+              "p-overcome-wise",
+              "p-overcome-diagnosis",
+              "p-overcome-tradition",
+              "p-overcome-powers",
+              "p-overcome-process",
+              "p-test-conditions",
+              "p-outcome-mechanism-selection",
+              "t-1-condition",
+              "t-1-action",
+              "t-1-effect",
+              "t-2-condition",
+              "t-2-action",
+              "t-2-effect",
+              "t-3-condition",
+              "t-3-action",
+              "t-3-effect",
+              "t-4-condition",
+              "t-4-action",
+              "t-4-effect",
+              "t-5-condition",
+              "t-5-action",
+              "t-5-effect",
+              "t-1-produces",
+              "t-1-precedes-next",
+              "t-2-produces",
+              "t-2-precedes-next",
+              "t-3-produces",
+              "t-3-precedes-next",
+              "t-4-produces",
+              "t-4-precedes-next",
+              "t-5-produces"
+            ],
+            "note": "Incorporate the supplied analysis across all six trees, preserving its attribution and unresolved reasoning."
+          }
+        ]
       }
     ],
     "publication_kind": "source_reconstruction",
@@ -511,6 +4178,10 @@
       "rufus": {
         "name": "Rufus Pollock",
         "role": "Leads the Wisdom and AI research project at Life Itself; posed the source research questions and has not reviewed or endorsed this proposed reasoning"
+      },
+      "david": {
+        "name": "David Joseph",
+        "role": "Author of the supplied six-tree analysis of the initial map; its additions remain proposals, not empirical findings or endorsement"
       }
     },
     "sources": [
@@ -521,40 +4192,225 @@
         "url": "https://ai.lifeitself.org/",
         "title": "Wisdom and AI",
         "description": "A Second Renaissance research agenda led by Rufus Pollock of Life Itself. One governing question, four core questions and their subquestions explore alignment, risk and pace, broader impacts and consciousness. Wisdom traditions means especially Buddhism in this source, while inviting others. It asks questions rather than establishing answers. Captured 25 October 2026."
+      },
+      {
+        "id": "map-analysis",
+        "kind": "supplied_analysis",
+        "author": "david",
+        "url": "https://github.com/reasoncommons/reasoncommons/blob/main/docs/marketing/demos/wisdom-ai-analysis.md",
+        "title": "Analysis of the Wisdom and AI map",
+        "description": "David Joseph’s supplied review of the first map, 25 October 2026. Sections 1–6 propose a substantive goal, competing diagnoses, a candidate release conflict, conditional interventions and a negative branch, prerequisites and conditional transition steps. These are proposed contributions; the review supplies no empirical supporting observations, recognised decision, selected practice or test commitment."
       }
     ],
     "views": {
       "goal": [
         {
           "id": "goal-example",
-          "title": "An informed, revisable choice",
-          "summary": "A suggested goal and two conditions to review. These are AI interpretations, not conclusions from the source.",
+          "title": "Wise decisions need substantive judgment",
+          "summary": "Four research strands and three supporting conditions are candidates to justify, not established necessities or sufficient conditions.",
           "nodes": [
             "g-wise-ai",
             "g-understand",
-            "g-revise"
+            "g-revise",
+            "g-alignment",
+            "g-risk-pace",
+            "g-broader-impacts",
+            "g-consciousness",
+            "g-restraint"
           ]
         }
       ],
       "current_reality": [
         {
           "id": "current-reality-example",
-          "title": "A possible difficulty",
-          "summary": "A causal hypothesis that needs evidence; uncertainty can also prompt restraint or better deliberation.",
+          "title": "Uncertainty is one possible explanation",
+          "summary": "The existing uncertainty branch remains a hypothesis. Uncertainty could also encourage restraint.",
           "nodes": [
             "r-uncertainty",
             "r-decisions"
+          ]
+        },
+        {
+          "id": "contested-ends",
+          "title": "Contested ends and implicit values",
+          "summary": "Test whether apparently technical disagreements conceal ethical disagreements; the joint cause is not established.",
+          "nodes": [
+            "r-contested-ends",
+            "r-implicit-values",
+            "r-ethical-disagreement"
+          ]
+        },
+        {
+          "id": "competitive-pressure",
+          "title": "Recognised risk under competitive pressure",
+          "summary": "Pressure, perceived disadvantage and weak coordination form a candidate joint explanation. No supporting observations are supplied.",
+          "nodes": [
+            "r-competitive-pressure",
+            "r-restraint-disadvantage",
+            "r-weak-coordination",
+            "r-proceed-despite-risk"
+          ]
+        },
+        {
+          "id": "agency-and-practice",
+          "title": "Delegation and opportunities to practise judgment",
+          "summary": "Some uses might weaken agency; AI assistance could also strengthen judgment. Distinguish uses, mechanisms and conditions.",
+          "nodes": [
+            "r-delegated-judgment",
+            "r-less-practice",
+            "r-weakened-agency"
+          ]
+        },
+        {
+          "id": "moral-standing",
+          "title": "Moral uncertainty and missing criteria",
+          "summary": "Test whether uncertainty and absent criteria lead to inconsistent treatment, rather than treating this as a finding.",
+          "nodes": [
+            "r-moral-uncertainty",
+            "r-missing-moral-criteria",
+            "r-inconsistent-treatment"
+          ]
+        }
+      ],
+      "conflict": [
+        {
+          "id": "release-decision",
+          "title": "A candidate release decision",
+          "summary": "The actor, capability and release decision are still unspecified. Both needs require recognition by relevant participants; review points do not resolve this cloud by themselves.",
+          "nodes": [
+            "c-defensible",
+            "c-benefits-security",
+            "c-protection",
+            "c-release-now",
+            "c-defer"
           ]
         }
       ],
       "future_reality": [
         {
           "id": "future-reality-example",
-          "title": "A practice worth testing",
-          "summary": "Review points might enable revision, but authority, usable evidence and feasible alternatives may also be needed.",
+          "title": "Review can matter only with supporting conditions",
+          "summary": "Review points AND usable evidence AND authority and incentives AND feasible alternatives are proposed joint conditions. This is not a guarantee or an observed effect.",
           "nodes": [
             "f-review",
+            "f-usable-evidence",
+            "f-authority-incentives",
+            "f-feasible-alternatives",
             "f-revision"
+          ]
+        },
+        {
+          "id": "explicit-values",
+          "title": "Make aims and disagreements inspectable",
+          "summary": "Test the mechanism from explicit aims, through exposed assumptions, to assessment against defensible criteria.",
+          "nodes": [
+            "f-explicit-aims",
+            "f-exposed-assumptions",
+            "f-defensible-assessment"
+          ]
+        },
+        {
+          "id": "specific-practice",
+          "title": "Specify what a wisdom-derived practice would change",
+          "summary": "No particular practice or tradition has been selected. Its mechanism, limits and relevant aspect of judgment must be specified and tested.",
+          "nodes": [
+            "f-specific-practice",
+            "f-attention-motivation",
+            "f-better-judgment"
+          ]
+        },
+        {
+          "id": "coordination-and-restraint",
+          "title": "Change options and incentives",
+          "summary": "Proportionate safeguards or coordination might make restraint or redirection practicable. These are hypotheses, not confirmed effects.",
+          "nodes": [
+            "f-coordination-safeguards",
+            "f-changed-options",
+            "f-practicable-restraint"
+          ]
+        },
+        {
+          "id": "review-risk",
+          "title": "Review could create false reassurance",
+          "summary": "Formal review may create unwarranted reassurance and premature action. The two unconnected design requirements address those risks; intended coverage is not proof they work.",
+          "nodes": [
+            "f-review",
+            "f-unwarranted-reassurance",
+            "f-premature-action",
+            "f-substantive-criteria",
+            "f-preaction-safeguards"
+          ]
+        }
+      ],
+      "prerequisite": [
+        {
+          "id": "responsible-test",
+          "title": "What must be in place for a responsible test",
+          "summary": "These are candidate obstacles and requirements for an unselected setting. Clear outcomes and a plausible practice mechanism are needed before selecting a feasible intervention.",
+          "nodes": [
+            "p-test",
+            "p-obstacle-wise",
+            "p-criteria",
+            "p-obstacle-diagnosis",
+            "p-distinguish",
+            "p-obstacle-tradition",
+            "p-practice",
+            "p-obstacle-powers",
+            "p-authority",
+            "p-obstacle-process",
+            "p-measures"
+          ]
+        }
+      ],
+      "transition": [
+        {
+          "id": "step-1",
+          "title": "Choose one decision",
+          "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+          "nodes": [
+            "t-1-condition",
+            "t-1-action",
+            "t-1-effect"
+          ]
+        },
+        {
+          "id": "step-2",
+          "title": "Make premises inspectable",
+          "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+          "nodes": [
+            "t-2-condition",
+            "t-2-action",
+            "t-2-effect"
+          ]
+        },
+        {
+          "id": "step-3",
+          "title": "Distinguish the explanations",
+          "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+          "nodes": [
+            "t-3-condition",
+            "t-3-action",
+            "t-3-effect"
+          ]
+        },
+        {
+          "id": "step-4",
+          "title": "Specify a guarded test",
+          "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+          "nodes": [
+            "t-4-condition",
+            "t-4-action",
+            "t-4-effect"
+          ]
+        },
+        {
+          "id": "step-5",
+          "title": "Compare results and revise",
+          "summary": "Conditional plan only. Owners and dates remain unassigned; incoming order links do not establish causation. If a safe test is unavailable, gather information or improve safeguards.",
+          "nodes": [
+            "t-5-condition",
+            "t-5-action",
+            "t-5-effect"
           ]
         }
       ]
@@ -562,55 +4418,523 @@
     "overview": [
       {
         "type": "cards",
-        "eyebrow": "A goal to review",
-        "title": "Make informed choices, and keep them revisable.",
-        "text": "The research agenda asks how we should develop and use AI wisely. This example proposes an operational goal and two possible necessary conditions.",
+        "eyebrow": "The proposed goal",
+        "title": "Make the aims, risks and responsibilities defensible.",
+        "text": "David’s analysis expands the goal across alignment, risk and pace, broader impacts and consciousness. Understanding, revision and restraint are supporting conditions to investigate.",
         "ids": [
           "g-wise-ai",
-          "g-understand",
-          "g-revise"
+          "g-alignment",
+          "g-risk-pace",
+          "g-broader-impacts",
+          "g-consciousness"
         ],
         "link": [
           "goal.html",
-          "Inspect the proposed goal →"
+          "Examine the goal and its conditions →"
         ]
       },
       {
         "type": "cards",
-        "eyebrow": "A hypothesis to test",
-        "title": "Can uncertainty leave choices poorly justified?",
-        "text": "This is one possible problem to investigate, not a finding established by the source. Uncertainty could instead prompt restraint or better deliberation.",
+        "eyebrow": "Competing explanations",
+        "title": "Find what sustains the problem in one setting.",
+        "text": "The uncertainty branch remains alongside hypotheses about contested ends, competition, delegation and moral uncertainty. The source questions establish none of these findings.",
         "ids": [
-          "r-uncertainty",
-          "r-decisions"
+          "r-decisions",
+          "r-ethical-disagreement",
+          "r-proceed-despite-risk",
+          "r-weakened-agency",
+          "r-inconsistent-treatment"
         ],
         "link": [
           "in-the-way.html",
-          "Examine the causal hypothesis →"
+          "Compare the hypotheses and their assumptions →"
         ]
+      },
+      {
+        "type": "clouds",
+        "eyebrow": "A candidate conflict",
+        "title": "Examine the needs behind release and restraint.",
+        "text": "For a capability and release decision still to be specified, test whether timely benefits and protection really require incompatible positions. Relevant participants have not recognised this cloud.",
+        "featured": "release-decision"
       },
       {
         "type": "cards",
-        "eyebrow": "A proposed change",
-        "title": "Revisit decisions as evidence changes.",
-        "text": "Explicit review points could make choices revisable. The link is still a hypothesis, and authority and feasible alternatives may be needed.",
+        "eyebrow": "Proposed changes and risks",
+        "title": "Make interventions answer the diagnosis.",
+        "text": "Review needs supporting conditions. Explicit aims, a specified wisdom-derived practice, and safeguards or coordination offer other hypotheses. Formal review could also create false reassurance and premature action.",
         "ids": [
           "f-review",
-          "f-revision"
+          "f-explicit-aims",
+          "f-specific-practice",
+          "f-coordination-safeguards",
+          "f-unwarranted-reassurance"
         ],
         "link": [
           "change.html",
-          "Inspect the suggested practice →"
+          "Inspect mechanisms, joint conditions and the negative branch →"
         ]
       },
       {
+        "type": "wider",
+        "eyebrow": "From reasoning to a bounded inquiry",
+        "title": "Establish what is needed before assigning action.",
+        "text": "The prerequisite and transition drafts identify candidate requirements and conditional steps. No actor, capability, test setting or wisdom practice has been selected; no owner, date or action commitment is recorded. A stronger diagnosis may lead us to reject review points."
+      },
+      {
         "type": "credits",
-        "eyebrow": "Source questions and interpretation",
-        "title": "Questions by the research project; proposed answers by the AI.",
-        "text": "The source’s four research strands are preserved under Sources and limits. Every statement and connection in this small example is an AI inference awaiting review, not source-author endorsement."
+        "eyebrow": "Questions, proposed answers and evidence",
+        "title": "Keep the research agenda and the supplied analysis distinct.",
+        "text": "Rufus Pollock’s research project supplies the original questions. David Joseph supplied the six-tree analysis and its proposed additions; the AI structured the map and originated the retained initial proposals. Neither source credit nor approval to implement endorses the reasoning. Supporting empirical evidence has not been supplied."
       }
     ],
     "retired": []
   },
-  "snapshot_sha256": "646ff3d92c42c28c458847ee3738b26e3187b3ba3048316691ef514e2840a0c6"
+  "snapshot_sha256": "9abd718fd901a873d0d2fe5fa7dc040958045d3d9973d2b9b1efecf1d0f358f9",
+  "previous_releases": [
+    {
+      "commit": "55259cb829944f02dc48ff5b02104452104fe3c6",
+      "snapshot_sha256": "646ff3d92c42c28c458847ee3738b26e3187b3ba3048316691ef514e2840a0c6",
+      "snapshot": {
+        "projection_version": 4,
+        "release_id": "2026-10-25.1",
+        "snapshot_date": "2026-10-25",
+        "title": "Wisdom and AI",
+        "people": [
+          {
+            "name": "David Joseph",
+            "role": "Requested this demonstration; has not endorsed the proposed reasoning"
+          }
+        ],
+        "trees": {
+          "goal": {
+            "nodes": [
+              {
+                "id": "g-wise-ai",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "goal",
+                "text": "People make informed, revisable choices about developing and using AI.",
+                "label": "People make informed, revisable AI choices.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "How should we integrate AI into our lives and societies?",
+                    "basis": "inference"
+                  }
+                ]
+              },
+              {
+                "id": "g-understand",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "necessary_condition",
+                "text": "Decision makers understand relevant benefits, harms and uncertainties.",
+                "label": "Decision makers understand benefits, harms and uncertainties.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "How should we integrate AI into our lives and societies?",
+                    "basis": "inference"
+                  }
+                ]
+              },
+              {
+                "id": "g-revise",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "necessary_condition",
+                "text": "Decision makers can revise choices as evidence changes.",
+                "label": "Decision makers can revise choices as evidence changes.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "g-understand-necessary",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "from": [
+                  "g-understand"
+                ],
+                "to": "g-wise-ai",
+                "relation": "necessary_for",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              },
+              {
+                "id": "g-revise-necessary",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "from": [
+                  "g-revise"
+                ],
+                "to": "g-wise-ai",
+                "relation": "necessary_for",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "g-wise-ai",
+                "work": "review_goal",
+                "label": "Review the goal and whether both conditions are necessary."
+              },
+              {
+                "ref": "g-understand",
+                "work": "investigate_wisdom",
+                "label": "Investigate what wisdom traditions contribute.",
+                "note": "Preserve disagreements between traditions and limits of analogy; the page asks rather than settles this."
+              }
+            ]
+          },
+          "current_reality": {
+            "nodes": [
+              {
+                "id": "r-uncertainty",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "cause",
+                "text": "Uncertainty about AI’s effects can make development and adoption choices difficult to justify.",
+                "label": "Uncertainty can make AI choices difficult to justify.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              },
+              {
+                "id": "r-decisions",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "undesirable_effect",
+                "text": "Some AI choices may proceed without an adequate account of their consequences.",
+                "label": "Some AI choices may lack an adequate account of consequences.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "r-uncertainty-decisions",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "from": [
+                  "r-uncertainty"
+                ],
+                "to": "r-decisions",
+                "relation": "contributes_to",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "r-uncertainty-decisions",
+                "work": "test_causality",
+                "label": "Test whether uncertainty contributes to poorly justified choices.",
+                "note": "Uncertainty could also prompt restraint or better deliberation; neither effect is established here."
+              }
+            ]
+          },
+          "future_reality": {
+            "nodes": [
+              {
+                "id": "f-review",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "injection",
+                "text": "Decision makers use explicit review points to revisit AI choices against emerging evidence.",
+                "label": "Decision makers revisit AI choices at explicit review points.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              },
+              {
+                "id": "f-revision",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "kind": "desirable_effect",
+                "text": "AI choices can be revised when evidence changes their justification.",
+                "label": "AI choices can be revised when evidence changes their justification.",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "links": [
+              {
+                "id": "f-review-revision",
+                "status": "proposed",
+                "accepted_by": [],
+                "contributors": [
+                  {
+                    "name": "AI assistant",
+                    "role": "assistant"
+                  }
+                ],
+                "from": [
+                  "f-review"
+                ],
+                "to": "f-revision",
+                "relation": "causes",
+                "source_refs": [
+                  {
+                    "source_id": "wisdom-ai",
+                    "locator": "Should we change pace or trajectory, and can we?",
+                    "basis": "inference"
+                  }
+                ]
+              }
+            ],
+            "backlog": [
+              {
+                "ref": "f-review-revision",
+                "work": "test_causality",
+                "label": "Test whether review points enable consequential revision.",
+                "note": "Review points alone may not suffice: decision makers need authority, usable evidence and feasible alternatives. No benefit has been observed."
+              },
+              {
+                "ref": "f-review",
+                "work": "investigate_wisdom",
+                "label": "Investigate how wisdom traditions might shape review practice."
+              }
+            ]
+          }
+        },
+        "feedback": [],
+        "history": [
+          {
+            "release_id": "2026-10-25.1",
+            "date": "2026-10-25",
+            "title": "First shared-component edition",
+            "summary": "Four source-question hierarchies and three illustrative reasoning trees, using the established demonstration components. All reasoning remains proposed; no trial or outcome is recorded.",
+            "changes": [
+              {
+                "type": "added",
+                "refs": [
+                  "g-wise-ai",
+                  "g-understand",
+                  "g-revise",
+                  "g-understand-necessary",
+                  "g-revise-necessary",
+                  "r-uncertainty",
+                  "r-decisions",
+                  "r-uncertainty-decisions",
+                  "f-review",
+                  "f-revision",
+                  "f-review-revision"
+                ]
+              }
+            ]
+          }
+        ],
+        "publication_kind": "source_reconstruction",
+        "authors": {
+          "rufus": {
+            "name": "Rufus Pollock",
+            "role": "Leads the Wisdom and AI research project at Life Itself; posed the source research questions and has not reviewed or endorsed this proposed reasoning"
+          }
+        },
+        "sources": [
+          {
+            "id": "wisdom-ai",
+            "kind": "web_page",
+            "author": "rufus",
+            "url": "https://ai.lifeitself.org/",
+            "title": "Wisdom and AI",
+            "description": "A Second Renaissance research agenda led by Rufus Pollock of Life Itself. One governing question, four core questions and their subquestions explore alignment, risk and pace, broader impacts and consciousness. Wisdom traditions means especially Buddhism in this source, while inviting others. It asks questions rather than establishing answers. Captured 25 October 2026."
+          }
+        ],
+        "views": {
+          "goal": [
+            {
+              "id": "goal-example",
+              "title": "An informed, revisable choice",
+              "summary": "A suggested goal and two conditions to review. These are AI interpretations, not conclusions from the source.",
+              "nodes": [
+                "g-wise-ai",
+                "g-understand",
+                "g-revise"
+              ]
+            }
+          ],
+          "current_reality": [
+            {
+              "id": "current-reality-example",
+              "title": "A possible difficulty",
+              "summary": "A causal hypothesis that needs evidence; uncertainty can also prompt restraint or better deliberation.",
+              "nodes": [
+                "r-uncertainty",
+                "r-decisions"
+              ]
+            }
+          ],
+          "future_reality": [
+            {
+              "id": "future-reality-example",
+              "title": "A practice worth testing",
+              "summary": "Review points might enable revision, but authority, usable evidence and feasible alternatives may also be needed.",
+              "nodes": [
+                "f-review",
+                "f-revision"
+              ]
+            }
+          ]
+        },
+        "overview": [
+          {
+            "type": "cards",
+            "eyebrow": "A goal to review",
+            "title": "Make informed choices, and keep them revisable.",
+            "text": "The research agenda asks how we should develop and use AI wisely. This example proposes an operational goal and two possible necessary conditions.",
+            "ids": [
+              "g-wise-ai",
+              "g-understand",
+              "g-revise"
+            ],
+            "link": [
+              "goal.html",
+              "Inspect the proposed goal →"
+            ]
+          },
+          {
+            "type": "cards",
+            "eyebrow": "A hypothesis to test",
+            "title": "Can uncertainty leave choices poorly justified?",
+            "text": "This is one possible problem to investigate, not a finding established by the source. Uncertainty could instead prompt restraint or better deliberation.",
+            "ids": [
+              "r-uncertainty",
+              "r-decisions"
+            ],
+            "link": [
+              "in-the-way.html",
+              "Examine the causal hypothesis →"
+            ]
+          },
+          {
+            "type": "cards",
+            "eyebrow": "A proposed change",
+            "title": "Revisit decisions as evidence changes.",
+            "text": "Explicit review points could make choices revisable. The link is still a hypothesis, and authority and feasible alternatives may be needed.",
+            "ids": [
+              "f-review",
+              "f-revision"
+            ],
+            "link": [
+              "change.html",
+              "Inspect the suggested practice →"
+            ]
+          },
+          {
+            "type": "credits",
+            "eyebrow": "Source questions and interpretation",
+            "title": "Questions by the research project; proposed answers by the AI.",
+            "text": "The source’s four research strands are preserved under Sources and limits. Every statement and connection in this small example is an AI inference awaiting review, not source-author endorsement."
+          }
+        ],
+        "retired": []
+      },
+      "contribution_sources": {}
+    }
+  ],
+  "contribution_sources": {
+    "david": "map-analysis"
+  }
 }

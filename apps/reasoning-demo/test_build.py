@@ -202,7 +202,7 @@ class SiteTests(unittest.TestCase):
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
                     *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
-                    *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "change", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json"}
+                    *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -1152,7 +1152,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),59)
+        self.assertEqual(len(htmls),62)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)
@@ -1178,9 +1178,9 @@ class WisdomAIConventionsTests(unittest.TestCase):
     def test_public_web_source_cannot_be_mistaken_for_asserted_answers(self):
         data, registry = deepcopy(self.record["data"]), deepcopy(self.record["registry"])
         item = data["trees"]["goal"]["nodes"][0]
-        self.assertEqual(item["contributors"], [build.ASSISTANT])
+        self.assertEqual(item["contributors"], [{"name": "David Joseph", "role": "human"}])
         self.assertEqual(item["accepted_by"], [])
-        item["source_refs"][0]["basis"] = "paraphrase"
+        next(r for r in item["source_refs"] if r["source_id"] == "wisdom-ai")["basis"] = "paraphrase"
         with self.assertRaisesRegex(ValueError, "Invalid source locator"):
             build.validate_reconstruction(data, registry)
 
@@ -1206,7 +1206,7 @@ class WisdomAIConventionsTests(unittest.TestCase):
 
     def test_unresolved_source_question_is_rejected(self):
         record = deepcopy(self.record)
-        record["data"]["trees"]["goal"]["nodes"][0]["source_refs"][0]["locator"] = "A question absent from the source"
+        next(r for r in record["data"]["trees"]["goal"]["nodes"][0]["source_refs"] if r["source_id"] == "wisdom-ai")["locator"] = "A question absent from the source"
         with self.assertRaisesRegex(ValueError, "Unresolved source question"):
             build.normalize(record)
 
@@ -1237,34 +1237,133 @@ class WisdomAIConventionsTests(unittest.TestCase):
 
     def test_item_brief_preserves_the_correct_source_and_authorship(self):
         page = self.outputs['wisdom-ai/items.html']
-        self.assertIn('Questions by', page)
+        self.assertIn('Research questions by', page)
+        self.assertIn('Proposed analysis by', page)
         self.assertNotIn('Ideas from', page)
         self.assertNotIn('Gandhi 2.0', page)
         self.assertNotIn('Check the supplied analysis', page)
         brief = pages.brief(self.commons, 'g-wise-ai', self.site)
         self.assertIn('Wisdom and AI', brief)
-        self.assertIn('source poses questions', brief)
+        self.assertIn('research page poses questions', brief)
         self.assertNotIn('Gandhi', brief)
 
     def test_partial_map_navigation_reaches_only_published_trees(self):
-        for name in ["goal", "in-the-way", "change"]:
-            page = self.outputs[f"wisdom-ai/{name}.html"]
+        # The shared component still supports partial records even though this map is now complete.
+        partial = deepcopy(self.normalized)
+        keep = {"goal", "current_reality", "future_reality"}
+        partial['trees'] = {k:v for k,v in partial['trees'].items() if k in keep}
+        partial['views'] = {k:v for k,v in partial['views'].items() if k in keep}
+        c = pages.Commons(partial)
+        for name in keep:
+            page = pages.tree_page(c, name, self.site)
             for absent in ["conflict.html", "prerequisites.html", "actions.html"]:
                 self.assertNotIn('href="' + absent + '"', page)
-        self.assertIn('href="change.html"', self.outputs['wisdom-ai/in-the-way.html'])
-        self.assertIn('href="goal.html"', self.outputs['wisdom-ai/change.html'])
-        self.assertIn('Question 3 of 3', self.outputs['wisdom-ai/change.html'])
+        self.assertIn('Question 3 of 3', pages.tree_page(c, 'future_reality', self.site))
 
     def test_release_keeps_private_receipts_out_and_preserves_reasoning(self):
         exported = json.loads(self.outputs['wisdom-ai/reasoning.json'])
-        self.assertEqual(sum(len(t['nodes']) for t in exported['trees'].values()), 7)
-        self.assertEqual(sum(len(t['links']) for t in exported['trees'].values()), 4)
+        self.assertEqual(sum(len(t['nodes']) for t in exported['trees'].values()), 72)
+        self.assertEqual(sum(len(t['links']) for t in exported['trees'].values()), 42)
         self.assertNotIn('change_acceptances', exported)
         self.assertNotIn('source_context', exported)
         for tree in exported['trees'].values():
             for item in tree['nodes'] + tree['links']:
                 self.assertEqual(item['status'], 'proposed')
                 self.assertFalse(item['accepted_by'])
+
+
+class WisdomAICompletionTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.site, records = build.load_site()
+        cls.record = next(r for r in records if r['entry']['slug'] == 'wisdom-ai')
+        cls.normalized = build.normalize(cls.record)
+        cls.c = pages.Commons(cls.normalized)
+        cls.outputs = build.build_files(cls.site, records)
+        cls.data, cls.registry = cls.record['data'], cls.record['registry']
+
+    def test_all_six_trees_have_the_proposed_counts_and_routes(self):
+        expected = {'goal':(8,7), 'current_reality':(15,5), 'conflict':(5,5), 'future_reality':(18,9), 'prerequisite':(11,7), 'transition':(15,9)}
+        self.assertEqual(set(self.data['trees']), set(expected))
+        for name, (nodes,links) in expected.items():
+            tree = self.data['trees'][name]
+            self.assertEqual((len(tree['nodes']),len(tree['links'])), (nodes,links))
+            self.assertIn('wisdom-ai/'+pages.TREES[name]['slug']+'.html', self.outputs)
+            self.assertTrue(all(i['status']=='proposed' and not i['accepted_by'] for i in tree['nodes']+tree['links']))
+        self.assertEqual(self.data['feedback'], [])
+
+    def test_review_requires_four_joint_conditions_and_negative_branch_is_kept(self):
+        links = {l['id']:l for l in self.data['trees']['future_reality']['links']}
+        joint = links['f-review-revision']
+        self.assertEqual(joint['from'], ['f-review','f-usable-evidence','f-authority-incentives','f-feasible-alternatives'])
+        self.assertEqual(joint['to'], 'f-revision')
+        self.assertEqual(links['f-review-reassurance']['to'],'f-unwarranted-reassurance')
+        self.assertEqual(links['f-reassurance-action']['to'],'f-premature-action')
+        future=self.outputs['wisdom-ai/change.html']
+        self.assertIn('all of these together',future)
+        self.assertIn('AND',future)
+        self.assertIn('f-substantive-criteria',future)
+        self.assertIn('f-preaction-safeguards',future)
+        self.assertIn('reject this intervention',self.outputs['wisdom-ai/items.html'])
+
+    def test_competing_diagnoses_are_joint_hypotheses_not_observations(self):
+        tree=self.data['trees']['current_reality']
+        self.assertEqual([len(l['from']) for l in tree['links']], [1,2,3,2,2])
+        for branch in ['r-alignment-hypothesis','r-race-hypothesis','r-agency-hypothesis','r-moral-standing-hypothesis']:
+            self.assertTrue(any(b['ref']==branch and b['work']=='test_causality' for b in tree['backlog']))
+        self.assertIn('AI assistance could strengthen judgment', json.dumps(tree,ensure_ascii=False))
+        self.assertIn('Uncertainty could instead encourage restraint', json.dumps(tree,ensure_ascii=False))
+
+    def test_human_contribution_requires_explicit_matching_source_policy(self):
+        for failure in ['no_policy','wrong_author','no_matching_locator','inferred_not_contributed','different_person']:
+            data, registry=deepcopy(self.data),deepcopy(self.registry)
+            item=data['trees']['goal']['nodes'][0]
+            if failure=='no_policy':registry.pop('contribution_sources')
+            elif failure=='wrong_author':
+                data['sources'][1]['author']=registry['sources'][1]['author']='rufus'
+            elif failure=='no_matching_locator':item['source_refs']=[r for r in item['source_refs'] if r['source_id']!='map-analysis']
+            elif failure=='inferred_not_contributed':item['source_refs'][0]['basis']='inference'
+            else:item['contributors']=[{'name':'Rufus Pollock','role':'human'}]
+            with self.assertRaises(ValueError,msg=failure):build.validate_reconstruction(data,registry)
+
+    def test_unmodified_ai_contributions_keep_their_origin(self):
+        old=self.normalized['archives']['2026-10-25.1']
+        initial={i['id']:i for t in old['trees'].values() for i in t['nodes']+t['links']}
+        for ident in ['g-understand','g-revise','r-uncertainty','r-decisions','f-review','f-revision']:
+            self.assertEqual(self.c.items[ident]['contributors'],initial[ident]['contributors'])
+        self.assertEqual(self.c.items['g-wise-ai']['contributors'],[{'name':'David Joseph','role':'human'}])
+        self.assertIn('Raised for examination by David Joseph',self.outputs['wisdom-ai/conflict.html'])
+        self.assertIn('Supporting empirical evidence',self.outputs['wisdom-ai/items.html'])
+        self.assertIn('Not supplied in this map',self.outputs['wisdom-ai/items.html'])
+
+    def test_transition_steps_are_conditional_and_unassigned(self):
+        tree=self.data['trees']['transition']
+        for i in range(1,6):
+            link=next(l for l in tree['links'] if l['id']==f't-{i}-produces')
+            self.assertEqual(link['from'],[f't-{i}-condition',f't-{i}-action'])
+            self.assertEqual(link['to'],f't-{i}-effect')
+        text=self.outputs['wisdom-ai/items.html']
+        self.assertIn('None recorded; owner and date unassigned',text)
+        self.assertIn('Conditional premise, not a report',text)
+        self.assertIn('If a safe test is unavailable',text)
+        self.assertFalse(any(n.get('proposed_role') for n in tree['nodes']))
+
+    def test_original_published_release_is_preserved_and_readable(self):
+        old=self.normalized['archives']['2026-10-25.1']
+        self.assertEqual(sum(len(t['nodes']) for t in old['trees'].values()),7)
+        self.assertEqual(sum(len(t['links']) for t in old['trees'].values()),4)
+        self.assertEqual(old['trees']['future_reality']['links'][0]['from'],['f-review'])
+        self.assertEqual(old['trees']['goal']['nodes'][0]['text'],'People make informed, revisable choices about developing and using AI.')
+        self.assertIn(pages.esc(old['trees']['goal']['nodes'][0]['text']),self.outputs['wisdom-ai/changes.html'])
+        self.assertIn('Original published statements, connections and attribution',self.outputs['wisdom-ai/changes.html'])
+        damaged=deepcopy(self.registry);damaged['previous_releases'][0]['snapshot']['trees']['goal']['nodes'][0]['text']='Changed history'
+        with self.assertRaisesRegex(ValueError,'Previous release fingerprint'):build.publication_archives(damaged,self.data)
+
+    def test_prior_release_does_not_gain_current_endorsement_or_attribution(self):
+        old=self.normalized['archives']['2026-10-25.1']
+        self.assertEqual(old['trees']['goal']['nodes'][0]['contributors'],[build.ASSISTANT])
+        self.assertTrue(all(not i['accepted_by'] for t in old['trees'].values() for i in t['nodes']+t['links']))
+        self.assertIn('proposed',json.dumps(old))
 
 
 if __name__ == '__main__':
