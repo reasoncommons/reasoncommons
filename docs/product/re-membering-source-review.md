@@ -1,3 +1,13 @@
+# Goal-first overview and Map restoration — 25 October 2026
+
+Under accepted `commons-overview-and-map-2026-10-25` revision 1, the overview now leads with the goal, a concrete participation route and one editorial question tied to the existing reciprocal-process hypothesis. Source cards and the fuller account remain accessible on demand; the source account still precedes the detailed practical application within that account. The exact goal, author credits, source locators, standing and historical comparisons remain unchanged. Public GitHub sharing is a draft the visitor reviews and posts, not an automatic contribution to the reasoning.
+
+The Map and all six detailed question pages were found to return a host-generated Not found JSON error, although their files exist in Git. The reviewed source builds complete HTML for them; live delivery must be repaired and checked separately. Local redesign checks pass: 92 tests, 62-file drift, website exports, 4,979 links/assets, keyboard participation and a true 375px overview without overflow. Implementation `reasoncommons-6g9` remains in progress; hosted delivery, real reader comprehension and author fidelity are not yet established.
+
+Revision 2 adds content-versioned asset references to all 50 generated HTML pages, including 39 additional generated paths, to trigger a complete HTML refresh through GitHub. David’s exact typed reply `Accept revision 2` was recorded at 2026-10-25T11:49:15Z and validated before those edits. All 93 demonstration tests, 62-file drift, website exports and 4,980 links/assets pass. The bodies of those 39 pages and all published reasoning JSON remain unchanged. The hosted preview renders the goal-first design and all six Map destinations; actual production restoration remains to verify after merge.
+
+---
+
 # Presentation integration: sources and feedback
 
 Accepted integration `re-membering-feedback-integration-2026-10-24` revision 1 adds the reviewed local design to the generated public pages. The real Changes page starts with two collapsed sibling sections: an authentic agency graph comparison, and exact before/after wording. Individual release histories also start collapsed. The overview shows five source representations with author, type and page count, and a short feedback → revision → awaiting-review story. Source details link three examples into the current reasoning, retaining every citation locator and basis for each selected example. Gandhi 2.0 uses the same source presentation with its published metadata.

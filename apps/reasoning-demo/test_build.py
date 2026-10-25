@@ -947,8 +947,6 @@ class SuppliedDocumentTests(unittest.TestCase):
                 self.assertNotIn("source_text", value)
 
 
-if __name__ == '__main__':
-    unittest.main()
 
 class HistoricalReviewTests(unittest.TestCase):
     def setUp(self):
@@ -1046,3 +1044,126 @@ class HistoricalReviewTests(unittest.TestCase):
         self.assertNotIn("LATER_TEXT_CANARY",html)
         self.assertIn("After this release",html)
         self.assertIn("Adjust actions by listening to responses from bodies, people and environments.",html)
+
+
+class GoalFirstOverviewTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.site, cls.records = build.load_site()
+        cls.outputs = build.build_files(cls.site, cls.records)
+
+    def test_every_overview_leads_with_purpose_question_and_participation(self):
+        for record in self.records:
+            slug=record["entry"]["slug"]
+            page=self.outputs[slug+"/index.html"]
+            self.assertLess(page.index('class="purpose-intro"'), page.index('id="get-involved"'))
+            self.assertLess(page.index('id="featured-question-title"'),page.index('id="get-involved"'))
+            self.assertLess(page.index('id="get-involved"'),page.index('id="read-reasoning"'))
+            self.assertIn('href="#get-involved"',page)
+            if record["data"].get("sources"):
+                self.assertLess(page.index('id="get-involved"'),page.index('class="source-shelf"'))
+
+    def test_sources_and_full_account_are_closed_without_hiding_entry_links(self):
+        class Sections(HTMLParser):
+            def __init__(self):
+                super().__init__();self.details=[];self.stack=[];self.cards=[]
+            def handle_starttag(self,tag,attrs):
+                a=dict(attrs)
+                if tag=="details": self.details.append(a);self.stack.append(a.get("id"))
+                if tag=="a" and "document-card" in a.get("class","").split():self.cards.append(self.stack[:])
+            def handle_endtag(self,tag):
+                if tag=="details":self.stack.pop()
+        for slug in ["re-membering","gandhi-2-0"]:
+            page=self.outputs[slug+"/index.html"];parser=Sections();parser.feed(page)
+            self.assertTrue(all("open" not in d for d in parser.details))
+            self.assertTrue(all("overview-sources" in ancestors for ancestors in parser.cards))
+            self.assertEqual(len(re.findall(r'<a href="[^"]+"><span>0[1-6]</span>',page)),6)
+
+    def test_editorial_invitation_rejects_unpublished_references_and_standing_overrides(self):
+        record=deepcopy(self.records[0]);entry=record["entry"]
+        entry["front_page"]["focus_ref"]="PRIVATE_ITEM_CANARY"
+        with self.assertRaisesRegex(ValueError,"published reasoning"):
+            build.validate_front_page(entry,record["data"])
+        entry["front_page"]["focus_ref"]=self.records[0]["entry"]["front_page"]["focus_ref"]
+        entry["front_page"]["status"]="accepted"
+        with self.assertRaisesRegex(ValueError,"Invalid front-page invitation"):
+            build.validate_front_page(entry,record["data"])
+
+    def test_sharing_is_a_reviewable_public_draft_and_example_has_no_recipient(self):
+        from urllib.parse import parse_qs
+        class Links(HTMLParser):
+            def __init__(self):super().__init__();self.shares=[]
+            def handle_starttag(self,tag,attrs):
+                a=dict(attrs)
+                if tag=="a" and "share-contribution" in a.get("class","").split():self.shares.append(a)
+        for record in self.records:
+            entry=record["entry"];page=self.outputs[entry["slug"]+"/index.html"];parser=Links();parser.feed(page)
+            if entry["kind"]=="example":
+                self.assertFalse(parser.shares)
+                self.assertIn("there is no real group to send it to",page)
+            else:
+                self.assertEqual(len(parser.shares),3)
+                for link in parser.shares:
+                    u=urlparse(link["href"]);q=parse_qs(u.query)
+                    self.assertEqual((u.scheme,u.netloc,u.path),("https","github.com","/reasoncommons/reasoncommons/issues/new"))
+                    self.assertIn(entry["name"],q["title"][0]);self.assertIn(record["data"]["release_id"],q["body"][0])
+                    self.assertIn(entry["front_page"]["focus_ref"],q["body"][0])
+                    self.assertIn("My contribution:",q["body"][0]);self.assertIn("does not endorse",q["body"][0])
+                self.assertIn("You review and post it on GitHub",page)
+
+    def test_draft_briefs_retain_public_context_and_do_not_change_reasoning_exports(self):
+        for record in self.records:
+            entry=record["entry"];slug=entry["slug"];page=self.outputs[slug+"/index.html"]
+            self.assertEqual(page.count('id="contribution-brief-'),3)
+            self.assertIn(pages.esc(entry["front_page"]["question"]),page)
+            self.assertIn("Copying this brief submits nothing",page)
+            exported=json.loads(self.outputs[slug+"/reasoning.json"])
+            self.assertEqual(exported,record["data"])
+            self.assertNotIn("front_page",exported)
+
+    def test_map_routes_have_html_goal_context_and_all_six_destinations(self):
+        for record in self.records:
+            slug=record["entry"]["slug"];page=self.outputs[slug+"/map.html"]
+            self.assertTrue(page.startswith("<!doctype html>"));self.assertIn("One goal, six questions",page)
+            self.assertEqual(page.count('class="mq"'),6)
+            goal=next(n for n in record["data"]["trees"]["goal"]["nodes"] if n["kind"]=="goal")
+            self.assertIn(pages.esc(goal["text"]),page)
+            for name in pages.TREE_ORDER:
+                path=pages.TREES[name]["slug"]+".html"
+                self.assertIn('href="'+path+'"',page);self.assertIn(slug+"/"+path,self.outputs)
+
+    def test_directory_prioritizes_goal_and_question_before_sources(self):
+        page=self.outputs["index.html"]
+        for entry in self.site["commons"]:
+            start=page.index('<h3><a href="'+entry["slug"]+'/index.html"')
+            end=page.index('</article>',start);card=page[start:end]
+            self.assertLess(card.index('class="cc-goal"'),card.index('class="cc-question"'))
+            if entry["kind"]=="reconstruction":
+                self.assertLess(card.index('class="cc-question"'),card.index('class="source-mini"'))
+            self.assertIn(entry["slug"]+'/index.html#get-involved',card)
+
+
+
+class AssetDeliveryTests(unittest.TestCase):
+    def test_all_html_uses_current_assets_and_only_head_changes_on_asset_refresh(self):
+        import hashlib
+        site,records=build.load_site();outputs=build.build_files(site,records)
+        style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
+        script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
+        htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
+        self.assertEqual(len(htmls),50)
+        for name,page in htmls.items():
+            self.assertIn('styles.css?v='+style_version,page,name)
+            self.assertIn('app.js?v='+script_version,page,name)
+        normalized=[build.normalize(r) for r in records]
+        old=pages.render(site,normalized,asset_versions={"styles":"previous-style","script":"previous-script"})
+        fresh=pages.render(site,normalized,asset_versions={"styles":"new-style","script":"new-script"})
+        self.assertEqual(set(old),set(fresh))
+        for name in old:
+            self.assertNotEqual(old[name],fresh[name],name)
+            self.assertEqual(old[name].split("<body",1)[1],fresh[name].split("<body",1)[1],name)
+        self.assertNotIn("asset_versions",site)
+
+
+if __name__ == '__main__':
+    unittest.main()

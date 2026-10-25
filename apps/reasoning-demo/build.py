@@ -457,8 +457,20 @@ def validate_reconstruction(data, registry):
 
 # ---------------------------------------------------------------- site
 
+def validate_front_page(entry, data):
+    """Editorial invitations may refer to published items, never override reasoning or standing."""
+    front = entry.get("front_page")
+    if front is None:
+        return
+    require(isinstance(front, dict) and set(front) == {"headline", "intro", "question", "why", "focus_ref"}
+            and all(isinstance(v, str) and v.strip() for v in front.values()), "Invalid front-page invitation")
+    ids = {i["id"] for tree in data["trees"].values() for i in tree["nodes"] + tree["links"]}
+    require(front["focus_ref"] in ids, "Featured invitation must reference published reasoning")
+
+
 def load_site():
     site = read_json(HERE / "site.json")
+    require(site.get("contribution_url") == "https://github.com/reasoncommons/reasoncommons/issues/new", "Unreviewed public contribution destination")
     commons = []
     for entry in site["commons"]:
         registry = read_json(HERE / entry["registry"])
@@ -473,6 +485,7 @@ def load_site():
             require(entry["kind"] == "example", "Only the labelled example uses projection 2")
             validate_v2(data, registry)
         require(registry.get("snapshot_sha256") == digest(data), f"Public snapshot fingerprint changed for {entry['slug']}; review and refresh explicitly")
+        validate_front_page(entry, data)
         review_path = (HERE / entry["registry"]).with_name("review.json")
         review = revisions.validate(read_json(review_path), data, validate_reconstruction) if review_path.exists() else {}
         commons.append({"entry": entry, "registry": registry, "data": data, "review": review})
@@ -510,13 +523,17 @@ def normalize(item):
 
 def build_files(site, commons):
     normalized = [normalize(c) for c in commons]
-    outputs = pages.render(site, normalized)
+    styles = (HERE / "styles.css").read_text()
+    script = (HERE / "app.js").read_text()
+    asset_versions = {"styles": hashlib.sha256(styles.encode()).hexdigest()[:16],
+                      "script": hashlib.sha256(script.encode()).hexdigest()[:16]}
+    outputs = pages.render(site, normalized, asset_versions=asset_versions)
     real = next(c for c in commons if c["entry"]["kind"] == "real")
     outputs["reasoning.json"] = json.dumps(real["data"], ensure_ascii=False, indent=2) + "\n"  # The earlier download path stays.
     for c in normalized:
         outputs[f'{c["slug"]}/reasoning.json'] = c["json"]
-    outputs["styles.css"] = (HERE / "styles.css").read_text()
-    outputs["app.js"] = (HERE / "app.js").read_text()
+    outputs["styles.css"] = styles
+    outputs["app.js"] = script
     for font in sorted((HERE / "fonts").iterdir()):
         outputs[f"fonts/{font.name}"] = font.read_bytes()
     return outputs

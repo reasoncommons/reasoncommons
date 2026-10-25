@@ -7,6 +7,7 @@ with their standing, contributors and endorsers.
 from collections import defaultdict
 from datetime import date
 import html
+from urllib.parse import urlencode
 
 import diagrams
 import revisions
@@ -118,6 +119,7 @@ class Commons:
     def __init__(self, data):
         self.__dict__.update(data)
         self.review = data.get("review", {})
+        self.front_page = data.get("front_page", {})
         self.items, self.tree_of, self.order = {}, {}, []
         for name, tree in self.trees.items():
             for item in tree["nodes"] + tree["links"]:
@@ -478,8 +480,11 @@ def brief(c, ident, site):
 
 # ---------------------------------------------------------------- page shell
 
-def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""):
+def shell(*, title, description, depth, body, nav=None, c=None, page="", head="", assets=None):
     up = "../" * depth
+    assets = assets or {}
+    style_version = "?v=" + esc(assets["styles"]) if assets.get("styles") else ""
+    script_version = "?v=" + esc(assets["script"]) if assets.get("script") else ""
     links = [("index.html#commons", "Commons", "commons"), ("how-it-works.html", "How it works", "how")]
     current = ' aria-current="page"'
     nav_html = "".join(f'<a href="{up}{href}"{current if key == nav else ""}>{label}</a>' for href, label, key in links)
@@ -498,6 +503,9 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
                   'An AI prepared this map from a public forum thread and analyses of it, and credits each idea to the posts it comes from. None of the discussion’s participants has endorsed it. '
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
+    if c and c.is_reconstruction and page == "overview":
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Everything here is proposed.</strong> Source credit is not endorsement. '
+                  '<a href="about.html#sources">Sources and limits →</a></div></div>')
     return f"""<!doctype html>
 <html lang="en">
 <head>
@@ -506,8 +514,8 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 <meta name="description" content="{esc(description)}">
 <meta name="theme-color" content="#f7f4ec">
 <title>{esc(title)}</title>
-<link rel="stylesheet" href="{up}styles.css">
-<script src="{up}app.js" defer></script>{head}
+<link rel="stylesheet" href="{up}styles.css{style_version}">
+<script src="{up}app.js{script_version}" defer></script>{head}
 </head>
 <body class="page-{page}{' is-example' if c and c.is_example else ''}{' is-reconstruction' if c and c.is_reconstruction else ''}">
 <a class="skip" href="#main">Skip to content</a>
@@ -548,6 +556,9 @@ def commons_head(c, tab, heading=None):
     current = ' aria-current="page"'
     tab_html = "".join(f'<a href="{href}"{current if key == tab else ""}>{label}{f" <span>{esc(count)}</span>" if count else ""}</a>'
                        for href, label, key, count in tabs)
+    if heading == "compact":
+        return (f'<div class="ch ch-compact"><div class="wrap"><nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#commons">Commons</a><span aria-hidden="true">/</span><span>{esc(c.name)}</span></nav>'
+                f'<div class="compact-context">{tag}<span>{esc(c.byline)}</span></div><nav class="tabs" aria-label="This commons">{tab_html}</nav></div></div>')
     title = f'<h1 class="ch-title">{esc(c.name)}</h1>' if heading is None else f'<p class="ch-title">{esc(c.name)}</p>'
     return (f'<div class="ch"><div class="wrap">'
             f'<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#commons">Commons</a><span aria-hidden="true">/</span><span>{esc(c.name)}</span></nav>'
@@ -617,6 +628,79 @@ def source_detail(c, source, number, where):
             f'<p class="fine">Showing {len(selected)} examples; inspect each item for its complete source references.</p></div></details>')
 
 
+# ---------------------------------------------------------------- purpose and participation
+
+def front_page(c):
+    if c.front_page:
+        return c.front_page
+    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    return {"headline": goal.get("label", goal["text"]), "intro": c.summary, "question": "What would make this goal useful to work on together?",
+            "why": "Bring an example, a question or a correction to help develop the reasoning.", "focus_ref": goal["id"]}
+
+
+def purpose_intro(c):
+    front = front_page(c)
+    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    headline = "<br>".join(esc(line) for line in front["headline"].splitlines())
+    action = "Practise contributing" if c.is_example else "Get involved"
+    goal_label = "The proposed goal" if c.is_reconstruction else "The goal"
+    standing = STANDING[c.items[front["focus_ref"]]["status"]]
+    source = source_mini(c)
+    review_note = ("The source author commented on an earlier map; this revision awaits review and endorsement." if c.supplied_documents else "None of the discussion’s participants has endorsed it." if c.is_reconstruction else "")
+    review_note = f'<p class="goal-review-note">{esc(review_note)}</p>' if review_note else ""
+    return f"""<section class="purpose-intro" aria-labelledby="purpose-title">
+<div class="purpose-main"><p class="eyebrow">{esc(c.name)} · {goal_label}</p><h1 id="purpose-title">{headline}</h1>
+<p class="purpose-description">{esc(front["intro"])}</p><div class="purpose-actions"><a class="button" href="#get-involved">{action} <span aria-hidden="true">↓</span></a><a class="text-link" href="map.html">Explore the map <span aria-hidden="true">→</span></a></div>
+<details class="goal-record"><summary>Read the goal of record</summary><blockquote>{esc(goal["text"])}</blockquote><p>{standing_chip(c, goal["status"])} <a href="items.html#{goal["id"]}">Inspect the goal →</a></p>{review_note}</details>{source}</div>
+<aside class="featured-question" aria-labelledby="featured-question-title"><p class="eyebrow">A question to explore next</p><h2 id="featured-question-title">{esc(front["question"])}</h2><p>{esc(front["why"])}</p>
+<a class="text-link" href="#contribute-example">Bring an example <span aria-hidden="true">↓</span></a><p class="featured-basis">Editorial invitation · {esc(standing.lower())} reasoning<br><a href="items.html#{front["focus_ref"]}">Read the reasoning behind this question →</a></p></aside>
+</section>"""
+
+
+def participation(c, site):
+    front = front_page(c)
+    actions = [("example", "Bring an example", "Describe one activity or situation you know. What happened, and what would this map need to explain?"),
+               ("question", "Question an assumption", "Point to something that does not hold, a missing condition or another explanation."),
+               ("interpretation", "Help with interpretation", "Compare a statement with its source, or suggest wording that better captures its meaning.")]
+    options = []
+    for key, title, prompt in actions:
+        ident = "contribution-brief-" + key
+        text = f"Contribution to {c.name}: {title.lower()}.\n\nQuestion to explore: {front['question']}\n\n{prompt}\n\n" + brief(c, front["focus_ref"], site)
+        share = ""
+        if not c.is_example:
+            issue_text = (f"Commons: {c.name}\nRelease: {c.release_id}\nContribution: {title}\n\nQuestion to explore: {front['question']}\n"
+                          f"Reasoning: {site['base_url']}{c.slug}/items.html#{front['focus_ref']}\n\n{prompt}\n\nMy contribution:\n[Replace this with your example, question or correction.]\n\nSharing this for review does not endorse the current reasoning.")
+            url = site["contribution_url"] + "?" + urlencode({"title": f"{c.name}: {title.lower()}", "body": issue_text})
+            share = f'<a class="text-link share-contribution" href="{esc(url)}" target="_blank" rel="noopener">Review a public GitHub draft ↗</a><p class="participation-note">You review and post it on GitHub. It reaches the project for review; it is not automatically added to the reasoning.</p>'
+        else:
+            share = '<p class="participation-note">This is an invented example. Use the brief to practise; there is no real group to send it to.</p>'
+        options.append(f'<details class="participation-option" id="contribute-{key}"><summary><span><span class="participation-title">{title}</span><span class="participation-prompt">{esc(prompt)}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary>'
+                       f'<div class="participation-body"><p class="participation-label">Start with a brief for your AI</p><div class="brief-actions"><button class="button button-quiet" type="button" data-copy="{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
+                       f'<details class="participation-brief"><summary>Read or copy the brief by hand</summary><pre class="brief" id="{ident}" tabindex="0">{esc(text)}</pre></details>{share}</div></details>')
+    title = "Practise a useful contribution" if c.is_example else "Help this commons move forward"
+    return (f'<section class="participation" id="get-involved" tabindex="-1" aria-labelledby="participation-title"><div class="participation-heading"><div><p class="eyebrow">{"Try it" if c.is_example else "Get involved"}</p><h2 id="participation-title">{title}</h2></div>'
+            '<p>You do not need to agree with the whole map. Start with one thing you can help clarify.</p></div>'
+            f'<div class="participation-options">{"".join(options)}</div></section>')
+
+
+def overview_evolution(c):
+    if not c.review:
+        return ""
+    return ('<aside class="evolution-strip"><span class="evolution-mark" aria-hidden="true">↻</span><div><p class="eyebrow">Feedback changes the reasoning</p><h2>Margeret challenged the emphasis. The map changed.</h2>'
+            '<p>Her concern about process and agency led to a revised account and new connections. <strong>Revision awaits Margeret’s review.</strong></p></div><a class="text-link" href="changes.html#agency-comparison">See the before and after →</a></aside>')
+
+
+def explore_questions(c):
+    links = "".join(f'<a href="{TREES[name]["slug"]}.html"><span>{i:02d}</span>{esc(TREES[name]["question"])}</a>' for i,name in enumerate(TREE_ORDER,1) if name in c.trees)
+    return (f'<section class="explore-questions" aria-labelledby="explore-title"><div class="section-heading"><h2 id="explore-title">Find your way into the reasoning</h2><a class="text-link" href="map.html">See the map →</a></div><div class="question-entry-grid">{links}</div></section>')
+
+
+def overview_sources(c):
+    if not c.sources:
+        return ""
+    return f'<details class="background-details overview-sources" id="overview-sources"><summary><span>Where this commons comes from <span class="muted">· {plural(len(c.sources),"source")}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary><div class="background-body">{source_shelf(c)}</div></details>'
+
+
 # ---------------------------------------------------------------- home
 
 def home(site, commons):
@@ -630,9 +714,9 @@ def home(site, commons):
         quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
         cards.append(f'<article class="cc{" cc-example" if c.is_example else ""}">'
                      f'<div class="cc-head">{tag}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>'
-                     f'<p class="cc-summary">{esc(c.summary)}</p>{source_mini(c, c.slug + "/")}{quote}{strip(c, c.slug + "/")}'
+                     f'<p class="cc-summary">{esc(front_page(c)["intro"])}</p>{quote}<p class="cc-question"><span>A question to explore</span>{esc(front_page(c)["question"])}</p>'
                      f'<p class="cc-meta">{plural(statements, "statement")} · {plural(connections, "connection")} · {esc(standing)}<br>Published {day(c.date)}</p>'
-                     f'<a class="button" href="{c.slug}/index.html">Open this commons <span aria-hidden="true">→</span></a></article>')
+                     f'<div class="cc-actions"><a class="button" href="{c.slug}/index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} <span aria-hidden="true">→</span></a><a class="text-link" href="{c.slug}/index.html">Explore the commons →</a></div>{source_mini(c, c.slug + "/")}</article>')
     cards.append('<article class="cc cc-yours"><div class="cc-head"><span class="tag tag-yours">Yours</span><h3>Start a commons</h3></div>'
                  '<p class="cc-summary">Bring a goal you share with other people. In conversation, the Reason Commons skill helps you structure the thinking and keeps the record: what you agree, what is still open, and who said what.</p>'
                  '<ol class="cc-steps"><li>Install the skill in your AI</li><li>Describe the goal and what makes it hard</li><li>Accept what you can build on, together</li></ol>'
@@ -668,7 +752,7 @@ def home(site, commons):
 <script>(function(){var q=new URLSearchParams(location.search),v=q.get('view'),i=q.get('item');if(!v&&!i)return;
 var t={goal:'goal',current_reality:'in-the-way',conflict:'conflict',future_reality:'change',prerequisite:'prerequisites',transition:'actions'};
 var p='reason-commons/';p+=i?'items.html#'+encodeURIComponent(i):v==='record'?'about.html':v==='reasoning'?(t[q.get('tree')]||'map')+'.html':'index.html';location.replace(p);})();</script>"""
-    return shell(title="Commons · Reason Commons", description="Read shared goals and the reasoning groups build around them with the Reason Commons skill.",
+    return shell(assets=site.get("asset_versions", {}), title="Commons · Reason Commons", description="Read shared goals and the reasoning groups build around them with the Reason Commons skill.",
                  depth=0, body=body, nav="commons", page="home", head=redirect)
 
 
@@ -713,7 +797,7 @@ def how_it_works(site, commons):
 <div><h2>Taking part</h2><p>Every statement page has a brief you can copy into your own AI. The skill then checks the current record before helping you develop an observation, a question or a challenge. Copying a brief submits nothing, and this site never edits a commons.</p></div>
 <div class="cta-box"><h3>Start your own commons</h3><p>All you need is a goal you share with others and an AI that can use the skill.</p><a class="button" href="/skills">Get the skill <span aria-hidden="true">↗</span></a></div>
 </div></section>"""
-    return shell(title="How it works · Reason Commons", description="How a commons is built in conversation, what its six questions are, and what accepted, proposed and disputed mean.",
+    return shell(assets=site.get("asset_versions", {}), title="How it works · Reason Commons", description="How a commons is built in conversation, what its six questions are, and what accepted, proposed and disputed mean.",
                  depth=0, body=body, nav="how", page="how")
 
 
@@ -878,8 +962,9 @@ def reconstruction_overview(c, site):
             f'<a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">{origin}</p>'
             f'<p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p>'
             f'<a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>')
-    body = commons_head(c, "overview") + f'<div class="wrap overview">{source_shelf(c)}{revisions.STORY if c.review else ""}{account}{hero}{"".join(sections)}</div>'
-    return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
+    body = commons_head(c, "overview", heading="compact") + (f'<div class="wrap overview overview-purpose">{purpose_intro(c)}{participation(c, site)}{overview_evolution(c)}{explore_questions(c)}'
+            f'<details class="background-details" id="read-reasoning"><summary><span>Explore the fuller account <span class="muted">· {statements} statements · {connections} connections</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary><div class="background-body">{account}{hero}{"".join(sections)}</div></details>{overview_sources(c)}</div>')
+    return shell(assets=site.get("asset_versions", {}), title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
 
 def overview(c, site):
@@ -939,8 +1024,9 @@ def overview(c, site):
                       f'<div class="cards cards-grid">{cards}</div><a class="text-link" href="actions.html">Actions and what they should achieve →</a></section>')
     blocks.append(f'<section class="ov"><div class="ov-head"><p class="eyebrow">People</p><h2>Who contributed, and who accepted</h2><p>Contributing an idea and accepting it are recorded separately.</p></div>{people_table(c)}'
                   f'<a class="text-link" href="about.html">About this record →</a></section>')
-    body = commons_head(c, "overview") + f'<div class="wrap overview">{"".join(blocks)}</div>'
-    return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
+    body = commons_head(c, "overview", heading="compact") + (f'<div class="wrap overview overview-purpose">{purpose_intro(c)}{participation(c, site)}{explore_questions(c)}'
+            f'<details class="background-details" id="read-reasoning"><summary><span>Explore the fuller account</span><span class="toggle-icon" aria-hidden="true">+</span></summary><div class="background-body">{"".join(blocks)}</div></details></div>')
+    return shell(assets=site.get("asset_versions", {}), title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
 
 def people_stats(c):
@@ -987,12 +1073,13 @@ def map_page(c, site):
         cells.append(f'<a class="mq" href="{TREES[name]["slug"]}.html"><span class="mq-n">{i}</span><span class="mq-thumb">{thumb}</span>'
                      f'<span class="mq-q">{esc(TREES[name]["question"])}</span><span class="mq-a">{esc(TREES[name]["about"])}</span>'
                      f'<span class="mq-c">{plural(len(tree["nodes"]), "statement")} · {state}{f"<br>{detail}" if detail else ""}</span></a>')
-    body = commons_head(c, "map", heading=False) + f"""<div class="wrap">
-<section class="page-intro"><h1>One goal, six questions</h1><p class="lede">Each question gets its own page, with a diagram drawn only from published connections. Each answer sets up the next one.</p></section>
+    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    body = commons_head(c, "map", heading="compact") + f"""<div class="wrap">
+<section class="page-intro map-intro"><p class="eyebrow">Explore {esc(c.name)}</p><h1>One goal, six questions</h1><p class="lede">Choose a question to explore its reasoning, inspect a statement or bring a contribution.</p><blockquote class="map-goal"><span>The {"proposed " if c.is_reconstruction else ""}goal</span>{esc(goal["text"])}</blockquote><p class="fine">Diagrams use the published statements and connections. <a href="index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} →</a></p></section>
 <div class="mq-grid">{"".join(cells)}</div>
 <section class="map-key"><h2>What the colours mean</h2><p>Small diagrams show the real shape of each part: boxes are statements coloured by their role, and lines are published connections. Loose boxes have no connection yet.</p>{role_legend(c)}</section>
 </div>"""
-    return shell(title=f"Map · {c.name} · Reason Commons", description=f"The six questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
+    return shell(assets=site.get("asset_versions", {}), title=f"Map · {c.name} · Reason Commons", description=f"The six questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
 
 
 def tree_page(c, name, site):
@@ -1054,7 +1141,7 @@ def tree_page(c, name, site):
 <details class="method-note"><summary>Where this comes from</summary><p>In the Logical Thinking Process this view is a {esc(info["method"])}. <a href="../how-it-works.html">How a commons works →</a></p></details>
 {pager}
 </div>"""
-    return shell(title=f'{info["question"]} · {c.name} · Reason Commons', description=f'{info["about"]} From the {c.name} commons.', depth=1, body=body, nav="commons", c=c, page="tree")
+    return shell(assets=site.get("asset_versions", {}), title=f'{info["question"]} · {c.name} · Reason Commons', description=f'{info["about"]} From the {c.name} commons.', depth=1, body=body, nav="commons", c=c, page="tree")
 
 
 # ---------------------------------------------------------------- statements and connections
@@ -1185,7 +1272,7 @@ def items_page(c, site):
 <div class="search" hidden><label for="filter">Find a statement</label><input id="filter" type="search" placeholder="Try a word or a name" autocomplete="off"><p class="search-status" role="status"></p></div></section>
 {"".join(groups)}
 </div>"""
-    return shell(title=f"Statements · {c.name} · Reason Commons", description=f"Every statement and connection in the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="items")
+    return shell(assets=site.get("asset_versions", {}), title=f"Statements · {c.name} · Reason Commons", description=f"Every statement and connection in the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="items")
 
 
 # ---------------------------------------------------------------- open questions
@@ -1221,7 +1308,7 @@ def questions_page(c, site):
 {question_board(c)}
 <p class="fine">These come from the commons' own record of unfinished reasoning, and from disputed items. No deadline, owner or priority is shown because none is recorded.</p>
 </div>"""
-    return shell(title=f"Open questions · {c.name} · Reason Commons", description="Where the reasoning is unfinished.", depth=1, body=body, nav="commons", c=c, page="questions")
+    return shell(assets=site.get("asset_versions", {}), title=f"Open questions · {c.name} · Reason Commons", description="Where the reasoning is unfinished.", depth=1, body=body, nav="commons", c=c, page="questions")
 
 
 # ---------------------------------------------------------------- learning
@@ -1277,7 +1364,7 @@ def learning_page(c, site):
 {"".join(blocks)}
 <p class="fine">“Not observed” means that person did not see it, not that it cannot happen. “Unclear” and “Not assessed” keep the question open. A report does not by itself confirm a connection.</p>
 </div>"""
-    return shell(title=f"Learning · {c.name} · Reason Commons", description="Expected outcomes, and what people reported.", depth=1, body=body, nav="commons", c=c, page="learning")
+    return shell(assets=site.get("asset_versions", {}), title=f"Learning · {c.name} · Reason Commons", description="Expected outcomes, and what people reported.", depth=1, body=body, nav="commons", c=c, page="learning")
 
 
 # ---------------------------------------------------------------- changes and about
@@ -1325,7 +1412,7 @@ def changes_page(c, site):
 {revisions.compare(c.review) if c.review else ""}
 <section id="release-history"><h2>Detailed release history</h2><p class="fine">Open a release to inspect individual edits.</p><div class="releases">{later}{"".join(entries)}</div></section>
 </div>"""
-    return shell(title=f"Changes · {c.name} · Reason Commons", description="How the published reasoning changed.", depth=1, body=body, nav="commons", c=c, page="changes")
+    return shell(assets=site.get("asset_versions", {}), title=f"Changes · {c.name} · Reason Commons", description="How the published reasoning changed.", depth=1, body=body, nav="commons", c=c, page="changes")
 
 
 def about_page(c, site):
@@ -1382,6 +1469,8 @@ def about_page(c, site):
         # The host sandboxes HTML without allow-downloads; keep the release readable without scripts.
         download = '<a class="button button-quiet" href="#release-json">Read or copy this release <span aria-hidden="true">↓</span></a>'
         release_text = f'<details id="release-json"><summary>Read the release as JSON</summary><pre class="brief" tabindex="0">{esc(c.json)}</pre></details>'
+    if c.sources:
+        fiction = fiction.replace('<h2>Sources and limits</h2>', '<h2>Sources and limits</h2>' + source_shelf(c), 1)
     body = commons_head(c, "about", heading=False) + f"""<div class="wrap">
 <section class="page-intro"><h1>About this record</h1><p class="lede">{esc(c.scope)}</p></section>
 {fiction}
@@ -1397,12 +1486,14 @@ def about_page(c, site):
 </div>
 <section class="about-people">{f'<h2 id="credits">Whose ideas these are</h2>{credits_table(c)}' if c.is_reconstruction else ''}<h2>People</h2>{people_table(c)}</section>
 </div>"""
-    return shell(title=f"About · {c.name} · Reason Commons", description="What this record is, and what it isn't.", depth=1, body=body, nav="commons", c=c, page="about")
+    return shell(assets=site.get("asset_versions", {}), title=f"About · {c.name} · Reason Commons", description="What this record is, and what it isn't.", depth=1, body=body, nav="commons", c=c, page="about")
 
 
 # ---------------------------------------------------------------- everything
 
-def render(site, normalized):
+def render(site, normalized, asset_versions=None):
+    # Keep presentation versions out of the published reasoning and caller's site metadata.
+    site = {**site, "asset_versions": asset_versions or {}}
     commons = [Commons(data) for data in normalized]
     outputs = {"index.html": home(site, commons), "how-it-works.html": how_it_works(site, commons)}
     for c in commons:
