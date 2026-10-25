@@ -1,28 +1,24 @@
 <!-- Generated from skills/README.md; edit that canonical source and run python3 scripts/export-website.py. -->
 
-# Reason Commons skills
+# Reason Commons skill
 
-Skills that help people and groups work out what they are trying to achieve and what to do about it, in conversation with an AI agent, and keep that reasoning so it builds up. They work in Claude Code, Codex and other agents that support `SKILL.md` skills.
+A skill that helps people and groups work out what they are trying to achieve and what to do about it, in conversation with an AI agent, and keeps that reasoning so it builds up. It works in Claude Code, Codex and other agents that support `SKILL.md` skills.
 
 <div class="rc-cards">
-<a class="rc-card" href="#start-here"><span class="rc-card-title">1 · Install</span><p>One command puts the skills in your agent.</p></a>
+<a class="rc-card" href="#start-here"><span class="rc-card-title">1 · Install</span><p>One command puts the skill in your agent.</p></a>
 <a class="rc-card" href="#start-a-reasoning-conversation"><span class="rc-card-title">2 · Think together</span><p>Work a goal, problem or plan through in conversation.</p></a>
 <a class="rc-card" href="#send-this-to-a-colleague"><span class="rc-card-title">Pass it on</span><p>A short message to send a colleague.</p></a>
 </div>
 
 ## Start here
 
-Install the skills once:
-
-```sh
-npx skills add life-itself/reasoncommons
-```
-
-That lists the skills in this repository and asks which agents to install them into. To install just the conversational skill:
+Install the Reason Commons skill:
 
 ```sh
 npx skills add life-itself/reasoncommons -s reason-commons
 ```
+
+That selects the conversational skill and asks which agents to install it into.
 
 To install it for one agent in every project:
 
@@ -44,12 +40,11 @@ https://raw.githubusercontent.com/life-itself/reasoncommons/main/skills/reason-c
 
 An installed copy includes the skill's helper script and references, so installation is the best option.
 
-## The skills
+## The skill
 
 | Skill | What it does | Use it when |
 |-------|--------------|-------------|
 | [`reason-commons`](https://github.com/life-itself/reasoncommons/blob/main/skills/reason-commons/SKILL.md) | Helps people work through a goal or problem in conversation and turn it into agreed next steps, keeping who said what, what is still unfinished, what was accepted and diagrams of it | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
-| [`scrollable-explainer`](https://github.com/life-itself/reasoncommons/blob/main/skills/scrollable-explainer/SKILL.md) | Gives contributors principles and patterns for writing scroll-driven visual explainers | You are writing a scrolling explainer for [the public series](/explainers/index) |
 
 ## Start a reasoning conversation
 
