@@ -115,6 +115,7 @@
     try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
     const target = id && document.getElementById(id);
     if (!target) return;
+    if (target.classList.contains('participation')) target.focus({ preventScroll: true });
     let detail = target.closest('details');
     while (detail) {
       detail.open = true;

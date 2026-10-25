@@ -11,7 +11,14 @@
       "byline": "An AI reconstruction requested by David Joseph",
       "summary": "What would let humane institutions spread without losing what makes them humane? A proposed map from a Second Renaissance Forum discussion, credited post by post.",
       "description": "A map of the whole argument the supplied analysis finds in the discussion: its causes, six conflicts, eleven changes with their effects and risks, first steps and eight actions, with each idea credited to the forum post or essay it comes from. Conflict guidance is one possible entry point into a broader programme of human development, trustworthy institutions and distributed capabilities.",
-      "scope": "241 proposed statements and 246 proposed connections reconstructed by the AI from a public forum thread, essays shared in it and two supplied analyses. Each is credited to the posts or essays it draws on, with links. None of the people credited has reviewed or endorsed this map. Source locators, assumptions and unfinished work are published; actions name a proposed role but nobody is assigned, and no trial commitment or outcome is recorded."
+      "scope": "241 proposed statements and 246 proposed connections reconstructed by the AI from a public forum thread, essays shared in it and two supplied analyses. Each is credited to the posts or essays it draws on, with links. None of the people credited has reviewed or endorsed this map. Source locators, assumptions and unfinished work are published; actions name a proposed role but nobody is assigned, and no trial commitment or outcome is recorded.",
+      "front_page": {
+        "headline": "Help humane institutions\nhold their ground.",
+        "intro": "Explore how institutions built around autonomy and care might survive, spread and stay within ecological limits.",
+        "question": "Can care become a strength in how institutions survive and spread?",
+        "why": "A useful example would show how an institution stays viable without losing its purpose. Where might this argument need to change?",
+        "focus_ref": "g2-f-i11"
+      }
     },
     {
       "slug": "re-membering",
@@ -22,7 +29,14 @@
       "byline": "From Margeret Heath’s Re-membering · reconstructed by AI",
       "summary": "How can we care for the conditions that help us think and act together, while preserving people’s agency? A proposed map from the supplied Talk 1 slides, script and extended passages.",
       "description": "Margeret Heath’s Talk 1 follows bodies, tools and their surroundings toward a somatic commons. This map selects its practical argument: voluntary shared rhythms, repair, learning from responses, and tools that widen choices. Source claims and AI inferences remain distinguishable.",
-      "scope": "18 proposed statements and 11 proposed connections reconstructed by the AI from Margeret Heath’s slide deck, spoken script with notes and extended passages. Every item has a PDF page reference. The author and David have not endorsed the map. No group, trial, assigned owner or observed result is recorded; conflicts, prerequisites and actions remain unestablished."
+      "scope": "18 proposed statements and 11 proposed connections reconstructed by the AI from Margeret Heath’s slide deck, spoken script with notes and extended passages. Every item has a PDF page reference. The author and David have not endorsed the map. No group, trial, assigned owner or observed result is recorded; conflicts, prerequisites and actions remain unestablished.",
+      "front_page": {
+        "headline": "Flourish together.\nKeep room to choose.",
+        "intro": "How might a community help people flourish through their relationships—with each other, their tools and the wider world—while respecting autonomy and personal boundaries?",
+        "question": "In one shared activity, what changes in what people can do together?",
+        "why": "A concrete example can help examine whether reciprocal interaction changes coordination, capacities or purposes.",
+        "focus_ref": "rm-fl-coordination"
+      }
     },
     {
       "slug": "reason-commons",
@@ -47,6 +61,13 @@
         "aside": "In October, David accepted for now that he lacks confidence there is a coherent product to demo, and that this holds him back from testing with potential users. He would test with one if he had a demo he felt was coherent. This demonstration is a response to that.",
         "change": "Rufus confirmed this conflict in September and proposed its resolution himself: use the tool now, while it keeps being built. The connections between these statements have not been accepted, so no arrows are drawn.",
         "actions": "Six actions, accepted by Rufus in September. Accepting a plan doesn't record whether it was carried out."
+      },
+      "front_page": {
+        "headline": "Think together.\nFind a way forward.",
+        "intro": "We’re building a way for shared thinking to accumulate: a goal people can inspect, question and improve, with AI helping keep the record.",
+        "question": "What would make this useful enough for a group to try?",
+        "why": "David has said he would test with a potential user if he had a demo he felt was coherent. Your experience can help clarify what is missing.",
+        "focus_ref": "r-e-david-willing-test-coherent-demo"
       }
     },
     {
@@ -66,7 +87,15 @@
         "change": "Both needs serve the shared objective, but the positions taken to meet them clash. The change they chose breaks the assumption under that clash: close the street only at school times, with deliveries exempt.",
         "actions": "Four actions, each with the effect it should have. The order comes first: Grace writes to families once it is drafted.",
         "learning": "Grace and Tomasz report far fewer cars at the gate, and Ruth reports queues on Mill Lane. Whether more children walk is still unclear, and Amara hasn't reported yet."
+      },
+      "front_page": {
+        "headline": "A safer school run.\nA street that still works.",
+        "intro": "Explore an invented group’s work to make the school run safer while keeping the neighbourhood’s shops accessible.",
+        "question": "Does a safer gate create a new problem on Mill Lane?",
+        "why": "Ruth’s invented report raises this concern. Practise weighing a reported benefit alongside a possible harmful effect.",
+        "focus_ref": "wl-f-mill-lane"
       }
     }
-  ]
+  ],
+  "contribution_url": "https://github.com/reasoncommons/reasoncommons/issues/new"
 }
