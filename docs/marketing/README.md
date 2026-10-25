@@ -10,4 +10,4 @@ Keep positioning, outreach planning, editorial briefs, draft scripts and critiqu
 - `talk/`: talk working notes, scripts and briefs
 - `site/`: signup design and implementation planning
 
-For scrolling explainers, read [the skill](../../skills/scrollable-explainer/SKILL.md). Build finished pieces under `website/explainers/`; retain working prose and critiques here.
+For scrolling explainers, read [the skill](https://github.com/rufuspollock/scrollable-explainer/blob/main/SKILL.md). Build finished pieces under `website/explainers/`; retain working prose and critiques here.
