@@ -9,6 +9,7 @@ from datetime import date
 import html
 
 import diagrams
+import revisions
 
 TREE_ORDER = ["goal", "current_reality", "conflict", "future_reality", "prerequisite", "transition"]
 TREES = {
@@ -116,6 +117,7 @@ def short_day(value):
 class Commons:
     def __init__(self, data):
         self.__dict__.update(data)
+        self.review = data.get("review", {})
         self.items, self.tree_of, self.order = {}, {}, []
         for name, tree in self.trees.items():
             for item in tree["nodes"] + tree["links"]:
@@ -554,6 +556,67 @@ def commons_head(c, tab, heading=None):
             f'<nav class="tabs" aria-label="This commons">{tab_html}</nav></div></div>')
 
 
+# ---------------------------------------------------------------- visible source provenance
+
+def source_meta(c, source):
+    meta = c.review.get("source_cards", {}).get(source["id"], {})
+    title = meta.get("title", source["title"].split(" · ")[0].split(": ")[0])
+    return {"title": title, "style": meta.get("style", "script"), "pages": meta.get("pages")}
+
+
+def source_mini(c, prefix=""):
+    if not c.sources:
+        return ""
+    return (f'<a class="source-mini" href="{prefix}about.html#sources"><span class="source-stack" aria-hidden="true"><i></i></span>'
+            f'<span>Created from {plural(len(c.sources), "source")}<br><b>See the sources →</b></span></a>')
+
+
+def source_shelf(c):
+    if not c.sources:
+        return ""
+    cards = []
+    for number, source in enumerate(c.sources, 1):
+        meta = source_meta(c, source)
+        author = c.authors[source["author"]]["name"] if "author" in source else "Discussion" if "posts" in source else "Supplied analysis"
+        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
+        cards.append(f'<a class="document-card {esc(meta["style"])}" href="about.html#source-{esc(source["id"])}">'
+                     f'<span class="paper-cover" aria-hidden="true"><span class="cover-number">{number:02d} / {len(c.sources):02d}</span>'
+                     f'<svg viewBox="0 0 130 110">{revisions.ART[meta["style"]]}</svg><span class="cover-title">{esc(meta["title"])}</span>'
+                     f'<span class="cover-author">{esc(author)}</span><span class="cover-foot">{esc(c.name)}</span></span>'
+                     f'<span class="document-label">{esc(meta["title"])} <span aria-hidden="true">↗</span></span><span class="document-meta">{esc(medium)}</span></a>')
+    note = ("Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence."
+            if c.supplied_documents else "The discussion, shared essays and supplied analyses play different roles; source descriptions distinguish them.")
+    return (f'<section class="source-shelf" aria-labelledby="source-shelf-title"><div class="shelf-head"><h2 id="source-shelf-title">Created from {plural(len(c.sources), "source")}</h2>'
+            f'<a href="about.html#sources">Explore the sources →</a></div><div class="document-grid">{"".join(cards)}</div>'
+            f'<p class="source-note">Document representations, not original covers. {esc(note)}</p></section>')
+
+
+def source_detail(c, source, number, where):
+    meta = source_meta(c, source)
+    used = [i for i in c.items.values() if any(r["source_id"] == source["id"] for r in i.get("source_refs", []))]
+    ns = sum("kind" in i for i in used)
+    ls = len(used) - ns
+    preferred = {"spoken-script": ["rm-f-attune", "rm-f-coordination", "rm-r-process"], "glossary": ["rm-f-variation", "rm-g-learning", "rm-g-goal"]}
+    selected = sorted(used, key=lambda i: (i["id"] not in preferred.get(source["id"], []), c.order.index(i["id"])))[:3]
+    examples = []
+    for item in selected:
+        locators = []
+        for ref in item["source_refs"]:
+            if ref["source_id"] != source["id"]:
+                continue
+            locator = f'post {ref["post"]}' if "post" in ref else ref["locator"]
+            basis = {"paraphrase": "Paraphrase", "inference": "AI inference", "reconstruction": "AI reconstruction", "cited": "Cited by the analysis; original not checked here", "related": "Related point"}[ref["basis"]]
+            locators.append(f'<span class="locator">{esc(locator)} · {esc(basis)}</span>')
+        examples.append(f'<li><a href="items.html#{item["id"]}">{esc(c.short(item["id"]))} →</a>{"".join(locators)}</li>')
+    medium = f'{meta["pages"]} pages' if meta["pages"] else "Explore"
+    return (f'<details class="source-detail" id="source-{esc(source["id"])}"><summary><span class="source-detail-name"><span class="source-number">{number:02d}</span>{esc(meta["title"])}</span>'
+            f'<span class="source-detail-meta">{medium}<span class="toggle-icon" aria-hidden="true">+</span></span></summary>'
+            f'<div class="source-content"><p class="source-full-title">{esc(source["title"])}</p><p>{esc(source["description"])}</p>{where(source)}'
+            f'<p class="usage">Cited in this release by <b>{plural(ns,"statement")}</b> and <b>{plural(ls,"connection")}</b>. Citation counts do not measure independent evidence or endorsement.</p>'
+            f'<h3>Follow this source into the reasoning</h3><ul class="source-citations">{"".join(examples)}</ul>'
+            f'<p class="fine">Showing {len(selected)} examples; inspect each item for its complete source references.</p></div></details>')
+
+
 # ---------------------------------------------------------------- home
 
 def home(site, commons):
@@ -567,7 +630,7 @@ def home(site, commons):
         quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
         cards.append(f'<article class="cc{" cc-example" if c.is_example else ""}">'
                      f'<div class="cc-head">{tag}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>'
-                     f'<p class="cc-summary">{esc(c.summary)}</p>{quote}{strip(c, c.slug + "/")}'
+                     f'<p class="cc-summary">{esc(c.summary)}</p>{source_mini(c, c.slug + "/")}{quote}{strip(c, c.slug + "/")}'
                      f'<p class="cc-meta">{plural(statements, "statement")} · {plural(connections, "connection")} · {esc(standing)}<br>Published {day(c.date)}</p>'
                      f'<a class="button" href="{c.slug}/index.html">Open this commons <span aria-hidden="true">→</span></a></article>')
     cards.append('<article class="cc cc-yours"><div class="cc-head"><span class="tag tag-yours">Yours</span><h3>Start a commons</h3></div>'
@@ -815,7 +878,7 @@ def reconstruction_overview(c, site):
             f'<a class="text-link" href="items.html#{goal["id"]}">Inspect the goal →</a></div><div class="gh-side"><p class="eyebrow">{origin}</p>'
             f'<p>{esc(c.description)}</p><p class="gh-count"><b>{statements}</b> proposed statements<br><b>{connections}</b> proposed connections</p>'
             f'<a class="text-link" href="#credits">Whose ideas these are →</a><a class="text-link" href="about.html#sources">Where this map comes from →</a></div></section>')
-    body = commons_head(c, "overview") + f'<div class="wrap overview">{account}{hero}{"".join(sections)}</div>'
+    body = commons_head(c, "overview") + f'<div class="wrap overview">{source_shelf(c)}{revisions.STORY if c.review else ""}{account}{hero}{"".join(sections)}</div>'
     return shell(title=f"{c.name} · Reason Commons", description=c.summary, depth=1, body=body, nav="commons", c=c, page="overview")
 
 
@@ -1239,24 +1302,28 @@ def changes_page(c, site):
                     links += f'<span class="muted">and {plural(hidden, "connection")}</span>'
                 if gone and change["type"] != "removed":
                     links += f'<span class="muted">and {plural(len(gone), "item")} since removed</span>'
-            if len(refs) > 10:
-                links = f'<details><summary>{plural(len([r for r in refs if not c.is_link(r)]), "statement")} and {plural(len([r for r in refs if c.is_link(r)]), "connection")}</summary><div class="ch-links">{links}</div></details>'
-            else:
-                links = f'<div class="ch-links">{links}</div>' if refs else ""
+            links = f'<div class="ch-links">{links}</div>' if refs else ""
             if change["type"] == "removed":
                 links += "".join(f'<p class="before"><span>No longer published</span><s>{esc(g["text"])}</s></p>' for g in gone)
-            before = (f'<p class="before"><span>Before</span><s>{esc(change["before"])}</s></p><p class="before after"><span>Now</span>{esc(c.items[refs[0]]["text"])}</p>'
-                      if change.get("before") else "")
+            before = ""
+            if change.get("before"):
+                snapshot = revisions.archive(c.review, release["release_id"])
+                after_items = revisions.items(snapshot) if snapshot else c.items
+                after = after_items[refs[0]]["text"]
+                after_label = "After this release" if snapshot else "Current wording"
+                before = (f'<p class="before"><span>Before</span><s>{esc(change["before"])}</s></p>'
+                          f'<p class="before after"><span>{after_label}</span>{esc(after)}</p>')
             note = f'<p>{esc(change["note"])}</p>' if change.get("note") else ""
             rows.append(f'<li class="chg chg-{change["type"]}"><span class="chg-type">{CHANGE_WORDS[change["type"]]}</span><div>{note}{before}{links}</div></li>')
         d, m = short_day(release["date"])
-        entries.append(f'<article class="release"><div class="release-date"><b>{d}</b>{m}</div><div class="release-body"><p class="eyebrow">Release {esc(release["release_id"])}</p>'
-                       f'<h2>{esc(release["title"])}</h2><p class="lede">{esc(release["summary"])}</p><ul class="chgs">{"".join(rows)}</ul></div></article>')
+        entries.append(f'<details class="release-disclosure" id="release-{esc(release["release_id"])}"><summary><span>{esc(release["title"])}<br><span class="muted">{day(release["date"])} · {esc(release["release_id"])}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary>'
+                       f'<article class="release"><div class="release-date"><b>{d}</b>{m}</div><div class="release-body"><p class="lede">{esc(release["summary"])}</p><ul class="chgs">{"".join(rows)}</ul></div></article></details>')
     later = "" if c.is_example or c.is_reconstruction else ('<article class="release release-next"><div class="release-date"><b>…</b>Later</div><div class="release-body"><h2>The next release</h2>'
                                      '<p class="lede">When Rufus and David publish again, this page will show what was added, reworded or disputed, with the earlier wording kept.</p></div></article>')
-    body = commons_head(c, "changes", heading=False) + f"""<div class="wrap narrow-left">
+    body = commons_head(c, "changes", heading=False) + f"""<div class="wrap changes-wrap">
 <section class="page-intro"><h1>Changes</h1><p class="lede">How the published reasoning has changed, release by release. Earlier wording is kept.</p></section>
-<div class="releases">{later}{"".join(entries)}</div>
+{revisions.compare(c.review) if c.review else ""}
+<section id="release-history"><h2>Detailed release history</h2><p class="fine">Open a release to inspect individual edits.</p><div class="releases">{later}{"".join(entries)}</div></section>
 </div>"""
     return shell(title=f"Changes · {c.name} · Reason Commons", description="How the published reasoning changed.", depth=1, body=body, nav="commons", c=c, page="changes")
 
@@ -1285,7 +1352,7 @@ def about_page(c, site):
             if "author" in source:
                 return f'<p>Shared by {esc(c.authors[source["author"]]["name"])} in <a href="{esc(post_url(c, source["shared_in_post"]))}">post {source["shared_in_post"]}</a>.</p>'
             return ""
-        source_list = "".join(f'<article id="source-{esc(source["id"])}"><h3>{esc(source["title"])}</h3><p>{esc(source["description"])}</p>{where(source)}</article>' for source in c.sources)
+        source_list = '<div class="source-accordions">' + "".join(source_detail(c, source, number, where) for number, source in enumerate(c.sources, 1)) + '</div>'
         essays = sum(1 for s in c.sources if "author" in s)
         fiction = (f'<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction from a public forum thread, {plural(essays, "essay")} shared in it and the supplied analyses of it. Every item credits the posts or essays it draws on, with links, and names the analysis page or section it comes from and whether a connection is an inference. The people credited have not reviewed or endorsed this selection.</p>'
                    + source_list +'<h3>The broader programme</h3><p>The later analysis covers reflective human development, trustworthy institutions, the Laboratory, Forge/model adaptation, Vocal Presence, federation, material and energy services, and enforceable security. It separates philosophical hypotheses from institutional mechanisms and distinguishes local success from a durable shift in institutional selection. Those branches are now in the map as proposed changes with their risks, first steps and actions. Most of the first steps are the analysis’s own planning, so each obstacle carries a question to check at a host before relying on it.</p>'

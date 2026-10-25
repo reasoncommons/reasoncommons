@@ -22,6 +22,7 @@ DEST = ROOT / "website/demos/reason-commons-in-use"
 sys.path.insert(0, str(HERE))
 import diagrams  # noqa: E402
 import pages  # noqa: E402
+import revisions  # noqa: E402
 
 TREE_KINDS = {
     "goal": {"goal", "critical_success_factor", "necessary_condition"},
@@ -472,7 +473,9 @@ def load_site():
             require(entry["kind"] == "example", "Only the labelled example uses projection 2")
             validate_v2(data, registry)
         require(registry.get("snapshot_sha256") == digest(data), f"Public snapshot fingerprint changed for {entry['slug']}; review and refresh explicitly")
-        commons.append({"entry": entry, "registry": registry, "data": data})
+        review_path = (HERE / entry["registry"]).with_name("review.json")
+        review = revisions.validate(read_json(review_path), data, validate_reconstruction) if review_path.exists() else {}
+        commons.append({"entry": entry, "registry": registry, "data": data, "review": review})
     return site, commons
 
 
@@ -501,7 +504,7 @@ def normalize(item):
     return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
             "authors": data.get("authors", {}), "views": data.get("views", {}), "overview_blocks": data.get("overview", []), "retired": data.get("retired", []),
             "release_id": data["release_id"], "date": data["snapshot_date"],
-            "title": data["title"], "people": people, "trees": trees, "feedback": feedback, "history": history,
+            "title": data["title"], "review": item.get("review", {}), "people": people, "trees": trees, "feedback": feedback, "history": history,
             "json": json.dumps(data, ensure_ascii=False, indent=2) + "\n"}
 
 

@@ -949,3 +949,100 @@ class SuppliedDocumentTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+class HistoricalReviewTests(unittest.TestCase):
+    def setUp(self):
+        self.site, self.commons = build.load_site()
+        self.rm = next(c for c in self.commons if c["entry"]["slug"] == "re-membering")
+        self.review = deepcopy(self.rm["review"])
+
+    def test_archives_have_the_published_fingerprints(self):
+        self.assertEqual([r["snapshot_sha256"] for r in self.review["releases"]][1:], [
+            "57adbb7203c5fbba6796d52fb0b78fb38adbafaf32e5d3a51179bb4ebc06ef6b",
+            "62483940c449795ea7cd3e2faa124e2580acfc5b7f033122185ccc84f5d5804e"])
+        self.assertEqual(self.review["releases"][-1]["snapshot"], self.rm["data"])
+
+    def test_archive_edit_and_private_fields_fail_closed(self):
+        changed = self.review["releases"][1]
+        changed["snapshot"]["trees"]["future_reality"]["nodes"][0]["text"] = "A later replacement."
+        with self.assertRaisesRegex(ValueError, "fingerprint"):
+            build.revisions.validate(self.review, self.rm["data"], build.validate_reconstruction)
+        changed["snapshot"]["private_note"] = "PRIVATE_CANARY"
+        changed["snapshot_sha256"] = build.digest(changed["snapshot"])
+        with self.assertRaisesRegex(ValueError, "Unexpected reconstruction field"):
+            build.revisions.validate(self.review, self.rm["data"], build.validate_reconstruction)
+        with self.assertRaisesRegex(ValueError, "Unreviewed review fields"):
+            build.revisions.validate({**self.rm["review"], "private_note": "PRIVATE_CANARY"}, self.rm["data"], build.validate_reconstruction)
+
+    def test_comparison_retains_all_selected_topology_and_shared_positions(self):
+        import xml.etree.ElementTree as ET
+        html = build.revisions.compare(self.review)
+        svgs = [ET.fromstring(svg) for svg in re.findall(r'<svg class="comparison-graph".*?</svg>', html, re.S)]
+        self.assertEqual(len(svgs), 2)
+        node_sets, positions = [], []
+        for svg, archive in zip(svgs, self.review["releases"][1:]):
+            indexed = build.revisions.items(archive["snapshot"])
+            nodes = {g.attrib["data-ref"]:g for g in svg.findall("g") if "data-ref" in g.attrib}
+            node_sets.append(set(nodes))
+            positions.append({i:(g.find("rect").attrib["x"],g.find("rect").attrib["y"]) for i,g in nodes.items()})
+            for ident, g in nodes.items():
+                self.assertEqual(g.attrib["data-label"], indexed[ident]["label"])
+                self.assertEqual(g.find("title").text, indexed[ident]["text"])
+            links = [g.attrib for g in svg.findall("g") if "data-link-ref" in g.attrib]
+            expected = [l for l in archive["snapshot"]["trees"]["future_reality"]["links"] if set(l["from"]) <= set(nodes) and l["to"] in nodes]
+            self.assertEqual({l["data-link-ref"] for l in links}, {l["id"] for l in expected})
+            for link in links:
+                record=indexed[link["data-link-ref"]]
+                self.assertEqual((link["data-from"],link["data-to"],link["data-relation"]),(record["from"][0],record["to"],record["relation"]))
+        self.assertEqual([len(ns) for ns in node_sets], [3,5])
+        for ident in node_sets[0]:
+            self.assertEqual(positions[0][ident],positions[1][ident])
+
+    def test_all_changes_are_collapsed_and_comparison_content_is_inside_details(self):
+        outputs=build.build_files(self.site,self.commons)
+        class DisclosureParser(HTMLParser):
+            def __init__(self):
+                super().__init__(); self.stack=[]; self.details=[]; self.comparison_containers=[]
+            def handle_starttag(self,tag,attrs):
+                attrs=dict(attrs)
+                if tag=="details":
+                    self.details.append(attrs); self.stack.append(attrs.get("id"))
+                if tag=="svg" and attrs.get("class")=="comparison-graph":
+                    self.comparison_containers.append(self.stack[:])
+            def handle_endtag(self,tag):
+                if tag=="details": self.stack.pop()
+        for path, html in outputs.items():
+            if not path.endswith("/changes.html"): continue
+            parser=DisclosureParser();parser.feed(html)
+            self.assertTrue(parser.details)
+            self.assertTrue(all("open" not in d for d in parser.details), path)
+            if path.startswith("re-membering/"):
+                self.assertEqual(parser.comparison_containers,[["agency-comparison"],["agency-comparison"]])
+                self.assertEqual([d["id"] for d in parser.details][:2],["agency-comparison","agency-wording"])
+
+    def test_source_usage_is_citation_count_and_every_example_keeps_all_locators(self):
+        c=pages.Commons(build.normalize(self.rm))
+        counts={"slides":(4,0),"spoken-script":(82,66),"extended-passages":(3,0),"glossary":(23,22),"bibliography":(36,36)}
+        for source in c.sources:
+            html=pages.source_detail(c,source,1,lambda s: "")
+            ns,ls=counts[source["id"]]
+            self.assertIn(pages.plural(ns,"statement"),html)
+            self.assertIn(pages.plural(ls,"connection"),html)
+            ids=re.findall(r'href="items.html#([^"]+)"',html)
+            for ident in ids:
+                for ref in c.items[ident]["source_refs"]:
+                    if ref["source_id"]==source["id"]:
+                        self.assertIn(pages.esc(ref["locator"]),html)
+        overview=pages.reconstruction_overview(c,self.site)
+        self.assertEqual(overview.count('class="document-card '),5)
+        self.assertIn("Revision awaits Margeret’s review", overview)
+        self.assertIn('changes.html#agency-comparison',overview)
+
+    def test_prior_release_after_wording_does_not_drift_to_current_text(self):
+        c=pages.Commons(build.normalize(self.rm))
+        # This prior-release edit must read the archive, even if the current item changes later.
+        c.items["rm-f-attune"]["text"]="LATER_TEXT_CANARY"
+        html=pages.changes_page(c,self.site)
+        self.assertNotIn("LATER_TEXT_CANARY",html)
+        self.assertIn("After this release",html)
+        self.assertIn("Adjust actions by listening to responses from bodies, people and environments.",html)
