@@ -15,7 +15,7 @@ A skill that helps people and groups work out what they are trying to achieve an
 Install the Reason Commons skill:
 
 ```sh
-npx skills add life-itself/reasoncommons -s reason-commons
+npx skills add reasoncommons/reasoncommons -s reason-commons
 ```
 
 That selects the conversational skill and asks which agents to install it into.
@@ -23,19 +23,19 @@ That selects the conversational skill and asks which agents to install it into.
 To install it for one agent in every project:
 
 ```sh
-npx skills add life-itself/reasoncommons -s reason-commons -a claude-code -g
+npx skills add reasoncommons/reasoncommons -s reason-commons -a claude-code -g
 ```
 
-Replace `claude-code` with the agent you use. Run `npx skills add life-itself/reasoncommons --list` to see the available skills without installing them.
+Replace `claude-code` with the agent you use. Run `npx skills add reasoncommons/reasoncommons --list` to see the available skills without installing them.
 
 Don't want to install anything? Print a skill as a ready-to-paste prompt, or give your agent the raw file:
 
 ```sh
-npx skills use life-itself/reasoncommons@reason-commons
+npx skills use reasoncommons/reasoncommons@reason-commons
 ```
 
 ```text
-https://raw.githubusercontent.com/life-itself/reasoncommons/main/skills/reason-commons/SKILL.md
+https://raw.githubusercontent.com/reasoncommons/reasoncommons/main/skills/reason-commons/SKILL.md
 ```
 
 An installed copy includes the skill's helper script and references, so installation is the best option.
@@ -84,8 +84,12 @@ Proposals, disputes and backlog-only edits stay in the working YAML but do not c
 ## Send this to a colleague
 
 ```text
-Try the Reason Commons skill to think through a goal, problem, conflict or plan together. Install it with `npx skills add life-itself/reasoncommons -s reason-commons`, then ask your agent: "Use the reason-commons skill to help me think through [topic]. My name is [name]." The agent keeps unfinished reasoning in a backlog and turns explicitly accepted reasoning into full and latest-change diagrams. More: https://reasoncommons.com/skills
+Try the Reason Commons skill to think through a goal, problem, conflict or plan together. Install it with `npx skills add reasoncommons/reasoncommons -s reason-commons`, then ask your agent: "Use the reason-commons skill to help me think through [topic]. My name is [name]." The agent keeps unfinished reasoning in a backlog and turns explicitly accepted reasoning into full and latest-change diagrams. More: https://reasoncommons.com/skills
 ```
+
+## For contributors
+
+The explainer-writing skill has moved to its own repository: [Scrollable Explainer](https://github.com/rufuspollock/scrollable-explainer). Its research, worked examples and installation instructions live there. It is installed separately and is not bundled with the Reason Commons skill.
 
 ## For maintainers
 
