@@ -65,7 +65,7 @@
 # - linear.api_key  → use LINEAR_API_KEY env var instead
 # - github.token    → use GITHUB_TOKEN env var instead
 
-sync.remote: "git+ssh://git@github.com/life-itself/reasoncommons.git"
+sync.remote: "git+ssh://git@github.com/reasoncommons/reasoncommons.git"
 # Off: session worktrees share the main checkout's database, so auto-export rewrote
 # the main checkout's tracked issues.jsonl and blocked pulls. Export at checkpoints.
 export:
