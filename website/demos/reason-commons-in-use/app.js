@@ -109,4 +109,18 @@
       }
     });
   }
+  // A source card or bookmarked comparison opens only the disclosure it targets.
+  const openLinkedDisclosure = () => {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
+    const target = id && document.getElementById(id);
+    if (!target) return;
+    let detail = target.closest('details');
+    while (detail) {
+      detail.open = true;
+      detail = detail.parentElement?.closest('details');
+    }
+  };
+  addEventListener('hashchange', openLinkedDisclosure);
+  openLinkedDisclosure();
 })();

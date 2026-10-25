@@ -1,3 +1,13 @@
+# Presentation integration: sources and feedback
+
+Accepted integration `re-membering-feedback-integration-2026-10-24` revision 1 adds the reviewed local design to the generated public pages. The real Changes page starts with two collapsed sibling sections: an authentic agency graph comparison, and exact before/after wording. Individual release histories also start collapsed. The overview shows five source representations with author, type and page count, and a short feedback → revision → awaiting-review story. Source details link three examples into the current reasoning, retaining every citation locator and basis for each selected example. Gandhi 2.0 uses the same source presentation with its published metadata.
+
+The comparison identifies published releases `2026-10-23.2` and `2026-10-24.1`; it does not claim which version Heath saw. All three public historical snapshots are pinned by commit and SHA-256 in `apps/reasoning-demo/commons/re-membering/review.json`, with the ordinary public projection validator applied to each archive. The comparison keeps the actual three-node path, adds its two actual predicted effects and four actual links, and holds shared positions constant. No practical outcome, author endorsement or AI weight retraining is implied. The release remains 82 proposed statements and 66 proposed connections; public reasoning JSON, source wording and standings are unchanged.
+
+Verification: all 85 tests pass; all 62 generated files and website exports are current; 4,961 website links/assets pass. Desktop, real 375px, expanded comparisons, keyboard operation, script-free text view, independent disclosure and source bookmarks pass. The [separate preview](https://zubitgr4-anon.flowershow.me/demos/reason-commons-in-use/re-membering/changes.html), expiring 1 November 2026, was inspected for collapsed defaults, expansion, text mode and exact source locators. Direct asset-byte retrieval is forbidden by the host (HTTP 403); no hosted byte equality is claimed. Delivery: [PR #99](https://github.com/reasoncommons/reasoncommons/pull/99), branch `codex/feedback-sources-integration`; implementation bead `reasoncommons-y5f` records merge and live-verification progress. All 157 reasoning and approval helper tests also pass. Author fidelity, which release Heath saw and newcomer comprehension remain open.
+
+---
+
 # Re-membering: process, agency and uncertainty
 
 Release `2026-10-24.1` implements `re-membering-process-agency-2026-10-24` revision 1, accepted by David with the exact typed reply `accept`. The receipt was saved and validated in the private collaboration record before the public reasoning and implementation. The public record cites its ID only. Implementation approval does not endorse the reasoning.
