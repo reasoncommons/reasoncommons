@@ -610,37 +610,49 @@ def _standing(node, x, y, width, uniform=False):
     return f'<text class="n-standing" x="{x + width - PAD_X:g}" y="{y:g}" text-anchor="end">{esc(word)}</text>'
 
 
-def node_svg(node, placed, href, focus=False, context=None, uniform=False):
-    """One statement as a link; `context` names the part a muted box belongs to when it is drawn only for context."""
+def spaced(lines, last=False):
+    """Wrapped lines with a trailing space on all but the last (and on the last too when more text follows),
+    so copied or read-aloud text keeps its word breaks."""
+    return [line + " " if i + 1 < len(lines) or last else line for i, line in enumerate(lines)]
+
+
+def node_svg(node, placed, href, focus=False, context=None, uniform=False, tag=None):
+    """One statement as a link; `context` names the part a context box belongs to when it is drawn only for context,
+    and `tag` is the short "In part N" mark drawn in its top row where no standing occupies it."""
     x, y, w, h = placed["x"], placed["y"], placed["w"], placed["h"]
     classes = f'n role-{node["kind"]}' + ("" if uniform else f' is-{node["status"]}') + (" is-focus" if focus else "") + (" is-context" if context else "")
     standing = STANDINGS[node["status"]]
     label = (f'{placed["kind_label"]}, {standing.lower()}: {node["text"]}' + (f' {node["owner"]}.' if node.get("owner") else "")
              + (f' {node["credit"]}.' if node.get("credit") else "") + (f' Shown for context from {context}.' if context else ""))
     kind = placed["kind_label"].upper()
-    kind_room = w - 2 * PAD_X - (0 if uniform else 16 if node["status"] == "accepted" else text_width(STANDINGS[node["status"]].upper(), KIND_SIZE, 700, KIND_TRACK) + 8)
+    tag = tag.upper() if tag and uniform else None
+    kind_room = w - 2 * PAD_X - ((text_width(tag, KIND_SIZE, 700, KIND_TRACK) + 8 if tag else 0) if uniform else
+                                 16 if node["status"] == "accepted" else text_width(STANDINGS[node["status"]].upper(), KIND_SIZE, 700, KIND_TRACK) + 8)
     if text_width(kind, KIND_SIZE, 700, KIND_TRACK) > kind_room:
         while kind and text_width(kind + "…", KIND_SIZE, 700, KIND_TRACK) > kind_room:
             kind = kind[:-1].rstrip()
         kind += "…"
-    lines = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(placed["lines"]))
+    lines = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(spaced(placed["lines"], bool(placed.get("owner") or placed.get("credit")))))
     notes, top = "", y + 40 + (len(placed["lines"]) - 1) * LINE + 7 + CREDIT_LINE
     for css, rows in (("n-owner", placed.get("owner", [])), ("n-credit", placed.get("credit", []))):
+        more = css == "n-owner" and bool(placed.get("credit"))
         if rows:  # Baselines start one note line below the statement's last line, after a small gap.
-            spans = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else CREDIT_LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(rows))
+            spans = "".join(f'<tspan x="{x + PAD_X:g}" dy="{0 if i == 0 else CREDIT_LINE:g}">{esc(line)}</tspan>' for i, line in enumerate(spaced(rows, more)))
             notes += f'<text class="{css}" x="{x + PAD_X:g}" y="{top:g}">{spans}</text>'
             top += len(rows) * CREDIT_LINE
     focus_ring = f'<rect class="n-ring" x="{x - 5:g}" y="{y - 5:g}" width="{w + 10:g}" height="{h + 10:g}" rx="13"/>' if focus else ""
     return (f'<a class="{classes}" href="{esc(href)}" data-id="{esc(node["id"])}" aria-label="{esc(label)}">{focus_ring}'
             f'<rect class="n-box" x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="9"/>'
             f'<text class="n-kind" x="{x + PAD_X:g}" y="{y + 20:g}">{esc(kind)}</text>{_standing(node, x, y + 20, w, uniform)}'
-            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{notes}</a>')
+            + (f'<text class="n-tag" x="{x + w - PAD_X:g}" y="{y + 20:g}" text-anchor="end">{esc(tag)}</text>' if tag else "")
+            + f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{notes}</a>')
 
 
-def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=False):
+def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=False, tags=None):
     """A diagram whose statements and connections are links into the statement pages.
 
-    `context` maps muted boxes, drawn only so that a joint condition stays whole, to the part each belongs to;
+    `context` maps context boxes, drawn only so that a joint condition stays whole, to the part each belongs to,
+    and `tags` gives each its short "In part N" mark;
     `uniform` drops the per-box standing where one banner states the standing of everything.
     """
     context = context or {}
@@ -675,7 +687,7 @@ def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=Fal
         parts.append(f'<a class="j{"" if uniform else " is-" + link["status"]}" href="{esc(href(link["id"]))}" data-id="{esc(link["id"])}" aria-label="All of these together"><rect x="{join["x"] - 17:g}" y="{join["y"] - 9:g}" width="34" height="18" rx="9"/>'
                      f'<text x="{join["x"]:g}" y="{join["y"] + 4:g}" text-anchor="middle">and</text></a>')
     for ident, placed in shape["nodes"].items():
-        parts.append(node_svg(nodes[ident], placed, href(ident), focus == ident, context.get(ident), uniform))
+        parts.append(node_svg(nodes[ident], placed, href(ident), focus == ident, context.get(ident), uniform, (tags or {}).get(ident)))
     for marker in shape.get("markers", []):
         number = marker.get("number")
         if number:

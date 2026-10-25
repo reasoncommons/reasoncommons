@@ -210,6 +210,21 @@ LOGO = ('<svg viewBox="0 0 32 36" width="26" height="30" aria-hidden="true"><pat
         '<circle cx="26" cy="6" r="4" fill="currentColor"/><circle cx="16" cy="4" r="3.5" fill="currentColor"/></svg>')
 
 
+# The browser-tab icon: the logo in the site's green, as a file of its own.
+ICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 36"><path d="M16 33V17M16 24L5 15M16 18L26 8M16 13V4" '
+        'fill="none" stroke="#2e6a49" stroke-width="1.8"/><circle cx="5" cy="13" r="4" fill="#2e6a49"/>'
+        '<circle cx="26" cy="6" r="4" fill="#2e6a49"/><circle cx="16" cy="4" r="3.5" fill="#2e6a49"/></svg>\n')
+SHARE_SLOT = "<!-- share -->"  # render() puts each page's own address and the shared preview image here.
+
+
+def share_tags(site, path):
+    """Link-preview tags that need the published address: the page itself and the one shared image."""
+    base = site["base_url"]
+    return (f'<meta property="og:url" content="{esc(base + path)}">\n<meta property="og:image" content="{esc(base)}share.png">\n'
+            '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+            '<meta property="og:image:alt" content="Reason Commons: shared goals and the reasoning behind them">')
+
+
 def chip(status, prior=None):
     if status == "accepted":
         return '<span class="chip chip-accepted"><svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2.5 6.2l2.3 2.4 4.7-5.2"/></svg>Accepted for now</span>'
@@ -438,7 +453,8 @@ def credits_table(c):
 def figure(svg, label, caption="", width=None):
     cap = f"<figcaption>{caption}</figcaption>" if caption else ""
     size = f' style="--w:{width + 24}px"' if width else ""
-    return (f'<figure class="dg"{size}><div class="dg-scroll" tabindex="0" role="region" aria-label="{esc(label)}">{svg}</div>{cap}</figure>')
+    hint = '<p class="dg-hint" hidden>Wider than this frame: scroll sideways to see all of it.</p>'  # app.js shows it only when the diagram overflows.
+    return (f'<figure class="dg"{size}><div class="dg-scroll" tabindex="0" role="region" aria-label="{esc(label)}">{svg}</div>{hint}{cap}</figure>')
 
 
 def loose_groups(c, name, ids, heading=True):
@@ -608,6 +624,13 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 <meta name="description" content="{esc(description)}">
 <meta name="theme-color" content="#f7f4ec">
 <title>{esc(title)}</title>
+<link rel="icon" href="{up}icon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Reason Commons">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(description)}">
+{SHARE_SLOT}
+<meta name="twitter:card" content="summary_large_image">
 <link rel="stylesheet" href="{up}styles.css{style_version}">
 <script src="{up}app.js{script_version}" defer></script>{head}
 </head>
@@ -625,6 +648,7 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 <nav aria-label="Further reading"><a href="/explainers">Read the series</a><a href="/ltp">The method underneath</a><a href="/skills">Use the skill</a><a href="/about">About</a><a href="/demos">More demos</a></nav>
 <p class="foot-note">A static, read-only demonstration. Nothing here is live, and nothing you do here is sent anywhere. <a href="/">Back to the main site ↗</a></p>
 </div></footer>
+<p class="sr-only" role="status" data-announce></p>
 </body>
 </html>
 """
@@ -769,7 +793,7 @@ def participation(c, site):
         else:
             share = '<p class="participation-note">This is an invented example. Use the brief to practise; there is no real group to send it to.</p>'
         options.append(f'<details class="participation-option" id="contribute-{key}"><summary><span><span class="participation-title">{title}</span><span class="participation-prompt">{esc(prompt)}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary>'
-                       f'<div class="participation-body"><p class="participation-label">Start with a brief for your AI</p><div class="brief-actions"><button class="button button-quiet" type="button" data-copy="{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
+                       f'<div class="participation-body"><p class="participation-label">Start with a brief for your AI</p><div class="brief-actions"><button class="button button-quiet" type="button" data-copy="{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status"></span></div>'
                        f'<details class="participation-brief"><summary>Read or copy the brief by hand</summary><pre class="brief" id="{ident}" tabindex="0">{esc(text)}</pre></details>{share}</div></details>')
     title = "Practise a useful contribution" if c.is_example else "Help this commons move forward"
     return (f'<section class="participation" id="get-involved" tabindex="-1" aria-labelledby="participation-title"><div class="participation-heading"><div><p class="eyebrow">{"Try it" if c.is_example else "Get involved"}</p><h2 id="participation-title">{title}</h2></div>'
@@ -908,21 +932,33 @@ def reconstruction_outline(c, name, ids, links):
     return rendered
 
 
-def assumption_list(notes, analysis=False):
-    items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">{"Raised for examination" if analysis else "Assumed"} by {esc(a["by"])} under <a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>'
-                    f'{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
+def assumption_list(notes, analysis=False, title=""):
+    items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">Behind arrow {i} (<a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>)'
+                    f' · {"raised for examination" if analysis else "assumed"} by {esc(a["by"])}{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
                     for i, l in enumerate(notes, 1) for a in l["assumptions"][:1])
-    return f'<div class="assumptions"><h3>Assumptions under the arrows</h3><ol>{items}</ol></div>' if items else ""
+    named = f'<span class="sr-only">: {esc(title)}</span>' if title else ""
+    return f'<div class="assumptions"><h3>Assumptions under the arrows{named}</h3><ol>{items}</ol></div>' if items else ""
 
 
-def toggled(diagram, outline, label="Show as"):
+def view_switch(label="Show as"):
+    """The Diagram/Outline switch. app.js applies a choice to every view on the page."""
     return (f'<div class="view-toggle" role="group" aria-label="{esc(label)}" hidden><button type="button" data-view="diagram" aria-pressed="true">Diagram</button>'
-            f'<button type="button" data-view="outline" aria-pressed="false">Outline</button></div>'
-            f'<div class="views" data-views><div class="view view-diagram" data-view-panel="diagram">{diagram}</div>'
-            f'<div class="view view-outline" data-view-panel="outline"><h3 class="sr-only">Outline</h3>{outline}</div></div>')
+            f'<button type="button" data-view="outline" aria-pressed="false">Outline</button></div>')
 
 
-def view_body(c, name, view, caption="", label="Show as"):
+def toggled(diagram, outline, label="Show as", title="", switch=True):
+    heading = f"Outline: {title}" if title else "Outline"
+    return ((view_switch(label) if switch else "") + f'<div class="views" data-views><div class="view view-diagram" data-view-panel="diagram">{diagram}</div>'
+            f'<div class="view view-outline" data-view-panel="outline"><h3 class="sr-only">{esc(heading)}</h3>{outline}</div></div>')
+
+
+def part_tag(c, view):
+    """The short mark on a box drawn from another part: "In part 3", "In conflict 2"."""
+    name, number = next((n, views.index(view) + 1) for n, views in c.views.items() if view in views)
+    return f'In {VIEW_NOUNS.get(name, "Part").lower()} {number}'
+
+
+def view_body(c, name, view, caption="", label="Show as", switch=True):
     """One titled part of a tree: its diagram with numbered assumptions, or the same topology as an outline.
 
     Every connection into the part is drawn, so a source that belongs to another part joins as a muted box linking to that part.
@@ -935,13 +971,14 @@ def view_body(c, name, view, caption="", label="Show as"):
     homes = {i: c.home_view[i] for i in context}
     href = lambda i: f'#view-{homes[i]["id"]}' if i in homes else c.href(i)
     svg = diagrams.svg(shape, {n["id"]: n for n in tree["nodes"]}, href, f'{view["title"]}: {plural(len(view["nodes"]), "statement")}',
-                       context={i: f'“{v["title"]}”' for i, v in homes.items()}, uniform=c.is_reconstruction)
+                       context={i: f'“{v["title"]}”' for i, v in homes.items()}, uniform=c.is_reconstruction,
+                       tags={i: part_tag(c, v) for i, v in homes.items()})
     if context:
-        muted = "Muted boxes belong to other parts and are drawn so that statements acting together stay together; select one to go to its part."
+        muted = "Boxes marked “In part” belong to other parts and are drawn so that statements acting together stay together; select one to go to its part."
         caption = f"{caption} {muted}".strip()
-    diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes, c.has_analysis)
+    diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes, c.has_analysis, view["title"])
     outline = reconstruction_outline(c, name, ids, links) if c.is_reconstruction else diagrams.outline(tree, ids, links, c.href, lambda k: c.kind_label(name, k))
-    return toggled(diagram, outline, label), links
+    return toggled(diagram, outline, label, view["title"], switch), links
 
 
 def beyond(c, name, view):
@@ -972,7 +1009,7 @@ def beyond(c, name, view):
 
 
 def view_section(c, name, view, eyebrow):
-    body, links = view_body(c, name, view)
+    body, links = view_body(c, name, view, switch=False)  # The question page carries one switch for all its parts.
     credit = ""
     if c.is_reconstruction:
         refs = [r for ident in view["nodes"] + [l["id"] for l in links] for r in c.items[ident]["source_refs"]]
@@ -1189,7 +1226,7 @@ def tree_page(c, name, site):
         svg = diagrams.svg(shape, nodes, c.href, f'{info["question"]}: {plural(len(shape["nodes"]), "statement")}', uniform=c.is_reconstruction)
         figures.append(figure(svg, f'Diagram: {info["question"]} Scrolls sideways when it is wider than the screen.', width=shape["w"]))
         if notes:
-            diagram_parts.append(assumption_list(notes, c.has_analysis))
+            diagram_parts.append(assumption_list(notes, c.has_analysis, f"diagram {len(figures)} of {len(shapes)}" if len(shapes) > 1 else ""))
         outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: c.kind_label(name, k)))
     if figures:
         diagram_parts.insert(0, f'<div class="dg-set">{"".join(figures)}</div>')
@@ -1204,15 +1241,14 @@ def tree_page(c, name, site):
         group = f'<section class="loose"><h2>{heading}</h2><p>{text}</p>{loose_groups(c, name, loose)}</section>'
         diagram_parts.append(group)
         outline_parts.append(group)
-    views = (f'<div class="view-toggle" role="group" aria-label="Show as" hidden><button type="button" data-view="diagram" aria-pressed="true">Diagram</button>'
-             f'<button type="button" data-view="outline" aria-pressed="false">Outline</button></div>'
-             f'<div class="views" data-views><div class="view view-diagram" data-view-panel="diagram">{"".join(diagram_parts)}</div>'
+    views = (view_switch() + f'<div class="views" data-views><div class="view view-diagram" data-view-panel="diagram">{"".join(diagram_parts)}</div>'
              f'<div class="view view-outline" data-view-panel="outline"><h2 class="sr-only">Outline</h2>{"".join(outline_parts)}</div></div>')
     if not shapes:  # Nothing connected to draw: the role groups are the whole view.
         views = f'<div class="views">{"".join(diagram_parts)}</div>'
     if c.views.get(name):  # Titled parts, each with its own diagram, assumptions and outline.
         parts = c.views[name]
-        views = '<div class="tvs">' + "".join(view_section(c, name, view, f'{VIEW_NOUNS.get(name, "Part")} {i} of {len(parts)}') for i, view in enumerate(parts, 1)) + '</div>'
+        views = (f'<div class="tvs-switch">{view_switch()}</div><div class="tvs">'
+                 + "".join(view_section(c, name, view, f'{VIEW_NOUNS.get(name, "Part")} {i} of {len(parts)}') for i, view in enumerate(parts, 1)) + '</div>')
     open_count = len([i for i in tree["nodes"] + tree["links"] if c.backlog.get(i["id"]) or i["status"] == "disputed"])
     previous = order[index - 1] if index else None
     following = order[index + 1] if index + 1 < len(order) else order[0]
@@ -1240,6 +1276,12 @@ def tree_page(c, name, site):
 
 
 # ---------------------------------------------------------------- statements and connections
+
+def reading(link, into):
+    """A connection named in reading order from the statement in view: "Is needed for this" or "This is needed for"."""
+    relation = diagrams.RELATIONS.get(link["relation"], link["relation"].replace("_", " "))
+    return f"{relation[0].upper()}{relation[1:]} this" if into else f"This {relation}"
+
 
 def item_detail(c, ident, site):
     item = c.items[ident]
@@ -1305,7 +1347,7 @@ def item_detail(c, ident, site):
     if not link:
         rels = [l for l in tree["links"] if ident in l["from"] or l["to"] == ident]
         if rels:
-            rows = "".join(f'<li><a href="#{l["id"]}"><span>{"Leads into" if l["to"] == ident else "Leads from here"} · {esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}{" · " + STANDING[l["status"]] if l["status"] != "accepted" and not c.is_reconstruction else ""}</span>'
+            rows = "".join(f'<li><a href="#{l["id"]}"><span>{esc(reading(l, l["to"] == ident))}{" · " + STANDING[l["status"]] if l["status"] != "accepted" and not c.is_reconstruction else ""}</span>'
                            f'{esc(names(c.items[s]["text"] for s in l["from"]) if l["to"] == ident else c.items[l["to"]]["text"])}</a></li>' for l in rels)
             sections.append(f'<section class="d-sec"><h3>Connections</h3><ul class="rel-list">{rows}</ul></section>')
     for key, title in (("assumptions", "Assumptions"), ("challenges", "Challenges")):
@@ -1340,7 +1382,7 @@ def item_detail(c, ident, site):
                    "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
     contribute = (f'<section class="d-sec d-brief"><h3>{"Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
                   f'<p>{instruction}</p>'
-                  f'<div class="brief-actions"><button type="button" class="button" data-copy="brief-{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
+                  f'<div class="brief-actions"><button type="button" class="button" data-copy="brief-{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status"></span></div>'
                   f'<details><summary>Read the brief</summary><pre class="brief" id="brief-{ident}" tabindex="0">{esc(text)}</pre></details>'
                   f'<p class="fine">This page is read-only. Copying prepares text; it does not submit anything or give access to the shared record.</p></section>')
     position = c.order.index(ident)
@@ -1378,7 +1420,7 @@ def items_page(c, site):
     statements, connections = c.counts()
     body = commons_head(c, "items", heading=False) + f"""<div class="wrap items" id="statements">
 <section class="items-intro"><h1>Every statement and connection</h1><p class="lede">{plural(statements, "statement")} and {plural(connections, "connection")}, in the order of the {"six questions" if len(c.trees) == 6 else str(len(c.trees)) + " published questions"}. Open one to see where it sits, who contributed it, who accepted it, and a brief for your AI.</p>
-<div class="search" hidden><label for="filter">Find a statement</label><input id="filter" type="search" placeholder="Try a word or a name" autocomplete="off"><p class="search-status" role="status"></p></div></section>
+<div class="search" hidden><label for="filter">Find a statement</label><input id="filter" type="search" placeholder="Try a word or a name" autocomplete="off"><p class="search-status"></p></div></section>
 {"".join(groups)}
 </div>"""
     return shell(assets=site.get("asset_versions", {}), title=f"Statements · {c.name} · Reason Commons", description=f"Every statement and connection in the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="items")
@@ -1643,4 +1685,4 @@ def render(site, normalized, asset_versions=None):
             outputs[f"{c.slug}/learning.html"] = learning_page(c, site)
         outputs[f"{c.slug}/changes.html"] = changes_page(c, site)
         outputs[f"{c.slug}/about.html"] = about_page(c, site)
-    return outputs
+    return {path: page.replace(SHARE_SLOT, share_tags(site, path)) for path, page in outputs.items()}

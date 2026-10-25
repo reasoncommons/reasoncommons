@@ -197,7 +197,7 @@ class SiteTests(unittest.TestCase):
     def test_outputs_are_exactly_the_approved_files(self):
         pages_ = ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "changes", "about"]
         fonts = ["alegreya-sans-400.woff2", "alegreya-sans-500.woff2", "alegreya-sans-700.woff2", "alegreya-sans-400-italic.woff2", "OFL.txt"]
-        expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "reasoning.json", *(f"fonts/{f}" for f in fonts),
+        expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "icon.svg", "share.png", "reasoning.json", *(f"fonts/{f}" for f in fonts),
                     *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
@@ -1332,7 +1332,7 @@ class WisdomAICompletionTests(unittest.TestCase):
         for ident in ['g-understand','g-revise','r-uncertainty','r-decisions','f-review','f-revision']:
             self.assertEqual(self.c.items[ident]['contributors'],initial[ident]['contributors'])
         self.assertEqual(self.c.items['g-wise-ai']['contributors'],[{'name':'David Joseph','role':'human'}])
-        self.assertIn('Raised for examination by David Joseph',self.outputs['wisdom-ai/conflict.html'])
+        self.assertIn('raised for examination by David Joseph',self.outputs['wisdom-ai/conflict.html'])
         self.assertIn('Supporting empirical evidence',self.outputs['wisdom-ai/items.html'])
         self.assertIn('Not supplied in this map',self.outputs['wisdom-ai/items.html'])
 
@@ -1364,6 +1364,92 @@ class WisdomAICompletionTests(unittest.TestCase):
         self.assertEqual(old['trees']['goal']['nodes'][0]['contributors'],[build.ASSISTANT])
         self.assertTrue(all(not i['accepted_by'] for t in old['trees'].values() for i in t['nodes']+t['links']))
         self.assertIn('proposed',json.dumps(old))
+
+
+def contrast(foreground, background):
+    def luminance(colour):
+        channels = [int(colour[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+        r, g, b = [c / 12.92 if c <= 0.04045 else ((c + 0.055) / 1.055) ** 2.4 for c in channels]
+        return 0.2126 * r + 0.7152 * g + 0.0722 * b
+    light, dark = sorted((luminance(foreground), luminance(background)), reverse=True)
+    return (light + 0.05) / (dark + 0.05)
+
+
+class CommonsUXPhaseOneTests(unittest.TestCase):
+    """Phase 1 of the commons site UX plan: defects fixed once in the generator, for every commons."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.site, records = build.load_site()
+        cls.outputs = build.build_files(cls.site, records)
+        cls.html = {name: page for name, page in cls.outputs.items() if name.endswith(".html")}
+        cls.css = cls.outputs["styles.css"]
+        cls.tokens = dict(re.findall(r"--([a-z0-9-]+):(#[0-9a-f]{6})", cls.css))
+
+    def test_changes_page_keeps_the_header_grid(self):
+        self.assertNotIn(".changes-wrap{max-width", self.css)
+
+    def test_secondary_text_meets_aa_on_every_box_fill(self):
+        self.assertNotIn("--faint", self.css)
+        for background in ("paper", "surface", "sunken", "green-pale", "clay-pale", "amber-pale"):
+            self.assertGreaterEqual(contrast(self.tokens["muted"], self.tokens[background]), 4.5, background)
+        self.assertNotIn("fill:#768170", self.css)
+
+    def test_wrapped_diagram_lines_keep_their_word_breaks(self):
+        for name, page in self.html.items():
+            for diagram in re.findall(r'<svg class="rc-diagram.*?</svg>', page):
+                self.assertIsNone(re.search(r"[^ ]</tspan><tspan", diagram), name)
+
+    def test_connections_on_statement_pages_read_in_order(self):
+        items = self.html["gandhi-2-0/items.html"]
+        self.assertIn("<span>Is needed for this</span>", items)
+        self.assertIn("<span>This is needed for</span>", items)
+        for page in self.html.values():
+            self.assertNotIn("Leads into ·", page)
+            self.assertNotIn("Leads from here ·", page)
+
+    def test_assumptions_name_their_arrow_and_keep_their_author(self):
+        conflict = self.html["gandhi-2-0/conflict.html"]
+        self.assertIn("Behind arrow 1 (<a href=", conflict)
+        self.assertRegex(conflict, r"\) · assumed by [^<]+</p>")
+        for page in self.html.values():
+            self.assertNotIn(" under <a href=", page)
+
+    def test_context_boxes_are_full_contrast_and_name_their_part(self):
+        self.assertNotRegex(self.css, r"is-context[^{]*\{[^}]*opacity")
+        tagged = 0
+        for name in ("gandhi-2-0/in-the-way.html", "gandhi-2-0/change.html", "gandhi-2-0/prerequisites.html", "re-membering/change.html", "wisdom-ai/in-the-way.html"):
+            page = self.html[name]
+            parts = re.findall(r'<section class="tv" id="view-([^"]+)"', page)
+            for home, tag in re.findall(r'<a class="n [^"]*is-context" href="#view-([^"]+)".*?<text class="n-tag"[^>]*>IN [A-Z]+ (\d+)</text>', page):
+                self.assertEqual(parts.index(home) + 1, int(tag), (name, home))
+                tagged += 1
+        self.assertGreater(tagged, 0)
+
+    def test_one_switch_one_live_region_and_unique_headings_per_page(self):
+        for name, page in self.html.items():
+            self.assertLessEqual(page.count('class="view-toggle"'), 1, name)
+            self.assertEqual(page.count('role="status"'), 1, name)
+            headings = re.findall(r'<h3 class="sr-only">(Outline[^<]*)</h3>', page) + re.findall(r'<h3>(Assumptions under the arrows.*?)</h3>', page)
+            self.assertEqual(len(headings), len(set(headings)), name)
+        self.assertEqual(self.html["gandhi-2-0/change.html"].count('class="view-toggle"'), 1)
+        script = self.outputs["app.js"]
+        self.assertIn("rc-view-narrow", script)
+        self.assertIn("rc-view-wide", script)
+        self.assertNotIn("store.get('rc-view')", script)
+
+    def test_every_page_has_an_icon_and_link_preview(self):
+        base = self.site["base_url"]
+        for name, page in self.html.items():
+            self.assertIn('rel="icon"', page, name)
+            self.assertIn(f'<meta property="og:url" content="{base}{name}">', page)
+            self.assertIn(f'<meta property="og:image" content="{base}share.png">', page, name)
+            self.assertIn('<meta name="twitter:card" content="summary_large_image">', page, name)
+            self.assertNotIn(pages.SHARE_SLOT, page, name)
+        self.assertTrue(self.outputs["icon.svg"].startswith("<svg"))
+        png = self.outputs["share.png"]
+        self.assertEqual(png[:8], b"\x89PNG\r\n\x1a\n")
+        self.assertEqual((int.from_bytes(png[16:20], "big"), int.from_bytes(png[20:24], "big")), (1200, 630))
 
 
 if __name__ == '__main__':

@@ -613,6 +613,8 @@ def build_files(site, commons):
         outputs[f'{c["slug"]}/reasoning.json'] = c["json"]
     outputs["styles.css"] = styles
     outputs["app.js"] = script
+    outputs["icon.svg"] = pages.ICON
+    outputs["share.png"] = (HERE / "share.png").read_bytes()  # The one link-preview image every page names.
     for font in sorted((HERE / "fonts").iterdir()):
         outputs[f"fonts/{font.name}"] = font.read_bytes()
     return outputs

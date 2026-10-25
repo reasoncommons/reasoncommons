@@ -6,22 +6,63 @@
     set(key, value) { try { localStorage.setItem(key, value); } catch { /* Private windows may refuse storage. */ } }
   };
 
-  // Diagram or outline. Narrow screens start with the outline unless the reader chose otherwise.
-  for (const toggle of document.querySelectorAll('.view-toggle')) {
-    const views = toggle.nextElementSibling;
-    const show = view => {
-      views.dataset.show = view;
-      for (const button of toggle.querySelectorAll('button')) button.setAttribute('aria-pressed', String(button.dataset.view === view));
-    };
-    show(store.get('rc-view') || (matchMedia('(max-width: 640px)').matches ? 'outline' : 'diagram'));
-    toggle.hidden = false;
-    toggle.addEventListener('click', event => {
-      const button = event.target.closest('button[data-view]');
-      if (!button) return;
-      show(button.dataset.view);
-      store.set('rc-view', button.dataset.view);
-    });
+  // One live region per page announces copying and filtering; the visible status text stays beside its control.
+  const live = document.querySelector('[data-announce]');
+  const announce = message => { if (live) live.textContent = message; };
+
+  // Diagram or outline, for every view on the page at once. Phones and wider screens each remember their own choice,
+  // so choosing diagrams on a desktop never forces them onto a phone.
+  const narrow = matchMedia('(max-width: 640px)');
+  const toggles = document.querySelectorAll('.view-toggle');
+  const viewKey = () => narrow.matches ? 'rc-view-narrow' : 'rc-view-wide';
+  const showView = view => {
+    for (const views of document.querySelectorAll('[data-views]')) views.dataset.show = view;
+    for (const button of document.querySelectorAll('.view-toggle button')) button.setAttribute('aria-pressed', String(button.dataset.view === view));
+  };
+  if (toggles.length) {
+    const preferred = () => store.get(viewKey()) || (narrow.matches ? 'outline' : 'diagram');
+    showView(preferred());
+    narrow.addEventListener('change', () => showView(preferred()));
+    for (const toggle of toggles) {
+      toggle.hidden = false;
+      toggle.addEventListener('click', event => {
+        const button = event.target.closest('button[data-view]');
+        if (!button) return;
+        showView(button.dataset.view);
+        store.set(viewKey(), button.dataset.view);
+      });
+    }
   }
+
+  // A diagram wider than its frame says so: an edge fade until the end is reached, and a visible line beneath.
+  const frames = [...document.querySelectorAll('.dg-scroll')];
+  const measure = frame => {
+    const figure = frame.closest('.dg');
+    const wide = frame.scrollWidth > frame.clientWidth + 2;
+    figure.classList.toggle('is-wide', wide);
+    figure.classList.toggle('at-end', !wide || frame.scrollLeft + frame.clientWidth >= frame.scrollWidth - 2);
+    const hint = figure.querySelector('.dg-hint');
+    if (hint) hint.hidden = !wide;
+  };
+  if (frames.length) {
+    const resized = 'ResizeObserver' in window ? new ResizeObserver(entries => entries.forEach(entry => measure(entry.target))) : null;
+    for (const frame of frames) {
+      measure(frame);
+      frame.addEventListener('scroll', () => measure(frame), { passive: true });
+      if (resized) resized.observe(frame);  // Statements open hidden diagrams later; their size change re-measures them.
+    }
+  }
+
+  // Centre "Where it sits" on the statement it is about, which can otherwise start out of view.
+  const centre = frame => {
+    const focus = frame.querySelector('.n.is-focus .n-box');
+    if (!focus || !frame.clientWidth) return;
+    const box = focus.getBoundingClientRect();
+    const area = frame.getBoundingClientRect();
+    frame.scrollLeft += box.left + box.width / 2 - (area.left + area.width / 2);
+    frame.scrollTop += box.top + box.height / 2 - (area.top + area.height / 2);
+    measure(frame);
+  };
 
   // Light up a statement or connection together with everything it touches.
   for (const svg of document.querySelectorAll('svg.rc-diagram')) {
@@ -69,6 +110,7 @@
       }
       for (const tree of list.querySelectorAll('.items-tree')) tree.hidden = !tree.querySelector('.item:not([hidden])');
       status.textContent = words.length ? `${shown} matching ${shown === 1 ? 'item' : 'items'}` : '';
+      announce(status.textContent);
     });
     const follow = () => {
       const id = decodeURIComponent(location.hash.slice(1));
@@ -80,6 +122,7 @@
         detail.setAttribute('tabindex', '-1');
         detail.focus({ preventScroll: true });
         scrollTo(0, 0);  // The item now stands alone under the commons header, like a page of its own.
+        for (const frame of item.querySelectorAll('.item-where .dg-scroll')) centre(frame);
       } else {
         document.title = base;
       }
@@ -99,6 +142,7 @@
         if (!navigator.clipboard?.writeText) throw new Error('No clipboard');
         await navigator.clipboard.writeText(pre.textContent);
         status.textContent = 'Brief copied. Nothing has been sent.';
+        announce(status.textContent);
       } catch {
         pre.closest('details').open = true;
         const range = document.createRange();
@@ -106,6 +150,7 @@
         getSelection().removeAllRanges();
         getSelection().addRange(range);
         status.textContent = 'Copying is blocked here. The brief is selected: copy it by hand.';
+        announce(status.textContent);
       }
     });
   }
