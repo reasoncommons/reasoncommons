@@ -295,11 +295,12 @@ def validate_v2(data, registry):
 # the analysis itself reconstructs or infers. Each kind of source admits only its own bases.
 REF_BASES = {"forum": {"paraphrase", "related"}, "document": {"cited"}, "analysis": {"reconstruction", "inference"},
              "supplied_document": {"paraphrase", "reconstruction", "inference", "related"},
-             "web_page": {"inference", "related"}}
+             "web_page": {"inference", "related"},
+             "supplied_analysis": {"paraphrase", "reconstruction", "inference", "related"}}
 
 
 def source_kind(source):
-    if source.get("kind") in {"supplied_document", "web_page"}:
+    if source.get("kind") in {"supplied_document", "web_page", "supplied_analysis"}:
         return source["kind"]
     return "forum" if "posts" in source else "document" if "author" in source else "analysis"
 
@@ -402,16 +403,16 @@ def validate_reconstruction(data, registry):
     for source in data["sources"]:
         kind = source_kind(source)
         extra = ({"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document"
-                 else {"kind", "author", "url"} if kind == "web_page" else {"kind", "author"} if kind == "supplied_document" else set())
+                 else {"kind", "author", "url"} if kind in {"web_page", "supplied_analysis"} else {"kind", "author"} if kind in {"supplied_document", "supplied_analysis"} else set())
         require(set(source) == {"id", "title", "description"} | extra and all(isinstance(source[k], str) and source[k].strip() for k in ("id", "title", "description")), "Invalid source description")
         require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in sources, "Invalid/duplicate source ID")
         if kind == "forum":
             require(isinstance(source["url"], str) and source["url"].startswith("https://") and isinstance(source["posts"], dict) and source["posts"], "Invalid forum source")
             for number, post in source["posts"].items():
                 require(number.isdigit() and isinstance(post, dict) and set(post) == {"author", "date"} and post["author"] in authors and re.fullmatch(r"\d{4}-\d{2}-\d{2}", post["date"]), "Invalid forum post")
-        if kind == "web_page":
+        if kind in {"web_page", "supplied_analysis"}:
             require(source["author"] in authors and isinstance(source["url"], str) and source["url"].startswith("https://"), "Invalid public web source")
-        if kind == "supplied_document":
+        if kind in {"supplied_document", "supplied_analysis"}:
             require(source["author"] in authors, f"Unknown supplied document author: {source['id']}")
         sources[source["id"]] = source
     forums = [s for s in sources.values() if source_kind(s) == "forum"]
@@ -434,6 +435,13 @@ def validate_reconstruction(data, registry):
         require(gone["id"] not in items and gone["id"] not in retired, f"A retired item cannot be published: {gone['id']}")
         retired.add(gone["id"])
     require(not data["feedback"] and not registry["feedback"], "A reconstruction cannot invent feedback commitments or reports")
+    contribution_sources = registry.get("contribution_sources", {})
+    require(isinstance(contribution_sources, dict), "Invalid analysis contribution policy")
+    for participant, source_id in contribution_sources.items():
+        source = sources.get(source_id)
+        require(participant in registry["people"] and source is not None and source_kind(source) == "supplied_analysis",
+                "Human analysis contributions require an explicitly selected supplied analysis")
+        require(authors[source["author"]]["name"] == registry["people"][participant], "Analysis contributor must be the source author")
     qualified = deepcopy(data)
     for field in ("publication_kind", "authors", "sources", "views", "overview", "retired"):
         qualified.pop(field)
@@ -441,8 +449,13 @@ def validate_reconstruction(data, registry):
     for tree in qualified["trees"].values():
         for item in tree["nodes"] + tree["links"]:
             require(item.get("status") == "proposed" and not item.get("accepted_by"), "A reconstruction must remain proposed without endorsers")
-            require(item.get("contributors") == [ASSISTANT], "A reconstruction cannot imply direct participant authorship")
-            validate_source_refs(item.pop("source_refs", []), sources, item["id"])
+            refs = item.pop("source_refs", [])
+            validate_source_refs(refs, sources, item["id"])
+            if item.get("contributors") != [ASSISTANT]:
+                allowed = [{"name": registry["people"][who], "role": "human"} for who, source_id in contribution_sources.items()
+                           if any(ref["source_id"] == source_id and ref["basis"] in {"paraphrase", "reconstruction"} for ref in refs)]
+                require(item.get("contributors") and all(c in allowed for c in item["contributors"]),
+                        "A reconstruction cannot imply direct participant authorship without a matching reviewed analysis")
             if "proposed_role" in item:  # A role someone might take on, never an assignment.
                 role = item.pop("proposed_role")
                 require(item.get("kind") == "action" and isinstance(role, str) and role.strip(), f"Only an action can carry a proposed role: {item['id']}")
@@ -519,6 +532,30 @@ def validate_source_questions(data, sources):
         visit(node)
 
 
+def publication_archives(registry, current):
+    archives = {}
+    for archive in registry.get("previous_releases", []):
+        require(isinstance(archive, dict) and set(archive) == {"commit", "snapshot_sha256", "snapshot", "contribution_sources"}, "Invalid previous release")
+        require(re.fullmatch(r"[0-9a-f]{40}", archive.get("commit", "")), "Invalid previous release commit")
+        snapshot = archive["snapshot"]
+        require(digest(snapshot) == archive["snapshot_sha256"], "Previous release fingerprint changed")
+        historical = {k: snapshot[k] for k in ("publication_kind", "authors", "sources", "views", "overview", "retired")}
+        # Resolve IDs from the archived author names, not current roles or endorsements.
+        historical.update(people={str(i): p["name"] for i, p in enumerate(snapshot["people"])}, feedback=[],
+                          selection={name: {key: [item["id"] for item in tree[key]] for key in ("nodes", "links")} for name, tree in snapshot["trees"].items()})
+        policy = archive["contribution_sources"]
+        require(isinstance(policy, dict), "Invalid archived analysis contribution policy")
+        historical["contribution_sources"] = {key: policy[person] for key, person in historical["people"].items() if person in policy}
+        require(set(policy) <= set(historical["people"].values()), "Unknown archived analysis contributor")
+        validate_reconstruction(snapshot, historical)
+        ident = snapshot["release_id"]
+        require(ident not in archives and ident != current["release_id"], "Duplicate previous release")
+        archives[ident] = snapshot
+    if archives:
+        require(set(archives) == {h["release_id"] for h in current["history"][:-1]}, "Previous release/history mismatch")
+    return archives
+
+
 def normalize(item):
     """One reading of either projection for the pages; nothing is added that the projection lacks."""
     presentation = item["registry"].get("presentation", {})
@@ -551,11 +588,12 @@ def normalize(item):
             return {node["text"].removeprefix("So: ").casefold() for node in nodes} | set().union(*(question_texts(node["children"]) for node in nodes))
         locators = question_texts(source_questions["questions"])
         for tree in data["trees"].values():
-            for item in tree["nodes"] + tree["links"]:
-                for ref in item.get("source_refs", []):
+            for published_item in tree["nodes"] + tree["links"]:
+                for ref in published_item.get("source_refs", []):
                     if ref["source_id"] == source_questions["source_id"]:
-                        require(ref["locator"].casefold() in locators, f"Unresolved source question: {item['id']}")
-    return {**entry, "source_questions": source_questions, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
+                        require(ref["locator"].casefold() in locators, f"Unresolved source question: {published_item['id']}")
+    archives = publication_archives(item["registry"], data) if item["registry"].get("previous_releases") else {}
+    return {**entry, "archives": archives, "source_questions": source_questions, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
             "authors": data.get("authors", {}), "views": data.get("views", {}), "overview_blocks": data.get("overview", []), "retired": data.get("retired", []),
             "release_id": data["release_id"], "date": data["snapshot_date"],
             "title": data["title"], "review": item.get("review", {}), "people": people, "trees": trees, "feedback": feedback, "history": history,

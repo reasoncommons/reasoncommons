@@ -7,6 +7,7 @@ with their standing, contributors and endorsers.
 from collections import defaultdict
 from datetime import date
 import html
+import json
 from urllib.parse import urlencode
 
 import diagrams
@@ -74,6 +75,8 @@ CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agr
 
 
 def credit_caveat(c):
+    if c.has_analysis:
+        return "David’s supplied analysis proposes the additions; the research page poses questions. Neither source establishes empirical findings, and approval to implement is not endorsement of the reasoning."
     if c.web_sources:
         return "The source supplies research questions. The AI proposed every statement and connection; the source author has not endorsed them."
     if c.slug == "re-membering":
@@ -133,7 +136,8 @@ class Commons:
         for tree in self.trees.values():
             for task in tree["backlog"]:
                 self.backlog[task["ref"]].append(task)
-        self.web_sources = bool(self.sources) and all(s.get("kind") == "web_page" for s in self.sources)
+        self.has_analysis = any(s.get("kind") == "supplied_analysis" for s in self.sources)
+        self.web_sources = bool(self.sources) and any(s.get("kind") == "web_page" for s in self.sources) and all(s.get("kind") in {"web_page", "supplied_analysis"} for s in self.sources)
         self.source_by_id = {s["id"]: s for s in self.sources}
         self.forum = next((s for s in self.sources if "posts" in s), None)
         self.supplied_documents = bool(self.sources) and all(s.get("kind") == "supplied_document" for s in self.sources)
@@ -255,6 +259,8 @@ def credit_people(c, refs):
     people = {}
     for ref in refs:
         source = c.source_by_id[ref["source_id"]]
+        if source.get("kind") == "web_page":
+            continue  # A research question is not authorship of its proposed answer.
         if "posts" in source:
             entry = people.setdefault(ref["author"], {"posts": [], "related": [], "essays": []})
             entry["posts" if ref["basis"] == "paraphrase" else "related"].append(ref["post"])
@@ -284,6 +290,10 @@ def credit_line(c, refs, numbers=True, link=False):
                 detail.append(noun if count == 1 else noun + "s")
             parts.append(text(c.authors[author]["name"]) + (f" ({'; '.join(detail)})" if detail else ""))
         return " · ".join(parts)
+    if c.has_analysis:
+        analysis = [c.authors[c.source_by_id[r["source_id"]]["author"]]["name"] for r in refs if c.source_by_id[r["source_id"]].get("kind") == "supplied_analysis"]
+        if analysis:
+            return "Proposed in " + names(dict.fromkeys(analysis)) + "’s analysis"
     if c.web_sources:
         return "AI inference · source questions"
     if direct:
@@ -295,6 +305,10 @@ def credit_line(c, refs, numbers=True, link=False):
 
 def linked_people(c, refs, link=True):
     """Every person an item or group of items draws on, each post linked to the forum (or plain text inside a link)."""
+    if c.has_analysis:
+        analysis = [c.authors[c.source_by_id[r["source_id"]]["author"]]["name"] for r in refs if c.source_by_id[r["source_id"]].get("kind") == "supplied_analysis"]
+        if analysis:
+            return names(dict.fromkeys(analysis)) + "’s supplied analysis; the research questions remain questions"
     if c.web_sources:
         return "the source research questions; interpretation by the AI"
     direct, related = credit_people(c, refs)
@@ -340,9 +354,13 @@ def source_question_outline(c):
 
 def source_row(c, ref):
     source = c.source_by_id[ref["source_id"]]
+    if source.get("kind") == "supplied_analysis":
+        return (f'<li><p>{esc(c.authors[source["author"]]["name"])}, <a href="{esc(source["url"])}">{esc(source["title"])}</a> · {esc(ref["locator"])}</p>'
+                '<p class="muted">Proposed in the supplied analysis; this is not supporting empirical evidence or endorsement.</p></li>')
     if source.get("kind") == "web_page":
+        basis = "Related research question; it does not state or establish this proposed answer." if ref["basis"] == "related" else "Inferred by the AI from a research question; the source does not establish this statement or connection."
         return (f'<li><p><a href="{esc(question_source_url(c, ref))}">{esc(source["title"])}</a> · {esc(ref["locator"])}</p>'
-                f'<p class="muted">Inferred by the AI from a research question; the source does not establish this statement or connection.</p></li>')
+                f'<p class="muted">{basis}</p></li>')
     if "posts" in source:
         post = source["posts"][str(ref["post"])]
         where = f'<a href="{esc(post_url(c, ref["post"]))}">{esc(c.authors[ref["author"]]["name"])}, post {ref["post"]}</a> · {day(post["date"])}'
@@ -363,8 +381,10 @@ def source_row(c, ref):
 
 def source_brief(c, ref):
     source = c.source_by_id[ref["source_id"]]
+    if source.get("kind") == "supplied_analysis":
+        return f'{c.authors[source["author"]]["name"]}, supplied proposed analysis, {ref["locator"]}: {source["url"]}. No empirical support or endorsement is implied.'
     if source.get("kind") == "web_page":
-        return f'{source["title"]}, {ref["locator"]} (AI inference from a research question): {question_source_url(c, ref)}'
+        return f'{source["title"]}, {ref["locator"]} ({"related research question" if ref["basis"] == "related" else "AI inference from a research question"}): {question_source_url(c, ref)}'
     if "posts" in source:
         return f'{c.authors[ref["author"]]["name"]}, post {ref["post"]} ({ref["basis"]}): {post_url(c, ref["post"])}'
     if source.get("kind") == "supplied_document":
@@ -376,6 +396,17 @@ def source_brief(c, ref):
 
 def credits_table(c):
     """Whose ideas the map draws on; an inference from a question is the AI’s contribution."""
+    if c.has_analysis:
+        counts = {}
+        for tree in c.trees.values():
+            for column, key in enumerate(("nodes", "links")):
+                for item in tree[key]:
+                    for person in item["contributors"]:
+                        counts.setdefault(person["name"], [0, 0])[column] += 1
+        rows = ''.join(f'<tr><th scope="row">{esc(person)}</th><td>{n} statements · {l} connections proposed</td></tr>' for person, (n,l) in counts.items())
+        return ('<div class="table-wrap"><table class="people credits"><thead><tr><th scope="col">Originator of the idea</th><th scope="col">Current proposed contributions</th></tr></thead><tbody>'
+                + rows + '<tr><th scope="row">Rufus Pollock’s research project</th><td>Original research questions; no endorsement of the proposed answers</td></tr></tbody></table></div>'
+                + f'<p class="fine">The AI structured the record and prepared labels; capture does not replace idea attribution. {esc(credit_caveat(c))}</p>')
     if c.web_sources:
         statements, connections = c.counts()
         return (f'<div class="table-wrap"><table class="people credits"><thead><tr><th scope="col">Contribution</th><th scope="col">Scope</th></tr></thead><tbody>'
@@ -502,6 +533,11 @@ def brief(c, ident, site):
         opening = f"This is the fictional example commons on the Reason Commons demonstration site; its people and reports are invented. I want to practise developing a contribution about one {noun}."
         closing = ("Use the reason-commons skill if you have it, and treat this as practice: there is no shared record behind this example. "
                    "Help me work out a question, an observation or a challenge, and keep it as a draft. Copying this brief submits nothing.")
+    elif c.has_analysis:
+        opening = (f"I'm reading {c.name}, with six proposed trees expanded from David Joseph’s supplied analysis of the initial map. "
+                   f"I want to develop a contribution about one {noun}. The original research page poses questions; no supporting empirical findings or endorsement are recorded.")
+        closing = ("Use the reason-commons skill if available. Distinguish the original question, David’s proposed analysis, retained AI proposals, causal hypotheses and actual supporting evidence. "
+                   "Help me draft a correction or testable question; do not invent a selected capability, practice, setting, owner, date, trial or commitment. Review points can be rejected if a stronger diagnosis or intervention emerges. Copying this brief submits nothing.")
     elif c.web_sources:
         opening = (f"I'm reading {c.name}, an illustrative AI interpretation of a public research agenda, and want to develop a contribution about one {noun}. "
                    "The source poses questions; its author has not endorsed the AI's suggested answers or connections.")
@@ -542,6 +578,10 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
     if c and c.is_example:
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
+    elif c and c.has_analysis:
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Everything here is proposed.</strong> '
+                  'The research page supplies questions; David Joseph’s analysis supplies the additions. Retained AI proposals keep their attribution. No supporting empirical evidence, endorsement or action commitment is recorded. '
+                  '<a href="about.html#sources">Sources and limits →</a></div></div>')
     elif c and c.web_sources:
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
                   'The source poses research questions. The AI proposed the statements and connections below; the source author has not endorsed them. '
@@ -643,13 +683,13 @@ def source_shelf(c):
     for number, source in enumerate(c.sources, 1):
         meta = source_meta(c, source)
         author = c.authors[source["author"]]["name"] if "author" in source else "Discussion" if "posts" in source else "Supplied analysis"
-        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Public research agenda" if source.get("kind") == "web_page" else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
+        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Supplied proposed analysis" if source.get("kind") == "supplied_analysis" else "Public research agenda" if source.get("kind") == "web_page" else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
         cards.append(f'<a class="document-card {esc(meta["style"])}" href="about.html#source-{esc(source["id"])}">'
                      f'<span class="paper-cover" aria-hidden="true"><span class="cover-number">{number:02d} / {len(c.sources):02d}</span>'
                      f'<svg viewBox="0 0 130 110">{revisions.ART[meta["style"]]}</svg><span class="cover-title">{esc(meta["title"])}</span>'
                      f'<span class="cover-author">{esc(author)}</span><span class="cover-foot">{esc(c.name)}</span></span>'
                      f'<span class="document-label">{esc(meta["title"])} <span aria-hidden="true">↗</span></span><span class="document-meta">{esc(medium)}</span></a>')
-    note = ("Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence."
+    note = ("The original page poses questions; David’s supplied analysis proposes additions. Neither supplies empirical findings or endorsement." if c.has_analysis else "Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence."
             if c.supplied_documents else "The public page poses research questions; it does not establish the AI’s suggested answers." if c.web_sources else "The discussion, shared essays and supplied analyses play different roles; source descriptions distinguish them.")
     return (f'<section class="source-shelf" aria-labelledby="source-shelf-title"><div class="shelf-head"><h2 id="source-shelf-title">Created from {plural(len(c.sources), "source")}</h2>'
             f'<a href="about.html#sources">Explore the sources →</a></div><div class="document-grid">{"".join(cards)}</div>'
@@ -868,8 +908,8 @@ def reconstruction_outline(c, name, ids, links):
     return rendered
 
 
-def assumption_list(notes):
-    items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">Assumed by {esc(a["by"])} under <a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>'
+def assumption_list(notes, analysis=False):
+    items = "".join(f'<li><span class="m-n">{i}</span><div><p>{esc(a["text"])}</p><p class="muted">{"Raised for examination" if analysis else "Assumed"} by {esc(a["by"])} under <a href="items.html#{l["id"]}">{esc(diagrams.RELATIONS.get(l["relation"], l["relation"]))}</a>'
                     f'{" · this connection is disputed" if l["status"] == "disputed" else ""}</p></div></li>'
                     for i, l in enumerate(notes, 1) for a in l["assumptions"][:1])
     return f'<div class="assumptions"><h3>Assumptions under the arrows</h3><ol>{items}</ol></div>' if items else ""
@@ -899,7 +939,7 @@ def view_body(c, name, view, caption="", label="Show as"):
     if context:
         muted = "Muted boxes belong to other parts and are drawn so that statements acting together stay together; select one to go to its part."
         caption = f"{caption} {muted}".strip()
-    diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes)
+    diagram = f'<div class="dg-set">{figure(svg, "Diagram: " + view["title"] + ". Scrolls sideways when it is wider than the screen.", caption, width=shape["w"])}</div>' + assumption_list(notes, c.has_analysis)
     outline = reconstruction_outline(c, name, ids, links) if c.is_reconstruction else diagrams.outline(tree, ids, links, c.href, lambda k: c.kind_label(name, k))
     return toggled(diagram, outline, label), links
 
@@ -1149,7 +1189,7 @@ def tree_page(c, name, site):
         svg = diagrams.svg(shape, nodes, c.href, f'{info["question"]}: {plural(len(shape["nodes"]), "statement")}', uniform=c.is_reconstruction)
         figures.append(figure(svg, f'Diagram: {info["question"]} Scrolls sideways when it is wider than the screen.', width=shape["w"]))
         if notes:
-            diagram_parts.append(assumption_list(notes))
+            diagram_parts.append(assumption_list(notes, c.has_analysis))
         outline_parts.append(reconstruction_outline(c, name, piece["ids"], piece["links"]) if c.is_reconstruction else diagrams.outline(tree, piece["ids"], piece["links"], c.href, lambda k: c.kind_label(name, k)))
     if figures:
         diagram_parts.insert(0, f'<div class="dg-set">{"".join(figures)}</div>')
@@ -1225,7 +1265,19 @@ def item_detail(c, ident, site):
         facts += [("Who", "Unassigned"), ("Proposed role", item["proposed_role"])]
     if c.is_reconstruction:
         direct, related = credit_people(c, item["source_refs"])
-        facts.append(("Questions by" if c.web_sources else "Ideas from", names(c.authors[a]["name"] for a in direct) or "The supplied analysis"))
+        if c.has_analysis:
+            if direct:
+                facts.append(("Proposed analysis by", names(c.authors[a]["name"] for a in direct)))
+            facts.append(("Research questions by", names(dict.fromkeys(c.authors[source["author"]]["name"] for source in c.sources if source.get("kind") == "web_page"))))
+            facts.append(("Supporting empirical evidence", "Not supplied in this map"))
+            if not link and item["kind"] == "action":
+                facts.append(("Action commitment", "None recorded; owner and date unassigned"))
+            if name == "transition" and not link and item["kind"] == "existing_condition":
+                facts.append(("Role in the plan", "Conditional premise, not a report that it has happened"))
+            if link and item["relation"] in {"causes", "contributes_to", "produces"}:
+                facts.append(("Causal standing", "Untested hypothesis"))
+        else:
+            facts.append(("Questions by" if c.web_sources else "Ideas from", (names(c.authors[source["author"]]["name"] for source in c.sources if source.get("kind") == "web_page") if c.web_sources else names(c.authors[a]["name"] for a in direct) or "The supplied analysis")))
         if related:
             facts.append(("Related posts by", names(c.authors[a]["name"] for a in related)))
     if item["status"] == "accepted":
@@ -1258,7 +1310,7 @@ def item_detail(c, ident, site):
             sections.append(f'<section class="d-sec"><h3>Connections</h3><ul class="rel-list">{rows}</ul></section>')
     for key, title in (("assumptions", "Assumptions"), ("challenges", "Challenges")):
         if item.get(key):
-            rows = "".join(f'<li><p>{esc(a["text"])}</p><p class="muted">{"Assumed" if key == "assumptions" else "Raised"} by {esc(a["by"])}</p></li>' for a in item[key])
+            rows = "".join(f'<li><p>{esc(a["text"])}</p><p class="muted">{"Raised for examination" if c.has_analysis and key == "assumptions" else "Assumed" if key == "assumptions" else "Raised"} by {esc(a["by"])}</p></li>' for a in item[key])
             sections.append(f'<section class="d-sec d-{key}"><h3>{title}</h3><ul class="notes">{rows}</ul></section>')
     if c.backlog.get(ident):
         rows = "".join(f'<li><p>{esc(t.get("label") or t["work"].replace("_", " ").capitalize())}</p>' + (f'<p class="muted">{esc(t["note"])}</p>' if t.get("note") else "")
@@ -1281,6 +1333,7 @@ def item_detail(c, ident, site):
         sections.append(f'<section class="d-sec"><h3>History</h3><ul class="notes">{"".join(history)}</ul></section>')
     text = brief(c, ident, site)
     instruction = ("This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
+                   "Copy the brief into your AI to develop a correction or testable question. Distinguish the research question, supplied proposed analysis and supporting evidence; no action commitment is implied." if c.has_analysis else
                    "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
                    "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.supplied_documents else
                    "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
@@ -1426,9 +1479,17 @@ def learning_page(c, site):
 # ---------------------------------------------------------------- changes and about
 
 def changes_page(c, site):
-    def change_link(ident):
+    def archived_text(snapshot, ident):
+        items = revisions.items(snapshot)
+        item = items[ident]
+        if "text" in item:
+            return item["text"]
+        return ' AND '.join(items[ref]["text"] for ref in item["from"]) + ' ' + diagrams.RELATIONS.get(item['relation'], item['relation']) + ' ' + items[item['to']]['text']
+    def change_link(ident, release_id):
+        snapshot = c.archives.get(release_id) if getattr(c, "archives", {}) else None
+        wording = archived_text(snapshot, ident) if snapshot else c.short(ident)
         standing = "" if c.is_reconstruction else f' class="is-{c.items[ident]["status"]}"'
-        return f'<a href="items.html#{ident}"{standing}>{esc(c.short(ident))}</a>'
+        return f'<a href="items.html#{ident}"{standing}>{esc(wording)}</a>'
     entries = []
     retired = {r["id"]: r for r in c.retired}
     for release in reversed(c.history):
@@ -1439,7 +1500,7 @@ def changes_page(c, site):
             if change["type"] == "report":
                 links = "".join(f'<a href="learning.html#{r}">{esc(c.reports[r][1]["by"])}</a>' for r in refs)
             else:
-                links = "".join(change_link(r) for r in refs if not c.is_link(r))
+                links = "".join(change_link(r, release["release_id"]) for r in refs if not c.is_link(r))
                 hidden = len([r for r in refs if c.is_link(r)])
                 if hidden:
                     links += f'<span class="muted">and {plural(hidden, "connection")}</span>'
@@ -1452,15 +1513,18 @@ def changes_page(c, site):
             if change.get("before"):
                 snapshot = revisions.archive(c.review, release["release_id"])
                 after_items = revisions.items(snapshot) if snapshot else c.items
-                after = after_items[refs[0]]["text"]
+                after = after_items[refs[0]].get("text") or (archived_text(snapshot, refs[0]) if snapshot else c.text(refs[0]))
                 after_label = "After this release" if snapshot else "Current wording"
                 before = (f'<p class="before"><span>Before</span><s>{esc(change["before"])}</s></p>'
                           f'<p class="before after"><span>{after_label}</span>{esc(after)}</p>')
             note = f'<p>{esc(change["note"])}</p>' if change.get("note") else ""
             rows.append(f'<li class="chg chg-{change["type"]}"><span class="chg-type">{CHANGE_WORDS[change["type"]]}</span><div>{note}{before}{links}</div></li>')
+        archive = c.archives.get(release["release_id"]) if getattr(c, "archives", {}) else None
+        archive_view = ('<details class="background-details"><summary>Original published statements, connections and attribution</summary>'
+                        f'<pre class="brief" tabindex="0">{esc(json.dumps(archive, ensure_ascii=False, indent=2))}</pre></details>') if archive else ''
         d, m = short_day(release["date"])
         entries.append(f'<details class="release-disclosure" id="release-{esc(release["release_id"])}"><summary><span>{esc(release["title"])}<br><span class="muted">{day(release["date"])} · {esc(release["release_id"])}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary>'
-                       f'<article class="release"><div class="release-date"><b>{d}</b>{m}</div><div class="release-body"><p class="lede">{esc(release["summary"])}</p><ul class="chgs">{"".join(rows)}</ul></div></article></details>')
+                       f'<article class="release"><div class="release-date"><b>{d}</b>{m}</div><div class="release-body"><p class="lede">{esc(release["summary"])}</p><ul class="chgs">{"".join(rows)}</ul>{archive_view}</div></article></details>')
     later = "" if c.is_example or c.is_reconstruction else ('<article class="release release-next"><div class="release-date"><b>…</b>Later</div><div class="release-body"><h2>The next release</h2>'
                                      '<p class="lede">When Rufus and David publish again, this page will show what was added, reworded or disputed, with the earlier wording kept.</p></div></article>')
     body = commons_head(c, "changes", heading=False) + f"""<div class="wrap changes-wrap">
@@ -1488,6 +1552,8 @@ def about_page(c, site):
                'Nothing here describes a real school, street or person.</p></section>') if c.is_example else ""
     if c.is_reconstruction:
         def where(source):
+            if source.get("kind") == "supplied_analysis":
+                return f'<p>Supplied by {esc(c.authors[source["author"]]["name"])}. <a href="{esc(source["url"])}">Read the supplied analysis ↗</a>. Section numbers locate the proposed contributions, not empirical evidence.</p>'
             if source.get("kind") == "web_page":
                 return f'<p>Research project led by {esc(c.authors[source["author"]]["name"])}. <a href="{esc(source["url"])}">Read the original page ↗</a></p>'
             if "posts" in source:
@@ -1504,6 +1570,9 @@ def about_page(c, site):
                    '<h3>What counts as progress?</h3><p>The earlier analysis proposes measuring practices adopted and retained in viable institutions that remain faithful to their purpose. The measures, system boundary, observation period and protected conditions still need agreement. Essays and conversation alone do not establish that outcome.</p></section>')
         if c.web_sources:
             fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>The source is a research agenda, not a set of settled answers. The goal, causal hypothesis and suggested review practice are illustrative AI interpretations. Source credit is not endorsement.</p>'
+                       + source_list + source_question_outline(c) + '</section>')
+        if c.has_analysis:
+            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>The research page supplies the original questions. David Joseph’s supplied review originates the additions; the AI structured them and retained its own earlier proposals. No empirical supporting observations, participant recognition of a specific conflict, chosen practice or test commitment is supplied.</p>'
                        + source_list + source_question_outline(c) + '</section>')
         if c.supplied_documents:
             fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. Heath has commented on an earlier map; the wording and connections in this revision await her review and endorsement.</p>'
@@ -1524,6 +1593,8 @@ def about_page(c, site):
         excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
     if c.web_sources:
         excluded = "The source questions are preserved above, but no answers from the source are implied. The AI’s proposed reasoning has not been endorsed. No trial, assigned owner, feedback commitment or observed result is recorded. Private collaboration notes and approval receipts are not included in the public release."
+    if c.has_analysis:
+        excluded = "The capability, actor, release decision, wisdom-derived practice and test setting remain unselected. No supporting empirical evidence, endorsement, owner, date, test commitment or observed result is recorded. Transition conditions are conditional premises, not claims that a test has occurred or results exist. Private collaboration notes and approval receipts are not included."
     if c.supplied_documents:
         excluded = "The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
     download = '<a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a>'

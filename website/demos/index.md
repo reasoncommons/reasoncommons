@@ -50,4 +50,4 @@ These seven mockups explore different visual paradigms for working with shared r
 
 ## Wisdom and AI
 
-[Wisdom and AI](/demos/reason-commons-in-use/wisdom-ai/index.html) joins the existing demonstrations: four source-question hierarchies and three small proposed reasoning trees, with source references and open questions.
+[Wisdom and AI](/demos/reason-commons-in-use/wisdom-ai/index.html) joins the existing demonstrations: four original source-question hierarchies and six proposed reasoning trees expanded from David Joseph’s analysis, with competing explanations, source references, open questions and conditional steps.
