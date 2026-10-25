@@ -1,0 +1,592 @@
+{
+  "source_id": "wisdom-ai",
+  "retrieved_on": "2026-10-25",
+  "sha256": "f4482ce93ac1c966f7e7e5afa46a171ef9e748d467c88d607202d8393884b22c",
+  "governing_question": "How should we approach the development of AI wisely, and what do wisdom traditions offer?",
+  "questions": [
+    {
+      "id": "alignment",
+      "text": "Alignment: can we align AI, and what role can wisdom traditions play?",
+      "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+      "children": [
+        {
+          "id": "alignment-1",
+          "text": "What would it mean for AI to be aligned, or good?",
+          "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+          "children": [
+            {
+              "id": "alignment-1-1",
+              "text": "Aligned to what: instructions, preferences, wellbeing, values, the good?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": [
+                {
+                  "id": "alignment-1-1-1",
+                  "text": "What is the good, and how could an AI come to perceive it?",
+                  "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "alignment-1-2",
+              "text": "Aligned to whom, and who decides?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-1-3",
+              "text": "Must AI be wise, or is \"safe and corrigible\" enough?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "alignment-2",
+          "text": "How is it attempted today, and does it work?",
+          "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+          "children": [
+            {
+              "id": "alignment-2-1",
+              "text": "What are the main approaches (rules and constitutions, preference learning, character training), and which ethical traditions do they implicitly embody?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-2-2",
+              "text": "What does the evidence show, both successes and failures?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-2-3",
+              "text": "Can we verify what a model has actually learnt?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": [
+                {
+                  "id": "alignment-2-3-1",
+                  "text": "Can we read a model's reasoning, and is it faithful?",
+                  "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+                  "children": []
+                },
+                {
+                  "id": "alignment-2-3-2",
+                  "text": "Can models report their own states reliably?",
+                  "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+                  "children": []
+                },
+                {
+                  "id": "alignment-2-3-3",
+                  "text": "What can interpretability show?",
+                  "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "id": "alignment-2-4",
+              "text": "What is the strongest case that current methods will scale, and how convincing is it?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "alignment-3",
+          "text": "Is the target (goodness or wisdom) the kind of thing that can be specified or trained?",
+          "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+          "children": [
+            {
+              "id": "alignment-3-1",
+              "text": "What do we know about how humans become good or wise?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-3-2",
+              "text": "How does training an AI compare with how humans become good, and what, if anything, is the AI analogue?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "alignment-4",
+          "text": "What do wisdom traditions offer?",
+          "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+          "children": [
+            {
+              "id": "alignment-4-1",
+              "text": "Why these traditions, which strands, and how do we decide when they conflict with each other or with secular ethics?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-4-2",
+              "text": "Which teachings bear on alignment, and what would each change in practice?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            },
+            {
+              "id": "alignment-4-3",
+              "text": "Where do the analogies break down, and what can traditions not tell us?",
+              "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "alignment-5",
+          "text": "So: can we align AI, and what is the realistic role of wisdom traditions?",
+          "source_url": "https://ai.lifeitself.org/#1-alignment-can-we-align-ai-and-what-role-can-wisdom-traditions-play",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "risk",
+      "text": "Risk and pace: given existential risk and the chance alignment fails, how should we approach AI development, and what do wisdom traditions suggest?",
+      "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+      "children": [
+        {
+          "id": "risk-1",
+          "text": "What are the catastrophic and existential risks?",
+          "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+          "children": [
+            {
+              "id": "risk-1-1",
+              "text": "What kinds: loss of control, misuse, irreversible power concentration, gradual disempowerment?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-1-2",
+              "text": "What evidence is there that these are already emerging?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-1-3",
+              "text": "How likely and how soon, and how much do experts disagree?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "risk-2",
+          "text": "Why is the world racing anyway?",
+          "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+          "children": [
+            {
+              "id": "risk-2-1",
+              "text": "What drives the race: competition between labs and states, money, prestige, \"if we don't, others will\"?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-2-2",
+              "text": "What evidence is there of race dynamics, and of restraint?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-2-3",
+              "text": "Why is the race so hard to escape? Are there deeper cultural or psychological drivers?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "risk-3",
+          "text": "Should we change pace or trajectory, and can we?",
+          "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+          "children": [
+            {
+              "id": "risk-3-1",
+              "text": "Is a slower or different trajectory desirable (pause, pacing, steering, differential development), weighed against the case for speed (ceding ground, forgone benefits)?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-3-2",
+              "text": "Is it feasible? What mechanisms exist (auditing, compute governance, treaties), and what are the precedents of collective restraint?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-3-3",
+              "text": "Who decides?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "risk-4",
+          "text": "What do wisdom traditions offer here?",
+          "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+          "children": [
+            {
+              "id": "risk-4-1",
+              "text": "What do they say we should do? Is the normative answer clear?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-4-2",
+              "text": "Do they help with how, i.e. solving the collective action problem, and if so through what (e.g. a shift in worldview), or is this where they offer less?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            },
+            {
+              "id": "risk-4-3",
+              "text": "How would a wise process make this choice, beyond weighing a trade-off?",
+              "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "risk-5",
+          "text": "So: what should each actor (labs, states, communities, individuals) do, and at what pace?",
+          "source_url": "https://ai.lifeitself.org/#2-risk-and-pace-given-existential-risk-and-the-chance-alignment-fails-how-should-we-approach-ai-development-and-what-do-wisdom-traditions-suggest",
+          "children": []
+        }
+      ]
+    },
+    {
+      "id": "impacts",
+      "text": "Broader impacts: setting existential risk aside, how does AI change how we live, and what do wisdom traditions offer?",
+      "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+      "children": [
+        {
+          "id": "impacts-1",
+          "text": "How should we think about the impacts of a new technology?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-1-1",
+              "text": "Why are a technology's impacts so hard to foresee?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-1-2",
+              "text": "What does social media teach us?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "impacts-2",
+          "text": "What are the main benefits and harms?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-2-1",
+              "text": "What are the potential benefits, and where (for individuals, for children and education, for society)?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-2-2",
+              "text": "What are the potential harms, and where?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-2-3",
+              "text": "What evidence is there that these are already occurring?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-2-4",
+              "text": "Which few matter most?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "impacts-3",
+          "text": "Does AI strengthen or weaken our own agency and judgment?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-3-1",
+              "text": "What do we mean by human agency and human judgment?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-3-2",
+              "text": "In what ways could AI strengthen or weaken them?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-3-3",
+              "text": "What is the evidence, from neuroscience and psychology and from what is already happening?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-3-4",
+              "text": "What could we do about it, and how?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "impacts-4",
+          "text": "Does AI strengthen or weaken our societies, and how?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-4-1",
+              "text": "Democracy and public discourse?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-4-2",
+              "text": "Governance and the power of the state?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-4-3",
+              "text": "Work and the economy?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-4-4",
+              "text": "Education and the institutions of knowledge?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-4-5",
+              "text": "Security and the military?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "impacts-5",
+          "text": "What do wisdom traditions offer?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-5-1",
+              "text": "Which wisdom traditions should we look at?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-5-2",
+              "text": "Which Buddhist teachings are relevant (e.g. mindfulness, consumption, speech and listening, community), and what does each say?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-5-3",
+              "text": "Which teachings from other traditions (e.g. Christianity) are relevant, and what do they say?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-5-4",
+              "text": "How do these teachings apply?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": [
+                {
+                  "id": "impacts-5-4-1",
+                  "text": "To our own thinking and agency?",
+                  "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+                  "children": []
+                },
+                {
+                  "id": "impacts-5-4-2",
+                  "text": "To relationships and intimacy?",
+                  "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+                  "children": []
+                },
+                {
+                  "id": "impacts-5-4-3",
+                  "text": "To children and education?",
+                  "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+                  "children": []
+                },
+                {
+                  "id": "impacts-5-4-4",
+                  "text": "To society and institutions?",
+                  "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+                  "children": []
+                },
+                {
+                  "id": "impacts-5-4-5",
+                  "text": "To how we adopt new technology?",
+                  "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "impacts-6",
+          "text": "So: how should we integrate AI into our lives and societies?",
+          "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+          "children": [
+            {
+              "id": "impacts-6-1",
+              "text": "What is the guidance for individuals?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-6-2",
+              "text": "For families and schools?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-6-3",
+              "text": "For designers and labs?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            },
+            {
+              "id": "impacts-6-4",
+              "text": "What is the policy advice for society?",
+              "source_url": "https://ai.lifeitself.org/#3-broader-impacts-setting-existential-risk-aside-how-does-ai-change-how-we-live-and-what-do-wisdom-traditions-offer",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "consciousness",
+      "text": "Consciousness: could AI be conscious or a moral patient, and how should we relate to it? (a smaller strand)",
+      "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+      "children": [
+        {
+          "id": "consciousness-1",
+          "text": "What would it mean for AI to be conscious or a moral patient?",
+          "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+          "children": [
+            {
+              "id": "consciousness-1-1",
+              "text": "What do we mean by consciousness, sentience and moral patienthood?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-1-2",
+              "text": "What are the main theories, and what does each imply for AI?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "consciousness-2",
+          "text": "What is the evidence about current AI?",
+          "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+          "children": [
+            {
+              "id": "consciousness-2-1",
+              "text": "What do assessments against theory-based indicators find?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-2-2",
+              "text": "What do model self-reports and introspection research show, and how reliable are they?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-2-3",
+              "text": "How likely do experts think it is, now and soon, and how much do they disagree?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "consciousness-3",
+          "text": "How are labs and others responding?",
+          "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+          "children": [
+            {
+              "id": "consciousness-3-1",
+              "text": "What is Anthropic doing (model welfare, the constitution)?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-3-2",
+              "text": "What are the critiques (e.g. the risks of \"seemingly conscious AI\")?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "consciousness-4",
+          "text": "What do wisdom traditions offer?",
+          "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+          "children": [
+            {
+              "id": "consciousness-4-1",
+              "text": "How does Buddhism understand mind, self and sentience, and how does that reframe the question?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-4-2",
+              "text": "What do other traditions (e.g. Catholic teaching) say?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-4-3",
+              "text": "What does how we treat AI do to us?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            }
+          ]
+        },
+        {
+          "id": "consciousness-5",
+          "text": "So: how should we relate to AI under uncertainty?",
+          "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+          "children": [
+            {
+              "id": "consciousness-5-1",
+              "text": "What should labs do?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            },
+            {
+              "id": "consciousness-5-2",
+              "text": "What should users and society do?",
+              "source_url": "https://ai.lifeitself.org/#4-consciousness-could-ai-be-conscious-or-a-moral-patient-and-how-should-we-relate-to-it-a-smaller-strand",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

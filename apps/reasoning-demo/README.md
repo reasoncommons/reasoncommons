@@ -31,9 +31,9 @@ python3 scripts/check-website.py
 python3 -m http.server 8878 --bind 127.0.0.1 --directory website
 ```
 
-Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. Every page is complete without JavaScript; `app.js` adds the diagram/outline switch, statement search, path highlighting and clipboard copying, and redirects the earlier `?view=…&tree=…&item=…` links to the new pages. `--check` compares all 62 generated files and fails on unexpected files in the published folder. With PyYAML installed it also re-projects the fictional example and source reconstructions from their public working files and fails if any pinned snapshot has drifted.
+Open `http://127.0.0.1:8878/demos/reason-commons-in-use/index.html`. Every page is complete without JavaScript; `app.js` adds the diagram/outline switch, statement search, path highlighting and clipboard copying, and redirects the earlier `?view=…&tree=…&item=…` links to the new pages. `--check` compares all 72 generated files and fails on unexpected files in the published folder. With PyYAML installed it also re-projects the fictional example and source reconstructions from their public working files and fails if any pinned snapshot has drifted.
 
-## Four records, distinct publication boundaries
+## Records with distinct publication boundaries
 
 **Ours.** The authoritative collaboration record is in the private product repository and is never copied here. `publication.json` holds the reviewed allowlist of 50 statement IDs and 14 connection IDs, approved display names and the pinned accepted-only projection (projection version 1), unchanged from `accepted-reasoning-demo-2026-10-22` revision 1; the redesign was accepted as `commons-site-redesign-2026-10-22` revision 1. Routine builds and CI use the pinned projection, so they need no private access. For an authorized refresh:
 
@@ -92,3 +92,11 @@ Publish only `website/`. Run the build, tests, drift and website checks, then us
 ## Review evidence
 
 See [the review record](../../docs/product/reasoning-demo-review.md) for what was checked and what remains open. Human comprehension, coherence for a newcomer and willingness to test are still untested.
+
+## Wisdom and AI
+
+`commons/wisdom-ai/publication.json` registers the public [Wisdom and AI](https://ai.lifeitself.org/) research agenda through the same source-reconstruction projection and page generator as Gandhi 2.0. `ltp/wisdom-ai/reason-commons.yaml` preserves the seven proposed statements and four proposed links from the initial example. The source is a set of questions, so its `web_page` references allow AI inference or a related-question reference, not source-author attribution of an asserted answer. Every proposed item records its exact starting question; unresolved question locators fail the build. The page author is the author of the research questions, not an endorser or contributor of the proposed answers.
+
+The explicitly selected `commons/wisdom-ai/source-questions.json` companion preserves the governing question and 93 question entries across four hierarchies. Its schema rejects unreviewed fields, duplicate IDs and off-page source links. The About page presents the complete hierarchies with the shared outline and disclosure components, without requiring JavaScript. The Map and question-page navigation include only the three reasoning trees actually recorded; no conflict, prerequisite or action sequence is invented. All diagram geometry, fonts, colours, standing treatments, statement-detail pages, outline switches, copyable briefs and navigation come from the shared components. No separate stylesheet or viewer is introduced.
+
+After a deliberate edit to the canonical example, refresh only its registry using `refresh_reconstruction` from `build.py`, then run the normal build, tests and `--check`. The generic `--refresh-reconstruction` option refreshes every reconstruction, so use it only when all those sources are intended to be refreshed. Keep the original capture date and SHA-256 unless the source page itself has been recaptured. Preserve source-question text and hierarchy when updating the capture. The earlier `/demos/wisdom-ai/index.html` route redirects to `/demos/reason-commons-in-use/wisdom-ai/index.html`.

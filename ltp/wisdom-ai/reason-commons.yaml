@@ -1,0 +1,211 @@
+schema_version: 1
+project: Wisdom and AI — illustrative reasoning
+driver: david
+participants:
+  david: David Joseph
+active_tree: goal
+source_context:
+  url: https://ai.lifeitself.org/
+  title: Wisdom and AI
+  retrieved_on: '2026-10-25'
+  standing: Source questions are preserved separately. All statements and links below are assistant-proposed interpretations, not source answers or author endorsement.
+trees:
+  goal:
+    nodes:
+    - id: g-wise-ai
+      kind: goal
+      text: People make informed, revisable choices about developing and using AI.
+      label: People make informed, revisable AI choices.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+        note: Illustrative interpretation of the source research questions; not a claim made or endorsed by the source author.
+      source:
+        url: https://ai.lifeitself.org/
+        question: How should we integrate AI into our lives and societies?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: How should we integrate AI into our lives and societies?
+        basis: inference
+    - id: g-understand
+      kind: necessary_condition
+      text: Decision makers understand relevant benefits, harms and uncertainties.
+      label: Decision makers understand benefits, harms and uncertainties.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: How should we integrate AI into our lives and societies?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: How should we integrate AI into our lives and societies?
+        basis: inference
+    - id: g-revise
+      kind: necessary_condition
+      text: Decision makers can revise choices as evidence changes.
+      label: Decision makers can revise choices as evidence changes.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: Should we change pace or trajectory, and can we?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    links:
+    - id: g-understand-necessary
+      from:
+      - g-understand
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    - id: g-revise-necessary
+      from:
+      - g-revise
+      to: g-wise-ai
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    backlog:
+    - ref: g-wise-ai
+      work: review_goal
+      label: Review the goal and whether both conditions are necessary.
+    - ref: g-understand
+      work: investigate_wisdom
+      label: Investigate what wisdom traditions contribute.
+      note: Preserve disagreements between traditions and limits of analogy; the page asks rather than settles this.
+  current_reality:
+    nodes:
+    - id: r-uncertainty
+      kind: cause
+      text: Uncertainty about AI’s effects can make development and adoption choices difficult to justify.
+      label: Uncertainty can make AI choices difficult to justify.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: Should we change pace or trajectory, and can we?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    - id: r-decisions
+      kind: undesirable_effect
+      text: Some AI choices may proceed without an adequate account of their consequences.
+      label: Some AI choices may lack an adequate account of consequences.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: Should we change pace or trajectory, and can we?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    links:
+    - id: r-uncertainty-decisions
+      from:
+      - r-uncertainty
+      to: r-decisions
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    backlog:
+    - ref: r-uncertainty-decisions
+      work: test_causality
+      label: Test whether uncertainty contributes to poorly justified choices.
+      note: Uncertainty could also prompt restraint or better deliberation; neither effect is established here.
+  future_reality:
+    nodes:
+    - id: f-review
+      kind: injection
+      text: Decision makers use explicit review points to revisit AI choices against emerging evidence.
+      label: Decision makers revisit AI choices at explicit review points.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: Should we change pace or trajectory, and can we?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    - id: f-revision
+      kind: desirable_effect
+      text: AI choices can be revised when evidence changes their justification.
+      label: AI choices can be revised when evidence changes their justification.
+      status: proposed
+      contributions: *id001
+      source:
+        url: https://ai.lifeitself.org/
+        question: Should we change pace or trajectory, and can we?
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    links:
+    - id: f-review-revision
+      from:
+      - f-review
+      to: f-revision
+      relation: causes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: wisdom-ai
+        locator: Should we change pace or trajectory, and can we?
+        basis: inference
+    backlog:
+    - ref: f-review-revision
+      work: test_causality
+      label: Test whether review points enable consequential revision.
+      note: 'Review points alone may not suffice: decision makers need authority, usable evidence and feasible alternatives. No benefit has been observed.'
+    - ref: f-review
+      work: investigate_wisdom
+      label: Investigate how wisdom traditions might shape review practice.
+change_acceptances:
+- proposal_ref: wisdom-ai-demo
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-25T10:45:09Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: accept
+  scope: Add the Wisdom and AI demonstration with four source-question trees and three proposed worked reasoning trees, source references, review backlog, local preview and desktop/phone validation. Add demo-review backlog against r-e-david-demo-confidence; preserve existing claims and standings.
+  node_ids:
+  - g-wise-ai
+  - g-understand
+  - g-revise
+  - r-uncertainty
+  - r-decisions
+  - f-review
+  - f-revision
+  link_ids:
+  - g-understand-necessary
+  - g-revise-necessary
+  - r-uncertainty-decisions
+  - f-review-revision
+  approved_paths:
+  - website/demos/wisdom-ai/index.html
+  - website/demos/wisdom-ai/trees.json
+  - website/demos/index.md
+  - ltp/wisdom-ai/reason-commons.yaml
+  - docs/marketing/demos/wisdom-ai.md
+  - ltp/rufus-david-collab/reason-commons.yaml

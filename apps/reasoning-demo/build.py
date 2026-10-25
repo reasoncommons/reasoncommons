@@ -294,12 +294,13 @@ def validate_v2(data, registry):
 # A forum credit names a post and its actual author; a document credit cites a section the analysis points to;
 # the analysis itself reconstructs or infers. Each kind of source admits only its own bases.
 REF_BASES = {"forum": {"paraphrase", "related"}, "document": {"cited"}, "analysis": {"reconstruction", "inference"},
-             "supplied_document": {"paraphrase", "reconstruction", "inference", "related"}}
+             "supplied_document": {"paraphrase", "reconstruction", "inference", "related"},
+             "web_page": {"inference", "related"}}
 
 
 def source_kind(source):
-    if source.get("kind") == "supplied_document":
-        return "supplied_document"
+    if source.get("kind") in {"supplied_document", "web_page"}:
+        return source["kind"]
     return "forum" if "posts" in source else "document" if "author" in source else "analysis"
 
 
@@ -401,13 +402,15 @@ def validate_reconstruction(data, registry):
     for source in data["sources"]:
         kind = source_kind(source)
         extra = ({"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document"
-                 else {"kind", "author"} if kind == "supplied_document" else set())
+                 else {"kind", "author", "url"} if kind == "web_page" else {"kind", "author"} if kind == "supplied_document" else set())
         require(set(source) == {"id", "title", "description"} | extra and all(isinstance(source[k], str) and source[k].strip() for k in ("id", "title", "description")), "Invalid source description")
         require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in sources, "Invalid/duplicate source ID")
         if kind == "forum":
             require(isinstance(source["url"], str) and source["url"].startswith("https://") and isinstance(source["posts"], dict) and source["posts"], "Invalid forum source")
             for number, post in source["posts"].items():
                 require(number.isdigit() and isinstance(post, dict) and set(post) == {"author", "date"} and post["author"] in authors and re.fullmatch(r"\d{4}-\d{2}-\d{2}", post["date"]), "Invalid forum post")
+        if kind == "web_page":
+            require(source["author"] in authors and isinstance(source["url"], str) and source["url"].startswith("https://"), "Invalid public web source")
         if kind == "supplied_document":
             require(source["author"] in authors, f"Unknown supplied document author: {source['id']}")
         sources[source["id"]] = source
@@ -492,6 +495,30 @@ def load_site():
     return site, commons
 
 
+def validate_source_questions(data, sources):
+    """A source agenda is a hierarchy of questions, never a graph of asserted causes."""
+    require(isinstance(data, dict) and set(data) == {"source_id", "retrieved_on", "sha256", "governing_question", "questions"}, "Invalid source question record")
+    source = next((s for s in sources if s["id"] == data["source_id"] and source_kind(s) == "web_page"), None)
+    require(source is not None, "Source questions need a reviewed public web source")
+    require(isinstance(data["retrieved_on"], str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", data["retrieved_on"]), "Invalid source capture date")
+    require(isinstance(data["sha256"], str) and re.fullmatch(r"[0-9a-f]{64}", data["sha256"]), "Invalid source capture fingerprint")
+    require(isinstance(data["governing_question"], str) and data["governing_question"].strip(), "Missing governing question")
+    require(isinstance(data["questions"], list) and data["questions"], "Missing source question trees")
+    seen = set()
+    def visit(node):
+        require(isinstance(node, dict) and set(node) == {"id", "text", "source_url", "children"}, "Invalid source question")
+        ident = node["id"]
+        require(isinstance(ident, str) and re.fullmatch(r"[a-z0-9-]+", ident) and ident not in seen, "Invalid or duplicate source question ID")
+        seen.add(ident)
+        require(isinstance(node["text"], str) and node["text"].strip(), "Empty source question")
+        require(isinstance(node["source_url"], str) and node["source_url"].startswith(source["url"] + "#"), "Source question URL must stay within its reviewed page")
+        require(isinstance(node["children"], list), "Invalid source subquestions")
+        for child in node["children"]:
+            visit(child)
+    for node in data["questions"]:
+        visit(node)
+
+
 def normalize(item):
     """One reading of either projection for the pages; nothing is added that the projection lacks."""
     presentation = item["registry"].get("presentation", {})
@@ -514,7 +541,21 @@ def normalize(item):
         feedback = []
     else:
         people, history, feedback = data["people"], data["history"], data["feedback"]
-    return {**entry, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
+    source_questions = {}
+    if item["registry"].get("source_questions"):
+        relative = item["registry"]["source_questions"]
+        require(relative == "source-questions.json", "Source question companion must use its declared file")
+        source_questions = read_json((HERE / item["entry"]["registry"]).with_name(relative))
+        validate_source_questions(source_questions, data["sources"])
+        def question_texts(nodes):
+            return {node["text"].removeprefix("So: ").casefold() for node in nodes} | set().union(*(question_texts(node["children"]) for node in nodes))
+        locators = question_texts(source_questions["questions"])
+        for tree in data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                for ref in item.get("source_refs", []):
+                    if ref["source_id"] == source_questions["source_id"]:
+                        require(ref["locator"].casefold() in locators, f"Unresolved source question: {item['id']}")
+    return {**entry, "source_questions": source_questions, "is_example": entry["kind"] == "example", "is_reconstruction": entry["kind"] == "reconstruction", "sources": data.get("sources", []),
             "authors": data.get("authors", {}), "views": data.get("views", {}), "overview_blocks": data.get("overview", []), "retired": data.get("retired", []),
             "release_id": data["release_id"], "date": data["snapshot_date"],
             "title": data["title"], "review": item.get("review", {}), "people": people, "trees": trees, "feedback": feedback, "history": history,

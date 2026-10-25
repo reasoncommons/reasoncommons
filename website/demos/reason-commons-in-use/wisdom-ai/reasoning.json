@@ -1,0 +1,437 @@
+{
+  "projection_version": 4,
+  "release_id": "2026-10-25.1",
+  "snapshot_date": "2026-10-25",
+  "title": "Wisdom and AI",
+  "people": [
+    {
+      "name": "David Joseph",
+      "role": "Requested this demonstration; has not endorsed the proposed reasoning"
+    }
+  ],
+  "trees": {
+    "goal": {
+      "nodes": [
+        {
+          "id": "g-wise-ai",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "goal",
+          "text": "People make informed, revisable choices about developing and using AI.",
+          "label": "People make informed, revisable AI choices.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "How should we integrate AI into our lives and societies?",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "g-understand",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Decision makers understand relevant benefits, harms and uncertainties.",
+          "label": "Decision makers understand benefits, harms and uncertainties.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "How should we integrate AI into our lives and societies?",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "g-revise",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Decision makers can revise choices as evidence changes.",
+          "label": "Decision makers can revise choices as evidence changes.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "g-understand-necessary",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "g-understand"
+          ],
+          "to": "g-wise-ai",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "g-revise-necessary",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "g-revise"
+          ],
+          "to": "g-wise-ai",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "g-wise-ai",
+          "work": "review_goal",
+          "label": "Review the goal and whether both conditions are necessary."
+        },
+        {
+          "ref": "g-understand",
+          "work": "investigate_wisdom",
+          "label": "Investigate what wisdom traditions contribute.",
+          "note": "Preserve disagreements between traditions and limits of analogy; the page asks rather than settles this."
+        }
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        {
+          "id": "r-uncertainty",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Uncertainty about AI’s effects can make development and adoption choices difficult to justify.",
+          "label": "Uncertainty can make AI choices difficult to justify.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "r-decisions",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Some AI choices may proceed without an adequate account of their consequences.",
+          "label": "Some AI choices may lack an adequate account of consequences.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "r-uncertainty-decisions",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "r-uncertainty"
+          ],
+          "to": "r-decisions",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "r-uncertainty-decisions",
+          "work": "test_causality",
+          "label": "Test whether uncertainty contributes to poorly justified choices.",
+          "note": "Uncertainty could also prompt restraint or better deliberation; neither effect is established here."
+        }
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        {
+          "id": "f-review",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Decision makers use explicit review points to revisit AI choices against emerging evidence.",
+          "label": "Decision makers revisit AI choices at explicit review points.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "f-revision",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "desirable_effect",
+          "text": "AI choices can be revised when evidence changes their justification.",
+          "label": "AI choices can be revised when evidence changes their justification.",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "f-review-revision",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "f-review"
+          ],
+          "to": "f-revision",
+          "relation": "causes",
+          "source_refs": [
+            {
+              "source_id": "wisdom-ai",
+              "locator": "Should we change pace or trajectory, and can we?",
+              "basis": "inference"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "f-review-revision",
+          "work": "test_causality",
+          "label": "Test whether review points enable consequential revision.",
+          "note": "Review points alone may not suffice: decision makers need authority, usable evidence and feasible alternatives. No benefit has been observed."
+        },
+        {
+          "ref": "f-review",
+          "work": "investigate_wisdom",
+          "label": "Investigate how wisdom traditions might shape review practice."
+        }
+      ]
+    }
+  },
+  "feedback": [],
+  "history": [
+    {
+      "release_id": "2026-10-25.1",
+      "date": "2026-10-25",
+      "title": "First shared-component edition",
+      "summary": "Four source-question hierarchies and three illustrative reasoning trees, using the established demonstration components. All reasoning remains proposed; no trial or outcome is recorded.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "g-wise-ai",
+            "g-understand",
+            "g-revise",
+            "g-understand-necessary",
+            "g-revise-necessary",
+            "r-uncertainty",
+            "r-decisions",
+            "r-uncertainty-decisions",
+            "f-review",
+            "f-revision",
+            "f-review-revision"
+          ]
+        }
+      ]
+    }
+  ],
+  "publication_kind": "source_reconstruction",
+  "authors": {
+    "rufus": {
+      "name": "Rufus Pollock",
+      "role": "Leads the Wisdom and AI research project at Life Itself; posed the source research questions and has not reviewed or endorsed this proposed reasoning"
+    }
+  },
+  "sources": [
+    {
+      "id": "wisdom-ai",
+      "kind": "web_page",
+      "author": "rufus",
+      "url": "https://ai.lifeitself.org/",
+      "title": "Wisdom and AI",
+      "description": "A Second Renaissance research agenda led by Rufus Pollock of Life Itself. One governing question, four core questions and their subquestions explore alignment, risk and pace, broader impacts and consciousness. Wisdom traditions means especially Buddhism in this source, while inviting others. It asks questions rather than establishing answers. Captured 25 October 2026."
+    }
+  ],
+  "views": {
+    "goal": [
+      {
+        "id": "goal-example",
+        "title": "An informed, revisable choice",
+        "summary": "A suggested goal and two conditions to review. These are AI interpretations, not conclusions from the source.",
+        "nodes": [
+          "g-wise-ai",
+          "g-understand",
+          "g-revise"
+        ]
+      }
+    ],
+    "current_reality": [
+      {
+        "id": "current-reality-example",
+        "title": "A possible difficulty",
+        "summary": "A causal hypothesis that needs evidence; uncertainty can also prompt restraint or better deliberation.",
+        "nodes": [
+          "r-uncertainty",
+          "r-decisions"
+        ]
+      }
+    ],
+    "future_reality": [
+      {
+        "id": "future-reality-example",
+        "title": "A practice worth testing",
+        "summary": "Review points might enable revision, but authority, usable evidence and feasible alternatives may also be needed.",
+        "nodes": [
+          "f-review",
+          "f-revision"
+        ]
+      }
+    ]
+  },
+  "overview": [
+    {
+      "type": "cards",
+      "eyebrow": "A goal to review",
+      "title": "Make informed choices, and keep them revisable.",
+      "text": "The research agenda asks how we should develop and use AI wisely. This example proposes an operational goal and two possible necessary conditions.",
+      "ids": [
+        "g-wise-ai",
+        "g-understand",
+        "g-revise"
+      ],
+      "link": [
+        "goal.html",
+        "Inspect the proposed goal →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "A hypothesis to test",
+      "title": "Can uncertainty leave choices poorly justified?",
+      "text": "This is one possible problem to investigate, not a finding established by the source. Uncertainty could instead prompt restraint or better deliberation.",
+      "ids": [
+        "r-uncertainty",
+        "r-decisions"
+      ],
+      "link": [
+        "in-the-way.html",
+        "Examine the causal hypothesis →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "A proposed change",
+      "title": "Revisit decisions as evidence changes.",
+      "text": "Explicit review points could make choices revisable. The link is still a hypothesis, and authority and feasible alternatives may be needed.",
+      "ids": [
+        "f-review",
+        "f-revision"
+      ],
+      "link": [
+        "change.html",
+        "Inspect the suggested practice →"
+      ]
+    },
+    {
+      "type": "credits",
+      "eyebrow": "Source questions and interpretation",
+      "title": "Questions by the research project; proposed answers by the AI.",
+      "text": "The source’s four research strands are preserved under Sources and limits. Every statement and connection in this small example is an AI inference awaiting review, not source-author endorsement."
+    }
+  ],
+  "retired": []
+}
