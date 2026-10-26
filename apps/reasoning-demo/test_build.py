@@ -198,7 +198,7 @@ class SiteTests(unittest.TestCase):
         pages_ = ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "changes", "about"]
         fonts = ["alegreya-sans-400.woff2", "alegreya-sans-500.woff2", "alegreya-sans-700.woff2", "alegreya-sans-400-italic.woff2", "OFL.txt"]
         expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "reasoning.json", *(f"fonts/{f}" for f in fonts),
-                    *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
+                    *(f"reason-commons/{p}.html" for p in pages_ if p not in ("prerequisites", "actions")), "reason-commons/reasoning.json",
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
                     *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
@@ -207,9 +207,10 @@ class SiteTests(unittest.TestCase):
 
     def test_our_reviewed_snapshot_is_unchanged(self):
         data = self.real["data"]
-        self.assertEqual(sum(len(t["nodes"]) for t in data["trees"].values()), 50)
-        self.assertEqual(sum(len(t["links"]) for t in data["trees"].values()), 14)
-        self.assertEqual([k for k, t in data["trees"].items() if t["links"]], ["goal", "current_reality"])
+        self.assertEqual(sum(len(t["nodes"]) for t in data["trees"].values()), 63)
+        self.assertEqual(sum(len(t["links"]) for t in data["trees"].values()), 57)
+        self.assertEqual([k for k, t in data["trees"].items() if t["links"]], ["goal", "current_reality", "conflict"])
+        self.assertEqual(set(data["trees"]), {"goal", "current_reality", "conflict", "future_reality"})
         self.assertEqual(json.loads(self.outputs["reasoning.json"]), data)
         self.assertEqual(json.loads(self.outputs["reason-commons/reasoning.json"]), data)
 
@@ -233,7 +234,7 @@ class SiteTests(unittest.TestCase):
             self.assertEqual(set(loose) | {i for p in pieces for i in p["ids"]}, {n["id"] for n in tree["nodes"]})
 
     def test_trees_without_accepted_links_draw_no_arrows(self):
-        for name in ("conflict", "future_reality", "prerequisite", "transition"):
+        for name in ("future_reality",):
             page = self.outputs[f'reason-commons/{pages.TREES[name]["slug"]}.html']
             self.assertNotIn('class="e-head"', page, name)
             self.assertNotIn('<a class="j ', page, name)
@@ -338,6 +339,12 @@ class SiteTests(unittest.TestCase):
         for forbidden in ("Calder", "change_acceptances", "feedback_requests", "/Users/", "driver_default", "funding/research/", "r-e-rufus-feedback-hard"):
             self.assertNotIn(forbidden, text)
 
+    def test_our_commons_publishes_no_funding_reasoning(self):
+        # demo-v2-collab-source revision 2 left funding and internal-collaboration items out; the allowlist enforces the IDs.
+        reasoning = self.outputs["reason-commons/reasoning.json"].lower()  # The scope copy may say what was left out.
+        for term in ("Foresight", "Lightcone", "grant", "funding"):
+            self.assertNotIn(term.lower(), reasoning, term)
+
     def test_every_commons_counts_statements_and_connections_apart_and_explains_its_colours(self):
         for c in self.commons:
             normalized = build.normalize(c)
@@ -414,7 +421,7 @@ class ReconstructionTests(unittest.TestCase):
         self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 246)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
-        expected = {"real": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd",
+        expected = {"real": "dbe81da21f413fa19300a64501b17797aaa4ecec8fa770b1869fea989f2db2f9",
                     "example": "f4319cd397cb6b7562f4399f7425d8613190a78aedf936304be63b0003597c1e"}
         for record in self.commons:
             if record["entry"]["kind"] in expected:
@@ -1152,7 +1159,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),62)
+        self.assertEqual(len(htmls),60)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)

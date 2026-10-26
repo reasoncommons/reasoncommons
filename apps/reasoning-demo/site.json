@@ -63,29 +63,21 @@
       "name": "Reason Commons",
       "byline": "Rufus Pollock and David Joseph",
       "summary": "Two people building a tool for reasoning together, and using it to work out how to get it used.",
-      "description": "Rufus and David are building Reason Commons, and using it on their own collaboration. This is the reasoning they have accepted for now: what they are aiming for, what stands in the way, the dilemma they faced and what they decided to do.",
-      "scope": "Only statements and connections that Rufus or David has accepted for now, selected from their working record. Their proposals, disagreements and working notes stay in that record.",
+      "description": "Rufus and David are building Reason Commons, and using it on their own collaboration. This is part of the reasoning Rufus has accepted for now in their October rework: what they are aiming for, what stands in the way, where needs pull two ways and the changes chosen in response.",
+      "scope": "Only statements and connections Rufus has accepted for now; David has not yet recorded acceptance of any. Reasoning about funding, money and their own working arrangements is left out, as are proposals, disagreements and working notes, which stay in the working record.",
       "overview": {
-        "conditions": "Four conditions are recorded as necessary for the goal.",
-        "obstacles_focus": "r-e-only-own-time",
-        "obstacles": "The largest connected part reads from the bottom up. An unclear product contributes, step by step, to having nothing but their own time to work with.",
-        "aside_title": "Why this page exists",
-        "aside_ids": [
-          "r-e-david-demo-confidence",
-          "r-e-david-low-market-interest",
-          "r-e-david-user-testing-held-back",
-          "r-e-david-willing-test-coherent-demo"
-        ],
-        "aside": "In October, David accepted for now that he lacks confidence there is a coherent product to demo, and that this holds him back from testing with potential users. He would test with one if he had a demo he felt was coherent. This demonstration is a response to that.",
-        "change": "Rufus confirmed this conflict in September and proposed its resolution himself: use the tool now, while it keeps being built. The connections between these statements have not been accepted, so no arrows are drawn.",
-        "actions": "Six actions, accepted by Rufus in September. Accepting a plan doesn't record whether it was carried out."
+        "conditions": "Five conditions are recorded as necessary for the goal, each with the conditions it in turn depends on.",
+        "obstacles_focus": "cr2-ude-few-users",
+        "obstacles": "Read from the bottom up: the causes recorded so far lead to hardly anyone other than Rufus and David using the tools regularly.",
+        "change": "Each dilemma sets two needs against each other and the ways of meeting them that pull apart. The changes below are what Rufus accepted in response; no connections between a change and its effects are published yet.",
+        "actions": ""
       },
       "front_page": {
         "headline": "Think together.\nFind a way forward.",
         "intro": "We’re building a way for shared thinking to accumulate: a goal people can inspect, question and improve, with AI helping keep the record.",
         "question": "What would make this useful enough for a group to try?",
-        "why": "David has said he would test with a potential user if he had a demo he felt was coherent. Your experience can help clarify what is missing.",
-        "focus_ref": "r-e-david-willing-test-coherent-demo"
+        "why": "Hardly anyone other than Rufus and David uses the tools regularly yet. Your experience can help show what would change that.",
+        "focus_ref": "cr2-ude-few-users"
       }
     },
     {

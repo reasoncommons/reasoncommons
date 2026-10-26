@@ -1,8 +1,8 @@
 {
   "registry_version": 1,
   "release": {
-    "release_id": "2026-10-22.1",
-    "snapshot_date": "2026-10-22",
+    "release_id": "2026-10-26.1",
+    "snapshot_date": "2026-10-26",
     "title": "Reason Commons: Rufus and David’s collaboration"
   },
   "people": {
@@ -12,132 +12,241 @@
   "selection": {
     "goal": {
       "nodes": [
-        "g-e-ltp-used-in-world",
-        "g-e-resourced",
-        "g-e-real-users",
-        "g-e-picturable-product",
-        "g-e-clear-agreement"
+        "g2-goal",
+        "g2-csf-create",
+        "g2-csf-enhance-discourse",
+        "g2-csf-use-value",
+        "g2-csf-every-scale",
+        "g2-csf-commons",
+        "g2-nc-1-1",
+        "g2-nc-1-2",
+        "g2-nc-1-3",
+        "g2-nc-2-1",
+        "g2-nc-2-2",
+        "g2-nc-2-3",
+        "g2-nc-2-4",
+        "g2-nc-3-1",
+        "g2-nc-3-2",
+        "g2-nc-3-3",
+        "g2-nc-3-4",
+        "g2-nc-3-5",
+        "g2-nc-4-1",
+        "g2-nc-4-2",
+        "g2-nc-4-3",
+        "g2-nc-5-1",
+        "g2-nc-5-2",
+        "g2-nc-5-3",
+        "g2-nc-5-4",
+        "g2-nc-5-5"
       ],
       "links": [
-        "g-rel-resourced-for-goal",
-        "g-rel-users-for-goal",
-        "g-rel-product-for-goal",
-        "g-rel-agreement-for-goal"
+        "g2-l-create",
+        "g2-l-enhance-discourse",
+        "g2-l-use-value",
+        "g2-l-every-scale",
+        "g2-l-commons",
+        "g2-l-nc-1-1",
+        "g2-l-nc-1-2",
+        "g2-l-nc-1-3",
+        "g2-l-nc-2-1",
+        "g2-l-nc-2-2",
+        "g2-l-nc-2-3",
+        "g2-l-nc-2-4",
+        "g2-l-nc-3-1",
+        "g2-l-nc-3-2",
+        "g2-l-nc-3-3",
+        "g2-l-nc-3-4",
+        "g2-l-nc-3-5",
+        "g2-l-nc-4-1",
+        "g2-l-nc-4-2",
+        "g2-l-nc-4-3",
+        "g2-l-nc-5-1",
+        "g2-l-nc-5-2",
+        "g2-l-nc-5-3",
+        "g2-l-nc-5-4",
+        "g2-l-nc-5-5"
       ]
     },
     "current_reality": {
       "nodes": [
-        "r-e-only-own-time",
-        "r-e-no-funding-applied",
-        "r-e-no-customers",
-        "r-e-product-unclear",
-        "r-e-no-user-picture",
-        "r-e-no-pmf",
-        "r-e-unclear-path",
-        "r-e-no-shared-actioning",
-        "r-e-want-both-routes",
-        "r-e-company-sale-hard",
-        "r-e-repo-mit",
-        "r-e-goal-agreed",
-        "r-e-no-outside-users",
-        "r-e-users-candidates",
-        "r-e-david-low-market-interest",
-        "r-e-david-demo-confidence",
-        "r-e-david-user-testing-held-back",
-        "r-e-david-willing-test-coherent-demo"
+        "cr2-ude-few-users",
+        "cr2-ude-results-unseen",
+        "cr2-ude-hard-to-build",
+        "cr2-ude-separate-from-discussion",
+        "cr2-ude-hard-to-start",
+        "cr2-ude-not-published",
+        "cr2-ude-not-discovered",
+        "cr2-ude-build-not-ship",
+        "cr2-ude-discussion-not-feeding-trees",
+        "cr2-c-skill-only",
+        "cr2-c-ltp-unfamiliar",
+        "cr2-c-no-first-group"
       ],
       "links": [
-        "r-rel-company-sale-drives-no-customers",
-        "r-rel-outside-users-drives-no-pmf",
-        "r-rel-product-unclear-drives-no-picture",
-        "r-rel-no-picture-drives-no-outside-users",
-        "r-rel-no-pmf-drives-no-customers",
-        "r-rel-no-customers-drives-own-time",
-        "r-rel-no-funding-drives-own-time",
-        "r-rel-unclear-drives-no-actioning",
-        "r-rel-david-low-interest-holds-back-testing",
-        "r-rel-david-demo-confidence-holds-back-testing"
+        "cr2-l-build-published",
+        "cr2-l-published-discovered",
+        "cr2-l-published-unseen",
+        "cr2-l-group-discovered",
+        "cr2-l-group-build",
+        "cr2-l-discovered-start-users",
+        "cr2-l-discovered-build-users",
+        "cr2-l-users-unseen",
+        "cr2-l-skill-start",
+        "cr2-l-skill-separate",
+        "cr2-l-ltp-start",
+        "cr2-l-ltp-build"
       ]
     },
     "conflict": {
       "nodes": [
-        "c-e-objective",
-        "c-e-req-learn-by-using",
-        "c-e-pre-use-now",
-        "c-e-req-good-enough",
-        "c-e-pre-build-first"
+        "cf2-ship-objective",
+        "cf2-ship-need-a",
+        "cf2-ship-need-b",
+        "cf2-ship-pre-a",
+        "cf2-ship-pre-b",
+        "cf2-story-objective",
+        "cf2-story-need-a",
+        "cf2-story-need-b",
+        "cf2-story-pre-a",
+        "cf2-story-pre-b",
+        "cf2-pitch-objective",
+        "cf2-pitch-need-a",
+        "cf2-pitch-need-b",
+        "cf2-pitch-pre-a",
+        "cf2-pitch-pre-b",
+        "cf2-distinct-objective",
+        "cf2-distinct-need-a",
+        "cf2-distinct-need-b",
+        "cf2-distinct-pre-a",
+        "cf2-distinct-pre-b"
       ],
-      "links": []
+      "links": [
+        "cf2-l-ship-a",
+        "cf2-l-ship-b",
+        "cf2-l-ship-pa",
+        "cf2-l-ship-pb",
+        "cf2-l-ship-x",
+        "cf2-l-story-a",
+        "cf2-l-story-b",
+        "cf2-l-story-pa",
+        "cf2-l-story-pb",
+        "cf2-l-story-x",
+        "cf2-l-pitch-a",
+        "cf2-l-pitch-b",
+        "cf2-l-pitch-pa",
+        "cf2-l-pitch-pb",
+        "cf2-l-pitch-x",
+        "cf2-l-distinct-a",
+        "cf2-l-distinct-b",
+        "cf2-l-distinct-pa",
+        "cf2-l-distinct-pb",
+        "cf2-l-distinct-x"
+      ]
     },
     "future_reality": {
       "nodes": [
-        "f-e-use-while-building"
-      ],
-      "links": []
-    },
-    "prerequisite": {
-      "nodes": [
-        "p-e-obj-resourced",
-        "p-e-only-own-time",
-        "p-e-no-funding-applied",
-        "p-e-no-customers",
-        "p-e-obj-real-users",
-        "p-e-no-pmf",
-        "p-e-obj-picturable-product",
-        "p-e-product-unclear",
-        "p-e-no-user-picture",
-        "p-e-obj-clear-agreement",
-        "p-e-ownership-undiscussed",
-        "p-e-io-startup-wanted",
-        "p-e-io-mit",
-        "p-e-no-outside-users",
-        "p-e-users-candidates"
-      ],
-      "links": []
-    },
-    "transition": {
-      "nodes": [
-        "t-e-act-funding-decision",
-        "t-e-act-agreement",
-        "t-e-act-friction-log",
-        "t-e-act-own-question",
-        "t-e-act-shortlist",
-        "t-e-act-apply"
+        "fr2-inj-staged-path",
+        "fr2-inj-distinct",
+        "fr2-inj-g2-publish-outcomes",
+        "fr2-inj-g3-distribution",
+        "fr2-inj-g5-sessions-first"
       ],
       "links": []
     }
   },
   "snapshot": {
     "projection_version": 1,
-    "release_id": "2026-10-22.1",
-    "snapshot_date": "2026-10-22",
+    "release_id": "2026-10-26.1",
+    "snapshot_date": "2026-10-26",
     "title": "Reason Commons: Rufus and David’s collaboration",
     "trees": {
       "goal": {
         "nodes": [
           {
-            "id": "g-e-ltp-used-in-world",
+            "id": "g2-goal",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
                 "name": "Original contributor not identified",
                 "role": "unknown"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "goal",
-            "text": "The Logical Thinking Process, made accessible through AI, is used in the world to help people think and act better together."
+            "text": "A reason commons is emerging and widely used: people, with AI, build shared tree-structured reasoning (such as Logical Thinking Process maps) and weave it into discussion and work, so discourse is more constructive and people find the leverage points and achieve their goals together far more effectively.",
+            "label": "A reason commons of AI-supported, tree-structured reasoning is widely used."
           },
           {
-            "id": "g-e-resourced",
+            "id": "g2-csf-create",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "critical_success_factor",
+            "text": "AI-supported tools make creating and revising reasoning trees easy, whether people build them explicitly or the trees are drawn semi-automatically from their existing discussion.",
+            "label": "AI tools make creating and revising reasoning trees easy."
+          },
+          {
+            "id": "g2-csf-enhance-discourse",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "critical_success_factor",
+            "text": "Reasoning trees improve discussion where it already happens (chats, documents, meetings, social platforms), surfacing the relevant structure alongside the conversation.",
+            "label": "Reasoning trees improve discussion where it already happens."
+          },
+          {
+            "id": "g2-csf-use-value",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "critical_success_factor",
+            "text": "Real people and groups use it regularly and see better decisions and results, starting with Rufus, David and Second Renaissance.",
+            "label": "Real people and groups use it regularly and get better decisions and results."
+          },
+          {
+            "id": "g2-csf-every-scale",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
             ],
             "contributors": [
               {
@@ -145,16 +254,16 @@
                 "role": "unknown"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "critical_success_factor",
-            "text": "The work is resourced beyond Rufus and David's spare time."
+            "text": "It is valuable to one person or a pair from day one, without needing a commons first, and gets more valuable for a team, an organization and the wider world.",
+            "label": "Valuable to one person on day one, more valuable at every larger scale."
           },
           {
-            "id": "g-e-real-users",
+            "id": "g2-csf-commons",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
@@ -162,112 +271,427 @@
                 "role": "unknown"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "critical_success_factor",
-            "text": "Real people use the tool, with Second Renaissance as the first user and testbed."
+            "text": "Trees are published, connected and evolved collectively, within organizations and in public, so people build on each other's reasoning, share core reference trees, and find others working toward the same goals.",
+            "label": "Trees are published, connected and evolved collectively."
           },
           {
-            "id": "g-e-picturable-product",
+            "id": "g2-nc-1-1",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "A person can get a usable first draft of a tree in minutes, whether starting from scratch or from material they already have.",
+            "label": "A usable first draft of a tree in minutes, from scratch or existing material."
+          },
+          {
+            "id": "g2-nc-1-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "People who don't know the method can build a tree that holds up when others review it.",
+            "label": "People who don't know the method can build a tree that holds up in review."
+          },
+          {
+            "id": "g2-nc-1-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Changing a tree is quick.",
+            "label": "Changing a tree is quick."
+          },
+          {
+            "id": "g2-nc-2-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "A tree can be shown and updated inside the places people already talk, without moving the conversation elsewhere.",
+            "label": "A tree can be shown and updated inside the places people already talk."
+          },
+          {
+            "id": "g2-nc-2-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "People in a discussion can point to a specific point in the tree and respond to it.",
+            "label": "People can point to a specific point in the tree and respond to it."
+          },
+          {
+            "id": "g2-nc-2-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Keeping the tree current adds little effort for anyone in the discussion.",
+            "label": "Keeping the tree current adds little effort for anyone in the discussion."
+          },
+          {
+            "id": "g2-nc-2-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Someone joining a discussion can grasp a tree's main point, and where their own point fits, within a minute.",
+            "label": "A newcomer grasps a tree's main point, and where they fit, within a minute."
+          },
+          {
+            "id": "g2-nc-3-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Rufus and David run their own real decisions and plans through trees as a habit.",
+            "label": "Rufus and David run their own real decisions through trees as a habit."
+          },
+          {
+            "id": "g2-nc-3-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Second Renaissance uses trees on at least one real, recurring decision or plan.",
+            "label": "Second Renaissance uses trees on a real, recurring decision or plan."
+          },
+          {
+            "id": "g2-nc-3-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "At least one named group beyond Rufus, David and Second Renaissance uses it without either of them in the room.",
+            "label": "A named outside group uses it without Rufus or David in the room."
+          },
+          {
+            "id": "g2-nc-3-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Users can point to a specific decision or result that came out better because of a tree.",
+            "label": "Users can point to a decision or result that came out better because of a tree."
+          },
+          {
+            "id": "g2-nc-3-5",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Using a tree on a decision takes less effort than the value people get from it.",
+            "label": "Using a tree on a decision takes less effort than the value people get."
+          },
+          {
+            "id": "g2-nc-4-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "One person gets something useful in their first session, without a group or existing trees.",
+            "label": "One person gets value in their first session, without a group or existing trees."
+          },
+          {
+            "id": "g2-nc-4-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "A tree one person starts can be shared with a pair or team and grow there without being rebuilt.",
+            "label": "A tree one person starts can grow in a pair or team without being rebuilt."
+          },
+          {
+            "id": "g2-nc-4-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Each added contributor makes a tree more useful to the others, not noisier.",
+            "label": "Each added contributor makes a tree more useful to the others, not noisier."
+          },
+          {
+            "id": "g2-nc-5-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Trees can be read, copied and reused outside the tool that made them.",
+            "label": "Trees can be read, copied and reused outside the tool that made them."
+          },
+          {
+            "id": "g2-nc-5-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
             ],
             "contributors": [
               {
                 "name": "Original contributor not identified",
                 "role": "unknown"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "critical_success_factor",
-            "text": "The product is something people can picture themselves using."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Anyone can propose a change to a tree; its owners can accept or decline it, and every change records who made it and why.",
+            "label": "Anyone can propose changes to a tree; every change records who and why."
           },
           {
-            "id": "g-e-clear-agreement",
+            "id": "g2-nc-5-3",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
                 "name": "Original contributor not identified",
                 "role": "unknown"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "critical_success_factor",
-            "text": "Rufus and David have a clear agreement on ownership, licensing and commitment."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "A tree can link to and reuse parts of other trees.",
+            "label": "A tree can link to and reuse parts of other trees."
+          },
+          {
+            "id": "g2-nc-5-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "People can find trees, and the people behind them, working toward the same or related goals.",
+            "label": "People can find trees, and people, working toward the same goals."
+          },
+          {
+            "id": "g2-nc-5-5",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "necessary_condition",
+            "text": "Owners control whether a tree is private to a group or public.",
+            "label": "Owners choose whether a tree is private to a group or public."
           }
         ],
         "links": [
           {
-            "id": "g-rel-resourced-for-goal",
+            "id": "g2-l-create",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Original contributor not identified",
-                "role": "unknown"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "g-e-resourced"
+              "g2-csf-create"
             ],
-            "to": "g-e-ltp-used-in-world",
+            "to": "g2-goal",
             "relation": "necessary_for"
           },
           {
-            "id": "g-rel-users-for-goal",
+            "id": "g2-l-enhance-discourse",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Original contributor not identified",
-                "role": "unknown"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "g-e-real-users"
+              "g2-csf-enhance-discourse"
             ],
-            "to": "g-e-ltp-used-in-world",
+            "to": "g2-goal",
             "relation": "necessary_for"
           },
           {
-            "id": "g-rel-product-for-goal",
+            "id": "g2-l-use-value",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Original contributor not identified",
-                "role": "unknown"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "g-e-picturable-product"
+              "g2-csf-use-value"
             ],
-            "to": "g-e-ltp-used-in-world",
+            "to": "g2-goal",
             "relation": "necessary_for"
           },
           {
-            "id": "g-rel-agreement-for-goal",
+            "id": "g2-l-every-scale",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
@@ -275,11 +699,410 @@
                 "role": "unknown"
               }
             ],
-            "acceptance_context": "scqh.md: agreed goal and critical success factors, 2026-09-25.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "g-e-clear-agreement"
+              "g2-csf-every-scale"
             ],
-            "to": "g-e-ltp-used-in-world",
+            "to": "g2-goal",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-commons",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-csf-commons"
+            ],
+            "to": "g2-goal",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-1-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-1-1"
+            ],
+            "to": "g2-csf-create",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-1-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-1-2"
+            ],
+            "to": "g2-csf-create",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-1-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-1-3"
+            ],
+            "to": "g2-csf-create",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-2-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-2-1"
+            ],
+            "to": "g2-csf-enhance-discourse",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-2-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-2-2"
+            ],
+            "to": "g2-csf-enhance-discourse",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-2-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-2-3"
+            ],
+            "to": "g2-csf-enhance-discourse",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-2-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-2-4"
+            ],
+            "to": "g2-csf-enhance-discourse",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-3-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-3-1"
+            ],
+            "to": "g2-csf-use-value",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-3-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-3-2"
+            ],
+            "to": "g2-csf-use-value",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-3-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-3-3"
+            ],
+            "to": "g2-csf-use-value",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-3-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-3-4"
+            ],
+            "to": "g2-csf-use-value",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-3-5",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-3-5"
+            ],
+            "to": "g2-csf-use-value",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-4-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-4-1"
+            ],
+            "to": "g2-csf-every-scale",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-4-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-4-2"
+            ],
+            "to": "g2-csf-every-scale",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-4-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-4-3"
+            ],
+            "to": "g2-csf-every-scale",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-5-1",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-5-1"
+            ],
+            "to": "g2-csf-commons",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-5-2",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-5-2"
+            ],
+            "to": "g2-csf-commons",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-5-3",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-5-3"
+            ],
+            "to": "g2-csf-commons",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-5-4",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-5-4"
+            ],
+            "to": "g2-csf-commons",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "g2-l-nc-5-5",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "g2-nc-5-5"
+            ],
+            "to": "g2-csf-commons",
             "relation": "necessary_for"
           }
         ]
@@ -287,154 +1110,28 @@
       "current_reality": {
         "nodes": [
           {
-            "id": "r-e-only-own-time",
+            "id": "cr2-ude-few-users",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David have no resources for the work other than their own time."
-          },
-          {
-            "id": "r-e-no-funding-applied",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David have not applied for funding."
-          },
-          {
-            "id": "r-e-no-customers",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David have no customers."
-          },
-          {
-            "id": "r-e-product-unclear",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David are not clear what the product should look like."
-          },
-          {
-            "id": "r-e-no-user-picture",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David cannot yet show an average user a clear picture of how they would use the product."
-          },
-          {
-            "id": "r-e-no-pmf",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "undesirable_effect",
-            "text": "Rufus and David have seen no sign of product-market fit."
-          },
-          {
-            "id": "r-e-unclear-path",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
+                "name": "AI assistant",
+                "role": "assistant"
+              },
               {
                 "name": "Rufus Pollock",
                 "role": "human"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "cause",
-            "text": "Rufus and David have not been clear on their goal, how they move towards it, or what is next."
-          },
-          {
-            "id": "r-e-no-shared-actioning",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "undesirable_effect",
-            "text": "Rufus and David have no shared, structured way of turning the goal into action, covering who ships what, what counts as progress and what is next."
+            "text": "Hardly anyone other than Rufus and David uses the tools regularly.",
+            "label": "Hardly anyone other than Rufus and David uses the tools regularly."
           },
           {
-            "id": "r-e-want-both-routes",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "observation",
-            "text": "Rufus and David both want the work to become a startup as well as seek philanthropic funding, and do not want it to depend on philanthropic funding in the long term; David is, if anything, keener on the startup."
-          },
-          {
-            "id": "r-e-company-sale-hard",
+            "id": "cr2-ude-results-unseen",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -445,165 +1142,197 @@
                 "role": "human"
               }
             ],
-            "acceptance_context": "Endpoint of causal fragment explicitly accepted by Rufus for testing in report seventh pass.",
-            "kind": "observation",
-            "text": "Rufus judges that selling the tool to companies is hard, because it needs teams to work, has to be sold at a senior level and is not a small subscription an individual buys."
-          },
-          {
-            "id": "r-e-repo-mit",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "observation",
-            "text": "The Reason Commons repository is released under the MIT licence from 2026-09-26, and Rufus and David are happy for all the software, the app included, to be MIT-licensed."
-          },
-          {
-            "id": "r-e-goal-agreed",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "observation",
-            "text": "Rufus and David agreed the goal of their collaboration on 2026-09-25."
-          },
-          {
-            "id": "r-e-no-outside-users",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "undesirable_effect",
-            "text": "No one other than Rufus and David uses any app they have built."
+            "text": "Evidence of value is limited and unseen; only a few people, mostly Rufus and David, have used it, and the results are not written up or shown anywhere people can see them, though those who use it find it very valuable.",
+            "label": "Evidence of value is thin and unseen; few have used it and results aren't written up."
           },
           {
-            "id": "r-e-users-candidates",
+            "id": "cr2-ude-hard-to-build",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Original contributor not identified",
-                "role": "unknown"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "undesirable_effect",
-            "text": "Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance."
+            "text": "Building a good tree still takes an expert facilitator or a lot of time; a newcomer can't easily do it alone.",
+            "label": "Building a good tree still takes an expert facilitator or a lot of time."
           },
           {
-            "id": "r-e-david-low-market-interest",
+            "id": "cr2-ude-separate-from-discussion",
             "status": "accepted",
             "accepted_by": [
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "David Joseph",
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
                 "role": "human"
               }
             ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "The potential of trees is not woven into discussions; a discussion can't easily point to the part of a tree it relates to.",
+            "label": "Trees aren't woven into discussions; nothing points from a discussion into a tree."
+          },
+          {
+            "id": "cr2-ude-hard-to-start",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "Getting started needs the exact skill set up, a real investment of time, and someone explaining the method, even with AI.",
+            "label": "Starting needs the exact skill set up, time, and someone explaining the method."
+          },
+          {
+            "id": "cr2-ude-not-published",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "No trees are published publicly, and there is no easy way to share a finished tree, such as a link to send a colleague.",
+            "label": "No trees are published publicly, and there's no easy way to share a finished one."
+          },
+          {
+            "id": "cr2-ude-not-discovered",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "The work isn't advertised, so people aren't discovering it.",
+            "label": "The work isn't advertised, so people aren't discovering it."
+          },
+          {
+            "id": "cr2-ude-build-not-ship",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Original contributor not identified",
+                "role": "unknown"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "Rufus and David keep building and redesigning rather than putting the tool in front of people.",
+            "label": "Rufus and David keep building and redesigning rather than putting it in front of people."
+          },
+          {
+            "id": "cr2-ude-discussion-not-feeding-trees",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "undesirable_effect",
+            "text": "Discussions don't feed back to enhance existing trees.",
+            "label": "Discussions don't feed back to enhance existing trees."
+          },
+          {
+            "id": "cr2-c-skill-only",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "cause",
-            "text": "David has limited interest in market testing and selling."
+            "text": "The tool mainly runs as an agent skill inside a coding-agent setup, and trees can't yet be shown or embedded in chats or documents.",
+            "label": "The tool runs mainly as an agent skill; trees can't be embedded in chats or docs."
           },
           {
-            "id": "r-e-david-demo-confidence",
+            "id": "cr2-c-ltp-unfamiliar",
             "status": "accepted",
             "accepted_by": [
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "David Joseph",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "cause",
-            "text": "David lacks confidence that there is a coherent product to demo."
+            "text": "The Logical Thinking Process is unfamiliar to most people and has several tree types and rules.",
+            "label": "The LTP is unfamiliar and has several tree types and rules."
           },
           {
-            "id": "r-e-david-user-testing-held-back",
+            "id": "cr2-c-no-first-group",
             "status": "accepted",
             "accepted_by": [
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "David Joseph",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
-            "kind": "undesirable_effect",
-            "text": "David is held back from testing with potential users."
-          },
-          {
-            "id": "r-e-david-willing-test-coherent-demo",
-            "status": "accepted",
-            "accepted_by": [
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "David Joseph",
-                "role": "human"
-              }
-            ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
-            "kind": "observation",
-            "text": "David would want to test with a potential user if he had a demo he felt was coherent."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "cause",
+            "text": "Candidate first user groups are named (Second Renaissance, effective altruism, the AI-risk debate), but none has been approached or committed to.",
+            "label": "Candidate first user groups are named, but none approached or committed to."
           }
         ],
         "links": [
           {
-            "id": "r-rel-company-sale-drives-no-customers",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
-            "from": [
-              "r-e-company-sale-hard"
-            ],
-            "to": "r-e-no-customers",
-            "relation": "contributes_to"
-          },
-          {
-            "id": "r-rel-outside-users-drives-no-pmf",
+            "id": "cr2-l-build-published",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -614,15 +1343,15 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-no-outside-users"
+              "cr2-ude-build-not-ship"
             ],
-            "to": "r-e-no-pmf",
+            "to": "cr2-ude-not-published",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-product-unclear-drives-no-picture",
+            "id": "cr2-l-published-discovered",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -633,15 +1362,15 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-product-unclear"
+              "cr2-ude-not-published"
             ],
-            "to": "r-e-no-user-picture",
+            "to": "cr2-ude-not-discovered",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-no-picture-drives-no-outside-users",
+            "id": "cr2-l-published-unseen",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -652,15 +1381,15 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-no-user-picture"
+              "cr2-ude-not-published"
             ],
-            "to": "r-e-no-outside-users",
+            "to": "cr2-ude-results-unseen",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-no-pmf-drives-no-customers",
+            "id": "cr2-l-group-discovered",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -671,15 +1400,15 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-no-pmf"
+              "cr2-c-no-first-group"
             ],
-            "to": "r-e-no-customers",
+            "to": "cr2-ude-not-discovered",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-no-customers-drives-own-time",
+            "id": "cr2-l-group-build",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -690,15 +1419,15 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-no-customers"
+              "cr2-c-no-first-group"
             ],
-            "to": "r-e-only-own-time",
+            "to": "cr2-ude-build-not-ship",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-no-funding-drives-own-time",
+            "id": "cr2-l-discovered-start-users",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -709,15 +1438,16 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-no-funding-applied"
+              "cr2-ude-not-discovered",
+              "cr2-ude-hard-to-start"
             ],
-            "to": "r-e-only-own-time",
+            "to": "cr2-ude-few-users",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-unclear-drives-no-actioning",
+            "id": "cr2-l-discovered-build-users",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -728,49 +1458,107 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Cause links / report seventh pass: explicitly accepted by Rufus for testing, 2026-09-26.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-unclear-path"
+              "cr2-ude-not-discovered",
+              "cr2-ude-hard-to-build"
             ],
-            "to": "r-e-no-shared-actioning",
+            "to": "cr2-ude-few-users",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-david-low-interest-holds-back-testing",
+            "id": "cr2-l-users-unseen",
             "status": "accepted",
             "accepted_by": [
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "David Joseph",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-david-low-market-interest"
+              "cr2-ude-few-users"
             ],
-            "to": "r-e-david-user-testing-held-back",
+            "to": "cr2-ude-results-unseen",
             "relation": "contributes_to"
           },
           {
-            "id": "r-rel-david-demo-confidence-holds-back-testing",
+            "id": "cr2-l-skill-start",
             "status": "accepted",
             "accepted_by": [
-              "David Joseph"
+              "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "David Joseph",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "Conversation 2026-10-12: David accepted the restored 2026-09-29 fragment for now.",
+            "acceptance_context": "No acceptance date was recorded.",
             "from": [
-              "r-e-david-demo-confidence"
+              "cr2-c-skill-only"
             ],
-            "to": "r-e-david-user-testing-held-back",
+            "to": "cr2-ude-hard-to-start",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "cr2-l-skill-separate",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cr2-c-skill-only"
+            ],
+            "to": "cr2-ude-separate-from-discussion",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "cr2-l-ltp-start",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cr2-c-ltp-unfamiliar"
+            ],
+            "to": "cr2-ude-hard-to-start",
+            "relation": "contributes_to"
+          },
+          {
+            "id": "cr2-l-ltp-build",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cr2-c-ltp-unfamiliar"
+            ],
+            "to": "cr2-ude-hard-to-build",
             "relation": "contributes_to"
           }
         ]
@@ -778,7 +1566,7 @@
       "conflict": {
         "nodes": [
           {
-            "id": "c-e-objective",
+            "id": "cf2-ship-objective",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -789,12 +1577,13 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "objective",
-            "text": "Real people use the tool, with Rufus and David as the first users."
+            "text": "Real people and groups use it and get better results.",
+            "label": "Real people and groups use it and get better results."
           },
           {
-            "id": "c-e-req-learn-by-using",
+            "id": "cf2-ship-need-a",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -805,12 +1594,13 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "need",
-            "text": "Rufus and David learn what the tool must do by using it on their own real work."
+            "text": "Whoever tries it gets enough value in their first session to come back.",
+            "label": "Whoever tries it gets enough value in their first session to come back."
           },
           {
-            "id": "c-e-pre-use-now",
+            "id": "cf2-ship-need-b",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -821,28 +1611,13 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
-            "kind": "prerequisite",
-            "text": "Rufus and David use the current app on their real work now, rough as it is."
-          },
-          {
-            "id": "c-e-req-good-enough",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "need",
-            "text": "The tool Rufus and David put in front of people is good enough to be worth using."
+            "text": "Learn from outside users what to build, and gather evidence others can see.",
+            "label": "Learn from outside users what to build, and gather evidence others can see."
           },
           {
-            "id": "c-e-pre-build-first",
+            "id": "cf2-ship-pre-a",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -853,17 +1628,755 @@
                 "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: first conflict confirmed by Rufus, 2026-09-25; positions describe the historical cloud.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "prerequisite",
-            "text": "Rufus and David keep building and redesigning the tool before relying on it."
+            "text": "Keep building until the tool is good enough before outsiders see it.",
+            "label": "Keep building until the tool is good enough before outsiders see it."
+          },
+          {
+            "id": "cf2-ship-pre-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "Put the rough tool in front of outside people now.",
+            "label": "Put the rough tool in front of outside people now."
+          },
+          {
+            "id": "cf2-story-objective",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "objective",
+            "text": "Real people and groups use it and get better results (assuming groups want trees and will consent to their discussions being processed).",
+            "label": "Real people and groups use it and get better results (assuming groups want trees and will consent..."
+          },
+          {
+            "id": "cf2-story-need-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "Adoption spreads with little hands-on effort from us.",
+            "label": "Adoption spreads with little hands-on effort from us."
+          },
+          {
+            "id": "cf2-story-need-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "Early users get trees good enough to act on, and come back.",
+            "label": "Early users get trees good enough to act on, and come back."
+          },
+          {
+            "id": "cf2-story-pre-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "Lead with one-shot building: AI builds the trees from a curated corpus (docs, forum posts), then users review them in a walkthrough.",
+            "label": "One-shot: build trees from a curated corpus (docs, forum posts), then review them with users."
+          },
+          {
+            "id": "cf2-story-pre-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "Lead with incremental sessions: the skill (AI-guided, with a human alongside at first) walks people through, building up from the goal tree, rolled out hands-on.",
+            "label": "Incremental: the skill walks people through, building up from the goal tree."
+          },
+          {
+            "id": "cf2-pitch-objective",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "objective",
+            "text": "The people we reach see quickly why Reason Commons matters to them, and try or back it.",
+            "label": "The people we reach see quickly why Reason Commons matters to them, and try or back it."
+          },
+          {
+            "id": "cf2-pitch-need-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "People grasp the big picture: why this matters, a reason commons transforming how people think and collaborate.",
+            "label": "People grasp the big picture: why this matters, a reason commons transforming how people think an..."
+          },
+          {
+            "id": "cf2-pitch-need-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "People see how it helps them or their team today.",
+            "label": "People see how it helps them or their team today."
+          },
+          {
+            "id": "cf2-pitch-pre-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "The hero and the pitch lead with the big picture.",
+            "label": "The hero and the pitch lead with the big picture."
+          },
+          {
+            "id": "cf2-pitch-pre-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "The hero and the pitch lead with the concrete use.",
+            "label": "The hero and the pitch lead with the concrete use."
+          },
+          {
+            "id": "cf2-distinct-objective",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "objective",
+            "text": "The people we reach see why Reason Commons, specifically, matters to them.",
+            "label": "The people we reach see why Reason Commons, specifically, matters to them."
+          },
+          {
+            "id": "cf2-distinct-need-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "They see it is distinctive, not another AI thinking tool.",
+            "label": "They see it is distinctive, not another AI thinking tool."
+          },
+          {
+            "id": "cf2-distinct-need-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "need",
+            "text": "It speaks to what this funder or user cares about: how it helps them.",
+            "label": "It speaks to what this funder or user cares about: how it helps them."
+          },
+          {
+            "id": "cf2-distinct-pre-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "Lead with the mechanism: a decades-old, proven technique (the Logical Thinking Process) made accessible by AI.",
+            "label": "Lead with the mechanism: a decades-old, proven technique (the Logical Thinking Process) made acce..."
+          },
+          {
+            "id": "cf2-distinct-pre-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "prerequisite",
+            "text": "Lead with the benefit: what it does for this funder or user.",
+            "label": "Lead with the benefit: what it does for this funder or user."
           }
         ],
-        "links": []
+        "links": [
+          {
+            "id": "cf2-l-ship-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-ship-need-a"
+            ],
+            "to": "cf2-ship-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-ship-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-ship-need-b"
+            ],
+            "to": "cf2-ship-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-ship-pa",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-ship-pre-a"
+            ],
+            "to": "cf2-ship-need-a",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-ship-pb",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-ship-pre-b"
+            ],
+            "to": "cf2-ship-need-b",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-ship-x",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-ship-pre-a"
+            ],
+            "to": "cf2-ship-pre-b",
+            "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-story-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-story-need-a"
+            ],
+            "to": "cf2-story-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-story-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-story-need-b"
+            ],
+            "to": "cf2-story-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-story-pa",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-story-pre-a"
+            ],
+            "to": "cf2-story-need-a",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-story-pb",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-story-pre-b"
+            ],
+            "to": "cf2-story-need-b",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-story-x",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-story-pre-a"
+            ],
+            "to": "cf2-story-pre-b",
+            "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-pitch-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-pitch-need-a"
+            ],
+            "to": "cf2-pitch-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-pitch-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-pitch-need-b"
+            ],
+            "to": "cf2-pitch-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-pitch-pa",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-pitch-pre-a"
+            ],
+            "to": "cf2-pitch-need-a",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-pitch-pb",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-pitch-pre-b"
+            ],
+            "to": "cf2-pitch-need-b",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-pitch-x",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-pitch-pre-a"
+            ],
+            "to": "cf2-pitch-pre-b",
+            "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-distinct-a",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-distinct-need-a"
+            ],
+            "to": "cf2-distinct-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-distinct-b",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-distinct-need-b"
+            ],
+            "to": "cf2-distinct-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-distinct-pa",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-distinct-pre-a"
+            ],
+            "to": "cf2-distinct-need-a",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-distinct-pb",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-distinct-pre-b"
+            ],
+            "to": "cf2-distinct-need-b",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-distinct-x",
+            "status": "accepted",
+            "accepted_by": [
+              "Rufus Pollock"
+            ],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "acceptance_context": "No acceptance date was recorded.",
+            "from": [
+              "cf2-distinct-pre-a"
+            ],
+            "to": "cf2-distinct-pre-b",
+            "relation": "conflicts_with"
+          }
+        ]
       },
       "future_reality": {
         "nodes": [
           {
-            "id": "f-e-use-while-building",
+            "id": "fr2-inj-staged-path",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -872,279 +2385,19 @@
               {
                 "name": "Rufus Pollock",
                 "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: first conflict resolution; report third pass identifies this as Rufus’s own resolution.",
+            "acceptance_context": "No acceptance date was recorded.",
             "kind": "injection",
-            "text": "Rufus and David use the tool on their real work now while they keep building and redesigning it."
-          }
-        ],
-        "links": []
-      },
-      "prerequisite": {
-        "nodes": [
-          {
-            "id": "p-e-obj-resourced",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "objective",
-            "text": "The work is resourced beyond Rufus and David's spare time."
+            "text": "Lead now with incremental sessions, hands-on with people (J2), on a staged path (J6). Stage 1: AI-incremental with a human alongside (demos, first users). Stage 2: AI-incremental alone, perhaps with a short training video. Stage 3: AI one-shot from a curated corpus, plus an incremental walkthrough and correction. Side track: Discord enhances existing trees. Gate between stages: users act on the tree, a decision follows within 2-4 weeks, they come back, and logged human interventions fall. T2 gates Stage 2; T1 gates Stage 3.",
+            "label": "Staged path: AI-incremental with a human beside, then AI alone, then one-shot plus walkthrough."
           },
           {
-            "id": "p-e-only-own-time",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David have no resources for the work other than their own time."
-          },
-          {
-            "id": "p-e-no-funding-applied",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David have not applied for funding."
-          },
-          {
-            "id": "p-e-no-customers",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David have no customers."
-          },
-          {
-            "id": "p-e-obj-real-users",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "objective",
-            "text": "Real people use the tool, with Second Renaissance as the first user and testbed."
-          },
-          {
-            "id": "p-e-no-pmf",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David have seen no sign of product-market fit."
-          },
-          {
-            "id": "p-e-obj-picturable-product",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "objective",
-            "text": "The product is something people can picture themselves using."
-          },
-          {
-            "id": "p-e-product-unclear",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David are not clear what the product should look like."
-          },
-          {
-            "id": "p-e-no-user-picture",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David cannot yet show an average user a clear picture of how they would use the product."
-          },
-          {
-            "id": "p-e-obj-clear-agreement",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "objective",
-            "text": "Rufus and David have a clear agreement on ownership, licensing and commitment."
-          },
-          {
-            "id": "p-e-ownership-undiscussed",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Goal / Obstacles by success factor / Tree cleanup (2026-09-25–26).",
-            "kind": "obstacle",
-            "text": "Rufus and David have never discussed ownership or profit share."
-          },
-          {
-            "id": "p-e-io-startup-wanted",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
-            "kind": "intermediate_objective",
-            "text": "Rufus and David both want to turn the work into a startup."
-          },
-          {
-            "id": "p-e-io-mit",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
-            "kind": "intermediate_objective",
-            "text": "The Reason Commons software is released under the MIT licence."
-          },
-          {
-            "id": "p-e-no-outside-users",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
-            "kind": "obstacle",
-            "text": "No one other than Rufus and David uses any app they have built."
-          },
-          {
-            "id": "p-e-users-candidates",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock",
-              "David Joseph"
-            ],
-            "contributors": [
-              {
-                "name": "Original contributor not identified",
-                "role": "unknown"
-              }
-            ],
-            "acceptance_context": "scqh.md: Tree cleanup (2026-09-26).",
-            "kind": "obstacle",
-            "text": "Rufus and David do not know who their users are in general, though for the nonprofit-oriented version they have candidate communities in the AI-risk debate, effective altruism and Second Renaissance."
-          }
-        ],
-        "links": []
-      },
-      "transition": {
-        "nodes": [
-          {
-            "id": "t-e-act-funding-decision",
+            "id": "fr2-inj-distinct",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
@@ -1153,96 +2406,72 @@
               {
                 "name": "Rufus Pollock",
                 "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "Rufus and David together run the choice of near-term focus, grant applications or the product and customers, through the tool, from notes to a tree to a decision."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "injection",
+            "text": "Every lead pairs the named, proven method (L1) and the visible structure chat lacks (L3: trees, every claim with an author, nothing agreed until you accept) with a concrete benefit verb, not \"use\" (I6). Newcomers are the default audience, since TOC practitioners are rare: plain words and proof up front, tree jargon one level down (I7). The crafted AI experience is a core differentiator: how the skill walks you through, naming, beautiful well-designed trees, efficiency; method plus AI alone is not enough (I8).",
+            "label": "Lead pairs the named method, visible structure and crafted AI experience with a concrete benefit."
           },
           {
-            "id": "t-e-act-agreement",
+            "id": "fr2-inj-g2-publish-outcomes",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Rufus Pollock",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "Rufus and David together run their agreement on ownership, licensing and commitment through the tool."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "injection",
+            "text": "G2: With participants' consent, publish Stage 1 trees and short outcome notes. Success means a decision was made and followed through, checked at 30 days.",
+            "label": "With consent, publish Stage 1 trees and outcome notes; success is a decision followed through."
           },
           {
-            "id": "t-e-act-friction-log",
+            "id": "fr2-inj-g3-distribution",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Rufus Pollock",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "Rufus starts a friction log, and Rufus and David record in it each place the tool falls short while they use it."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "injection",
+            "text": "G3: Minimal distribution plan: name the two or three communities that the six Stage 1 people and the I4 strangers come from.",
+            "label": "Minimal distribution: name the 2-3 communities the six and the I4 strangers come from."
           },
           {
-            "id": "t-e-act-own-question",
+            "id": "fr2-inj-g5-sessions-first",
             "status": "accepted",
             "accepted_by": [
               "Rufus Pollock"
             ],
             "contributors": [
               {
-                "name": "Rufus Pollock",
-                "role": "human"
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "David uses the tool on a real question of his own outside this collaboration, and Rufus may do the same."
-          },
-          {
-            "id": "t-e-act-shortlist",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "Rufus and David shortlist funders, starting with Coefficient Giving and the Survival and Flourishing Fund and adding others found by research or by asking around."
-          },
-          {
-            "id": "t-e-act-apply",
-            "status": "accepted",
-            "accepted_by": [
-              "Rufus Pollock"
-            ],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "acceptance_context": "scqh.md: Next actions, decided/assigned by Rufus 2026-09-26. Acceptance of a plan does not mean completion.",
-            "kind": "action",
-            "text": "Rufus and David apply to the shortlisted funders through Life Itself, using the one-page pitch."
+            "acceptance_context": "No acceptance date was recorded.",
+            "kind": "injection",
+            "text": "G5: Sessions before features: no new features until three Stage 1 sessions are done; log setup time in T2's AI-only sessions.",
+            "label": "No new features until three Stage 1 sessions are done; log setup time in AI-only sessions."
           }
         ],
         "links": []
       }
     }
   },
-  "snapshot_sha256": "994c61a3deda57223fb20a363897d00c999bdf3244294d2601ee1fe100c39cfd"
+  "snapshot_sha256": "dbe81da21f413fa19300a64501b17797aaa4ecec8fa770b1869fea989f2db2f9"
 }
