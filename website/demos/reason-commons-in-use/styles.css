@@ -942,8 +942,9 @@ table{border-collapse:collapse;width:100%}
 .pv-chip:hover{border-color:var(--green-line);color:var(--green-ink)}
 
 /* The staged map runs left to right across the whole window */
-.pv-scroll{overflow-x:auto;padding:18px 32px 40px;margin-top:6px;background-image:radial-gradient(circle,rgba(29,36,32,.09) 1px,transparent 1.3px);background-size:18px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-behavior:smooth}
-.pv-map{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:var(--pv-w,236px);column-gap:64px;align-items:start;width:max-content;margin:0 auto}
+/* The map starts at the page column's left edge and runs off to the right; the last stage keeps a gutter. */
+.pv-scroll{overflow-x:auto;padding:18px 0 40px max(32px,calc((100% - 1200px) / 2 + 32px));margin-top:6px;background-image:radial-gradient(circle,rgba(29,36,32,.09) 1px,transparent 1.3px);background-size:18px 18px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);scroll-behavior:smooth}
+.pv-map{position:relative;display:grid;grid-auto-flow:column;grid-auto-columns:var(--pv-w,236px);column-gap:64px;align-items:start;width:max-content;padding-right:32px}
 .pv-col{position:relative;z-index:1}
 .pv-col[hidden]{display:none}
 .pv-cards{display:flex;flex-direction:column;gap:16px}
@@ -1033,7 +1034,7 @@ table{border-collapse:collapse;width:100%}
 .pv-details{display:none}
 .pv-drawer{position:fixed;top:0;right:0;bottom:0;width:min(430px,100vw);background:var(--surface);border-left:1px solid var(--line-2);box-shadow:-10px 0 34px rgba(29,36,32,.1);transform:translateX(102%);visibility:hidden;transition:transform .26s cubic-bezier(.165,.84,.44,1),visibility 0s .26s;overflow:auto;z-index:30;padding:20px 24px 44px;font-size:15px}
 .pv-drawer.is-open{transform:none;visibility:visible;transition:transform .26s cubic-bezier(.165,.84,.44,1)}
-body.pv-open .pv-scroll{padding-right:470px}
+body.pv-open .pv-map{padding-right:470px}
 .pv-x{position:sticky;top:0;float:right;border:1px solid var(--line-2);background:var(--surface);border-radius:8px;width:32px;height:32px;cursor:pointer;font-size:18px;line-height:1;color:var(--ink)}
 .pv-d-eb{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .pv-pill{display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:700;border-radius:999px;padding:3px 11px;margin-top:10px}
@@ -1067,7 +1068,7 @@ body.pv-open .pv-scroll{padding-right:470px}
 
 @media (max-width:760px){
   .pv-scroll{padding:6px 16px 30px;overflow:visible;background:none;border:0}
-  .pv-map{display:block;width:auto}
+  .pv-map{display:block;width:auto;padding-right:0}
   .pv-col{margin-bottom:26px}
   .pv-col-head{height:auto;padding-top:14px;position:sticky;top:0;background:var(--paper);z-index:3;margin-bottom:12px}
   .pv-cards{gap:12px}
@@ -1082,7 +1083,7 @@ body.pv-open .pv-scroll{padding-right:470px}
   .pv-op,.pv-arrow{justify-self:start;margin-left:18px}
   .pv-arrow svg{transform:rotate(90deg)}
   .pv-drawer{top:auto;left:0;width:100%;max-height:80vh;border-radius:18px 18px 0 0;border-left:0;border-top:1px solid var(--line-2);transform:translateY(102%)}
-  body.pv-open .pv-scroll{padding-right:16px}
+  body.pv-open .pv-map{padding-right:0}
   .pv-timeline{overflow-x:visible;padding:14px 14px 10px}
   .pv-gantt{min-width:0}
   .pv-g-head,.pv-gantt li{grid-template-columns:minmax(0,1fr)}

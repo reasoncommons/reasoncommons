@@ -381,7 +381,7 @@
           const button = event.target.closest('button[data-jump]');
           const column = button && map.querySelector(`.pv-col[data-stage="${button.dataset.jump}"]`);
           if (!column || column.hidden) return;
-          const left = scroller.scrollLeft + column.getBoundingClientRect().left - scroller.getBoundingClientRect().left - 32;
+          const left = scroller.scrollLeft + column.getBoundingClientRect().left - scroller.getBoundingClientRect().left - parseFloat(getComputedStyle(scroller).paddingLeft);
           scroller.scrollTo({ left, behavior: calm.matches ? 'auto' : 'smooth' });
         });
       }
