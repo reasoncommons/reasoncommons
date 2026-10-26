@@ -323,6 +323,29 @@ p.ch-title{font-size:30px}
 .rc-diagram .m circle{fill:var(--dark)}
 .rc-diagram .m text{fill:var(--on-dark);font-size:12px;font-weight:700}
 .rc-diagram.is-lit a:not(.lit){opacity:.28}
+/* Stepping through an indented tree (app.js). Without script the whole tree shows and none of this appears. */
+.step-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 16px;margin:0 0 10px;font-size:14px;color:var(--muted)}
+.step-toggle{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:6px 14px 6px 8px;font:inherit;font-weight:500;cursor:pointer}
+.step-toggle:hover{border-color:var(--green-line)}
+.step-toggle:focus-visible,.text-button:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+.step-switch{position:relative;flex:none;width:30px;height:18px;border-radius:9px;background:var(--line-2);transition:background .15s}
+.step-switch::after{content:"";position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(31,42,36,.25);transition:transform .15s}
+.step-toggle[aria-pressed="true"] .step-switch{background:var(--green)}
+.step-toggle[aria-pressed="true"] .step-switch::after{transform:translateX(12px)}
+.step-bar:not(.is-on) .step-hint,.step-bar:not(.is-on) .step-count{display:none}
+.step-count{font-variant-numeric:tabular-nums}
+.text-button{border:0;background:none;padding:2px 0;color:var(--green-ink);font:inherit;font-weight:500;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.dg-scroll:has(>svg[data-hierarchy]){max-height:none}
+.rc-diagram .is-folded{display:none}
+.rc-diagram .n-chip{display:none}
+.rc-diagram.is-stepping .n-chip{display:inline}
+.rc-diagram .n-chip rect{fill:var(--green-pale);stroke:var(--green-line);stroke-width:1}
+.rc-diagram .n-chip text{font-size:11px;font-weight:700;fill:var(--green-ink)}
+.rc-diagram .n-chev{fill:none;stroke:var(--green-ink);stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;transform-box:fill-box;transform-origin:center;transition:transform .15s}
+.rc-diagram .is-open .n-chev{transform:rotate(180deg)}
+.rc-diagram.is-stepping a.n[data-kids]:not(.is-open) .n-box{stroke:var(--green-line);stroke-width:1.6}
+@media (prefers-reduced-motion:no-preference){.rc-diagram .is-entering{animation:rc-enter .24s ease-out}}
+@keyframes rc-enter{from{opacity:0}to{opacity:1}}
 .rc-diagram a{transition:opacity .15s}
 .rc-thumb .t-node{fill:var(--surface);stroke:#b6ae9c;stroke-width:1}
 .rc-thumb :is(.role-goal,.role-objective){fill:var(--dark);stroke:var(--dark)}

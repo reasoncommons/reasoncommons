@@ -438,7 +438,12 @@ def credits_table(c):
 def figure(svg, label, caption="", width=None):
     cap = f"<figcaption>{caption}</figcaption>" if caption else ""
     size = f' style="--w:{width + 24}px"' if width else ""
-    return (f'<figure class="dg"{size}><div class="dg-scroll" tabindex="0" role="region" aria-label="{esc(label)}">{svg}</div>{cap}</figure>')
+    steps = ""
+    if " data-hierarchy" in svg.split(">", 1)[0]:  # An indented tree can be stepped through; app.js reveals the controls.
+        steps = ('<div class="step-bar" hidden><button type="button" class="step-toggle" aria-pressed="false"><span class="step-switch" aria-hidden="true"></span>Step through</button>'
+                 '<span class="step-hint">Select a box to open what it depends on.</span><span class="step-count" aria-live="polite"></span>'
+                 '<button type="button" class="step-all text-button">Show all</button><button type="button" class="step-reset text-button">Start over</button></div>')
+    return (f'<figure class="dg"{size}>{steps}<div class="dg-scroll" tabindex="0" role="region" aria-label="{esc(label)}">{svg}</div>{cap}</figure>')
 
 
 def loose_groups(c, name, ids, heading=True):

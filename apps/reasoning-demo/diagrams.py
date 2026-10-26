@@ -4,7 +4,8 @@ Every arrow comes from a published link. The sources of one link meet at an "and
 junction before a single arrow into the target, so joint conditions never look like
 separate causes. Statements without a published connection are grouped by role and
 are never joined to anything. A feedback loop returns round the right-hand side, and a
-remedy's line ends in a bar at the risk it is meant to prevent.
+remedy's line ends in a bar at the risk it is meant to prevent. A strict hierarchy of
+"is needed for" links reads top to bottom instead, as an indented tree that can be stepped through.
 """
 from collections import defaultdict
 import html
@@ -37,6 +38,9 @@ KIND_SIZE, KIND_TRACK = 10, 1.1
 CREDIT_SIZE, CREDIT_WEIGHT, CREDIT_LINE = 12, 400, 15.5  # Who an idea comes from, beneath a reconstruction's statement.
 H_GAP = 26
 LANE_GAP, LOOP_TAG_W = 24, 74       # loop lanes beyond the right-hand edge, and the width of their "feeds back" tag
+HIER_W, INDENT, ROW_GAP = 600, 34, 14  # an indented tree: the root's width, each level's indent and the gap between rows
+RAIL_INSET, STEM_Y = 17, 24            # a parent's rail sits this far into its box; a child's stem leaves at its kind line
+CHIP_SIZE, CHIP_H = 11, 18
 
 
 def esc(value):
@@ -461,6 +465,57 @@ def layered(nodes, links, boxes, order):
     return {"w": round(width), "h": round(canvas_h), "nodes": placed_nodes, "paths": paths, "joins": joins, "markers": []}
 
 
+# ---------------------------------------------------------------- hierarchy: an indented tree, top to bottom
+
+def is_hierarchy(ids, links):
+    """One root, one parent each, one source per link and only "is needed for": an indented tree draws it without loss."""
+    parents = {}
+    for link in links:
+        if len(link["from"]) != 1 or link["relation"] != "necessary_for" or link["from"][0] in parents:
+            return False
+        parents[link["from"][0]] = link["to"]
+    return len(ids) > 2 and len(parents) == len(ids) - 1
+
+
+def plural(count, label):
+    word = label.lower()
+    return f"{count} {word if count == 1 else word[:-1] + 'ies' if word.endswith('y') else word + 's'}"
+
+
+def indented(nodes, links, kind_label, order):
+    """The root first, each child beneath its parent and indented, joined to it by a rail down the parent's left side.
+
+    Rows are in reading order, so hiding a branch only closes the gap it leaves; app.js relies on that to step through.
+    """
+    parent = {l["from"][0]: (l["to"], l) for l in links}
+    children = defaultdict(list)
+    for child in sorted(parent, key=order.get):
+        children[parent[child][0]].append(child)
+    root = next(i for i in sorted(nodes, key=order.get) if i not in parent)
+    rows, stack = [], [(root, 0)]
+    while stack:
+        ident, depth = stack.pop()
+        rows.append((ident, depth))
+        stack.extend((child, depth + 1) for child in reversed(children[ident]))
+    placed, y = {}, PAD
+    for ident, depth in rows:
+        placed[ident] = {**box(nodes[ident], kind_label(nodes[ident]["kind"]), HIER_W - depth * INDENT),
+                         "x": PAD + depth * INDENT, "y": y, "depth": depth, "parent": parent.get(ident, (None,))[0]}
+        kids = children[ident]
+        if kids:
+            labels = {kind_label(nodes[k]["kind"]) for k in kids}
+            chip = plural(len(kids), labels.pop() if len(labels) == 1 else "statement")
+            placed[ident].update(kids=len(kids), chip=chip, chip_w=round(text_width(chip, CHIP_SIZE, 700) + 34))
+        y += placed[ident]["h"] + ROW_GAP
+    paths = []
+    for ident, _ in rows[1:]:
+        up, link = parent[ident]
+        child, top = placed[ident], placed[up]
+        rail, stem = top["x"] + RAIL_INSET, child["y"] + STEM_Y
+        paths.append({"points": [(child["x"], stem), (rail, stem), (rail, top["y"] + top["h"])], "link": link, "arrow": True})
+    return {"w": PAD * 2 + HIER_W, "h": round(y - ROW_GAP + PAD), "nodes": placed, "paths": paths, "joins": [], "markers": [], "hierarchy": True}
+
+
 # ---------------------------------------------------------------- conflict cloud
 
 def cloud_roles(nodes, links):
@@ -591,6 +646,8 @@ def components(tree):
 def geometry(tree, ids, links, kind_label):
     nodes = {n["id"]: n for n in tree["nodes"] if n["id"] in set(ids)}
     order = {n["id"]: i for i, n in enumerate(tree["nodes"])}
+    if is_hierarchy(ids, links):
+        return annotate(indented(nodes, links, kind_label, order), nodes)
     boxes = {i: box(nodes[i], kind_label(nodes[i]["kind"])) for i in nodes}
     roles = cloud_roles(nodes, links) if tree.get("name") == "conflict" else None
     shape = cloud(nodes, links, boxes, roles) if roles else None
@@ -631,10 +688,19 @@ def node_svg(node, placed, href, focus=False, context=None, uniform=False):
             notes += f'<text class="{css}" x="{x + PAD_X:g}" y="{top:g}">{spans}</text>'
             top += len(rows) * CREDIT_LINE
     focus_ring = f'<rect class="n-ring" x="{x - 5:g}" y="{y - 5:g}" width="{w + 10:g}" height="{h + 10:g}" rx="13"/>' if focus else ""
-    return (f'<a class="{classes}" href="{esc(href)}" data-id="{esc(node["id"])}" aria-label="{esc(label)}">{focus_ring}'
+    rows, chip = "", ""
+    if "depth" in placed:  # A row of an indented tree: where it sits, for stepping through.
+        rows = (f' data-depth="{placed["depth"]}" data-x="{x:g}" data-y="{y:g}" data-h="{h:g}"'
+                + (f' data-parent="{esc(placed["parent"])}"' if placed["parent"] else "") + (f' data-kids="{placed["kids"]}"' if placed.get("kids") else ""))
+    if placed.get("chip"):  # Shown only while stepping through: what opening this box reveals.
+        cw, cx, cy = placed["chip_w"], x + w - PAD_X - placed["chip_w"], y + h - CHIP_H / 2
+        chip = (f'<g class="n-chip"><rect x="{cx:g}" y="{cy:g}" width="{cw:g}" height="{CHIP_H}" rx="{CHIP_H / 2:g}"/>'
+                f'<path class="n-chev" d="M{cx + 10:g},{cy + 7:g}l4,4l4,-4"/>'
+                f'<text x="{cx + 24:g}" y="{cy + 12.5:g}">{esc(placed["chip"])}</text></g>')
+    return (f'<a class="{classes}" href="{esc(href)}" data-id="{esc(node["id"])}"{rows} aria-label="{esc(label)}">{focus_ring}'
             f'<rect class="n-box" x="{x:g}" y="{y:g}" width="{w:g}" height="{h:g}" rx="9"/>'
             f'<text class="n-kind" x="{x + PAD_X:g}" y="{y + 20:g}">{esc(kind)}</text>{_standing(node, x, y + 20, w, uniform)}'
-            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{notes}</a>')
+            f'<text class="n-text" x="{x + PAD_X:g}" y="{y + 40:g}">{lines}</text>{notes}{chip}</a>')
 
 
 def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=False):
@@ -645,7 +711,9 @@ def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=Fal
     """
     context = context or {}
     css = (css + " is-uniform" if uniform else css).strip()
-    parts = [f'<svg class="rc-diagram {css}" viewBox="0 0 {shape["w"]} {shape["h"]}" width="{shape["w"]}" height="{shape["h"]}" role="group" aria-label="{esc(title)}">']
+    steps = (f' data-hierarchy data-pad="{PAD}" data-row-gap="{ROW_GAP}" data-rail="{RAIL_INSET}" data-stem="{STEM_Y}"'
+             if shape.get("hierarchy") else "")
+    parts = [f'<svg class="rc-diagram {css}" viewBox="0 0 {shape["w"]} {shape["h"]}" width="{shape["w"]}" height="{shape["h"]}" role="group" aria-label="{esc(title)}"{steps}>']
     for path in shape["paths"]:
         link = path["link"]
         d = rounded(path["points"]) if not path.get("zigzag") else "M" + "L".join(f"{px:g},{py:g}" for px, py in clean(path["points"]))
