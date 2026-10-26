@@ -51,6 +51,138 @@
     svg.addEventListener('focusout', event => { if (!svg.contains(event.relatedTarget)) clear(); });
   }
 
+  // Step through an indented tree: start from its root and open one level at a time.
+  // Rows are drawn in reading order, so a folded branch only closes the gap it leaves.
+  const calm = matchMedia('(prefers-reduced-motion: reduce)');
+  for (const svg of document.querySelectorAll('svg.rc-diagram[data-hierarchy]')) {
+    const bar = svg.closest('figure')?.querySelector('.step-bar');
+    if (!bar) continue;
+    const { pad, rowGap, rail, stem } = Object.fromEntries(['pad', 'rowGap', 'rail', 'stem'].map(key => [key, Number(svg.dataset[key])]));
+    const width = svg.viewBox.baseVal.width;
+    const rows = [...svg.querySelectorAll('a.n[data-depth]')];
+    const byId = new Map(rows.map(row => [row.dataset.id, row]));
+    const ancestors = row => {
+      const result = [];
+      for (let id = row.dataset.parent; id; id = byId.get(id).dataset.parent) result.push(id);
+      return result;
+    };
+    const edges = [...svg.querySelectorAll('a.e')].map(edge => {
+      const [child, parent] = edge.dataset.ends.split(' ');
+      return { edge, child: byId.get(child), parent: byId.get(parent) };
+    });
+    const [toggle, count, all, reset] = ['.step-toggle', '.step-count', '.step-all', '.step-reset'].map(s => bar.querySelector(s));
+    const open = new Set();
+    let on = false;
+
+    const layout = (entering = new Set()) => {
+      const top = new Map();
+      let y = pad;
+      for (const row of rows) {
+        const shown = !on || ancestors(row).every(id => open.has(id));
+        row.classList.toggle('is-folded', !shown);
+        if (!shown) continue;
+        top.set(row, y);
+        row.style.transform = `translate(0px,${y - Number(row.dataset.y)}px)`;
+        row.classList.toggle('is-open', open.has(row.dataset.id));
+        if (on && row.dataset.kids) {
+          row.setAttribute('role', 'button');
+          row.setAttribute('aria-expanded', String(open.has(row.dataset.id)));
+        } else {
+          row.removeAttribute('role');
+          row.removeAttribute('aria-expanded');
+        }
+        y += Number(row.dataset.h) + rowGap;
+      }
+      for (const { edge, child, parent } of edges) {
+        edge.classList.toggle('is-folded', !top.has(child));
+        if (!top.has(child)) continue;
+        const cx = Number(child.dataset.x), cy = top.get(child) + stem;
+        const rx = Number(parent.dataset.x) + rail, end = top.get(parent) + Number(parent.dataset.h);
+        const r = Math.min(7, (cx - rx) / 2, (cy - end) / 2);
+        const d = `M${cx},${cy}L${rx + r},${cy}Q${rx},${cy} ${rx},${cy - r}L${rx},${end}`;
+        for (const path of edge.querySelectorAll('.e-hit, .e-line')) path.setAttribute('d', d);
+        edge.querySelector('.e-head').style.transform = `translate(0px,${top.get(parent) - Number(parent.dataset.y)}px)`;
+        if (entering.has(child)) entering.add(edge);
+      }
+      if (!calm.matches) {
+        for (const element of entering) {
+          element.classList.add('is-entering');
+          element.addEventListener('animationend', () => element.classList.remove('is-entering'), { once: true });
+        }
+      }
+      const height = Math.round(y - rowGap + pad);
+      svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+      svg.setAttribute('height', height);
+      count.textContent = on ? `${top.size} of ${rows.length} shown` : '';
+      all.hidden = !on || top.size === rows.length;
+      reset.hidden = !on || top.size === 1;
+    };
+
+    // Keep the opened box and what it revealed on screen, or the box itself when they can't all fit.
+    const reveal = (row, kids) => {
+      requestAnimationFrame(() => {
+        const first = row.getBoundingClientRect(), last = kids[kids.length - 1].getBoundingClientRect();
+        const room = innerHeight - 24;
+        let by = 0;
+        if (last.bottom - first.top > room - 24) by = first.top - 24;
+        else if (last.bottom > room) by = last.bottom - room;
+        else if (first.top < 24) by = first.top - 24;
+        if (by) scrollBy({ top: by, behavior: calm.matches ? 'auto' : 'smooth' });
+      });
+    };
+
+    const flip = row => {
+      const id = row.dataset.id;
+      svg.classList.remove('is-lit');  // Focus lighting would dim the branches the reader is stepping through.
+      if (open.has(id)) {
+        open.delete(id);
+        for (const other of rows) if (ancestors(other).includes(id)) open.delete(other.dataset.id);
+        layout();
+        return;
+      }
+      open.add(id);
+      const kids = rows.filter(other => other.dataset.parent === id);
+      layout(new Set(kids));
+      reveal(row, kids);
+    };
+
+    const set = (value, remember) => {
+      on = value;
+      open.clear();
+      toggle.setAttribute('aria-pressed', String(on));
+      svg.classList.toggle('is-stepping', on);
+      bar.classList.toggle('is-on', on);
+      layout();
+      if (remember) store.set('rc-steps', on ? 'on' : 'off');
+    };
+
+    svg.addEventListener('click', event => {
+      const row = on && event.target.closest('a.n[data-kids]');
+      if (!row) return;
+      event.preventDefault();
+      flip(row);
+    });
+    svg.addEventListener('keydown', event => {
+      const row = on && event.key === ' ' && event.target.closest('a.n[data-kids]');
+      if (!row) return;
+      event.preventDefault();
+      flip(row);
+    });
+    toggle.addEventListener('click', () => set(!on, true));
+    all.addEventListener('click', () => {
+      for (const row of rows) if (row.dataset.kids) open.add(row.dataset.id);
+      layout();
+    });
+    reset.addEventListener('click', () => {
+      open.clear();
+      layout();
+      rows[0].focus();
+    });
+    bar.hidden = false;
+    const saved = store.get('rc-steps');
+    set(saved ? saved === 'on' : rows.length > 10, false);  // Large trees start stepped unless the reader chose otherwise.
+  }
+
   // Statements: a filter for the list, and a page title for the item in view.
   const list = document.querySelector('.items');
   if (list) {

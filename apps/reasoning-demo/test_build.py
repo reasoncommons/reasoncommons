@@ -1,5 +1,5 @@
 """Meaning, layout and publication-boundary checks; no private repository is needed."""
-from collections import defaultdict
+from collections import Counter, defaultdict
 from copy import deepcopy
 from html.parser import HTMLParser
 import importlib.util
@@ -256,6 +256,40 @@ class SiteTests(unittest.TestCase):
                     for b in boxes[i + 1:]:
                         apart = a["x"] + a["w"] <= b["x"] or b["x"] + b["w"] <= a["x"] or a["y"] + a["h"] <= b["y"] or b["y"] + b["h"] <= a["y"]
                         self.assertTrue(apart, (c["entry"]["slug"], name))
+
+    def test_every_goal_tree_reads_top_to_bottom_and_nothing_else_does(self):
+        for c, name, tree in self.trees():
+            label = lambda kind, name=name: pages.kind_label(name, kind)
+            for piece in diagrams.components(tree)[0]:
+                shape = diagrams.geometry(tree, piece["ids"], piece["links"], label)
+                where = (c["entry"]["slug"], name)
+                self.assertEqual(bool(shape.get("hierarchy")), name == "goal", where)
+                if not shape.get("hierarchy"):
+                    continue
+                self.assertLessEqual(shape["w"], 680, where)
+                rows = list(shape["nodes"].values())
+                self.assertEqual([r["y"] for r in rows], sorted(r["y"] for r in rows), where)  # Reading order is drawing order.
+                for row in rows:
+                    if row["parent"]:
+                        parent = shape["nodes"][row["parent"]]
+                        self.assertGreater(row["y"], parent["y"], where)
+                        self.assertEqual(row["x"] - parent["x"], diagrams.INDENT, where)
+                kids = Counter(r["parent"] for r in rows if r["parent"])
+                self.assertEqual({i: r.get("kids", 0) for i, r in shape["nodes"].items()}, {i: kids.get(i, 0) for i in shape["nodes"]}, where)
+
+    def test_only_indented_trees_offer_stepping_through(self):
+        for name, page in self.outputs.items():
+            if not name.endswith(".html"):
+                continue
+            hierarchies = len(re.findall(r'<svg class="rc-diagram[^>]* data-hierarchy', page))
+            self.assertEqual(page.count('<div class="step-bar" hidden>'), hierarchies, name)
+            if name.endswith("/goal.html"):
+                self.assertEqual(hierarchies, 1, name)
+            if name.endswith(("/in-the-way.html", "/conflict.html", "/change.html", "/items.html")):
+                self.assertEqual(hierarchies, 0, name)
+        page = self.outputs["reason-commons/goal.html"]
+        self.assertIn('data-kids="5"', page)
+        self.assertIn(">5 success factors</text>", page)
 
     def test_cloud_places_each_position_beside_the_need_it_serves(self):
         tree = build.normalize(self.example)["trees"]["conflict"]
