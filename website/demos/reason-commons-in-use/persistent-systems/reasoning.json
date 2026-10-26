@@ -1,0 +1,3758 @@
+{
+  "projection_version": 4,
+  "release_id": "2026-10-26.1",
+  "snapshot_date": "2026-10-26",
+  "title": "Why Things Last",
+  "people": [
+    {
+      "name": "David Joseph",
+      "role": "Supplied the sources and requested this reconstruction; has not endorsed its reasoning"
+    }
+  ],
+  "trees": {
+    "goal": {
+      "nodes": [
+        {
+          "id": "ps-g-goal",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "goal",
+          "text": "A group persists through time and does well in the environment it actually faces: it meets its aims, keeps its members' trust and well-being, and resolves its conflicts.",
+          "label": "A group lasts and does well in its environment.",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, What is Adaptive Persistence?",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, The Challenge of Cooperation",
+              "basis": "reconstruction"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§1 Three survivors; §6 Three ways to die",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-cooperate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Its members can cooperate: the parts keep pulling together instead of doing better for themselves at the whole's expense.",
+          "label": "Its members can cooperate.",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, Can we cooperate?",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die; §7 Coordination",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-adapt",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "It can become something else in time when its existing solutions stop working.",
+          "label": "It adapts when its solutions stop working.",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, Can we adapt?",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die; §9 Adaptation",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-withstand",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "It can take a severe shock from outside and keep working.",
+          "label": "It withstands severe shocks.",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, Can we tolerate disruption?",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die; §8 Robustness",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-fit",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "critical_success_factor",
+          "text": "Its mix of coordination, adaptation and robustness matches the environment it faces.",
+          "label": "Its capacities match its environment.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, steps 3 and 4: Analyze and Adjust",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§12 The budget; §13 Three dials in the world",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-decide",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Decisions are efficient and inclusive, and conflicts are resolved efficiently and effectively.",
+          "label": "Decisions are inclusive and conflicts get resolved.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, collaboration principles c and d",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-fair",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Benefits and costs are fairly shared, and breaches of agreed norms are visible and met with proportionate sanctions.",
+          "label": "Costs and benefits are fair; norms are visibly upheld.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–5, collaboration principles b, e and g",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§14 How a new floor gets built: police",
+              "basis": "related"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-sense",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "The group watches its environment continuously and combines scattered information into a picture that supports decisions.",
+          "label": "It watches its environment and makes sense of it.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, adaptability principles a and e",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-try",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "The group tests new ideas at limited scale, avoids depending on one solution too early and learns quickly from the consequences.",
+          "label": "It tries small bets and learns from them quickly.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, adaptability principles b, g and h",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§9 Adaptation: buying lottery tickets",
+              "basis": "related"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-reserve",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "The group keeps spare financial, material, human and operational capacity, and can restore essential operations after a disruption.",
+          "label": "It keeps spare capacity and can recover.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, robustness principles b and c",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness: the wall",
+              "basis": "related"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-uncouple",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "Local failures do not cascade through the whole group, and it is settled in advance who decides during a disruption.",
+          "label": "Failures stay local; crisis authority is clear.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, robustness principles e, f and g",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-read-env",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "The group knows how volatile, hazardous and varied its environment is.",
+          "label": "It knows how volatile, hazardous and varied its world is.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 2. Assess: Environment",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§13 Three dials in the world",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-g-allocate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "necessary_condition",
+          "text": "The group divides its limited resources among the three capacities in proportions its environment rewards.",
+          "label": "It budgets across the three capacities to suit its world.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§12 The budget",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-gl-cooperate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-cooperate"
+          ],
+          "to": "ps-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, three questions",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-adapt",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-adapt"
+          ],
+          "to": "ps-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, three questions",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-withstand",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-withstand"
+          ],
+          "to": "ps-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 1, three questions",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-fit",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-fit"
+          ],
+          "to": "ps-g-goal",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 2, decrease the mismatch between environment and core characteristics",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-decide",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-decide"
+          ],
+          "to": "ps-g-cooperate",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–5, collaboration principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-fair",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-fair"
+          ],
+          "to": "ps-g-cooperate",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–5, collaboration principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-sense",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-sense"
+          ],
+          "to": "ps-g-adapt",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, adaptability principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-try",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-try"
+          ],
+          "to": "ps-g-adapt",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, adaptability principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-reserve",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-reserve"
+          ],
+          "to": "ps-g-withstand",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, robustness principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-uncouple",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-uncouple"
+          ],
+          "to": "ps-g-withstand",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 5, robustness principles",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-read-env",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-read-env"
+          ],
+          "to": "ps-g-fit",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-gl-allocate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-g-allocate"
+          ],
+          "to": "ps-g-fit",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§12 The budget",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-g-goal",
+          "work": "check_with_author",
+          "label": "Ask Stephen Le whether this goal states what Adaptive Persistence is for.",
+          "note": "The goal joins his stated aims (performance, well-being, trust, fewer conflicts) with the essay's question of why things last. He has not reviewed the wording."
+        }
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        {
+          "id": "ps-r-three-threats",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "observation",
+          "text": "Anything that persists faces three distinct threats: its own parts turning on it, blows from outside, and an environment that changes and does not change back.",
+          "label": "Things that last face three distinct threats.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-filter",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "observation",
+          "text": "Persistence is a filter, not a goal: the things still here are the ones whose properties happened to keep them here.",
+          "label": "Persistence is a filter, not a goal.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§15 How this could be wrong: purpose can sneak in",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-new-levels",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "observation",
+          "text": "New levels of organisation are built when defection is made unprofitable, not when cooperation simply breaks out.",
+          "label": "New levels form when defection stops paying.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§14 How a new floor gets built",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-pressure",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Leaders under pressure to show immediate, visible progress reach for quick fixes rather than probing the structural factors that undermine cooperation.",
+          "label": "Pressure for visible progress favours quick fixes.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, The Challenge of Cooperation: myopia",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-competitive",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Competitive fields such as business, sport, security and the military actively discourage people from being vulnerable and revealing their needs.",
+          "label": "Competitive settings discourage vulnerability.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, The Persistence Framework; p. 7, ACT and EFT",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-fear",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Members feel too unsafe to be vulnerable and reveal their real needs, so assessments rarely reach what people actually think and feel.",
+          "label": "Fear keeps real needs hidden.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, fear; p. 7, why bother with ACT",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-unassessed",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "The group has not assessed how volatile and hazardous its environment is, so it cannot tell which capacity it is short of.",
+          "label": "It hasn't assessed its environment.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, existing frameworks address specific aspects; p. 6, 3. Analyze",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-surface",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Fixes address superficial concerns while the mismatch between the group's capacities and its environment remains.",
+          "label": "Fixes treat symptoms; the mismatch remains.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, the problem with quick solutions",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-growth",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "As a group grows past the point where everyone knows or is related to everyone, the cheap ways of keeping parts aligned stop working.",
+          "label": "Growth outruns the cheap ways of coordinating.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§14 How a new floor gets built: start with relatives",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-free-riders",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Free riders exploit other people's cooperation; parts can do better for themselves at the whole's expense.",
+          "label": "Parts can gain at the whole's expense.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, free riders",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§7 Coordination: the enemy is you",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-cut-reserves",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Reserves, redundancy and margin look like waste in good weather, so they are the first thing cut.",
+          "label": "Reserves look wasteful and get cut first.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness: the wall",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-cut-experiments",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "cause",
+          "text": "Cutting experiments makes a group look better for years, so a loss of adaptive capacity goes unnoticed.",
+          "label": "Cutting experiments looks good for years.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§11 Telling the three apart",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-conflict",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Friction and conflict keep returning between members or units, and trust and morale fall.",
+          "label": "Conflict keeps returning; trust and morale fall.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, fall into conflict and low morale again",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-shock",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "A shock the group could have absorbed proves crippling.",
+          "label": "A survivable shock proves crippling.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness; §11 Telling the three apart",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-r-obsolete",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "The group keeps doing well at something its environment no longer rewards, until it is suddenly wrong for where it is.",
+          "label": "It becomes quietly wrong for where it is.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die; §11 Telling the three apart",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-rl-fear",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-competitive"
+          ],
+          "to": "ps-r-fear",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, competitive fields and vulnerability",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-surface",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-pressure",
+            "ps-r-fear"
+          ],
+          "to": "ps-r-surface",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, myopia and fear; p. 7, quick solutions and fear",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-unassessed",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-unassessed"
+          ],
+          "to": "ps-r-surface",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-conflict",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-surface"
+          ],
+          "to": "ps-r-conflict",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, the group will soon fall into conflict and low morale again",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-growth",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-growth"
+          ],
+          "to": "ps-r-free-riders",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§14 start with relatives",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-free-riders",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-free-riders"
+          ],
+          "to": "ps-r-conflict",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, free riders",
+              "basis": "inference"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§7 Coordination",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-shock",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-cut-reserves"
+          ],
+          "to": "ps-r-shock",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness: the wall",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-rl-obsolete",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-r-cut-experiments"
+          ],
+          "to": "ps-r-obsolete",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§11 Telling the three apart",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-rl-surface",
+          "work": "test_causality",
+          "label": "Check in one real group whether quick fixes leave the mismatch in place.",
+          "note": "The summary states this from its author's facilitation experience; alternative explanations for recurring conflict have not been examined."
+        }
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        {
+          "id": "ps-c1-objective",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "objective",
+          "text": "The group persists through both shocks and lasting change.",
+          "label": "The group lasts through shocks and change.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-c1-absorb",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "need",
+          "text": "The group needs to absorb the shocks its environment delivers.",
+          "label": "It needs to absorb shocks.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness: the wall",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-c1-renew",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "need",
+          "text": "The group needs to keep finding new ways to persist as its environment changes.",
+          "label": "It needs to keep finding new ways to persist.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§9 Adaptation: buying lottery tickets",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-c1-reserve",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Hold resources back as stored surplus, redundancy and margin.",
+          "label": "Hold resources in reserve.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 Robustness: stored surplus, redundancy, margin",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-c1-experiment",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Spend resources on experiments, most of which will fail.",
+          "label": "Spend resources on experiments.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§9 Adaptation is paid for in failure",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-c2-objective",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "objective",
+          "text": "The group cooperates well enough to persist in a competitive field.",
+          "label": "It cooperates well enough to compete.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, The Persistence Framework",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-c2-trust",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "need",
+          "text": "Members need to trust one another enough to say what really gets in the way.",
+          "label": "Members need to say what really gets in the way.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, why bother with ACT",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-c2-standing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "need",
+          "text": "Members need to protect their standing in a field that punishes weakness.",
+          "label": "Members need to protect their standing.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, competitive fields and vulnerability",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-c2-open",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Members are open and vulnerable about their real thoughts, feelings and needs.",
+          "label": "Be open and vulnerable.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, ACT and EFT help people become more open and vulnerable",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-c2-guarded",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "prerequisite",
+          "text": "Members keep their guard up and avoid showing vulnerability.",
+          "label": "Keep your guard up.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, our basic instinct in fearful situations is to maintain our guard",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-cl1-absorb",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c1-absorb"
+          ],
+          "to": "ps-c1-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl1-renew",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c1-renew"
+          ],
+          "to": "ps-c1-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§6 Three ways to die",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl1-reserve",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c1-reserve"
+          ],
+          "to": "ps-c1-absorb",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§8 the answer is: have more than you need",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl1-experiment",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c1-experiment"
+          ],
+          "to": "ps-c1-renew",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§9 you cannot have the second without the first",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl1-conflict",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c1-reserve"
+          ],
+          "to": "ps-c1-experiment",
+          "relation": "conflicts_with",
+          "assumptions": [
+            {
+              "text": "The group's resources are fixed in the short run, so whatever goes to one capacity is taken from another.",
+              "by": "AI assistant"
+            }
+          ],
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§9 every euro spent on speculative research is a euro not in the reserve fund; §12 The budget",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl2-trust",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c2-trust"
+          ],
+          "to": "ps-c2-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, fear holds back cooperation",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl2-standing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c2-standing"
+          ],
+          "to": "ps-c2-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, competitive environments",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl2-open",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c2-open"
+          ],
+          "to": "ps-c2-trust",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, access their inner thoughts and feelings",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl2-guarded",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c2-guarded"
+          ],
+          "to": "ps-c2-standing",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, maintain our guard",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-cl2-conflict",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-c2-open"
+          ],
+          "to": "ps-c2-guarded",
+          "relation": "conflicts_with",
+          "assumptions": [
+            {
+              "text": "Any expression of need will be read as weakness, whatever words it is put in.",
+              "by": "AI assistant"
+            }
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 3 and 7, competitive environments discourage vulnerability",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-cl1-conflict",
+          "work": "examine_assumption",
+          "label": "Test whether reserves and experiments really draw on one budget.",
+          "note": "The essay notes that money in the bank buys robustness and also funds experiments (§11), so the conflict may be weaker than it looks."
+        }
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        {
+          "id": "ps-f-cycle",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "The group runs the Adaptive Persistence cycle: orient on one agreed issue, assess its environment and core capacities, analyse the mismatch, adjust, and repeat.",
+          "label": "Assess, close the biggest mismatch, and repeat.",
+          "addresses": [
+            "ps-r-surface",
+            "ps-r-unassessed"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, The Adaptive Persistence meta-protocol",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "ap-overview",
+              "locator": "p. 2, process steps 1–6",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-match",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Emphasise adaptability where the environment is volatile, robustness where it is hazardous, and coordination where it is neither.",
+          "label": "Emphasise the capacity the environment calls for.",
+          "addresses": [
+            "ps-c1-reserve",
+            "ps-c1-experiment"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§13 Three dials in the world",
+              "basis": "related"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-act",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Work through the ACT group matrix: the values behind the chosen capacity, how the group would act if it improved, the thoughts and feelings that get in the way, and how to move forward while acknowledging them.",
+          "label": "Name what gets in the way, and move anyway.",
+          "addresses": [
+            "ps-r-fear"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 6–7, The ACT Group Matrix",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-gentle",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "For groups wary of vulnerability, word the matrix in their own vocabulary and begin with a lighter first pass before a deeper one.",
+          "label": "Start lighter where vulnerability feels unsafe.",
+          "addresses": [
+            "ps-c2-open",
+            "ps-c2-guarded"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 7–8, one potential compromise",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-wall",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Keep procedures tight in general and wall off one bounded area where variation is deliberately produced.",
+          "label": "Rigid almost everywhere, loose in one walled-off place.",
+          "addresses": [
+            "ps-r-cut-experiments"
+          ],
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§10 The copying dial",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-criteria",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "injection",
+          "text": "Agree clear success criteria at the start, test each cycle against them, and stop once they are met.",
+          "label": "Agree success criteria and test against them.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient; p. 8, 5. Repeat",
+              "basis": "paraphrase"
+            },
+            {
+              "source_id": "essay",
+              "locator": "§15 How this could be wrong",
+              "basis": "related"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-see",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "The group sees which capacity its environment most calls for and where it falls short.",
+          "label": "It sees which capacity it is short of.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-voiced",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Members voice the thoughts, feelings and needs that a structural assessment misses.",
+          "label": "Hidden needs get voiced.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, why bother with ACT",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-willing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Members become willing to take an active part in finding the solution.",
+          "label": "Members take part in the fix.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, obtain their willingness and active participation",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-causes",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "Adjustments address structural causes rather than symptoms.",
+          "label": "Fixes reach causes, not symptoms.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, the problem with quick solutions",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-options",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "predicted_effect",
+          "text": "The group generates new options without loosening coordination everywhere.",
+          "label": "New options without losing discipline.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§10 Wall off the variation, and you can have both",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-cooperate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "desirable_effect",
+          "text": "Members cooperate, and conflicts are resolved rather than recurring.",
+          "label": "Conflict gets resolved, not repeated.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 2, greater trust, well-being and performance",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-fit",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "desirable_effect",
+          "text": "The group's capacities fit its environment better with each cycle.",
+          "label": "Capacities fit the environment better each cycle.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-filing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "undesirable_effect",
+          "text": "Sorting the group's mechanisms into the three capacities feels like understanding but produces nothing anyone could be wrong about.",
+          "label": "Sorting feels like understanding; nothing is tested.",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§11 a useful question turns back into a filing cabinet; §15 a metaphor machine",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-f-cases",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "observation",
+          "text": "Stephen Le reports four facilitation cases, using lighter variations of the method, in which groups in conflict reconciled or renewed their collaboration.",
+          "label": "Le reports four cases where groups reconciled.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 8–9, Case Studies",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-fl-see",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-cycle",
+            "ps-f-match"
+          ],
+          "to": "ps-f-see",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 3 and 6, Assess and Analyze",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-voiced-act",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-act"
+          ],
+          "to": "ps-f-voiced",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, ACT and EFT",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-voiced-gentle",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-gentle"
+          ],
+          "to": "ps-f-voiced",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 7–8, a deeper clean later",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-willing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-voiced"
+          ],
+          "to": "ps-f-willing",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, access their inner thoughts and feelings and obtain their willingness",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-causes",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-see",
+            "ps-f-voiced"
+          ],
+          "to": "ps-f-causes",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, Assess gathers structural problems; ACT reaches inner needs",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-cooperate",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-causes",
+            "ps-f-willing"
+          ],
+          "to": "ps-f-cooperate",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, changes implemented in-house are more sustainable",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-fit",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-causes"
+          ],
+          "to": "ps-f-fit",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 4. Adjust",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-options",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-wall"
+          ],
+          "to": "ps-f-options",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§10 The copying dial",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-options-fit",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-options"
+          ],
+          "to": "ps-f-fit",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§10; §13 volatility rewards adaptation",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-filing",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-cycle"
+          ],
+          "to": "ps-f-filing",
+          "relation": "contributes_to",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§11; §15 It might just be a metaphor machine",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-criteria",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-criteria"
+          ],
+          "to": "ps-f-filing",
+          "relation": "prevents",
+          "source_refs": [
+            {
+              "source_id": "essay",
+              "locator": "§15 claims stated in a form that could come out false",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-fl-repeat",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-f-fit"
+          ],
+          "to": "ps-f-cycle",
+          "relation": "feeds_back_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-f-filing",
+          "work": "make_testable",
+          "label": "State one prediction about this group that could come out false.",
+          "note": "The essay asks for a measure of one capacity, in one domain, that two strangers would agree on (§15). Nothing in this map is measured yet."
+        }
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        {
+          "id": "ps-p-objective",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "objective",
+          "text": "The group can run one full Adaptive Persistence cycle on an issue it cares about.",
+          "label": "The group can run one full cycle.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, The Adaptive Persistence meta-protocol",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-issue-gap",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "Members disagree about which issue matters most.",
+          "label": "Members disagree on the main issue.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, Sometimes there will be disagreement on the main issue",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-issue",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "The group agrees one main issue that nobody objects to, can be evaluated, is stated positively, is achievable through action and applies to everyone, with clear success criteria.",
+          "label": "One agreed main issue with success criteria.",
+          "implements": [
+            "ps-f-criteria"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient (after Convergent Facilitation)",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-data-gap",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "There is no information yet about the environment or the group's core capacities.",
+          "label": "There is no data on environment or capacities.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 2. Assess",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-assess",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "Interviews, surveys and existing records describe the environment's volatility and hazard and the group's coordination, adaptability and robustness principles.",
+          "label": "Assessments describe the environment and capacities.",
+          "implements": [
+            "ps-f-cycle"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–6, 2. Assess",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-trust-gap",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "Members feel too unsafe to say what they really think.",
+          "label": "Members feel too unsafe to speak.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, too unsafe to risk being vulnerable",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-format",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "An adjustment format suits the group's size and trust: talking for small high-trust groups, email for small low-trust ones, the matrix with meetings, or voting for large groups.",
+          "label": "A format that fits the group's size and trust.",
+          "implements": [
+            "ps-f-act"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, Formats for carrying out adjustment",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-skill-gap",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "ACT and similar methods take training and a lot of practice to lead.",
+          "label": "Leading the method takes training.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, ACT and EFT are fairly difficult methodologies",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-lead",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "Someone trained can lead the group through the matrix, from inside the group or as an outside facilitator.",
+          "label": "Someone trained can lead the matrix.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, consultants can be a useful adjunct; p. 7",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-wary-gap",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "obstacle",
+          "text": "The group is wary of methods that involve emotion and vulnerability.",
+          "label": "The group is wary of emotional methods.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, organizations may feel uncomfortable",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-p-language",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "intermediate_objective",
+          "text": "The matrix is worded in the group's own vocabulary and begins with a lighter first pass.",
+          "label": "The matrix speaks the group's language.",
+          "implements": [
+            "ps-f-gentle"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 7–8, one potential compromise",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-pl-issue",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-issue"
+          ],
+          "to": "ps-p-issue-gap",
+          "relation": "overcomes",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, ranked until a leading issue emerges",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-assess",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-assess"
+          ],
+          "to": "ps-p-data-gap",
+          "relation": "overcomes",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, assessment methods",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-format",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-format"
+          ],
+          "to": "ps-p-trust-gap",
+          "relation": "overcomes",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, email for small, low-trust groups",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-lead",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-lead"
+          ],
+          "to": "ps-p-skill-gap",
+          "relation": "overcomes",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, require some training",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-language",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-language"
+          ],
+          "to": "ps-p-wary-gap",
+          "relation": "overcomes",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 7–8, less intimidating terminology",
+              "basis": "paraphrase"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-issue-assess",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-issue"
+          ],
+          "to": "ps-p-assess",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, steps 1 and 2",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-assess-objective",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-assess"
+          ],
+          "to": "ps-p-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 3, steps 2–5",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-lead-format",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-lead"
+          ],
+          "to": "ps-p-format",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, the change leader or facilitator",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-language-format",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-language"
+          ],
+          "to": "ps-p-format",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 7–8",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-pl-format-objective",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-p-format"
+          ],
+          "to": "ps-p-objective",
+          "relation": "necessary_for",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 4. Adjust",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-p-assess",
+          "work": "define_measure",
+          "label": "Find a measure of one capacity that two assessors would agree on.",
+          "note": "The essay names this as the most valuable work on the theory (§15). The summary's assessments are interviews and surveys without a stated scoring method."
+        }
+      ]
+    },
+    "transition": {
+      "nodes": [
+        {
+          "id": "ps-t-1-condition",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "existing_condition",
+          "text": "Members disagree about what the main problem is.",
+          "label": "Members disagree about the main problem.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-orient",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "action",
+          "text": "Orient: collect candidate issues, rank them and agree one with clear success criteria.",
+          "label": "Orient: agree one issue and what success means.",
+          "implements": [
+            "ps-p-issue"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient",
+              "basis": "paraphrase"
+            }
+          ],
+          "proposed_role": "Change leader or facilitator, with the whole group"
+        },
+        {
+          "id": "ps-t-1-effect",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "The group has one agreed issue and knows what success looks like.",
+          "label": "One agreed issue, with success criteria.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-2-condition",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "existing_condition",
+          "text": "Nobody has a shared picture of the environment or the group's capacities.",
+          "label": "No shared picture of environment or capacities.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 2. Assess",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-assess",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "action",
+          "text": "Assess: interview and survey leaders, members and clients about volatility, hazard, coordination, adaptability and robustness.",
+          "label": "Assess: interview and survey about the five factors.",
+          "implements": [
+            "ps-p-assess"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–6, 2. Assess",
+              "basis": "paraphrase"
+            }
+          ],
+          "proposed_role": "Facilitator, with leaders, members and clients"
+        },
+        {
+          "id": "ps-t-2-effect",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "There is shared information on the environment and on the group's 24 principles.",
+          "label": "Shared data on the environment and 24 principles.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–6, 2. Assess",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-3-condition",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "existing_condition",
+          "text": "It is unclear which capacity to work on first.",
+          "label": "It is unclear which capacity to work on.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-analyse",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "action",
+          "text": "Analyse: compare the capacities with the environment and choose the one capacity to adjust.",
+          "label": "Analyse: choose the capacity to adjust.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "paraphrase"
+            }
+          ],
+          "proposed_role": "The whole group"
+        },
+        {
+          "id": "ps-t-3-effect",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "The group has chosen one capacity to improve.",
+          "label": "One capacity chosen to improve.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-4-condition",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "existing_condition",
+          "text": "Fear keeps the real obstacles unspoken.",
+          "label": "Fear keeps the real obstacles unspoken.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 7, too unsafe to risk being vulnerable",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-adjust",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "action",
+          "text": "Adjust: work through the ACT matrix in a format that suits the group.",
+          "label": "Adjust: work through the matrix together.",
+          "implements": [
+            "ps-p-format"
+          ],
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 6–8, 4. Adjust",
+              "basis": "paraphrase"
+            }
+          ],
+          "proposed_role": "Change leader or facilitator, with the whole group"
+        },
+        {
+          "id": "ps-t-4-effect",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "The group has agreed how it will act to move toward the improved capacity.",
+          "label": "Agreed ways of acting toward the capacity.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 6–7, The ACT Group Matrix",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-5-condition",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "existing_condition",
+          "text": "Whether the adjustment worked is not yet known.",
+          "label": "Nobody knows yet whether it worked.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "inference"
+            }
+          ]
+        },
+        {
+          "id": "ps-t-repeat",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "action",
+          "text": "Repeat: reassess the environment and capacities, and stop once the success criteria are met.",
+          "label": "Repeat: reassess, and stop when criteria are met.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "paraphrase"
+            }
+          ],
+          "proposed_role": "Facilitator, with the whole group"
+        },
+        {
+          "id": "ps-t-5-effect",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "kind": "expected_effect",
+          "text": "Either the criteria are met or the next cycle starts from new information.",
+          "label": "Criteria met, or a new cycle starts.",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "reconstruction"
+            }
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "ps-tl-orient",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-1-condition",
+            "ps-t-orient"
+          ],
+          "to": "ps-t-1-effect",
+          "relation": "produces",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 4, 1. Orient",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-tl-assess",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-1-effect",
+            "ps-t-2-condition",
+            "ps-t-assess"
+          ],
+          "to": "ps-t-2-effect",
+          "relation": "produces",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 4–6, 2. Assess",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-tl-analyse",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-2-effect",
+            "ps-t-3-condition",
+            "ps-t-analyse"
+          ],
+          "to": "ps-t-3-effect",
+          "relation": "produces",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 6, 3. Analyze",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-tl-adjust",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-3-effect",
+            "ps-t-4-condition",
+            "ps-t-adjust"
+          ],
+          "to": "ps-t-4-effect",
+          "relation": "produces",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "pp. 6–8, 4. Adjust",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-tl-repeat",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-4-effect",
+            "ps-t-5-condition",
+            "ps-t-repeat"
+          ],
+          "to": "ps-t-5-effect",
+          "relation": "produces",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, 5. Repeat",
+              "basis": "reconstruction"
+            }
+          ]
+        },
+        {
+          "id": "ps-tl-feedback",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            {
+              "name": "AI assistant",
+              "role": "assistant"
+            }
+          ],
+          "from": [
+            "ps-t-5-effect"
+          ],
+          "to": "ps-t-assess",
+          "relation": "feeds_back_to",
+          "source_refs": [
+            {
+              "source_id": "ap-summary",
+              "locator": "p. 8, The group goes back to step 2, Assess",
+              "basis": "paraphrase"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "ps-t-orient",
+          "work": "find_host",
+          "label": "Find a group willing to try one cycle.",
+          "note": "No group, facilitator, owner or date is assigned. Existing conditions are illustrative, not observations of a group."
+        }
+      ]
+    }
+  },
+  "feedback": [],
+  "history": [
+    {
+      "release_id": "2026-10-26.1",
+      "date": "2026-10-26",
+      "title": "First proposed reconstruction",
+      "summary": "Stephen Le’s Adaptive Persistence protocol, framed by Persistent Systems Theory, across all six views: 79 proposed statements and 58 proposed connections, each with a source locator. No endorsement, trial or outcome is recorded.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "ps-g-goal",
+            "ps-g-cooperate",
+            "ps-g-adapt",
+            "ps-g-withstand",
+            "ps-g-fit",
+            "ps-g-decide",
+            "ps-g-fair",
+            "ps-g-sense",
+            "ps-g-try",
+            "ps-g-reserve",
+            "ps-g-uncouple",
+            "ps-g-read-env",
+            "ps-g-allocate",
+            "ps-gl-cooperate",
+            "ps-gl-adapt",
+            "ps-gl-withstand",
+            "ps-gl-fit",
+            "ps-gl-decide",
+            "ps-gl-fair",
+            "ps-gl-sense",
+            "ps-gl-try",
+            "ps-gl-reserve",
+            "ps-gl-uncouple",
+            "ps-gl-read-env",
+            "ps-gl-allocate",
+            "ps-r-three-threats",
+            "ps-r-filter",
+            "ps-r-new-levels",
+            "ps-r-pressure",
+            "ps-r-competitive",
+            "ps-r-fear",
+            "ps-r-unassessed",
+            "ps-r-surface",
+            "ps-r-growth",
+            "ps-r-free-riders",
+            "ps-r-cut-reserves",
+            "ps-r-cut-experiments",
+            "ps-r-conflict",
+            "ps-r-shock",
+            "ps-r-obsolete",
+            "ps-rl-fear",
+            "ps-rl-surface",
+            "ps-rl-unassessed",
+            "ps-rl-conflict",
+            "ps-rl-growth",
+            "ps-rl-free-riders",
+            "ps-rl-shock",
+            "ps-rl-obsolete",
+            "ps-c1-objective",
+            "ps-c1-absorb",
+            "ps-c1-renew",
+            "ps-c1-reserve",
+            "ps-c1-experiment",
+            "ps-c2-objective",
+            "ps-c2-trust",
+            "ps-c2-standing",
+            "ps-c2-open",
+            "ps-c2-guarded",
+            "ps-cl1-absorb",
+            "ps-cl1-renew",
+            "ps-cl1-reserve",
+            "ps-cl1-experiment",
+            "ps-cl1-conflict",
+            "ps-cl2-trust",
+            "ps-cl2-standing",
+            "ps-cl2-open",
+            "ps-cl2-guarded",
+            "ps-cl2-conflict",
+            "ps-f-cycle",
+            "ps-f-match",
+            "ps-f-act",
+            "ps-f-gentle",
+            "ps-f-wall",
+            "ps-f-criteria",
+            "ps-f-see",
+            "ps-f-voiced",
+            "ps-f-willing",
+            "ps-f-causes",
+            "ps-f-options",
+            "ps-f-cooperate",
+            "ps-f-fit",
+            "ps-f-filing",
+            "ps-f-cases",
+            "ps-fl-see",
+            "ps-fl-voiced-act",
+            "ps-fl-voiced-gentle",
+            "ps-fl-willing",
+            "ps-fl-causes",
+            "ps-fl-cooperate",
+            "ps-fl-fit",
+            "ps-fl-options",
+            "ps-fl-options-fit",
+            "ps-fl-filing",
+            "ps-fl-criteria",
+            "ps-fl-repeat",
+            "ps-p-objective",
+            "ps-p-issue-gap",
+            "ps-p-issue",
+            "ps-p-data-gap",
+            "ps-p-assess",
+            "ps-p-trust-gap",
+            "ps-p-format",
+            "ps-p-skill-gap",
+            "ps-p-lead",
+            "ps-p-wary-gap",
+            "ps-p-language",
+            "ps-pl-issue",
+            "ps-pl-assess",
+            "ps-pl-format",
+            "ps-pl-lead",
+            "ps-pl-language",
+            "ps-pl-issue-assess",
+            "ps-pl-assess-objective",
+            "ps-pl-lead-format",
+            "ps-pl-language-format",
+            "ps-pl-format-objective",
+            "ps-t-1-condition",
+            "ps-t-orient",
+            "ps-t-1-effect",
+            "ps-t-2-condition",
+            "ps-t-assess",
+            "ps-t-2-effect",
+            "ps-t-3-condition",
+            "ps-t-analyse",
+            "ps-t-3-effect",
+            "ps-t-4-condition",
+            "ps-t-adjust",
+            "ps-t-4-effect",
+            "ps-t-5-condition",
+            "ps-t-repeat",
+            "ps-t-5-effect",
+            "ps-tl-orient",
+            "ps-tl-assess",
+            "ps-tl-analyse",
+            "ps-tl-adjust",
+            "ps-tl-repeat",
+            "ps-tl-feedback"
+          ],
+          "note": "AI reconstruction from Why Things Last and Stephen Le’s two Adaptive Persistence documents."
+        }
+      ]
+    }
+  ],
+  "publication_kind": "source_reconstruction",
+  "authors": {
+    "le": {
+      "name": "Stephen Le",
+      "role": "Author of Persistent Systems Theory and Adaptive Persistence, and of the two credited Adaptive Persistence documents; has not reviewed or endorsed this reconstruction"
+    },
+    "thrival-compendium": {
+      "name": "Thrival theory compendium",
+      "role": "Source of Why Things Last, an introduction to Stephen Le’s theory supplied by David Joseph; the essay does not name its author"
+    }
+  },
+  "sources": [
+    {
+      "id": "essay",
+      "kind": "supplied_document",
+      "author": "thrival-compendium",
+      "title": "Why Things Last · an introduction to Persistent Systems Theory",
+      "description": "An essay introducing Stephen Le’s Persistent Systems Theory through three survivors, the three ways things fail, the three capacities that defend against them, the budget among them, three features of an environment and five ways the theory could be wrong. Supplied by David Joseph from the Thrival theory compendium. References give its numbered sections.",
+      "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/why-things-last.md"
+    },
+    {
+      "id": "ap-summary",
+      "kind": "supplied_document",
+      "author": "le",
+      "title": "A Meta-Protocol for Cooperation · Adaptive Persistence summary for Analogue Group",
+      "description": "A ten-page summary by Stephen Le, last updated 11 October 2026: the challenge of cooperation, the Persistence Framework, the five-step meta-protocol, 24 design principles across coordination, adaptability and robustness, the ACT group matrix, formats for adjustment and four case studies from his facilitation. The case studies are the author’s own reports. Page numbers refer to the PDF.",
+      "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/AP%20Summary%20Oct%2016%2C%202026%20v1.pdf"
+    },
+    {
+      "id": "ap-overview",
+      "kind": "supplied_document",
+      "author": "le",
+      "title": "Adaptive Persistence overview",
+      "description": "A three-page overview by Stephen Le, last updated 30 September 2026: the framework’s three questions, who can use it and its six-step process. An earlier companion to the summary. Page numbers refer to the PDF.",
+      "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/Adaptive%20Persistence%20v1.pdf"
+    }
+  ],
+  "views": {
+    "goal": [
+      {
+        "id": "three-capacities",
+        "title": "Cooperate, adapt, withstand, and fit the world",
+        "summary": "Adaptive Persistence's three questions become three conditions, with a fourth from the essay: the capacities have to suit the environment. The supporting conditions are drawn from the summary's 24 design principles, two for each.",
+        "nodes": [
+          "ps-g-goal",
+          "ps-g-cooperate",
+          "ps-g-adapt",
+          "ps-g-withstand",
+          "ps-g-fit",
+          "ps-g-decide",
+          "ps-g-fair",
+          "ps-g-sense",
+          "ps-g-try",
+          "ps-g-reserve",
+          "ps-g-uncouple",
+          "ps-g-read-env",
+          "ps-g-allocate"
+        ]
+      }
+    ],
+    "current_reality": [
+      {
+        "id": "theory-account",
+        "title": "The theory's starting point",
+        "summary": "Three claims from the essay that frame everything else. They are attributed observations with no causal connections; the essay itself warns that none of them has been tested.",
+        "nodes": [
+          "ps-r-three-threats",
+          "ps-r-filter",
+          "ps-r-new-levels"
+        ]
+      },
+      {
+        "id": "fixes-and-fear",
+        "title": "Why conflict keeps coming back",
+        "summary": "Pressure for visible progress and fear of vulnerability together keep fixes on the surface, while growth and free riding wear down cooperation. Candidate causes to test in a real group.",
+        "nodes": [
+          "ps-r-pressure",
+          "ps-r-competitive",
+          "ps-r-fear",
+          "ps-r-unassessed",
+          "ps-r-surface",
+          "ps-r-growth",
+          "ps-r-free-riders",
+          "ps-r-conflict"
+        ]
+      },
+      {
+        "id": "quiet-cuts",
+        "title": "The cuts that look sensible",
+        "summary": "Reserves look wasteful in good weather and experiments look like cost. Both cuts improve the figures for a while, and each leaves the group exposed to a different way of failing.",
+        "nodes": [
+          "ps-r-cut-reserves",
+          "ps-r-shock",
+          "ps-r-cut-experiments",
+          "ps-r-obsolete"
+        ]
+      }
+    ],
+    "conflict": [
+      {
+        "id": "reserves-or-experiments",
+        "title": "Hold back, or try new things?",
+        "summary": "Absorbing shocks calls for reserves; staying fit for a changing world calls for spending on experiments that mostly fail. The essay treats this as arithmetic over one budget.",
+        "nodes": [
+          "ps-c1-objective",
+          "ps-c1-absorb",
+          "ps-c1-renew",
+          "ps-c1-reserve",
+          "ps-c1-experiment"
+        ]
+      },
+      {
+        "id": "open-or-guarded",
+        "title": "Open up, or keep your guard?",
+        "summary": "Real cooperation needs people to say what gets in the way; a competitive field punishes anyone who shows weakness. The summary proposes ways to soften the choice rather than settle it.",
+        "nodes": [
+          "ps-c2-objective",
+          "ps-c2-trust",
+          "ps-c2-standing",
+          "ps-c2-open",
+          "ps-c2-guarded"
+        ]
+      }
+    ],
+    "future_reality": [
+      {
+        "id": "assess-and-match",
+        "title": "Find the mismatch, then close it",
+        "summary": "The cycle and the summary's rule of thumb together show which capacity the environment calls for. Combined with what members finally say, adjustments can reach causes.",
+        "nodes": [
+          "ps-f-cycle",
+          "ps-f-match",
+          "ps-f-see",
+          "ps-f-causes",
+          "ps-f-cooperate",
+          "ps-f-fit"
+        ]
+      },
+      {
+        "id": "say-what-gets-in-the-way",
+        "title": "Say what gets in the way",
+        "summary": "The ACT matrix, or a lighter first pass for wary groups, can bring hidden needs into the open and win members' part in the fix. The author reports four cases; they are not independent evidence.",
+        "nodes": [
+          "ps-f-act",
+          "ps-f-gentle",
+          "ps-f-voiced",
+          "ps-f-willing",
+          "ps-f-cases"
+        ]
+      },
+      {
+        "id": "walled-variation",
+        "title": "Rigid almost everywhere, loose in one place",
+        "summary": "From the essay: keep procedures tight and wall off one area where variation is produced on purpose, so a group can adapt without losing discipline.",
+        "nodes": [
+          "ps-f-wall",
+          "ps-f-options"
+        ]
+      },
+      {
+        "id": "filing-cabinet",
+        "title": "The filing-cabinet risk",
+        "summary": "Sorting a group's habits into three capacities can feel like insight and change nothing. Agreed success criteria, tested each cycle, are proposed as the guard against it.",
+        "nodes": [
+          "ps-f-filing",
+          "ps-f-criteria"
+        ]
+      }
+    ],
+    "prerequisite": [
+      {
+        "id": "issue-and-data",
+        "title": "Agree the issue, then gather the data",
+        "summary": "A group first needs one issue nobody objects to, with success criteria, and then a shared description of its environment and capacities.",
+        "nodes": [
+          "ps-p-objective",
+          "ps-p-issue-gap",
+          "ps-p-issue",
+          "ps-p-data-gap",
+          "ps-p-assess"
+        ]
+      },
+      {
+        "id": "safe-to-adjust",
+        "title": "Make it safe to adjust",
+        "summary": "Leading the matrix takes training, and wary groups need their own vocabulary. The format then has to suit the group's size and trust.",
+        "nodes": [
+          "ps-p-trust-gap",
+          "ps-p-format",
+          "ps-p-skill-gap",
+          "ps-p-lead",
+          "ps-p-wary-gap",
+          "ps-p-language"
+        ]
+      }
+    ],
+    "transition": [
+      {
+        "id": "orient",
+        "title": "Orient",
+        "summary": "Agree one issue and what success would look like.",
+        "nodes": [
+          "ps-t-1-condition",
+          "ps-t-orient",
+          "ps-t-1-effect"
+        ]
+      },
+      {
+        "id": "assess",
+        "title": "Assess",
+        "summary": "Gather information on the environment and the group's capacities.",
+        "nodes": [
+          "ps-t-2-condition",
+          "ps-t-assess",
+          "ps-t-2-effect"
+        ]
+      },
+      {
+        "id": "analyse",
+        "title": "Analyse",
+        "summary": "Choose the capacity the environment most calls for.",
+        "nodes": [
+          "ps-t-3-condition",
+          "ps-t-analyse",
+          "ps-t-3-effect"
+        ]
+      },
+      {
+        "id": "adjust",
+        "title": "Adjust",
+        "summary": "Work through the matrix in a format that suits the group.",
+        "nodes": [
+          "ps-t-4-condition",
+          "ps-t-adjust",
+          "ps-t-4-effect"
+        ]
+      },
+      {
+        "id": "repeat",
+        "title": "Repeat",
+        "summary": "Reassess, and stop once the success criteria are met.",
+        "nodes": [
+          "ps-t-5-condition",
+          "ps-t-repeat",
+          "ps-t-5-effect"
+        ]
+      }
+    ]
+  },
+  "overview": [
+    {
+      "type": "account",
+      "eyebrow": "The theory’s starting point",
+      "title": "Why some things last",
+      "text": "Persistent Systems Theory asks why some structures keep going while others, under the same battering, stop. Anything that lasts faces three threats; what survives is what a long filter left behind; new levels form when defection stops paying. These cards reconstruct those claims before the AI’s practical map.",
+      "ids": [
+        "ps-r-three-threats",
+        "ps-r-filter",
+        "ps-r-new-levels"
+      ],
+      "link": [
+        "in-the-way.html",
+        "Read the theory’s claims and what stands in the way →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What has to be true",
+      "title": "Cooperate, adapt, withstand, and fit the world",
+      "text": "Adaptive Persistence asks three questions of a group: can we cooperate, can we adapt, can we tolerate disruption? The essay adds a fourth condition: the mix has to suit how volatile, hazardous and varied the group’s environment is.",
+      "ids": [
+        "ps-g-cooperate",
+        "ps-g-adapt",
+        "ps-g-withstand",
+        "ps-g-fit"
+      ],
+      "link": [
+        "goal.html",
+        "Inspect the goal and its supporting conditions →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What stands in the way",
+      "title": "Fixes that treat symptoms",
+      "text": "Pressure for visible progress and fear of vulnerability keep fixes on the surface, so conflict returns. Cutting reserves and experiments looks sensible in good weather and leaves a group exposed to shocks and to quiet obsolescence.",
+      "ids": [
+        "ps-r-surface",
+        "ps-r-fear",
+        "ps-r-conflict",
+        "ps-r-shock",
+        "ps-r-obsolete"
+      ],
+      "link": [
+        "in-the-way.html",
+        "Follow the candidate causes →"
+      ]
+    },
+    {
+      "type": "clouds",
+      "eyebrow": "The tensions behind the choices",
+      "title": "Two dilemmas a group has to work through",
+      "text": "Reserves and experiments compete for one budget; openness and self-protection pull against each other in a competitive field. Both are proposed readings of the sources, offered for a real group to test.",
+      "featured": "reserves-or-experiments"
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What could change",
+      "title": "Find the mismatch, then close it",
+      "text": "Assess the environment and the group’s capacities, emphasise the capacity the environment calls for, and use the ACT matrix to bring what really gets in the way into the open. Agreed success criteria guard against sorting that teaches nothing.",
+      "ids": [
+        "ps-f-cycle",
+        "ps-f-match",
+        "ps-f-act",
+        "ps-f-criteria",
+        "ps-f-fit"
+      ],
+      "link": [
+        "change.html",
+        "See the proposed changes and their risks →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What must become possible",
+      "title": "An agreed issue and a safe way to adjust",
+      "text": "A group needs one issue nobody objects to, shared data on its environment and capacities, someone trained to lead the matrix, and a format and vocabulary that suit it. These are proposed readiness conditions, not completed preparations.",
+      "ids": [
+        "ps-p-issue",
+        "ps-p-assess",
+        "ps-p-lead",
+        "ps-p-format"
+      ],
+      "link": [
+        "prerequisites.html",
+        "Review the obstacles and intermediate objectives →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "How it could be tried",
+      "title": "Orient, assess, analyse, adjust, repeat",
+      "text": "The summary’s five steps, as an illustrative sequence for one group. The existing conditions are examples, not observations; no group, facilitator, owner or date is assigned.",
+      "ids": [
+        "ps-t-orient",
+        "ps-t-assess",
+        "ps-t-analyse",
+        "ps-t-adjust",
+        "ps-t-repeat"
+      ],
+      "link": [
+        "actions.html",
+        "Follow the five steps →"
+      ]
+    },
+    {
+      "type": "wider",
+      "eyebrow": "A theory and a practice",
+      "title": "From why things last to what a group can do",
+      "text": "Persistent Systems Theory is a proposal about everything that persists, from cells to companies; its own introduction says the verdict is not yet in. Adaptive Persistence turns its three capacities into a protocol for human groups. This map follows the practical protocol and keeps the theory’s claims, and its warnings about itself, alongside."
+    },
+    {
+      "type": "credits",
+      "eyebrow": "Sources and interpretation",
+      "title": "Stephen Le’s Persistence Framework",
+      "text": "Persistent Systems Theory and Adaptive Persistence are Stephen Le’s. Why Things Last is an introduction to his theory from the Thrival theory compendium. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a locator and a labelled basis; source credit is not author endorsement."
+    }
+  ],
+  "retired": []
+}

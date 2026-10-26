@@ -218,7 +218,8 @@ class SiteTests(unittest.TestCase):
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
                     *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
-                    *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json"}
+                    *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json",
+                    *(f"persistent-systems/{p}.html" for p in pages_ + ["questions"]), "persistent-systems/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -1025,6 +1026,50 @@ class SuppliedDocumentTests(unittest.TestCase):
 
 
 
+class PersistentSystemsTests(unittest.TestCase):
+    """Stephen Le's sources: a supplied-document reconstruction that is not Margeret Heath's talks."""
+    @classmethod
+    def setUpClass(cls):
+        cls.site, cls.commons = build.load_site()
+        cls.record = next(c for c in cls.commons if c["entry"]["slug"] == "persistent-systems")
+        cls.registry, cls.data = cls.record["registry"], cls.record["data"]
+        cls.outputs = build.build_files(cls.site, cls.commons)
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_reconstruction_validates_matches_snapshot_and_stays_proposed(self):
+        helper = build.skill_helpers()
+        state = helper.load(build.HERE / self.record["entry"]["source"])
+        helper.validate(state)
+        self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 79)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 58)
+        for tree in self.data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                self.assertEqual((item["status"], item["accepted_by"], item["contributors"]), ("proposed", [], [build.ASSISTANT]))
+                self.assertTrue(item["source_refs"])
+
+    def test_sources_credit_stephen_le_and_link_to_the_originals(self):
+        self.assertEqual({s["author"] for s in self.data["sources"]}, {"le", "thrival-compendium"})
+        self.assertEqual(self.data["authors"]["le"]["name"], "Stephen Le")
+        self.assertTrue(all(s["url"].startswith("https://github.com/dvdgdn/persistent-systems-theory/") for s in self.data["sources"]))
+        about = self.outputs["persistent-systems/about.html"]
+        self.assertIn("Read the original ↗", about)
+        self.assertNotIn("the original file is not published here", about)
+        data, registry = deepcopy(self.data), deepcopy(self.registry)
+        data["sources"][0]["url"] = registry["sources"][0]["url"] = "http://example.org/"
+        with self.assertRaisesRegex(ValueError, "Invalid supplied document link"):
+            build.validate_reconstruction(data, registry)
+
+    def test_pages_do_not_borrow_another_authors_wording(self):
+        for name, page in self.outputs.items():
+            if name.startswith("persistent-systems/") and name.endswith(".html"):
+                for words in ("Heath", "the talks", "commented on an earlier map", "credited PDF page"):
+                    self.assertNotIn(words, page, (name, words))
+        self.assertIn("a page or section reference on every statement", self.outputs["persistent-systems/goal.html"])
+        self.assertIn("The source author has not reviewed or endorsed it.", self.outputs["persistent-systems/index.html"])
+        self.assertIn("filing cabinet", self.outputs["persistent-systems/about.html"].replace("filing-cabinet", "filing cabinet") + self.outputs["persistent-systems/change.html"])
+
+
 class HistoricalReviewTests(unittest.TestCase):
     def setUp(self):
         self.site, self.commons = build.load_site()
@@ -1228,7 +1273,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),62)
+        self.assertEqual(len(htmls),74)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)

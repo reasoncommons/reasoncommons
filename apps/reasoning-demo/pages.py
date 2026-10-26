@@ -72,6 +72,27 @@ BASIS_WORDS = {"paraphrase": "Paraphrased by the AI from this post.", "related":
                "cited": "Cited by the supplied analysis; the essay itself has not been checked here.",
                "reconstruction": "Reconstructed by the supplied analysis.", "inference": "Inferred by the AI; the sources do not state it."}
 CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agrees with this wording. None of the people credited has reviewed it."
+# About-page copy for reconstructions from supplied documents other than Margeret Heath's talks, whose copy is inline below.
+SUPPLIED_ABOUT = {
+    "persistent-systems": {
+        "intro": ('<p>This is a proposed AI reconstruction of Stephen Le’s Persistence Framework from three supplied documents: Why Things Last, an introduction to his Persistent Systems Theory from the Thrival theory compendium, '
+                  'and his Adaptive Persistence overview and summary. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: '
+                  'paraphrase, reconstruction, inference or related point. Stephen Le has not reviewed or endorsed it.</p>'),
+        "after": ('<h3>A theory and a protocol</h3><p>Persistent Systems Theory asks why some structures keep going while others, under the same pressures, stop, and proposes three capacities that answer three kinds of threat: '
+                  'coordination against parts turning on the whole, robustness against blows from outside, and adaptation against a world that changes and does not change back (Why Things Last, §§6–9). '
+                  'Adaptive Persistence turns those capacities into a protocol for human groups. The summary places both in a larger Persistence Framework with a meta-ethics, Procedural Ethics, and says the ethics and the theory are not essential to fostering cooperation but help sustain it in the long run (summary, p. 2).'
+                  'This map follows the protocol and keeps three of the theory’s claims as attributed observations, without causal connections. <a href="items.html#ps-r-three-threats">Inspect the theory’s claims →</a></p>'
+                  '<h3>How the theory could be wrong</h3><p>The essay names five ways it could fail: it might forbid nothing, its three categories might not carve the world at a joint, nothing in it is yet measured, '
+                  'purpose can creep into its language, and it might be a machine for producing plausible metaphors (§15). The map carries this as a risk among the proposed changes, '
+                  'with agreed success criteria as the proposed guard, and as open work: a measure two assessors would agree on and a prediction that could come out false. <a href="items.html#ps-f-filing">Inspect the risk →</a></p>'
+                  '<h3>The case studies</h3><p>The summary reports four cases from the author’s own facilitation, using lighter ProSocial variations of the method: a genomics nonprofit, a small company and its contractor, a jazz quartet and two leaders of a foodways nonprofit (pp. 8–9). '
+                  'They are the author’s reports, not independent evidence, and the summary itself asks for further cases in competitive, innovative or hazardous settings. <a href="items.html#ps-f-cases">Inspect the attributed observation →</a></p>'
+                  '<h3>What counts as progress?</h3><p>No group, facilitator, owner, baseline or observed outcome is established. The protocol asks a group to agree success criteria when it orients and to stop once they are met; '
+                  'those criteria belong to the group that tries it. Conditions in the action sequence are illustrative, not observations of an actual group.</p>'
+                  '<h3>Reading the sources</h3><p>Page references use the PDFs’ page numbers; references to the essay use its numbered sections. The therapeutic methods the summary draws on, Acceptance and Commitment Therapy and Emotionally Focused Therapy, are described here, not evaluated.</p>'),
+        "excluded": "Local file paths, approval receipts and private collaboration notes are not published; the source documents are linked, not reproduced. No endorsement by Stephen Le, assigned owner, trial commitment or observed outcome is recorded.",
+    },
+}
 
 
 def credit_caveat(c):
@@ -141,6 +162,7 @@ class Commons:
         self.source_by_id = {s["id"]: s for s in self.sources}
         self.forum = next((s for s in self.sources if "posts" in s), None)
         self.supplied_documents = bool(self.sources) and all(s.get("kind") == "supplied_document" for s in self.sources)
+        self.talks = self.slug == "re-membering"  # Margeret Heath's talks; other supplied documents get plainer wording.
         self.home_view = {}  # A statement can appear in several parts, as in the source's own sub-trees; context links go to the first.
         for views in self.views.values():
             for view in views:
@@ -596,7 +618,7 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
                   if c.slug == "re-membering" else
                   'The source author has not reviewed or endorsed it. ')
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
-                  'An AI prepared this map from supplied documents, with page references on every statement and connection. ' + review +
+                  'An AI prepared this map from supplied documents, with ' + ('page references' if c.talks else 'a page or section reference') + ' on every statement and connection. ' + review +
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
     elif c and c.is_reconstruction:
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
@@ -688,13 +710,14 @@ def source_shelf(c):
     for number, source in enumerate(c.sources, 1):
         meta = source_meta(c, source)
         author = c.authors[source["author"]]["name"] if "author" in source else "Discussion" if "posts" in source else "Supplied analysis"
-        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Supplied proposed analysis" if source.get("kind") == "supplied_analysis" else "Public research agenda" if source.get("kind") == "web_page" else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
+        medium = f'{meta["pages"]} pages · PDF' if meta["pages"] else "Supplied proposed analysis" if source.get("kind") == "supplied_analysis" else "Public research agenda" if source.get("kind") == "web_page" else "Supplied document" if source.get("kind") == "supplied_document" else "Forum thread" if "posts" in source else "Shared essay" if "author" in source else "Working analysis"
         cards.append(f'<a class="document-card {esc(meta["style"])}" href="about.html#source-{esc(source["id"])}">'
                      f'<span class="paper-cover" aria-hidden="true"><span class="cover-number">{number:02d} / {len(c.sources):02d}</span>'
                      f'<svg viewBox="0 0 130 110">{revisions.ART[meta["style"]]}</svg><span class="cover-title">{esc(meta["title"])}</span>'
                      f'<span class="cover-author">{esc(author)}</span><span class="cover-foot">{esc(c.name)}</span></span>'
                      f'<span class="document-label">{esc(meta["title"])} <span aria-hidden="true">↗</span></span><span class="document-meta">{esc(medium)}</span></a>')
-    note = ("The original page poses questions; David’s supplied analysis proposes additions. Neither supplies empirical findings or endorsement." if c.has_analysis else "Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence."
+    note = ("The original page poses questions; David’s supplied analysis proposes additions. Neither supplies empirical findings or endorsement." if c.has_analysis else ("Five companion documents by Margeret Heath; the spoken script supplies the main account and qualifications. They are not independent bodies of evidence." if c.talks else
+             "Supplied documents that present one author’s work; they are not independent bodies of evidence.")
             if c.supplied_documents else "The public page poses research questions; it does not establish the AI’s suggested answers." if c.web_sources else "The discussion, shared essays and supplied analyses play different roles; source descriptions distinguish them.")
     return (f'<section class="source-shelf" aria-labelledby="source-shelf-title"><div class="shelf-head"><h2 id="source-shelf-title">Created from {plural(len(c.sources), "source")}</h2>'
             f'<a href="about.html#sources">Explore the sources →</a></div><div class="document-grid">{"".join(cards)}</div>'
@@ -745,7 +768,7 @@ def purpose_intro(c):
     goal_label = "The proposed goal" if c.is_reconstruction else "The goal"
     standing = STANDING[c.items[front["focus_ref"]]["status"]]
     source = source_mini(c)
-    review_note = ("The source author commented on an earlier map; this revision awaits review and endorsement." if c.supplied_documents else "None of the discussion’s participants has endorsed it." if c.is_reconstruction else "")
+    review_note = ("The source author commented on an earlier map; this revision awaits review and endorsement." if c.talks else "The source author has not reviewed or endorsed it." if c.supplied_documents else "None of the discussion’s participants has endorsed it." if c.is_reconstruction else "")
     review_note = f'<p class="goal-review-note">{esc(review_note)}</p>' if review_note else ""
     return f"""<section class="purpose-intro" aria-labelledby="purpose-title">
 <div class="purpose-main"><p class="eyebrow">{esc(c.name)} · {goal_label}</p><h1 id="purpose-title">{headline}</h1>
@@ -1047,14 +1070,14 @@ def reconstruction_overview(c, site):
         elif kind == "wider":
             body = f'{strip(c)}<p><a class="text-link" href="map.html">Explore all six questions →</a></p><p><a class="text-link" href="questions.html">Review the open questions →</a></p>'
         else:
-            source_link = "The supplied talks and their limits →" if c.supplied_documents else "The source questions and their limits →" if c.web_sources else "The thread, the essays and the analyses →"
+            source_link = "The supplied talks and their limits →" if c.talks else "The supplied documents and their limits →" if c.supplied_documents else "The source questions and their limits →" if c.web_sources else "The thread, the essays and the analyses →"
             body = f'{credits_table(c)}<a class="text-link" href="about.html#sources">{source_link}</a>'
         anchor = ' id="credits"' if kind == "credits" else ""
         if kind == "account":
             account = f'<section class="ov ov-cards" id="source-account">{head}{body}</section>'
             continue
         sections.append(f'<section class="ov ov-{kind}"{anchor}>{head}{body}</section>')
-    origin = "From the talks to a shared question" if c.supplied_documents else "From research questions to proposed reasoning" if c.web_sources else "From a conversation to a shared question"
+    origin = "From the talks to a shared question" if c.talks else "From the documents to a shared question" if c.supplied_documents else "From research questions to proposed reasoning" if c.web_sources else "From a conversation to a shared question"
     goal_heading = "One possible practical application" if account else "The proposed goal"
     hero = (f'<section class="goal-hero"><div class="gh-main"><p class="eyebrow">{goal_heading}</p><p class="gh-text">{esc(goal["text"])}</p>'
             f'<p class="gh-by"><span>Reconstructed by AI; awaiting participant review</span></p><p class="gh-credit">{credit_line(c, goal["source_refs"], link=True)}</p>'
@@ -1741,7 +1764,8 @@ def item_detail(c, ident, site):
     instruction = ("This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
                    "Copy the brief into your AI to develop a correction or testable question. Distinguish the research question, supplied proposed analysis and supporting evidence; no action commitment is implied." if c.has_analysis else
                    "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
-                   "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.supplied_documents else
+                   "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.talks else
+                   "Copy the brief into your AI to draft a question or correction. Check the credited page or section and distinguish the author's argument from the AI's inference." if c.supplied_documents else
                    "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
                    "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
     contribute = (f'<section class="d-sec d-brief"><h3>{"Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
@@ -1964,6 +1988,8 @@ def about_page(c, site):
                 return f'<p>Research project led by {esc(c.authors[source["author"]]["name"])}. <a href="{esc(source["url"])}">Read the original page ↗</a></p>'
             if "posts" in source:
                 return f'<p><a href="{esc(source["url"])}">Read the thread ↗</a></p>'
+            if source.get("kind") == "supplied_document" and source.get("url"):
+                return f'<p>By {esc(c.authors[source["author"]]["name"])}. <a href="{esc(source["url"])}">Read the original ↗</a></p>'
             if source.get("kind") == "supplied_document":
                 return f'<p>By {esc(c.authors[source["author"]]["name"])}. Supplied as a PDF; the original file is not published here.</p>'
             if "author" in source:
@@ -1980,7 +2006,9 @@ def about_page(c, site):
         if c.has_analysis:
             fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>The research page supplies the original questions. David Joseph’s supplied review originates the additions; the AI structured them and retained its own earlier proposals. No empirical supporting observations, participant recognition of a specific conflict, chosen practice or test commitment is supplied.</p>'
                        + source_list + source_question_outline(c) + '</section>')
-        if c.supplied_documents:
+        if c.supplied_documents and not c.talks:
+            fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2>' + SUPPLIED_ABOUT[c.slug]["intro"] + source_list + SUPPLIED_ABOUT[c.slug]["after"] + '</section>')
+        if c.talks:
             fiction = ('<section class="ov" id="sources"><h2>Sources and limits</h2><p>This is a proposed AI reconstruction of Margeret Heath’s Being-Becoming With the World, Talk 1: Re-membering, using five original supplied PDFs. Margeret Heath is their sole author. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: paraphrase, reconstruction or inference. Heath has commented on an earlier map; the wording and connections in this revision await her review and endorsement.</p>'
                        + source_list
                        + '<h3 id="process-account">Selves and capacities taking shape through relating</h3><p>Heath begins with ongoing bodily, social and material relations. In her process account, selves and their boundaries take shape through those relations; bodies, tools and environments help constitute what someone can perceive and do. The source-account observations preserve that philosophical starting point, distinct from the causal hypotheses in the practical application. See the spoken script, pp. 19–22 and 26, and <a href="items.html#rm-r-process">inspect the attributed claim and its sources</a>.</p>'
@@ -2002,7 +2030,8 @@ def about_page(c, site):
     if c.has_analysis:
         excluded = "The capability, actor, release decision, wisdom-derived practice and test setting remain unselected. No supporting empirical evidence, endorsement, owner, date, test commitment or observed result is recorded. Transition conditions are conditional premises, not claims that a test has occurred or results exist. Private collaboration notes and approval receipts are not included."
     if c.supplied_documents:
-        excluded = "The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
+        excluded = ("The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
+                    if c.talks else SUPPLIED_ABOUT[c.slug]["excluded"])
     download = '<a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a>'
     release_text = ""
     if c.is_reconstruction:
