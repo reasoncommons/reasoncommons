@@ -1,16 +1,16 @@
 schema_version: 1
-project: Why Things Last
+project: Persistent Systems Theory
 driver: david
 participants:
   david: David Joseph
 active_tree: future_reality
 import_context:
   recorded_on: '2026-10-26'
-  basis: 'Three supplied documents: Why Things Last, an introduction to Stephen Le''s Persistent Systems Theory, and Stephen Le''s Adaptive Persistence overview (30 September 2026) and summary for Analogue Group (11 October 2026).'
-  standing: Every statement and connection is a proposed AI reconstruction. Approval to implement it (pst-commons revision 1) is not endorsement of the wording, topology or predictions by David or by Stephen Le.
-  scope: 'The practical protocol for human groups, framed by the theory''s claims. Six perspectives: a group that lasts and does well through cooperation, adaptation, robustness and fit to its environment; quick fixes, fear and sensible-looking cuts as candidate causes; two dilemmas; the Adaptive Persistence cycle with a filing-cabinet risk; readiness conditions; and the five steps as an illustrative sequence.'
-  attribution: Stephen Le is the author of Persistent Systems Theory, Adaptive Persistence and both Adaptive Persistence documents. Why Things Last comes from the Thrival theory compendium and does not name its author. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Source credit is not contribution to or endorsement of the commons.
-  limits: No group, trial, facilitator, owner or observed outcome is established. Existing conditions in the action sequence are illustrative. The four case studies are the author's own reports, not independent evidence. Nothing in the theory is yet measured, as its introduction says.
+  basis: 'Two supplied documents by Stephen Le: his Adaptive Persistence overview (30 September 2026) and summary for Analogue Group (11 October 2026).'
+  standing: Every statement and connection is a proposed AI reconstruction. Approval to implement it (pst-commons revisions 1 and 2) is not endorsement of the wording, topology or predictions by David or by Stephen Le.
+  scope: 'The Adaptive Persistence protocol for human groups. Six perspectives: a group that lasts and does well through cooperation, adaptation, robustness and fit to its environment; quick fixes, fear and free riding as candidate causes; openness against guardedness; the Adaptive Persistence cycle; readiness conditions; and the five steps as an illustrative sequence.'
+  attribution: Stephen Le is the author of Persistent Systems Theory, Adaptive Persistence and both credited documents. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Source credit is not contribution to or endorsement of the commons.
+  limits: No group, trial, facilitator, owner or observed outcome is established. Existing conditions in the action sequence are illustrative. The four case studies are the author's own reports, not independent evidence. The assessments have no stated scoring method.
 trees:
   goal:
     nodes:
@@ -30,38 +30,35 @@ trees:
       - source_id: ap-summary
         locator: p. 2, The Challenge of Cooperation
         basis: reconstruction
-      - source_id: essay
-        locator: §1 Three survivors; §6 Three ways to die
-        basis: inference
     - id: ps-g-cooperate
       kind: critical_success_factor
-      text: 'Its members can cooperate: the parts keep pulling together instead of doing better for themselves at the whole''s expense.'
-      label: Its members can cooperate.
+      text: 'Members can cooperate: the group manages the dynamics among its members well.'
+      label: Members manage the dynamics among them.
       status: proposed
       contributions: *id001
       source_refs:
       - source_id: ap-overview
         locator: p. 1, Can we cooperate?
         basis: paraphrase
-      - source_id: essay
-        locator: §6 Three ways to die; §7 Coordination
+      - source_id: ap-summary
+        locator: 'p. 4, 2. Assess: Core capacities, Coordination'
         basis: paraphrase
     - id: ps-g-adapt
       kind: critical_success_factor
-      text: It can become something else in time when its existing solutions stop working.
-      label: It adapts when its solutions stop working.
+      text: The group adapts well to changes in its external environment.
+      label: It adapts to changes in its environment.
       status: proposed
       contributions: *id001
       source_refs:
       - source_id: ap-overview
         locator: p. 1, Can we adapt?
         basis: paraphrase
-      - source_id: essay
-        locator: §6 Three ways to die; §9 Adaptation
+      - source_id: ap-summary
+        locator: 'p. 4, 2. Assess: Core capacities, Adaptability'
         basis: paraphrase
     - id: ps-g-withstand
       kind: critical_success_factor
-      text: It can take a severe shock from outside and keep working.
+      text: The group withstands severe shocks.
       label: It withstands severe shocks.
       status: proposed
       contributions: *id001
@@ -69,8 +66,8 @@ trees:
       - source_id: ap-overview
         locator: p. 1, Can we tolerate disruption?
         basis: paraphrase
-      - source_id: essay
-        locator: §6 Three ways to die; §8 Robustness
+      - source_id: ap-summary
+        locator: 'p. 4, 2. Assess: Core capacities, Robustness'
         basis: paraphrase
     - id: ps-g-fit
       kind: critical_success_factor
@@ -81,9 +78,6 @@ trees:
       source_refs:
       - source_id: ap-summary
         locator: 'p. 3, steps 3 and 4: Analyze and Adjust'
-        basis: paraphrase
-      - source_id: essay
-        locator: §12 The budget; §13 Three dials in the world
         basis: paraphrase
     - id: ps-g-decide
       kind: necessary_condition
@@ -105,9 +99,6 @@ trees:
       - source_id: ap-summary
         locator: pp. 4–5, collaboration principles b, e and g
         basis: paraphrase
-      - source_id: essay
-        locator: '§14 How a new floor gets built: police'
-        basis: related
     - id: ps-g-sense
       kind: necessary_condition
       text: The group watches its environment continuously and combines scattered information into a picture that supports decisions.
@@ -128,9 +119,6 @@ trees:
       - source_id: ap-summary
         locator: p. 5, adaptability principles b, g and h
         basis: paraphrase
-      - source_id: essay
-        locator: '§9 Adaptation: buying lottery tickets'
-        basis: related
     - id: ps-g-reserve
       kind: necessary_condition
       text: The group keeps spare financial, material, human and operational capacity, and can restore essential operations after a disruption.
@@ -141,9 +129,6 @@ trees:
       - source_id: ap-summary
         locator: p. 5, robustness principles b and c
         basis: paraphrase
-      - source_id: essay
-        locator: '§8 Robustness: the wall'
-        basis: related
     - id: ps-g-uncouple
       kind: necessary_condition
       text: Local failures do not cascade through the whole group, and it is settled in advance who decides during a disruption.
@@ -164,18 +149,8 @@ trees:
       - source_id: ap-summary
         locator: 'p. 4, 2. Assess: Environment'
         basis: paraphrase
-      - source_id: essay
-        locator: §13 Three dials in the world
-        basis: paraphrase
-    - id: ps-g-allocate
-      kind: necessary_condition
-      text: The group divides its limited resources among the three capacities in proportions its environment rewards.
-      label: It budgets across the three capacities to suit its world.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §12 The budget
+      - source_id: ap-overview
+        locator: 'p. 2, 2. Assess environment: volatility, hazardousness, heterogeneity'
         basis: paraphrase
     links:
     - id: ps-gl-cooperate
@@ -299,54 +274,13 @@ trees:
       - source_id: ap-summary
         locator: p. 6, 3. Analyze
         basis: reconstruction
-    - id: ps-gl-allocate
-      from:
-      - ps-g-allocate
-      to: ps-g-fit
-      relation: necessary_for
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §12 The budget
-        basis: reconstruction
     backlog:
     - ref: ps-g-goal
       work: check_with_author
       label: Ask Stephen Le whether this goal states what Adaptive Persistence is for.
-      note: The goal joins his stated aims (performance, well-being, trust, fewer conflicts) with the essay's question of why things last. He has not reviewed the wording.
+      note: The goal joins his stated aims (performance, well-being and trust, fewer conflicts) with lasting through time. He has not reviewed the wording.
   current_reality:
     nodes:
-    - id: ps-r-three-threats
-      kind: observation
-      text: 'Anything that persists faces three distinct threats: its own parts turning on it, blows from outside, and an environment that changes and does not change back.'
-      label: Things that last face three distinct threats.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §6 Three ways to die
-        basis: paraphrase
-    - id: ps-r-filter
-      kind: observation
-      text: 'Persistence is a filter, not a goal: the things still here are the ones whose properties happened to keep them here.'
-      label: Persistence is a filter, not a goal.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§15 How this could be wrong: purpose can sneak in'
-        basis: paraphrase
-    - id: ps-r-new-levels
-      kind: observation
-      text: New levels of organisation are built when defection is made unprofitable, not when cooperation simply breaks out.
-      label: New levels form when defection stops paying.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §14 How a new floor gets built
-        basis: paraphrase
     - id: ps-r-pressure
       kind: cause
       text: Leaders under pressure to show immediate, visible progress reach for quick fixes rather than probing the structural factors that undermine cooperation.
@@ -397,48 +331,15 @@ trees:
       - source_id: ap-summary
         locator: p. 7, the problem with quick solutions
         basis: paraphrase
-    - id: ps-r-growth
-      kind: cause
-      text: As a group grows past the point where everyone knows or is related to everyone, the cheap ways of keeping parts aligned stop working.
-      label: Growth outruns the cheap ways of coordinating.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§14 How a new floor gets built: start with relatives'
-        basis: paraphrase
     - id: ps-r-free-riders
       kind: cause
-      text: Free riders exploit other people's cooperation; parts can do better for themselves at the whole's expense.
-      label: Parts can gain at the whole's expense.
+      text: Free riders take advantage of other people’s cooperation, making it hard to sustain in the long run.
+      label: Free riders make cooperation hard to sustain.
       status: proposed
       contributions: *id001
       source_refs:
       - source_id: ap-summary
         locator: p. 2, free riders
-        basis: paraphrase
-      - source_id: essay
-        locator: '§7 Coordination: the enemy is you'
-        basis: paraphrase
-    - id: ps-r-cut-reserves
-      kind: cause
-      text: Reserves, redundancy and margin look like waste in good weather, so they are the first thing cut.
-      label: Reserves look wasteful and get cut first.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§8 Robustness: the wall'
-        basis: paraphrase
-    - id: ps-r-cut-experiments
-      kind: cause
-      text: Cutting experiments makes a group look better for years, so a loss of adaptive capacity goes unnoticed.
-      label: Cutting experiments looks good for years.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §11 Telling the three apart
         basis: paraphrase
     - id: ps-r-conflict
       kind: undesirable_effect
@@ -449,26 +350,6 @@ trees:
       source_refs:
       - source_id: ap-summary
         locator: p. 7, fall into conflict and low morale again
-        basis: paraphrase
-    - id: ps-r-shock
-      kind: undesirable_effect
-      text: A shock the group could have absorbed proves crippling.
-      label: A survivable shock proves crippling.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §8 Robustness; §11 Telling the three apart
-        basis: paraphrase
-    - id: ps-r-obsolete
-      kind: undesirable_effect
-      text: The group keeps doing well at something its environment no longer rewards, until it is suddenly wrong for where it is.
-      label: It becomes quietly wrong for where it is.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §6 Three ways to die; §11 Telling the three apart
         basis: paraphrase
     links:
     - id: ps-rl-fear
@@ -516,17 +397,6 @@ trees:
       - source_id: ap-summary
         locator: p. 7, the group will soon fall into conflict and low morale again
         basis: paraphrase
-    - id: ps-rl-growth
-      from:
-      - ps-r-growth
-      to: ps-r-free-riders
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §14 start with relatives
-        basis: reconstruction
     - id: ps-rl-free-riders
       from:
       - ps-r-free-riders
@@ -538,31 +408,6 @@ trees:
       - source_id: ap-summary
         locator: p. 2, free riders
         basis: inference
-      - source_id: essay
-        locator: §7 Coordination
-        basis: reconstruction
-    - id: ps-rl-shock
-      from:
-      - ps-r-cut-reserves
-      to: ps-r-shock
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§8 Robustness: the wall'
-        basis: reconstruction
-    - id: ps-rl-obsolete
-      from:
-      - ps-r-cut-experiments
-      to: ps-r-obsolete
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §11 Telling the three apart
-        basis: reconstruction
     backlog:
     - ref: ps-rl-surface
       work: test_causality
@@ -570,56 +415,6 @@ trees:
       note: The summary states this from its author's facilitation experience; alternative explanations for recurring conflict have not been examined.
   conflict:
     nodes:
-    - id: ps-c1-objective
-      kind: objective
-      text: The group persists through both shocks and lasting change.
-      label: The group lasts through shocks and change.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §6 Three ways to die
-        basis: reconstruction
-    - id: ps-c1-absorb
-      kind: need
-      text: The group needs to absorb the shocks its environment delivers.
-      label: It needs to absorb shocks.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§8 Robustness: the wall'
-        basis: reconstruction
-    - id: ps-c1-renew
-      kind: need
-      text: The group needs to keep finding new ways to persist as its environment changes.
-      label: It needs to keep finding new ways to persist.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§9 Adaptation: buying lottery tickets'
-        basis: reconstruction
-    - id: ps-c1-reserve
-      kind: prerequisite
-      text: Hold resources back as stored surplus, redundancy and margin.
-      label: Hold resources in reserve.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§8 Robustness: stored surplus, redundancy, margin'
-        basis: paraphrase
-    - id: ps-c1-experiment
-      kind: prerequisite
-      text: Spend resources on experiments, most of which will fail.
-      label: Spend resources on experiments.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §9 Adaptation is paid for in failure
-        basis: paraphrase
     - id: ps-c2-objective
       kind: objective
       text: The group cooperates well enough to persist in a competitive field.
@@ -671,64 +466,6 @@ trees:
         locator: p. 7, our basic instinct in fearful situations is to maintain our guard
         basis: paraphrase
     links:
-    - id: ps-cl1-absorb
-      from:
-      - ps-c1-absorb
-      to: ps-c1-objective
-      relation: necessary_for
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §6 Three ways to die
-        basis: reconstruction
-    - id: ps-cl1-renew
-      from:
-      - ps-c1-renew
-      to: ps-c1-objective
-      relation: necessary_for
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §6 Three ways to die
-        basis: reconstruction
-    - id: ps-cl1-reserve
-      from:
-      - ps-c1-reserve
-      to: ps-c1-absorb
-      relation: necessary_for
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: '§8 the answer is: have more than you need'
-        basis: paraphrase
-    - id: ps-cl1-experiment
-      from:
-      - ps-c1-experiment
-      to: ps-c1-renew
-      relation: necessary_for
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §9 you cannot have the second without the first
-        basis: paraphrase
-    - id: ps-cl1-conflict
-      from:
-      - ps-c1-reserve
-      to: ps-c1-experiment
-      relation: conflicts_with
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §9 every euro spent on speculative research is a euro not in the reserve fund; §12 The budget
-        basis: paraphrase
-      assumptions:
-      - text: The group's resources are fixed in the short run, so whatever goes to one capacity is taken from another.
-        by: assistant
     - id: ps-cl2-trust
       from:
       - ps-c2-trust
@@ -787,11 +524,7 @@ trees:
       assumptions:
       - text: Any expression of need will be read as weakness, whatever words it is put in.
         by: assistant
-    backlog:
-    - ref: ps-cl1-conflict
-      work: examine_assumption
-      label: Test whether reserves and experiments really draw on one budget.
-      note: The essay notes that money in the bank buys robustness and also funds experiments (§11), so the conflict may be weaker than it looks.
+    backlog: []
   future_reality:
     nodes:
     - id: ps-f-cycle
@@ -820,12 +553,6 @@ trees:
       - source_id: ap-summary
         locator: p. 6, 3. Analyze
         basis: paraphrase
-      - source_id: essay
-        locator: §13 Three dials in the world
-        basis: related
-      addresses:
-      - ps-c1-reserve
-      - ps-c1-experiment
     - id: ps-f-act
       kind: injection
       text: 'Work through the ACT group matrix: the values behind the chosen capacity, how the group would act if it improved, the thoughts and feelings that get in the way, and how to move forward while acknowledging them.'
@@ -851,18 +578,6 @@ trees:
       addresses:
       - ps-c2-open
       - ps-c2-guarded
-    - id: ps-f-wall
-      kind: injection
-      text: Keep procedures tight in general and wall off one bounded area where variation is deliberately produced.
-      label: Rigid almost everywhere, loose in one walled-off place.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §10 The copying dial
-        basis: paraphrase
-      addresses:
-      - ps-r-cut-experiments
     - id: ps-f-criteria
       kind: injection
       text: Agree clear success criteria at the start, test each cycle against them, and stop once they are met.
@@ -873,9 +588,6 @@ trees:
       - source_id: ap-summary
         locator: p. 4, 1. Orient; p. 8, 5. Repeat
         basis: paraphrase
-      - source_id: essay
-        locator: §15 How this could be wrong
-        basis: related
     - id: ps-f-see
       kind: predicted_effect
       text: The group sees which capacity its environment most calls for and where it falls short.
@@ -916,16 +628,6 @@ trees:
       - source_id: ap-summary
         locator: p. 7, the problem with quick solutions
         basis: inference
-    - id: ps-f-options
-      kind: predicted_effect
-      text: The group generates new options without loosening coordination everywhere.
-      label: New options without losing discipline.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §10 Wall off the variation, and you can have both
-        basis: paraphrase
     - id: ps-f-cooperate
       kind: desirable_effect
       text: Members cooperate, and conflicts are resolved rather than recurring.
@@ -946,16 +648,6 @@ trees:
       - source_id: ap-summary
         locator: p. 8, 5. Repeat
         basis: inference
-    - id: ps-f-filing
-      kind: undesirable_effect
-      text: Sorting the group's mechanisms into the three capacities feels like understanding but produces nothing anyone could be wrong about.
-      label: Sorting feels like understanding; nothing is tested.
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §11 a useful question turns back into a filing cabinet; §15 a metaphor machine
-        basis: paraphrase
     - id: ps-f-cases
       kind: observation
       text: Stephen Le reports four facilitation cases, using lighter variations of the method, in which groups in conflict reconciled or renewed their collaboration.
@@ -1047,50 +739,6 @@ trees:
       - source_id: ap-summary
         locator: p. 6, 4. Adjust
         basis: reconstruction
-    - id: ps-fl-options
-      from:
-      - ps-f-wall
-      to: ps-f-options
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §10 The copying dial
-        basis: paraphrase
-    - id: ps-fl-options-fit
-      from:
-      - ps-f-options
-      to: ps-f-fit
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §10; §13 volatility rewards adaptation
-        basis: inference
-    - id: ps-fl-filing
-      from:
-      - ps-f-cycle
-      to: ps-f-filing
-      relation: contributes_to
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §11; §15 It might just be a metaphor machine
-        basis: inference
-    - id: ps-fl-criteria
-      from:
-      - ps-f-criteria
-      to: ps-f-filing
-      relation: prevents
-      status: proposed
-      contributions: *id001
-      source_refs:
-      - source_id: essay
-        locator: §15 claims stated in a form that could come out false
-        basis: inference
     - id: ps-fl-repeat
       from:
       - ps-f-fit
@@ -1102,11 +750,7 @@ trees:
       - source_id: ap-summary
         locator: p. 8, 5. Repeat
         basis: paraphrase
-    backlog:
-    - ref: ps-f-filing
-      work: make_testable
-      label: State one prediction about this group that could come out false.
-      note: The essay asks for a measure of one capacity, in one domain, that two strangers would agree on (§15). Nothing in this map is measured yet.
+    backlog: []
   prerequisite:
     nodes:
     - id: ps-p-objective
@@ -1342,7 +986,7 @@ trees:
     - ref: ps-p-assess
       work: define_measure
       label: Find a measure of one capacity that two assessors would agree on.
-      note: The essay names this as the most valuable work on the theory (§15). The summary's assessments are interviews and surveys without a stated scoring method.
+      note: The summary’s assessments are interviews, surveys and existing records, without a stated scoring method.
   transition:
     nodes:
     - id: ps-t-1-condition

@@ -1028,7 +1028,7 @@ class SuppliedDocumentTests(unittest.TestCase):
 
 
 class PersistentSystemsTests(unittest.TestCase):
-    """Stephen Le's sources: a supplied-document reconstruction that is not Margeret Heath's talks."""
+    """Stephen Le's documents: a supplied-document reconstruction that is not Margeret Heath's talks."""
     @classmethod
     def setUpClass(cls):
         cls.site, cls.commons = build.load_site()
@@ -1042,16 +1042,17 @@ class PersistentSystemsTests(unittest.TestCase):
         state = helper.load(build.HERE / self.record["entry"]["source"])
         helper.validate(state)
         self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
-        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 79)
-        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 58)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 62)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 45)
         for tree in self.data["trees"].values():
             for item in tree["nodes"] + tree["links"]:
                 self.assertEqual((item["status"], item["accepted_by"], item["contributors"]), ("proposed", [], [build.ASSISTANT]))
                 self.assertTrue(item["source_refs"])
 
-    def test_sources_credit_stephen_le_and_link_to_the_originals(self):
-        self.assertEqual({s["author"] for s in self.data["sources"]}, {"le", "thrival-compendium"})
+    def test_sources_are_stephen_les_documents_linked_to_their_originals(self):
+        self.assertEqual(set(self.data["authors"]), {"le"})
         self.assertEqual(self.data["authors"]["le"]["name"], "Stephen Le")
+        self.assertEqual({s["id"] for s in self.data["sources"]}, {"ap-summary", "ap-overview"})
         self.assertTrue(all(s["url"].startswith("https://github.com/dvdgdn/persistent-systems-theory/") for s in self.data["sources"]))
         about = self.outputs["persistent-systems/about.html"]
         self.assertIn("Read the original ↗", about)
@@ -1061,14 +1062,13 @@ class PersistentSystemsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid supplied document link"):
             build.validate_reconstruction(data, registry)
 
-    def test_pages_do_not_borrow_another_authors_wording(self):
+    def test_pages_carry_only_this_commons_sources_and_wording(self):
         for name, page in self.outputs.items():
-            if name.startswith("persistent-systems/") and name.endswith(".html"):
-                for words in ("Heath", "the talks", "commented on an earlier map", "credited PDF page"):
+            if name.startswith("persistent-systems/"):
+                for words in ("Heath", "the talks", "commented on an earlier map", "Why Things Last", "Thrival", "why-things-last"):
                     self.assertNotIn(words, page, (name, words))
-        self.assertIn("a page or section reference on every statement", self.outputs["persistent-systems/goal.html"])
+        self.assertIn("<title>Persistent Systems Theory · Reason Commons</title>", self.outputs["persistent-systems/index.html"])
         self.assertIn("The source author has not reviewed or endorsed it.", self.outputs["persistent-systems/index.html"])
-        self.assertIn("filing cabinet", self.outputs["persistent-systems/about.html"].replace("filing-cabinet", "filing cabinet") + self.outputs["persistent-systems/change.html"])
 
 
 class ProsocialAITests(unittest.TestCase):
