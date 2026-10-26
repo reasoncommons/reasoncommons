@@ -1,0 +1,2240 @@
+schema_version: 1
+project: Evolving Prosocial AI
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+import_context:
+  recorded_on: '2026-10-26'
+  basis: 'One supplied document: Paul Atkins and David Sloan Wilson, Evolving Prosocial AI: How We Shape the Systems that Shape AI - and Us, version of 28 June 2026, accepted for Cambridge Elements in Applied Evolutionary Science. An earlier draft of 6 March 2026, circulated on Substack, was also supplied; it is superseded and not cited.'
+  standing: Every statement and connection is a proposed AI reconstruction. Approval to implement it (pai-commons revision 1) is not endorsement of the wording, topology or predictions by David or by the authors.
+  scope: 'The book''s argument across six perspectives: AI that strengthens cooperation at four scales, with institutions that make cooperation pay; extractive worldviews, temporal discounting and the social trap as candidate causes; two dilemmas; the authors'' proposed changes with their own cautions as risks; prerequisites from the authors'' limits; and four illustrative steps.'
+  attribution: Paul Atkins and David Sloan Wilson are the authors. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Findings the authors cite from other studies are kept as attributed observations, not checked here. Source credit is not contribution to or endorsement of the commons.
+  limits: No group, trial, owner or observed outcome is established. Existing conditions in the action sequence are illustrative. The authors say integration across all levels awaits rigorous testing and that their examples skew Western and democratic.
+trees:
+  goal:
+    nodes:
+    - id: pa-g-goal
+      kind: goal
+      text: AI is designed, governed and used so that it strengthens cooperation and flourishing at the individual, organisational, societal and planetary scales, rather than extracting from them.
+      label: AI strengthens cooperation and flourishing at every scale.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 9, Defining Prosocial AI
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, Alignment Across Scales
+        basis: reconstruction
+    - id: pa-g-people
+      kind: critical_success_factor
+      text: People's competence, autonomy and relatedness grow through their use of AI rather than wearing away.
+      label: People's competence, autonomy and relatedness grow.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'p. 28, Individual Level: Capability Enhancement and Agency Preservation'
+        basis: paraphrase
+    - id: pa-g-commons
+      kind: critical_success_factor
+      text: 'Organisations that build AI treat it as a commons: those who contribute data, labour and creative work share in its benefits and have a real say in how it is run.'
+      label: Those who build AI share its benefits and a say.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 30–32, Organizational Level: Commons Governance and Cooperative Ownership'
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 17, Interdependence and Commons Thinking
+        basis: related
+    - id: pa-g-society
+      kind: critical_success_factor
+      text: AI strengthens democratic participation, shared facts and the capacity of institutions, and widens real opportunity for marginalised groups.
+      label: Democracy, shared facts and institutions get stronger.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 32–33, Societal Level: Democratic Strengthening and Institutional Enhancement'
+        basis: paraphrase
+    - id: pa-g-planet
+      kind: critical_success_factor
+      text: AI's full lifecycle costs in energy, water and materials are accounted for, and it is designed to work within planetary boundaries and with ecological knowledge.
+      label: AI works within planetary limits.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'p. 34, Planetary Level: Regenerative Design and Ecological Integration'
+        basis: paraphrase
+    - id: pa-g-rewarding
+      kind: critical_success_factor
+      text: Institutional arrangements make cooperation more rewarding than extraction, so prosocial AI does not depend on self-sacrifice against competitive pressure.
+      label: Cooperation pays better than extraction.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 28, Section 4 opening
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, the principles transform reinforcement contingencies
+        basis: paraphrase
+    - id: pa-g-worldviews
+      kind: critical_success_factor
+      text: Those who design, govern and use AI hold worldviews that value capability, interdependence and effects across scales, and treat AI's direction as a collective choice rather than an inevitability.
+      label: Those shaping AI hold prosocial worldviews.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 11, Values in, Values out
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: pp. 16–20, Prosocial Worldviews
+        basis: reconstruction
+    - id: pa-g-purpose
+      kind: necessary_condition
+      text: Affected communities, not only shareholders and executives, agree what an AI system is for and whose interests it serves.
+      label: Affected communities agree what AI is for.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP1 Shared Identity and Purpose
+        basis: paraphrase
+    - id: pa-g-equity
+      kind: necessary_condition
+      text: Those who contribute data, labour, creativity and resources receive proportional benefits, and costs are not pushed onto vulnerable people.
+      label: Contributors share benefits; costs aren't pushed onto others.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP2 Equitable Distribution
+        basis: paraphrase
+    - id: pa-g-choice
+      kind: necessary_condition
+      text: Those affected by AI rules take part in making them, including the choice not to build or deploy a system at all.
+      label: Those affected help make the rules, including not to build.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP3 Collective Choice Arrangements
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 8, the prosocial choice may be not to build or deploy
+        basis: paraphrase
+    - id: pa-g-monitor
+      kind: necessary_condition
+      text: Algorithmic systems are publicly audited and their effects on capability are reported, with escalating consequences for violations.
+      label: AI is audited, and violations meet escalating consequences.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP4–5 Monitoring and Graduated Responses
+        basis: paraphrase
+    - id: pa-g-resolve
+      kind: necessary_condition
+      text: Affected people have accessible channels to challenge harmful deployments, with transparent adjudication and real remedies.
+      label: People can challenge harmful deployments and get remedies.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP6 Conflict Resolution Mechanisms
+        basis: paraphrase
+    - id: pa-g-authority
+      kind: necessary_condition
+      text: Stakeholder bodies hold real decision-making power over AI deployment, not consultation rights alone.
+      label: Stakeholder bodies have real power, not just a say.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 36–37, CDP7 Authority to Self-Govern
+        basis: paraphrase
+    - id: pa-g-polycentric
+      kind: necessary_condition
+      text: 'Governance is nested across scales: groups coordinate purpose, equity and monitoring between them, while lower levels keep authority within their own domains.'
+      label: Nested governance coordinates across scales.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, CDP8 Polycentric Governance
+        basis: paraphrase
+    - id: pa-g-measure
+      kind: necessary_condition
+      text: AI's effects on human capability can be measured, so enhancement and extraction can be told apart.
+      label: Capability impacts can be measured.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, Create Feedback Loops Through Measurement
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, measurement frameworks require further development
+        basis: related
+    - id: pa-g-scaffold
+      kind: necessary_condition
+      text: AI tools scaffold people's thinking, with questions and reflection points, rather than completing the work for them.
+      label: AI scaffolds thinking rather than doing the work.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 28, Competence Support
+        basis: paraphrase
+    - id: pa-g-control
+      kind: necessary_condition
+      text: Users can state their preferences, systems respect them even when engagement patterns point elsewhere, and users can override recommendations.
+      label: Users' stated preferences are respected and can override.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, Autonomy Support
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 22, retain override capacity
+        basis: paraphrase
+    - id: pa-g-connect
+      kind: necessary_condition
+      text: AI supports in-person connection and relational skills rather than substituting for human relationships.
+      label: AI supports human connection rather than replacing it.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 29–30, Relatedness Support
+        basis: paraphrase
+    - id: pa-g-conversion
+      kind: necessary_condition
+      text: People have the personal, social and environmental conditions they need to turn access to AI into capabilities they value.
+      label: People have the conditions to turn access into capability.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 18, conversion factors
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, conversion factors
+        basis: paraphrase
+    - id: pa-g-bridging
+      kind: necessary_condition
+      text: Information is stewarded as a commons, with systems designed to surface agreement across differences rather than to maximise engagement.
+      label: Information systems favour agreement over engagement.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 32–33, Restoring Shared Facts: Information as Commons'
+        basis: paraphrase
+    - id: pa-g-deliberate
+      kind: necessary_condition
+      text: AI helps citizens deliberate and map common ground, amplifying rather than replacing their judgment.
+      label: AI helps citizens deliberate rather than deciding for them.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 32, Democratic Participation Enhancement
+        basis: paraphrase
+    - id: pa-g-inclusion
+      kind: necessary_condition
+      text: AI is deliberately designed to widen marginalised groups' real opportunities rather than to replicate existing disadvantage.
+      label: AI is designed to widen opportunity for the marginalised.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 33, Equity Acceleration
+        basis: paraphrase
+    - id: pa-g-costs
+      kind: necessary_condition
+      text: AI's energy, water and lifecycle costs are made visible and weighed against broader aims.
+      label: AI's energy and material costs are visible and weighed.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, Energy and Resource Accountability
+        basis: paraphrase
+    - id: pa-g-ecology
+      kind: necessary_condition
+      text: Communities with long ecological knowledge keep decision-making authority, and their knowledge is treated as an equal partner in design.
+      label: Communities with ecological knowledge keep authority.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, Ecological Integration and Indigenous Knowledge
+        basis: paraphrase
+    links:
+    - id: pa-gl-people
+      from:
+      - pa-g-people
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, success at each scale
+        basis: reconstruction
+    - id: pa-gl-commons
+      from:
+      - pa-g-commons
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, success at each scale
+        basis: reconstruction
+    - id: pa-gl-society
+      from:
+      - pa-g-society
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, success at each scale
+        basis: reconstruction
+    - id: pa-gl-planet
+      from:
+      - pa-g-planet
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, success at each scale
+        basis: reconstruction
+    - id: pa-gl-rewarding
+      from:
+      - pa-g-rewarding
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 28, Section 4 opening; p. 37
+        basis: paraphrase
+    - id: pa-gl-worldviews
+      from:
+      - pa-g-worldviews
+      to: pa-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 11, worldview change is a prerequisite
+        basis: paraphrase
+    - id: pa-gl-purpose
+      from:
+      - pa-g-purpose
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 36–37, Core Design Principles; p. 37, the principles work by transforming contingencies
+        basis: paraphrase
+    - id: pa-gl-equity
+      from:
+      - pa-g-equity
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, when benefits are equitably distributed (CDP2)
+        basis: paraphrase
+    - id: pa-gl-choice
+      from:
+      - pa-g-choice
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, when affected parties participate (CDP3)
+        basis: paraphrase
+    - id: pa-gl-monitor
+      from:
+      - pa-g-monitor
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, when violations are monitored and sanctioned (CDP4–5)
+        basis: paraphrase
+    - id: pa-gl-resolve
+      from:
+      - pa-g-resolve
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 36, CDP6 maintains rather than destroys cooperation
+        basis: paraphrase
+    - id: pa-gl-authority
+      from:
+      - pa-g-authority
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 36–37, CDP7 real power
+        basis: paraphrase
+    - id: pa-gl-polycentric
+      from:
+      - pa-g-polycentric
+      to: pa-g-rewarding
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, CDP8 extends the first seven
+        basis: paraphrase
+    - id: pa-gl-measure
+      from:
+      - pa-g-measure
+      to: pa-g-monitor
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, operationalises CDP4 and 5
+        basis: paraphrase
+    - id: pa-gl-scaffold
+      from:
+      - pa-g-scaffold
+      to: pa-g-people
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 28–29, Competence Support
+        basis: paraphrase
+    - id: pa-gl-control
+      from:
+      - pa-g-control
+      to: pa-g-people
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, Autonomy Support
+        basis: paraphrase
+    - id: pa-gl-connect
+      from:
+      - pa-g-connect
+      to: pa-g-people
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 29–30, Relatedness Support
+        basis: paraphrase
+    - id: pa-gl-conversion
+      from:
+      - pa-g-conversion
+      to: pa-g-people
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 18, access without conversion factors creates dependency
+        basis: paraphrase
+    - id: pa-gl-bridging
+      from:
+      - pa-g-bridging
+      to: pa-g-society
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 32, deliberation requires shared factual grounding
+        basis: paraphrase
+    - id: pa-gl-deliberate
+      from:
+      - pa-g-deliberate
+      to: pa-g-society
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 32, Democratic Participation Enhancement
+        basis: paraphrase
+    - id: pa-gl-inclusion
+      from:
+      - pa-g-inclusion
+      to: pa-g-society
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 33, Equity Acceleration
+        basis: paraphrase
+    - id: pa-gl-costs
+      from:
+      - pa-g-costs
+      to: pa-g-planet
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, Energy and Resource Accountability
+        basis: paraphrase
+    - id: pa-gl-ecology
+      from:
+      - pa-g-ecology
+      to: pa-g-planet
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, Ecological Integration
+        basis: paraphrase
+    backlog:
+    - ref: pa-g-measure
+      work: define_measure
+      label: Find one capability measure two assessors would agree on.
+      note: The authors say the measurement frameworks needed to track capability impacts across scales require further development (p. 48).
+  current_reality:
+    nodes:
+    - id: pa-r-replicators
+      kind: observation
+      text: 'Worldviews behave as cultural replicators: they last, spread by social learning from successful, prestigious and majority models, and stay faithful because they reward the behaviour that expresses them.'
+      label: Worldviews spread and persist through what they reward.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 8, Worldviews as Generators of Selection Pressures
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: pp. 11–12, Section 2
+        basis: paraphrase
+    - id: pa-r-partial
+      kind: observation
+      text: 'Human cooperation is a partial major evolutionary transition: competition within groups has been suppressed only as far as past and present environments selected for, with no finish line.'
+      label: Human cooperation is a partial evolutionary transition.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 5, Section 1
+        basis: paraphrase
+    - id: pa-r-machine
+      kind: observation
+      text: AI systems' observable behaviour embodies the worldviews behind their design, and in turn shapes what engineers build, what executives reward and what users expect.
+      label: Machine behaviour carries and spreads worldviews.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 9, machine behavior
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 15, this recursive dynamic
+        basis: paraphrase
+    - id: pa-r-worldviews
+      kind: cause
+      text: 'Four extractive worldviews dominate AI development: technological determinism, hyper-individualism, market fundamentalism and anthropocentric dominance.'
+      label: Four extractive worldviews dominate AI development.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 12–14, Extractive Worldviews
+        basis: paraphrase
+    - id: pa-r-mutual
+      kind: cause
+      text: The four extractive worldviews reinforce one another, each answering doubts the others raise, so leaving one in practice means rejecting all four.
+      label: The worldviews shield one another from doubt.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 15, The Self-Sustaining Relational Structure of Extractive Worldviews
+        basis: paraphrase
+    - id: pa-r-discount
+      kind: cause
+      text: People and organisations value immediate rewards over delayed and diffuse harms.
+      label: Immediate rewards outweigh delayed harms.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 14, Temporal Discounting
+        basis: paraphrase
+    - id: pa-r-rewards
+      kind: cause
+      text: 'Institutions reward engagement, quarterly profit and fast growth: engineers advance by optimising engagement, executives face earnings pressure and investors back scalable extraction.'
+      label: Institutions reward engagement and short-term growth.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 8, reinforcement contingencies in a technology company
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, Misaligned Incentives Reward Extractive Behaviors
+        basis: paraphrase
+    - id: pa-r-power
+      kind: cause
+      text: Power concentrates in the few organisations that control foundation models and compute; they acquire alternatives, lobby against regulation and fund much of the research that evaluates them.
+      label: Power concentrates; alternatives are bought or lobbied away.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 24, Power Concentration
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, Power Concentration and Academic Capture
+        basis: paraphrase
+    - id: pa-r-training
+      kind: cause
+      text: Education and professional training teach engagement optimisation and shareholder primacy as common sense, so each new cohort inherits extractive assumptions.
+      label: Training teaches extraction as common sense.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, Infrastructure and Cultural Reproduction
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 47, worldview malleability has a half-life
+        basis: related
+    - id: pa-r-design
+      kind: cause
+      text: AI is built to capture attention and to complete tasks for people rather than to build their capabilities.
+      label: AI is built to capture attention and do tasks for people.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 9, extractive systems embed attention capture
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, Section 3 Individual Level
+        basis: reconstruction
+    - id: pa-r-erode
+      kind: undesirable_effect
+      text: 'People''s competence, autonomy and relatedness erode: critical thinking declines with heavy AI use, choices are delegated to recommendation systems and chatbot companionship displaces human contact.'
+      label: Competence, autonomy and relatedness erode.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 21–22, Competence, Autonomy and Relatedness Erosion
+        basis: paraphrase
+    - id: pa-r-dependence
+      kind: cause
+      text: People whose capabilities have eroded rely more on the systems eroding them and are less able to demand alternatives.
+      label: Eroded users depend more and demand less.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 22, The Vicious Cycle
+        basis: paraphrase
+    - id: pa-r-race
+      kind: undesirable_effect
+      text: Firms that externalise harm outcompete those that do not, and harms documented by internal research are shelved in favour of growth.
+      label: Firms that externalise harm outgrow the rest.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 23–25, Organizational Level: Competitive Dynamics and Institutional Capture'
+        basis: paraphrase
+    - id: pa-r-uncompensated
+      kind: undesirable_effect
+      text: Data workers are poorly paid, and creators' work and the shared knowledge commons are used for training without fair return.
+      label: Workers, creators and the knowledge commons go unpaid.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 24, Worker Exploitation and Knowledge Extraction Without Compensation
+        basis: paraphrase
+    - id: pa-r-epistemic
+      kind: undesirable_effect
+      text: Shared understanding breaks down as misinformation and divisive content are amplified.
+      label: The epistemic commons breaks down.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, Epistemic Commons Breakdown
+        basis: paraphrase
+    - id: pa-r-admin
+      kind: undesirable_effect
+      text: Automated public systems harm people at scale with little accountability, as in Australia's Robodebt scheme and the Dutch child benefits scandal.
+      label: Automated public systems harm people unaccountably.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, Algorithmic Cruelty and Accountability Failures
+        basis: paraphrase
+    - id: pa-r-inequality
+      kind: undesirable_effect
+      text: AI trained on historically unequal data reproduces and amplifies inequality.
+      label: AI amplifies existing inequality.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 26, Inequality Amplification
+        basis: paraphrase
+    - id: pa-r-planet
+      kind: undesirable_effect
+      text: AI's energy, water, mineral and waste costs are externalised, and governance largely ignores harms to non-human life.
+      label: AI's ecological costs are externalised and ignored.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 26–27, Planetary Level: Ecological Extraction'
+        basis: paraphrase
+    - id: pa-r-weak
+      kind: cause
+      text: Institutions weakened by extraction lose the capacity to govern the technology that is weakening them.
+      label: Weakened institutions can't govern what weakens them.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 15, the cancer pattern is self-reinforcing
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 27, The Cancer Pattern
+        basis: paraphrase
+    - id: pa-r-trap
+      kind: undesirable_effect
+      text: 'A social trap locks extraction in: each adopter gains in the short run while universal adoption leaves everyone worse off and makes reversal harder.'
+      label: A social trap locks extraction in.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 7, social trap
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: 'pp. 39–40, Why Extractive Worldviews Dominate: The Social Trap Mechanism'
+        basis: paraphrase
+    - id: pa-r-handicap
+      kind: cause
+      text: Prosocial alternatives carry upfront coordination costs and need institutional infrastructure before they can compete.
+      label: Prosocial alternatives start at a disadvantage.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 19, prosocial worldviews currently face disadvantages
+        basis: paraphrase
+    links:
+    - id: pa-rl-mutual
+      from:
+      - pa-r-mutual
+      to: pa-r-worldviews
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 15, mutually reinforcing network
+        basis: paraphrase
+    - id: pa-rl-power
+      from:
+      - pa-r-power
+      to: pa-r-worldviews
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, power concentration enables worldview imposition
+        basis: paraphrase
+    - id: pa-rl-training
+      from:
+      - pa-r-training
+      to: pa-r-worldviews
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, reproduction mechanisms
+        basis: paraphrase
+    - id: pa-rl-rewards
+      from:
+      - pa-r-worldviews
+      - pa-r-discount
+      to: pa-r-rewards
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 14, worldviews concentrate immediate reinforcers
+        basis: reconstruction
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, temporal misalignments
+        basis: reconstruction
+    - id: pa-rl-design
+      from:
+      - pa-r-rewards
+      to: pa-r-design
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 8, engineers who design for engagement get promoted
+        basis: paraphrase
+    - id: pa-rl-erode
+      from:
+      - pa-r-design
+      to: pa-r-erode
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 21–22, Section 3 Individual Level
+        basis: paraphrase
+    - id: pa-rl-dependence
+      from:
+      - pa-r-erode
+      to: pa-r-dependence
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 22, The Vicious Cycle
+        basis: paraphrase
+    - id: pa-rl-dependence-loop
+      from:
+      - pa-r-dependence
+      to: pa-r-design
+      relation: feeds_back_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, users adapted to such environments lose capacity to demand alternatives
+        basis: reconstruction
+    - id: pa-rl-race
+      from:
+      - pa-r-rewards
+      to: pa-r-race
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, organizational selection pressures
+        basis: paraphrase
+    - id: pa-rl-uncompensated
+      from:
+      - pa-r-race
+      to: pa-r-uncompensated
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 24, Worker Exploitation; Knowledge Extraction
+        basis: reconstruction
+    - id: pa-rl-epistemic
+      from:
+      - pa-r-design
+      to: pa-r-epistemic
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, algorithmic amplification of divisive content
+        basis: paraphrase
+    - id: pa-rl-admin
+      from:
+      - pa-r-worldviews
+      to: pa-r-admin
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, market fundamentalism and technological determinism
+        basis: paraphrase
+    - id: pa-rl-inequality
+      from:
+      - pa-r-worldviews
+      to: pa-r-inequality
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 26, these outcomes flow from market fundamentalism and technological determinism
+        basis: paraphrase
+    - id: pa-rl-planet
+      from:
+      - pa-r-worldviews
+      to: pa-r-planet
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 27, anthropocentric dominance
+        basis: paraphrase
+    - id: pa-rl-weak
+      from:
+      - pa-r-epistemic
+      - pa-r-race
+      to: pa-r-weak
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 15, as institutions weaken under extractive pressure
+        basis: reconstruction
+      - source_id: evolving-prosocial-ai
+        locator: p. 27, bidirectional cascades
+        basis: reconstruction
+    - id: pa-rl-trap-weak
+      from:
+      - pa-r-weak
+      to: pa-r-trap
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 27, self-reinforcing cycles
+        basis: reconstruction
+    - id: pa-rl-trap-dependence
+      from:
+      - pa-r-dependence
+      to: pa-r-trap
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 7, dependencies make reversal increasingly difficult
+        basis: paraphrase
+    - id: pa-rl-trap-handicap
+      from:
+      - pa-r-handicap
+      to: pa-r-trap
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, extractive approaches command vastly greater resources
+        basis: inference
+    backlog:
+    - ref: pa-rl-erode
+      work: check_evidence
+      label: Check the studies behind the erosion claims.
+      note: 'Several cited findings are preliminary: Kosmyna et al. (2025) is under review and Fang et al. (2025) is a preprint (pp. 21–22). None has been checked here.'
+  conflict:
+    nodes:
+    - id: pa-c1-objective
+      kind: objective
+      text: An organisation building AI lasts and does good.
+      label: An AI organisation lasts and does good.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 35, organizational success depends on societal contribution
+        basis: inference
+    - id: pa-c1-keep-up
+      kind: need
+      text: It needs to keep up with competitors for users, investment and market share.
+      label: It needs to keep up with competitors.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 39, others are forced to adopt
+        basis: reconstruction
+    - id: pa-c1-no-harm
+      kind: need
+      text: It needs to avoid harming its users, workers and wider society.
+      label: It needs to avoid harming users and society.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 23–24, harms documented and shelved
+        basis: reconstruction
+    - id: pa-c1-engage
+      kind: prerequisite
+      text: Optimise products for engagement and growth, as competitors do.
+      label: Optimise for engagement, as competitors do.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 39, individual companies adopting extractive AI gain advantages
+        basis: paraphrase
+    - id: pa-c1-capability
+      kind: prerequisite
+      text: Design products to build users' capabilities, even at some cost to engagement.
+      label: Design for capability, even at a cost to engagement.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, prosocial metrics would reward enhancing capacity
+        basis: reconstruction
+    - id: pa-c2-objective
+      kind: objective
+      text: A person gets their work done and flourishes.
+      label: A person gets their work done and flourishes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, Individual Level
+        basis: inference
+    - id: pa-c2-done
+      kind: need
+      text: They need to get things done quickly.
+      label: They need to get things done quickly.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 13, the individual is liberated from friction
+        basis: reconstruction
+    - id: pa-c2-grow
+      kind: need
+      text: They need to keep and grow their own capabilities.
+      label: They need to keep and grow their own capabilities.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, competence, autonomy and relatedness
+        basis: reconstruction
+    - id: pa-c2-delegate
+      kind: prerequisite
+      text: Let AI complete the task.
+      label: Let AI complete the task.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, cognitive offloading
+        basis: paraphrase
+    - id: pa-c2-struggle
+      kind: prerequisite
+      text: Do the thinking themselves, accepting the effort.
+      label: Do the thinking themselves.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 65, the cognitive struggle through which ideas become our own
+        basis: paraphrase
+    links:
+    - id: pa-cl1-keep-up
+      from:
+      - pa-c1-keep-up
+      to: pa-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 39, forcing others to adopt or fail
+        basis: reconstruction
+    - id: pa-cl1-no-harm
+      from:
+      - pa-c1-no-harm
+      to: pa-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 35, organizational success depends on societal contribution
+        basis: reconstruction
+    - id: pa-cl1-engage
+      from:
+      - pa-c1-engage
+      to: pa-c1-keep-up
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 25, extractive approaches gain short-term competitive advantages
+        basis: paraphrase
+    - id: pa-cl1-capability
+      from:
+      - pa-c1-capability
+      to: pa-c1-no-harm
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 30, systems that build competence, autonomy and relatedness
+        basis: reconstruction
+    - id: pa-cl1-conflict
+      from:
+      - pa-c1-engage
+      to: pa-c1-capability
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 12, rather than requiring self-sacrifice against competitive pressures
+        basis: reconstruction
+      - source_id: evolving-prosocial-ai
+        locator: p. 19, upfront coordination costs
+        basis: reconstruction
+      assumptions:
+      - text: Within current institutions, designing for capability is a competitive handicap the market will not reward.
+        by: assistant
+    - id: pa-cl2-done
+      from:
+      - pa-c2-done
+      to: pa-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 13, immediate experience of convenience
+        basis: inference
+    - id: pa-cl2-grow
+      from:
+      - pa-c2-grow
+      to: pa-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, needs whose satisfaction predicts well-being
+        basis: reconstruction
+    - id: pa-cl2-delegate
+      from:
+      - pa-c2-delegate
+      to: pa-c2-done
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 65, faster than writing without AI
+        basis: inference
+    - id: pa-cl2-struggle
+      from:
+      - pa-c2-struggle
+      to: pa-c2-grow
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, the cognitive effort of structuring arguments
+        basis: reconstruction
+    - id: pa-cl2-conflict
+      from:
+      - pa-c2-delegate
+      to: pa-c2-struggle
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, “the less I feel the need to problem-solve on my own”
+        basis: reconstruction
+      - source_id: evolving-prosocial-ai
+        locator: p. 65, Statement Regarding the Use of AI
+        basis: reconstruction
+      assumptions:
+      - text: AI can only help by doing the work in the person's place.
+        by: assistant
+    backlog:
+    - ref: pa-cl1-conflict
+      work: examine_assumption
+      label: Test whether capability design must cost a firm against competitors.
+      note: The authors' answer is to change the institutions, so cooperation pays (pp. 36–37, 45); B Corps are cited as matching conventional firms financially (p. 43).
+  future_reality:
+    nodes:
+    - id: pa-f-cdp
+      kind: injection
+      text: Apply Ostrom's core design principles to AI governance at every scale.
+      label: Apply the core design principles to AI.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 36–37, From Principles to Practice
+        basis: paraphrase
+      addresses:
+      - pa-r-rewards
+      - pa-c1-engage
+      - pa-c1-capability
+    - id: pa-f-scaffold
+      kind: injection
+      text: 'Design AI to scaffold thinking: ask probing questions, add reflection points and teach when to use strategies, rather than hand over finished work.'
+      label: Design AI to scaffold thinking, not replace it.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 28, Competence Support
+        basis: paraphrase
+      addresses:
+      - pa-r-design
+      - pa-c2-delegate
+      - pa-c2-struggle
+    - id: pa-f-preferences
+      kind: injection
+      text: Let users state preferences that systems honour even against their engagement patterns, with take-a-break prompts and the ability to override.
+      label: Honour users' stated preferences over engagement.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, Autonomy Support
+        basis: paraphrase
+      addresses:
+      - pa-r-design
+    - id: pa-f-ownership
+      kind: injection
+      text: Spread cooperative ownership, open models, stakeholder governance and benefit-sharing arrangements such as data trusts.
+      label: Spread cooperative ownership, open models and benefit sharing.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 31–32, Organizational Level
+        basis: paraphrase
+      addresses:
+      - pa-r-uncompensated
+      - pa-r-power
+    - id: pa-f-bridging
+      kind: injection
+      text: Use bridging algorithms and AI-assisted deliberation that surface agreement across differences.
+      label: Use AI that surfaces agreement across differences.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 32–33, Democratic Participation Enhancement; Restoring Shared Facts
+        basis: paraphrase
+      addresses:
+      - pa-r-epistemic
+    - id: pa-f-measure
+      kind: injection
+      text: Develop measures and monitoring that make AI's effects on capability visible across scales.
+      label: Measure capability impacts across scales.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, Create Feedback Loops Through Measurement
+        basis: paraphrase
+      addresses:
+      - pa-r-discount
+    - id: pa-f-procure
+      kind: injection
+      text: Make public procurement require independent audits showing that an AI system enhances capability.
+      label: Make procurement require capability audits.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, Create Institutional Infrastructure
+        basis: paraphrase
+      addresses:
+      - pa-r-rewards
+    - id: pa-f-costs
+      kind: injection
+      text: Make AI's energy and lifecycle costs visible through reporting, and favour efficient models.
+      label: Report energy costs and favour efficient models.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, Energy and Resource Accountability
+        basis: paraphrase
+      addresses:
+      - pa-r-planet
+    - id: pa-f-demonstrate
+      kind: injection
+      text: Build and publicise demonstrations that show benefits across scales, including controlled comparisons with extractive systems.
+      label: Build and publicise demonstrations of multilevel benefit.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 45–46, Build and Publicize Demonstrations
+        basis: paraphrase
+      addresses:
+      - pa-r-handicap
+    - id: pa-f-networks
+      kind: injection
+      text: Support practitioner networks, professional standards and social movements in which prosocial approaches are experienced, not just advocated.
+      label: Grow networks where prosocial practice is experienced.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 43, Social Proof and Networks
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, Strengthen Social Movements and Networks
+        basis: paraphrase
+      addresses:
+      - pa-r-training
+    - id: pa-f-stories
+      kind: injection
+      text: Tell bridging stories, such as the forest's fungal networks and the jazz ensemble, that make cooperation feel natural.
+      label: Tell stories that make cooperation feel natural.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 43–45, Narrative and Meaning
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, Develop Bridging Narratives
+        basis: paraphrase
+      addresses:
+      - pa-r-mutual
+    - id: pa-f-local
+      kind: injection
+      text: Apply the principles by learning from communities that already govern their commons well, not by overriding them.
+      label: Learn from communities that already govern commons.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 41, A Critical Caveat
+        basis: paraphrase
+    - id: pa-f-pays
+      kind: predicted_effect
+      text: Prosocial AI development gains an advantage rather than facing a competitive handicap.
+      label: Prosocial AI gains an advantage, not a handicap.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, prosocial behaviour produces direct reinforcement
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, individuals and organisations gain advantage
+        basis: paraphrase
+    - id: pa-f-grow
+      kind: predicted_effect
+      text: People build competence and autonomy and come to demand tools that keep building them.
+      label: People grow capability and demand better tools.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, virtuous cycles
+        basis: paraphrase
+    - id: pa-f-common-ground
+      kind: predicted_effect
+      text: Citizens share more factual ground and deliberate across their differences.
+      label: Citizens share facts and deliberate across differences.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 32–33, Societal Level
+        basis: paraphrase
+    - id: pa-f-share
+      kind: predicted_effect
+      text: Those who contribute data, labour and creativity share in the value AI creates.
+      label: Contributors share in AI's value.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 31, cooperative models
+        basis: paraphrase
+    - id: pa-f-spread
+      kind: predicted_effect
+      text: Prosocial worldviews spread through ordinary social learning as respected peers adopt them and report better outcomes.
+      label: Prosocial worldviews spread through ordinary social learning.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 43, these networks enable worldview change through ordinary social learning
+        basis: paraphrase
+    - id: pa-f-life
+      kind: desirable_effect
+      text: 'Success at each scale reinforces success at the others: the life pattern rather than the cancer pattern.'
+      label: Success at each scale reinforces the others.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, Alignment Across Scales
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 67, Figure 2 caption
+        basis: paraphrase
+    - id: pa-f-override
+      kind: undesirable_effect
+      text: Applying evolutionary, Western-derived principles overrides local wisdom, echoing how evolutionary ideas were once used to justify colonial harm.
+      label: Imposed principles override local wisdom.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: 'p. 41, A Critical Caveat: Evolutionary Frameworks and Colonial History'
+        basis: paraphrase
+    - id: pa-f-shared-models
+      kind: undesirable_effect
+      text: AI that sharpens individual thinking disrupts the shared mental models a team relies on.
+      label: Helpful AI weakens a team's shared understanding.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 30, evidence here is mixed
+        basis: paraphrase
+    - id: pa-f-late
+      kind: undesirable_effect
+      text: Bridging fact-checks arrive too late to stop early viral spread, a remedial patch rather than structural reform.
+      label: Bridging fact-checks arrive too late.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 33, temporal limits
+        basis: paraphrase
+    - id: pa-f-paradox
+      kind: undesirable_effect
+      text: Movements have to use engagement-maximising platforms to advocate for alternatives to them.
+      label: Movements must use the platforms they oppose.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, movements face a paradox
+        basis: paraphrase
+    - id: pa-f-nepal
+      kind: observation
+      text: Ostrom's research found farmer-governed irrigation systems in Nepal outperformed agency-managed ones; the authors cite it as cooperation made rewarding by institutions rather than virtue.
+      label: Farmer-governed irrigation outperformed agency systems.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 19, The Self-Reinforcing Structure of Prosocial Worldviews
+        basis: paraphrase
+    - id: pa-f-vtaiwan
+      kind: observation
+      text: The authors report that vTaiwan's AI-assisted deliberation informed more than twenty pieces of national legislation.
+      label: vTaiwan informed over twenty national laws.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 32, Democratic Participation Enhancement
+        basis: paraphrase
+    - id: pa-f-authors
+      kind: observation
+      text: The authors report that handing writing to AI left them remembering and owning their arguments less, and that a slower, critical practice of drafting with Claude kept their capability.
+      label: The authors changed how they used AI after losing ownership.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 65, Statement Regarding the Use of Artificial Intelligence
+        basis: paraphrase
+    links:
+    - id: pa-fl-pays-cdp
+      from:
+      - pa-f-cdp
+      to: pa-f-pays
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 37, the principles work by transforming reinforcement contingencies
+        basis: paraphrase
+    - id: pa-fl-pays-procure
+      from:
+      - pa-f-procure
+      to: pa-f-pays
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, creating market demand for prosocial design
+        basis: paraphrase
+    - id: pa-fl-pays-measure
+      from:
+      - pa-f-measure
+      to: pa-f-pays
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, selection pressures shift favoring cooperation
+        basis: paraphrase
+    - id: pa-fl-pays-costs
+      from:
+      - pa-f-costs
+      to: pa-f-pays
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 34, firms adopting regenerative practices early may gain advantage
+        basis: paraphrase
+    - id: pa-fl-pays-spread
+      from:
+      - pa-f-spread
+      to: pa-f-pays
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 42, worldview transitions accelerate when institutions make prosocial behaviour rewarding
+        basis: inference
+    - id: pa-fl-grow-scaffold
+      from:
+      - pa-f-scaffold
+      to: pa-f-grow
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 28–29, Competence Support
+        basis: paraphrase
+    - id: pa-fl-grow-preferences
+      from:
+      - pa-f-preferences
+      to: pa-f-grow
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 29, enhancing users' capacity to accomplish self-chosen goals
+        basis: reconstruction
+    - id: pa-fl-common-ground
+      from:
+      - pa-f-bridging
+      to: pa-f-common-ground
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 32–33, consensus-building mechanisms
+        basis: paraphrase
+    - id: pa-fl-share
+      from:
+      - pa-f-ownership
+      to: pa-f-share
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 31, cooperative models would ensure contributors receive proportional benefits
+        basis: paraphrase
+    - id: pa-fl-spread-demonstrate
+      from:
+      - pa-f-demonstrate
+      to: pa-f-spread
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 42, Demonstration Effects
+        basis: paraphrase
+    - id: pa-fl-spread-networks
+      from:
+      - pa-f-networks
+      to: pa-f-spread
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 43, Social Proof and Networks
+        basis: paraphrase
+    - id: pa-fl-spread-stories
+      from:
+      - pa-f-stories
+      to: pa-f-spread
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 43–45, the only thing that can displace a story is a story
+        basis: reconstruction
+    - id: pa-fl-life
+      from:
+      - pa-f-pays
+      - pa-f-grow
+      to: pa-f-life
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 35–36, bidirectional cascades
+        basis: reconstruction
+    - id: pa-fl-life-common-ground
+      from:
+      - pa-f-common-ground
+      to: pa-f-life
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 35, citizens develop deliberative capacities
+        basis: reconstruction
+    - id: pa-fl-life-share
+      from:
+      - pa-f-share
+      to: pa-f-life
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 35, internalize costs while sharing benefits equitably
+        basis: reconstruction
+    - id: pa-fl-override
+      from:
+      - pa-f-cdp
+      to: pa-f-override
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 41, Western-derived principles should not override local wisdom
+        basis: reconstruction
+    - id: pa-fl-local
+      from:
+      - pa-f-local
+      to: pa-f-override
+      relation: prevents
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 41, respectful learning from existing success
+        basis: paraphrase
+    - id: pa-fl-shared-models
+      from:
+      - pa-f-scaffold
+      to: pa-f-shared-models
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 30, even cooperative AI can weaken shared understanding
+        basis: paraphrase
+    - id: pa-fl-late
+      from:
+      - pa-f-bridging
+      to: pa-f-late
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 33, notes appear about two days after the post
+        basis: paraphrase
+    - id: pa-fl-paradox
+      from:
+      - pa-f-networks
+      to: pa-f-paradox
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, using extractive platforms to advocate for prosocial alternatives
+        basis: paraphrase
+    backlog:
+    - ref: pa-f-life
+      work: make_testable
+      label: State one prediction across scales that could come out false.
+      note: The authors say the examples show proof of concept at specific scales and that integration across all levels awaits rigorous testing (p. 37).
+  prerequisite:
+    nodes:
+    - id: pa-p-objective
+      kind: objective
+      text: Prosocial patterns in AI take hold widely before extractive ones lock in.
+      label: Prosocial patterns take hold before lock-in.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 47, The Critical Window
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, the short window
+        basis: paraphrase
+    - id: pa-p-measure-gap
+      kind: obstacle
+      text: There is no accepted way to measure AI's effects on human capability across scales.
+      label: No agreed measure of capability impact.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, measurement frameworks require further development
+        basis: paraphrase
+    - id: pa-p-measures
+      kind: intermediate_objective
+      text: Agreed, tested measures of capability impact exist.
+      label: Agreed capability measures.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, Create Feedback Loops Through Measurement
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For researchers
+        basis: paraphrase
+      implements:
+      - pa-f-measure
+    - id: pa-p-scope-gap
+      kind: obstacle
+      text: The worked examples skew towards Western, democratic settings, and whether the framework holds across cultures is untested.
+      label: Evidence skews Western and democratic.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, these worked examples also skew toward Western, democratic settings
+        basis: paraphrase
+    - id: pa-p-cultures
+      kind: intermediate_objective
+      text: The framework is tested in culturally different settings, learning from communities that already govern their commons.
+      label: Tests in culturally different settings.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 41, methodological humility
+        basis: reconstruction
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, remains to be tested
+        basis: reconstruction
+      implements:
+      - pa-f-local
+    - id: pa-p-capture-gap
+      kind: obstacle
+      text: Research that should evaluate AI depends on funding from the companies it evaluates.
+      label: Research depends on industry funding.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, Academic Capture Shapes Acceptable Discourse
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, academic institutions dependent on corporate funding
+        basis: paraphrase
+    - id: pa-p-independent
+      kind: intermediate_objective
+      text: Independent funding supports rigorous, longitudinal research on how AI shapes people and institutions.
+      label: Independent research funding.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, research funding for prosocial approaches
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For researchers; For funders
+        basis: reconstruction
+    - id: pa-p-resources-gap
+      kind: obstacle
+      text: Extractive approaches command far greater resources, distribution channels and lobbying power.
+      label: Extraction commands far more resources.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 48–49, formidable resistance
+        basis: paraphrase
+    - id: pa-p-backing
+      kind: intermediate_objective
+      text: Procurement, funders and peer networks create demand and backing for prosocial AI.
+      label: Procurement, funders and networks back prosocial AI.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, Create Institutional Infrastructure
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For policymakers; For funders
+        basis: paraphrase
+      implements:
+      - pa-f-procure
+      - pa-f-networks
+    - id: pa-p-training-gap
+      kind: obstacle
+      text: Professional training reproduces extractive assumptions in each new cohort.
+      label: Training reproduces extractive assumptions.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 40, Infrastructure and Cultural Reproduction
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 47, worldview malleability has a half-life
+        basis: paraphrase
+    - id: pa-p-education
+      kind: intermediate_objective
+      text: Education and professional standards teach systems thinking, multilevel analysis and capability impact assessment.
+      label: Education teaches multilevel and capability thinking.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, professional standards; educational programs
+        basis: paraphrase
+    - id: pa-p-niche-gap
+      kind: obstacle
+      text: Many prosocial models, such as stakeholder governance and data trusts, remain aspirational or niche.
+      label: Many prosocial models are still aspirational or niche.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 31–32, such structures remain largely aspirational
+        basis: paraphrase
+    - id: pa-p-demos
+      kind: intermediate_objective
+      text: Rigorous demonstrations show prosocial models working at scale, with their benefits across scales made visible.
+      label: Rigorous demonstrations at scale.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 45–46, Build and Publicize Demonstrations
+        basis: paraphrase
+      implements:
+      - pa-f-demonstrate
+    links:
+    - id: pa-pl-measures
+      from:
+      - pa-p-measures
+      to: pa-p-measure-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, measurement approaches that make capability impacts visible
+        basis: paraphrase
+    - id: pa-pl-cultures
+      from:
+      - pa-p-cultures
+      to: pa-p-scope-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, remains to be tested
+        basis: reconstruction
+    - id: pa-pl-independent
+      from:
+      - pa-p-independent
+      to: pa-p-capture-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, research funding
+        basis: inference
+    - id: pa-pl-backing
+      from:
+      - pa-p-backing
+      to: pa-p-resources-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, institutions reward prosocial behaviour
+        basis: reconstruction
+    - id: pa-pl-education
+      from:
+      - pa-p-education
+      to: pa-p-training-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, educational programs teaching systems thinking
+        basis: paraphrase
+    - id: pa-pl-demos
+      from:
+      - pa-p-demos
+      to: pa-p-niche-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 32, the transition pathway remains to be built
+        basis: reconstruction
+    - id: pa-pl-independent-measures
+      from:
+      - pa-p-independent
+      to: pa-p-measures
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, rigorous evaluation of capability impacts
+        basis: inference
+    - id: pa-pl-measures-demos
+      from:
+      - pa-p-measures
+      to: pa-p-demos
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, demonstrations need measures that show multilevel impacts
+        basis: inference
+    - id: pa-pl-measures-objective
+      from:
+      - pa-p-measures
+      to: pa-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 46, making consequences visible
+        basis: reconstruction
+    - id: pa-pl-cultures-objective
+      from:
+      - pa-p-cultures
+      to: pa-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 41, respectful learning is essential rather than optional
+        basis: reconstruction
+    - id: pa-pl-backing-objective
+      from:
+      - pa-p-backing
+      to: pa-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, when institutions reward prosocial behaviour
+        basis: reconstruction
+    - id: pa-pl-education-objective
+      from:
+      - pa-p-education
+      to: pa-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 47, intervening during formation of reproduction systems
+        basis: reconstruction
+    - id: pa-pl-demos-objective
+      from:
+      - pa-p-demos
+      to: pa-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 42, Demonstration Effects
+        basis: reconstruction
+    backlog: []
+  transition:
+    nodes:
+    - id: pa-t-1-condition
+      kind: existing_condition
+      text: Capability impacts are not measured, so enhancement and extraction look alike.
+      label: Enhancement and extraction look alike.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 48, measurement frameworks
+        basis: inference
+    - id: pa-t-research
+      kind: action
+      text: Researchers develop and test measures of capability impact and run longitudinal studies of how AI shapes people and institutions.
+      label: Researchers develop capability measures.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For researchers
+        basis: paraphrase
+      implements:
+      - pa-p-measures
+      proposed_role: Researchers
+    - id: pa-t-1-effect
+      kind: expected_effect
+      text: There are measures that can tell enhancement from extraction.
+      label: Measures can tell enhancement from extraction.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, measurement frameworks distinguishing extraction from enhancement
+        basis: paraphrase
+    - id: pa-t-2-condition
+      kind: existing_condition
+      text: Most AI tools are built to complete tasks and maximise engagement.
+      label: Most AI tools do tasks and chase engagement.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 21, Section 3
+        basis: inference
+    - id: pa-t-build
+      kind: action
+      text: Technologists build tools that scaffold rather than replace human capability, with transparency users can act on and governance that gives affected communities authority.
+      label: Technologists build scaffolding designs.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For technologists
+        basis: paraphrase
+      implements:
+      - pa-p-demos
+      proposed_role: Technologists
+    - id: pa-t-2-effect
+      kind: expected_effect
+      text: Working capability-building tools exist that can be compared with extractive ones.
+      label: Capability-building tools exist to compare.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, controlled comparisons
+        basis: reconstruction
+    - id: pa-t-3-condition
+      kind: existing_condition
+      text: Buyers and regulators reward capability no differently from extraction.
+      label: Buyers reward capability and extraction alike.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, Create Institutional Infrastructure
+        basis: inference
+    - id: pa-t-require
+      kind: action
+      text: Policymakers require capability impact assessments and favour demonstrably prosocial systems in procurement.
+      label: Buyers require capability audits in procurement.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For policymakers
+        basis: paraphrase
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, procurement policies
+        basis: paraphrase
+      implements:
+      - pa-p-backing
+      proposed_role: Policymakers and public buyers
+    - id: pa-t-3-effect
+      kind: expected_effect
+      text: Prosocial AI wins public contracts that extractive AI loses.
+      label: Prosocial AI wins public contracts.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, exclusion from lucrative public sector contracts
+        basis: paraphrase
+    - id: pa-t-4-condition
+      kind: existing_condition
+      text: Prosocial successes are little known outside the people involved.
+      label: Prosocial successes are little known.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, all need more rigorous research and wider publicity
+        basis: paraphrase
+    - id: pa-t-fund
+      kind: action
+      text: Funders back demonstrations and networks, and the stories that make their results widely known.
+      label: Funders back and publicise demonstrations.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For funders
+        basis: paraphrase
+      implements:
+      - pa-p-demos
+      - pa-p-backing
+      proposed_role: Funders
+    - id: pa-t-4-effect
+      kind: expected_effect
+      text: Prosocial approaches gain credibility through demonstrated results.
+      label: Prosocial approaches gain credibility.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 42, Demonstration Effects
+        basis: paraphrase
+    links:
+    - id: pa-tl-research
+      from:
+      - pa-t-1-condition
+      - pa-t-research
+      to: pa-t-1-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For researchers
+        basis: reconstruction
+    - id: pa-tl-build
+      from:
+      - pa-t-1-effect
+      - pa-t-2-condition
+      - pa-t-build
+      to: pa-t-2-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 49, For technologists
+        basis: reconstruction
+    - id: pa-tl-require
+      from:
+      - pa-t-2-effect
+      - pa-t-3-condition
+      - pa-t-require
+      to: pa-t-3-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: p. 45, procurement policies
+        basis: reconstruction
+    - id: pa-tl-fund
+      from:
+      - pa-t-3-effect
+      - pa-t-4-condition
+      - pa-t-fund
+      to: pa-t-4-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: evolving-prosocial-ai
+        locator: pp. 45–46, Build and Publicize Demonstrations
+        basis: reconstruction
+    backlog:
+    - ref: pa-t-research
+      work: find_host
+      label: Find someone ready to take one step.
+      note: No researcher, technologist, policymaker, funder, owner or date is assigned. Existing conditions are illustrative, not observations.

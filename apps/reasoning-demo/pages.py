@@ -92,6 +92,22 @@ SUPPLIED_ABOUT = {
                   '<h3>Reading the sources</h3><p>Page references use the PDFs’ page numbers; references to the essay use its numbered sections. The therapeutic methods the summary draws on, Acceptance and Commitment Therapy and Emotionally Focused Therapy, are described here, not evaluated.</p>'),
         "excluded": "Local file paths, approval receipts and private collaboration notes are not published; the source documents are linked, not reproduced. No endorsement by Stephen Le, assigned owner, trial commitment or observed outcome is recorded.",
     },
+    "prosocial-ai": {
+        "intro": ('<p>This is a proposed AI reconstruction of Paul Atkins and David Sloan Wilson’s Evolving Prosocial AI, from the version of 28 June 2026 accepted for Cambridge Elements in Applied Evolutionary Science. '
+                  'The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a page reference and a labelled basis: '
+                  'paraphrase, reconstruction, inference or related point. The authors have not reviewed or endorsed it.</p>'),
+        "after": ('<h3>An evolutionary argument about AI</h3><p>The book treats worldviews as cultural replicators that persist by reshaping what gets rewarded, and AI systems as agents whose behaviour carries those worldviews back into the people around them (pp. 8–9, 11–12). '
+                  'Four extractive worldviews produce what the authors call a cancer pattern, success at one level at the expense of the levels above; four prosocial worldviews, put into practice through Ostrom’s core design principles, could produce the life pattern instead (pp. 15–20, 27, 35–37). '
+                  'This map keeps three of the book’s framing claims as attributed observations, without causal connections. <a href="items.html#pa-r-replicators">Inspect the framing claims →</a></p>'
+                  '<h3>The authors’ own cautions</h3><p>The book warns that evolutionary ideas have been used to justify colonial harm, and that principles derived from studying communities should not override those communities’ own knowledge (p. 41). '
+                  'It reports mixed evidence that helpful AI can weaken a team’s shared understanding (p. 30), and that bridging fact-checks arrive too late to stop early spread (p. 33). The map carries each as a risk beside the change it qualifies. '
+                  '<a href="items.html#pa-f-override">Inspect the risk →</a></p>'
+                  '<h3>Evidence the book cites</h3><p>Findings the authors draw from other work, such as Ostrom’s Nepal irrigation studies and vTaiwan’s legislative record, appear as attributed observations. They have not been checked here, and some cited studies are preprints or under review (pp. 21–22). '
+                  'The authors say their examples show proof of concept at particular scales, skew toward Western and democratic settings, and that integration across all levels awaits rigorous testing (pp. 37, 48). <a href="items.html#pa-f-vtaiwan">Inspect an attributed observation →</a></p>'
+                  '<h3>What counts as progress?</h3><p>No group, owner, baseline or observed outcome is established. The action sequence follows the book’s closing suggestions for researchers, technologists, policymakers and funders (p. 49); its existing conditions are illustrative, and nobody is assigned.</p>'
+                  '<h3>Reading the source</h3><p>Page references use the PDF’s page numbers, which match the manuscript’s own. An earlier draft of 6 March 2026 was circulated on Substack; this map uses the later accepted version and does not cite the draft.</p>'),
+        "excluded": "The manuscript, local file paths, approval receipts and private collaboration notes are not published. No endorsement by the authors, assigned owner, trial commitment or observed outcome is recorded.",
+    },
 }
 
 

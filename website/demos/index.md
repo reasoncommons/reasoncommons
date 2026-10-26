@@ -55,3 +55,7 @@ These seven mockups explore different visual paradigms for working with shared r
 ## Why Things Last
 
 [Why Things Last](/demos/reason-commons-in-use/persistent-systems/index.html) maps Stephen Le’s Persistent Systems Theory and Adaptive Persistence protocol: what keeps a group going, the dilemmas it faces between reserves and experiments and between openness and self-protection, and five steps it could take. Every statement is proposed and carries a section or page reference to the original documents.
+
+## Evolving Prosocial AI
+
+[Evolving Prosocial AI](/demos/reason-commons-in-use/prosocial-ai/index.html) maps Paul Atkins and David Sloan Wilson’s argument that worldviews, not technology, decide whether AI builds or erodes human capability: the extractive pattern at four scales, two dilemmas, the changes that could make cooperation pay, and the authors’ own cautions. Every statement is proposed and carries a page reference.
