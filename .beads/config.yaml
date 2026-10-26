@@ -67,6 +67,6 @@
 
 sync.remote: "git+ssh://git@github.com/reasoncommons/reasoncommons.git"
 # Off: session worktrees share the main checkout's database, so auto-export rewrote
-# the main checkout's tracked issues.jsonl and blocked pulls. Export at checkpoints.
+# the main checkout's tracked issues.jsonl and blocked pulls. JSONL is migration-only.
 export:
     auto: false
