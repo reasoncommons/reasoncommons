@@ -7,7 +7,7 @@ The repository has one shared reasoning model and distinct homes for project wor
 | Artifact | Canonical location | Public delivery |
 | --- | --- | --- |
 | Collaboration claims, contributions, acceptance and reasoning backlog | `collab/reason-commons.yaml` in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo (moved 2026-10-21) | Not in this public repo |
-| Task ownership, status and handoff | Beads; exported fallback `.beads/issues.jsonl` | Outside the website root |
+| Task ownership, status and handoff | Beads embedded Dolt database; synced through the GitHub Dolt remote | Outside the website root |
 | Product research, experiments and design | `docs/product/` | Deliberate public output belongs in `website/` |
 | Positioning, editorial briefs, scripts and critiques | `docs/marketing/` | Finished pieces under `website/` |
 | Public-safe business/funding/partnership work | `docs/business/` | Deliberately selected public output only |

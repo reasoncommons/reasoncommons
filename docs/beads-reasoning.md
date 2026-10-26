@@ -39,21 +39,19 @@ The standard views helper validates reasoning and ignores these coordination fie
 
 ## Finish or hand off
 
-Feedback sync is paused since the YAML moved to the private repo on 2026-10-21; do not configure it against this repo. When re-enabled, for feedback records, the skill's [configured Git sync](../skills/ltp/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
+Feedback sync is paused since the YAML moved to the private repo on 2026-10-21; do not configure it against this repo. When re-enabled, for feedback records, the skill's [configured Git sync](../skills/ltp/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads synchronization, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
 
 1. Save the reasoning YAML atomically and run `python3 skills/ltp/scripts/update_views.py collab/reason-commons.yaml` (from the private repo) as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
 3. Refresh `rcp-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
 4. Record friction when encountered. Reuse or create separate beads for implementation work arising from the reasoning; handle those in separate sessions. Keep issues labelled `human` for Rufus to close.
-5. Export a fresh local fallback with `bd --sandbox export -o .beads/issues.jsonl`, in the session's own checkout, and commit it with the session's work. Auto-export is off: session worktrees share the main checkout's Beads database, and auto-export rewrote the main checkout's tracked export, which blocked `git pull --ff-only` there. This explicit checkpoint is now the only export. Exporting records does not push or synchronize the Dolt remote; use the team's normal sync workflow when authorized.
+5. Push task changes with `bd dolt push`. The configured Git pre-push hook also pushes Dolt; confirm success separately from code delivery. JSONL is migration/interchange only: do not commit an export or enable auto-export. See [Beads sync and recovery](beads-sync-playbook.md).
 
 Use `bd --sandbox update <id> --body-file <file>` for multiline descriptions and `--append-notes` for short session outcomes. Preserve unrelated content and fields when updating a handoff.
 
 ## When local Beads is unavailable
 
-The saved `.beads/issues.jsonl` contains full issue records, including the handoff. Read it as a fallback, stating that it is a saved export rather than live database state. Do not edit the export while a working Beads database owns the records.
-
-For a fresh checkout with no database, back up the saved export before running `bd --sandbox init --skip-agents --skip-hooks --non-interactive --prefix reasoncommons`, which restores the configured remote. Check that the collaboration records are present. If they are missing, preview an import of the saved export with `bd --sandbox import <backup.jsonl> --dry-run --json`, then import the missing records without `--allow-stale`. Preserve any newer database rows. Never discard remote history to make initialization succeed.
+For a fresh checkout with no database, run `bd bootstrap --yes` to clone the existing Dolt remote, then `bd dolt pull` and `bd status`. Do not initialize an independent database. If recovery is needed, back up the whole local store and follow [the recovery playbook](beads-sync-playbook.md); inspect deliberate migration exports as snapshots, never as automatically authoritative state. The legacy tracked JSONL was reconciled and removed on 2026-10-26.
 
 The integration session on 2026-09-28 restored the configured remote and recovered the 29 missing issue records from the pre-existing export. This recovered issue records, not any historical Dolt commits absent from the remote.
 
