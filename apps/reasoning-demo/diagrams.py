@@ -918,8 +918,8 @@ def outline(tree, ids, links, href, kind_label, uniform=False):
 def stages(tree):
     """Prerequisite steps by stage, for a plan read from left to right.
 
-    A step's stage is the longest chain of "is needed for" links before it, so a stage holds what
-    becomes possible once the stage before it is done; it is not a date. Each step carries the
+    A step's stage is the longest chain of "is needed for" and "comes before" links before it, so a
+    stage holds what becomes possible once the stage before it is done; it is not a date. Each step carries the
     obstacles it overcomes. Steps joined to no other step, obstacles nothing overcomes and links of
     any other kind are returned separately rather than placed.
     """
@@ -932,7 +932,7 @@ def stages(tree):
         if link["relation"] == "overcomes" and nodes.get(link["to"], {}).get("kind") == "obstacle" and set(link["from"]) <= member:
             for source in link["from"]:
                 obstacles[source].append(link)
-        elif link["relation"] == "necessary_for" and link["to"] in member and set(link["from"]) <= member:
+        elif link["relation"] in ("necessary_for", "precedes") and link["to"] in member and set(link["from"]) <= member:
             needs.append(link)
             for source in link["from"]:
                 pre[link["to"]].append((source, link))

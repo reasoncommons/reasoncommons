@@ -33,7 +33,7 @@ TREE_KINDS = {
     "transition": {"existing_condition", "need", "action", "expected_effect"},
 }
 KINDS = set().union(*TREE_KINDS.values()) | {"observation"}
-RELATIONS = {"necessary_for", "contributes_to", "conflicts_with", "causes", "produces", "overcomes"}
+RELATIONS = {"necessary_for", "contributes_to", "conflicts_with", "causes", "produces", "overcomes", "precedes"}
 NODE_FIELDS = {"id", "kind", "text", "label", "status", "accepted_by", "contributors", "acceptance_context"}
 LINK_FIELDS = {"id", "from", "to", "relation", "status", "accepted_by", "contributors", "acceptance_context"}
 TRACES = ("addresses", "derived_from", "implements")
@@ -94,7 +94,9 @@ def contributors(item, people):
     return result
 
 
-# ---------------------------------------------------------------- projection 1: our accepted-only selection
+# ---------------------------------------------------------------- projection 1: our selection, accepted and proposed
+# The Reason Commons commons is the only one that records acceptance. An accepted item keeps its named
+# endorsers and recorded context; a proposed one is published without endorsers. Nothing disputed is selected.
 
 def project(state, registry):
     """Only explicit IDs and explicit fields cross the publication boundary."""
@@ -110,13 +112,18 @@ def project(state, registry):
             for ident in selection[key]:
                 require(ident in indexed, f"Selected item is missing: {ident}")
                 item = indexed[ident]
-                require(item.get("status") == "accepted", f"Selected item is no longer accepted: {ident}")
-                require(item.get("accepted_by"), f"Missing endorsement: {ident}")
-                require(all(p in people for p in item["accepted_by"]), f"Unselected endorser: {ident}")
-                public = {"id": ident, "status": "accepted",
-                          "accepted_by": [people[p] for p in item["accepted_by"]],
-                          "contributors": contributors(item, people),
-                          "acceptance_context": item.get("acceptance_source", "No acceptance date was recorded.")}
+                status = item.get("status", "proposed")
+                require(status in {"accepted", "proposed"}, f"Selected item is disputed: {ident}")
+                if status == "accepted":
+                    require(item.get("accepted_by"), f"Missing endorsement: {ident}")
+                    require(all(p in people for p in item["accepted_by"]), f"Unselected endorser: {ident}")
+                    public = {"id": ident, "status": "accepted",
+                              "accepted_by": [people[p] for p in item["accepted_by"]],
+                              "contributors": contributors(item, people),
+                              "acceptance_context": item.get("acceptance_source", "No acceptance date was recorded.")}
+                else:
+                    require(not item.get("accepted_by"), f"Proposed item lists endorsers: {ident}")
+                    public = {"id": ident, "status": "proposed", "accepted_by": [], "contributors": contributors(item, people)}
                 if key == "nodes":
                     public.update(kind=item["kind"], text=item["text"])
                     if item.get("label"):
@@ -151,19 +158,24 @@ def validate_projection(data, registry):
                 require(ident not in seen and re.fullmatch(r"[a-z0-9-]+", ident), f"Invalid/duplicate ID: {ident}")
                 seen.add(ident)
                 require(set(item) <= allowed, f"Unreviewed public fields: {ident}")
-                require(item.get("status") == "accepted", f"Unaccepted public item: {ident}")
-                require(item.get("accepted_by") and set(item["accepted_by"]) <= approved, f"Invalid endorsers: {ident}")
+                require(item.get("status") in {"accepted", "proposed"}, f"Invalid public standing: {ident}")
+                if item["status"] == "accepted":
+                    require(item.get("accepted_by") and set(item["accepted_by"]) <= approved, f"Invalid endorsers: {ident}")
+                    require(isinstance(item.get("acceptance_context"), str), f"Missing recorded context: {ident}")
+                else:
+                    require(item.get("accepted_by") == [] and "acceptance_context" not in item, f"Proposed item cannot list endorsers: {ident}")
                 validate_attribution(item, approved, ident)
-                require(isinstance(item.get("acceptance_context"), str), f"Missing recorded context: {ident}")
                 if key == "nodes":
                     require(item.get("kind") in KINDS and isinstance(item.get("text"), str) and item["text"].strip(), f"Invalid statement: {ident}")
                 else:
                     require(item.get("relation") in RELATIONS, f"Unsupported relationship: {ident}")
                     require(isinstance(item.get("from"), list) and item["from"] and len(set(item["from"])) == len(item["from"]), f"Invalid sources: {ident}")
-                    require(set(item["from"] + [item["to"]]) <= ids, f"Missing accepted endpoint: {ident}")
+                    require(set(item["from"] + [item["to"]]) <= ids, f"Missing published endpoint: {ident}")
+                    accepted = {n["id"] for n in tree["nodes"] if n["status"] == "accepted"}
+                    require(item["status"] != "accepted" or set(item["from"] + [item["to"]]) <= accepted, f"Accepted link needs accepted endpoints: {ident}")
 
 
-# ---------------------------------------------------------------- projection 2: the fictional example, every standing
+# ---------------------------------------------------------------- projection 2: the fictional example, proposed only
 
 def person(who, people):
     if who == "assistant":
@@ -248,8 +260,7 @@ def validate_v2(data, registry):
                 require(set(item) <= allowed, f"Unreviewed public fields: {ident}")
                 require(item.get("status") in STANDINGS, f"Invalid standing: {ident}")
                 require(set(item.get("accepted_by", [])) <= approved, f"Invalid endorsers: {ident}")
-                require(item["status"] != "accepted" or item["accepted_by"], f"Accepted item needs named endorsers: {ident}")
-                require(item["status"] != "proposed" or not item["accepted_by"], f"Proposed item cannot list endorsers: {ident}")
+                require(item["status"] == "proposed" and not item["accepted_by"], f"Only the Reason Commons commons publishes accepted or disputed reasoning: {ident}")
                 validate_attribution(item, approved, ident)
                 for note in ("assumptions", "challenges"):
                     for entry in item.get(note, []):
@@ -273,7 +284,7 @@ def validate_v2(data, registry):
     for request in data["feedback"]:
         outcomes = [o["ref"] for o in request["benefits"] + request["reservations"]]
         for snap in [request["about"]] + request["benefits"] + request["reservations"]:
-            require(snap["ref"] in nodes_by_id and snap.get("standing") in STANDINGS, f"Unpublished feedback statement: {snap['ref']}")
+            require(snap["ref"] in nodes_by_id and snap.get("standing") == "proposed", f"Unpublished or accepted feedback statement: {snap['ref']}")
         require(set(request["feedback_from"]) <= approved and request["created_by"] in names, "Unselected feedback people")
         for report in request["reports"]:
             require(report["by"] in request["feedback_from"] and report["readiness"] in READINESS, f"Invalid report: {report['id']}")
@@ -284,7 +295,7 @@ def validate_v2(data, registry):
     for release in data["history"]:
         require(set(release) == {"release_id", "date", "title", "summary", "changes"}, "Unexpected history fields")
         for change in release["changes"]:
-            require(change["type"] in CHANGE_TYPES and set(change) <= {"type", "refs", "note", "before"}, "Unexpected change entry")
+            require(change["type"] in CHANGE_TYPES - {"accepted", "disputed"} and set(change) <= {"type", "refs", "note", "before"}, "Unexpected change entry")
             require(set(change["refs"]) <= seen | reports, f"History refers to unpublished material in {release['release_id']}")
     require(data["history"] and data["history"][-1]["release_id"] == data["release_id"], "The latest history entry must be this release")
 
@@ -492,7 +503,7 @@ def load_site():
         registry = read_json(HERE / entry["registry"])
         data = registry["snapshot"]
         if data.get("projection_version") == 1:
-            require(entry["kind"] == "real", "Our accepted-only projection is the real commons")
+            require(entry["kind"] == "real", "Only the Reason Commons commons publishes acceptances")
             validate_projection(data, registry)
         elif data.get("projection_version") == 4:
             require(entry["kind"] == "reconstruction", "Only a labelled reconstruction uses projection 4")
@@ -572,8 +583,8 @@ def normalize(item):
         trees[name] = {"name": name, "nodes": nodes, "links": links, "backlog": source.get("backlog", [])}
     if data["projection_version"] == 1:
         people = [{"name": n, "role": ""} for n in item["registry"]["people"].values()]
-        history = [{"release_id": data["release_id"], "date": data["snapshot_date"], "title": "First publication",
-                    "summary": "Accepted statements and connections, selected from the working record with their original wording, named endorsers and recorded context.",
+        history = [{"release_id": data["release_id"], "date": data["snapshot_date"], "title": "This release",
+                    "summary": "Statements and connections selected from the working record with their original wording: accepted ones with their named endorsers and recorded context, and proposed ones that nobody has accepted yet.",
                     "changes": [{"type": "added", "refs": [i["id"] for t in trees.values() for i in t["nodes"] + t["links"]]}]}]
         feedback = []
     else:
@@ -652,7 +663,7 @@ def refresh_reconstruction(entry, registry):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--refresh", type=Path, help="Explicit authorized working YAML; refresh only our selected public fields")
+    parser.add_argument("--refresh", type=Path, help="Explicit authorized working YAML; refresh only our selected public items and fields")
     parser.add_argument("--refresh-example", action="store_true", help="Re-project the fictional example from its public working file")
     parser.add_argument("--refresh-reconstruction", action="store_true", help="Re-project the selected public source reconstruction")
     parser.add_argument("--check", action="store_true", help="Read-only check of the reviewed snapshots and generated files")
