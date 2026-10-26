@@ -75,21 +75,17 @@ CREDIT_CAVEAT = "A credit says where an idea comes from, not that its author agr
 # About-page copy for reconstructions from supplied documents other than Margeret Heath's talks, whose copy is inline below.
 SUPPLIED_ABOUT = {
     "persistent-systems": {
-        "intro": ('<p>This is a proposed AI reconstruction of Stephen Le’s Persistence Framework from three supplied documents: Why Things Last, an introduction to his Persistent Systems Theory from the Thrival theory compendium, '
-                  'and his Adaptive Persistence overview and summary. The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a source locator and a labelled basis: '
+        "intro": ('<p>This is a proposed AI reconstruction of Stephen Le’s Adaptive Persistence from two supplied documents: his three-page overview and his ten-page summary for Analogue Group. '
+                  'The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a page locator and a labelled basis: '
                   'paraphrase, reconstruction, inference or related point. Stephen Le has not reviewed or endorsed it.</p>'),
-        "after": ('<h3>A theory and a protocol</h3><p>Persistent Systems Theory asks why some structures keep going while others, under the same pressures, stop, and proposes three capacities that answer three kinds of threat: '
-                  'coordination against parts turning on the whole, robustness against blows from outside, and adaptation against a world that changes and does not change back (Why Things Last, §§6–9). '
-                  'Adaptive Persistence turns those capacities into a protocol for human groups. The summary places both in a larger Persistence Framework with a meta-ethics, Procedural Ethics, and says the ethics and the theory are not essential to fostering cooperation but help sustain it in the long run (summary, p. 2).'
-                  'This map follows the protocol and keeps three of the theory’s claims as attributed observations, without causal connections. <a href="items.html#ps-r-three-threats">Inspect the theory’s claims →</a></p>'
-                  '<h3>How the theory could be wrong</h3><p>The essay names five ways it could fail: it might forbid nothing, its three categories might not carve the world at a joint, nothing in it is yet measured, '
-                  'purpose can creep into its language, and it might be a machine for producing plausible metaphors (§15). The map carries this as a risk among the proposed changes, '
-                  'with agreed success criteria as the proposed guard, and as open work: a measure two assessors would agree on and a prediction that could come out false. <a href="items.html#ps-f-filing">Inspect the risk →</a></p>'
+        "after": ('<h3>A framework and a protocol</h3><p>The summary places Adaptive Persistence, a protocol for cooperation, in a larger Persistence Framework with a meta-ethics, Procedural Ethics, and a meta-cosmology, Persistent Systems Theory. '
+                  'It says the ethics and the theory are not essential to fostering cooperation but help sustain it in the long run (summary, p. 2). This map follows the protocol: three questions about a group’s capacities, '
+                  'an assessment of its environment, and five steps to reduce the mismatch between them.</p>'
                   '<h3>The case studies</h3><p>The summary reports four cases from the author’s own facilitation, using lighter ProSocial variations of the method: a genomics nonprofit, a small company and its contractor, a jazz quartet and two leaders of a foodways nonprofit (pp. 8–9). '
                   'They are the author’s reports, not independent evidence, and the summary itself asks for further cases in competitive, innovative or hazardous settings. <a href="items.html#ps-f-cases">Inspect the attributed observation →</a></p>'
                   '<h3>What counts as progress?</h3><p>No group, facilitator, owner, baseline or observed outcome is established. The protocol asks a group to agree success criteria when it orients and to stop once they are met; '
                   'those criteria belong to the group that tries it. Conditions in the action sequence are illustrative, not observations of an actual group.</p>'
-                  '<h3>Reading the sources</h3><p>Page references use the PDFs’ page numbers; references to the essay use its numbered sections. The therapeutic methods the summary draws on, Acceptance and Commitment Therapy and Emotionally Focused Therapy, are described here, not evaluated.</p>'),
+                  '<h3>Reading the sources</h3><p>Page references use the PDFs’ page numbers. The therapeutic methods the summary draws on, Acceptance and Commitment Therapy and Emotionally Focused Therapy, are described here, not evaluated.</p>'),
         "excluded": "Local file paths, approval receipts and private collaboration notes are not published; the source documents are linked, not reproduced. No endorsement by Stephen Le, assigned owner, trial commitment or observed outcome is recorded.",
     },
 }
@@ -618,7 +614,7 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
                   if c.slug == "re-membering" else
                   'The source author has not reviewed or endorsed it. ')
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
-                  'An AI prepared this map from supplied documents, with ' + ('page references' if c.talks else 'a page or section reference') + ' on every statement and connection. ' + review +
+                  'An AI prepared this map from supplied documents, with page references on every statement and connection. ' + review +
                   '<a href="about.html#sources">Sources and limits →</a></div></div>')
     elif c and c.is_reconstruction:
         banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Source reconstruction · Everything here is proposed.</strong> '
@@ -1765,7 +1761,7 @@ def item_detail(c, ident, site):
                    "Copy the brief into your AI to develop a correction or testable question. Distinguish the research question, supplied proposed analysis and supporting evidence; no action commitment is implied." if c.has_analysis else
                    "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
                    "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.talks else
-                   "Copy the brief into your AI to draft a question or correction. Check the credited page or section and distinguish the author's argument from the AI's inference." if c.supplied_documents else
+                   "Copy the brief into your AI to draft a question or correction. Check the credited page and distinguish the author's argument from the AI's inference." if c.supplied_documents else
                    "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
                    "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
     contribute = (f'<section class="d-sec d-brief"><h3>{"Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
