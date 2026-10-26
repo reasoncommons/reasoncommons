@@ -33,11 +33,11 @@ TREES = {
                        "method": "future reality tree", "next": "Next: what has to happen before the change can work."},
     "prerequisite": {"slug": "prerequisites", "step": "First steps", "question": "What has to happen first?",
                      "about": "What stands in the way of the change, and what gets past it.",
-                     "read": "Read from the top down: the objective needs each step beneath it, and each step overcomes the obstacle below it.",
+                     "read": "Read from left to right: each stage holds what becomes possible once the stage before it is done, and each step names the obstacle it gets past.",
                      "method": "prerequisite tree", "next": "Next: who does what."},
     "transition": {"slug": "actions", "step": "Actions", "question": "Who does what?",
                    "about": "Actions, and what each should achieve.",
-                   "read": "Read from the bottom up: each action should produce the effect above it.",
+                   "read": "Read each action from left to right: from its starting point, the action should produce the expected effect.",
                    "method": "transition tree", "next": "Back to the start: each action should move a condition for the goal forward."},
 }
 KIND_LABELS = {"goal": "Goal", "critical_success_factor": "Success factor", "necessary_condition": "Condition",
@@ -1230,18 +1230,419 @@ def tree_page(c, name, site):
         }
         reading = "This part is not established yet."
         views = f'<section class="loose"><h2>Not established yet</h2><p>{esc(explanations[name])}</p><p><a href="questions.html">Review what needs to be established →</a></p></section>'
+    guide, wide, after = legend(c, name, shapes), "", ""
+    if name == "prerequisite" and tree["nodes"]:  # Plans read left to right in stages instead of as per-part diagrams.
+        guide, wide, after = prerequisite_plan(c)
+        views = ""
+    elif name == "transition" and tree["nodes"]:
+        guide, views = action_plan(c)
+    if wide:  # The staged map uses the full width of the window; the page continues in the column below it.
+        after = f'</div>{wide}<div class="wrap">{after}'
     pager = (f'<nav class="pager" aria-label="Questions">'
              + (f'<a class="pager-prev" href="{TREES[previous]["slug"]}.html"><span>← Question {index}</span>{esc(TREES[previous]["question"])}</a>' if previous else '<span></span>')
              + f'<a class="pager-next" href="{TREES[following]["slug"]}.html"><span>{esc(info["next"] if len(order) == 6 else "Next: " + TREES[following]["question"])}</span>{esc(TREES[following]["question"])} →</a></nav>')
     body = commons_head(c, "map", heading=False) + f"""<div class="wrap">
 <section class="q-head"><div><p class="eyebrow">Question {index + 1} of {len(order)} · {esc(info["step"])}</p><h1>{esc(info["question"])}</h1><p class="lede">{esc(info["about"])}</p></div>
 <dl class="q-stats"><div><dt>Statements</dt><dd>{len(tree["nodes"])}</dd></div><div><dt>Connections</dt><dd>{len(tree["links"])}</dd></div>{f'<div><dt>Open questions</dt><dd>{open_count}</dd></div>' if open_count else ''}</dl></section>
-<div class="q-guide"><p><b>How to read it.</b> {esc(reading)}</p>{legend(c, name, shapes)}</div>
-{views}
+<div class="q-guide"><p><b>How to read it.</b> {esc(reading)}</p>{guide}</div>
+{views}{after}
 <details class="method-note"><summary>Where this comes from</summary><p>In the Logical Thinking Process this view is a {esc(info["method"])}. <a href="../how-it-works.html">How a commons works →</a></p></details>
 {pager}
 </div>"""
     return shell(assets=site.get("asset_versions", {}), title=f'{info["question"]} · {c.name} · Reason Commons', description=f'{info["about"]} From the {c.name} commons.', depth=1, body=body, nav="commons", c=c, page="tree")
+
+
+# ---------------------------------------------------------------- plans: what has to happen first, and who does what
+#
+# Both plan pages share one grammar for standing. A dashed outline is proposed, a solid one accepted for
+# now, a dotted one disputed, for statements, connections and the rule beside an obstacle alike. People
+# marks follow it: hollow for whoever proposed an item, filled after a tick for whoever accepted it,
+# square for the AI and round for a person. It holds in source reconstructions too, so each card says
+# that nobody has accepted it rather than leaving that to the banner.
+
+TICK = '<svg class="pv-tick" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3.2L13 4.8"/></svg>'
+FLAG = '<svg class="pv-flag" viewBox="0 0 11 12" aria-hidden="true"><path d="M1.5 11.5V1h7l-1.6 2.6L8.5 6.2h-7"/></svg>'
+ARROW = '<svg viewBox="0 0 40 16" aria-hidden="true"><path class="pv-shaft" d="M2 8H35"/><path class="pv-head" d="M30 3l6 5-6 5"/></svg>'
+BANDS = ["Now", "Next", "Then"]
+
+
+def clip(text, limit):
+    """Shorten text at a word boundary for a chip; the full wording stays in its title and record."""
+    return text if len(text) <= limit else text[:limit].rsplit(" ", 1)[0].rstrip(",;:") + "…"
+
+
+def band(stage):
+    return BANDS[stage] if stage < len(BANDS) else "Later"
+
+
+def is_ai(name):
+    return name.split()[0] == "AI"
+
+
+def initials(c):
+    """One letter where a first letter is unique in this commons, two where it is shared, AI for the assistant."""
+    if not hasattr(c, "_initials"):
+        everyone = {p["name"] for p in c.people}
+        for item in c.items.values():
+            everyone.update(x["name"] for x in item.get("contributors", []))
+            everyone.update(item.get("accepted_by", []))
+        firsts = defaultdict(int)
+        for person in everyone:
+            if not is_ai(person):
+                firsts[person[0].upper()] += 1
+        c._initials = {}
+        for person in everyone:
+            parts = person.split()
+            c._initials[person] = ("AI" if is_ai(person) else (parts[0][0] + parts[-1][0]).upper() if len(parts) > 1
+                                   else parts[0][0].upper() if firsts[person[0].upper()] == 1 else parts[0][:2])
+    return c._initials
+
+
+def role_of(c, person):
+    for entry in list(c.people) + list(c.authors.values()):
+        if entry["name"] == person and entry.get("role"):
+            return entry["role"]
+    return "Selected, worded and connected this; it cannot accept anything" if is_ai(person) else ""
+
+
+def mark(c, person, mode):
+    verb = "Proposed by " if mode == "by" else "Accepted for now by "
+    return (f'<span class="pv-av pv-av-{mode}{" pv-ai" if is_ai(person) else ""}" title="{esc(verb + person)}" aria-hidden="true">'
+            f'{esc(initials(c)[person])}</span>')
+
+
+def marks(c, people, mode, limit=3):
+    people = list(dict.fromkeys(people))
+    shown = people if len(people) <= limit else people[:limit - 1]
+    rest = people[len(shown):]
+    more = f'<span class="pv-av pv-av-more" title="{esc(names(rest))}" aria-hidden="true">+{len(rest)}</span>' if rest else ""
+    return f'<span class="pv-marks">{"".join(mark(c, p, mode) for p in shown)}{more}</span>'
+
+
+def acceptance(c, item):
+    """The right-hand side of a card or link: who has accepted it for now, or that nobody has."""
+    people = item.get("accepted_by", [])
+    if item["status"] == "disputed":
+        return '<span class="pv-disputed">Disputed</span>'
+    if people:
+        so_far = "" if item["status"] == "accepted" else '<span class="pv-sofar">so far</span>'
+        return (f'<span class="pv-acc">{TICK}{marks(c, people, "ok")}{so_far}'
+                f'<span class="sr-only">Accepted for now by {esc(names(people))}.</span></span>')
+    return '<span class="pv-none">Not accepted</span>'
+
+
+def people_line(c, item):
+    by = [x["name"] for x in item["contributors"]]
+    first = f'<span class="pv-who">{esc(by[0].split()[0])}</span>' if len(by) == 1 and not is_ai(by[0]) else ""
+    return (f'<div class="pv-foot"><span class="pv-by">{marks(c, by, "by", 2)}{first}<span class="sr-only">Proposed by {esc(names(by))}.</span></span>'
+            f'{acceptance(c, item)}</div>')
+
+
+def plan_card(c, ident, tree, *, eyebrow=None, extra="", chips="", critical=False, tag="li", attrs=""):
+    """A statement on a plan page. It links to its full record; app.js opens a read-only panel instead."""
+    item = c.items[ident]
+    label = eyebrow or c.kind_label(tree, item["kind"])
+    word = ('<span class="pv-word">Disputed</span>' if item["status"] == "disputed" else
+            '<span class="pv-cp">Critical path</span>' if critical else "")
+    flag = FLAG if item["kind"] == "objective" else ""
+    credit = f'<p class="pv-credit">{esc(item["credit"])}</p>' if item.get("credit") else ""
+    chips = f'<p class="pv-chips">{chips}</p>' if chips else ""
+    return (f'<{tag} class="pv-card pv-k-{item["kind"]} pv-{item["status"]}{" pv-crit" if critical else ""}" data-node="{esc(ident)}"{attrs}>'
+            f'<a class="pv-hit" href="items.html#{esc(ident)}" data-id="{esc(ident)}"><span class="sr-only">{esc(label)}: {esc(c.short(ident))}. Details</span></a>'
+            f'<p class="pv-eb"><span class="pv-kind">{flag}{esc(label)}</span>{word}</p><p class="pv-title">{esc(c.short(ident))}</p>'
+            f'{extra}{credit}{people_line(c, item)}{chips}</{tag}>')
+
+
+def plan_standing(c, name):
+    """How much of this question is accepted, and by whom."""
+    tree = c.trees[name]
+    items = tree["nodes"] + tree["links"]
+    count = lambda group, status: sum(1 for i in group if i["status"] == status)
+    accepted, disputed, total = count(tree["nodes"], "accepted"), count(tree["nodes"], "disputed"), len(tree["nodes"])
+    proposers = [x["name"] for i in items for x in i["contributors"]]
+    acceptors = [p for i in items if i["status"] == "accepted" for p in i["accepted_by"]]
+    disputed_text = f' · <b>{disputed}</b> disputed' if disputed else ""
+    who = (f'<span>Accepted by {TICK}{marks(c, acceptors, "ok", 6)}<span class="sr-only">{esc(names(acceptors))}</span></span>' if acceptors
+           else "<span>Nobody has accepted anything here yet</span>")
+    return (f'<div class="pv-standing"><div class="pv-meter" role="img" aria-label="{accepted} of {total} statements accepted for now">'
+            f'<i class="pv-m-acc" style="flex:{accepted}"></i><i class="pv-m-dis" style="flex:{disputed}"></i><i style="flex:{total - accepted - disputed}"></i></div>'
+            f'<p class="pv-meter-text"><b>{accepted} of {total}</b> statements accepted for now{disputed_text} · <b>{count(tree["links"], "accepted")} of {len(tree["links"])}</b> connections</p>'
+            f'<p class="pv-people-row"><span>Proposed by {marks(c, proposers, "by", 6)}<span class="sr-only">{esc(names(proposers))}</span></span>{who}</p></div>')
+
+
+def plan_legend(c, name, extra):
+    tree = c.trees[name]
+    statuses = {i["status"] for i in tree["nodes"] + tree["links"]}
+    proposers = [x["name"] for i in tree["nodes"] + tree["links"] for x in i["contributors"]]
+    ai, human = any(is_ai(p) for p in proposers), any(not is_ai(p) for p in proposers)
+    shapes = ("Square: the AI · round: a person" if ai and human else "Square: the AI assistant" if ai else "")
+    parts = ['<span class="pv-lg"><i class="pv-sw pv-accepted"></i>Accepted for now</span>', '<span class="pv-lg"><i class="pv-sw pv-proposed"></i>Proposed, not accepted</span>']
+    if "disputed" in statuses:
+        parts.append('<span class="pv-lg"><i class="pv-sw pv-disputed"></i>Disputed</span>')
+    sample = '<span class="pv-av pv-av-by pv-ai" aria-hidden="true">AI</span>' if ai else ""
+    sample += '<span class="pv-av pv-av-by" aria-hidden="true"></span>' if human or not ai else ""
+    people = (f'<span class="pv-lg">{sample}Proposed by</span><span class="pv-lg">{TICK}<span class="pv-av pv-av-ok" aria-hidden="true"></span>Accepted by</span>'
+              + (f'<span class="pv-lg pv-muted">{shapes}</span>' if shapes else ""))
+    return (f'<div class="pv-legend" aria-label="Key"><span class="pv-lg-group">{"".join(parts)}</span><span class="pv-lg-group">{people}</span>'
+            f'<span class="pv-lg-group">{extra}</span></div>')
+
+
+def plan_actions(c):
+    """The actions in order, with the prerequisite steps each one delivers. Cached per commons."""
+    if not hasattr(c, "_plan_actions"):
+        found = diagrams.action_steps(c.trees["transition"]) if "transition" in c.trees else None
+        staged = diagrams.stages(c.trees["prerequisite"]) if "prerequisite" in c.trees else None
+        delivered = defaultdict(list)
+        for step in found["steps"] if found else []:
+            step["delivers"] = [i for i in c.items[step["action"]].get("implements", []) if staged and i in staged["rank"]]
+            for ident in step["delivers"]:
+                delivered[ident].append(step)
+        c._plan_actions = (found, staged, delivered)
+    return c._plan_actions
+
+
+def plan_link(c, target, link, note=""):
+    """A statement reached through one link, drawn with that link's own standing."""
+    note = f'<small>{esc(note)}</small>' if note else ""
+    return (f'<li class="pv-{link["status"]}"><a href="items.html#{esc(target)}" data-goto="{esc(target)}">{esc(c.short(target))}</a>{note}'
+            f'<span class="pv-ls">{acceptance(c, link)}</span></li>')
+
+
+def plan_traces(c, ident, skip=()):
+    """Where a statement leads in the other questions, as the earlier per-part diagrams listed beyond each part."""
+    rows = []
+    for key, word in TRACE_WORDS.items():
+        for ref in c.items[ident].get(key, []):
+            if ref not in skip:
+                rows.append(f'<li><a href="items.html#{esc(ref)}">{esc(c.short(ref))}</a><small>{esc(word)} · {esc(TREES[c.tree_of[ref]]["step"])}</small></li>')
+    for other in c.order:
+        if other in skip or c.is_link(other):
+            continue
+        for key, word in TRACE_BACK.items():
+            if ident in c.items[other].get(key, []):
+                rows.append(f'<li><a href="items.html#{esc(other)}">{esc(c.short(other))}</a><small>{esc(word)} · {esc(TREES[c.tree_of[other]]["step"])}</small></li>')
+    return f'<section><h3>Elsewhere in the reasoning</h3><ul class="pv-links pv-traces">{"".join(rows)}</ul></section>' if rows else ""
+
+
+def plan_detail(c, ident, eyebrow, sections, skip=()):
+    """The read-only panel app.js opens for a card: standing, people, connections and sources."""
+    item = c.items[ident]
+    by = "".join(f'<li>{mark(c, x["name"], "by")}<span>{esc(x["name"])}<small>{esc(role_of(c, x["name"]))}</small></span></li>' for x in item["contributors"])
+    if item["status"] == "accepted":
+        accepted = "".join(f'<li>{mark(c, p, "ok")}<span>{esc(p)}<small>{esc(role_of(c, p))}</small></span></li>' for p in item["accepted_by"])
+        accepted = f'<ul class="pv-people">{accepted}</ul>'
+    elif item["status"] == "disputed":
+        earlier = f' Earlier accepted by {esc(names(item["accepted_by"]))}.' if item["accepted_by"] else ""
+        accepted = f'<p>Disputed, so nobody’s acceptance stands for now.{earlier}</p>'
+    else:
+        partial = f' Accepted so far by {esc(names(item["accepted_by"]))}.' if item["accepted_by"] else ""
+        accepted = f'<p>Nobody has accepted this yet.{partial}</p>' if not partial else f'<p>Still proposed.{partial}</p>'
+    parts = [f'<section><h3>Proposed by</h3><ul class="pv-people">{by}</ul></section><section><h3>Accepted by</h3>{accepted}</section>'] + sections + [plan_traces(c, ident, skip)]
+    if c.backlog.get(ident):
+        rows = "".join(f'<li>{esc(t.get("label") or t["work"].replace("_", " ").capitalize())}</li>' for t in c.backlog[ident])
+        parts.append(f'<section><h3>Open questions</h3><ul class="pv-open">{rows}</ul></section>')
+    if c.is_reconstruction:
+        rows = "".join(source_row(c, ref) for ref in item["source_refs"])
+        parts.append(f'<section><h3>Where this comes from</h3><ul class="notes">{rows}</ul><p class="pv-note">{esc(credit_caveat(c))}</p></section>')
+    return (f'<template id="pv-d-{esc(ident)}"><p class="pv-d-eb">{esc(eyebrow)}</p>'
+            f'<p class="pv-pill pv-{item["status"]}">{TICK if item["status"] == "accepted" else ""}{STANDING[item["status"]]}</p>'
+            f'<h2 class="pv-d-title" tabindex="-1">{esc(item["text"])}</h2>{"".join(parts)}'
+            f'<a class="pv-record" href="items.html#{esc(ident)}">Open the full record →</a></template>')
+
+
+def plan_tray(c, name, heading, text, ids):
+    cards = "".join(plan_card(c, i, name) for i in ids)
+    return f'<section class="pv-tray"><h2>{esc(heading)}</h2><p>{esc(text)}</p><ul class="pv-tray-cards">{cards}</ul></section>' if ids else ""
+
+
+def plan_other_links(c, links):
+    if not links:
+        return ""
+    rows = "".join(f'<li class="pv-{l["status"]}" data-link="{esc(l["id"])}"><a href="items.html#{esc(l["id"])}">{esc(c.text(l["id"]))}</a></li>' for l in links)
+    return f'<section class="pv-tray"><h2>Other connections</h2><p>These connections are part of the record but have no place in this layout.</p><ul class="pv-other">{rows}</ul></section>'
+
+
+def prerequisite_plan(c):
+    """The prerequisite steps from left to right in stages: tools, the full-width map, then what has no place in it."""
+    name = "prerequisite"
+    found, staged, delivered = plan_actions(c)
+    plan = staged
+    critical, edges = diagrams.critical_path(plan)
+    columns = diagrams.arrange(plan, set(plan["steps"]), critical)
+    objectives = [s for s in plan["steps"] if plan["nodes"][s]["kind"] == "objective"]
+    view_titles = defaultdict(list)
+    for view in c.views.get(name, []):
+        for ident in view["nodes"]:
+            view_titles[ident].append(view["title"])
+    toward = {}
+    for end in objectives if len(objectives) > 1 else []:  # The filter re-orders each stage for one objective's steps.
+        visible = diagrams.reach(plan, end) | {end}
+        nodes, pairs = diagrams.critical_path(plan, end)
+        order = {i: n for column in diagrams.arrange(plan, visible, nodes) for n, i in enumerate(column)}
+        toward[end] = {"order": order, "critical": sorted(nodes), "edges": sorted(pairs)}
+    data = {"links": [{"id": l["id"], "from": l["from"], "to": l["to"], "status": l["status"]} for l in plan["needs"]],
+            "critical": sorted(critical), "edges": sorted(edges), "toward": toward}
+    details = {}
+
+    def step_card(ident):
+        item = c.items[ident]
+        extra = ""
+        for link in plan["obstacles"].get(ident, []):
+            obstacle = c.items[link["to"]]
+            extra += f'<div class="pv-gp pv-{obstacle["status"]}" data-link="{esc(link["id"])}"><p class="pv-gp-l">Gets past</p><p>{esc(c.short(link["to"]))}</p></div>'
+        needs = "".join(f'<li class="pv-{link["status"]}" data-link="{esc(link["id"])}">{esc(c.short(source))}</li>' for source, link in plan["pre"][ident])
+        if needs:
+            extra += f'<div class="pv-needs"><p>Needs</p><ul>{needs}</ul></div>'
+        chips = "".join(f'<a class="pv-chip pv-{c.items[s["action"]]["status"]}" href="actions.html#action-{s["n"]}">Action {s["n"]} delivers this</a>' for s in delivered.get(ident, []))
+        on_path = ident in critical
+        sections = []
+        for link in plan["obstacles"].get(ident, []):
+            obstacle = c.items[link["to"]]
+            joined = "" if link["status"] == obstacle["status"] else f'<p class="pv-note">The link “gets past” is {STANDING[link["status"]].lower()}.</p>'
+            sections.append(f'<section><h3>Gets past</h3><div class="pv-obstacle pv-{obstacle["status"]}"><p>{esc(obstacle["text"])}</p>'
+                            f'<p class="pv-meta"><span>Obstacle · {STANDING[obstacle["status"]]}</span>{acceptance(c, obstacle)}</p></div>{joined}</section>')
+        rows = "".join(plan_link(c, s, l, f'Needed together with {plural(len(l["from"]) - 1, "other")}' if len(l["from"]) > 1 else "") for s, l in plan["pre"][ident])
+        sections.append(f'<section><h3>Needs</h3><ul class="pv-links">{rows}</ul></section>' if rows else
+                        '<section><h3>Needs</h3><p>Nothing is recorded as needed first, so it could start now.</p></section>')
+        rows = "".join(plan_link(c, t, l) for t, l in plan["post"][ident])
+        if rows:
+            sections.append(f'<section><h3>Needed for</h3><ul class="pv-links">{rows}</ul></section>')
+        if delivered.get(ident):
+            rows = "".join(f'<li class="pv-{c.items[s["action"]]["status"]}"><a href="actions.html#action-{s["n"]}">Action {s["n"]}: {esc(c.short(s["action"]))}</a></li>' for s in delivered[ident])
+            sections.append(f'<section><h3>Delivered by</h3><ul class="pv-links">{rows}</ul></section>')
+        where = f'{c.kind_label(name, item["kind"])} · Stage {plan["rank"][ident] + 1}' + (" · Critical path" if on_path else "")
+        details.setdefault(ident, plan_detail(c, ident, where, sections, skip={s["action"] for s in delivered.get(ident, [])}))
+        return plan_card(c, ident, name, extra=extra, chips=chips, critical=on_path, attrs=f' id="{esc(ident)}"')
+
+    cols = []
+    for stage, column in enumerate(columns):
+        accepted = sum(1 for i in column if c.items[i]["status"] == "accepted")
+        ends = sum(1 for i in column if c.items[i]["kind"] == "objective")
+        what = ", ".join(x for x in [plural(len(column) - ends, "step") if len(column) - ends else "", plural(ends, "objective") if ends else ""] if x)
+        caption = "Nothing needed first" if stage == 0 else f"After stage {stage}"
+        cols.append(f'<section class="pv-col{" pv-later" if stage > 2 else ""}" data-stage="{stage}" aria-labelledby="stage-{stage + 1}">'
+                    f'<header class="pv-col-head"><p class="pv-band">{band(stage) if stage <= 3 else ""}</p><h2 class="pv-stage" id="stage-{stage + 1}">Stage {stage + 1}</h2>'
+                    f'<p class="pv-cap"><span>{caption}</span><b>{what}{f" · {accepted} accepted" if accepted else ""}</b></p></header>'
+                    f'<ol class="pv-cards">{"".join(step_card(i) for i in column)}</ol></section>')
+    options = "".join(f'<option value="{esc(o)}">{esc(view_titles[o][0] + " — " if len(view_titles[o]) == 1 else "")}{esc(c.short(o))}</option>' for o in objectives)
+    filter_ = (f'<label class="pv-toward" hidden>Show the steps toward <select><option value="">All {len(objectives)} objectives</option>{options}</select></label>'
+               if len(objectives) > 1 else "")
+    jump = (f'<p class="pv-jump" hidden>Stage {"".join(f"<button type=button data-jump={s}>{s + 1}</button>" for s in range(len(columns)))}</p>'
+            if len(columns) > 4 else "")
+    tools = (f'<div class="pv-tools"><p class="pv-hint" hidden>Select a step: what it needs turns green, what it makes possible stays dark, and the rest fades.</p>'
+             f'{filter_}{jump}</div>')
+    payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
+    wide = (f'<div class="pv-scroll" tabindex="0" role="region" aria-label="Steps in stages. Scrolls sideways when it is wider than the screen.">'
+            f'<div class="pv-map{" pv-dense" if len(plan["steps"]) > 24 else ""}"><svg class="pv-lines" aria-hidden="true"></svg>{"".join(cols)}</div></div>'
+            f'<script type="application/json" class="pv-data">{payload}</script>')
+    after = (plan_tray(c, name, "Not yet in order", "No connection says what these steps are needed for or what they need.", plan["unconnected"])
+             + plan_tray(c, name, "Obstacles no step gets past yet", "These obstacles are recorded, but no step overcomes them yet.", plan["loose"])
+             + plan_other_links(c, plan["other"]))
+    for ident in plan["unconnected"] + plan["loose"]:
+        details.setdefault(ident, plan_detail(c, ident, c.kind_label(name, c.items[ident]["kind"]), []))
+    path = ('<span class="pv-lg"><i class="pv-ln pv-ln-crit"></i>Critical path: the longest chain' + (" to the furthest objective" if len(objectives) > 1 else "") + '</span>') if critical else ""
+    legend = plan_legend(c, name, f'<span class="pv-lg"><i class="pv-ln"></i>Is needed for <span class="pv-muted">(dashed while proposed)</span></span>{path}'
+                                    '<span class="pv-lg"><i class="pv-gp-sw"></i>Gets past: the obstacle a step overcomes</span>')
+    return legend + plan_standing(c, name) + tools, wide, after + f'<div class="pv-details">{"".join(details.values())}</div>'
+
+
+def action_plan(c):
+    """Numbered actions, each read as: from what is already true, the action should produce its effect."""
+    name = "transition"
+    found, staged, delivered = plan_actions(c)
+    steps = found["steps"]
+    titles = {}
+    for view in c.views.get(name, []):
+        for ident in view["nodes"]:
+            titles.setdefault(ident, view["title"])
+    any_inputs = any(s["inputs"] for s in steps)
+    details = {}
+    by_effect = {s["effect"]: s for s in steps if s["effect"]}
+
+    def row(step):
+        action = step["action"]
+        item = c.items[action]
+        inputs = []
+        for ident in step["inputs"]:
+            earlier = by_effect.get(ident)
+            eyebrow = f'From action {earlier["n"]}' if earlier and earlier is not step else None
+            inputs.append(plan_card(c, ident, name, eyebrow=eyebrow))
+            details.setdefault(ident, plan_detail(c, ident, (eyebrow or c.kind_label(name, c.items[ident]["kind"])) + f' · Action {step["n"]}', []))
+        owner = (f'<p class="pv-owner"><span class="pv-av pv-av-open" aria-hidden="true">?</span>{esc(item["owner"])}</p>' if item.get("owner") else "")
+        link = step["link"]
+        effect = plan_card(c, step["effect"], name, tag="div") if step["effect"] else '<p class="pv-blank">No expected effect recorded</p>'
+        if step["effect"]:
+            details[step["effect"]] = plan_detail(c, step["effect"], f'Expected effect · Action {step["n"]}', [])
+        arrow = (f'<span class="pv-arrow pv-{link["status"]}" data-link="{esc(link["id"])}" title="{STANDING[link["status"]]} connection: should produce">{ARROW}<span class="sr-only">should produce</span></span>'
+                 if link else '<span class="pv-arrow"></span>')
+        starts = (f'<ul class="pv-inputs">{"".join(inputs)}</ul>' if inputs else '<p class="pv-blank">No starting condition recorded</p>') if any_inputs else ""
+        after = "".join(f'<a class="pv-after pv-{l["status"]}" href="#action-{s["n"]}" data-link="{esc(l["id"])}">after {s["n"]}</a>' for s, l in step["after"])
+        loops = "".join(f'<a class="pv-loop pv-{l["status"]}" href="items.html#{esc(l["id"])}" data-id="{esc(l["id"])}">↺ Feeds back into action {s["n"]}</a>' for s, l in step["loops"])
+        shown = step["delivers"] if len(step["delivers"]) <= 3 else step["delivers"][:2]
+        chips = "".join(f'<a class="pv-chip pv-{c.items[i]["status"]}" href="prerequisites.html#{esc(i)}" title="{esc(c.short(i))}">{esc(clip(c.short(i), 60))} <span>· stage {staged["rank"][i] + 1}</span></a>' for i in shown)
+        if len(step["delivers"]) > len(shown):
+            chips += f'<a class="pv-chip" href="items.html#{esc(action)}" data-goto="{esc(action)}">+{len(step["delivers"]) - len(shown)} more steps</a>'
+        foot = (f'<p class="pv-row-foot">{"<span>Delivers</span>" + chips if chips else ""}{loops}</p>' if chips or loops else "")
+        sections = []
+        if item.get("owner"):
+            sections.append(f'<section><h3>Who</h3><p>{esc(item["owner"])}</p></section>')
+        if step["inputs"]:
+            sections.append(f'<section><h3>Starts from</h3><ul class="pv-links">{"".join(plan_link(c, i, link) for i in step["inputs"])}</ul></section>')
+        if step["effect"]:
+            sections.append(f'<section><h3>Should produce</h3><ul class="pv-links">{plan_link(c, step["effect"], link)}</ul></section>')
+        if step["after"]:
+            sections.append(f'<section><h3>Comes after</h3><ul class="pv-links">{"".join(plan_link(c, s["action"], l, "Action " + str(s["n"])) for s, l in step["after"])}</ul></section>')
+        if step["loops"]:
+            sections.append(f'<section><h3>Feeds back into</h3><ul class="pv-links">{"".join(plan_link(c, s["action"], l, "Action " + str(s["n"])) for s, l in step["loops"])}</ul></section>')
+        if step["delivers"]:
+            rows = "".join(f'<li class="pv-{c.items[i]["status"]}"><a href="prerequisites.html#{esc(i)}">{esc(c.short(i))}</a><small>Step · stage {staged["rank"][i] + 1}</small></li>' for i in step["delivers"])
+            sections.append(f'<section><h3>Delivers</h3><ul class="pv-links">{rows}</ul></section>')
+        where = f'Action {step["n"]}' + (f' · Stage {step["stage"] + 1}' if found["sequenced"] else "")
+        details[action] = plan_detail(c, action, where, sections, skip=set(step["delivers"]))
+        title = f'<h3 class="pv-row-title">{esc(titles[action])}</h3>' if action in titles else ""
+        return (f'<li class="pv-row pv-{item["status"]}" id="action-{step["n"]}"><div class="pv-rail"><span class="pv-num" aria-hidden="true">{step["n"]}</span>'
+                f'<span class="sr-only">Action {step["n"]}</span>{after}</div><div class="pv-row-body">{title}<div class="pv-eq">{starts}'
+                f'{"<span class=pv-op aria-hidden=true>+</span>" if any_inputs else ""}'
+                f'{plan_card(c, action, name, extra=owner, tag="div")}{arrow}{effect}</div>{foot}</div></li>')
+
+    rows_class = "pv-rows" + ("" if any_inputs else " pv-no-inputs")
+    if found["sequenced"]:
+        groups = defaultdict(list)
+        for step in steps:
+            groups[step["stage"]].append(step)
+        body = "".join(f'<section class="pv-group"><header class="pv-group-head"><p class="pv-band">{band(stage)}</p><h2>Stage {stage + 1}</h2>'
+                       f'<p class="pv-cap">{"Can start now" if stage == 0 else f"After stage {stage}"}</p></header>'
+                       f'<ol class="{rows_class}" start="{group[0]["n"]}">{"".join(row(s) for s in group)}</ol></section>' for stage, group in sorted(groups.items()))
+    else:
+        body = f'<ol class="{rows_class}">{"".join(row(s) for s in steps)}</ol>'
+    timeline = ""
+    stages_used = {staged["rank"][i] for s in steps for i in s["delivers"]} if staged else set()
+    if not found["sequenced"] and len(stages_used) > 1:
+        total = max(staged["rank"].values()) + 1
+        head = "".join(f'<span>{band(s) if s <= 3 else ""}<b>{s + 1}</b></span>' for s in range(total))
+        lines = []
+        for step in steps:
+            ranks = sorted({staged["rank"][i] for i in step["delivers"]})
+            if ranks:
+                bar = (f'<span class="pv-g-bar pv-{c.items[step["action"]]["status"]}" style="grid-column:{ranks[0] + 1}/{ranks[-1] + 2}"></span>'
+                       + "".join(f'<span class="pv-g-dot" style="grid-column:{r + 1}"></span>' for r in ranks))
+                said = "stage " + str(ranks[0] + 1) if len(ranks) == 1 else f"stages {ranks[0] + 1} to {ranks[-1] + 1}"
+            else:
+                bar, said = "", "no recorded step"
+            lines.append(f'<li><a class="pv-g-label" href="#action-{step["n"]}"><b>{step["n"]}</b>{esc(titles.get(step["action"]) or c.short(step["action"]))}</a>'
+                         f'<span class="sr-only">: delivers steps in {said}.</span><span class="pv-g-track" aria-hidden="true">{bar}</span></li>')
+        timeline = (f'<section class="pv-timeline" aria-labelledby="pv-when"><h2 id="pv-when">When each action is needed</h2>'
+                    '<p>No order between the actions is recorded, so each is placed by the stages of the steps it delivers on <a href="prerequisites.html">What has to happen first?</a> A dot is a step it delivers.</p>'
+                    f'<div class="pv-gantt" style="--stages:{total}"><p class="pv-g-head" aria-hidden="true"><span>Action</span><span class="pv-g-track">{head}</span></p><ol>{"".join(lines)}</ol></div></section>')
+    after = (plan_tray(c, name, "Not yet part of an action", "These statements are recorded, but no action starts from or produces them yet.", found["loose"])
+             + plan_other_links(c, found["other"]))
+    for ident in found["loose"]:
+        details.setdefault(ident, plan_detail(c, ident, c.kind_label(name, c.items[ident]["kind"]), []))
+    unassigned = any(c.items[s["action"]].get("owner") for s in steps)
+    extra = ('<span class="pv-lg"><i class="pv-ln pv-ln-arrow"></i>Should produce <span class="pv-muted">(dashed while proposed)</span></span>'
+             + ('<span class="pv-lg"><span class="pv-av pv-av-open" aria-hidden="true">?</span>Nobody assigned</span>' if unassigned else ""))
+    return (plan_legend(c, name, extra) + plan_standing(c, name),
+            timeline + f'<div class="pv-plan">{body}</div>' + after + f'<div class="pv-details">{"".join(details.values())}</div>')
 
 
 # ---------------------------------------------------------------- statements and connections
