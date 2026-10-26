@@ -415,6 +415,9 @@ def validate_reconstruction(data, registry):
         kind = source_kind(source)
         extra = ({"url", "posts"} if kind == "forum" else {"author", "shared_in_post"} if kind == "document"
                  else {"kind", "author", "url"} if kind in {"web_page", "supplied_analysis"} else {"kind", "author"} if kind in {"supplied_document", "supplied_analysis"} else set())
+        if kind == "supplied_document" and "url" in source:  # A supplied document its author has published elsewhere.
+            extra = extra | {"url"}
+            require(isinstance(source["url"], str) and source["url"].startswith("https://"), f"Invalid supplied document link: {source['id']}")
         require(set(source) == {"id", "title", "description"} | extra and all(isinstance(source[k], str) and source[k].strip() for k in ("id", "title", "description")), "Invalid source description")
         require(re.fullmatch(r"[a-z0-9-]+", source["id"]) and source["id"] not in sources, "Invalid/duplicate source ID")
         if kind == "forum":

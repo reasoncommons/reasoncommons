@@ -1,0 +1,1589 @@
+schema_version: 1
+project: Why Things Last
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+import_context:
+  recorded_on: '2026-10-26'
+  basis: 'Three supplied documents: Why Things Last, an introduction to Stephen Le''s Persistent Systems Theory, and Stephen Le''s Adaptive Persistence overview (30 September 2026) and summary for Analogue Group (11 October 2026).'
+  standing: Every statement and connection is a proposed AI reconstruction. Approval to implement it (pst-commons revision 1) is not endorsement of the wording, topology or predictions by David or by Stephen Le.
+  scope: 'The practical protocol for human groups, framed by the theory''s claims. Six perspectives: a group that lasts and does well through cooperation, adaptation, robustness and fit to its environment; quick fixes, fear and sensible-looking cuts as candidate causes; two dilemmas; the Adaptive Persistence cycle with a filing-cabinet risk; readiness conditions; and the five steps as an illustrative sequence.'
+  attribution: Stephen Le is the author of Persistent Systems Theory, Adaptive Persistence and both Adaptive Persistence documents. Why Things Last comes from the Thrival theory compendium and does not name its author. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Source credit is not contribution to or endorsement of the commons.
+  limits: No group, trial, facilitator, owner or observed outcome is established. Existing conditions in the action sequence are illustrative. The four case studies are the author's own reports, not independent evidence. Nothing in the theory is yet measured, as its introduction says.
+trees:
+  goal:
+    nodes:
+    - id: ps-g-goal
+      kind: goal
+      text: 'A group persists through time and does well in the environment it actually faces: it meets its aims, keeps its members'' trust and well-being, and resolves its conflicts.'
+      label: A group lasts and does well in its environment.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, What is Adaptive Persistence?
+        basis: paraphrase
+      - source_id: ap-summary
+        locator: p. 2, The Challenge of Cooperation
+        basis: reconstruction
+      - source_id: essay
+        locator: §1 Three survivors; §6 Three ways to die
+        basis: inference
+    - id: ps-g-cooperate
+      kind: critical_success_factor
+      text: 'Its members can cooperate: the parts keep pulling together instead of doing better for themselves at the whole''s expense.'
+      label: Its members can cooperate.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, Can we cooperate?
+        basis: paraphrase
+      - source_id: essay
+        locator: §6 Three ways to die; §7 Coordination
+        basis: paraphrase
+    - id: ps-g-adapt
+      kind: critical_success_factor
+      text: It can become something else in time when its existing solutions stop working.
+      label: It adapts when its solutions stop working.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, Can we adapt?
+        basis: paraphrase
+      - source_id: essay
+        locator: §6 Three ways to die; §9 Adaptation
+        basis: paraphrase
+    - id: ps-g-withstand
+      kind: critical_success_factor
+      text: It can take a severe shock from outside and keep working.
+      label: It withstands severe shocks.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, Can we tolerate disruption?
+        basis: paraphrase
+      - source_id: essay
+        locator: §6 Three ways to die; §8 Robustness
+        basis: paraphrase
+    - id: ps-g-fit
+      kind: critical_success_factor
+      text: Its mix of coordination, adaptation and robustness matches the environment it faces.
+      label: Its capacities match its environment.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: 'p. 3, steps 3 and 4: Analyze and Adjust'
+        basis: paraphrase
+      - source_id: essay
+        locator: §12 The budget; §13 Three dials in the world
+        basis: paraphrase
+    - id: ps-g-decide
+      kind: necessary_condition
+      text: Decisions are efficient and inclusive, and conflicts are resolved efficiently and effectively.
+      label: Decisions are inclusive and conflicts get resolved.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, collaboration principles c and d
+        basis: paraphrase
+    - id: ps-g-fair
+      kind: necessary_condition
+      text: Benefits and costs are fairly shared, and breaches of agreed norms are visible and met with proportionate sanctions.
+      label: Costs and benefits are fair; norms are visibly upheld.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–5, collaboration principles b, e and g
+        basis: paraphrase
+      - source_id: essay
+        locator: '§14 How a new floor gets built: police'
+        basis: related
+    - id: ps-g-sense
+      kind: necessary_condition
+      text: The group watches its environment continuously and combines scattered information into a picture that supports decisions.
+      label: It watches its environment and makes sense of it.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, adaptability principles a and e
+        basis: paraphrase
+    - id: ps-g-try
+      kind: necessary_condition
+      text: The group tests new ideas at limited scale, avoids depending on one solution too early and learns quickly from the consequences.
+      label: It tries small bets and learns from them quickly.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, adaptability principles b, g and h
+        basis: paraphrase
+      - source_id: essay
+        locator: '§9 Adaptation: buying lottery tickets'
+        basis: related
+    - id: ps-g-reserve
+      kind: necessary_condition
+      text: The group keeps spare financial, material, human and operational capacity, and can restore essential operations after a disruption.
+      label: It keeps spare capacity and can recover.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, robustness principles b and c
+        basis: paraphrase
+      - source_id: essay
+        locator: '§8 Robustness: the wall'
+        basis: related
+    - id: ps-g-uncouple
+      kind: necessary_condition
+      text: Local failures do not cascade through the whole group, and it is settled in advance who decides during a disruption.
+      label: Failures stay local; crisis authority is clear.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, robustness principles e, f and g
+        basis: paraphrase
+    - id: ps-g-read-env
+      kind: necessary_condition
+      text: The group knows how volatile, hazardous and varied its environment is.
+      label: It knows how volatile, hazardous and varied its world is.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: 'p. 4, 2. Assess: Environment'
+        basis: paraphrase
+      - source_id: essay
+        locator: §13 Three dials in the world
+        basis: paraphrase
+    - id: ps-g-allocate
+      kind: necessary_condition
+      text: The group divides its limited resources among the three capacities in proportions its environment rewards.
+      label: It budgets across the three capacities to suit its world.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §12 The budget
+        basis: paraphrase
+    links:
+    - id: ps-gl-cooperate
+      from:
+      - ps-g-cooperate
+      to: ps-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, three questions
+        basis: paraphrase
+    - id: ps-gl-adapt
+      from:
+      - ps-g-adapt
+      to: ps-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, three questions
+        basis: paraphrase
+    - id: ps-gl-withstand
+      from:
+      - ps-g-withstand
+      to: ps-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 1, three questions
+        basis: paraphrase
+    - id: ps-gl-fit
+      from:
+      - ps-g-fit
+      to: ps-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-overview
+        locator: p. 2, decrease the mismatch between environment and core characteristics
+        basis: reconstruction
+    - id: ps-gl-decide
+      from:
+      - ps-g-decide
+      to: ps-g-cooperate
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–5, collaboration principles
+        basis: reconstruction
+    - id: ps-gl-fair
+      from:
+      - ps-g-fair
+      to: ps-g-cooperate
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–5, collaboration principles
+        basis: reconstruction
+    - id: ps-gl-sense
+      from:
+      - ps-g-sense
+      to: ps-g-adapt
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, adaptability principles
+        basis: reconstruction
+    - id: ps-gl-try
+      from:
+      - ps-g-try
+      to: ps-g-adapt
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, adaptability principles
+        basis: reconstruction
+    - id: ps-gl-reserve
+      from:
+      - ps-g-reserve
+      to: ps-g-withstand
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, robustness principles
+        basis: reconstruction
+    - id: ps-gl-uncouple
+      from:
+      - ps-g-uncouple
+      to: ps-g-withstand
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 5, robustness principles
+        basis: reconstruction
+    - id: ps-gl-read-env
+      from:
+      - ps-g-read-env
+      to: ps-g-fit
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: reconstruction
+    - id: ps-gl-allocate
+      from:
+      - ps-g-allocate
+      to: ps-g-fit
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §12 The budget
+        basis: reconstruction
+    backlog:
+    - ref: ps-g-goal
+      work: check_with_author
+      label: Ask Stephen Le whether this goal states what Adaptive Persistence is for.
+      note: The goal joins his stated aims (performance, well-being, trust, fewer conflicts) with the essay's question of why things last. He has not reviewed the wording.
+  current_reality:
+    nodes:
+    - id: ps-r-three-threats
+      kind: observation
+      text: 'Anything that persists faces three distinct threats: its own parts turning on it, blows from outside, and an environment that changes and does not change back.'
+      label: Things that last face three distinct threats.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §6 Three ways to die
+        basis: paraphrase
+    - id: ps-r-filter
+      kind: observation
+      text: 'Persistence is a filter, not a goal: the things still here are the ones whose properties happened to keep them here.'
+      label: Persistence is a filter, not a goal.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§15 How this could be wrong: purpose can sneak in'
+        basis: paraphrase
+    - id: ps-r-new-levels
+      kind: observation
+      text: New levels of organisation are built when defection is made unprofitable, not when cooperation simply breaks out.
+      label: New levels form when defection stops paying.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §14 How a new floor gets built
+        basis: paraphrase
+    - id: ps-r-pressure
+      kind: cause
+      text: Leaders under pressure to show immediate, visible progress reach for quick fixes rather than probing the structural factors that undermine cooperation.
+      label: Pressure for visible progress favours quick fixes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: 'p. 2, The Challenge of Cooperation: myopia'
+        basis: paraphrase
+    - id: ps-r-competitive
+      kind: cause
+      text: Competitive fields such as business, sport, security and the military actively discourage people from being vulnerable and revealing their needs.
+      label: Competitive settings discourage vulnerability.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, The Persistence Framework; p. 7, ACT and EFT
+        basis: paraphrase
+    - id: ps-r-fear
+      kind: cause
+      text: Members feel too unsafe to be vulnerable and reveal their real needs, so assessments rarely reach what people actually think and feel.
+      label: Fear keeps real needs hidden.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, fear; p. 7, why bother with ACT
+        basis: paraphrase
+    - id: ps-r-unassessed
+      kind: cause
+      text: The group has not assessed how volatile and hazardous its environment is, so it cannot tell which capacity it is short of.
+      label: It hasn't assessed its environment.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, existing frameworks address specific aspects; p. 6, 3. Analyze
+        basis: inference
+    - id: ps-r-surface
+      kind: cause
+      text: Fixes address superficial concerns while the mismatch between the group's capacities and its environment remains.
+      label: Fixes treat symptoms; the mismatch remains.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, the problem with quick solutions
+        basis: paraphrase
+    - id: ps-r-growth
+      kind: cause
+      text: As a group grows past the point where everyone knows or is related to everyone, the cheap ways of keeping parts aligned stop working.
+      label: Growth outruns the cheap ways of coordinating.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§14 How a new floor gets built: start with relatives'
+        basis: paraphrase
+    - id: ps-r-free-riders
+      kind: cause
+      text: Free riders exploit other people's cooperation; parts can do better for themselves at the whole's expense.
+      label: Parts can gain at the whole's expense.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, free riders
+        basis: paraphrase
+      - source_id: essay
+        locator: '§7 Coordination: the enemy is you'
+        basis: paraphrase
+    - id: ps-r-cut-reserves
+      kind: cause
+      text: Reserves, redundancy and margin look like waste in good weather, so they are the first thing cut.
+      label: Reserves look wasteful and get cut first.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§8 Robustness: the wall'
+        basis: paraphrase
+    - id: ps-r-cut-experiments
+      kind: cause
+      text: Cutting experiments makes a group look better for years, so a loss of adaptive capacity goes unnoticed.
+      label: Cutting experiments looks good for years.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §11 Telling the three apart
+        basis: paraphrase
+    - id: ps-r-conflict
+      kind: undesirable_effect
+      text: Friction and conflict keep returning between members or units, and trust and morale fall.
+      label: Conflict keeps returning; trust and morale fall.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, fall into conflict and low morale again
+        basis: paraphrase
+    - id: ps-r-shock
+      kind: undesirable_effect
+      text: A shock the group could have absorbed proves crippling.
+      label: A survivable shock proves crippling.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §8 Robustness; §11 Telling the three apart
+        basis: paraphrase
+    - id: ps-r-obsolete
+      kind: undesirable_effect
+      text: The group keeps doing well at something its environment no longer rewards, until it is suddenly wrong for where it is.
+      label: It becomes quietly wrong for where it is.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §6 Three ways to die; §11 Telling the three apart
+        basis: paraphrase
+    links:
+    - id: ps-rl-fear
+      from:
+      - ps-r-competitive
+      to: ps-r-fear
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, competitive fields and vulnerability
+        basis: reconstruction
+    - id: ps-rl-surface
+      from:
+      - ps-r-pressure
+      - ps-r-fear
+      to: ps-r-surface
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, myopia and fear; p. 7, quick solutions and fear
+        basis: reconstruction
+    - id: ps-rl-unassessed
+      from:
+      - ps-r-unassessed
+      to: ps-r-surface
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: inference
+    - id: ps-rl-conflict
+      from:
+      - ps-r-surface
+      to: ps-r-conflict
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, the group will soon fall into conflict and low morale again
+        basis: paraphrase
+    - id: ps-rl-growth
+      from:
+      - ps-r-growth
+      to: ps-r-free-riders
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §14 start with relatives
+        basis: reconstruction
+    - id: ps-rl-free-riders
+      from:
+      - ps-r-free-riders
+      to: ps-r-conflict
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, free riders
+        basis: inference
+      - source_id: essay
+        locator: §7 Coordination
+        basis: reconstruction
+    - id: ps-rl-shock
+      from:
+      - ps-r-cut-reserves
+      to: ps-r-shock
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§8 Robustness: the wall'
+        basis: reconstruction
+    - id: ps-rl-obsolete
+      from:
+      - ps-r-cut-experiments
+      to: ps-r-obsolete
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §11 Telling the three apart
+        basis: reconstruction
+    backlog:
+    - ref: ps-rl-surface
+      work: test_causality
+      label: Check in one real group whether quick fixes leave the mismatch in place.
+      note: The summary states this from its author's facilitation experience; alternative explanations for recurring conflict have not been examined.
+  conflict:
+    nodes:
+    - id: ps-c1-objective
+      kind: objective
+      text: The group persists through both shocks and lasting change.
+      label: The group lasts through shocks and change.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §6 Three ways to die
+        basis: reconstruction
+    - id: ps-c1-absorb
+      kind: need
+      text: The group needs to absorb the shocks its environment delivers.
+      label: It needs to absorb shocks.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§8 Robustness: the wall'
+        basis: reconstruction
+    - id: ps-c1-renew
+      kind: need
+      text: The group needs to keep finding new ways to persist as its environment changes.
+      label: It needs to keep finding new ways to persist.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§9 Adaptation: buying lottery tickets'
+        basis: reconstruction
+    - id: ps-c1-reserve
+      kind: prerequisite
+      text: Hold resources back as stored surplus, redundancy and margin.
+      label: Hold resources in reserve.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§8 Robustness: stored surplus, redundancy, margin'
+        basis: paraphrase
+    - id: ps-c1-experiment
+      kind: prerequisite
+      text: Spend resources on experiments, most of which will fail.
+      label: Spend resources on experiments.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §9 Adaptation is paid for in failure
+        basis: paraphrase
+    - id: ps-c2-objective
+      kind: objective
+      text: The group cooperates well enough to persist in a competitive field.
+      label: It cooperates well enough to compete.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, The Persistence Framework
+        basis: inference
+    - id: ps-c2-trust
+      kind: need
+      text: Members need to trust one another enough to say what really gets in the way.
+      label: Members need to say what really gets in the way.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, why bother with ACT
+        basis: reconstruction
+    - id: ps-c2-standing
+      kind: need
+      text: Members need to protect their standing in a field that punishes weakness.
+      label: Members need to protect their standing.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, competitive fields and vulnerability
+        basis: reconstruction
+    - id: ps-c2-open
+      kind: prerequisite
+      text: Members are open and vulnerable about their real thoughts, feelings and needs.
+      label: Be open and vulnerable.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, ACT and EFT help people become more open and vulnerable
+        basis: paraphrase
+    - id: ps-c2-guarded
+      kind: prerequisite
+      text: Members keep their guard up and avoid showing vulnerability.
+      label: Keep your guard up.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, our basic instinct in fearful situations is to maintain our guard
+        basis: paraphrase
+    links:
+    - id: ps-cl1-absorb
+      from:
+      - ps-c1-absorb
+      to: ps-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §6 Three ways to die
+        basis: reconstruction
+    - id: ps-cl1-renew
+      from:
+      - ps-c1-renew
+      to: ps-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §6 Three ways to die
+        basis: reconstruction
+    - id: ps-cl1-reserve
+      from:
+      - ps-c1-reserve
+      to: ps-c1-absorb
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: '§8 the answer is: have more than you need'
+        basis: paraphrase
+    - id: ps-cl1-experiment
+      from:
+      - ps-c1-experiment
+      to: ps-c1-renew
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §9 you cannot have the second without the first
+        basis: paraphrase
+    - id: ps-cl1-conflict
+      from:
+      - ps-c1-reserve
+      to: ps-c1-experiment
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §9 every euro spent on speculative research is a euro not in the reserve fund; §12 The budget
+        basis: paraphrase
+      assumptions:
+      - text: The group's resources are fixed in the short run, so whatever goes to one capacity is taken from another.
+        by: assistant
+    - id: ps-cl2-trust
+      from:
+      - ps-c2-trust
+      to: ps-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, fear holds back cooperation
+        basis: reconstruction
+    - id: ps-cl2-standing
+      from:
+      - ps-c2-standing
+      to: ps-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, competitive environments
+        basis: inference
+    - id: ps-cl2-open
+      from:
+      - ps-c2-open
+      to: ps-c2-trust
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, access their inner thoughts and feelings
+        basis: reconstruction
+    - id: ps-cl2-guarded
+      from:
+      - ps-c2-guarded
+      to: ps-c2-standing
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, maintain our guard
+        basis: reconstruction
+    - id: ps-cl2-conflict
+      from:
+      - ps-c2-open
+      to: ps-c2-guarded
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 3 and 7, competitive environments discourage vulnerability
+        basis: reconstruction
+      assumptions:
+      - text: Any expression of need will be read as weakness, whatever words it is put in.
+        by: assistant
+    backlog:
+    - ref: ps-cl1-conflict
+      work: examine_assumption
+      label: Test whether reserves and experiments really draw on one budget.
+      note: The essay notes that money in the bank buys robustness and also funds experiments (§11), so the conflict may be weaker than it looks.
+  future_reality:
+    nodes:
+    - id: ps-f-cycle
+      kind: injection
+      text: 'The group runs the Adaptive Persistence cycle: orient on one agreed issue, assess its environment and core capacities, analyse the mismatch, adjust, and repeat.'
+      label: Assess, close the biggest mismatch, and repeat.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, The Adaptive Persistence meta-protocol
+        basis: paraphrase
+      - source_id: ap-overview
+        locator: p. 2, process steps 1–6
+        basis: paraphrase
+      addresses:
+      - ps-r-surface
+      - ps-r-unassessed
+    - id: ps-f-match
+      kind: injection
+      text: Emphasise adaptability where the environment is volatile, robustness where it is hazardous, and coordination where it is neither.
+      label: Emphasise the capacity the environment calls for.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: paraphrase
+      - source_id: essay
+        locator: §13 Three dials in the world
+        basis: related
+      addresses:
+      - ps-c1-reserve
+      - ps-c1-experiment
+    - id: ps-f-act
+      kind: injection
+      text: 'Work through the ACT group matrix: the values behind the chosen capacity, how the group would act if it improved, the thoughts and feelings that get in the way, and how to move forward while acknowledging them.'
+      label: Name what gets in the way, and move anyway.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 6–7, The ACT Group Matrix
+        basis: paraphrase
+      addresses:
+      - ps-r-fear
+    - id: ps-f-gentle
+      kind: injection
+      text: For groups wary of vulnerability, word the matrix in their own vocabulary and begin with a lighter first pass before a deeper one.
+      label: Start lighter where vulnerability feels unsafe.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 7–8, one potential compromise
+        basis: paraphrase
+      addresses:
+      - ps-c2-open
+      - ps-c2-guarded
+    - id: ps-f-wall
+      kind: injection
+      text: Keep procedures tight in general and wall off one bounded area where variation is deliberately produced.
+      label: Rigid almost everywhere, loose in one walled-off place.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §10 The copying dial
+        basis: paraphrase
+      addresses:
+      - ps-r-cut-experiments
+    - id: ps-f-criteria
+      kind: injection
+      text: Agree clear success criteria at the start, test each cycle against them, and stop once they are met.
+      label: Agree success criteria and test against them.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient; p. 8, 5. Repeat
+        basis: paraphrase
+      - source_id: essay
+        locator: §15 How this could be wrong
+        basis: related
+    - id: ps-f-see
+      kind: predicted_effect
+      text: The group sees which capacity its environment most calls for and where it falls short.
+      label: It sees which capacity it is short of.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: reconstruction
+    - id: ps-f-voiced
+      kind: predicted_effect
+      text: Members voice the thoughts, feelings and needs that a structural assessment misses.
+      label: Hidden needs get voiced.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, why bother with ACT
+        basis: reconstruction
+    - id: ps-f-willing
+      kind: predicted_effect
+      text: Members become willing to take an active part in finding the solution.
+      label: Members take part in the fix.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, obtain their willingness and active participation
+        basis: paraphrase
+    - id: ps-f-causes
+      kind: predicted_effect
+      text: Adjustments address structural causes rather than symptoms.
+      label: Fixes reach causes, not symptoms.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, the problem with quick solutions
+        basis: inference
+    - id: ps-f-options
+      kind: predicted_effect
+      text: The group generates new options without loosening coordination everywhere.
+      label: New options without losing discipline.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §10 Wall off the variation, and you can have both
+        basis: paraphrase
+    - id: ps-f-cooperate
+      kind: desirable_effect
+      text: Members cooperate, and conflicts are resolved rather than recurring.
+      label: Conflict gets resolved, not repeated.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 2, greater trust, well-being and performance
+        basis: inference
+    - id: ps-f-fit
+      kind: desirable_effect
+      text: The group's capacities fit its environment better with each cycle.
+      label: Capacities fit the environment better each cycle.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: inference
+    - id: ps-f-filing
+      kind: undesirable_effect
+      text: Sorting the group's mechanisms into the three capacities feels like understanding but produces nothing anyone could be wrong about.
+      label: Sorting feels like understanding; nothing is tested.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §11 a useful question turns back into a filing cabinet; §15 a metaphor machine
+        basis: paraphrase
+    - id: ps-f-cases
+      kind: observation
+      text: Stephen Le reports four facilitation cases, using lighter variations of the method, in which groups in conflict reconciled or renewed their collaboration.
+      label: Le reports four cases where groups reconciled.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 8–9, Case Studies
+        basis: paraphrase
+    links:
+    - id: ps-fl-see
+      from:
+      - ps-f-cycle
+      - ps-f-match
+      to: ps-f-see
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 3 and 6, Assess and Analyze
+        basis: reconstruction
+    - id: ps-fl-voiced-act
+      from:
+      - ps-f-act
+      to: ps-f-voiced
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, ACT and EFT
+        basis: reconstruction
+    - id: ps-fl-voiced-gentle
+      from:
+      - ps-f-gentle
+      to: ps-f-voiced
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 7–8, a deeper clean later
+        basis: inference
+    - id: ps-fl-willing
+      from:
+      - ps-f-voiced
+      to: ps-f-willing
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, access their inner thoughts and feelings and obtain their willingness
+        basis: paraphrase
+    - id: ps-fl-causes
+      from:
+      - ps-f-see
+      - ps-f-voiced
+      to: ps-f-causes
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, Assess gathers structural problems; ACT reaches inner needs
+        basis: inference
+    - id: ps-fl-cooperate
+      from:
+      - ps-f-causes
+      - ps-f-willing
+      to: ps-f-cooperate
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, changes implemented in-house are more sustainable
+        basis: inference
+    - id: ps-fl-fit
+      from:
+      - ps-f-causes
+      to: ps-f-fit
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 4. Adjust
+        basis: reconstruction
+    - id: ps-fl-options
+      from:
+      - ps-f-wall
+      to: ps-f-options
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §10 The copying dial
+        basis: paraphrase
+    - id: ps-fl-options-fit
+      from:
+      - ps-f-options
+      to: ps-f-fit
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §10; §13 volatility rewards adaptation
+        basis: inference
+    - id: ps-fl-filing
+      from:
+      - ps-f-cycle
+      to: ps-f-filing
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §11; §15 It might just be a metaphor machine
+        basis: inference
+    - id: ps-fl-criteria
+      from:
+      - ps-f-criteria
+      to: ps-f-filing
+      relation: prevents
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: essay
+        locator: §15 claims stated in a form that could come out false
+        basis: inference
+    - id: ps-fl-repeat
+      from:
+      - ps-f-fit
+      to: ps-f-cycle
+      relation: feeds_back_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: paraphrase
+    backlog:
+    - ref: ps-f-filing
+      work: make_testable
+      label: State one prediction about this group that could come out false.
+      note: The essay asks for a measure of one capacity, in one domain, that two strangers would agree on (§15). Nothing in this map is measured yet.
+  prerequisite:
+    nodes:
+    - id: ps-p-objective
+      kind: objective
+      text: The group can run one full Adaptive Persistence cycle on an issue it cares about.
+      label: The group can run one full cycle.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, The Adaptive Persistence meta-protocol
+        basis: reconstruction
+    - id: ps-p-issue-gap
+      kind: obstacle
+      text: Members disagree about which issue matters most.
+      label: Members disagree on the main issue.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, Sometimes there will be disagreement on the main issue
+        basis: paraphrase
+    - id: ps-p-issue
+      kind: intermediate_objective
+      text: The group agrees one main issue that nobody objects to, can be evaluated, is stated positively, is achievable through action and applies to everyone, with clear success criteria.
+      label: One agreed main issue with success criteria.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient (after Convergent Facilitation)
+        basis: paraphrase
+      implements:
+      - ps-f-criteria
+    - id: ps-p-data-gap
+      kind: obstacle
+      text: There is no information yet about the environment or the group's core capacities.
+      label: There is no data on environment or capacities.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 2. Assess
+        basis: inference
+    - id: ps-p-assess
+      kind: intermediate_objective
+      text: Interviews, surveys and existing records describe the environment's volatility and hazard and the group's coordination, adaptability and robustness principles.
+      label: Assessments describe the environment and capacities.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–6, 2. Assess
+        basis: paraphrase
+      implements:
+      - ps-f-cycle
+    - id: ps-p-trust-gap
+      kind: obstacle
+      text: Members feel too unsafe to say what they really think.
+      label: Members feel too unsafe to speak.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, too unsafe to risk being vulnerable
+        basis: paraphrase
+    - id: ps-p-format
+      kind: intermediate_objective
+      text: 'An adjustment format suits the group''s size and trust: talking for small high-trust groups, email for small low-trust ones, the matrix with meetings, or voting for large groups.'
+      label: A format that fits the group's size and trust.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, Formats for carrying out adjustment
+        basis: paraphrase
+      implements:
+      - ps-f-act
+    - id: ps-p-skill-gap
+      kind: obstacle
+      text: ACT and similar methods take training and a lot of practice to lead.
+      label: Leading the method takes training.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, ACT and EFT are fairly difficult methodologies
+        basis: paraphrase
+    - id: ps-p-lead
+      kind: intermediate_objective
+      text: Someone trained can lead the group through the matrix, from inside the group or as an outside facilitator.
+      label: Someone trained can lead the matrix.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, consultants can be a useful adjunct; p. 7
+        basis: paraphrase
+    - id: ps-p-wary-gap
+      kind: obstacle
+      text: The group is wary of methods that involve emotion and vulnerability.
+      label: The group is wary of emotional methods.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, organizations may feel uncomfortable
+        basis: paraphrase
+    - id: ps-p-language
+      kind: intermediate_objective
+      text: The matrix is worded in the group's own vocabulary and begins with a lighter first pass.
+      label: The matrix speaks the group's language.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 7–8, one potential compromise
+        basis: paraphrase
+      implements:
+      - ps-f-gentle
+    links:
+    - id: ps-pl-issue
+      from:
+      - ps-p-issue
+      to: ps-p-issue-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, ranked until a leading issue emerges
+        basis: paraphrase
+    - id: ps-pl-assess
+      from:
+      - ps-p-assess
+      to: ps-p-data-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, assessment methods
+        basis: reconstruction
+    - id: ps-pl-format
+      from:
+      - ps-p-format
+      to: ps-p-trust-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, email for small, low-trust groups
+        basis: inference
+    - id: ps-pl-lead
+      from:
+      - ps-p-lead
+      to: ps-p-skill-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, require some training
+        basis: reconstruction
+    - id: ps-pl-language
+      from:
+      - ps-p-language
+      to: ps-p-wary-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 7–8, less intimidating terminology
+        basis: paraphrase
+    - id: ps-pl-issue-assess
+      from:
+      - ps-p-issue
+      to: ps-p-assess
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, steps 1 and 2
+        basis: reconstruction
+    - id: ps-pl-assess-objective
+      from:
+      - ps-p-assess
+      to: ps-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 3, steps 2–5
+        basis: reconstruction
+    - id: ps-pl-lead-format
+      from:
+      - ps-p-lead
+      to: ps-p-format
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, the change leader or facilitator
+        basis: inference
+    - id: ps-pl-language-format
+      from:
+      - ps-p-language
+      to: ps-p-format
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 7–8
+        basis: inference
+    - id: ps-pl-format-objective
+      from:
+      - ps-p-format
+      to: ps-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 4. Adjust
+        basis: reconstruction
+    backlog:
+    - ref: ps-p-assess
+      work: define_measure
+      label: Find a measure of one capacity that two assessors would agree on.
+      note: The essay names this as the most valuable work on the theory (§15). The summary's assessments are interviews and surveys without a stated scoring method.
+  transition:
+    nodes:
+    - id: ps-t-1-condition
+      kind: existing_condition
+      text: Members disagree about what the main problem is.
+      label: Members disagree about the main problem.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient
+        basis: inference
+    - id: ps-t-orient
+      kind: action
+      text: 'Orient: collect candidate issues, rank them and agree one with clear success criteria.'
+      label: 'Orient: agree one issue and what success means.'
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient
+        basis: paraphrase
+      implements:
+      - ps-p-issue
+      proposed_role: Change leader or facilitator, with the whole group
+    - id: ps-t-1-effect
+      kind: expected_effect
+      text: The group has one agreed issue and knows what success looks like.
+      label: One agreed issue, with success criteria.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient
+        basis: reconstruction
+    - id: ps-t-2-condition
+      kind: existing_condition
+      text: Nobody has a shared picture of the environment or the group's capacities.
+      label: No shared picture of environment or capacities.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 2. Assess
+        basis: inference
+    - id: ps-t-assess
+      kind: action
+      text: 'Assess: interview and survey leaders, members and clients about volatility, hazard, coordination, adaptability and robustness.'
+      label: 'Assess: interview and survey about the five factors.'
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–6, 2. Assess
+        basis: paraphrase
+      implements:
+      - ps-p-assess
+      proposed_role: Facilitator, with leaders, members and clients
+    - id: ps-t-2-effect
+      kind: expected_effect
+      text: There is shared information on the environment and on the group's 24 principles.
+      label: Shared data on the environment and 24 principles.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–6, 2. Assess
+        basis: reconstruction
+    - id: ps-t-3-condition
+      kind: existing_condition
+      text: It is unclear which capacity to work on first.
+      label: It is unclear which capacity to work on.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: inference
+    - id: ps-t-analyse
+      kind: action
+      text: 'Analyse: compare the capacities with the environment and choose the one capacity to adjust.'
+      label: 'Analyse: choose the capacity to adjust.'
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: paraphrase
+      proposed_role: The whole group
+    - id: ps-t-3-effect
+      kind: expected_effect
+      text: The group has chosen one capacity to improve.
+      label: One capacity chosen to improve.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: reconstruction
+    - id: ps-t-4-condition
+      kind: existing_condition
+      text: Fear keeps the real obstacles unspoken.
+      label: Fear keeps the real obstacles unspoken.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 7, too unsafe to risk being vulnerable
+        basis: inference
+    - id: ps-t-adjust
+      kind: action
+      text: 'Adjust: work through the ACT matrix in a format that suits the group.'
+      label: 'Adjust: work through the matrix together.'
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 6–8, 4. Adjust
+        basis: paraphrase
+      implements:
+      - ps-p-format
+      proposed_role: Change leader or facilitator, with the whole group
+    - id: ps-t-4-effect
+      kind: expected_effect
+      text: The group has agreed how it will act to move toward the improved capacity.
+      label: Agreed ways of acting toward the capacity.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 6–7, The ACT Group Matrix
+        basis: reconstruction
+    - id: ps-t-5-condition
+      kind: existing_condition
+      text: Whether the adjustment worked is not yet known.
+      label: Nobody knows yet whether it worked.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: inference
+    - id: ps-t-repeat
+      kind: action
+      text: 'Repeat: reassess the environment and capacities, and stop once the success criteria are met.'
+      label: 'Repeat: reassess, and stop when criteria are met.'
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: paraphrase
+      proposed_role: Facilitator, with the whole group
+    - id: ps-t-5-effect
+      kind: expected_effect
+      text: Either the criteria are met or the next cycle starts from new information.
+      label: Criteria met, or a new cycle starts.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: reconstruction
+    links:
+    - id: ps-tl-orient
+      from:
+      - ps-t-1-condition
+      - ps-t-orient
+      to: ps-t-1-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 4, 1. Orient
+        basis: reconstruction
+    - id: ps-tl-assess
+      from:
+      - ps-t-1-effect
+      - ps-t-2-condition
+      - ps-t-assess
+      to: ps-t-2-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 4–6, 2. Assess
+        basis: reconstruction
+    - id: ps-tl-analyse
+      from:
+      - ps-t-2-effect
+      - ps-t-3-condition
+      - ps-t-analyse
+      to: ps-t-3-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 6, 3. Analyze
+        basis: reconstruction
+    - id: ps-tl-adjust
+      from:
+      - ps-t-3-effect
+      - ps-t-4-condition
+      - ps-t-adjust
+      to: ps-t-4-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: pp. 6–8, 4. Adjust
+        basis: reconstruction
+    - id: ps-tl-repeat
+      from:
+      - ps-t-4-effect
+      - ps-t-5-condition
+      - ps-t-repeat
+      to: ps-t-5-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, 5. Repeat
+        basis: reconstruction
+    - id: ps-tl-feedback
+      from:
+      - ps-t-5-effect
+      to: ps-t-assess
+      relation: feeds_back_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ap-summary
+        locator: p. 8, The group goes back to step 2, Assess
+        basis: paraphrase
+    backlog:
+    - ref: ps-t-orient
+      work: find_host
+      label: Find a group willing to try one cycle.
+      note: No group, facilitator, owner or date is assigned. Existing conditions are illustrative, not observations of a group.

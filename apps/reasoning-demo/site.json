@@ -57,6 +57,24 @@
       }
     },
     {
+      "slug": "persistent-systems",
+      "kind": "reconstruction",
+      "registry": "commons/persistent-systems/publication.json",
+      "source": "../../ltp/persistent-systems/reason-commons.yaml",
+      "name": "Why Things Last",
+      "byline": "From Stephen Le’s Persistent Systems Theory and Adaptive Persistence · reconstructed by AI",
+      "summary": "Why do some groups keep going while others, under the same pressures, come apart? A proposed map from Stephen Le’s theory of what lasts and his protocol for cooperation.",
+      "description": "Persistent Systems Theory says anything that lasts must keep its parts cooperating, absorb shocks and change in time, in proportions its environment rewards. Adaptive Persistence turns that into five steps a group can take. This map follows the practical protocol and keeps the theory’s own warnings beside it.",
+      "scope": "79 proposed statements and 58 proposed connections reconstructed by the AI from Why Things Last and Stephen Le’s two Adaptive Persistence documents. Every item has a section or page reference. Stephen Le has not reviewed or endorsed the map; his four case studies are his own reports. No group, trial, facilitator, owner or observed result is recorded.",
+      "front_page": {
+        "headline": "Help a group last.\nCooperate, adapt, withstand.",
+        "intro": "What keeps a group going while others, under the same pressures, come apart? Explore how cooperation, adaptation and robustness might be matched to the world a group actually faces.",
+        "question": "In a group you know, which capacity is it shortest of?",
+        "why": "A real case can test the claim that a group’s environment predicts which capacity it needs most.",
+        "focus_ref": "ps-g-fit"
+      }
+    },
+    {
       "slug": "reason-commons",
       "kind": "real",
       "registry": "publication.json",
