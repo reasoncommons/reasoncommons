@@ -1348,7 +1348,7 @@ def plan_card(c, ident, tree, *, eyebrow=None, extra="", chips="", critical=Fals
     credit = f'<p class="pv-credit">{esc(item["credit"])}</p>' if item.get("credit") else ""
     chips = f'<p class="pv-chips">{chips}</p>' if chips else ""
     return (f'<{tag} class="pv-card pv-k-{item["kind"]} pv-{item["status"]}{" pv-crit" if critical else ""}" data-node="{esc(ident)}"{attrs}>'
-            f'<a class="pv-hit" href="items.html#{esc(ident)}" data-id="{esc(ident)}"><span class="sr-only">{esc(label)}: {esc(c.short(ident))}. Details</span></a>'
+            f'<a class="pv-hit" href="items.html#{esc(ident)}" data-id="{esc(ident)}"><span class="sr-only">{esc(label)}: {esc(c.short(ident).rstrip("."))}. Details</span></a>'
             f'<p class="pv-eb"><span class="pv-kind">{flag}{esc(label)}</span>{word}</p><p class="pv-title">{esc(c.short(ident))}</p>'
             f'{extra}{credit}{people_line(c, item)}{chips}</{tag}>')
 
@@ -1490,7 +1490,7 @@ def prerequisite_plan(c):
         for link in plan["obstacles"].get(ident, []):
             obstacle = c.items[link["to"]]
             extra += f'<div class="pv-gp pv-{obstacle["status"]}" data-link="{esc(link["id"])}"><p class="pv-gp-l">Gets past</p><p>{esc(c.short(link["to"]))}</p></div>'
-        needs = "".join(f'<li class="pv-{link["status"]}" data-link="{esc(link["id"])}">{esc(c.short(source))}</li>' for source, link in plan["pre"][ident])
+        needs = "".join(f'<li class="pv-{link["status"]}" data-link="{esc(link["id"])}">{"After: " if link["relation"] == "precedes" else ""}{esc(c.short(source))}</li>' for source, link in plan["pre"][ident])
         if needs:
             extra += f'<div class="pv-needs"><p>Needs</p><ul>{needs}</ul></div>'
         chips = "".join(f'<a class="pv-chip pv-{c.items[s["action"]]["status"]}" href="actions.html#action-{s["n"]}">Action {s["n"]} delivers this</a>' for s in delivered.get(ident, []))
@@ -1501,10 +1501,10 @@ def prerequisite_plan(c):
             joined = "" if link["status"] == obstacle["status"] else f'<p class="pv-note">The link “gets past” is {STANDING[link["status"]].lower()}.</p>'
             sections.append(f'<section><h3>Gets past</h3><div class="pv-obstacle pv-{obstacle["status"]}"><p>{esc(obstacle["text"])}</p>'
                             f'<p class="pv-meta"><span>Obstacle · {STANDING[obstacle["status"]]}</span>{acceptance(c, obstacle)}</p></div>{joined}</section>')
-        rows = "".join(plan_link(c, s, l, f'Needed together with {plural(len(l["from"]) - 1, "other")}' if len(l["from"]) > 1 else "") for s, l in plan["pre"][ident])
+        rows = "".join(plan_link(c, s, l, "Comes before it" if l["relation"] == "precedes" else f'Needed together with {plural(len(l["from"]) - 1, "other")}' if len(l["from"]) > 1 else "") for s, l in plan["pre"][ident])
         sections.append(f'<section><h3>Needs</h3><ul class="pv-links">{rows}</ul></section>' if rows else
                         '<section><h3>Needs</h3><p>Nothing is recorded as needed first, so it could start now.</p></section>')
-        rows = "".join(plan_link(c, t, l) for t, l in plan["post"][ident])
+        rows = "".join(plan_link(c, t, l, "Comes after it" if l["relation"] == "precedes" else "") for t, l in plan["post"][ident])
         if rows:
             sections.append(f'<section><h3>Needed for</h3><ul class="pv-links">{rows}</ul></section>')
         if delivered.get(ident):
@@ -1994,7 +1994,7 @@ def about_page(c, site):
                        '<h3>Reading the sources</h3><p>Page references use the supplied PDFs’ printed page numbers. The glossary and indexed bibliography are supplied and credited above; cited studies have not been independently checked. Source-checking annotations in the bibliography belong to that document. Speaker directions and exercises are part of the source, not instructions carried out by this site or its reader.</p></section>')
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
-                "Proposed and disputed reasoning, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. They are not published here.")
+                "Accepted reasoning about funding, money and Rufus and David’s own working arrangements, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. Proposed reasoning is published, funding and working arrangements included, and marked as proposed: nobody has accepted it.")
     if c.is_reconstruction:
         excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
     if c.web_sources:

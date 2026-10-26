@@ -206,13 +206,6 @@
           "note": "What the jam does to the bakery, and Tomasz's view that most cars are passing through."
         },
         {
-          "type": "disputed",
-          "refs": [
-            "wl-r-through-traffic"
-          ],
-          "note": "Dev challenged it with the council's June traffic count."
-        },
-        {
           "type": "added",
           "refs": [
             "wl-c-objective",
@@ -241,7 +234,7 @@
       "release_id": "2026-10-14.1",
       "date": "2026-10-14",
       "title": "The trial, and first reports",
-      "summary": "A timed closure was agreed and tried from 7 September. Grace, Ruth and Tomasz have reported what they saw.",
+      "summary": "A timed closure was tried from 7 September. Grace, Ruth and Tomasz have reported what they saw.",
       "changes": [
         {
           "type": "revised",
@@ -324,13 +317,6 @@
           "note": "New proposals from Tomasz and Ruth, not yet accepted."
         },
         {
-          "type": "disputed",
-          "refs": [
-            "wl-c-rel-open"
-          ],
-          "note": "Amara challenged the assumption that most morning customers arrive by car."
-        },
-        {
           "type": "report",
           "refs": [
             "wl-report-grace-1",
@@ -375,14 +361,8 @@
         "nodes": [
           {
             "id": "wl-g-goal",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Tomasz",
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -394,14 +374,8 @@
           },
           {
             "id": "wl-g-calm-gate",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Tomasz",
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -413,12 +387,8 @@
           },
           {
             "id": "wl-g-safe-routes",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -430,12 +400,8 @@
           },
           {
             "id": "wl-g-far-families",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -447,12 +413,8 @@
           },
           {
             "id": "wl-g-shops",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz",
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -480,14 +442,8 @@
         "links": [
           {
             "id": "wl-g-rel-gate",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Tomasz",
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -502,12 +458,8 @@
           },
           {
             "id": "wl-g-rel-routes",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -522,12 +474,8 @@
           },
           {
             "id": "wl-g-rel-far",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -542,12 +490,8 @@
           },
           {
             "id": "wl-g-rel-shops",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz",
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -590,13 +534,8 @@
         "nodes": [
           {
             "id": "wl-r-queue",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev",
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -609,12 +548,8 @@
           },
           {
             "id": "wl-r-hidden",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -626,11 +561,8 @@
           },
           {
             "id": "wl-r-fewer-walk",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -643,10 +575,8 @@
           },
           {
             "id": "wl-r-bakery-jams",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -658,12 +588,8 @@
           },
           {
             "id": "wl-r-on-the-way",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -675,12 +601,8 @@
           },
           {
             "id": "wl-r-nowhere-to-stop",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara",
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -692,12 +614,8 @@
           },
           {
             "id": "wl-r-feels-unsafe",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Ruth",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -709,7 +627,7 @@
           },
           {
             "id": "wl-r-through-traffic",
-            "status": "disputed",
+            "status": "proposed",
             "accepted_by": [],
             "contributors": [
               {
@@ -744,11 +662,8 @@
         "links": [
           {
             "id": "wl-r-rel-queue",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -770,11 +685,8 @@
           },
           {
             "id": "wl-r-rel-hidden",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -789,11 +701,8 @@
           },
           {
             "id": "wl-r-rel-bakery",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -808,11 +717,8 @@
           },
           {
             "id": "wl-r-rel-unsafe",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -827,11 +733,8 @@
           },
           {
             "id": "wl-r-rel-fewer",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -901,14 +804,8 @@
         "nodes": [
           {
             "id": "wl-c-objective",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Tomasz",
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -920,13 +817,8 @@
           },
           {
             "id": "wl-c-need-safe",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Ruth",
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -938,11 +830,8 @@
           },
           {
             "id": "wl-c-close",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -954,12 +843,8 @@
           },
           {
             "id": "wl-c-need-trade",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz",
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -971,10 +856,8 @@
           },
           {
             "id": "wl-c-keep-open",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -988,12 +871,8 @@
         "links": [
           {
             "id": "wl-c-rel-safe",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1008,12 +887,8 @@
           },
           {
             "id": "wl-c-rel-trade",
-            "status": "accepted",
-            "accepted_by": [
-              "Tomasz",
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1028,11 +903,8 @@
           },
           {
             "id": "wl-c-rel-close",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1053,10 +925,8 @@
           },
           {
             "id": "wl-c-rel-open",
-            "status": "disputed",
-            "accepted_by": [
-              "Tomasz"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Tomasz",
@@ -1083,12 +953,8 @@
           },
           {
             "id": "wl-c-rel-clash",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Tomasz",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1121,14 +987,8 @@
         "nodes": [
           {
             "id": "wl-f-closure",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev",
-              "Tomasz",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1153,12 +1013,8 @@
           },
           {
             "id": "wl-f-park-stride",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1189,12 +1045,8 @@
           },
           {
             "id": "wl-f-fewer-cars",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1232,11 +1084,8 @@
           },
           {
             "id": "wl-f-clear-view",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1261,13 +1110,8 @@
           },
           {
             "id": "wl-f-more-walk",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1281,12 +1125,8 @@
         "links": [
           {
             "id": "wl-f-rel-fewer",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1341,11 +1181,8 @@
           },
           {
             "id": "wl-f-rel-view",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1376,12 +1213,8 @@
           },
           {
             "id": "wl-f-rel-walk",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1419,12 +1252,8 @@
         "nodes": [
           {
             "id": "wl-p-objective",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1439,11 +1268,8 @@
           },
           {
             "id": "wl-p-io-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1455,11 +1281,8 @@
           },
           {
             "id": "wl-p-io-rota",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1471,11 +1294,8 @@
           },
           {
             "id": "wl-p-io-permits",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1500,11 +1320,8 @@
           },
           {
             "id": "wl-p-obs-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1516,11 +1333,8 @@
           },
           {
             "id": "wl-p-obs-barriers",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1532,11 +1346,8 @@
           },
           {
             "id": "wl-p-obs-residents",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1563,11 +1374,8 @@
         "links": [
           {
             "id": "wl-p-rel-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1582,11 +1390,8 @@
           },
           {
             "id": "wl-p-rel-rota",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1601,11 +1406,8 @@
           },
           {
             "id": "wl-p-rel-permits",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1636,11 +1438,8 @@
           },
           {
             "id": "wl-p-rel-over-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1655,11 +1454,8 @@
           },
           {
             "id": "wl-p-rel-over-barriers",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1674,11 +1470,8 @@
           },
           {
             "id": "wl-p-rel-over-residents",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "AI assistant",
@@ -1720,10 +1513,8 @@
         "nodes": [
           {
             "id": "wl-t-draft-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1739,10 +1530,8 @@
           },
           {
             "id": "wl-t-letter",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1754,10 +1543,8 @@
           },
           {
             "id": "wl-t-recruit",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1772,11 +1559,8 @@
           },
           {
             "id": "wl-t-count",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Ruth"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Ruth",
@@ -1788,10 +1572,8 @@
           },
           {
             "id": "wl-t-ee-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1803,10 +1585,8 @@
           },
           {
             "id": "wl-t-ee-families",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1818,11 +1598,8 @@
           },
           {
             "id": "wl-t-ee-rota",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1834,11 +1611,8 @@
           },
           {
             "id": "wl-t-ee-mill",
-            "status": "accepted",
-            "accepted_by": [
-              "Ruth",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Ruth",
@@ -1852,10 +1626,8 @@
         "links": [
           {
             "id": "wl-t-rel-order",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Dev",
@@ -1870,10 +1642,8 @@
           },
           {
             "id": "wl-t-rel-letter",
-            "status": "accepted",
-            "accepted_by": [
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1888,11 +1658,8 @@
           },
           {
             "id": "wl-t-rel-rota",
-            "status": "accepted",
-            "accepted_by": [
-              "Amara",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Amara",
@@ -1907,11 +1674,8 @@
           },
           {
             "id": "wl-t-rel-count",
-            "status": "accepted",
-            "accepted_by": [
-              "Ruth",
-              "Dev"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Ruth",
@@ -1926,11 +1690,8 @@
           },
           {
             "id": "wl-t-rel-then",
-            "status": "accepted",
-            "accepted_by": [
-              "Dev",
-              "Grace"
-            ],
+            "status": "proposed",
+            "accepted_by": [],
             "contributors": [
               {
                 "name": "Grace",
@@ -1956,7 +1717,7 @@
           "ref": "wl-f-closure",
           "tree": "future_reality",
           "kind": "injection",
-          "standing": "accepted",
+          "standing": "proposed",
           "text": "Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt."
         },
         "benefits": [
@@ -1964,14 +1725,14 @@
             "ref": "wl-f-fewer-cars",
             "tree": "future_reality",
             "kind": "predicted_effect",
-            "standing": "accepted",
+            "standing": "proposed",
             "text": "Far fewer cars stop outside the gate at school times."
           },
           {
             "ref": "wl-f-more-walk",
             "tree": "future_reality",
             "kind": "desirable_effect",
-            "standing": "accepted",
+            "standing": "proposed",
             "text": "More children walk, scoot or cycle to school."
           }
         ],
@@ -2129,13 +1890,6 @@
             "note": "What the jam does to the bakery, and Tomasz's view that most cars are passing through."
           },
           {
-            "type": "disputed",
-            "refs": [
-              "wl-r-through-traffic"
-            ],
-            "note": "Dev challenged it with the council's June traffic count."
-          },
-          {
             "type": "added",
             "refs": [
               "wl-c-objective",
@@ -2164,7 +1918,7 @@
         "release_id": "2026-10-14.1",
         "date": "2026-10-14",
         "title": "The trial, and first reports",
-        "summary": "A timed closure was agreed and tried from 7 September. Grace, Ruth and Tomasz have reported what they saw.",
+        "summary": "A timed closure was tried from 7 September. Grace, Ruth and Tomasz have reported what they saw.",
         "changes": [
           {
             "type": "revised",
@@ -2247,13 +2001,6 @@
             "note": "New proposals from Tomasz and Ruth, not yet accepted."
           },
           {
-            "type": "disputed",
-            "refs": [
-              "wl-c-rel-open"
-            ],
-            "note": "Amara challenged the assumption that most morning customers arrive by car."
-          },
-          {
             "type": "report",
             "refs": [
               "wl-report-grace-1",
@@ -2266,5 +2013,5 @@
       }
     ]
   },
-  "snapshot_sha256": "f4319cd397cb6b7562f4399f7425d8613190a78aedf936304be63b0003597c1e"
+  "snapshot_sha256": "02820685f155a154bcfeb8a35e71ce18771a6b31e6410afaf7ded14a4a30eef4"
 }

@@ -63,14 +63,14 @@
       "name": "Reason Commons",
       "byline": "Rufus Pollock and David Joseph",
       "summary": "Two people building a tool for reasoning together, and using it to work out how to get it used.",
-      "description": "Rufus and David are building Reason Commons, and using it on their own collaboration. This is part of the reasoning Rufus has accepted for now in their October rework: what they are aiming for, what stands in the way, where needs pull two ways and the changes chosen in response.",
-      "scope": "Only statements and connections Rufus has accepted for now; David has not yet recorded acceptance of any. Reasoning about funding, money and their own working arrangements is left out, as are proposals, disagreements and working notes, which stay in the working record.",
+      "description": "Rufus and David are building Reason Commons, and using it on their own collaboration. This is their October rework: what they are aiming for, what stands in the way, where needs pull two ways, the changes chosen in response and their plan for the weeks ahead. Rufus has accepted part of it for now; the rest is proposed.",
+      "scope": "Statements and connections Rufus has accepted for now, and every proposal nobody has accepted yet, marked as proposed; David has not yet recorded acceptance of any. Proposals about funding, money and their own working arrangements are shown; accepted reasoning on those subjects is left out, as are working notes, which stay in the working record.",
       "overview": {
         "conditions": "Five conditions are recorded as necessary for the goal, each with the conditions it in turn depends on.",
         "obstacles_focus": "cr2-ude-few-users",
         "obstacles": "Read from the bottom up: the causes recorded so far lead to hardly anyone other than Rufus and David using the tools regularly.",
-        "change": "Each dilemma sets two needs against each other and the ways of meeting them that pull apart. The changes below are what Rufus accepted in response; no connections between a change and its effects are published yet.",
-        "actions": ""
+        "change": "Each dilemma sets two needs against each other and the ways of meeting them that pull apart; three of the dilemmas are still proposed. The changes below are what Rufus accepted in response; no connection between a change and its effects is published yet.",
+        "actions": "Their plan for the weeks ahead, all of it proposed: what to submit and book, who runs the sessions and what each action should produce. Nobody has accepted it yet."
       },
       "front_page": {
         "headline": "Think together.\nFind a way forward.",
@@ -89,11 +89,11 @@
       "byline": "Amara, Grace, Tomasz, Dev and Ruth",
       "summary": "A parent, a head teacher, a baker, a council officer and a neighbour make the school run safe without emptying the street of customers.",
       "description": "Five people with different stakes, a parent, the head teacher, the bakery owner, a council highways officer and a neighbour on the next street, work out how to make the walk to school safe without costing the shops their trade. They agreed a change, tried it, and the first reports are in.",
-      "scope": "Everything in the example's working file: accepted, proposed and disputed reasoning, the assumptions and challenges on it, open questions, and reports from a trial.",
+      "scope": "Everything in the example's working file: proposed reasoning, the assumptions and challenges on it, open questions, and reports from a trial. Nothing in it is accepted; only the Reason Commons commons records acceptance.",
       "overview": {
-        "conditions": "Four conditions are accepted as necessary for the goal. Tomasz added the fourth: the shops keep the customers they rely on.",
+        "conditions": "Four conditions are proposed as necessary for the goal. Tomasz added the fourth: the shops keep the customers they rely on.",
         "obstacles_focus": "wl-r-fewer-walk",
-        "obstacles": "Read from the bottom up. Parents driving to work, with nowhere to stop, together contribute to the queue at the gate. Tomasz's claim that most cars are only passing through is disputed.",
+        "obstacles": "Read from the bottom up. Parents driving to work, with nowhere to stop, together contribute to the queue at the gate. Tomasz's claim that most cars are only passing through is challenged.",
         "change": "Both needs serve the shared objective, but the positions taken to meet them clash. The change they chose breaks the assumption under that clash: close the street only at school times, with deliveries exempt.",
         "actions": "Four actions, each with the effect it should have. The order comes first: Grace writes to families once it is drafted.",
         "learning": "Grace and Tomasz report far fewer cars at the gate, and Ruth reports queues on Mill Lane. Whether more children walk is still unclear, and Amara hasn't reported yet."

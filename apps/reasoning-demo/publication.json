@@ -1,7 +1,7 @@
 {
   "registry_version": 1,
   "release": {
-    "release_id": "2026-10-26.1",
+    "release_id": "2026-10-26.2",
     "snapshot_date": "2026-10-26",
     "title": "Reason Commons: Rufus and David’s collaboration"
   },
@@ -80,7 +80,8 @@
         "cr2-ude-discussion-not-feeding-trees",
         "cr2-c-skill-only",
         "cr2-c-ltp-unfamiliar",
-        "cr2-c-no-first-group"
+        "cr2-c-no-first-group",
+        "cr2-c-no-shared-model"
       ],
       "links": [
         "cr2-l-build-published",
@@ -118,7 +119,22 @@
         "cf2-distinct-need-a",
         "cf2-distinct-need-b",
         "cf2-distinct-pre-a",
-        "cf2-distinct-pre-b"
+        "cf2-distinct-pre-b",
+        "cf2-focus-objective",
+        "cf2-focus-need-vision",
+        "cf2-focus-need-traction",
+        "cf2-focus-pre-open",
+        "cf2-focus-pre-commit",
+        "cf2-own-objective",
+        "cf2-own-need-clear",
+        "cf2-own-need-shared",
+        "cf2-own-pre-one",
+        "cf2-own-pre-both",
+        "cf2-edge-objective",
+        "cf2-edge-need-a",
+        "cf2-edge-need-b",
+        "cf2-edge-pre-a",
+        "cf2-edge-pre-b"
       ],
       "links": [
         "cf2-l-ship-a",
@@ -140,7 +156,22 @@
         "cf2-l-distinct-b",
         "cf2-l-distinct-pa",
         "cf2-l-distinct-pb",
-        "cf2-l-distinct-x"
+        "cf2-l-distinct-x",
+        "cf2-l-focus-a",
+        "cf2-l-focus-b",
+        "cf2-l-focus-pa",
+        "cf2-l-focus-pb",
+        "cf2-l-focus-x",
+        "cf2-l-own-a",
+        "cf2-l-own-b",
+        "cf2-l-own-pa",
+        "cf2-l-own-pb",
+        "cf2-l-own-x",
+        "cf2-l-edge-a",
+        "cf2-l-edge-b",
+        "cf2-l-edge-pa",
+        "cf2-l-edge-pb",
+        "cf2-l-edge-x"
       ]
     },
     "future_reality": {
@@ -149,14 +180,97 @@
         "fr2-inj-distinct",
         "fr2-inj-g2-publish-outcomes",
         "fr2-inj-g3-distribution",
-        "fr2-inj-g5-sessions-first"
+        "fr2-inj-g5-sessions-first",
+        "fr2-eff-ai-alone-works",
+        "fr2-de-low-touch-spread",
+        "fr2-inj-nb-trims"
       ],
-      "links": []
+      "links": [
+        "fr2-l-ai-spread"
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        "pr2-obj-stage1",
+        "pr2-ob-capacity",
+        "pr2-io-capacity-trims",
+        "pr2-ob-default-building",
+        "pr2-io-outward-owner",
+        "pr2-ob-unnamed",
+        "pr2-io-named",
+        "pr2-ob-slip",
+        "pr2-io-ai-only-first",
+        "pr2-ob-thresholds",
+        "pr2-io-thresholds-log",
+        "pr2-ob-setup-start",
+        "pr2-io-setup-partly"
+      ],
+      "links": [
+        "pr2-l-capacity",
+        "pr2-l-outward",
+        "pr2-l-named",
+        "pr2-l-slip",
+        "pr2-l-thresholds",
+        "pr2-l-setup",
+        "pr2-l-seq-grants-booking",
+        "pr2-l-seq-named-booking",
+        "pr2-l-outward-booking",
+        "pr2-l-obj",
+        "pr2-l-setup-obj"
+      ]
+    },
+    "transition": {
+      "nodes": [
+        "tt2-ec-foresight-blocked",
+        "tt2-a-foresight-blockers",
+        "tt2-e-foresight-unblocked",
+        "tt2-a-foresight-submit",
+        "tt2-e-foresight-submitted",
+        "tt2-ec-other-31oct",
+        "tt2-a-prototype-email",
+        "tt2-e-prototype-answer",
+        "tt2-n-thresholds-first",
+        "tt2-a-thresholds",
+        "tt2-e-thresholds",
+        "tt2-ec-lined-up",
+        "tt2-a-first-session",
+        "tt2-e-first-session",
+        "tt2-n-sessions-first",
+        "tt2-a-book",
+        "tt2-e-booked",
+        "tt2-a-check",
+        "tt2-e-check",
+        "tt2-n-no-features",
+        "tt2-a-run",
+        "tt2-e-t2",
+        "tt2-a-notes",
+        "tt2-e-evidence",
+        "tt2-a-priced-offer",
+        "tt2-e-who-pays",
+        "tt2-ec-nov-grants",
+        "tt2-a-choose-grants",
+        "tt2-e-grants-capped",
+        "tt2-a-weekly"
+      ],
+      "links": [
+        "tt2-l-blockers",
+        "tt2-l-submit",
+        "tt2-l-prototype",
+        "tt2-l-thresholds",
+        "tt2-l-first-session",
+        "tt2-l-book",
+        "tt2-l-check",
+        "tt2-l-run",
+        "tt2-l-notes",
+        "tt2-l-seq-run-notes",
+        "tt2-l-priced-offer",
+        "tt2-l-grants"
+      ]
     }
   },
   "snapshot": {
     "projection_version": 1,
-    "release_id": "2026-10-26.1",
+    "release_id": "2026-10-26.2",
     "snapshot_date": "2026-10-26",
     "title": "Reason Commons: Rufus and David’s collaboration",
     "trees": {
@@ -1328,6 +1442,20 @@
             "kind": "cause",
             "text": "Candidate first user groups are named (Second Renaissance, effective altruism, the AI-risk debate), but none has been approached or committed to.",
             "label": "Candidate first user groups are named, but none approached or committed to."
+          },
+          {
+            "id": "cr2-c-no-shared-model",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "cause",
+            "text": "Until now Rufus and David have had no shared, agreed model of their goal, current reality and strategy.",
+            "label": "Until now there has been no shared, agreed model of goal, reality and strategy."
           }
         ],
         "links": [
@@ -1569,7 +1697,8 @@
             "id": "cf2-ship-objective",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1586,7 +1715,8 @@
             "id": "cf2-ship-need-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1603,7 +1733,8 @@
             "id": "cf2-ship-need-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1620,7 +1751,8 @@
             "id": "cf2-ship-pre-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1637,7 +1769,8 @@
             "id": "cf2-ship-pre-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1654,7 +1787,8 @@
             "id": "cf2-story-objective",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1675,7 +1809,8 @@
             "id": "cf2-story-need-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1696,7 +1831,8 @@
             "id": "cf2-story-need-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1717,7 +1853,8 @@
             "id": "cf2-story-pre-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1738,7 +1875,8 @@
             "id": "cf2-story-pre-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1759,7 +1897,8 @@
             "id": "cf2-pitch-objective",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1784,7 +1923,8 @@
             "id": "cf2-pitch-need-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1805,7 +1945,8 @@
             "id": "cf2-pitch-need-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1826,7 +1967,8 @@
             "id": "cf2-pitch-pre-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1847,7 +1989,8 @@
             "id": "cf2-pitch-pre-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1868,7 +2011,8 @@
             "id": "cf2-distinct-objective",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1893,7 +2037,8 @@
             "id": "cf2-distinct-need-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1918,7 +2063,8 @@
             "id": "cf2-distinct-need-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1943,7 +2089,8 @@
             "id": "cf2-distinct-pre-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1968,7 +2115,8 @@
             "id": "cf2-distinct-pre-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -1988,6 +2136,276 @@
             "kind": "prerequisite",
             "text": "Lead with the benefit: what it does for this funder or user.",
             "label": "Lead with the benefit: what it does for this funder or user."
+          },
+          {
+            "id": "cf2-focus-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "objective",
+            "text": "The reason commons is resourced and used.",
+            "label": "The reason commons is resourced and used."
+          },
+          {
+            "id": "cf2-focus-need-vision",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "Early choices don't close off value at every scale or the commons.",
+            "label": "Early choices don't close off value at every scale or the commons."
+          },
+          {
+            "id": "cf2-focus-need-traction",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "Evidence of real use and money arrive before spare-time energy runs out.",
+            "label": "Evidence of real use and money arrive before spare-time energy runs out."
+          },
+          {
+            "id": "cf2-focus-pre-open",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Keep several pitches and first groups open.",
+            "label": "Keep several pitches and first groups open."
+          },
+          {
+            "id": "cf2-focus-pre-commit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Commit to one pitch and one first group.",
+            "label": "Commit to one pitch and one first group."
+          },
+          {
+            "id": "cf2-own-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "objective",
+            "text": "Rufus and David make good strategy decisions together.",
+            "label": "Rufus and David make good strategy decisions together."
+          },
+          {
+            "id": "cf2-own-need-clear",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "Strategy decisions are made clearly and stick.",
+            "label": "Strategy decisions are made clearly and stick."
+          },
+          {
+            "id": "cf2-own-need-shared",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "Both partners are committed to the strategy and own it.",
+            "label": "Both partners are committed to the strategy."
+          },
+          {
+            "id": "cf2-own-pre-one",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "One partner has final say on strategy.",
+            "label": "One partner has final say on strategy."
+          },
+          {
+            "id": "cf2-own-pre-both",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Strategy decisions need both partners' agreement.",
+            "label": "Strategy decisions need both partners' agreement."
+          },
+          {
+            "id": "cf2-edge-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Reason Commons stands out and stays ahead among many AI thinking tools.",
+            "label": "Reason Commons stands out and stays ahead among many AI thinking tools."
+          },
+          {
+            "id": "cf2-edge-need-a",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "We hold something others cannot easily copy.",
+            "label": "We hold something others cannot easily copy."
+          },
+          {
+            "id": "cf2-edge-need-b",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Others can freely use and build on the work, so a commons can grow.",
+            "label": "Others can freely use and build on the work, so a commons can grow."
+          },
+          {
+            "id": "cf2-edge-pre-a",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Keep key assets proprietary: tools, trees, know-how.",
+            "label": "Keep key assets proprietary: tools, trees, know-how."
+          },
+          {
+            "id": "cf2-edge-pre-b",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Make everything open: MIT code, open formats, public trees.",
+            "label": "Make everything open: MIT code, open formats, public trees."
           }
         ],
         "links": [
@@ -1995,7 +2413,8 @@
             "id": "cf2-l-ship-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2014,7 +2433,8 @@
             "id": "cf2-l-ship-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2033,7 +2453,8 @@
             "id": "cf2-l-ship-pa",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2052,7 +2473,8 @@
             "id": "cf2-l-ship-pb",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2071,7 +2493,8 @@
             "id": "cf2-l-ship-x",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2090,7 +2513,8 @@
             "id": "cf2-l-story-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2109,7 +2533,8 @@
             "id": "cf2-l-story-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2128,7 +2553,8 @@
             "id": "cf2-l-story-pa",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2147,7 +2573,8 @@
             "id": "cf2-l-story-pb",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2166,7 +2593,8 @@
             "id": "cf2-l-story-x",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2185,7 +2613,8 @@
             "id": "cf2-l-pitch-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2204,7 +2633,8 @@
             "id": "cf2-l-pitch-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2223,7 +2653,8 @@
             "id": "cf2-l-pitch-pa",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2242,7 +2673,8 @@
             "id": "cf2-l-pitch-pb",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2261,7 +2693,8 @@
             "id": "cf2-l-pitch-x",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2280,7 +2713,8 @@
             "id": "cf2-l-distinct-a",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2299,7 +2733,8 @@
             "id": "cf2-l-distinct-b",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2318,7 +2753,8 @@
             "id": "cf2-l-distinct-pa",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2337,7 +2773,8 @@
             "id": "cf2-l-distinct-pb",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2356,7 +2793,8 @@
             "id": "cf2-l-distinct-x",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2370,6 +2808,286 @@
             ],
             "to": "cf2-distinct-pre-b",
             "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-focus-a",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-focus-need-vision"
+            ],
+            "to": "cf2-focus-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-focus-b",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-focus-need-traction"
+            ],
+            "to": "cf2-focus-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-focus-pa",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-focus-pre-open"
+            ],
+            "to": "cf2-focus-need-vision",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-focus-pb",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-focus-pre-commit"
+            ],
+            "to": "cf2-focus-need-traction",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-focus-x",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-focus-pre-open"
+            ],
+            "to": "cf2-focus-pre-commit",
+            "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-own-a",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-own-need-clear"
+            ],
+            "to": "cf2-own-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-own-b",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-own-need-shared"
+            ],
+            "to": "cf2-own-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-own-pa",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-own-pre-one"
+            ],
+            "to": "cf2-own-need-clear",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-own-pb",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-own-pre-both"
+            ],
+            "to": "cf2-own-need-shared",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-own-x",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "cf2-own-pre-one"
+            ],
+            "to": "cf2-own-pre-both",
+            "relation": "conflicts_with"
+          },
+          {
+            "id": "cf2-l-edge-a",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "cf2-edge-need-a"
+            ],
+            "to": "cf2-edge-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-edge-b",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "cf2-edge-need-b"
+            ],
+            "to": "cf2-edge-objective",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-edge-pa",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "cf2-edge-pre-a"
+            ],
+            "to": "cf2-edge-need-a",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-edge-pb",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "cf2-edge-pre-b"
+            ],
+            "to": "cf2-edge-need-b",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "cf2-l-edge-x",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "cf2-edge-pre-a"
+            ],
+            "to": "cf2-edge-pre-b",
+            "relation": "conflicts_with"
           }
         ]
       },
@@ -2379,7 +3097,8 @@
             "id": "fr2-inj-staged-path",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2400,7 +3119,8 @@
             "id": "fr2-inj-distinct",
             "status": "accepted",
             "accepted_by": [
-              "Rufus Pollock"
+              "Rufus Pollock",
+              "David Joseph"
             ],
             "contributors": [
               {
@@ -2467,11 +3187,1120 @@
             "kind": "injection",
             "text": "G5: Sessions before features: no new features until three Stage 1 sessions are done; log setup time in T2's AI-only sessions.",
             "label": "No new features until three Stage 1 sessions are done; log setup time in AI-only sessions."
+          },
+          {
+            "id": "fr2-eff-ai-alone-works",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Sessions guided by the AI alone come close to those with a human alongside, so incremental sessions can spread with little hands-on effort from us (tests A10; T2).",
+            "label": "Sessions guided by the AI alone come close to those with a human alongside (T2)."
+          },
+          {
+            "id": "fr2-de-low-touch-spread",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "Adoption spreads with little hands-on effort from us, while early users get trees good enough to act on and come back.",
+            "label": "Adoption spreads with little hands-on effort from us."
+          },
+          {
+            "id": "fr2-inj-nb-trims",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Trims for NB2-NB9 (red-teamed; proposed, for Rufus and David to review). NB2 drop-out: first session 60-90 min ending in a usable goal tree; book session 2 before session 1 ends; return rate under 50% triggers a redesign. NB3 groups: book the group date now and set the attribution rule in advance; one group is a probe, not a gate. NB4 consent: ask at the start and again at the end, three levels (private, anonymised, public), every group member consents, target at least one public tree. NB5 consulting: no custom code, fixed-scope offers on the standard skill, an hours budget per engagement. NB6 copy test: strangers only, sign-ups, minimum sample set first. NB7 cloud 4 open: joint session by 2026-11-22, meanwhile act on provisional defaults with an explicit accept sought. NB8 David's time drops: handover note with contacts and session status. NB9 T2 arms involve different people: treat T2 as qualitative.",
+            "label": "Trims for negative branches NB2-NB9 (proposed; to review)."
           }
         ],
-        "links": []
+        "links": [
+          {
+            "id": "fr2-l-ai-spread",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "fr2-eff-ai-alone-works"
+            ],
+            "to": "fr2-de-low-touch-spread",
+            "relation": "causes"
+          }
+        ]
+      },
+      "prerequisite": {
+        "nodes": [
+          {
+            "id": "pr2-obj-stage1",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "objective",
+            "text": "Six named people, at least one a pair or small group, have Stage 1 sessions by 2026-11-22, one of them before 31 Oct, with T2 run inside the six (three with a human alongside, three AI-only). The accepted fallbacks are part of the objective: under four booked by 2 Nov means the target becomes four, keeping the pair or group (TR4); fewer than two AI-only sessions means T2 is recorded as downgraded (TR5).",
+            "label": "Six named people, including a pair or group, have Stage 1 sessions by 22 Nov, with T2 inside."
+          },
+          {
+            "id": "pr2-ob-capacity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The committed work plus the grant calendar exceeds spare time, worst 26-31 Oct: Rufus has about 3 hours this week; David carries most and has much less time later because of his job. Five grant items are due 31 Oct: Foresight, the Prototype Fund email, and the Apart, Cosmos and Fifty Years forms.",
+            "label": "Work plus five grant items due 31 Oct exceeds spare time; Rufus ~3h, David less later."
+          },
+          {
+            "id": "pr2-io-capacity-trims",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Grants first this week, booking sessions after. David runs the sessions and Rufus joins the human-alongside ones. November grants are capped at two after Foresight, and GTR is deferred.",
+            "label": "Grants first, booking after; David runs sessions, Rufus joins; two November grants, no GTR."
+          },
+          {
+            "id": "pr2-ob-default-building",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Rufus and David default to building rather than putting the tool in front of people; nobody owned outward work.",
+            "label": "Both default to building rather than putting it in front of people; nobody owned outward work."
+          },
+          {
+            "id": "pr2-io-outward-owner",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "David owns outward work, including booking the six, with support from Rufus, weekly hours and a weekly check-in; sessions are booked before new building; no new features until three Stage 1 sessions are done.",
+            "label": "David owns booking the six, with Rufus's support; sessions before building; G5 holds."
+          },
+          {
+            "id": "pr2-ob-unnamed",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "The six are not named; only a few sessions are lined up.",
+            "label": "The six are not named; only a few sessions are lined up."
+          },
+          {
+            "id": "pr2-io-named",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "The six are named, the pair or group included, and come from two or three named communities.",
+            "label": "The six are named, the pair or group included, from two or three named communities."
+          },
+          {
+            "id": "pr2-ob-slip",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              },
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Sessions slip, AI-only ones first, so T2 is never tested.",
+            "label": "Sessions slip, AI-only ones first, so T2 is never tested."
+          },
+          {
+            "id": "pr2-io-ai-only-first",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "AI-only sessions are booked first, and bookings are checked on 2 Nov.",
+            "label": "AI-only sessions booked first; bookings checked on 2 Nov."
+          },
+          {
+            "id": "pr2-ob-thresholds",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "T2 has no thresholds yet.",
+            "label": "T2 has no thresholds yet."
+          },
+          {
+            "id": "pr2-io-thresholds-log",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "T2 thresholds are set and the log is ready (human interventions, user time, and setup time in AI-only sessions) before the first session.",
+            "label": "T2 thresholds set and the log ready before the first session."
+          },
+          {
+            "id": "pr2-ob-setup-start",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Starting needs the exact skill set up, a real investment of time, and someone explaining the method, which bears hardest on the AI-only sessions.",
+            "label": "Starting needs the exact skill set up, time, and someone explaining the method."
+          },
+          {
+            "id": "pr2-io-setup-partly",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Partly covered for Stage 1: the crafted AI experience (I8), with setup time logged in AI-only sessions (G5). The training video belongs to Stage 2.",
+            "label": "Partly covered: the crafted AI experience (I8), with setup time logged (G5)."
+          }
+        ],
+        "links": [
+          {
+            "id": "pr2-l-capacity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-capacity-trims"
+            ],
+            "to": "pr2-ob-capacity",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-outward",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-outward-owner"
+            ],
+            "to": "pr2-ob-default-building",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-named",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-named"
+            ],
+            "to": "pr2-ob-unnamed",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-slip",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-ai-only-first"
+            ],
+            "to": "pr2-ob-slip",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-thresholds",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-thresholds-log"
+            ],
+            "to": "pr2-ob-thresholds",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-setup",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-setup-partly"
+            ],
+            "to": "pr2-ob-setup-start",
+            "relation": "overcomes"
+          },
+          {
+            "id": "pr2-l-seq-grants-booking",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "from": [
+              "pr2-io-capacity-trims"
+            ],
+            "to": "pr2-io-ai-only-first",
+            "relation": "precedes"
+          },
+          {
+            "id": "pr2-l-seq-named-booking",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-named"
+            ],
+            "to": "pr2-io-ai-only-first",
+            "relation": "precedes"
+          },
+          {
+            "id": "pr2-l-outward-booking",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-outward-owner"
+            ],
+            "to": "pr2-io-ai-only-first",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "pr2-l-obj",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-capacity-trims",
+              "pr2-io-ai-only-first",
+              "pr2-io-thresholds-log"
+            ],
+            "to": "pr2-obj-stage1",
+            "relation": "necessary_for"
+          },
+          {
+            "id": "pr2-l-setup-obj",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "pr2-io-setup-partly"
+            ],
+            "to": "pr2-obj-stage1",
+            "relation": "necessary_for"
+          }
+        ]
+      },
+      "transition": {
+        "nodes": [
+          {
+            "id": "tt2-ec-foresight-blocked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Foresight submission (due 31 Oct 23:59 PDT) is blocked by four open beads: a second named use, a reference, Leo's OK to publish his tree, and David's final review (target 29 Oct). Track-record evidence is also open and the form answers are in progress.",
+            "label": "Foresight (due 31 Oct) is blocked by four open beads, including David's final review."
+          },
+          {
+            "id": "tt2-a-foresight-blockers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Rufus and David, as owners of the Foresight application, clear the four blockers; the final review is David's. Their order is not recorded.",
+            "label": "Rufus and David clear the four blockers; the final review is David's."
+          },
+          {
+            "id": "tt2-e-foresight-unblocked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Foresight submission is unblocked.",
+            "label": "Foresight submission is unblocked."
+          },
+          {
+            "id": "tt2-a-foresight-submit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Rufus and David run the pre-submission check, submit by 31 Oct 23:59 PDT, tick sharing with Lightcone, and save a copy.",
+            "label": "Rufus and David check, submit by 31 Oct, tick sharing with Lightcone, save a copy."
+          },
+          {
+            "id": "tt2-e-foresight-submitted",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Foresight is submitted, so booking can start (grants first, booking after).",
+            "label": "Foresight is submitted, so booking can start."
+          },
+          {
+            "id": "tt2-ec-other-31oct",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Also due 31 Oct, with no owner recorded, are the Prototype Fund email and the Apart, Cosmos and Fifty Years forms; the NB1 trims don't mention the last three.",
+            "label": "Also due 31 Oct, with no owner recorded, are the Prototype Fund email and three forms."
+          },
+          {
+            "id": "tt2-a-prototype-email",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Email the Prototype Fund about team residency, Life Itself's copyright and parallel funding (owner not recorded).",
+            "label": "Email the Prototype Fund about team residency, copyright and parallel funding."
+          },
+          {
+            "id": "tt2-e-prototype-answer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Answers arrive in time for a mid-November go or no-go on the Prototype Fund.",
+            "label": "Answers arrive in time for a mid-November go or no-go."
+          },
+          {
+            "id": "tt2-n-thresholds-first",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "T2 thresholds are set before the first session.",
+            "label": "T2 thresholds are set before the first session."
+          },
+          {
+            "id": "tt2-a-thresholds",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Set T2 thresholds and prepare the log of human interventions, user time and setup time (owner not recorded).",
+            "label": "Set T2 thresholds and prepare the log (owner not recorded)."
+          },
+          {
+            "id": "tt2-e-thresholds",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The first session counts toward T2.",
+            "label": "The first session counts toward T2."
+          },
+          {
+            "id": "tt2-ec-lined-up",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "A few sessions are already lined up.",
+            "label": "A few sessions are already lined up."
+          },
+          {
+            "id": "tt2-a-first-session",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "David runs one of the sessions already lined up before 31 Oct; Rufus joins if it has a human alongside.",
+            "label": "David runs one lined-up session before 31 Oct; Rufus joins if a human is alongside."
+          },
+          {
+            "id": "tt2-e-first-session",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The first Stage 1 session is done before 31 Oct.",
+            "label": "The first Stage 1 session is done before 31 Oct."
+          },
+          {
+            "id": "tt2-n-sessions-first",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "need",
+            "text": "Sessions are booked before new building (G1).",
+            "label": "Sessions are booked before new building."
+          },
+          {
+            "id": "tt2-a-book",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "David books the six, AI-only first. Naming the six and the two or three communities they come from has no recorded owner.",
+            "label": "David books the six, AI-only first; who names them and their communities is not recorded."
+          },
+          {
+            "id": "tt2-e-booked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Stage 1 sessions are booked.",
+            "label": "Stage 1 sessions are booked."
+          },
+          {
+            "id": "tt2-a-check",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Check bookings on 2 Nov; under four booked means target four, keeping the pair or group (owner not recorded).",
+            "label": "Check bookings on 2 Nov; under four means target four, keeping the pair or group."
+          },
+          {
+            "id": "tt2-e-check",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "The target is reset if booking is slow.",
+            "label": "The target is reset if booking is slow."
+          },
+          {
+            "id": "tt2-n-no-features",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "No new features until three Stage 1 sessions are done (G5).",
+            "label": "No new features until three Stage 1 sessions are done."
+          },
+          {
+            "id": "tt2-a-run",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "David runs the sessions and Rufus joins those with a human alongside; each session logs human interventions, user time and setup time.",
+            "label": "David runs the sessions, Rufus joins human-alongside ones; log interventions and time."
+          },
+          {
+            "id": "tt2-e-t2",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "T2 evidence, or T2 recorded as downgraded if fewer than two AI-only sessions happen.",
+            "label": "T2 evidence, or T2 recorded as downgraded if fewer than two AI-only sessions happen."
+          },
+          {
+            "id": "tt2-a-notes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "The AI drafts each outcome note from the tree and the participant checks it; with consent, the tree and note are published; follow-through is checked at 30 days. Asking consent and publishing have no recorded owner.",
+            "label": "AI drafts outcome notes, participant checks; with consent publish; check at 30 days."
+          },
+          {
+            "id": "tt2-e-evidence",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Visible evidence of value, a decision made and followed through.",
+            "label": "Visible evidence of value, a decision made and followed through."
+          },
+          {
+            "id": "tt2-a-priced-offer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Make a priced offer within Stage 1, one paid session or a priced pilot (owner not recorded).",
+            "label": "Make a priced offer within Stage 1, one paid session or a priced pilot."
+          },
+          {
+            "id": "tt2-e-who-pays",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "A first answer on who pays.",
+            "label": "A first answer on who pays."
+          },
+          {
+            "id": "tt2-ec-nov-grants",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "November grants are capped at two after Foresight and GTR is deferred. The funding tracker lists Lightcone 2-6 Nov, BlueDot Rapid any time in November, SFF 16-20 Nov, and David's Prototype Fund application by 27 Nov, if go. The two are not chosen.",
+            "label": "November grants capped at two after Foresight, GTR deferred; the two are not chosen."
+          },
+          {
+            "id": "tt2-a-choose-grants",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Choose the two November grants and apply.",
+            "label": "Choose the two November grants and apply."
+          },
+          {
+            "id": "tt2-e-grants-capped",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Grant work stays within the cap.",
+            "label": "Grant work stays within the cap."
+          },
+          {
+            "id": "tt2-a-weekly",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "action",
+            "text": "Hold the weekly check-in (G1); who attends is not named.",
+            "label": "Hold the weekly check-in (G1); who attends is not named."
+          }
+        ],
+        "links": [
+          {
+            "id": "tt2-l-blockers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-ec-foresight-blocked",
+              "tt2-a-foresight-blockers"
+            ],
+            "to": "tt2-e-foresight-unblocked",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-submit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-e-foresight-unblocked",
+              "tt2-a-foresight-submit"
+            ],
+            "to": "tt2-e-foresight-submitted",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-prototype",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-ec-other-31oct",
+              "tt2-a-prototype-email"
+            ],
+            "to": "tt2-e-prototype-answer",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-thresholds",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-n-thresholds-first",
+              "tt2-a-thresholds"
+            ],
+            "to": "tt2-e-thresholds",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-first-session",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-ec-lined-up",
+              "tt2-e-thresholds",
+              "tt2-a-first-session"
+            ],
+            "to": "tt2-e-first-session",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-book",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-e-foresight-submitted",
+              "tt2-n-sessions-first",
+              "tt2-a-book"
+            ],
+            "to": "tt2-e-booked",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-check",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-e-booked",
+              "tt2-a-check"
+            ],
+            "to": "tt2-e-check",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-run",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-e-booked",
+              "tt2-e-thresholds",
+              "tt2-n-no-features",
+              "tt2-a-run"
+            ],
+            "to": "tt2-e-t2",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-notes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-a-notes"
+            ],
+            "to": "tt2-e-evidence",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-seq-run-notes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-a-run"
+            ],
+            "to": "tt2-a-notes",
+            "relation": "precedes"
+          },
+          {
+            "id": "tt2-l-priced-offer",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-a-priced-offer"
+            ],
+            "to": "tt2-e-who-pays",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-grants",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-ec-nov-grants",
+              "tt2-e-foresight-submitted",
+              "tt2-a-choose-grants"
+            ],
+            "to": "tt2-e-grants-capped",
+            "relation": "produces"
+          }
+        ]
       }
     }
   },
-  "snapshot_sha256": "dbe81da21f413fa19300a64501b17797aaa4ecec8fa770b1869fea989f2db2f9"
+  "snapshot_sha256": "7e657a452c2b5840c2168188ba1e139c46f8fcb5f8ee9e89ac74687cbe88de75"
 }

@@ -1,6 +1,7 @@
 # FICTIONAL EXAMPLE. Willow Lane Primary, its people and their reports are invented.
 # This is a working file in the reason-commons skill's conversational format (schema version 1),
-# written to show everything a published commons can hold. Do not copy its claims into real work.
+# written to show what a published commons can hold. Nothing in it is accepted: only the Reason Commons
+# commons records acceptance. Do not copy its claims into real work.
 schema_version: 1
 project: A safer walk to Willow Lane Primary
 driver: amara
@@ -17,36 +18,31 @@ trees:
     - id: wl-g-goal
       kind: goal
       text: Every child at Willow Lane Primary can walk, scoot or cycle to school safely.
-      status: accepted
-      accepted_by: [amara, grace, tomasz, dev, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-g-calm-gate
       kind: critical_success_factor
       text: Traffic outside the school gate is slow and light at drop-off and pick-up.
-      status: accepted
-      accepted_by: [amara, grace, tomasz, dev, ruth]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-g-safe-routes
       kind: critical_success_factor
       text: The routes children use feel safe enough that parents let them walk.
-      status: accepted
-      accepted_by: [amara, grace, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: voice}
     - id: wl-g-far-families
       kind: critical_success_factor
       text: Families who live too far to walk can still finish the journey on foot.
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-g-shops
       kind: critical_success_factor
       text: The shops on Willow Lane keep the customers they rely on.
-      status: accepted
-      accepted_by: [tomasz, amara, grace]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     - id: wl-g-crossing
@@ -61,32 +57,28 @@ trees:
       from: [wl-g-calm-gate]
       to: wl-g-goal
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace, tomasz, dev, ruth]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-g-rel-routes
       from: [wl-g-safe-routes]
       to: wl-g-goal
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-g-rel-far
       from: [wl-g-far-families]
       to: wl-g-goal
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-g-rel-shops
       from: [wl-g-shops]
       to: wl-g-goal
       relation: necessary_for
-      status: accepted
-      accepted_by: [tomasz, amara, grace]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     - id: wl-g-rel-crossing
@@ -107,58 +99,51 @@ trees:
       kind: undesirable_effect
       text: Cars queue and double-park outside the school gate between 8:30 and 8:50.
       label: Cars queue and double-park outside the gate at drop-off.
-      status: accepted
-      accepted_by: [amara, grace, dev, tomasz]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-r-hidden
       kind: undesirable_effect
       text: Children step out between parked cars where drivers cannot see them.
-      status: accepted
-      accepted_by: [grace, amara, ruth]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-r-fewer-walk
       kind: undesirable_effect
       text: Fewer children walk to school than five years ago, according to the school's travel survey.
       label: Fewer children walk to school than five years ago.
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-r-bakery-jams
       kind: undesirable_effect
       text: Morning customers give up on Tomasz's bakery when the street is jammed.
-      status: accepted
-      accepted_by: [tomasz]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     - id: wl-r-on-the-way
       kind: cause
       text: Many parents drop their children off by car on the way to work.
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-r-nowhere-to-stop
       kind: cause
       text: There is nowhere near the gate for drivers to stop briefly.
-      status: accepted
-      accepted_by: [dev, amara, tomasz]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-r-feels-unsafe
       kind: cause
       text: Parents feel the walk is unsafe, so more of them drive.
-      status: accepted
-      accepted_by: [amara, ruth, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-r-through-traffic
       kind: cause
       text: Most cars on Willow Lane at 8:30 are driving through to the industrial estate, not dropping children off.
       label: Most cars at 8:30 are driving through, not dropping children off.
-      status: disputed
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
       challenges:
@@ -175,8 +160,7 @@ trees:
       from: [wl-r-on-the-way, wl-r-nowhere-to-stop]
       to: wl-r-queue
       relation: contributes_to
-      status: accepted
-      accepted_by: [dev, amara]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
       assumptions:
@@ -186,32 +170,28 @@ trees:
       from: [wl-r-queue]
       to: wl-r-hidden
       relation: contributes_to
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-r-rel-bakery
       from: [wl-r-queue]
       to: wl-r-bakery-jams
       relation: contributes_to
-      status: accepted
-      accepted_by: [tomasz, amara]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     - id: wl-r-rel-unsafe
       from: [wl-r-hidden]
       to: wl-r-feels-unsafe
       relation: contributes_to
-      status: accepted
-      accepted_by: [amara, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-r-rel-fewer
       from: [wl-r-feels-unsafe]
       to: wl-r-fewer-walk
       relation: contributes_to
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
       assumptions:
@@ -244,36 +224,31 @@ trees:
     - id: wl-c-objective
       kind: objective
       text: Willow Lane works for the children walking to school and for the shops.
-      status: accepted
-      accepted_by: [amara, grace, tomasz, dev, ruth]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-c-need-safe
       kind: need
       text: Children are safe at the gate at drop-off and pick-up.
-      status: accepted
-      accepted_by: [amara, grace, ruth, tomasz]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-c-close
       kind: prerequisite
       text: Close Willow Lane to cars at school times.
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-c-need-trade
       kind: need
       text: The bakery and the other shops keep their morning trade.
-      status: accepted
-      accepted_by: [tomasz, amara, grace]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     - id: wl-c-keep-open
       kind: prerequisite
       text: Keep Willow Lane open to cars all day.
-      status: accepted
-      accepted_by: [tomasz]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
     links:
@@ -281,24 +256,21 @@ trees:
       from: [wl-c-need-safe]
       to: wl-c-objective
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace, tomasz]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-c-rel-trade
       from: [wl-c-need-trade]
       to: wl-c-objective
       relation: necessary_for
-      status: accepted
-      accepted_by: [tomasz, amara, grace]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-c-rel-close
       from: [wl-c-close]
       to: wl-c-need-safe
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
       assumptions:
@@ -308,8 +280,7 @@ trees:
       from: [wl-c-keep-open]
       to: wl-c-need-trade
       relation: necessary_for
-      status: disputed
-      accepted_by: [tomasz]
+      status: proposed
       contributions:
       - {by: tomasz, attribution: explicit, mode: text}
       assumptions:
@@ -322,8 +293,7 @@ trees:
       from: [wl-c-close]
       to: wl-c-keep-open
       relation: conflicts_with
-      status: accepted
-      accepted_by: [amara, tomasz, grace]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
       assumptions:
@@ -340,8 +310,7 @@ trees:
       kind: injection
       text: Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt.
       label: Willow Lane closes to through traffic at school times, with deliveries exempt.
-      status: accepted
-      accepted_by: [amara, grace, dev, tomasz, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
       - {by: tomasz, attribution: explicit, mode: text}
@@ -350,8 +319,7 @@ trees:
     - id: wl-f-park-stride
       kind: injection
       text: Families who drive can park at the leisure centre and walk the last five minutes.
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
       addresses: [wl-r-nowhere-to-stop]
@@ -365,8 +333,7 @@ trees:
     - id: wl-f-fewer-cars
       kind: predicted_effect
       text: Far fewer cars stop outside the gate at school times.
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-f-mill-lane
@@ -384,8 +351,7 @@ trees:
     - id: wl-f-clear-view
       kind: predicted_effect
       text: Children cross where drivers can see them.
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-f-trade-kept
@@ -397,8 +363,7 @@ trees:
     - id: wl-f-more-walk
       kind: desirable_effect
       text: More children walk, scoot or cycle to school.
-      status: accepted
-      accepted_by: [amara, grace, dev, ruth]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     links:
@@ -406,8 +371,7 @@ trees:
       from: [wl-f-closure, wl-f-park-stride]
       to: wl-f-fewer-cars
       relation: contributes_to
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
       assumptions:
@@ -431,8 +395,7 @@ trees:
       from: [wl-f-fewer-cars]
       to: wl-f-clear-view
       relation: contributes_to
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-f-rel-kept
@@ -446,8 +409,7 @@ trees:
       from: [wl-f-clear-view]
       to: wl-f-more-walk
       relation: contributes_to
-      status: accepted
-      accepted_by: [grace, amara, ruth]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
       assumptions:
@@ -466,30 +428,26 @@ trees:
     - id: wl-p-objective
       kind: objective
       text: Willow Lane closes at school times from the first day of the autumn term.
-      status: accepted
-      accepted_by: [amara, grace, dev]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
       implements: [wl-f-closure]
     - id: wl-p-io-order
       kind: intermediate_objective
       text: An experimental traffic order allows a six-month trial.
-      status: accepted
-      accepted_by: [dev, amara]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-p-io-rota
       kind: intermediate_objective
       text: A rota of trained volunteer marshals covers every school day.
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-p-io-permits
       kind: intermediate_objective
       text: Residents have permits and know how the exemption works.
-      status: accepted
-      accepted_by: [dev, ruth]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-p-io-spaces
@@ -501,22 +459,19 @@ trees:
     - id: wl-p-obs-order
       kind: obstacle
       text: The street cannot close without a council traffic order.
-      status: accepted
-      accepted_by: [dev, amara]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-p-obs-barriers
       kind: obstacle
       text: Someone has to put the barriers out and take them in twice a day.
-      status: accepted
-      accepted_by: [grace, amara]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-p-obs-residents
       kind: obstacle
       text: People who live on Willow Lane worry they will be shut in at school times.
-      status: accepted
-      accepted_by: [dev, ruth]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-p-obs-parking
@@ -530,24 +485,21 @@ trees:
       from: [wl-p-io-order]
       to: wl-p-objective
       relation: necessary_for
-      status: accepted
-      accepted_by: [dev, amara]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-p-rel-rota
       from: [wl-p-io-rota]
       to: wl-p-objective
       relation: necessary_for
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-p-rel-permits
       from: [wl-p-io-permits]
       to: wl-p-objective
       relation: necessary_for
-      status: accepted
-      accepted_by: [dev, ruth]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-p-rel-spaces
@@ -561,24 +513,21 @@ trees:
       from: [wl-p-io-order]
       to: wl-p-obs-order
       relation: overcomes
-      status: accepted
-      accepted_by: [dev, amara]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-p-rel-over-barriers
       from: [wl-p-io-rota]
       to: wl-p-obs-barriers
       relation: overcomes
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-p-rel-over-residents
       from: [wl-p-io-permits]
       to: wl-p-obs-residents
       relation: overcomes
-      status: accepted
-      accepted_by: [dev, ruth]
+      status: proposed
       contributions:
       - {by: assistant, attribution: assistant, mode: text}
     - id: wl-p-rel-over-parking
@@ -597,59 +546,51 @@ trees:
     - id: wl-t-draft-order
       kind: action
       text: Dev drafts the experimental traffic order, with permits for residents, and opens the consultation.
-      status: accepted
-      accepted_by: [dev]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
       implements: [wl-p-io-order, wl-p-io-permits]
     - id: wl-t-letter
       kind: action
       text: Grace writes to every family explaining the closure and the park-and-stride spot.
-      status: accepted
-      accepted_by: [grace]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-t-recruit
       kind: action
       text: Amara recruits marshals at the PTA meeting and sets up the rota.
-      status: accepted
-      accepted_by: [amara]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
       implements: [wl-p-io-rota]
     - id: wl-t-count
       kind: action
       text: Dev counts traffic on Mill Lane for a week before the trial and a week into it.
-      status: accepted
-      accepted_by: [dev, ruth]
+      status: proposed
       contributions:
       - {by: ruth, attribution: explicit, mode: text}
     - id: wl-t-ee-order
       kind: expected_effect
       text: The traffic order and residents' permits are in place before the first day.
-      status: accepted
-      accepted_by: [dev]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-t-ee-families
       kind: expected_effect
       text: Every family knows how the closure works before it starts.
-      status: accepted
-      accepted_by: [grace]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-t-ee-rota
       kind: expected_effect
       text: Two trained marshals are on duty every school day.
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-t-ee-mill
       kind: expected_effect
       text: We can see whether traffic moved onto Mill Lane.
-      status: accepted
-      accepted_by: [ruth, dev]
+      status: proposed
       contributions:
       - {by: ruth, attribution: explicit, mode: text}
     links:
@@ -657,40 +598,35 @@ trees:
       from: [wl-t-draft-order]
       to: wl-t-ee-order
       relation: produces
-      status: accepted
-      accepted_by: [dev]
+      status: proposed
       contributions:
       - {by: dev, attribution: explicit, mode: text}
     - id: wl-t-rel-letter
       from: [wl-t-letter]
       to: wl-t-ee-families
       relation: produces
-      status: accepted
-      accepted_by: [grace]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     - id: wl-t-rel-rota
       from: [wl-t-recruit]
       to: wl-t-ee-rota
       relation: produces
-      status: accepted
-      accepted_by: [amara, grace]
+      status: proposed
       contributions:
       - {by: amara, attribution: explicit, mode: text}
     - id: wl-t-rel-count
       from: [wl-t-count]
       to: wl-t-ee-mill
       relation: produces
-      status: accepted
-      accepted_by: [ruth, dev]
+      status: proposed
       contributions:
       - {by: ruth, attribution: explicit, mode: text}
     - id: wl-t-rel-then
       from: [wl-t-draft-order]
       to: wl-t-letter
       relation: precedes
-      status: accepted
-      accepted_by: [dev, grace]
+      status: proposed
       contributions:
       - {by: grace, attribution: explicit, mode: text}
     backlog: []
@@ -699,12 +635,12 @@ feedback_requests:
   revision: 1
   created_by: amara
   recorded_at: '2026-09-01T17:30:00Z'
-  about: {ref: wl-f-closure, tree: future_reality, kind: injection, standing: accepted, text: 'Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt.'}
+  about: {ref: wl-f-closure, tree: future_reality, kind: injection, standing: proposed, text: 'Willow Lane closes to through traffic from 8:20 to 9:00 and from 2:50 to 3:30 on school days, with deliveries, residents and blue badge holders exempt.'}
   feedback_from: [grace, ruth, tomasz, amara]
   ready_when: After the first weeks of the trial, which starts on 7 September.
   benefits:
-  - {ref: wl-f-fewer-cars, tree: future_reality, kind: predicted_effect, standing: accepted, text: Far fewer cars stop outside the gate at school times.}
-  - {ref: wl-f-more-walk, tree: future_reality, kind: desirable_effect, standing: accepted, text: 'More children walk, scoot or cycle to school.'}
+  - {ref: wl-f-fewer-cars, tree: future_reality, kind: predicted_effect, standing: proposed, text: Far fewer cars stop outside the gate at school times.}
+  - {ref: wl-f-more-walk, tree: future_reality, kind: desirable_effect, standing: proposed, text: 'More children walk, scoot or cycle to school.'}
   reservations:
   - {ref: wl-f-mill-lane, tree: future_reality, kind: undesirable_effect, standing: proposed, text: Some traffic moves onto Mill Lane while Willow Lane is closed.}
   reports:

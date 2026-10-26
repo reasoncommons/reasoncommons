@@ -62,23 +62,39 @@ class ExportTests(unittest.TestCase):
         output = json.dumps(build.project(state, registry))
         self.assertNotIn("CANARY", output)
 
-    def test_selected_downgrade_fails_instead_of_publishing_stale_acceptance(self):
-        for standing in ("proposed", "disputed"):
-            state, registry = fixture()
-            state["trees"]["goal"]["nodes"][1]["status"] = standing
-            with self.assertRaisesRegex(ValueError, "no longer accepted"):
-                build.project(state, registry)
-
-    def test_connection_downgrade_fails(self):
+    def test_a_downgraded_item_publishes_as_proposed_never_as_stale_acceptance(self):
+        state, registry = fixture()  # proposed-reasoning-public r1: our commons publishes proposed items without endorsers.
+        loose = state["trees"]["goal"]["nodes"][3]
+        loose.update(status="proposed")
+        loose.pop("accepted_by")
+        public = next(n for n in build.project(state, registry)["trees"]["goal"]["nodes"] if n["id"] == "loose")
+        self.assertEqual((public["status"], public["accepted_by"]), ("proposed", []))
+        self.assertNotIn("acceptance_context", public)
         state, registry = fixture()
-        state["trees"]["goal"]["links"][0]["status"] = "proposed"
-        with self.assertRaisesRegex(ValueError, "no longer accepted"):
+        state["trees"]["goal"]["nodes"][3]["status"] = "proposed"  # Endorsers left on a proposed item are refused.
+        with self.assertRaisesRegex(ValueError, "lists endorsers"):
             build.project(state, registry)
-
+        state, registry = fixture()
+        state["trees"]["goal"]["nodes"][1]["status"] = "disputed"
+        with self.assertRaisesRegex(ValueError, "disputed"):
+            build.project(state, registry)
+        state, registry = fixture()
+        first = state["trees"]["goal"]["nodes"][1]
+        first.update(status="proposed")
+        first.pop("accepted_by")
+        with self.assertRaisesRegex(ValueError, "accepted endpoints"):  # The accepted joint link cannot keep it.
+            build.project(state, registry)
+    def test_connection_downgrade_publishes_as_proposed(self):
+        state, registry = fixture()
+        link = state["trees"]["goal"]["links"][0]
+        link.update(status="proposed")
+        link.pop("accepted_by")
+        public = build.project(state, registry)["trees"]["goal"]["links"][0]
+        self.assertEqual((public["status"], public["accepted_by"]), ("proposed", []))
     def test_partial_joint_connection_fails(self):
         state, registry = fixture()
         registry["selection"]["goal"]["nodes"].remove("second")
-        with self.assertRaisesRegex(ValueError, "Missing accepted endpoint"):
+        with self.assertRaisesRegex(ValueError, "Missing published endpoint"):
             build.project(state, registry)
 
     def test_missing_source_id_fails(self):
@@ -198,7 +214,7 @@ class SiteTests(unittest.TestCase):
         pages_ = ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "changes", "about"]
         fonts = ["alegreya-sans-400.woff2", "alegreya-sans-500.woff2", "alegreya-sans-700.woff2", "alegreya-sans-400-italic.woff2", "OFL.txt"]
         expected = {"index.html", "how-it-works.html", "styles.css", "app.js", "reasoning.json", *(f"fonts/{f}" for f in fonts),
-                    *(f"reason-commons/{p}.html" for p in pages_ if p not in ("prerequisites", "actions")), "reason-commons/reasoning.json",
+                    *(f"reason-commons/{p}.html" for p in pages_), "reason-commons/reasoning.json",
                     *(f"example-willow-lane/{p}.html" for p in pages_ + ["questions", "learning"]), "example-willow-lane/reasoning.json",
                     *(f"gandhi-2-0/{p}.html" for p in pages_ + ["questions"]), "gandhi-2-0/reasoning.json",
                     *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
@@ -207,13 +223,13 @@ class SiteTests(unittest.TestCase):
 
     def test_our_reviewed_snapshot_is_unchanged(self):
         data = self.real["data"]
-        self.assertEqual(sum(len(t["nodes"]) for t in data["trees"].values()), 63)
-        self.assertEqual(sum(len(t["links"]) for t in data["trees"].values()), 57)
-        self.assertEqual([k for k, t in data["trees"].items() if t["links"]], ["goal", "current_reality", "conflict"])
-        self.assertEqual(set(data["trees"]), {"goal", "current_reality", "conflict", "future_reality"})
+        count = lambda key, status: sum(1 for t in data["trees"].values() for i in t[key] if i["status"] == status)
+        self.assertEqual((count("nodes", "accepted"), count("links", "accepted")), (63, 57))
+        self.assertEqual((count("nodes", "proposed"), count("links", "proposed")), (62, 39))
+        self.assertEqual(set(data["trees"]), set(pages.TREE_ORDER))
+        self.assertEqual(data["release_id"], "2026-10-26.2")
         self.assertEqual(json.loads(self.outputs["reasoning.json"]), data)
         self.assertEqual(json.loads(self.outputs["reason-commons/reasoning.json"]), data)
-
     def test_snapshot_tampering_fails(self):
         registry = deepcopy(self.real["registry"])
         registry["snapshot"]["trees"]["goal"]["nodes"][0]["text"] = "A changed statement."
@@ -233,12 +249,10 @@ class SiteTests(unittest.TestCase):
             self.assertEqual(svg.count('<a class="j '), sum(len(l["from"]) > 1 for l in tree["links"]), (c["entry"]["slug"], name))
             self.assertEqual(set(loose) | {i for p in pieces for i in p["ids"]}, {n["id"] for n in tree["nodes"]})
 
-    def test_trees_without_accepted_links_draw_no_arrows(self):
-        for name in ("future_reality",):
-            page = self.outputs[f'reason-commons/{pages.TREES[name]["slug"]}.html']
-            self.assertNotIn('class="e-head"', page, name)
-            self.assertNotIn('<a class="j ', page, name)
-
+    def test_our_change_draws_only_its_published_proposed_connection(self):
+        page = self.outputs["reason-commons/change.html"]
+        self.assertIn('data-id="fr2-l-ai-spread"', page)
+        self.assertEqual(page.count('data-id="fr2-l-'), 1)  # Accepted links from a change reach unpublished effects, so none is drawn.
     def test_boxes_never_overlap_and_text_fits(self):
         for c, name, tree in self.trees():
             label = lambda kind, name=name: pages.kind_label(name, kind)
@@ -321,12 +335,15 @@ class SiteTests(unittest.TestCase):
         self.assertIn("Original contributor not identified", self.outputs["reason-commons/items.html"])
 
     def test_prior_endorsement_of_a_disputed_item_is_not_current_acceptance(self):
-        page = self.outputs["example-willow-lane/items.html"]
-        article = page[page.index(' id="wl-c-rel-open"'):page.index(' id="wl-c-rel-clash"')]
-        facts = article[article.index('class="item-facts"'):article.index("</aside>")]
-        self.assertIn("Disputed; earlier accepted by Tomasz", facts)
-        self.assertNotIn("Accepted for now", facts)  # Its endpoints' cards may still be accepted.
-
+        # No published item is disputed today; a disputed item in our commons keeps earlier acceptance as history only.
+        normalized = deepcopy(build.normalize(self.real))
+        item = next(n for n in normalized["trees"]["goal"]["nodes"] if n["status"] == "accepted")
+        item["status"] = "disputed"
+        c = pages.Commons(normalized)
+        detail = pages.item_detail(c, item["id"], self.site)
+        facts = detail[detail.index('class="item-facts"'):detail.index("</aside>")]
+        self.assertIn("Disputed; earlier accepted by", facts)
+        self.assertNotIn("Accepted for now by", facts)
     def test_learning_keeps_awaiting_unclear_and_not_assessed_apart(self):
         page = self.outputs["example-willow-lane/learning.html"]
         for word in ("Awaiting report", "Unclear", "Not assessed", "Not observed", "Observed"):
@@ -373,12 +390,18 @@ class SiteTests(unittest.TestCase):
         for forbidden in ("Calder", "change_acceptances", "feedback_requests", "/Users/", "driver_default", "funding/research/", "r-e-rufus-feedback-hard"):
             self.assertNotIn(forbidden, text)
 
-    def test_our_commons_publishes_no_funding_reasoning(self):
-        # demo-v2-collab-source revision 2 left funding and internal-collaboration items out; the allowlist enforces the IDs.
-        reasoning = self.outputs["reason-commons/reasoning.json"].lower()  # The scope copy may say what was left out.
-        for term in ("Foresight", "Lightcone", "grant", "funding"):
-            self.assertNotIn(term.lower(), reasoning, term)
-
+    def test_our_commons_shows_proposed_funding_but_keeps_accepted_funding_out(self):
+        # demo-v2-collab-source r2 left accepted funding and internal-collaboration items out; proposed-reasoning-public r1
+        # publishes every proposed item, funding included, without endorsers.
+        items = [i for t in self.real["data"]["trees"].values() for i in t["nodes"] + t["links"]]
+        ids = {i["id"] for i in items}
+        for excluded in ("g2-csf-resourced", "g2-nc-7-1", "cr2-ude-no-funding", "cr2-c-spare-time", "fr2-inj-funding",
+                         "fr2-inj-g1-outward-owner", "fr2-eff-stage1-sessions", "cr2-l-shared-model-choices", "fr2-l-stage1-ai"):
+            self.assertNotIn(excluded, ids)
+        self.assertFalse(any(i.startswith("cf2-fund") for i in ids))
+        funding = [i for i in items if re.search(r"Foresight|grant|Prototype Fund|priced", i.get("text", ""))]
+        self.assertTrue(funding)
+        self.assertTrue(all(i["status"] == "proposed" and not i["accepted_by"] for i in funding))
     def test_every_commons_counts_statements_and_connections_apart_and_explains_its_colours(self):
         for c in self.commons:
             normalized = build.normalize(c)
@@ -403,27 +426,32 @@ class ExampleTests(unittest.TestCase):
         module.validate(state)
         self.assertEqual(build.project_v2(state, self.registry), self.data)
 
-    def test_example_holds_every_standing_and_kind_of_qualification(self):
+    def test_example_is_entirely_proposed_and_keeps_its_qualifications(self):
         items = [i for t in self.data["trees"].values() for i in t["nodes"] + t["links"]]
-        self.assertEqual({i["status"] for i in items}, {"accepted", "proposed", "disputed"})
+        self.assertEqual({i["status"] for i in items}, {"proposed"})
+        self.assertFalse(any(i["accepted_by"] for i in items))
         self.assertTrue(any(i.get("assumptions") for i in items) and any(i.get("challenges") for i in items))
         self.assertTrue(any(len(i.get("from", [])) > 1 for i in items))
         self.assertTrue(all(t["links"] for t in self.data["trees"].values()))
         self.assertEqual(len(self.data["history"]), 3)
-
+        self.assertFalse({c["type"] for h in self.data["history"] for c in h["changes"]} & {"accepted", "disputed"})
+        self.assertEqual(len(self.data["feedback"][0]["reports"]), 3)  # A trial needs no acceptance of the reasoning.
     def test_example_ids_never_collide_with_ours(self):
         ids = {i["id"] for t in self.data["trees"].values() for i in t["nodes"] + t["links"]}
         self.assertFalse(ids & self.real_ids)
         self.assertTrue(all(i.startswith("wl-") for i in ids))
 
-    def test_accepted_link_needs_accepted_endpoints(self):
+    def test_only_our_commons_may_publish_acceptance(self):
+        for standing, endorsers in (("accepted", ["Amara"]), ("disputed", [])):
+            data = deepcopy(self.data)
+            node = data["trees"]["goal"]["nodes"][0]
+            node.update(status=standing, accepted_by=endorsers)
+            with self.assertRaisesRegex(ValueError, "Only the Reason Commons commons"):
+                build.validate_v2(data, self.registry)
         data = deepcopy(self.data)
-        link = next(l for l in data["trees"]["future_reality"]["links"] if l["id"] == "wl-f-rel-fewer")
-        target = next(n for n in data["trees"]["future_reality"]["nodes"] if n["id"] == link["to"])
-        target.update(status="proposed", accepted_by=[])
-        with self.assertRaisesRegex(ValueError, "accepted endpoints"):
+        data["feedback"][0]["about"]["standing"] = "accepted"
+        with self.assertRaisesRegex(ValueError, "accepted feedback statement"):
             build.validate_v2(data, self.registry)
-
     def test_history_cannot_mention_unpublished_material(self):
         data = deepcopy(self.data)
         data["history"][0]["changes"][0]["refs"].append("wl-not-published")
@@ -455,8 +483,8 @@ class ReconstructionTests(unittest.TestCase):
         self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 246)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
-        expected = {"real": "dbe81da21f413fa19300a64501b17797aaa4ecec8fa770b1869fea989f2db2f9",
-                    "example": "f4319cd397cb6b7562f4399f7425d8613190a78aedf936304be63b0003597c1e"}
+        expected = {"real": "7e657a452c2b5840c2168188ba1e139c46f8fcb5f8ee9e89ac74687cbe88de75",  # proposed-reasoning-public r1
+                    "example": "02820685f155a154bcfeb8a35e71ce18771a6b31e6410afaf7ded14a4a30eef4"}
         for record in self.commons:
             if record["entry"]["kind"] in expected:
                 self.assertEqual(build.digest(record["data"]), expected[record["entry"]["kind"]])
@@ -1200,7 +1228,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),60)
+        self.assertEqual(len(htmls),62)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)
@@ -1455,19 +1483,25 @@ class PlanTests(unittest.TestCase):
 
     def test_cards_mark_who_proposed_and_who_accepted(self):
         page = self.outputs["example-willow-lane/prerequisites.html"]
-        order = re.search(r'<li class="pv-card pv-k-intermediate_objective pv-accepted[^"]*" data-node="wl-p-io-order".*?</li>', page, flags=re.S).group(0)
+        order = re.search(r'<li class="pv-card pv-k-intermediate_objective pv-proposed[^"]*" data-node="wl-p-io-order".*?class="pv-foot".*?</div>', page, flags=re.S).group(0)
         self.assertIn('class="pv-av pv-av-by" title="Proposed by Dev"', order)
-        self.assertIn("Accepted for now by Dev and Amara.", order)
-        spaces = re.search(r'<li class="pv-card [^"]*" data-node="wl-p-io-spaces".*?</li>', page, flags=re.S).group(0)
-        self.assertIn("pv-proposed", spaces)
-        self.assertIn('<span class="pv-none">Not accepted</span>', spaces)
-        self.assertNotIn("pv-av-ok", spaces)
-        self.assertIn('data-link="wl-p-rel-over-parking"', spaces)
-        gandhi = self.outputs["gandhi-2-0/prerequisites.html"]
-        self.assertIn('class="pv-av pv-av-by pv-ai" title="Proposed by AI assistant"', gandhi)
-        self.assertNotIn('pv-av-ok" title=', gandhi)  # Nobody has accepted anything in this reconstruction.
-        self.assertIn("Nobody has accepted anything here yet", gandhi)
-
+        self.assertIn('<span class="pv-none">Not accepted</span>', order)
+        self.assertIn('data-link="wl-p-rel-over-order"', order)
+        ours = self.outputs["reason-commons/prerequisites.html"]
+        stage1 = re.search(r'<li class="pv-card [^"]*" data-node="pr2-obj-stage1".*?class="pv-foot".*?</div>', ours, flags=re.S).group(0)
+        self.assertIn('title="Proposed by AI assistant"', stage1)
+        self.assertIn('title="Proposed by Rufus Pollock"', stage1)
+        for path, value in self.outputs.items():  # Only our commons shows filled acceptance marks.
+            if path.endswith(".html") and not path.startswith("reason-commons/"):
+                self.assertNotIn('pv-av-ok" title=', value, path)
+        # The marks still render where an item is accepted.
+        record = next(r for r in build.load_site()[1] if r["entry"]["slug"] == "example-willow-lane")
+        normalized = deepcopy(build.normalize(record))
+        node = next(n for n in normalized["trees"]["prerequisite"]["nodes"] if n["id"] == "wl-p-io-order")
+        node.update(status="accepted", accepted_by=["Dev", "Amara"])
+        guide, wide, after = pages.prerequisite_plan(pages.Commons(normalized))
+        self.assertIn("Accepted for now by Dev and Amara.", wide)
+        self.assertIn('class="pv-av pv-av-ok" title="Accepted for now by Dev"', wide)
     def test_actions_follow_the_recorded_order_or_a_timeline(self):
         willow = self.outputs["example-willow-lane/actions.html"]
         self.assertEqual(willow.count('<section class="pv-group">'), 2)
@@ -1484,7 +1518,7 @@ class PlanTests(unittest.TestCase):
         self.assertNotIn("When each action is needed", willow)
 
     def test_plans_are_complete_without_javascript(self):
-        for slug in ("example-willow-lane", "re-membering", "wisdom-ai", "gandhi-2-0"):
+        for slug in ("reason-commons", "example-willow-lane", "re-membering", "wisdom-ai", "gandhi-2-0"):
             for path in ("prerequisites", "actions"):
                 page = self.outputs[f"{slug}/{path}.html"]
                 cards = set(re.findall(r'class="pv-card [^"]*" data-node="([^"]+)"', page))
