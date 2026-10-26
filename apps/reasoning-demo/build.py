@@ -33,7 +33,7 @@ TREE_KINDS = {
     "transition": {"existing_condition", "need", "action", "expected_effect"},
 }
 KINDS = set().union(*TREE_KINDS.values()) | {"observation"}
-RELATIONS = {"necessary_for", "contributes_to"}
+RELATIONS = {"necessary_for", "contributes_to", "conflicts_with", "causes", "produces", "overcomes"}
 NODE_FIELDS = {"id", "kind", "text", "label", "status", "accepted_by", "contributors", "acceptance_context"}
 LINK_FIELDS = {"id", "from", "to", "relation", "status", "accepted_by", "contributors", "acceptance_context"}
 TRACES = ("addresses", "derived_from", "implements")
