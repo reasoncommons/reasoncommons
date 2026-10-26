@@ -25,7 +25,7 @@ class Config:
 
     @property
     def skill(self):
-        return self.repo / "skills/reason-commons"
+        return self.repo / "skills/ltp"
 
     @property
     def scripts(self):

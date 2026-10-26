@@ -10,7 +10,7 @@
 <p>The assistant’s minimum-capacity calculation returns triage, forty-five. The validator does not make this calculation or decide that a causal explanation is true.</p>
 <h2>What actually ran</h2><table><thead><tr><th>Step</th><th>Operation</th><th>Claim standing</th><th>Saved-state fingerprint</th></tr></thead><tbody><tr><td>1</td><td>Capture the published assertion as proposed reasoning</td><td>proposed</td><td><code>4a28d1663e7eb836…</code></td></tr><tr><td>2</td><td>Attach the arithmetic objection to the specific inference</td><td>disputed</td><td><code>942afe36aa9ceea7…</code></td></tr><tr><td>3</td><td>Revise the same claim while retaining its provenance and challenge</td><td>proposed</td><td><code>e67c988a855273c5…</code></td></tr></tbody></table>
 <p>Each save was followed by the actual <code>update_views.py</code> helper. All three calls returned exit code zero. Nothing was human-endorsed, so no accepted-history revision was created.</p>
-<pre>python3 skills/reason-commons/scripts/update_views.py
+<pre>python3 skills/ltp/scripts/update_views.py
   ltp/examples/explainer-skill-session/reason-commons.yaml
   --output-dir /tmp/explainer-public-example-views</pre>
 <h2>The record that remains</h2><p>The same stable claim now has a corrected statement. Its contribution records the old wording, and the inference retains the original arithmetic challenge. A human review and the next capacity check remain open.</p>
@@ -77,7 +77,7 @@ backlog:
 }</pre>
 <p>This checks file persistence. It does not test a fresh model session’s unprompted recall, automatic sharing between independent copies, or the skill’s reliability with a real group. The JSON record retains the three intermediate states explicitly; the helper does not automatically create accepted snapshots for proposals.</p>
 <h2>Inspect the underlying evidence</h2><p><a href="session.json">Open the complete execution JSON →</a>. It includes the source quotation, instruction/helper fingerprints, exact validation outputs, all three states and the fresh-process result.</p><p>Only this public-safe example is included. The working collaboration file is not published here.</p>
-<p><a href="../../skills/README.md">Install and start the skill →</a></p><p>Begin with your own question, then return to the same working file:</p><pre>Use the reason-commons skill to help me check why [this keeps happening].
+<p><a href="../../skills/README.md">Install and start the skill →</a></p><p>Begin with your own question, then return to the same working file:</p><pre>Use the ltp skill to help me check why [this keeps happening].
 My name is [name]. Keep the working state in reason-commons.yaml.</pre>
 <div class="next-actions"><a href="../01-bottleneck-in-practice/index.html">The Wrong Queue</a><a href="../02-thinking-made-visible-in-practice/index.html">The Arrows Nobody Checks</a><a href="../03-five-shapes-in-practice/index.html">Five Shapes</a></div>
 </main></body></html>

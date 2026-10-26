@@ -16,7 +16,7 @@ The conversational YAML is the working reasoning state for these sessions. The o
 ## Resume
 
 1. Read `bd --sandbox show reasoncommons-a4l`, then the current work bead named there. Follow an explicit user change of focus when supplied.
-2. Read [the reason-commons skill](../skills/reason-commons/SKILL.md) and the working YAML. Use its `work_tracking` pointers and the linked backlog entries to locate the relevant reasoning by stable node/link ID.
+2. Read [the ltp skill](../skills/ltp/SKILL.md) and the working YAML. Use its `work_tracking` pointers and the linked backlog entries to locate the relevant reasoning by stable node/link ID.
 3. Read the relevant source context, unresolved challenges and friction before proposing changes. The driver is the current operator; do not assume that a prior participant's endorsement includes the driver.
 4. Work through one useful question at a time. Selecting a work bead does not claim it or change its status automatically. Preserve existing owners and human gates.
 
@@ -39,9 +39,9 @@ The standard views helper validates reasoning and ignores these coordination fie
 
 ## Finish or hand off
 
-Feedback sync is paused since the YAML moved to the private repo on 2026-10-21; do not configure it against this repo. When re-enabled, for feedback records, the skill's [configured Git sync](../skills/reason-commons/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
+Feedback sync is paused since the YAML moved to the private repo on 2026-10-21; do not configure it against this repo. When re-enabled, for feedback records, the skill's [configured Git sync](../skills/ltp/references/feedback-sync.md) runs on entry and after capture. It publishes feedback and derived reasoning-review work only; Beads exports, approval receipts, implementation changes and other reasoning work retain their existing delivery workflow. A verified feedback push does not mean the Beads handoff or code checkout is shared. Preserve immediate local feedback and report incomplete sharing explicitly.
 
-1. Save the reasoning YAML atomically and run `python3 skills/reason-commons/scripts/update_views.py collab/reason-commons.yaml` (from the private repo) as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
+1. Save the reasoning YAML atomically and run `python3 skills/ltp/scripts/update_views.py collab/reason-commons.yaml` (from the private repo) as the skill requires. Keep generated `.reason-commons/` history and diagrams local.
 2. Update the relevant work bead with what was addressed, what remains and the stable YAML IDs. Complete only work actually finished. A completed task does not make a statement true or accepted; an endorsed statement may still need further testing.
 3. Refresh `rcp-a4l` with the working file, current work bead, next question or step, and any blocker. Update `work_tracking.current` if the selection changed. Keep the handoff open for later sessions and avoid duplicate priority lists.
 4. Record friction when encountered. Reuse or create separate beads for implementation work arising from the reasoning; handle those in separate sessions. Keep issues labelled `human` for Rufus to close.

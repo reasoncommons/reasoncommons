@@ -37,7 +37,7 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
             async def query(self, prompt):
                 test.prompt = prompt
             async def receive_response(self):
-                yield sdk.SystemMessage(subtype="init", data={"skills": ["reason-commons"] if available else []})
+                yield sdk.SystemMessage(subtype="init", data={"skills": ["ltp"] if available else []})
                 hook = test.options.hooks["PreToolUse"][0].hooks[0]
                 if read:
                     event = {"tool_name": "Read", "tool_input": {"file_path": str(test.config.skill / "SKILL.md")}}
@@ -62,15 +62,15 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_skill_dispatch_loading_evidence_and_explicit_api_settings(self):
         reply = await self.run_agent()
-        self.assertTrue(self.prompt.startswith("/reason-commons\n"))
-        self.assertEqual(self.options.skills, ["reason-commons"])
+        self.assertTrue(self.prompt.startswith("/ltp\n"))
+        self.assertEqual(self.options.skills, ["ltp"])
         self.assertEqual(self.options.setting_sources, ["project"])
         self.assertTrue(self.options.strict_mcp_config)
         self.assertNotIn("Bash", self.options.tools)
         self.assertEqual(self.options.env["ANTHROPIC_API_KEY"], "fixture-key")
         self.assertEqual(self.options.env["CLAUDE_CODE_OAUTH_TOKEN"], "")
         self.assertEqual(reply.skill_version, package_version(self.config.skill))
-        self.assertTrue((self.stage.parent / ".claude/skills/reason-commons").is_symlink())
+        self.assertTrue((self.stage.parent / ".claude/skills/ltp").is_symlink())
 
     async def test_missing_skill_fails_closed(self):
         with self.assertRaisesRegex(ValueError, "loading was not observed"):
@@ -104,8 +104,10 @@ class AgentTests(unittest.IsolatedAsyncioTestCase):
                            ("Read", {"file_path": "../outside.yaml"}),
                            ("Write", {"file_path": str(self.config.skill / "SKILL.md")}),
                            ("Bash", {"command": "echo danger"}),
-                           ("Skill", {"skill": "other-skill"})]:
+                           ("Skill", {"skill": "other-skill"}),
+                           ("Skill", {"skill": "reason-commons"})]:
             self.assertFalse(agent.permitted(tool, args, self.stage, True))
+        self.assertTrue(agent.permitted("Skill", {"skill": "ltp"}, self.stage, False))
         self.assertTrue(agent.permitted("Read", {"file_path": str(self.config.skill / "references/schema.md")}, self.stage, False))
         self.assertFalse(agent.permitted("Edit", {"file_path": str(self.stage)}, self.stage, False))
         self.assertTrue(agent.permitted("Edit", {"file_path": str(self.stage)}, self.stage, True))

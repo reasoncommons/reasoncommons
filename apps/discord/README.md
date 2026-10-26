@@ -1,6 +1,6 @@
 # Reason Commons Discord prototype
 
-A single-host Python adapter gives the canonical [reason-commons skill](../../skills/reason-commons/SKILL.md) an explicit-invocation Discord surface. It uses Claude Agent SDK with API authentication, discord.py, SQLite and a local Mermaid renderer. The full skill package remains the source of reasoning instructions; it is not copied into this application.
+A single-host Python adapter gives the canonical [ltp skill](../../skills/ltp/SKILL.md) an explicit-invocation Discord surface. It uses Claude Agent SDK with API authentication, discord.py, SQLite and a local Mermaid renderer. The full skill package remains the source of reasoning instructions; it is not copied into this application.
 
 This is a locally verified prototype. No live Discord connection, funded model invocation or deployment has been verified. See the [implementation scope and evidence](../../docs/product/plans/2026-10-16-discord-bot.md). The older [MCP access plan](../../docs/product/plans/2026-07-06-discord-mcp-agent-access.md) describes a different direction of integration.
 
@@ -8,7 +8,7 @@ This is a locally verified prototype. No live Discord connection, funded model i
 
 ### Optional feedback sharing
 
-The native skill and Discord host use the same [feedback sync helper](../../skills/reason-commons/references/feedback-sync.md). After standing authorisation, configure the actual state file once per checkout with `feedback_sync.py <state.yaml> configure --remote origin --branch main --by <participant-id> --source-text '<actual standing authorisation>'`. The service then refreshes before selecting feedback and shares after the local save journal completes. Responses distinguish saved locally from verified sharing; proactive prompts wait when configured shared state cannot be refreshed. Independent reports merge without endorsing claims, rewriting original predictions, staging code or resetting the user's index. Expectations referring to unshared reasoning remain local until those definitions are shared through their authorised workflow. No configuration means local capture as before.
+The native skill and Discord host use the same [feedback sync helper](../../skills/ltp/references/feedback-sync.md). After standing authorisation, configure the actual state file once per checkout with `feedback_sync.py <state.yaml> configure --remote origin --branch main --by <participant-id> --source-text '<actual standing authorisation>'`. The service then refreshes before selecting feedback and shares after the local save journal completes. Responses distinguish saved locally from verified sharing; proactive prompts wait when configured shared state cannot be refreshed. Independent reports merge without endorsing claims, rewriting original predictions, staging code or resetting the user's index. Expectations referring to unshared reasoning remain local until those definitions are shared through their authorised workflow. No configuration means local capture as before.
 
 The code checkout must contain this helper and these host hooks. Merging a PR on GitHub does not update a local installed checkout: fast-forward it through the normal update process, verify the helper exists, then configure the destination. Native editing remains a single-writer operation; capture through the active Discord writer or pause it before native edits.
 
@@ -27,7 +27,7 @@ Only configured guild/channel IDs and mapped human users are allowed. There is n
 
 ## Shared expectations and feedback
 
-The canonical reasoning YAML holds `feedback_requests`: immutable prediction versions, required human `feedback_from` IDs, optional timing, original benefit/reservation snapshots and append-only reports. Read [the skill's feedback contract](../../skills/reason-commons/references/feedback.md) for capture and interpretation. Native sessions and this bot must use the same actual file, not separate copies or separate Git checkouts; setting an identical repository-relative name on two computers does not synchronize them. Existing single-host writer coordination and conflict/recovery rules still apply. A native session can inspect its queue with `python3 skills/reason-commons/scripts/feedback.py /absolute/path/to/state.yaml --participant rufus`. A missing date never makes a request disappear. An explicit new participant interaction after 30 minutes away shows the first ready feedback request before the requested answer; it does not require an answer to continue.
+The canonical reasoning YAML holds `feedback_requests`: immutable prediction versions, required human `feedback_from` IDs, optional timing, original benefit/reservation snapshots and append-only reports. Read [the skill's feedback contract](../../skills/ltp/references/feedback.md) for capture and interpretation. Native sessions and this bot must use the same actual file, not separate copies or separate Git checkouts; setting an identical repository-relative name on two computers does not synchronize them. Existing single-host writer coordination and conflict/recovery rules still apply. A native session can inspect its queue with `python3 skills/ltp/scripts/feedback.py /absolute/path/to/state.yaml --participant rufus`. A missing date never makes a request disappear. An explicit new participant interaction after 30 minutes away shows the first ready feedback request before the requested answer; it does not require an answer to continue.
 
 The feedback command defaults to displaying the saved request. To submit, supply `feedback` with your actual words. When there is exactly one benefit and/or reservation, the optional `benefit` and `reservation` choices assess them separately. For multiple outcomes, use `outcome:<statement-id> verdict:<choice>` for one specific outcome per invocation, or use `/reason mode:capture` to describe feedback naturally with the request ID and revision. The capture agent must clarify ambiguous references or judgments. Feedback commands themselves require no model call.
 
@@ -43,7 +43,7 @@ A send is reserved durably before network I/O. A crash or ambiguous error leaves
 
 ## Local installation and checks
 
-Install Python 3.11+ (the local checks used 3.12), Git, uv and Node 22+. Work from a checkout containing the complete `skills/reason-commons/` package, not a standalone wheel alone.
+Install Python 3.11+ (the local checks used 3.12), Git, uv and Node 22+. Work from a checkout containing the complete `skills/ltp/` package, not a standalone wheel alone.
 
 ```sh
 cd apps/discord
@@ -57,7 +57,7 @@ The Python tests mock the provider and Discord boundaries and do not require cre
 Run the repository's existing helper tests from the repository root:
 
 ```sh
-python3 -m unittest discover -s skills/reason-commons/tests
+python3 -m unittest discover -s skills/ltp/tests
 ```
 
 ## Configuration

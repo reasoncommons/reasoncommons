@@ -102,7 +102,7 @@ class ChangeAcceptanceTests(unittest.TestCase):
             views.validate(self.state)
 
     def test_approved_paths_are_optional_but_must_be_exact_relative_paths(self):
-        for paths in ([], ["README.md", "skills/reason-commons/SKILL.md"]):
+        for paths in ([], ["README.md", "skills/ltp/SKILL.md"]):
             self.state["change_acceptances"][0]["approved_paths"] = paths
             views.validate(self.state)
         for paths in (None, "README.md", [""], ["/tmp/file"], ["../file"], ["a/../file"], ["a//file"], ["./file"], ["."], ["a\\file"], ["README.md", "README.md"], [42]):

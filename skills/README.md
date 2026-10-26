@@ -1,4 +1,4 @@
-# Reason Commons skill
+# LTP skill
 
 A skill that helps people and groups work out what they are trying to achieve and what to do about it, in conversation with an AI agent, and keeps that reasoning so it builds up. It works in Claude Code, Codex and other agents that support `SKILL.md` skills.
 
@@ -10,10 +10,10 @@ A skill that helps people and groups work out what they are trying to achieve an
 
 ## Start here
 
-Install the Reason Commons skill:
+Install the LTP (Logical Thinking Process) skill:
 
 ```sh
-npx skills add reasoncommons/reasoncommons -s reason-commons
+npx skills add reasoncommons/reasoncommons -s ltp
 ```
 
 That selects the conversational skill and asks which agents to install it into.
@@ -21,7 +21,7 @@ That selects the conversational skill and asks which agents to install it into.
 To install it for one agent in every project:
 
 ```sh
-npx skills add reasoncommons/reasoncommons -s reason-commons -a claude-code -g
+npx skills add reasoncommons/reasoncommons -s ltp -a claude-code -g
 ```
 
 Replace `claude-code` with the agent you use. Run `npx skills add reasoncommons/reasoncommons --list` to see the available skills without installing them.
@@ -29,27 +29,29 @@ Replace `claude-code` with the agent you use. Run `npx skills add reasoncommons/
 Don't want to install anything? Print a skill as a ready-to-paste prompt, or give your agent the raw file:
 
 ```sh
-npx skills use reasoncommons/reasoncommons@reason-commons
+npx skills use reasoncommons/reasoncommons@ltp
 ```
 
 ```text
-https://raw.githubusercontent.com/reasoncommons/reasoncommons/main/skills/reason-commons/SKILL.md
+https://raw.githubusercontent.com/reasoncommons/reasoncommons/main/skills/ltp/SKILL.md
 ```
 
 An installed copy includes the skill's helper script and references, so installation is the best option.
+
+Previously installed `reason-commons`? Install `ltp` and remove the old skill from your agent to avoid duplicate discovery. Existing `reason-commons.yaml` working files and their history remain compatible.
 
 ## The skill
 
 | Skill | What it does | Use it when |
 |-------|--------------|-------------|
-| [`reason-commons`](reason-commons/SKILL.md) | Helps people work through a goal or problem in conversation and turn it into agreed next steps, keeping who said what, what is still unfinished, what was accepted and diagrams of it | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
+| [`ltp`](ltp/SKILL.md) | Helps people work through a goal or problem in conversation and turn it into agreed next steps, keeping who said what, what is still unfinished, what was accepted and diagrams of it | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
 
 ## Start a reasoning conversation
 
 After installing, open your agent in the folder where you want the working state to live and paste a prompt like this:
 
 ```text
-Use the reason-commons skill to help me think through why customer quotes are late. My name is Alice. Keep the working state in reason-commons.yaml.
+Use the ltp skill to help me think through why customer quotes are late. My name is Alice. Keep the working state in reason-commons.yaml.
 ```
 
 You can begin with a goal, a problem, a conflict, a proposed change, an obstacle or a sequence of actions. You do not need to know the method underneath or prepare a document. The agent will capture useful statements, keep contributors' names attached to their ideas, and ask one focused question at a time.
@@ -57,7 +59,7 @@ You can begin with a goal, a problem, a conflict, a proposed change, an obstacle
 To resume later, open the same folder and say:
 
 ```text
-Use the reason-commons skill and resume from reason-commons.yaml. Show me the most useful unfinished reasoning to work on next.
+Use the ltp skill and resume from reason-commons.yaml. Show me the most useful unfinished reasoning to work on next.
 ```
 
 For a group, name people as they contribute. If speaker labels come from a transcript or voice system, give those labels to the agent; the skill does not guess who spoke.
@@ -77,12 +79,12 @@ After an accepted change, the helper validates the working YAML and saves one nu
 - The full view shows all currently accepted statements and accepted connections.
 - The latest-change view highlights what was added, changed or removed, with enough neighboring context to review the change.
 
-Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required; the current helper draws its SVG directly without Graphviz or a JavaScript renderer; see [`reason-commons/references/views.md`](reason-commons/references/views.md) for details.
+Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required; the current helper draws its SVG directly without Graphviz or a JavaScript renderer; see [`ltp/references/views.md`](ltp/references/views.md) for details.
 
 ## Send this to a colleague
 
 ```text
-Try the Reason Commons skill to think through a goal, problem, conflict or plan together. Install it with `npx skills add reasoncommons/reasoncommons -s reason-commons`, then ask your agent: "Use the reason-commons skill to help me think through [topic]. My name is [name]." The agent keeps unfinished reasoning in a backlog and turns explicitly accepted reasoning into full and latest-change diagrams. More: https://reasoncommons.com/skills
+Try the LTP skill from Reason Commons to think through a goal, problem, conflict or plan together. Install it with `npx skills add reasoncommons/reasoncommons -s ltp`, then ask your agent: "Use the ltp skill to help me think through [topic]. My name is [name]." The agent keeps unfinished reasoning in a backlog and turns explicitly accepted reasoning into full and latest-change diagrams. More: https://reasoncommons.com/skills
 ```
 
 ## For contributors
@@ -91,7 +93,7 @@ The explainer-writing skill has moved to its own repository: [Scrollable Explain
 
 ## For maintainers
 
-- Skills live at top level so they work outside one agent runtime. Link the skills you use into `.claude/skills/` for Claude Code or `.agents/skills/` for Codex. This repository tracks the Codex link for `reason-commons`.
+- Skills live at top level so they work outside one agent runtime. Link the skills you use into `.claude/skills/` for Claude Code or `.agents/skills/` for Codex. This repository tracks the Codex link for `ltp`.
 - `ltp-project` and `ltp-visualize` were retired on 2026-10-21 with the Reason Commons app whose import format they served. `tree-gen`, `annotation-mapping`, `contribution-proposals`, `goal-alignment` and `project-ltp` were retired earlier. All remain in Git history.
 
 ## Canonical packages and public guide

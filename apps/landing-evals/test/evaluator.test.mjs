@@ -277,7 +277,7 @@ test('in a browser, the probe fails a Claude-only download, passes a visible com
   const filler = '<p>' + 'Reason Commons helps a group examine its reasoning. '.repeat(12) + '</p>';
   const pages = {
     'claude-only.html': `<h1>Untangle it</h1>${filler}<button data-download>Download the skill</button><p class="status" aria-live="polite"></p><script>document.querySelector('[data-download]').onclick=()=>{document.querySelector('.status').textContent='This view can’t save files. Open the page in Claude.'}</script>`,
-    'command.html': `<h1>Check the because</h1>${filler}<a href="#install">Install</a><div style="height:1200px"></div><section id="install"><pre>npx skills add life-itself/reasoncommons -s reason-commons</pre></section>`,
+    'command.html': `<h1>Check the because</h1>${filler}<a href="#install">Install</a><div style="height:1200px"></div><section id="install"><pre>npx skills add reasoncommons/reasoncommons -s ltp</pre></section>`,
     'download.html': `<h1>Get it</h1>${filler}<button id="d">Download the skill</button><script>d.onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob(['zip']));a.download='skill.zip';a.click();}</script>`
   };
   const dir = await mkdtemp(join(tmpdir(), 'probe-'));

@@ -1,7 +1,7 @@
 [project]
 name = "reasoncommons-discord"
 version = "0.1.0"
-description = "Explicit-invocation Discord adapter for the canonical reason-commons skill"
+description = "Explicit-invocation Discord adapter for the canonical ltp skill"
 requires-python = ">=3.11"
 dependencies = [
   "claude-agent-sdk>=0.2.168,<0.3",

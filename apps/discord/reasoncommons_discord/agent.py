@@ -37,7 +37,7 @@ class Agent:
                     all(isinstance(arguments.get(k), list) and all(isinstance(v, str) for v in arguments[k])
                         for k in ("review_ids", "reasoning_ids")))
         if tool == "Skill":
-            return arguments.get("skill") == "reason-commons"
+            return arguments.get("skill") == "ltp"
         if tool not in {"Read", "Edit", "Write"}:
             return False
         raw = arguments.get("file_path")
@@ -59,7 +59,7 @@ class Agent:
         subprocess.run(["git", "init", "--quiet", str(stage.parent)], check=True, capture_output=True)
         directory = stage.parent / ".claude/skills"
         directory.mkdir(parents=True)
-        (directory / "reason-commons").symlink_to(self.config.skill, target_is_directory=True)
+        (directory / "ltp").symlink_to(self.config.skill, target_is_directory=True)
         observed = {"available": False, "read": False}
 
         async def permission(tool, arguments, context):
@@ -84,7 +84,7 @@ class Agent:
             return {}
 
         contract = (
-            "You are the on-demand Discord surface for the reason-commons skill. "
+            "You are the on-demand Discord surface for the ltp skill. "
             "Read the canonical SKILL.md using Read before working, including its relevant references. "
             "The host runs the canonical validator/views helper and persists validated edits after this turn. "
             "Use native Edit/Write only on the staged YAML when mode is capture. Do not run shell commands. "
@@ -109,7 +109,7 @@ class Agent:
             "Do not claim anything was saved until the host confirms it. Do not draw generated images."
         )
         options = sdk.ClaudeAgentOptions(
-            cwd=str(stage.parent), setting_sources=["project"], skills=["reason-commons"],
+            cwd=str(stage.parent), setting_sources=["project"], skills=["ltp"],
             strict_mcp_config=True,
             tools=["Read", "Edit", "Write", "Skill"],
             allowed_tools=[], permission_mode="default",
@@ -131,7 +131,7 @@ class Agent:
                                "review_ids": {"type": "array", "items": {"type": "string"}},
                                "reasoning_ids": {"type": "array", "items": {"type": "string"}}}}},
         )
-        prompt = "/reason-commons\n" + json.dumps({
+        prompt = "/ltp\n" + json.dumps({
             "mode": request.mode, "driver": person, "state_file": str(stage),
             "canonical_skill": str(self.config.skill / "SKILL.md"),
             "invocation_id": request.id, "question_or_contribution": request.text,
@@ -145,7 +145,7 @@ class Agent:
             async for message in client.receive_response():
                 if isinstance(message, sdk.SystemMessage) and message.subtype == "init":
                     names = [v if isinstance(v, str) else v.get("name") for v in message.data.get("skills", [])]
-                    observed["available"] = "reason-commons" in names
+                    observed["available"] = "ltp" in names
                 if isinstance(message, sdk.ResultMessage):
                     if message.is_error or message.subtype != "success" or getattr(message, "terminal_reason", None) not in (None, "success", "end_turn"):
                         raise ValueError("The model run did not finish successfully; staged changes were discarded.")

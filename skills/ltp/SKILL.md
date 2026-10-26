@@ -1,9 +1,9 @@
 ---
-name: reason-commons
+name: ltp
 description: Help individuals or groups build and challenge Logical Thinking Process trees through interactive conversation, with contributor attribution, a working backlog, and persistent YAML state. Use when users want to think through goals, problems, conflicts, proposed changes, obstacles, or actions together. Not for batch document extraction.
 ---
 
-# Reason Commons
+# Logical Thinking Process (LTP)
 
 Help people develop their own reasoning, one useful step at a time. Capture contributions as the conversation proceeds, maintain the trees in YAML, and direct attention toward unfinished reasoning when more input would only enlarge the backlog.
 
