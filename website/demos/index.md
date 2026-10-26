@@ -52,6 +52,6 @@ These seven mockups explore different visual paradigms for working with shared r
 
 [Wisdom and AI](/demos/reason-commons-in-use/wisdom-ai/index.html) joins the existing demonstrations: four original source-question hierarchies and six proposed reasoning trees expanded from David Joseph’s analysis, with competing explanations, source references, open questions and conditional steps.
 
-## Why Things Last
+## Persistent Systems Theory
 
-[Why Things Last](/demos/reason-commons-in-use/persistent-systems/index.html) maps Stephen Le’s Persistent Systems Theory and Adaptive Persistence protocol: what keeps a group going, the dilemmas it faces between reserves and experiments and between openness and self-protection, and five steps it could take. Every statement is proposed and carries a section or page reference to the original documents.
+[Persistent Systems Theory](/demos/reason-commons-in-use/persistent-systems/index.html) maps Stephen Le’s Adaptive Persistence protocol: what keeps a group going, the dilemma it faces between openness and self-protection, and five steps it could take. Every statement is proposed and carries a page reference to the original documents.

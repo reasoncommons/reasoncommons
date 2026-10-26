@@ -4,7 +4,7 @@
   "release": {
     "release_id": "2026-10-26.1",
     "snapshot_date": "2026-10-26",
-    "title": "Why Things Last"
+    "title": "Persistent Systems Theory"
   },
   "people": {
     "david": "David Joseph"
@@ -15,11 +15,7 @@
   "authors": {
     "le": {
       "name": "Stephen Le",
-      "role": "Author of Persistent Systems Theory and Adaptive Persistence, and of the two credited Adaptive Persistence documents; has not reviewed or endorsed this reconstruction"
-    },
-    "thrival-compendium": {
-      "name": "Thrival theory compendium",
-      "role": "Source of Why Things Last, an introduction to Stephen Le’s theory supplied by David Joseph; the essay does not name its author"
+      "role": "Author of Persistent Systems Theory and Adaptive Persistence, and of both credited documents; has not reviewed or endorsed this reconstruction"
     }
   },
   "selection": {
@@ -36,8 +32,7 @@
         "ps-g-try",
         "ps-g-reserve",
         "ps-g-uncouple",
-        "ps-g-read-env",
-        "ps-g-allocate"
+        "ps-g-read-env"
       ],
       "links": [
         "ps-gl-cooperate",
@@ -50,46 +45,29 @@
         "ps-gl-try",
         "ps-gl-reserve",
         "ps-gl-uncouple",
-        "ps-gl-read-env",
-        "ps-gl-allocate"
+        "ps-gl-read-env"
       ]
     },
     "current_reality": {
       "nodes": [
-        "ps-r-three-threats",
-        "ps-r-filter",
-        "ps-r-new-levels",
         "ps-r-pressure",
         "ps-r-competitive",
         "ps-r-fear",
         "ps-r-unassessed",
         "ps-r-surface",
-        "ps-r-growth",
         "ps-r-free-riders",
-        "ps-r-cut-reserves",
-        "ps-r-cut-experiments",
-        "ps-r-conflict",
-        "ps-r-shock",
-        "ps-r-obsolete"
+        "ps-r-conflict"
       ],
       "links": [
         "ps-rl-fear",
         "ps-rl-surface",
         "ps-rl-unassessed",
         "ps-rl-conflict",
-        "ps-rl-growth",
-        "ps-rl-free-riders",
-        "ps-rl-shock",
-        "ps-rl-obsolete"
+        "ps-rl-free-riders"
       ]
     },
     "conflict": {
       "nodes": [
-        "ps-c1-objective",
-        "ps-c1-absorb",
-        "ps-c1-renew",
-        "ps-c1-reserve",
-        "ps-c1-experiment",
         "ps-c2-objective",
         "ps-c2-trust",
         "ps-c2-standing",
@@ -97,11 +75,6 @@
         "ps-c2-guarded"
       ],
       "links": [
-        "ps-cl1-absorb",
-        "ps-cl1-renew",
-        "ps-cl1-reserve",
-        "ps-cl1-experiment",
-        "ps-cl1-conflict",
         "ps-cl2-trust",
         "ps-cl2-standing",
         "ps-cl2-open",
@@ -115,16 +88,13 @@
         "ps-f-match",
         "ps-f-act",
         "ps-f-gentle",
-        "ps-f-wall",
         "ps-f-criteria",
         "ps-f-see",
         "ps-f-voiced",
         "ps-f-willing",
         "ps-f-causes",
-        "ps-f-options",
         "ps-f-cooperate",
         "ps-f-fit",
-        "ps-f-filing",
         "ps-f-cases"
       ],
       "links": [
@@ -135,10 +105,6 @@
         "ps-fl-causes",
         "ps-fl-cooperate",
         "ps-fl-fit",
-        "ps-fl-options",
-        "ps-fl-options-fit",
-        "ps-fl-filing",
-        "ps-fl-criteria",
         "ps-fl-repeat"
       ]
     },
@@ -200,14 +166,6 @@
   "feedback": [],
   "sources": [
     {
-      "id": "essay",
-      "kind": "supplied_document",
-      "author": "thrival-compendium",
-      "title": "Why Things Last · an introduction to Persistent Systems Theory",
-      "description": "An essay introducing Stephen Le’s Persistent Systems Theory through three survivors, the three ways things fail, the three capacities that defend against them, the budget among them, three features of an environment and five ways the theory could be wrong. Supplied by David Joseph from the Thrival theory compendium. References give its numbered sections.",
-      "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/why-things-last.md"
-    },
-    {
       "id": "ap-summary",
       "kind": "supplied_document",
       "author": "le",
@@ -229,7 +187,7 @@
       {
         "id": "three-capacities",
         "title": "Cooperate, adapt, withstand, and fit the world",
-        "summary": "Adaptive Persistence's three questions become three conditions, with a fourth from the essay: the capacities have to suit the environment. The supporting conditions are drawn from the summary's 24 design principles, two for each.",
+        "summary": "Adaptive Persistence’s three questions become three conditions, with a fourth: the group’s capacities have to match its environment. The supporting conditions are drawn from the summary’s 24 design principles.",
         "nodes": [
           "ps-g-goal",
           "ps-g-cooperate",
@@ -242,62 +200,27 @@
           "ps-g-try",
           "ps-g-reserve",
           "ps-g-uncouple",
-          "ps-g-read-env",
-          "ps-g-allocate"
+          "ps-g-read-env"
         ]
       }
     ],
     "current_reality": [
       {
-        "id": "theory-account",
-        "title": "The theory's starting point",
-        "summary": "Three claims from the essay that frame everything else. They are attributed observations with no causal connections; the essay itself warns that none of them has been tested.",
-        "nodes": [
-          "ps-r-three-threats",
-          "ps-r-filter",
-          "ps-r-new-levels"
-        ]
-      },
-      {
         "id": "fixes-and-fear",
         "title": "Why conflict keeps coming back",
-        "summary": "Pressure for visible progress and fear of vulnerability together keep fixes on the surface, while growth and free riding wear down cooperation. Candidate causes to test in a real group.",
+        "summary": "Pressure for visible progress and fear of vulnerability together keep fixes on the surface, while free riders wear down cooperation. Candidate causes to test in a real group.",
         "nodes": [
           "ps-r-pressure",
           "ps-r-competitive",
           "ps-r-fear",
           "ps-r-unassessed",
           "ps-r-surface",
-          "ps-r-growth",
           "ps-r-free-riders",
           "ps-r-conflict"
-        ]
-      },
-      {
-        "id": "quiet-cuts",
-        "title": "The cuts that look sensible",
-        "summary": "Reserves look wasteful in good weather and experiments look like cost. Both cuts improve the figures for a while, and each leaves the group exposed to a different way of failing.",
-        "nodes": [
-          "ps-r-cut-reserves",
-          "ps-r-shock",
-          "ps-r-cut-experiments",
-          "ps-r-obsolete"
         ]
       }
     ],
     "conflict": [
-      {
-        "id": "reserves-or-experiments",
-        "title": "Hold back, or try new things?",
-        "summary": "Absorbing shocks calls for reserves; staying fit for a changing world calls for spending on experiments that mostly fail. The essay treats this as arithmetic over one budget.",
-        "nodes": [
-          "ps-c1-objective",
-          "ps-c1-absorb",
-          "ps-c1-renew",
-          "ps-c1-reserve",
-          "ps-c1-experiment"
-        ]
-      },
       {
         "id": "open-or-guarded",
         "title": "Open up, or keep your guard?",
@@ -315,7 +238,7 @@
       {
         "id": "assess-and-match",
         "title": "Find the mismatch, then close it",
-        "summary": "The cycle and the summary's rule of thumb together show which capacity the environment calls for. Combined with what members finally say, adjustments can reach causes.",
+        "summary": "The cycle and the summary’s rule of thumb together show which capacity the environment calls for. Combined with what members finally say, adjustments can reach causes.",
         "nodes": [
           "ps-f-cycle",
           "ps-f-match",
@@ -328,7 +251,7 @@
       {
         "id": "say-what-gets-in-the-way",
         "title": "Say what gets in the way",
-        "summary": "The ACT matrix, or a lighter first pass for wary groups, can bring hidden needs into the open and win members' part in the fix. The author reports four cases; they are not independent evidence.",
+        "summary": "The ACT matrix, or a lighter first pass for wary groups, can bring hidden needs into the open and win members’ part in the fix. The author reports four cases; they are not independent evidence.",
         "nodes": [
           "ps-f-act",
           "ps-f-gentle",
@@ -338,20 +261,10 @@
         ]
       },
       {
-        "id": "walled-variation",
-        "title": "Rigid almost everywhere, loose in one place",
-        "summary": "From the essay: keep procedures tight and wall off one area where variation is produced on purpose, so a group can adapt without losing discipline.",
+        "id": "success-criteria",
+        "title": "Agree what success means",
+        "summary": "The summary asks each group to set clear success criteria when it orients and to stop once they are met. No connection to the other changes is recorded yet.",
         "nodes": [
-          "ps-f-wall",
-          "ps-f-options"
-        ]
-      },
-      {
-        "id": "filing-cabinet",
-        "title": "The filing-cabinet risk",
-        "summary": "Sorting a group's habits into three capacities can feel like insight and change nothing. Agreed success criteria, tested each cycle, are proposed as the guard against it.",
-        "nodes": [
-          "ps-f-filing",
           "ps-f-criteria"
         ]
       }
@@ -438,25 +351,10 @@
   },
   "overview": [
     {
-      "type": "account",
-      "eyebrow": "The theory’s starting point",
-      "title": "Why some things last",
-      "text": "Persistent Systems Theory asks why some structures keep going while others, under the same battering, stop. Anything that lasts faces three threats; what survives is what a long filter left behind; new levels form when defection stops paying. These cards reconstruct those claims before the AI’s practical map.",
-      "ids": [
-        "ps-r-three-threats",
-        "ps-r-filter",
-        "ps-r-new-levels"
-      ],
-      "link": [
-        "in-the-way.html",
-        "Read the theory’s claims and what stands in the way →"
-      ]
-    },
-    {
       "type": "cards",
       "eyebrow": "What has to be true",
       "title": "Cooperate, adapt, withstand, and fit the world",
-      "text": "Adaptive Persistence asks three questions of a group: can we cooperate, can we adapt, can we tolerate disruption? The essay adds a fourth condition: the mix has to suit how volatile, hazardous and varied the group’s environment is.",
+      "text": "Adaptive Persistence asks three questions of a group: can we cooperate, can we adapt, can we tolerate disruption? A fourth condition is that the mix suits how volatile, hazardous and varied the group’s environment is.",
       "ids": [
         "ps-g-cooperate",
         "ps-g-adapt",
@@ -472,13 +370,12 @@
       "type": "cards",
       "eyebrow": "What stands in the way",
       "title": "Fixes that treat symptoms",
-      "text": "Pressure for visible progress and fear of vulnerability keep fixes on the surface, so conflict returns. Cutting reserves and experiments looks sensible in good weather and leaves a group exposed to shocks and to quiet obsolescence.",
+      "text": "Pressure for visible progress and fear of vulnerability keep fixes on the surface, so conflict returns. Free riders make cooperation hard to sustain.",
       "ids": [
         "ps-r-surface",
         "ps-r-fear",
-        "ps-r-conflict",
-        "ps-r-shock",
-        "ps-r-obsolete"
+        "ps-r-free-riders",
+        "ps-r-conflict"
       ],
       "link": [
         "in-the-way.html",
@@ -487,16 +384,16 @@
     },
     {
       "type": "clouds",
-      "eyebrow": "The tensions behind the choices",
-      "title": "Two dilemmas a group has to work through",
-      "text": "Reserves and experiments compete for one budget; openness and self-protection pull against each other in a competitive field. Both are proposed readings of the sources, offered for a real group to test.",
-      "featured": "reserves-or-experiments"
+      "eyebrow": "The tension behind the choices",
+      "title": "A dilemma a group has to work through",
+      "text": "Openness and self-protection pull against each other in a competitive field. This is a proposed reading of the sources, offered for a real group to test.",
+      "featured": "open-or-guarded"
     },
     {
       "type": "cards",
       "eyebrow": "What could change",
       "title": "Find the mismatch, then close it",
-      "text": "Assess the environment and the group’s capacities, emphasise the capacity the environment calls for, and use the ACT matrix to bring what really gets in the way into the open. Agreed success criteria guard against sorting that teaches nothing.",
+      "text": "Assess the environment and the group’s capacities, emphasise the capacity the environment calls for, and use the ACT matrix to bring what really gets in the way into the open, with success criteria agreed at the start.",
       "ids": [
         "ps-f-cycle",
         "ps-f-match",
@@ -506,7 +403,7 @@
       ],
       "link": [
         "change.html",
-        "See the proposed changes and their risks →"
+        "See the proposed changes →"
       ]
     },
     {
@@ -544,15 +441,15 @@
     },
     {
       "type": "wider",
-      "eyebrow": "A theory and a practice",
-      "title": "From why things last to what a group can do",
-      "text": "Persistent Systems Theory is a proposal about everything that persists, from cells to companies; its own introduction says the verdict is not yet in. Adaptive Persistence turns its three capacities into a protocol for human groups. This map follows the practical protocol and keeps the theory’s claims, and its warnings about itself, alongside."
+      "eyebrow": "A framework and a practice",
+      "title": "From the Persistence Framework to what a group can do",
+      "text": "Stephen Le’s Persistence Framework joins Adaptive Persistence, a protocol for cooperation, with Procedural Ethics and Persistent Systems Theory. This map follows the protocol as the two Adaptive Persistence documents describe it."
     },
     {
       "type": "credits",
       "eyebrow": "Sources and interpretation",
-      "title": "Stephen Le’s Persistence Framework",
-      "text": "Persistent Systems Theory and Adaptive Persistence are Stephen Le’s. Why Things Last is an introduction to his theory from the Thrival theory compendium. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a locator and a labelled basis; source credit is not author endorsement."
+      "title": "Stephen Le’s Adaptive Persistence",
+      "text": "Persistent Systems Theory and Adaptive Persistence are Stephen Le’s, and both credited documents are his. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a page locator and a labelled basis; source credit is not author endorsement."
     }
   ],
   "retired": [],
@@ -561,7 +458,7 @@
       "release_id": "2026-10-26.1",
       "date": "2026-10-26",
       "title": "First proposed reconstruction",
-      "summary": "Stephen Le’s Adaptive Persistence protocol, framed by Persistent Systems Theory, across all six views: 79 proposed statements and 58 proposed connections, each with a source locator. No endorsement, trial or outcome is recorded.",
+      "summary": "Stephen Le’s Adaptive Persistence protocol across all six views: 62 proposed statements and 45 proposed connections, each with a source locator. No endorsement, trial or outcome is recorded.",
       "changes": [
         {
           "type": "added",
@@ -578,7 +475,6 @@
             "ps-g-reserve",
             "ps-g-uncouple",
             "ps-g-read-env",
-            "ps-g-allocate",
             "ps-gl-cooperate",
             "ps-gl-adapt",
             "ps-gl-withstand",
@@ -590,45 +486,23 @@
             "ps-gl-reserve",
             "ps-gl-uncouple",
             "ps-gl-read-env",
-            "ps-gl-allocate",
-            "ps-r-three-threats",
-            "ps-r-filter",
-            "ps-r-new-levels",
             "ps-r-pressure",
             "ps-r-competitive",
             "ps-r-fear",
             "ps-r-unassessed",
             "ps-r-surface",
-            "ps-r-growth",
             "ps-r-free-riders",
-            "ps-r-cut-reserves",
-            "ps-r-cut-experiments",
             "ps-r-conflict",
-            "ps-r-shock",
-            "ps-r-obsolete",
             "ps-rl-fear",
             "ps-rl-surface",
             "ps-rl-unassessed",
             "ps-rl-conflict",
-            "ps-rl-growth",
             "ps-rl-free-riders",
-            "ps-rl-shock",
-            "ps-rl-obsolete",
-            "ps-c1-objective",
-            "ps-c1-absorb",
-            "ps-c1-renew",
-            "ps-c1-reserve",
-            "ps-c1-experiment",
             "ps-c2-objective",
             "ps-c2-trust",
             "ps-c2-standing",
             "ps-c2-open",
             "ps-c2-guarded",
-            "ps-cl1-absorb",
-            "ps-cl1-renew",
-            "ps-cl1-reserve",
-            "ps-cl1-experiment",
-            "ps-cl1-conflict",
             "ps-cl2-trust",
             "ps-cl2-standing",
             "ps-cl2-open",
@@ -638,16 +512,13 @@
             "ps-f-match",
             "ps-f-act",
             "ps-f-gentle",
-            "ps-f-wall",
             "ps-f-criteria",
             "ps-f-see",
             "ps-f-voiced",
             "ps-f-willing",
             "ps-f-causes",
-            "ps-f-options",
             "ps-f-cooperate",
             "ps-f-fit",
-            "ps-f-filing",
             "ps-f-cases",
             "ps-fl-see",
             "ps-fl-voiced-act",
@@ -656,10 +527,6 @@
             "ps-fl-causes",
             "ps-fl-cooperate",
             "ps-fl-fit",
-            "ps-fl-options",
-            "ps-fl-options-fit",
-            "ps-fl-filing",
-            "ps-fl-criteria",
             "ps-fl-repeat",
             "ps-p-objective",
             "ps-p-issue-gap",
@@ -704,7 +571,7 @@
             "ps-tl-repeat",
             "ps-tl-feedback"
           ],
-          "note": "AI reconstruction from Why Things Last and Stephen Le’s two Adaptive Persistence documents."
+          "note": "AI reconstruction from Stephen Le’s two Adaptive Persistence documents."
         }
       ]
     }
@@ -713,7 +580,7 @@
     "projection_version": 4,
     "release_id": "2026-10-26.1",
     "snapshot_date": "2026-10-26",
-    "title": "Why Things Last",
+    "title": "Persistent Systems Theory",
     "people": [
       {
         "name": "David Joseph",
@@ -746,11 +613,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 2, The Challenge of Cooperation",
                 "basis": "reconstruction"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§1 Three survivors; §6 Three ways to die",
-                "basis": "inference"
               }
             ]
           },
@@ -765,8 +627,8 @@
               }
             ],
             "kind": "critical_success_factor",
-            "text": "Its members can cooperate: the parts keep pulling together instead of doing better for themselves at the whole's expense.",
-            "label": "Its members can cooperate.",
+            "text": "Members can cooperate: the group manages the dynamics among its members well.",
+            "label": "Members manage the dynamics among them.",
             "source_refs": [
               {
                 "source_id": "ap-overview",
@@ -774,8 +636,8 @@
                 "basis": "paraphrase"
               },
               {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die; §7 Coordination",
+                "source_id": "ap-summary",
+                "locator": "p. 4, 2. Assess: Core capacities, Coordination",
                 "basis": "paraphrase"
               }
             ]
@@ -791,8 +653,8 @@
               }
             ],
             "kind": "critical_success_factor",
-            "text": "It can become something else in time when its existing solutions stop working.",
-            "label": "It adapts when its solutions stop working.",
+            "text": "The group adapts well to changes in its external environment.",
+            "label": "It adapts to changes in its environment.",
             "source_refs": [
               {
                 "source_id": "ap-overview",
@@ -800,8 +662,8 @@
                 "basis": "paraphrase"
               },
               {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die; §9 Adaptation",
+                "source_id": "ap-summary",
+                "locator": "p. 4, 2. Assess: Core capacities, Adaptability",
                 "basis": "paraphrase"
               }
             ]
@@ -817,7 +679,7 @@
               }
             ],
             "kind": "critical_success_factor",
-            "text": "It can take a severe shock from outside and keep working.",
+            "text": "The group withstands severe shocks.",
             "label": "It withstands severe shocks.",
             "source_refs": [
               {
@@ -826,8 +688,8 @@
                 "basis": "paraphrase"
               },
               {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die; §8 Robustness",
+                "source_id": "ap-summary",
+                "locator": "p. 4, 2. Assess: Core capacities, Robustness",
                 "basis": "paraphrase"
               }
             ]
@@ -849,11 +711,6 @@
               {
                 "source_id": "ap-summary",
                 "locator": "p. 3, steps 3 and 4: Analyze and Adjust",
-                "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§12 The budget; §13 Three dials in the world",
                 "basis": "paraphrase"
               }
             ]
@@ -897,11 +754,6 @@
                 "source_id": "ap-summary",
                 "locator": "pp. 4–5, collaboration principles b, e and g",
                 "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§14 How a new floor gets built: police",
-                "basis": "related"
               }
             ]
           },
@@ -944,11 +796,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 5, adaptability principles b, g and h",
                 "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§9 Adaptation: buying lottery tickets",
-                "basis": "related"
               }
             ]
           },
@@ -970,11 +817,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 5, robustness principles b and c",
                 "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness: the wall",
-                "basis": "related"
               }
             ]
           },
@@ -1019,29 +861,8 @@
                 "basis": "paraphrase"
               },
               {
-                "source_id": "essay",
-                "locator": "§13 Three dials in the world",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-g-allocate",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "necessary_condition",
-            "text": "The group divides its limited resources among the three capacities in proportions its environment rewards.",
-            "label": "It budgets across the three capacities to suit its world.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§12 The budget",
+                "source_id": "ap-overview",
+                "locator": "p. 2, 2. Assess environment: volatility, hazardousness, heterogeneity",
                 "basis": "paraphrase"
               }
             ]
@@ -1300,29 +1121,6 @@
                 "basis": "reconstruction"
               }
             ]
-          },
-          {
-            "id": "ps-gl-allocate",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-g-allocate"
-            ],
-            "to": "ps-g-fit",
-            "relation": "necessary_for",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§12 The budget",
-                "basis": "reconstruction"
-              }
-            ]
           }
         ],
         "backlog": [
@@ -1330,75 +1128,12 @@
             "ref": "ps-g-goal",
             "work": "check_with_author",
             "label": "Ask Stephen Le whether this goal states what Adaptive Persistence is for.",
-            "note": "The goal joins his stated aims (performance, well-being, trust, fewer conflicts) with the essay's question of why things last. He has not reviewed the wording."
+            "note": "The goal joins his stated aims (performance, well-being and trust, fewer conflicts) with lasting through time. He has not reviewed the wording."
           }
         ]
       },
       "current_reality": {
         "nodes": [
-          {
-            "id": "ps-r-three-threats",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "observation",
-            "text": "Anything that persists faces three distinct threats: its own parts turning on it, blows from outside, and an environment that changes and does not change back.",
-            "label": "Things that last face three distinct threats.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-filter",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "observation",
-            "text": "Persistence is a filter, not a goal: the things still here are the ones whose properties happened to keep them here.",
-            "label": "Persistence is a filter, not a goal.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§15 How this could be wrong: purpose can sneak in",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-new-levels",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "observation",
-            "text": "New levels of organisation are built when defection is made unprofitable, not when cooperation simply breaks out.",
-            "label": "New levels form when defection stops paying.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§14 How a new floor gets built",
-                "basis": "paraphrase"
-              }
-            ]
-          },
           {
             "id": "ps-r-pressure",
             "status": "proposed",
@@ -1505,27 +1240,6 @@
             ]
           },
           {
-            "id": "ps-r-growth",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "cause",
-            "text": "As a group grows past the point where everyone knows or is related to everyone, the cheap ways of keeping parts aligned stop working.",
-            "label": "Growth outruns the cheap ways of coordinating.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§14 How a new floor gets built: start with relatives",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
             "id": "ps-r-free-riders",
             "status": "proposed",
             "accepted_by": [],
@@ -1536,59 +1250,12 @@
               }
             ],
             "kind": "cause",
-            "text": "Free riders exploit other people's cooperation; parts can do better for themselves at the whole's expense.",
-            "label": "Parts can gain at the whole's expense.",
+            "text": "Free riders take advantage of other people’s cooperation, making it hard to sustain in the long run.",
+            "label": "Free riders make cooperation hard to sustain.",
             "source_refs": [
               {
                 "source_id": "ap-summary",
                 "locator": "p. 2, free riders",
-                "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§7 Coordination: the enemy is you",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-cut-reserves",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "cause",
-            "text": "Reserves, redundancy and margin look like waste in good weather, so they are the first thing cut.",
-            "label": "Reserves look wasteful and get cut first.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness: the wall",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-cut-experiments",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "cause",
-            "text": "Cutting experiments makes a group look better for years, so a loss of adaptive capacity goes unnoticed.",
-            "label": "Cutting experiments looks good for years.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§11 Telling the three apart",
                 "basis": "paraphrase"
               }
             ]
@@ -1610,48 +1277,6 @@
               {
                 "source_id": "ap-summary",
                 "locator": "p. 7, fall into conflict and low morale again",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-shock",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "undesirable_effect",
-            "text": "A shock the group could have absorbed proves crippling.",
-            "label": "A survivable shock proves crippling.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness; §11 Telling the three apart",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-r-obsolete",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "undesirable_effect",
-            "text": "The group keeps doing well at something its environment no longer rewards, until it is suddenly wrong for where it is.",
-            "label": "It becomes quietly wrong for where it is.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die; §11 Telling the three apart",
                 "basis": "paraphrase"
               }
             ]
@@ -1752,29 +1377,6 @@
             ]
           },
           {
-            "id": "ps-rl-growth",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-r-growth"
-            ],
-            "to": "ps-r-free-riders",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§14 start with relatives",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
             "id": "ps-rl-free-riders",
             "status": "proposed",
             "accepted_by": [],
@@ -1794,57 +1396,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 2, free riders",
                 "basis": "inference"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§7 Coordination",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-rl-shock",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-r-cut-reserves"
-            ],
-            "to": "ps-r-shock",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness: the wall",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-rl-obsolete",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-r-cut-experiments"
-            ],
-            "to": "ps-r-obsolete",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§11 Telling the three apart",
-                "basis": "reconstruction"
               }
             ]
           }
@@ -1860,111 +1411,6 @@
       },
       "conflict": {
         "nodes": [
-          {
-            "id": "ps-c1-objective",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "objective",
-            "text": "The group persists through both shocks and lasting change.",
-            "label": "The group lasts through shocks and change.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-c1-absorb",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "need",
-            "text": "The group needs to absorb the shocks its environment delivers.",
-            "label": "It needs to absorb shocks.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness: the wall",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-c1-renew",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "need",
-            "text": "The group needs to keep finding new ways to persist as its environment changes.",
-            "label": "It needs to keep finding new ways to persist.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§9 Adaptation: buying lottery tickets",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-c1-reserve",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "prerequisite",
-            "text": "Hold resources back as stored surplus, redundancy and margin.",
-            "label": "Hold resources in reserve.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 Robustness: stored surplus, redundancy, margin",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-c1-experiment",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "prerequisite",
-            "text": "Spend resources on experiments, most of which will fail.",
-            "label": "Spend resources on experiments.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§9 Adaptation is paid for in failure",
-                "basis": "paraphrase"
-              }
-            ]
-          },
           {
             "id": "ps-c2-objective",
             "status": "proposed",
@@ -2072,127 +1518,6 @@
           }
         ],
         "links": [
-          {
-            "id": "ps-cl1-absorb",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-c1-absorb"
-            ],
-            "to": "ps-c1-objective",
-            "relation": "necessary_for",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-cl1-renew",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-c1-renew"
-            ],
-            "to": "ps-c1-objective",
-            "relation": "necessary_for",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§6 Three ways to die",
-                "basis": "reconstruction"
-              }
-            ]
-          },
-          {
-            "id": "ps-cl1-reserve",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-c1-reserve"
-            ],
-            "to": "ps-c1-absorb",
-            "relation": "necessary_for",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§8 the answer is: have more than you need",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-cl1-experiment",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-c1-experiment"
-            ],
-            "to": "ps-c1-renew",
-            "relation": "necessary_for",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§9 you cannot have the second without the first",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-cl1-conflict",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-c1-reserve"
-            ],
-            "to": "ps-c1-experiment",
-            "relation": "conflicts_with",
-            "assumptions": [
-              {
-                "text": "The group's resources are fixed in the short run, so whatever goes to one capacity is taken from another.",
-                "by": "AI assistant"
-              }
-            ],
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§9 every euro spent on speculative research is a euro not in the reserve fund; §12 The budget",
-                "basis": "paraphrase"
-              }
-            ]
-          },
           {
             "id": "ps-cl2-trust",
             "status": "proposed",
@@ -2315,14 +1640,7 @@
             ]
           }
         ],
-        "backlog": [
-          {
-            "ref": "ps-cl1-conflict",
-            "work": "examine_assumption",
-            "label": "Test whether reserves and experiments really draw on one budget.",
-            "note": "The essay notes that money in the bank buys robustness and also funds experiments (§11), so the conflict may be weaker than it looks."
-          }
-        ]
+        "backlog": []
       },
       "future_reality": {
         "nodes": [
@@ -2369,20 +1687,11 @@
             "kind": "injection",
             "text": "Emphasise adaptability where the environment is volatile, robustness where it is hazardous, and coordination where it is neither.",
             "label": "Emphasise the capacity the environment calls for.",
-            "addresses": [
-              "ps-c1-reserve",
-              "ps-c1-experiment"
-            ],
             "source_refs": [
               {
                 "source_id": "ap-summary",
                 "locator": "p. 6, 3. Analyze",
                 "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§13 Three dials in the world",
-                "basis": "related"
               }
             ]
           },
@@ -2436,30 +1745,6 @@
             ]
           },
           {
-            "id": "ps-f-wall",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "injection",
-            "text": "Keep procedures tight in general and wall off one bounded area where variation is deliberately produced.",
-            "label": "Rigid almost everywhere, loose in one walled-off place.",
-            "addresses": [
-              "ps-r-cut-experiments"
-            ],
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§10 The copying dial",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
             "id": "ps-f-criteria",
             "status": "proposed",
             "accepted_by": [],
@@ -2477,11 +1762,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 4, 1. Orient; p. 8, 5. Repeat",
                 "basis": "paraphrase"
-              },
-              {
-                "source_id": "essay",
-                "locator": "§15 How this could be wrong",
-                "basis": "related"
               }
             ]
           },
@@ -2570,27 +1850,6 @@
             ]
           },
           {
-            "id": "ps-f-options",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "predicted_effect",
-            "text": "The group generates new options without loosening coordination everywhere.",
-            "label": "New options without losing discipline.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§10 Wall off the variation, and you can have both",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
             "id": "ps-f-cooperate",
             "status": "proposed",
             "accepted_by": [],
@@ -2629,27 +1888,6 @@
                 "source_id": "ap-summary",
                 "locator": "p. 8, 5. Repeat",
                 "basis": "inference"
-              }
-            ]
-          },
-          {
-            "id": "ps-f-filing",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "undesirable_effect",
-            "text": "Sorting the group's mechanisms into the three capacities feels like understanding but produces nothing anyone could be wrong about.",
-            "label": "Sorting feels like understanding; nothing is tested.",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§11 a useful question turns back into a filing cabinet; §15 a metaphor machine",
-                "basis": "paraphrase"
               }
             ]
           },
@@ -2841,98 +2079,6 @@
             ]
           },
           {
-            "id": "ps-fl-options",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-f-wall"
-            ],
-            "to": "ps-f-options",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§10 The copying dial",
-                "basis": "paraphrase"
-              }
-            ]
-          },
-          {
-            "id": "ps-fl-options-fit",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-f-options"
-            ],
-            "to": "ps-f-fit",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§10; §13 volatility rewards adaptation",
-                "basis": "inference"
-              }
-            ]
-          },
-          {
-            "id": "ps-fl-filing",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-f-cycle"
-            ],
-            "to": "ps-f-filing",
-            "relation": "contributes_to",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§11; §15 It might just be a metaphor machine",
-                "basis": "inference"
-              }
-            ]
-          },
-          {
-            "id": "ps-fl-criteria",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "ps-f-criteria"
-            ],
-            "to": "ps-f-filing",
-            "relation": "prevents",
-            "source_refs": [
-              {
-                "source_id": "essay",
-                "locator": "§15 claims stated in a form that could come out false",
-                "basis": "inference"
-              }
-            ]
-          },
-          {
             "id": "ps-fl-repeat",
             "status": "proposed",
             "accepted_by": [],
@@ -2956,14 +2102,7 @@
             ]
           }
         ],
-        "backlog": [
-          {
-            "ref": "ps-f-filing",
-            "work": "make_testable",
-            "label": "State one prediction about this group that could come out false.",
-            "note": "The essay asks for a measure of one capacity, in one domain, that two strangers would agree on (§15). Nothing in this map is measured yet."
-          }
-        ]
+        "backlog": []
       },
       "prerequisite": {
         "nodes": [
@@ -3448,7 +2587,7 @@
             "ref": "ps-p-assess",
             "work": "define_measure",
             "label": "Find a measure of one capacity that two assessors would agree on.",
-            "note": "The essay names this as the most valuable work on the theory (§15). The summary's assessments are interviews and surveys without a stated scoring method."
+            "note": "The summary’s assessments are interviews, surveys and existing records, without a stated scoring method."
           }
         ]
       },
@@ -3949,7 +3088,7 @@
         "release_id": "2026-10-26.1",
         "date": "2026-10-26",
         "title": "First proposed reconstruction",
-        "summary": "Stephen Le’s Adaptive Persistence protocol, framed by Persistent Systems Theory, across all six views: 79 proposed statements and 58 proposed connections, each with a source locator. No endorsement, trial or outcome is recorded.",
+        "summary": "Stephen Le’s Adaptive Persistence protocol across all six views: 62 proposed statements and 45 proposed connections, each with a source locator. No endorsement, trial or outcome is recorded.",
         "changes": [
           {
             "type": "added",
@@ -3966,7 +3105,6 @@
               "ps-g-reserve",
               "ps-g-uncouple",
               "ps-g-read-env",
-              "ps-g-allocate",
               "ps-gl-cooperate",
               "ps-gl-adapt",
               "ps-gl-withstand",
@@ -3978,45 +3116,23 @@
               "ps-gl-reserve",
               "ps-gl-uncouple",
               "ps-gl-read-env",
-              "ps-gl-allocate",
-              "ps-r-three-threats",
-              "ps-r-filter",
-              "ps-r-new-levels",
               "ps-r-pressure",
               "ps-r-competitive",
               "ps-r-fear",
               "ps-r-unassessed",
               "ps-r-surface",
-              "ps-r-growth",
               "ps-r-free-riders",
-              "ps-r-cut-reserves",
-              "ps-r-cut-experiments",
               "ps-r-conflict",
-              "ps-r-shock",
-              "ps-r-obsolete",
               "ps-rl-fear",
               "ps-rl-surface",
               "ps-rl-unassessed",
               "ps-rl-conflict",
-              "ps-rl-growth",
               "ps-rl-free-riders",
-              "ps-rl-shock",
-              "ps-rl-obsolete",
-              "ps-c1-objective",
-              "ps-c1-absorb",
-              "ps-c1-renew",
-              "ps-c1-reserve",
-              "ps-c1-experiment",
               "ps-c2-objective",
               "ps-c2-trust",
               "ps-c2-standing",
               "ps-c2-open",
               "ps-c2-guarded",
-              "ps-cl1-absorb",
-              "ps-cl1-renew",
-              "ps-cl1-reserve",
-              "ps-cl1-experiment",
-              "ps-cl1-conflict",
               "ps-cl2-trust",
               "ps-cl2-standing",
               "ps-cl2-open",
@@ -4026,16 +3142,13 @@
               "ps-f-match",
               "ps-f-act",
               "ps-f-gentle",
-              "ps-f-wall",
               "ps-f-criteria",
               "ps-f-see",
               "ps-f-voiced",
               "ps-f-willing",
               "ps-f-causes",
-              "ps-f-options",
               "ps-f-cooperate",
               "ps-f-fit",
-              "ps-f-filing",
               "ps-f-cases",
               "ps-fl-see",
               "ps-fl-voiced-act",
@@ -4044,10 +3157,6 @@
               "ps-fl-causes",
               "ps-fl-cooperate",
               "ps-fl-fit",
-              "ps-fl-options",
-              "ps-fl-options-fit",
-              "ps-fl-filing",
-              "ps-fl-criteria",
               "ps-fl-repeat",
               "ps-p-objective",
               "ps-p-issue-gap",
@@ -4092,7 +3201,7 @@
               "ps-tl-repeat",
               "ps-tl-feedback"
             ],
-            "note": "AI reconstruction from Why Things Last and Stephen Le’s two Adaptive Persistence documents."
+            "note": "AI reconstruction from Stephen Le’s two Adaptive Persistence documents."
           }
         ]
       }
@@ -4101,22 +3210,10 @@
     "authors": {
       "le": {
         "name": "Stephen Le",
-        "role": "Author of Persistent Systems Theory and Adaptive Persistence, and of the two credited Adaptive Persistence documents; has not reviewed or endorsed this reconstruction"
-      },
-      "thrival-compendium": {
-        "name": "Thrival theory compendium",
-        "role": "Source of Why Things Last, an introduction to Stephen Le’s theory supplied by David Joseph; the essay does not name its author"
+        "role": "Author of Persistent Systems Theory and Adaptive Persistence, and of both credited documents; has not reviewed or endorsed this reconstruction"
       }
     },
     "sources": [
-      {
-        "id": "essay",
-        "kind": "supplied_document",
-        "author": "thrival-compendium",
-        "title": "Why Things Last · an introduction to Persistent Systems Theory",
-        "description": "An essay introducing Stephen Le’s Persistent Systems Theory through three survivors, the three ways things fail, the three capacities that defend against them, the budget among them, three features of an environment and five ways the theory could be wrong. Supplied by David Joseph from the Thrival theory compendium. References give its numbered sections.",
-        "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/why-things-last.md"
-      },
       {
         "id": "ap-summary",
         "kind": "supplied_document",
@@ -4139,7 +3236,7 @@
         {
           "id": "three-capacities",
           "title": "Cooperate, adapt, withstand, and fit the world",
-          "summary": "Adaptive Persistence's three questions become three conditions, with a fourth from the essay: the capacities have to suit the environment. The supporting conditions are drawn from the summary's 24 design principles, two for each.",
+          "summary": "Adaptive Persistence’s three questions become three conditions, with a fourth: the group’s capacities have to match its environment. The supporting conditions are drawn from the summary’s 24 design principles.",
           "nodes": [
             "ps-g-goal",
             "ps-g-cooperate",
@@ -4152,62 +3249,27 @@
             "ps-g-try",
             "ps-g-reserve",
             "ps-g-uncouple",
-            "ps-g-read-env",
-            "ps-g-allocate"
+            "ps-g-read-env"
           ]
         }
       ],
       "current_reality": [
         {
-          "id": "theory-account",
-          "title": "The theory's starting point",
-          "summary": "Three claims from the essay that frame everything else. They are attributed observations with no causal connections; the essay itself warns that none of them has been tested.",
-          "nodes": [
-            "ps-r-three-threats",
-            "ps-r-filter",
-            "ps-r-new-levels"
-          ]
-        },
-        {
           "id": "fixes-and-fear",
           "title": "Why conflict keeps coming back",
-          "summary": "Pressure for visible progress and fear of vulnerability together keep fixes on the surface, while growth and free riding wear down cooperation. Candidate causes to test in a real group.",
+          "summary": "Pressure for visible progress and fear of vulnerability together keep fixes on the surface, while free riders wear down cooperation. Candidate causes to test in a real group.",
           "nodes": [
             "ps-r-pressure",
             "ps-r-competitive",
             "ps-r-fear",
             "ps-r-unassessed",
             "ps-r-surface",
-            "ps-r-growth",
             "ps-r-free-riders",
             "ps-r-conflict"
-          ]
-        },
-        {
-          "id": "quiet-cuts",
-          "title": "The cuts that look sensible",
-          "summary": "Reserves look wasteful in good weather and experiments look like cost. Both cuts improve the figures for a while, and each leaves the group exposed to a different way of failing.",
-          "nodes": [
-            "ps-r-cut-reserves",
-            "ps-r-shock",
-            "ps-r-cut-experiments",
-            "ps-r-obsolete"
           ]
         }
       ],
       "conflict": [
-        {
-          "id": "reserves-or-experiments",
-          "title": "Hold back, or try new things?",
-          "summary": "Absorbing shocks calls for reserves; staying fit for a changing world calls for spending on experiments that mostly fail. The essay treats this as arithmetic over one budget.",
-          "nodes": [
-            "ps-c1-objective",
-            "ps-c1-absorb",
-            "ps-c1-renew",
-            "ps-c1-reserve",
-            "ps-c1-experiment"
-          ]
-        },
         {
           "id": "open-or-guarded",
           "title": "Open up, or keep your guard?",
@@ -4225,7 +3287,7 @@
         {
           "id": "assess-and-match",
           "title": "Find the mismatch, then close it",
-          "summary": "The cycle and the summary's rule of thumb together show which capacity the environment calls for. Combined with what members finally say, adjustments can reach causes.",
+          "summary": "The cycle and the summary’s rule of thumb together show which capacity the environment calls for. Combined with what members finally say, adjustments can reach causes.",
           "nodes": [
             "ps-f-cycle",
             "ps-f-match",
@@ -4238,7 +3300,7 @@
         {
           "id": "say-what-gets-in-the-way",
           "title": "Say what gets in the way",
-          "summary": "The ACT matrix, or a lighter first pass for wary groups, can bring hidden needs into the open and win members' part in the fix. The author reports four cases; they are not independent evidence.",
+          "summary": "The ACT matrix, or a lighter first pass for wary groups, can bring hidden needs into the open and win members’ part in the fix. The author reports four cases; they are not independent evidence.",
           "nodes": [
             "ps-f-act",
             "ps-f-gentle",
@@ -4248,20 +3310,10 @@
           ]
         },
         {
-          "id": "walled-variation",
-          "title": "Rigid almost everywhere, loose in one place",
-          "summary": "From the essay: keep procedures tight and wall off one area where variation is produced on purpose, so a group can adapt without losing discipline.",
+          "id": "success-criteria",
+          "title": "Agree what success means",
+          "summary": "The summary asks each group to set clear success criteria when it orients and to stop once they are met. No connection to the other changes is recorded yet.",
           "nodes": [
-            "ps-f-wall",
-            "ps-f-options"
-          ]
-        },
-        {
-          "id": "filing-cabinet",
-          "title": "The filing-cabinet risk",
-          "summary": "Sorting a group's habits into three capacities can feel like insight and change nothing. Agreed success criteria, tested each cycle, are proposed as the guard against it.",
-          "nodes": [
-            "ps-f-filing",
             "ps-f-criteria"
           ]
         }
@@ -4348,25 +3400,10 @@
     },
     "overview": [
       {
-        "type": "account",
-        "eyebrow": "The theory’s starting point",
-        "title": "Why some things last",
-        "text": "Persistent Systems Theory asks why some structures keep going while others, under the same battering, stop. Anything that lasts faces three threats; what survives is what a long filter left behind; new levels form when defection stops paying. These cards reconstruct those claims before the AI’s practical map.",
-        "ids": [
-          "ps-r-three-threats",
-          "ps-r-filter",
-          "ps-r-new-levels"
-        ],
-        "link": [
-          "in-the-way.html",
-          "Read the theory’s claims and what stands in the way →"
-        ]
-      },
-      {
         "type": "cards",
         "eyebrow": "What has to be true",
         "title": "Cooperate, adapt, withstand, and fit the world",
-        "text": "Adaptive Persistence asks three questions of a group: can we cooperate, can we adapt, can we tolerate disruption? The essay adds a fourth condition: the mix has to suit how volatile, hazardous and varied the group’s environment is.",
+        "text": "Adaptive Persistence asks three questions of a group: can we cooperate, can we adapt, can we tolerate disruption? A fourth condition is that the mix suits how volatile, hazardous and varied the group’s environment is.",
         "ids": [
           "ps-g-cooperate",
           "ps-g-adapt",
@@ -4382,13 +3419,12 @@
         "type": "cards",
         "eyebrow": "What stands in the way",
         "title": "Fixes that treat symptoms",
-        "text": "Pressure for visible progress and fear of vulnerability keep fixes on the surface, so conflict returns. Cutting reserves and experiments looks sensible in good weather and leaves a group exposed to shocks and to quiet obsolescence.",
+        "text": "Pressure for visible progress and fear of vulnerability keep fixes on the surface, so conflict returns. Free riders make cooperation hard to sustain.",
         "ids": [
           "ps-r-surface",
           "ps-r-fear",
-          "ps-r-conflict",
-          "ps-r-shock",
-          "ps-r-obsolete"
+          "ps-r-free-riders",
+          "ps-r-conflict"
         ],
         "link": [
           "in-the-way.html",
@@ -4397,16 +3433,16 @@
       },
       {
         "type": "clouds",
-        "eyebrow": "The tensions behind the choices",
-        "title": "Two dilemmas a group has to work through",
-        "text": "Reserves and experiments compete for one budget; openness and self-protection pull against each other in a competitive field. Both are proposed readings of the sources, offered for a real group to test.",
-        "featured": "reserves-or-experiments"
+        "eyebrow": "The tension behind the choices",
+        "title": "A dilemma a group has to work through",
+        "text": "Openness and self-protection pull against each other in a competitive field. This is a proposed reading of the sources, offered for a real group to test.",
+        "featured": "open-or-guarded"
       },
       {
         "type": "cards",
         "eyebrow": "What could change",
         "title": "Find the mismatch, then close it",
-        "text": "Assess the environment and the group’s capacities, emphasise the capacity the environment calls for, and use the ACT matrix to bring what really gets in the way into the open. Agreed success criteria guard against sorting that teaches nothing.",
+        "text": "Assess the environment and the group’s capacities, emphasise the capacity the environment calls for, and use the ACT matrix to bring what really gets in the way into the open, with success criteria agreed at the start.",
         "ids": [
           "ps-f-cycle",
           "ps-f-match",
@@ -4416,7 +3452,7 @@
         ],
         "link": [
           "change.html",
-          "See the proposed changes and their risks →"
+          "See the proposed changes →"
         ]
       },
       {
@@ -4454,18 +3490,18 @@
       },
       {
         "type": "wider",
-        "eyebrow": "A theory and a practice",
-        "title": "From why things last to what a group can do",
-        "text": "Persistent Systems Theory is a proposal about everything that persists, from cells to companies; its own introduction says the verdict is not yet in. Adaptive Persistence turns its three capacities into a protocol for human groups. This map follows the practical protocol and keeps the theory’s claims, and its warnings about itself, alongside."
+        "eyebrow": "A framework and a practice",
+        "title": "From the Persistence Framework to what a group can do",
+        "text": "Stephen Le’s Persistence Framework joins Adaptive Persistence, a protocol for cooperation, with Procedural Ethics and Persistent Systems Theory. This map follows the protocol as the two Adaptive Persistence documents describe it."
       },
       {
         "type": "credits",
         "eyebrow": "Sources and interpretation",
-        "title": "Stephen Le’s Persistence Framework",
-        "text": "Persistent Systems Theory and Adaptive Persistence are Stephen Le’s. Why Things Last is an introduction to his theory from the Thrival theory compendium. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a locator and a labelled basis; source credit is not author endorsement."
+        "title": "Stephen Le’s Adaptive Persistence",
+        "text": "Persistent Systems Theory and Adaptive Persistence are Stephen Le’s, and both credited documents are his. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a page locator and a labelled basis; source credit is not author endorsement."
       }
     ],
     "retired": []
   },
-  "snapshot_sha256": "0f69556f23107e47819dc8fd2fd1c6072ad2c3072f488b5eef19d179c0c00834"
+  "snapshot_sha256": "883cfa72eaa81e0c0aea2d3b4c07f6694601afc9c3b2d2777536d85dafe54e22"
 }
