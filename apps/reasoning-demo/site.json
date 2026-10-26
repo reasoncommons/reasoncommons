@@ -75,6 +75,24 @@
       }
     },
     {
+      "slug": "prosocial-ai",
+      "kind": "reconstruction",
+      "registry": "commons/prosocial-ai/publication.json",
+      "source": "../../ltp/prosocial-ai/reason-commons.yaml",
+      "name": "Evolving Prosocial AI",
+      "byline": "From Paul Atkins and David Sloan Wilson’s Evolving Prosocial AI · reconstructed by AI",
+      "summary": "Will AI strengthen cooperation or extract from it? A proposed map from Atkins and Wilson’s evolutionary account of how worldviews shape the systems that shape AI, and us.",
+      "description": "Paul Atkins and David Sloan Wilson argue that worldviews, not technology, decide whether AI erodes or builds human capability, and that institutions which make cooperation pay are the way through. This map follows their argument across four scales and keeps their own cautions beside it.",
+      "scope": "105 proposed statements and 88 proposed connections reconstructed by the AI from Atkins and Wilson’s manuscript accepted for Cambridge Elements. Every item has a page reference. The authors have not reviewed or endorsed the map; findings they cite from other studies are kept as attributed observations. No group, trial, owner or observed result is recorded.",
+      "front_page": {
+        "headline": "Make cooperation pay.\nShape the AI that shapes us.",
+        "intro": "Will AI wear down what people can do, or build it up? Explore how worldviews and institutions might decide, from a person using a chatbot to the planet paying for the compute.",
+        "question": "Does an AI tool you use build your capability, or wear it down?",
+        "why": "A real case can test the claim that AI can scaffold thinking rather than replace it.",
+        "focus_ref": "pa-g-scaffold"
+      }
+    },
+    {
       "slug": "reason-commons",
       "kind": "real",
       "registry": "publication.json",
