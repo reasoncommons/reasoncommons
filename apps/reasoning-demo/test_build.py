@@ -608,6 +608,10 @@ class ReconstructionTests(unittest.TestCase):
             if name not in self.data["views"]:
                 continue
             page = self.outputs[f'gandhi-2-0/{pages.TREES[name]["slug"]}.html']
+            if name in ("prerequisite", "transition"):  # Plans have one view, not parts; each connection carries its id.
+                shown = set(re.findall(r'data-link="([^"]+)"', page)) | set(re.findall(r'data-id="([^"]+)"', page))
+                self.assertLessEqual({l["id"] for l in tree["links"]}, shown, name)
+                continue
             drawn = set()
             for section in re.findall(r'<section class="tv".*?</section>', page, flags=re.S):
                 svg = re.search(r'<svg class="rc-diagram.*?</svg>', section, flags=re.S).group(0)
@@ -727,6 +731,8 @@ class ReconstructionTests(unittest.TestCase):
         self.assertRaisesRegex(ValueError, "Only an action can carry a proposed role", assigned)
 
     def test_one_banner_replaces_each_items_standing_in_this_commons_only(self):
+        for path in ("gandhi-2-0/prerequisites.html", "gandhi-2-0/actions.html"):  # Plans keep their one grammar: each card says nobody has accepted it.
+            self.assertIn('<span class="pv-none">Not accepted</span>', self.outputs[path])
         for name, value in self.outputs.items():
             if name.startswith("gandhi-2-0/") and name.endswith(".html"):
                 self.assertNotIn("chip-proposed", value, name)
@@ -863,7 +869,7 @@ class SuppliedDocumentTests(unittest.TestCase):
             data = self.data["trees"][tree]
             self.assertEqual((len(data["nodes"]), len(data["links"])), counts)
             page = self.outputs[f"re-membering/{path}.html"]
-            self.assertIn('class="rc-diagram', page)
+            self.assertIn({"prerequisites": 'class="pv-map', "actions": 'class="pv-rows'}.get(path, 'class="rc-diagram'), page)
             self.assertNotIn("Not established yet", page)
         self.assertIn("illustrative, not observations", self.outputs["re-membering/about.html"])
         self.assertIn("Who: unassigned", self.outputs["re-membering/actions.html"])
@@ -891,7 +897,8 @@ class SuppliedDocumentTests(unittest.TestCase):
         self.assertEqual((links["rm-tl-feedback"]["relation"], links["rm-tl-feedback"]["to"]), ("feeds_back_to", "rm-t-map"))
         page = self.outputs["re-membering/actions.html"]
         self.assertIn('data-id="rm-tl-feedback"', page)
-        self.assertIn('e-loop', page)
+        self.assertIn('pv-loop', page)
+        self.assertIn("Feeds back into action 1", page)
 
     def test_reviewed_current_copy_and_history_preserve_their_distinct_scopes(self):
         current = self.outputs["re-membering/index.html"]
@@ -1405,6 +1412,91 @@ class WisdomAICompletionTests(unittest.TestCase):
         self.assertEqual(old['trees']['goal']['nodes'][0]['contributors'],[build.ASSISTANT])
         self.assertTrue(all(not i['accepted_by'] for t in old['trees'].values() for i in t['nodes']+t['links']))
         self.assertIn('proposed',json.dumps(old))
+
+
+class PlanTests(unittest.TestCase):
+    """What has to happen first, and who does what: steps in stages, actions in order, one grammar for standing."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.site, records = build.load_site()
+        cls.outputs = build.build_files(cls.site, records)
+        cls.commons = {r["entry"]["slug"]: pages.Commons(build.normalize(r)) for r in records}
+
+    def test_steps_sit_one_stage_after_the_longest_chain_before_them(self):
+        widths = {}
+        for slug in ("example-willow-lane", "re-membering", "wisdom-ai", "gandhi-2-0"):
+            plan = diagrams.stages(self.commons[slug].trees["prerequisite"])
+            for link in plan["needs"]:
+                for source in link["from"]:
+                    self.assertLess(plan["rank"][source], plan["rank"][link["to"]], link["id"])
+            for step, rank in plan["rank"].items():
+                if rank:
+                    self.assertTrue(any(plan["rank"][s] == rank - 1 for s, _ in plan["pre"][step]), step)
+            widths[slug] = [len(column) for column in diagrams.arrange(plan, set(plan["steps"]))]
+            self.assertEqual(plan["unconnected"] + plan["loose"], [])
+        self.assertEqual(widths["example-willow-lane"], [4, 1])
+        self.assertEqual(widths["wisdom-ai"], [4, 1, 1])
+        self.assertEqual(len(widths["gandhi-2-0"]), 9)
+        page = self.outputs["gandhi-2-0/prerequisites.html"]
+        self.assertEqual(len(re.findall(r'<section class="pv-col[ "]', page)), 9)
+        self.assertEqual(page.count('<li class="pv-card'), 36)  # Each obstacle sits on the step that gets past it.
+        self.assertEqual(page.count('<p class="pv-gp-l">Gets past</p>'), 36)
+
+    def test_critical_path_marks_only_steps_without_slack(self):
+        willow = diagrams.stages(self.commons["example-willow-lane"].trees["prerequisite"])
+        self.assertEqual(diagrams.critical_path(willow), (set(), set()))  # Every chain is equally long.
+        self.assertNotIn("Critical path", self.outputs["example-willow-lane/prerequisites.html"])
+        wisdom = diagrams.stages(self.commons["wisdom-ai"].trees["prerequisite"])
+        nodes, edges = diagrams.critical_path(wisdom)
+        self.assertEqual(nodes, {"p-criteria", "p-practice", "p-authority", "p-test"})
+        self.assertEqual(edges, {("p-criteria", "p-authority"), ("p-practice", "p-authority"), ("p-authority", "p-test")})
+        self.assertIn("pv-crit", self.outputs["wisdom-ai/prerequisites.html"])
+
+    def test_cards_mark_who_proposed_and_who_accepted(self):
+        page = self.outputs["example-willow-lane/prerequisites.html"]
+        order = re.search(r'<li class="pv-card pv-k-intermediate_objective pv-accepted[^"]*" data-node="wl-p-io-order".*?</li>', page, flags=re.S).group(0)
+        self.assertIn('class="pv-av pv-av-by" title="Proposed by Dev"', order)
+        self.assertIn("Accepted for now by Dev and Amara.", order)
+        spaces = re.search(r'<li class="pv-card [^"]*" data-node="wl-p-io-spaces".*?</li>', page, flags=re.S).group(0)
+        self.assertIn("pv-proposed", spaces)
+        self.assertIn('<span class="pv-none">Not accepted</span>', spaces)
+        self.assertNotIn("pv-av-ok", spaces)
+        self.assertIn('data-link="wl-p-rel-over-parking"', spaces)
+        gandhi = self.outputs["gandhi-2-0/prerequisites.html"]
+        self.assertIn('class="pv-av pv-av-by pv-ai" title="Proposed by AI assistant"', gandhi)
+        self.assertNotIn('pv-av-ok" title=', gandhi)  # Nobody has accepted anything in this reconstruction.
+        self.assertIn("Nobody has accepted anything here yet", gandhi)
+
+    def test_actions_follow_the_recorded_order_or_a_timeline(self):
+        willow = self.outputs["example-willow-lane/actions.html"]
+        self.assertEqual(willow.count('<section class="pv-group">'), 2)
+        self.assertIn('data-link="wl-t-rel-then">after 1</a>', willow)
+        self.assertIn("pv-no-inputs", willow)  # No starting conditions are recorded, so none are shown.
+        remembering = diagrams.action_steps(self.commons["re-membering"].trees["transition"])
+        last = remembering["steps"][-1]
+        self.assertEqual(([s["n"] for s, _ in last["after"]], [s["n"] for s, _ in last["loops"]]), ([3, 4], [1]))
+        gandhi = self.outputs["gandhi-2-0/actions.html"]
+        self.assertNotIn('<section class="pv-group">', gandhi)  # No order is recorded between these actions.
+        self.assertIn("When each action is needed", gandhi)
+        self.assertEqual(gandhi.count('class="pv-g-label"'), 8)
+        self.assertIn("Choose a host and one function", gandhi)
+        self.assertNotIn("When each action is needed", willow)
+
+    def test_plans_are_complete_without_javascript(self):
+        for slug in ("example-willow-lane", "re-membering", "wisdom-ai", "gandhi-2-0"):
+            for path in ("prerequisites", "actions"):
+                page = self.outputs[f"{slug}/{path}.html"]
+                cards = set(re.findall(r'class="pv-card [^"]*" data-node="([^"]+)"', page))
+                links = set(re.findall(r'<a class="pv-hit" href="items.html#([^"]+)"', page))
+                panels = set(re.findall(r'<template id="pv-d-([^"]+)"', page))
+                self.assertEqual(cards, links, (slug, path))
+                self.assertEqual(cards, panels, (slug, path))
+            prereq = self.outputs[f"{slug}/prerequisites.html"]
+            self.assertIn('<p class="pv-hint" hidden>', prereq)  # Tracing is offered only once the script can do it.
+            needs = re.findall(r'<div class="pv-needs"><p>Needs</p><ul>(.*?)</ul></div>', prereq, flags=re.S)
+            plan = diagrams.stages(self.commons[slug].trees["prerequisite"])
+            self.assertEqual(sum(item.count("<li") for item in needs), sum(len(p) for p in plan["pre"].values()), slug)
 
 
 if __name__ == '__main__':

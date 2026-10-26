@@ -911,3 +911,171 @@ def outline(tree, ids, links, href, kind_label, uniform=False):
         parts.append("</li>")
         return "".join(parts)
     return f'<ul class="rc-outline">{"".join(branch(r) for r in roots)}</ul>'
+
+
+# ---------------------------------------------------------------- plans: prerequisite steps in stages, actions in order
+
+def stages(tree):
+    """Prerequisite steps by stage, for a plan read from left to right.
+
+    A step's stage is the longest chain of "is needed for" links before it, so a stage holds what
+    becomes possible once the stage before it is done; it is not a date. Each step carries the
+    obstacles it overcomes. Steps joined to no other step, obstacles nothing overcomes and links of
+    any other kind are returned separately rather than placed.
+    """
+    nodes = {n["id"]: n for n in tree["nodes"]}
+    candidates = [n["id"] for n in tree["nodes"] if n["kind"] != "obstacle"]
+    member = set(candidates)
+    pre, post = {i: [] for i in candidates}, {i: [] for i in candidates}
+    obstacles, needs, other = defaultdict(list), [], []
+    for link in tree["links"]:
+        if link["relation"] == "overcomes" and nodes.get(link["to"], {}).get("kind") == "obstacle" and set(link["from"]) <= member:
+            for source in link["from"]:
+                obstacles[source].append(link)
+        elif link["relation"] == "necessary_for" and link["to"] in member and set(link["from"]) <= member:
+            needs.append(link)
+            for source in link["from"]:
+                pre[link["to"]].append((source, link))
+                post[source].append((link["to"], link))
+        else:
+            other.append(link)
+    steps = [i for i in candidates if pre[i] or post[i]]
+    rank = {}
+
+    def depth(ident, seen=frozenset()):
+        if ident not in rank:
+            if ident in seen:  # A loop of "is needed for" cannot be staged; break it where it closes.
+                return 0
+            rank[ident] = 1 + max((depth(s, seen | {ident}) for s, _ in pre[ident]), default=-1)
+        return rank[ident]
+    for ident in steps:
+        depth(ident)
+    overcome = {l["to"] for links in obstacles.values() for l in links}
+    return {"nodes": nodes, "steps": steps, "rank": rank, "pre": pre, "post": post, "obstacles": dict(obstacles),
+            "needs": needs, "other": other, "unconnected": [i for i in candidates if i not in rank],
+            "loose": [n["id"] for n in tree["nodes"] if n["kind"] == "obstacle" and n["id"] not in overcome]}
+
+
+def reach(plan, ident, direction="up"):
+    """Every step that `ident` needs (up) or makes possible (down), however indirectly."""
+    adjacent, seen, todo = plan["pre" if direction == "up" else "post"], set(), [ident]
+    while todo:
+        for other, _ in adjacent[todo.pop()]:
+            if other not in seen:
+                seen.add(other)
+                todo.append(other)
+    return seen
+
+
+def critical_path(plan, end=None):
+    """The critical path to `end`, as in project planning: the steps with no slack, and the links between them.
+
+    `end` defaults to the deepest objective. Nothing is returned when every step toward `end` lies on a
+    longest chain, because then the path singles nothing out.
+    """
+    rank, post = plan["rank"], plan["post"]
+    if end is None:
+        deepest = [s for s in plan["steps"] if rank[s] == max(rank.values(), default=0)]
+        end = next((s for s in deepest if plan["nodes"][s]["kind"] == "objective"), deepest[0] if deepest else None)
+    if end is None or not rank[end]:
+        return set(), set()
+    toward = reach(plan, end) | {end}
+    height = {end: 0}
+
+    def h(ident):
+        if ident not in height:
+            height[ident] = max(1 + h(t) for t, _ in post[ident] if t in toward)
+        return height[ident]
+    nodes = {s for s in toward if rank[s] + h(s) == rank[end]}
+    if nodes == toward:
+        return set(), set()
+    edges = {(a, b) for a in nodes for b, _ in post[a] if b in nodes and rank[b] == rank[a] + 1 and h(a) == h(b) + 1}
+    return nodes, edges
+
+
+def arrange(plan, visible, critical=frozenset()):
+    """Stage columns of the visible steps, critical steps first, the rest ordered to keep connections short."""
+    columns = [[] for _ in range(max((plan["rank"][s] for s in visible), default=-1) + 1)]
+    for ident in plan["steps"]:
+        if ident in visible:
+            columns[plan["rank"][ident]].append(ident)
+    position = {}
+
+    def place():
+        for column in columns:
+            for index, ident in enumerate(column):
+                position[ident] = index
+
+    def sort(column, adjacent):
+        centre = {}
+        for ident in column:
+            near = [position[o] for o, _ in adjacent[ident] if o in visible]
+            centre[ident] = sum(near) / len(near) if near else position[ident]
+        column.sort(key=lambda i: (i not in critical, centre[i]))
+    place()
+    for _ in range(4):  # Barycentre sweeps, forwards then back, as in a layered drawing.
+        for column in columns[1:]:
+            sort(column, plan["pre"])
+            place()
+        for column in reversed(columns[:-1]):
+            sort(column, plan["post"])
+            place()
+    return columns
+
+
+def action_steps(tree):
+    """Each action with what it starts from and what it should produce, numbered in the recorded order.
+
+    An action comes after another when it starts from that action's effect or a "comes before" link
+    says so; its stage is one more than the latest action it comes after. A feedback link closes a
+    loop and orders nothing. With no order recorded, actions keep the order they were recorded in.
+    """
+    nodes = {n["id"]: n for n in tree["nodes"]}
+    produces = [l for l in tree["links"] if l["relation"] == "produces"]
+    steps, owner, used = [], {}, set()
+    for index, ident in enumerate(n["id"] for n in tree["nodes"] if n["kind"] == "action"):
+        link = next((l for l in produces if ident in l["from"]), None)
+        steps.append({"action": ident, "link": link, "index": index, "after": [], "loops": [],
+                      "inputs": [s for s in link["from"] if s != ident] if link else [], "effect": link["to"] if link else None})
+    for step in steps:
+        owner[step["action"]] = step
+        if step["effect"]:
+            owner.setdefault(step["effect"], step)
+        if step["link"]:
+            used.add(step["link"]["id"])
+    for step in steps:
+        for source in step["inputs"]:
+            earlier = owner.get(source)
+            if earlier and earlier is not step and earlier["effect"] == source:
+                step["after"].append((earlier, step["link"]))
+    other = []
+    for link in tree["links"]:
+        if link["id"] in used:
+            continue
+        ends = [(owner.get(s), owner.get(link["to"])) for s in link["from"]]
+        if link["relation"] == "precedes" and all(a and b and a is not b for a, b in ends):
+            for a, b in ends:
+                if all(earlier is not a for earlier, _ in b["after"]):
+                    b["after"].append((a, link))
+        elif link["relation"] in FEEDBACK and all(a and b for a, b in ends):
+            for a, b in ends:
+                a["loops"].append((b, link))
+        else:
+            other.append(link)
+    stage = {}
+
+    def depth(step, seen=frozenset()):
+        key = step["action"]
+        if key not in stage:
+            if key in seen:
+                return 0
+            stage[key] = 1 + max((depth(a, seen | {key}) for a, _ in step["after"]), default=-1)
+        return stage[key]
+    for step in steps:
+        step["stage"] = depth(step)
+    steps.sort(key=lambda s: (s["stage"], s["index"]))
+    for number, step in enumerate(steps, 1):
+        step["n"] = number
+    placed = {i for s in steps for i in [s["action"], s["effect"], *s["inputs"]] if i}
+    return {"steps": steps, "sequenced": any(s["after"] for s in steps), "other": other,
+            "loose": [i for i in nodes if i not in placed]}

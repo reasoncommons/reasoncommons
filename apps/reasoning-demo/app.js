@@ -183,6 +183,216 @@
     set(saved ? saved === 'on' : rows.length > 10, false);  // Large trees start stepped unless the reader chose otherwise.
   }
 
+  // Plans: lines between stages, tracing what a step needs and makes possible, a read-only panel,
+  // the objective filter and stage jumps. Without this, cards link to their records and list what they need.
+  const planCards = document.querySelectorAll('.pv-card');
+  if (planCards.length) {
+    const map = document.querySelector('.pv-map');
+    const drawer = document.createElement('aside');
+    drawer.className = 'pv-drawer';
+    drawer.setAttribute('aria-label', 'Details');
+    drawer.tabIndex = -1;
+    document.body.append(drawer);
+    const shut = document.createElement('button');
+    shut.type = 'button';
+    shut.className = 'pv-x';
+    shut.setAttribute('aria-label', 'Close details');
+    shut.textContent = '×';
+    let opener = null;
+    let pinned = null;
+    let trace = () => {};
+
+    const close = () => {
+      if (!drawer.classList.contains('is-open')) return;
+      drawer.classList.remove('is-open');
+      document.body.classList.remove('pv-open');
+      for (const card of document.querySelectorAll('.pv-focus')) card.classList.remove('pv-focus');
+      if (opener && document.contains(opener)) opener.focus({ preventScroll: true });
+      opener = null;
+      pinned = null;
+      trace(null);
+    };
+    const open = (id, from) => {
+      const template = document.getElementById(`pv-d-${id}`);
+      if (!template) return false;
+      drawer.replaceChildren(shut, template.content.cloneNode(true));
+      drawer.classList.add('is-open');
+      document.body.classList.add('pv-open');
+      drawer.scrollTop = 0;
+      opener = from || opener;
+      drawer.querySelector('.pv-d-title')?.focus({ preventScroll: true });
+      return true;
+    };
+    const select = (id, card) => {
+      for (const other of document.querySelectorAll('.pv-focus')) other.classList.remove('pv-focus');
+      if (map && map.contains(card)) {
+        if (pinned === id) { close(); return; }
+        pinned = id;
+        trace(id);
+      }
+      card.classList.add('pv-focus');
+      open(id, card.querySelector('.pv-hit'));
+      // Keep the selected step clear of the panel on a wide screen.
+      requestAnimationFrame(() => {
+        const scroller = card.closest('.pv-scroll');
+        if (!scroller || getComputedStyle(drawer).position !== 'fixed' || innerWidth <= 760) return;
+        const over = card.getBoundingClientRect().right - (innerWidth - drawer.offsetWidth - 24);
+        if (over > 0) scroller.scrollBy({ left: over, behavior: calm.matches ? 'auto' : 'smooth' });
+      });
+    };
+    const show = card => card.scrollIntoView({ behavior: calm.matches ? 'auto' : 'smooth', block: 'center', inline: 'center' });
+
+    document.addEventListener('click', event => {
+      if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      if (event.target.closest('.pv-x')) { close(); return; }
+      const hit = event.target.closest('.pv-hit');
+      const goto = event.target.closest('[data-goto]');
+      if (hit && document.getElementById(`pv-d-${hit.dataset.id}`)) {
+        event.preventDefault();
+        select(hit.dataset.id, hit.closest('.pv-card'));
+      } else if (goto) {
+        const card = [...document.querySelectorAll(`.pv-card[data-node="${CSS.escape(goto.dataset.goto)}"]`)].find(c => !c.classList.contains('pv-out'));
+        if (!card) return;  // Not on this page: follow the link to the full record.
+        event.preventDefault();
+        show(card);
+        if (pinned !== goto.dataset.goto) select(goto.dataset.goto, card);
+      } else if (map && pinned && event.target.closest('.pv-scroll') && !event.target.closest('.pv-card')) {
+        close();
+      }
+    });
+    addEventListener('keydown', event => { if (event.key === 'Escape') close(); });
+
+    if (map) {
+      const data = JSON.parse(document.querySelector('.pv-data').textContent);
+      const pre = new Map(), post = new Map();
+      const add = (index, key, value) => { if (!index.has(key)) index.set(key, []); index.get(key).push(value); };
+      for (const link of data.links) for (const from of link.from) { add(pre, link.to, from); add(post, from, link.to); }
+      const reach = (id, index) => {
+        const seen = new Set(), todo = [id];
+        while (todo.length) for (const next of index.get(todo.pop()) || []) if (!seen.has(next)) { seen.add(next); todo.push(next); }
+        return seen;
+      };
+      const path = (nodes, edges) => ({ nodes: new Set(nodes), edges: new Set(edges.map(pair => pair.join('>'))) });
+      const everything = path(data.critical, data.edges);
+      let critical = everything;
+      const svg = map.querySelector('.pv-lines');
+      const anchor = 34;  // Lines meet a card at its first line of text, so the critical path runs straight.
+      const cardOf = id => map.querySelector(`.pv-card[data-node="${CSS.escape(id)}"]:not(.pv-out)`);
+      const attr = value => String(value).replace(/[&"<>]/g, ch => ({ '&': '&amp;', '"': '&quot;', '<': '&lt;', '>': '&gt;' }[ch]));
+
+      trace = id => {
+        map.classList.toggle('is-traced', Boolean(id));
+        for (const element of map.querySelectorAll('.pv-on')) element.classList.remove('pv-on', 'pv-up');
+        if (!id) return;
+        const up = reach(id, pre), down = reach(id, post);
+        const above = x => up.has(x) || x === id, below = x => down.has(x) || x === id;
+        for (const card of map.querySelectorAll('.pv-card')) if (card.dataset.node === id || up.has(card.dataset.node) || down.has(card.dataset.node)) card.classList.add('pv-on');
+        const lit = new Map();
+        for (const line of svg.querySelectorAll('[data-from]')) {
+          const { from, to } = line.dataset;
+          const isUp = up.has(from) && above(to), isDown = below(from) && down.has(to);
+          if (!isUp && !isDown) continue;
+          line.classList.add('pv-on');
+          if (isUp) line.classList.add('pv-up');
+          if (!lit.has(to) || isUp) lit.set(to, isUp);
+        }
+        for (const part of svg.querySelectorAll('[data-to]:not([data-from])')) {
+          if (!lit.has(part.dataset.to)) continue;
+          part.classList.add('pv-on');
+          if (lit.get(part.dataset.to)) part.classList.add('pv-up');
+        }
+      };
+
+      const draw = () => {
+        if (getComputedStyle(svg).display === 'none') { map.classList.remove('has-lines'); return; }
+        map.classList.add('has-lines');  // Lines replace each card's "Needs" list; measure after it is hidden.
+        const box = map.getBoundingClientRect();
+        svg.setAttribute('width', map.offsetWidth);
+        svg.setAttribute('height', map.offsetHeight);
+        const at = (id, side) => {
+          const card = cardOf(id);
+          if (!card) return null;
+          const r = card.getBoundingClientRect();
+          return { x: (side === 'out' ? r.right : r.left) - box.left, y: r.top - box.top + anchor };
+        };
+        const curve = (a, b) => {
+          const k = Math.max(22, Math.min(110, (b.x - a.x) * 0.45));
+          return `M${a.x},${a.y} C${a.x + k},${a.y} ${b.x - k},${b.y} ${b.x},${b.y}`;
+        };
+        const lines = [];
+        for (const link of data.links) {
+          const target = at(link.to, 'in');
+          const sources = link.from.map(from => [from, at(from, 'out')]).filter(([, point]) => point);
+          if (!target || !sources.length) continue;
+          const meet = link.from.length > 1 ? { x: target.x - 16, y: target.y } : target;  // Joint conditions meet before one arrow.
+          let onPath = false;
+          for (const [from, point] of sources) {
+            const crit = critical.edges.has(`${from}>${link.to}`);
+            onPath = onPath || crit;
+            lines.push(`<path class="pv-e pv-${link.status}${crit ? ' pv-crit' : ''}" data-from="${attr(from)}" data-to="${attr(link.to)}" d="${curve(point, meet)}"/>`);
+          }
+          const style = `pv-e pv-${link.status}${onPath ? ' pv-crit' : ''}`;
+          if (meet !== target) {
+            lines.push(`<path class="${style}" data-to="${attr(link.to)}" d="M${meet.x},${meet.y}L${target.x},${target.y}"/>`,
+                       `<circle class="pv-j${onPath ? ' pv-crit' : ''}" data-to="${attr(link.to)}" cx="${meet.x}" cy="${meet.y}" r="3.2"/>`);
+          }
+          lines.push(`<path class="${style} pv-tip" data-to="${attr(link.to)}" d="M${target.x - 7},${target.y - 4.5}L${target.x - 1},${target.y}L${target.x - 7},${target.y + 4.5}"/>`);
+        }
+        svg.innerHTML = lines.join('');
+        trace(pinned);
+      };
+      let frame = 0;
+      const redraw = () => { cancelAnimationFrame(frame); frame = requestAnimationFrame(draw); };
+      new ResizeObserver(redraw).observe(map);
+      document.fonts?.ready.then(redraw);
+      redraw();
+
+      // Hovering or focusing a step previews its trace until one is selected.
+      map.addEventListener('mouseover', event => { const card = event.target.closest('.pv-card'); if (card && !pinned) trace(card.dataset.node); });
+      map.addEventListener('mouseleave', () => trace(pinned));
+      map.addEventListener('focusin', event => { const card = event.target.closest('.pv-card'); if (card && !pinned) trace(card.dataset.node); });
+      map.addEventListener('focusout', event => { if (!map.contains(event.relatedTarget)) trace(pinned); });
+
+      const hint = document.querySelector('.pv-hint');
+      if (hint) hint.hidden = false;
+      const toward = document.querySelector('.pv-toward');
+      if (toward) {
+        toward.hidden = false;
+        toward.querySelector('select').addEventListener('change', event => {
+          const view = data.toward[event.target.value];
+          close();
+          for (const card of map.querySelectorAll('.pv-card')) {
+            const id = card.dataset.node;
+            const kept = !view || id in view.order;
+            card.classList.toggle('pv-out', !kept);
+            card.style.order = view && kept ? view.order[id] : '';
+          }
+          for (const column of map.querySelectorAll('.pv-col')) column.hidden = !column.querySelector('.pv-card:not(.pv-out)');
+          critical = view ? path(view.critical, view.edges) : everything;
+          for (const card of map.querySelectorAll('.pv-card')) card.classList.toggle('pv-crit', critical.nodes.has(card.dataset.node));
+          redraw();
+        });
+      }
+      const jump = document.querySelector('.pv-jump');
+      if (jump) {
+        jump.hidden = false;
+        const scroller = map.closest('.pv-scroll');
+        jump.addEventListener('click', event => {
+          const button = event.target.closest('button[data-jump]');
+          const column = button && map.querySelector(`.pv-col[data-stage="${button.dataset.jump}"]`);
+          if (!column || column.hidden) return;
+          const left = scroller.scrollLeft + column.getBoundingClientRect().left - scroller.getBoundingClientRect().left - 32;
+          scroller.scrollTo({ left, behavior: calm.matches ? 'auto' : 'smooth' });
+        });
+      }
+      // A link to one step (prerequisites.html#id) opens that step traced.
+      let target;
+      try { target = decodeURIComponent(location.hash.slice(1)); } catch { target = ''; }
+      const linked = target && cardOf(target);
+      if (linked) requestAnimationFrame(() => { show(linked); select(target, linked); });
+    }
+  }
+
   // Statements: a filter for the list, and a page title for the item in view.
   const list = document.querySelector('.items');
   if (list) {
