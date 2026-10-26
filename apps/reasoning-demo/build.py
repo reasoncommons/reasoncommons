@@ -71,7 +71,7 @@ def digest(value):
 
 
 def skill_helpers():
-    helper = ROOT / "skills/reason-commons/scripts/update_views.py"
+    helper = ROOT / "skills/ltp/scripts/update_views.py"
     spec = importlib.util.spec_from_file_location("rc_views", helper)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

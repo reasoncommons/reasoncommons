@@ -26,7 +26,7 @@ Save as `.github/pull_request_template.md`, replacing the state-file path:
 ## Reasoning changes
 
 <!-- Visible generated Mermaid diagrams of the YAML diff. Generate this section and the collapsed list with:
-python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown -->
+python3 skills/ltp/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown -->
 
 ## Reasoning this serves
 
@@ -79,7 +79,7 @@ These checks establish declared coverage, not that code inside an approved file 
 ## Generate and inspect the diagrams
 
 ```sh
-python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown
+python3 skills/ltp/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --suggest --format markdown
 ```
 
 This emits the **Expected outcomes** section, the visible **Reasoning changes** section and the closed **Tree updates** details block together. Put a short change summary before the diagrams, and the served reasoning, backlog, acceptance references and validation afterward. Preserve the generated Mermaid graph source: CI checks it against the YAML diff, including qualification text, actual topology, standing and kind labels, backlog notes, AND conditions, previous wording and removed items. Display configuration is validated separately: YAML formatting and key order may vary, and `config.flowchart.wrappingWidth` may be omitted or set to a positive integer. Keep `config.htmlLabels: false`; other configuration fields, malformed YAML and duplicate keys are rejected with a configuration-specific error. If the reasoning needs correcting, edit the YAML through the approved workflow and regenerate. `--format diagrams` emits only the diagram section; the original `--format list` remains available for tooling, but a flat list alone is not a complete PR description.
@@ -95,7 +95,7 @@ Keep the generated frontmatter as the starting point, including the [Mermaid lab
 ## Run locally and in CI
 
 ```sh
-python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --body-file /tmp/pr-body.md
+python3 skills/ltp/scripts/check_pr_trees.py path/to/reason-commons.yaml --base origin/main --body-file /tmp/pr-body.md
 ```
 
 Save as `.github/workflows/tree-check.yml`, adjusting the state-file path:
@@ -120,14 +120,14 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - name: Test reasoning and approval helpers
-        run: python3 -m unittest discover -s skills/reason-commons/tests
+        run: python3 -m unittest discover -s skills/ltp/tests
       - name: Check tree updates and recorded acceptance coverage
         env:
           PR_BODY: ${{ github.event.pull_request.body }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
         run: |
           printf '%s\n' "$PR_BODY" > "$RUNNER_TEMP/pr-body.md"
-          python3 skills/reason-commons/scripts/check_pr_trees.py path/to/reason-commons.yaml --base "$BASE_SHA" --body-file "$RUNNER_TEMP/pr-body.md"
+          python3 skills/ltp/scripts/check_pr_trees.py path/to/reason-commons.yaml --base "$BASE_SHA" --body-file "$RUNNER_TEMP/pr-body.md"
 ```
 
 The description passes through an environment variable rather than being interpolated into executable shell code. The `edited` trigger rechecks corrected descriptions; `synchronize` checks updated commits.

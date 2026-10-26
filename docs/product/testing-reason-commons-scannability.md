@@ -1,6 +1,6 @@
-# Test the reason-commons conversation update
+# Test the ltp conversation update
 
-Use a fresh Claude Code session in the checkout on `codex/reason-commons-scannability`. Both the project skill and the installed user-level skill point to this checkout's `skills/reason-commons/`; an existing session may still hold the earlier instructions. This is a local test branch, not a published skill release.
+Use a fresh Claude Code session in the checkout on `codex/reason-commons-scannability`. Both the project skill and the installed user-level skill point to this checkout's `skills/ltp/`; an existing session may still hold the earlier instructions. This is a local test branch, not a published skill release.
 
 ## Start with the gold fixture
 
@@ -14,7 +14,7 @@ claude
 Paste:
 
 ```text
-/reason-commons Use the updated skill in this checkout at skills/reason-commons/SKILL.md. I’m Avery. Keep this test's working state in /private/tmp/reason-commons-scannability-test/reason-commons.yaml; create its parent directory if needed. The remote-work toy fixture in claim-tree-annotation.md reports a 13% productivity gain on solo call-handling tasks in a call-centre study. Help me decide whether that evidence applies to our team's creative and collaborative work.
+/ltp Use the updated skill in this checkout at skills/ltp/SKILL.md. I’m Avery. Keep this test's working state in /private/tmp/reason-commons-scannability-test/reason-commons.yaml; create its parent directory if needed. The remote-work toy fixture in claim-tree-annotation.md reports a 13% productivity gain on solo call-handling tasks in a call-centre study. Help me decide whether that evidence applies to our team's creative and collaborative work.
 ```
 
 The reply should use **Type: Next step**, lead with a useful inquiry and its reason, make any save and proposal status clear, and ask one focused question. The reported gain must retain its scope: it does not establish the same result for creative or collaborative work. A routine participant banner, empty status box, four-direction menu, or unnecessary diagram should not precede the useful reply. A diagram remains appropriate when it helps inspect relationships or you request one.
@@ -59,7 +59,7 @@ For the real repository, inspect main's protection and active rules before apply
 After the toy check, open another fresh session from the same checkout and paste:
 
 ```text
-/reason-commons Use the updated skill in this checkout at skills/reason-commons/SKILL.md. Resume the collaboration from collab/reason-commons.yaml in the private reasoncommons/product checkout and its Beads handoff there. Recommend one useful next step, say what it rests on, and leave me free to redirect.
+/ltp Use the updated skill in this checkout at skills/ltp/SKILL.md. Resume the collaboration from collab/reason-commons.yaml in the private reasoncommons/product checkout and its Beads handoff there. Recommend one useful next step, say what it rests on, and leave me free to redirect.
 ```
 
 This second prompt uses the actual branch's collaboration state. It can save new contributions and review decisions, so treat it as a real reasoning session. A recommendation derived only from the handoff should say so; it must not be presented as an established system constraint. Newly captured claims remain proposed unless you explicitly endorse the identified reasoning.

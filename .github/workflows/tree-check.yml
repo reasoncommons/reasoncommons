@@ -1,4 +1,4 @@
-# Test the reason-commons skill helpers. The collaboration YAML moved to the private
+# Test the ltp skill helpers. The collaboration YAML moved to the private
 # reasoncommons/product repo on 2026-10-21, so PR reasoning and receipts are no longer
 # checked here.
 name: Tree check
@@ -20,4 +20,4 @@ jobs:
           python-version: "3.12"
       - run: pip install pyyaml
       - name: Test reasoning and approval helpers
-        run: python3 -m unittest discover -s skills/reason-commons/tests
+        run: python3 -m unittest discover -s skills/ltp/tests

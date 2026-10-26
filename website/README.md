@@ -19,7 +19,7 @@ On the questions that matter most, we generate plenty of heat and not much light
 <div class="rc-cards rc-cards-2">
 <a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>Lay out what a goal rests on, what stands in its way and what to do about it, with the whole and the parts kept connected.</p></a>
 <a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from what you already have, and folds ongoing discussion back in — so it enriches the conversation and improves the tree at the same time.</p></a>
-<a class="rc-card rc-card-wide" href="/skills"><span class="rc-card-title">Try it</span><p>Install the reason-commons skill in Claude Code or Codex and talk a real problem through, alone or with your group.</p></a>
+<a class="rc-card rc-card-wide" href="/skills"><span class="rc-card-title">Try it</span><p>Install the ltp skill in Claude Code or Codex and talk a real problem through, alone or with your group.</p></a>
 </div>
 
 ## Start here — the three-part series

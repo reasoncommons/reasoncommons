@@ -2,7 +2,7 @@
   "schema_version": 1,
   "base_commit": "f001dbcfd0a41e82b9c1510bfbd1193f0527ae24",
   "site_root": "website",
-  "repository_url": "https://github.com/life-itself/reasoncommons/blob/main",
+  "repository_url": "https://github.com/reasoncommons/reasoncommons/blob/main",
   "exports": [
     {
       "source": "motivation.md",

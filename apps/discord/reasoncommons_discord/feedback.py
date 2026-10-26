@@ -14,7 +14,7 @@ LOG = logging.getLogger(__name__)
 
 @lru_cache
 def core():
-    path = Path(__file__).resolve().parents[3] / "skills/reason-commons/scripts/feedback.py"
+    path = Path(__file__).resolve().parents[3] / "skills/ltp/scripts/feedback.py"
     spec = importlib.util.spec_from_file_location("discord_shared_feedback", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

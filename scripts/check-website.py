@@ -112,7 +112,7 @@ def check(root: Path, migration: bool = False) -> tuple[list[str], list[dict], i
         if resolve(site, site / 'README.md', route):
             errors.append(f'Working route is still published: {route}')
     if migration:
-        for name in ('reason-commons',):
+        for name in ('ltp',):
             link = root / '.agents/skills' / name
             if not link.is_symlink() or link.resolve() != (root / 'skills' / name).resolve():
                 errors.append(f'Canonical skill link does not resolve: {name}')

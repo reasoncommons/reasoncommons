@@ -16,7 +16,7 @@
     adeyemi: { name: 'Dr Funmi Adeyemi', short: 'Dr Adeyemi', role: 'Doctor' },
     tomasz:  { name: 'Tomasz Nowak',     short: 'Tomasz',     role: 'Triage nurse' },
     leila:   { name: 'Leila Haddad',     short: 'Leila',      role: 'Pharmacist' },
-    skill:   { name: 'Reason Commons',   short: 'Reason Commons', role: 'The reason-commons skill' }
+    skill:   { name: 'Reason Commons',   short: 'Reason Commons', role: 'The ltp skill' }
   };
   Object.keys(D.cast || {}).forEach(function (k) { CAST[k] = D.cast[k]; });
 
@@ -143,7 +143,7 @@
       visual.innerHTML = roster('skill') + '<div class="sm-cover"><p class="scene-kicker">Illustrated story · actual record linked below</p><h2>The people bring a question.<br>The skill keeps the reasoning.</h2><p>Reason Commons is an installed package for an AI assistant. It keeps claims, authors, objections and the next check in a working file.</p><p>The clinic and these conversations are invented. Follow the story first; each complete exchange appears after its premises.</p><p class="sm-footnote">Sam manages · Maria handles reception · Tomasz triages · Dr Adeyemi consults · Leila dispenses.</p></div>';
     } else {
       var s = scenes[index];
-      visual.innerHTML = roster(s.dataset.who) + '<p class="scene-kicker">' + s.querySelector('.scene-kicker').textContent + '</p><h2>' + s.querySelector('h2').textContent + '</h2><div class="sm-device" data-device="' + s.dataset.device + '"><p class="sm-surface">' + (s.dataset.device === 'phone' ? 'Team-chat prototype · explicit /reason capture' : 'AI assistant · reason-commons skill installed') + '</p><div class="scene-dialogue">' + s.querySelector('.scene-dialogue').innerHTML + '</div></div><p class="scene-consequence">' + s.querySelector('.scene-consequence').textContent + '</p><p class="sm-footnote">Latest exchange · the saved reasoning is in the story.</p>';
+      visual.innerHTML = roster(s.dataset.who) + '<p class="scene-kicker">' + s.querySelector('.scene-kicker').textContent + '</p><h2>' + s.querySelector('h2').textContent + '</h2><div class="sm-device" data-device="' + s.dataset.device + '"><p class="sm-surface">' + (s.dataset.device === 'phone' ? 'Team-chat prototype · explicit /reason capture' : 'AI assistant · ltp skill installed') + '</p><div class="scene-dialogue">' + s.querySelector('.scene-dialogue').innerHTML + '</div></div><p class="scene-consequence">' + s.querySelector('.scene-consequence').textContent + '</p><p class="sm-footnote">Latest exchange · the saved reasoning is in the story.</p>';
     }
     /* Larger fonts or unusual heights fall back to the complete inline source. */
     if (media.matches && rail.offsetHeight && rail.scrollHeight > rail.clientHeight + 2) document.body.classList.add('sm-inline');

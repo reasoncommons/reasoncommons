@@ -309,7 +309,7 @@ What a Reason Commons project file calls each of the six trees. A project holds 
 
 ### Role
 
-What a statement is doing in a given view — a [goal](#goal), an [undesirable effect](#undesirable-effect), an [injection](#injection), and so on. The full list the reason-commons skill uses is in [its schema](https://github.com/life-itself/reasoncommons/blob/main/skills/reason-commons/references/schema.md).
+What a statement is doing in a given view — a [goal](#goal), an [undesirable effect](#undesirable-effect), an [injection](#injection), and so on. The full list the ltp skill uses is in [its schema](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp/references/schema.md).
 
 ## Read more
 

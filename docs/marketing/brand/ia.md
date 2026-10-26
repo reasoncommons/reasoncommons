@@ -64,7 +64,7 @@ Verdicts: **keep** (URL and role unchanged, copy may change), **move** (content 
 | `/about` | `website/about.md` | About | **Keep**, rewrite | Status, strands and "no app yet" wording are stale; app and "spaces" references go. See `pages.md`. |
 | `/people/rufus-pollock`, `/people/david-joseph` | `website/people/*.md` | Blog author profiles | **Keep**, out of nav | New since the earlier inventory. *Making work add up* lists `authors: [ "David Joseph" ]` rather than the `david-joseph` slug; check it resolves. |
 | `/skills` | `website/skills/README.md`, exported from `skills/README.md` | Skills reference | **Keep** as the install reference; Use it is a separate page (§6) | Fix "the Reason Commons app imports" / "space" wording and the raw-URL line in the canonical `skills/README.md`, then re-export. |
-| `/skills/*/SKILL.md` + `references/` | — (canonical `skills/<name>/`) | Raw skills | **Retired by the refactor** | Listed in `retired_working_routes`; the checker fails if they reappear. `npx skills add life-itself/reasoncommons` reads GitHub and still works. The paste-the-URL path `https://reasoncommons.com/skills/reason-commons/SKILL.md`, still printed in `skills/README.md`, now 404s: replace it with the `raw.githubusercontent.com/life-itself/reasoncommons/main/skills/reason-commons/SKILL.md` URL. |
+| `/skills/*/SKILL.md` + `references/` | — (canonical `skills/<name>/`) | Raw skills | **Retired by the refactor** | Listed in `retired_working_routes`; the checker fails if they reappear. `npx skills add reasoncommons/reasoncommons` reads GitHub and still works. The paste-the-URL path `https://reasoncommons.com/skills/reason-commons/SKILL.md`, still printed in `skills/README.md`, now 404s: replace it with the `raw.githubusercontent.com/reasoncommons/reasoncommons/main/skills/ltp/SKILL.md` URL. |
 | `/guides` | new `website/guides/index.md` | New landing | **Add** | One nav item for two levels without moving any URL. Resolves #15. |
 | `/vision` | new `website/vision.md` | New page | **Add** | Trees → AI for funders and the AI crowd, the idea map, `#communities`, the exhibits. |
 | `/use` | new `website/use.md` | New page | **Add** | The Use it page (§6). |
@@ -114,7 +114,7 @@ No server redirects. The existing pattern is a meta-refresh `index.html` stub (`
 | `/explainers/01-bottleneck/index.html`, `/02-thinking-made-visible/`, `/03-five-shapes/`, `/01-bottleneck-plain/` | First chapter of the *Why fixes don't stick* series | Meta-refresh `index.html` stub in each old folder under `website/explainers/`; real content leaves the root (git history keeps it). |
 | `/explainers/second-renaissance/`, `/second-renaissance-plain/`, `/whose-map-is-it/` | First chapter of the *Where does the thinking go?* series | Same stub pattern. |
 | `/claim-tree-annotation` | GitHub `claim-tree-annotation.md` | Drop the export; optional one-line Markdown stub with the GitHub link; fix internal inbound links. |
-| `/skills/reason-commons/SKILL.md` and other raw skill files | GitHub (raw or blob) | Already retired by the refactor. Update every printed URL (`skills/README.md`, Use it page) to the GitHub raw URL. |
+| `/skills/ltp/SKILL.md` and other raw skill files | GitHub (raw or blob) | Already retired by the refactor. Update every printed URL (`skills/README.md`, Use it page) to the GitHub raw URL. |
 | `/demos` | unchanged | Framing changes, URL does not. |
 | `/talk/index.html` (already dead) | — | No remaining inbound links in `website/` except historical changelog prose; no action. |
 
