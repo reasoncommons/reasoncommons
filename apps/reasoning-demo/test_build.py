@@ -227,9 +227,9 @@ class SiteTests(unittest.TestCase):
         data = self.real["data"]
         count = lambda key, status: sum(1 for t in data["trees"].values() for i in t[key] if i["status"] == status)
         self.assertEqual((count("nodes", "accepted"), count("links", "accepted")), (63, 57))
-        self.assertEqual((count("nodes", "proposed"), count("links", "proposed")), (62, 39))
+        self.assertEqual((count("nodes", "proposed"), count("links", "proposed")), (58, 35))
         self.assertEqual(set(data["trees"]), set(pages.TREE_ORDER))
-        self.assertEqual(data["release_id"], "2026-10-26.2")
+        self.assertEqual(data["release_id"], "2026-10-27.1")
         self.assertEqual(json.loads(self.outputs["reasoning.json"]), data)
         self.assertEqual(json.loads(self.outputs["reason-commons/reasoning.json"]), data)
     def test_snapshot_tampering_fails(self):
@@ -485,7 +485,7 @@ class ReconstructionTests(unittest.TestCase):
         self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 246)
 
     def test_existing_reviewed_snapshots_remain_byte_for_byte_the_same(self):
-        expected = {"real": "7e657a452c2b5840c2168188ba1e139c46f8fcb5f8ee9e89ac74687cbe88de75",  # proposed-reasoning-public r1
+        expected = {"real": "679db9fcead3243b51a221ce2fb77df06245509bde437b73c36a7deefa7c87de",  # demo-v2-plan-refresh r1
                     "example": "02820685f155a154bcfeb8a35e71ce18771a6b31e6410afaf7ded14a4a30eef4"}
         for record in self.commons:
             if record["entry"]["kind"] in expected:

@@ -1,8 +1,8 @@
 {
   "registry_version": 1,
   "release": {
-    "release_id": "2026-10-26.2",
-    "snapshot_date": "2026-10-26",
+    "release_id": "2026-10-27.1",
+    "snapshot_date": "2026-10-27",
     "title": "Reason Commons: Rufus and David’s collaboration"
   },
   "people": {
@@ -196,82 +196,74 @@
         "pr2-io-capacity-trims",
         "pr2-ob-default-building",
         "pr2-io-outward-owner",
-        "pr2-ob-unnamed",
-        "pr2-io-named",
+        "pr2-ob-no-yes",
+        "pr2-io-agreed",
         "pr2-ob-slip",
         "pr2-io-ai-only-first",
         "pr2-ob-thresholds",
         "pr2-io-thresholds-log",
         "pr2-ob-setup-start",
-        "pr2-io-setup-partly"
+        "pr2-io-self-start"
       ],
       "links": [
         "pr2-l-capacity",
         "pr2-l-outward",
-        "pr2-l-named",
+        "pr2-l-agreed",
         "pr2-l-slip",
         "pr2-l-thresholds",
-        "pr2-l-setup",
-        "pr2-l-seq-grants-booking",
-        "pr2-l-seq-named-booking",
-        "pr2-l-outward-booking",
+        "pr2-l-self-start",
+        "pr2-l-seq-grants-agreed",
+        "pr2-l-seq-grants-ai-only",
+        "pr2-l-outward-agreed",
         "pr2-l-obj",
-        "pr2-l-setup-obj"
+        "pr2-l-self-start-obj"
       ]
     },
     "transition": {
       "nodes": [
-        "tt2-ec-foresight-blocked",
-        "tt2-a-foresight-blockers",
-        "tt2-e-foresight-unblocked",
-        "tt2-a-foresight-submit",
-        "tt2-e-foresight-submitted",
-        "tt2-ec-other-31oct",
-        "tt2-a-prototype-email",
-        "tt2-e-prototype-answer",
         "tt2-n-thresholds-first",
         "tt2-a-thresholds",
         "tt2-e-thresholds",
         "tt2-ec-lined-up",
+        "tt2-n-agreed-application",
         "tt2-a-first-session",
         "tt2-e-first-session",
-        "tt2-n-sessions-first",
-        "tt2-a-book",
-        "tt2-e-booked",
-        "tt2-a-check",
-        "tt2-e-check",
-        "tt2-n-no-features",
+        "tt2-ec-grants-first",
+        "tt2-ec-candidates",
+        "tt2-n-outside-users",
+        "tt2-a-invite",
+        "tt2-e-agreed",
+        "tt2-ec-setup-hard",
+        "tt2-n-t2",
+        "tt2-a-start-guide",
+        "tt2-e-self-start",
+        "tt2-ec-no-features",
+        "tt2-ec-nov-grants",
         "tt2-a-run",
+        "tt2-e-held",
         "tt2-e-t2",
         "tt2-a-notes",
         "tt2-e-evidence",
+        "tt2-n-who-pays",
         "tt2-a-priced-offer",
-        "tt2-e-who-pays",
-        "tt2-ec-nov-grants",
-        "tt2-a-choose-grants",
-        "tt2-e-grants-capped",
-        "tt2-a-weekly"
+        "tt2-e-who-pays"
       ],
       "links": [
-        "tt2-l-blockers",
-        "tt2-l-submit",
-        "tt2-l-prototype",
         "tt2-l-thresholds",
         "tt2-l-first-session",
-        "tt2-l-book",
-        "tt2-l-check",
+        "tt2-l-invite",
+        "tt2-l-start-guide",
+        "tt2-l-held",
         "tt2-l-run",
         "tt2-l-notes",
-        "tt2-l-seq-run-notes",
-        "tt2-l-priced-offer",
-        "tt2-l-grants"
+        "tt2-l-priced-offer"
       ]
     }
   },
   "snapshot": {
     "projection_version": 1,
-    "release_id": "2026-10-26.2",
-    "snapshot_date": "2026-10-26",
+    "release_id": "2026-10-27.1",
+    "snapshot_date": "2026-10-27",
     "title": "Reason Commons: Rufus and David’s collaboration",
     "trees": {
       "goal": {
@@ -3267,7 +3259,7 @@
               }
             ],
             "kind": "objective",
-            "text": "Six named people, at least one a pair or small group, have Stage 1 sessions by 2026-11-22, one of them before 31 Oct, with T2 run inside the six (three with a human alongside, three AI-only). The accepted fallbacks are part of the objective: under four booked by 2 Nov means the target becomes four, keeping the pair or group (TR4); fewer than two AI-only sessions means T2 is recorded as downgraded (TR5).",
+            "text": "Six named people, at least one a pair or small group, have Stage 1 sessions by 2026-11-22, one of them before 31 Oct, with T2 run inside the six (three with a human alongside, three AI-only).",
             "label": "Six named people, including a pair or group, have Stage 1 sessions by 22 Nov, with T2 inside."
           },
           {
@@ -3339,7 +3331,7 @@
             "label": "David owns booking the six, with Rufus's support; sessions before building; G5 holds."
           },
           {
-            "id": "pr2-ob-unnamed",
+            "id": "pr2-ob-no-yes",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3349,11 +3341,11 @@
               }
             ],
             "kind": "obstacle",
-            "text": "The six are not named; only a few sessions are lined up.",
-            "label": "The six are not named; only a few sessions are lined up."
+            "text": "Beyond the few sessions already lined up, nobody has been approached, so we don't know whether six people, including a pair or small group, will agree to a session.",
+            "label": "Beyond the few sessions lined up, nobody has been approached; we don't know who will say yes."
           },
           {
-            "id": "pr2-io-named",
+            "id": "pr2-io-agreed",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3363,8 +3355,8 @@
               }
             ],
             "kind": "intermediate_objective",
-            "text": "The six are named, the pair or group included, and come from two or three named communities.",
-            "label": "The six are named, the pair or group included, from two or three named communities."
+            "text": "Six people, including a pair or small group, from two or three named communities, have agreed to Stage 1 sessions and booked them.",
+            "label": "Six people, including a pair or group, from two or three named communities, have booked."
           },
           {
             "id": "pr2-ob-slip",
@@ -3399,8 +3391,8 @@
               }
             ],
             "kind": "intermediate_objective",
-            "text": "AI-only sessions are booked first, and bookings are checked on 2 Nov.",
-            "label": "AI-only sessions booked first; bookings checked on 2 Nov."
+            "text": "AI-only sessions are booked first, so they are not the ones that slip.",
+            "label": "AI-only sessions are booked first, so they are not the ones that slip."
           },
           {
             "id": "pr2-ob-thresholds",
@@ -3413,8 +3405,8 @@
               }
             ],
             "kind": "obstacle",
-            "text": "T2 has no thresholds yet.",
-            "label": "T2 has no thresholds yet."
+            "text": "T2 has no thresholds yet, and thresholds set after the sessions would let any result count as success.",
+            "label": "T2 has no thresholds yet; set afterwards, they would let any result count as success."
           },
           {
             "id": "pr2-io-thresholds-log",
@@ -3449,22 +3441,18 @@
             "label": "Starting needs the exact skill set up, time, and someone explaining the method."
           },
           {
-            "id": "pr2-io-setup-partly",
+            "id": "pr2-io-self-start",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              },
               {
                 "name": "AI assistant",
                 "role": "assistant"
               }
             ],
             "kind": "intermediate_objective",
-            "text": "Partly covered for Stage 1: the crafted AI experience (I8), with setup time logged in AI-only sessions (G5). The training video belongs to Stage 2.",
-            "label": "Partly covered: the crafted AI experience (I8), with setup time logged (G5)."
+            "text": "AI-only participants can set up the skill and start their session without one of us explaining the method.",
+            "label": "AI-only participants can set up and start a session without us explaining the method."
           }
         ],
         "links": [
@@ -3501,7 +3489,7 @@
             "relation": "overcomes"
           },
           {
-            "id": "pr2-l-named",
+            "id": "pr2-l-agreed",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3511,9 +3499,9 @@
               }
             ],
             "from": [
-              "pr2-io-named"
+              "pr2-io-agreed"
             ],
-            "to": "pr2-ob-unnamed",
+            "to": "pr2-ob-no-yes",
             "relation": "overcomes"
           },
           {
@@ -3549,7 +3537,7 @@
             "relation": "overcomes"
           },
           {
-            "id": "pr2-l-setup",
+            "id": "pr2-l-self-start",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3559,13 +3547,13 @@
               }
             ],
             "from": [
-              "pr2-io-setup-partly"
+              "pr2-io-self-start"
             ],
             "to": "pr2-ob-setup-start",
             "relation": "overcomes"
           },
           {
-            "id": "pr2-l-seq-grants-booking",
+            "id": "pr2-l-seq-grants-agreed",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3577,27 +3565,31 @@
             "from": [
               "pr2-io-capacity-trims"
             ],
-            "to": "pr2-io-ai-only-first",
+            "to": "pr2-io-agreed",
             "relation": "precedes"
           },
           {
-            "id": "pr2-l-seq-named-booking",
+            "id": "pr2-l-seq-grants-ai-only",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
               {
                 "name": "AI assistant",
                 "role": "assistant"
               }
             ],
             "from": [
-              "pr2-io-named"
+              "pr2-io-capacity-trims"
             ],
             "to": "pr2-io-ai-only-first",
             "relation": "precedes"
           },
           {
-            "id": "pr2-l-outward-booking",
+            "id": "pr2-l-outward-agreed",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3609,7 +3601,7 @@
             "from": [
               "pr2-io-outward-owner"
             ],
-            "to": "pr2-io-ai-only-first",
+            "to": "pr2-io-agreed",
             "relation": "necessary_for"
           },
           {
@@ -3624,6 +3616,7 @@
             ],
             "from": [
               "pr2-io-capacity-trims",
+              "pr2-io-agreed",
               "pr2-io-ai-only-first",
               "pr2-io-thresholds-log"
             ],
@@ -3631,7 +3624,7 @@
             "relation": "necessary_for"
           },
           {
-            "id": "pr2-l-setup-obj",
+            "id": "pr2-l-self-start-obj",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3641,7 +3634,7 @@
               }
             ],
             "from": [
-              "pr2-io-setup-partly"
+              "pr2-io-self-start"
             ],
             "to": "pr2-obj-stage1",
             "relation": "necessary_for"
@@ -3650,122 +3643,6 @@
       },
       "transition": {
         "nodes": [
-          {
-            "id": "tt2-ec-foresight-blocked",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "existing_condition",
-            "text": "Foresight submission (due 31 Oct 23:59 PDT) is blocked by four open beads: a second named use, a reference, Leo's OK to publish his tree, and David's final review (target 29 Oct). Track-record evidence is also open and the form answers are in progress.",
-            "label": "Foresight (due 31 Oct) is blocked by four open beads, including David's final review."
-          },
-          {
-            "id": "tt2-a-foresight-blockers",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "action",
-            "text": "Rufus and David, as owners of the Foresight application, clear the four blockers; the final review is David's. Their order is not recorded.",
-            "label": "Rufus and David clear the four blockers; the final review is David's."
-          },
-          {
-            "id": "tt2-e-foresight-unblocked",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "expected_effect",
-            "text": "Foresight submission is unblocked.",
-            "label": "Foresight submission is unblocked."
-          },
-          {
-            "id": "tt2-a-foresight-submit",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "action",
-            "text": "Rufus and David run the pre-submission check, submit by 31 Oct 23:59 PDT, tick sharing with Lightcone, and save a copy.",
-            "label": "Rufus and David check, submit by 31 Oct, tick sharing with Lightcone, save a copy."
-          },
-          {
-            "id": "tt2-e-foresight-submitted",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              },
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "expected_effect",
-            "text": "Foresight is submitted, so booking can start (grants first, booking after).",
-            "label": "Foresight is submitted, so booking can start."
-          },
-          {
-            "id": "tt2-ec-other-31oct",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "existing_condition",
-            "text": "Also due 31 Oct, with no owner recorded, are the Prototype Fund email and the Apart, Cosmos and Fifty Years forms; the NB1 trims don't mention the last three.",
-            "label": "Also due 31 Oct, with no owner recorded, are the Prototype Fund email and three forms."
-          },
-          {
-            "id": "tt2-a-prototype-email",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "action",
-            "text": "Email the Prototype Fund about team residency, Life Itself's copyright and parallel funding (owner not recorded).",
-            "label": "Email the Prototype Fund about team residency, copyright and parallel funding."
-          },
-          {
-            "id": "tt2-e-prototype-answer",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "expected_effect",
-            "text": "Answers arrive in time for a mid-November go or no-go on the Prototype Fund.",
-            "label": "Answers arrive in time for a mid-November go or no-go."
-          },
           {
             "id": "tt2-n-thresholds-first",
             "status": "proposed",
@@ -3777,8 +3654,8 @@
               }
             ],
             "kind": "need",
-            "text": "T2 thresholds are set before the first session.",
-            "label": "T2 thresholds are set before the first session."
+            "text": "T2 is a fair test only if its thresholds are set before any session results come in.",
+            "label": "T2 is a fair test only if its thresholds are set before any session results come in."
           },
           {
             "id": "tt2-a-thresholds",
@@ -3791,8 +3668,8 @@
               }
             ],
             "kind": "action",
-            "text": "Set T2 thresholds and prepare the log of human interventions, user time and setup time (owner not recorded).",
-            "label": "Set T2 thresholds and prepare the log (owner not recorded)."
+            "text": "Set T2 thresholds and prepare the log of human interventions, user time and setup time.",
+            "label": "Set T2 thresholds and prepare the session log."
           },
           {
             "id": "tt2-e-thresholds",
@@ -3805,8 +3682,8 @@
               }
             ],
             "kind": "expected_effect",
-            "text": "The first session counts toward T2.",
-            "label": "The first session counts toward T2."
+            "text": "Every Stage 1 session, the first included, counts toward T2.",
+            "label": "Every Stage 1 session, the first included, counts toward T2."
           },
           {
             "id": "tt2-ec-lined-up",
@@ -3823,21 +3700,7 @@
             "label": "A few sessions are already lined up."
           },
           {
-            "id": "tt2-a-first-session",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "action",
-            "text": "David runs one of the sessions already lined up before 31 Oct; Rufus joins if it has a human alongside.",
-            "label": "David runs one lined-up session before 31 Oct; Rufus joins if a human is alongside."
-          },
-          {
-            "id": "tt2-e-first-session",
+            "id": "tt2-n-agreed-application",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3846,26 +3709,12 @@
                 "role": "assistant"
               }
             ],
-            "kind": "expected_effect",
-            "text": "The first Stage 1 session is done before 31 Oct.",
-            "label": "The first Stage 1 session is done before 31 Oct."
-          },
-          {
-            "id": "tt2-n-sessions-first",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
             "kind": "need",
-            "text": "Sessions are booked before new building (G1).",
-            "label": "Sessions are booked before new building."
+            "text": "Send a Foresight application that Rufus and David both stand behind, rather than one of several diverging pitches.",
+            "label": "Send a Foresight application we both stand behind, not one of several diverging pitches."
           },
           {
-            "id": "tt2-a-book",
+            "id": "tt2-a-first-session",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3879,25 +3728,29 @@
               }
             ],
             "kind": "action",
-            "text": "David books the six, AI-only first. Naming the six and the two or three communities they come from has no recorded owner.",
-            "label": "David books the six, AI-only first; who names them and their communities is not recorded."
+            "text": "Run one of the sessions already lined up before 31 Oct.",
+            "label": "Run one of the lined-up sessions before 31 Oct."
           },
           {
-            "id": "tt2-e-booked",
+            "id": "tt2-e-first-session",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
+              {
+                "name": "David Joseph",
+                "role": "human"
+              },
               {
                 "name": "AI assistant",
                 "role": "assistant"
               }
             ],
             "kind": "expected_effect",
-            "text": "Stage 1 sessions are booked.",
-            "label": "Stage 1 sessions are booked."
+            "text": "Rufus and David have both signed off on the Foresight application before it is sent.",
+            "label": "Rufus and David have both signed off on the Foresight application before it is sent."
           },
           {
-            "id": "tt2-a-check",
+            "id": "tt2-ec-grants-first",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3906,12 +3759,62 @@
                 "role": "human"
               }
             ],
-            "kind": "action",
-            "text": "Check bookings on 2 Nov; under four booked means target four, keeping the pair or group (owner not recorded).",
-            "label": "Check bookings on 2 Nov; under four means target four, keeping the pair or group."
+            "kind": "existing_condition",
+            "text": "Grants come first this week (Foresight is due 31 Oct), and booking opens on 1 Nov.",
+            "label": "Grants come first this week (Foresight is due 31 Oct); booking opens on 1 Nov."
           },
           {
-            "id": "tt2-e-check",
+            "id": "tt2-ec-candidates",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Candidate first groups are named (Second Renaissance, effective altruism, the AI-risk debate), but beyond the few sessions already lined up none has been approached.",
+            "label": "Candidate groups are named, but none beyond the lined-up sessions has been approached."
+          },
+          {
+            "id": "tt2-n-outside-users",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Learn from outside users what to build and gather evidence others can see, rather than default to building (G1, sessions before new building).",
+            "label": "Learn from outside users and gather evidence others can see, rather than default to building."
+          },
+          {
+            "id": "tt2-a-invite",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Name six people, including a pair or small group, from two or three communities, and invite them to Stage 1 sessions, booking the AI-only sessions first.",
+            "label": "Name and invite six people, a pair or group among them, from 2-3 communities; AI-only first."
+          },
+          {
+            "id": "tt2-e-agreed",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3921,11 +3824,25 @@
               }
             ],
             "kind": "expected_effect",
-            "text": "The target is reset if booking is slow.",
-            "label": "The target is reset if booking is slow."
+            "text": "Six people, including a pair or small group, agree and book in time to hold the sessions by 22 Nov.",
+            "label": "Six people, including a pair or group, agree and book in time for sessions by 22 Nov."
           },
           {
-            "id": "tt2-n-no-features",
+            "id": "tt2-ec-setup-hard",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Starting needs the exact skill set up, a real investment of time, and someone explaining the method, even with AI.",
+            "label": "Starting needs the exact skill set up, time, and someone explaining the method."
+          },
+          {
+            "id": "tt2-n-t2",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -3935,8 +3852,68 @@
               }
             ],
             "kind": "need",
-            "text": "No new features until three Stage 1 sessions are done (G5).",
-            "label": "No new features until three Stage 1 sessions are done."
+            "text": "Know whether sessions guided by the AI alone come close to those with a human alongside, since our hands-on time is scarce (A8); T2 gates Stage 2.",
+            "label": "Know whether AI-only sessions come close to those with a human alongside; our time is scarce."
+          },
+          {
+            "id": "tt2-a-start-guide",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Write a short start guide for AI-only participants (installing the skill, the first prompt) and try it on a fresh setup before their sessions.",
+            "label": "Write a short start guide for AI-only participants and try it on a fresh setup first."
+          },
+          {
+            "id": "tt2-e-self-start",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "AI-only participants start their sessions without our help, so T2 compares the guidance rather than the setup.",
+            "label": "AI-only participants start without our help, so T2 compares the guidance, not the setup."
+          },
+          {
+            "id": "tt2-ec-no-features",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "No new features are built until three Stage 1 sessions are done (G5).",
+            "label": "No new features are built until three Stage 1 sessions are done (G5)."
+          },
+          {
+            "id": "tt2-ec-nov-grants",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "Rufus Pollock",
+                "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "November grants are capped at two after Foresight, and GTR is deferred.",
+            "label": "November grants are capped at two after Foresight, and GTR is deferred."
           },
           {
             "id": "tt2-a-run",
@@ -3953,8 +3930,22 @@
               }
             ],
             "kind": "action",
-            "text": "David runs the sessions and Rufus joins those with a human alongside; each session logs human interventions, user time and setup time.",
-            "label": "David runs the sessions, Rufus joins human-alongside ones; log interventions and time."
+            "text": "Run the Stage 1 sessions; each logs human interventions, user time and setup time.",
+            "label": "Run the sessions, logging interventions, user time and setup time."
+          },
+          {
+            "id": "tt2-e-held",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "All six Stage 1 sessions, the AI-only ones included, take place by 22 Nov without slipping.",
+            "label": "All six sessions, the AI-only ones included, take place by 22 Nov without slipping."
           },
           {
             "id": "tt2-e-t2",
@@ -3964,11 +3955,15 @@
               {
                 "name": "Rufus Pollock",
                 "role": "human"
+              },
+              {
+                "name": "AI assistant",
+                "role": "assistant"
               }
             ],
             "kind": "expected_effect",
-            "text": "T2 evidence, or T2 recorded as downgraded if fewer than two AI-only sessions happen.",
-            "label": "T2 evidence, or T2 recorded as downgraded if fewer than two AI-only sessions happen."
+            "text": "T2 evidence on how sessions guided by the AI alone compare with those with a human alongside, read against the thresholds set in advance.",
+            "label": "T2 evidence on how AI-only sessions compare with those with a human alongside."
           },
           {
             "id": "tt2-a-notes",
@@ -3985,7 +3980,7 @@
               }
             ],
             "kind": "action",
-            "text": "The AI drafts each outcome note from the tree and the participant checks it; with consent, the tree and note are published; follow-through is checked at 30 days. Asking consent and publishing have no recorded owner.",
+            "text": "The AI drafts each outcome note from the tree and the participant checks it; with consent, the tree and note are published; follow-through is checked at 30 days.",
             "label": "AI drafts outcome notes, participant checks; with consent publish; check at 30 days."
           },
           {
@@ -4003,6 +3998,20 @@
             "label": "Visible evidence of value, a decision made and followed through."
           },
           {
+            "id": "tt2-n-who-pays",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "A tested answer to who pays for what; there is none yet (G4).",
+            "label": "A tested answer to who pays for what; there is none yet (G4)."
+          },
+          {
             "id": "tt2-a-priced-offer",
             "status": "proposed",
             "accepted_by": [],
@@ -4013,7 +4022,7 @@
               }
             ],
             "kind": "action",
-            "text": "Make a priced offer within Stage 1, one paid session or a priced pilot (owner not recorded).",
+            "text": "Make a priced offer within Stage 1, one paid session or a priced pilot.",
             "label": "Make a priced offer within Stage 1, one paid session or a priced pilot."
           },
           {
@@ -4027,122 +4036,11 @@
               }
             ],
             "kind": "expected_effect",
-            "text": "A first answer on who pays.",
-            "label": "A first answer on who pays."
-          },
-          {
-            "id": "tt2-ec-nov-grants",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              },
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "existing_condition",
-            "text": "November grants are capped at two after Foresight and GTR is deferred. The funding tracker lists Lightcone 2-6 Nov, BlueDot Rapid any time in November, SFF 16-20 Nov, and David's Prototype Fund application by 27 Nov, if go. The two are not chosen.",
-            "label": "November grants capped at two after Foresight, GTR deferred; the two are not chosen."
-          },
-          {
-            "id": "tt2-a-choose-grants",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "action",
-            "text": "Choose the two November grants and apply.",
-            "label": "Choose the two November grants and apply."
-          },
-          {
-            "id": "tt2-e-grants-capped",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "kind": "expected_effect",
-            "text": "Grant work stays within the cap.",
-            "label": "Grant work stays within the cap."
-          },
-          {
-            "id": "tt2-a-weekly",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "Rufus Pollock",
-                "role": "human"
-              }
-            ],
-            "kind": "action",
-            "text": "Hold the weekly check-in (G1); who attends is not named.",
-            "label": "Hold the weekly check-in (G1); who attends is not named."
+            "text": "A first signal on who pays, from someone accepting or declining the offer, and their reasons.",
+            "label": "A first signal on who pays, from someone accepting or declining the offer, and why."
           }
         ],
         "links": [
-          {
-            "id": "tt2-l-blockers",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "tt2-ec-foresight-blocked",
-              "tt2-a-foresight-blockers"
-            ],
-            "to": "tt2-e-foresight-unblocked",
-            "relation": "produces"
-          },
-          {
-            "id": "tt2-l-submit",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "tt2-e-foresight-unblocked",
-              "tt2-a-foresight-submit"
-            ],
-            "to": "tt2-e-foresight-submitted",
-            "relation": "produces"
-          },
-          {
-            "id": "tt2-l-prototype",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "tt2-ec-other-31oct",
-              "tt2-a-prototype-email"
-            ],
-            "to": "tt2-e-prototype-answer",
-            "relation": "produces"
-          },
           {
             "id": "tt2-l-thresholds",
             "status": "proposed",
@@ -4166,6 +4064,10 @@
             "accepted_by": [],
             "contributors": [
               {
+                "name": "David Joseph",
+                "role": "human"
+              },
+              {
                 "name": "AI assistant",
                 "role": "assistant"
               }
@@ -4173,13 +4075,14 @@
             "from": [
               "tt2-ec-lined-up",
               "tt2-e-thresholds",
+              "tt2-n-agreed-application",
               "tt2-a-first-session"
             ],
             "to": "tt2-e-first-session",
             "relation": "produces"
           },
           {
-            "id": "tt2-l-book",
+            "id": "tt2-l-invite",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -4189,15 +4092,16 @@
               }
             ],
             "from": [
-              "tt2-e-foresight-submitted",
-              "tt2-n-sessions-first",
-              "tt2-a-book"
+              "tt2-ec-grants-first",
+              "tt2-ec-candidates",
+              "tt2-n-outside-users",
+              "tt2-a-invite"
             ],
-            "to": "tt2-e-booked",
+            "to": "tt2-e-agreed",
             "relation": "produces"
           },
           {
-            "id": "tt2-l-check",
+            "id": "tt2-l-start-guide",
             "status": "proposed",
             "accepted_by": [],
             "contributors": [
@@ -4207,10 +4111,32 @@
               }
             ],
             "from": [
-              "tt2-e-booked",
-              "tt2-a-check"
+              "tt2-ec-setup-hard",
+              "tt2-n-t2",
+              "tt2-a-start-guide"
             ],
-            "to": "tt2-e-check",
+            "to": "tt2-e-self-start",
+            "relation": "produces"
+          },
+          {
+            "id": "tt2-l-held",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "tt2-ec-lined-up",
+              "tt2-e-agreed",
+              "tt2-ec-no-features",
+              "tt2-ec-nov-grants",
+              "tt2-n-outside-users",
+              "tt2-a-run"
+            ],
+            "to": "tt2-e-held",
             "relation": "produces"
           },
           {
@@ -4224,9 +4150,10 @@
               }
             ],
             "from": [
-              "tt2-e-booked",
+              "tt2-e-agreed",
               "tt2-e-thresholds",
-              "tt2-n-no-features",
+              "tt2-e-self-start",
+              "tt2-n-t2",
               "tt2-a-run"
             ],
             "to": "tt2-e-t2",
@@ -4243,26 +4170,12 @@
               }
             ],
             "from": [
+              "tt2-e-held",
+              "tt2-n-outside-users",
               "tt2-a-notes"
             ],
             "to": "tt2-e-evidence",
             "relation": "produces"
-          },
-          {
-            "id": "tt2-l-seq-run-notes",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "tt2-a-run"
-            ],
-            "to": "tt2-a-notes",
-            "relation": "precedes"
           },
           {
             "id": "tt2-l-priced-offer",
@@ -4275,32 +4188,16 @@
               }
             ],
             "from": [
+              "tt2-e-agreed",
+              "tt2-n-who-pays",
               "tt2-a-priced-offer"
             ],
             "to": "tt2-e-who-pays",
-            "relation": "produces"
-          },
-          {
-            "id": "tt2-l-grants",
-            "status": "proposed",
-            "accepted_by": [],
-            "contributors": [
-              {
-                "name": "AI assistant",
-                "role": "assistant"
-              }
-            ],
-            "from": [
-              "tt2-ec-nov-grants",
-              "tt2-e-foresight-submitted",
-              "tt2-a-choose-grants"
-            ],
-            "to": "tt2-e-grants-capped",
             "relation": "produces"
           }
         ]
       }
     }
   },
-  "snapshot_sha256": "7e657a452c2b5840c2168188ba1e139c46f8fcb5f8ee9e89ac74687cbe88de75"
+  "snapshot_sha256": "679db9fcead3243b51a221ce2fb77df06245509bde437b73c36a7deefa7c87de"
 }
