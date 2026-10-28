@@ -1,0 +1,5101 @@
+{
+  "registry_version": 1,
+  "publication_kind": "source_reconstruction",
+  "release": {
+    "release_id": "2026-10-28.1",
+    "snapshot_date": "2026-10-28",
+    "title": "Corruption in Kenya, 2014"
+  },
+  "people": {
+    "david": "David Joseph"
+  },
+  "roles": {
+    "david": "Chose the source and requested this reconstruction; has not endorsed its reasoning"
+  },
+  "authors": {
+    "ti-lindner": {
+      "name": "Samira Lindner, Transparency International",
+      "role": "Author of the Anti-Corruption Helpdesk brief; has not reviewed or endorsed this reconstruction"
+    }
+  },
+  "selection": {
+    "goal": {
+      "nodes": [
+        "ke-g-goal",
+        "ke-g-enforced",
+        "ke-g-bodies",
+        "ke-g-budget",
+        "ke-g-politics",
+        "ke-g-police",
+        "ke-g-voice",
+        "ke-g-prosecute",
+        "ke-g-courts",
+        "ke-g-audit",
+        "ke-g-info",
+        "ke-g-declare",
+        "ke-g-whistle",
+        "ke-g-campaign",
+        "ke-g-oversight"
+      ],
+      "links": [
+        "ke-gl-enforced",
+        "ke-gl-bodies",
+        "ke-gl-budget",
+        "ke-gl-politics",
+        "ke-gl-police",
+        "ke-gl-voice",
+        "ke-gl-prosecute",
+        "ke-gl-courts",
+        "ke-gl-audit",
+        "ke-gl-info",
+        "ke-gl-declare",
+        "ke-gl-whistle",
+        "ke-gl-campaign",
+        "ke-gl-oversight"
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        "ke-r-indices",
+        "ke-r-history",
+        "ke-r-bribery",
+        "ke-r-police",
+        "ke-r-business",
+        "ke-r-misspent",
+        "ke-r-unsupported",
+        "ke-r-impunity",
+        "ke-r-trust",
+        "ke-r-elections",
+        "ke-r-diluted",
+        "ke-r-will",
+        "ke-r-noprosec",
+        "ke-r-commission",
+        "ke-r-courts",
+        "ke-r-reinstated",
+        "ke-r-declarations",
+        "ke-r-patronage",
+        "ke-r-party-money",
+        "ke-r-procurement",
+        "ke-r-oversight-gaps",
+        "ke-r-police-oversight"
+      ],
+      "links": [
+        "ke-rl-impunity",
+        "ke-rl-commission",
+        "ke-rl-reinstated",
+        "ke-rl-declarations",
+        "ke-rl-will-diluted",
+        "ke-rl-will-declarations",
+        "ke-rl-will-noprosec",
+        "ke-rl-trust",
+        "ke-rl-misspent",
+        "ke-rl-unsupported",
+        "ke-rl-police",
+        "ke-rl-police-bribery",
+        "ke-rl-party-money",
+        "ke-rl-elections",
+        "ke-rl-procurement",
+        "ke-rl-business"
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        "ke-c1-objective",
+        "ke-c1-donors",
+        "ke-c1-liable",
+        "ke-c1-refund",
+        "ke-c1-recover",
+        "ke-c2-objective",
+        "ke-c2-quick",
+        "ke-c2-deter",
+        "ke-c2-settle",
+        "ke-c2-pursue"
+      ],
+      "links": [
+        "ke-cl1-donors",
+        "ke-cl1-liable",
+        "ke-cl1-refund",
+        "ke-cl1-recover",
+        "ke-cl1-conflict",
+        "ke-cl2-quick",
+        "ke-cl2-deter",
+        "ke-cl2-settle",
+        "ke-cl2-pursue",
+        "ke-cl2-conflict"
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        "ke-f-prosecute",
+        "ke-f-courts",
+        "ke-f-integrity",
+        "ke-f-whistle",
+        "ke-f-info",
+        "ke-f-campaign",
+        "ke-f-pfm",
+        "ke-f-audit",
+        "ke-f-police",
+        "ke-f-settle",
+        "ke-f-recover",
+        "ke-f-press",
+        "ke-f-trials",
+        "ke-f-cost",
+        "ke-f-visible",
+        "ke-f-caught",
+        "ke-f-clean-vote",
+        "ke-f-fewer-bribes",
+        "ke-f-trust",
+        "ke-f-money",
+        "ke-f-pardon",
+        "ke-f-taxpayers",
+        "ke-f-silenced",
+        "ke-f-hearings"
+      ],
+      "links": [
+        "ke-fl-trials",
+        "ke-fl-cost-trials",
+        "ke-fl-cost-integrity",
+        "ke-fl-visible-pfm",
+        "ke-fl-visible-audit",
+        "ke-fl-visible-info",
+        "ke-fl-caught-visible",
+        "ke-fl-caught-whistle",
+        "ke-fl-caught-press",
+        "ke-fl-clean-vote",
+        "ke-fl-fewer-bribes",
+        "ke-fl-trust-cost",
+        "ke-fl-trust-bribes",
+        "ke-fl-trust-vote",
+        "ke-fl-money-cost",
+        "ke-fl-money-caught",
+        "ke-fl-pardon",
+        "ke-fl-taxpayers",
+        "ke-fl-silenced"
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        "ke-p-objective",
+        "ke-p-resist-gap",
+        "ke-p-weakened-gap",
+        "ke-p-funds-gap",
+        "ke-p-mandate-gap",
+        "ke-p-civic-gap",
+        "ke-p-coalition",
+        "ke-p-tracked",
+        "ke-p-champions",
+        "ke-p-budgets",
+        "ke-p-mandates"
+      ],
+      "links": [
+        "ke-pl-coalition",
+        "ke-pl-tracked",
+        "ke-pl-champions",
+        "ke-pl-budgets",
+        "ke-pl-mandates",
+        "ke-pl-coalition-tracked",
+        "ke-pl-coalition-champions",
+        "ke-pl-tracked-objective",
+        "ke-pl-champions-objective",
+        "ke-pl-budgets-objective",
+        "ke-pl-mandates-objective"
+      ]
+    },
+    "transition": {
+      "nodes": [
+        "ke-t-1-condition",
+        "ke-t-track",
+        "ke-t-1-effect",
+        "ke-t-2-condition",
+        "ke-t-brief",
+        "ke-t-2-effect",
+        "ke-t-3-condition",
+        "ke-t-follow",
+        "ke-t-3-effect"
+      ],
+      "links": [
+        "ke-tl-track",
+        "ke-tl-brief",
+        "ke-tl-follow"
+      ]
+    }
+  },
+  "feedback": [],
+  "sources": [
+    {
+      "id": "ti-kenya-2014",
+      "kind": "supplied_document",
+      "author": "ti-lindner",
+      "title": "Overview of corruption and anti-corruption in Kenya · Anti-Corruption Helpdesk brief",
+      "description": "A 16-page brief by Samira Lindner of Transparency International, dated 15 October 2014 and reviewed by Marie Chêne, Casey Kelso and Samuel Kimeu (Transparency International Kenya). It answers a European Commission query on corruption in Kenya with a focus on public financial management, updating a 2012 U4 Helpdesk answer. It draws on indices, surveys and reports from 2011 to 2014. The Anti-Corruption Helpdesk is funded by the European Union; the brief does not necessarily reflect Transparency International’s official position. Page numbers refer to the PDF.",
+      "url": "https://knowledgehub.transparency.org/helpdesk/overview-of-corruption-and-anti-corruption-in-kenya"
+    }
+  ],
+  "views": {
+    "goal": [
+      {
+        "id": "open-money",
+        "title": "Open public money, accountable office",
+        "summary": "The brief asks about corruption with a focus on public financial management. This goal is the AI’s inference from that focus; six conditions under it follow the brief’s sections.",
+        "nodes": [
+          "ke-g-goal",
+          "ke-g-enforced",
+          "ke-g-bodies",
+          "ke-g-budget",
+          "ke-g-politics",
+          "ke-g-police",
+          "ke-g-voice",
+          "ke-g-prosecute",
+          "ke-g-courts",
+          "ke-g-audit",
+          "ke-g-info",
+          "ke-g-declare",
+          "ke-g-whistle",
+          "ke-g-campaign",
+          "ke-g-oversight"
+        ]
+      }
+    ],
+    "current_reality": [
+      {
+        "id": "indices",
+        "title": "How Kenya scored in 2014",
+        "summary": "Two framing observations from the brief: where Kenya stood on corruption indices, and a history of anti-corruption promises followed by scandal. No causal connections are drawn.",
+        "nodes": [
+          "ke-r-indices",
+          "ke-r-history"
+        ]
+      },
+      {
+        "id": "impunity",
+        "title": "Why senior officials went unpunished",
+        "summary": "Diluted laws, a commission that could not prosecute and overloaded courts together let senior officials escape conviction, and public trust fell. Candidate causes, as of 2014.",
+        "nodes": [
+          "ke-r-will",
+          "ke-r-diluted",
+          "ke-r-noprosec",
+          "ke-r-commission",
+          "ke-r-courts",
+          "ke-r-reinstated",
+          "ke-r-declarations",
+          "ke-r-impunity",
+          "ke-r-trust"
+        ]
+      },
+      {
+        "id": "public-money",
+        "title": "Where public money went",
+        "summary": "Thin budget oversight, combined with impunity, left school funds lost and billions spent without records.",
+        "nodes": [
+          "ke-r-oversight-gaps",
+          "ke-r-impunity",
+          "ke-r-misspent",
+          "ke-r-unsupported"
+        ]
+      },
+      {
+        "id": "politics-and-police",
+        "title": "Party money, procurement and the police",
+        "summary": "Patronage parties needed opaque money, which the brief links to procurement scandals and vote-buying. Weak police oversight left the police the most bribed institution.",
+        "nodes": [
+          "ke-r-patronage",
+          "ke-r-party-money",
+          "ke-r-elections",
+          "ke-r-procurement",
+          "ke-r-business",
+          "ke-r-police-oversight",
+          "ke-r-police",
+          "ke-r-bribery"
+        ]
+      }
+    ],
+    "conflict": [
+      {
+        "id": "who-repays",
+        "title": "Who repays stolen school funds?",
+        "summary": "Donors wanted their money back; civil society warned that refunding it from the treasury makes taxpayers pay for theft. The brief records both.",
+        "nodes": [
+          "ke-c1-objective",
+          "ke-c1-donors",
+          "ke-c1-liable",
+          "ke-c1-refund",
+          "ke-c1-recover"
+        ]
+      },
+      {
+        "id": "settle-or-prosecute",
+        "title": "Settle, or prosecute?",
+        "summary": "Out-of-court settlements return assets quickly; the brief’s example traded a hotel for dropped proceedings. Prosecution deters, but slowly.",
+        "nodes": [
+          "ke-c2-objective",
+          "ke-c2-quick",
+          "ke-c2-deter",
+          "ke-c2-settle",
+          "ke-c2-pursue"
+        ]
+      }
+    ],
+    "future_reality": [
+      {
+        "id": "cases-to-judgment",
+        "title": "Bring cases to judgment",
+        "summary": "Prosecution powers, resourced courts and restored vetting could give abuse of office a real cost. Inferred from gaps the brief identifies.",
+        "nodes": [
+          "ke-f-prosecute",
+          "ke-f-courts",
+          "ke-f-integrity",
+          "ke-f-trials",
+          "ke-f-cost",
+          "ke-f-trust",
+          "ke-f-money"
+        ]
+      },
+      {
+        "id": "follow-the-money",
+        "title": "Follow the money",
+        "summary": "Putting the public finance law into effect, auditing every fund, a right to information, whistle-blower protection and a free press could make misuse visible early. Kenya’s budget hearings were already seen as exemplary.",
+        "nodes": [
+          "ke-f-pfm",
+          "ke-f-audit",
+          "ke-f-info",
+          "ke-f-whistle",
+          "ke-f-press",
+          "ke-f-visible",
+          "ke-f-caught",
+          "ke-f-silenced",
+          "ke-f-hearings"
+        ]
+      },
+      {
+        "id": "votes-and-police",
+        "title": "Clean campaigns and police",
+        "summary": "Campaign spending limits and finished police reform address two of the brief’s most visible problems.",
+        "nodes": [
+          "ke-f-campaign",
+          "ke-f-clean-vote",
+          "ke-f-police",
+          "ke-f-fewer-bribes"
+        ]
+      },
+      {
+        "id": "resolving-the-dilemmas",
+        "title": "Ways through the two dilemmas",
+        "summary": "Proposed ways to keep both sides of each dilemma, with the risk each is meant to prevent.",
+        "nodes": [
+          "ke-f-settle",
+          "ke-f-pardon",
+          "ke-f-recover",
+          "ke-f-taxpayers"
+        ]
+      }
+    ],
+    "prerequisite": [
+      {
+        "id": "pass-intact",
+        "title": "Get reforms passed intact",
+        "summary": "Reform has met resistance and been weakened before it passed. A coalition, public tracking of bills and committed MPs could get it through.",
+        "nodes": [
+          "ke-p-objective",
+          "ke-p-civic-gap",
+          "ke-p-coalition",
+          "ke-p-weakened-gap",
+          "ke-p-tracked",
+          "ke-p-resist-gap",
+          "ke-p-champions"
+        ]
+      },
+      {
+        "id": "make-them-work",
+        "title": "Make reformed bodies work",
+        "summary": "Bodies created by reform need secure budgets and settled mandates.",
+        "nodes": [
+          "ke-p-funds-gap",
+          "ke-p-budgets",
+          "ke-p-mandate-gap",
+          "ke-p-mandates"
+        ]
+      }
+    ],
+    "transition": [
+      {
+        "id": "track",
+        "title": "Track the bill",
+        "summary": "Publish each draft and flag weakening changes.",
+        "nodes": [
+          "ke-t-1-condition",
+          "ke-t-track",
+          "ke-t-1-effect"
+        ]
+      },
+      {
+        "id": "brief",
+        "title": "Brief MPs and the public",
+        "summary": "Put flagged changes in front of MPs and voters before the vote.",
+        "nodes": [
+          "ke-t-2-condition",
+          "ke-t-brief",
+          "ke-t-2-effect"
+        ]
+      },
+      {
+        "id": "follow-up",
+        "title": "Follow up a year on",
+        "summary": "Report what has actually been put into effect.",
+        "nodes": [
+          "ke-t-3-condition",
+          "ke-t-follow",
+          "ke-t-3-effect"
+        ]
+      }
+    ]
+  },
+  "overview": [
+    {
+      "type": "cards",
+      "eyebrow": "What has to be true",
+      "title": "Open public money, accountable office",
+      "text": "Laws enforced rather than only passed, watchdogs and courts that can act, a budget citizens can follow, clean elections, police who serve, and a press that can expose corruption. The goal is the AI’s inference from the brief’s focus on public financial management.",
+      "ids": [
+        "ke-g-enforced",
+        "ke-g-bodies",
+        "ke-g-budget",
+        "ke-g-politics",
+        "ke-g-police",
+        "ke-g-voice"
+      ],
+      "link": [
+        "goal.html",
+        "Inspect the goal and its conditions →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What stood in the way in 2014",
+      "title": "Impunity at the top",
+      "text": "Laws were diluted or not implemented, the anti-corruption commission could not prosecute, and courts were overloaded, so senior officials were rarely convicted. Meanwhile most people paid bribes and public trust in the fight fell from 70% to 34%.",
+      "ids": [
+        "ke-r-impunity",
+        "ke-r-diluted",
+        "ke-r-noprosec",
+        "ke-r-bribery",
+        "ke-r-trust"
+      ],
+      "link": [
+        "in-the-way.html",
+        "Follow the candidate causes →"
+      ]
+    },
+    {
+      "type": "clouds",
+      "eyebrow": "The tension behind the choices",
+      "title": "Two dilemmas the brief records",
+      "text": "Whether to repay donors for stolen school funds from the treasury, and whether to settle out of court to recover assets fast. Each is a proposed reading of the brief.",
+      "featured": "who-repays"
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What could change",
+      "title": "Bring cases to judgment, and follow the money",
+      "text": "Give the commission power to prosecute, resource the courts, restore vetting, put the public finance law into effect and audit every fund. The brief identifies these gaps; the changes are the AI’s inferences from them.",
+      "ids": [
+        "ke-f-prosecute",
+        "ke-f-courts",
+        "ke-f-integrity",
+        "ke-f-pfm",
+        "ke-f-audit"
+      ],
+      "link": [
+        "change.html",
+        "See the proposed changes →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "What must become possible",
+      "title": "Reforms passed intact, bodies that work",
+      "text": "Reform has been weakened before it passed and slowed by lack of money. A coalition, public tracking of bills, committed MPs, secure budgets and settled mandates are proposed conditions, not completed preparations.",
+      "ids": [
+        "ke-p-coalition",
+        "ke-p-tracked",
+        "ke-p-champions",
+        "ke-p-budgets"
+      ],
+      "link": [
+        "prerequisites.html",
+        "Review the obstacles and intermediate objectives →"
+      ]
+    },
+    {
+      "type": "cards",
+      "eyebrow": "How it could be tried",
+      "title": "Track a bill, brief, follow up",
+      "text": "Three illustrative steps for one reform bill. The existing conditions are examples, not observations; nobody is assigned.",
+      "ids": [
+        "ke-t-track",
+        "ke-t-brief",
+        "ke-t-follow"
+      ],
+      "link": [
+        "actions.html",
+        "Follow the three steps →"
+      ]
+    },
+    {
+      "type": "wider",
+      "eyebrow": "A snapshot from 2014",
+      "title": "Kenya as one brief saw it",
+      "text": "The brief was written in October 2014, updating a 2012 answer. Its figures come from indices and surveys of 2011 to 2014. This map does not cover what has happened since."
+    },
+    {
+      "type": "credits",
+      "eyebrow": "Sources and interpretation",
+      "title": "Transparency International’s Anti-Corruption Helpdesk",
+      "text": "Samira Lindner of Transparency International wrote the brief, funded by the European Union. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a page reference and a labelled basis; source credit is not endorsement."
+    }
+  ],
+  "retired": [],
+  "history": [
+    {
+      "release_id": "2026-10-28.1",
+      "date": "2026-10-28",
+      "title": "First proposed reconstruction",
+      "summary": "Transparency International’s 2014 brief on Kenya across all six views: 91 proposed statements and 73 proposed connections, each with a page reference. No endorsement, trial or outcome is recorded.",
+      "changes": [
+        {
+          "type": "added",
+          "refs": [
+            "ke-g-goal",
+            "ke-g-enforced",
+            "ke-g-bodies",
+            "ke-g-budget",
+            "ke-g-politics",
+            "ke-g-police",
+            "ke-g-voice",
+            "ke-g-prosecute",
+            "ke-g-courts",
+            "ke-g-audit",
+            "ke-g-info",
+            "ke-g-declare",
+            "ke-g-whistle",
+            "ke-g-campaign",
+            "ke-g-oversight",
+            "ke-gl-enforced",
+            "ke-gl-bodies",
+            "ke-gl-budget",
+            "ke-gl-politics",
+            "ke-gl-police",
+            "ke-gl-voice",
+            "ke-gl-prosecute",
+            "ke-gl-courts",
+            "ke-gl-audit",
+            "ke-gl-info",
+            "ke-gl-declare",
+            "ke-gl-whistle",
+            "ke-gl-campaign",
+            "ke-gl-oversight",
+            "ke-r-indices",
+            "ke-r-history",
+            "ke-r-bribery",
+            "ke-r-police",
+            "ke-r-business",
+            "ke-r-misspent",
+            "ke-r-unsupported",
+            "ke-r-impunity",
+            "ke-r-trust",
+            "ke-r-elections",
+            "ke-r-diluted",
+            "ke-r-will",
+            "ke-r-noprosec",
+            "ke-r-commission",
+            "ke-r-courts",
+            "ke-r-reinstated",
+            "ke-r-declarations",
+            "ke-r-patronage",
+            "ke-r-party-money",
+            "ke-r-procurement",
+            "ke-r-oversight-gaps",
+            "ke-r-police-oversight",
+            "ke-rl-impunity",
+            "ke-rl-commission",
+            "ke-rl-reinstated",
+            "ke-rl-declarations",
+            "ke-rl-will-diluted",
+            "ke-rl-will-declarations",
+            "ke-rl-will-noprosec",
+            "ke-rl-trust",
+            "ke-rl-misspent",
+            "ke-rl-unsupported",
+            "ke-rl-police",
+            "ke-rl-police-bribery",
+            "ke-rl-party-money",
+            "ke-rl-elections",
+            "ke-rl-procurement",
+            "ke-rl-business",
+            "ke-c1-objective",
+            "ke-c1-donors",
+            "ke-c1-liable",
+            "ke-c1-refund",
+            "ke-c1-recover",
+            "ke-c2-objective",
+            "ke-c2-quick",
+            "ke-c2-deter",
+            "ke-c2-settle",
+            "ke-c2-pursue",
+            "ke-cl1-donors",
+            "ke-cl1-liable",
+            "ke-cl1-refund",
+            "ke-cl1-recover",
+            "ke-cl1-conflict",
+            "ke-cl2-quick",
+            "ke-cl2-deter",
+            "ke-cl2-settle",
+            "ke-cl2-pursue",
+            "ke-cl2-conflict",
+            "ke-f-prosecute",
+            "ke-f-courts",
+            "ke-f-integrity",
+            "ke-f-whistle",
+            "ke-f-info",
+            "ke-f-campaign",
+            "ke-f-pfm",
+            "ke-f-audit",
+            "ke-f-police",
+            "ke-f-settle",
+            "ke-f-recover",
+            "ke-f-press",
+            "ke-f-trials",
+            "ke-f-cost",
+            "ke-f-visible",
+            "ke-f-caught",
+            "ke-f-clean-vote",
+            "ke-f-fewer-bribes",
+            "ke-f-trust",
+            "ke-f-money",
+            "ke-f-pardon",
+            "ke-f-taxpayers",
+            "ke-f-silenced",
+            "ke-f-hearings",
+            "ke-fl-trials",
+            "ke-fl-cost-trials",
+            "ke-fl-cost-integrity",
+            "ke-fl-visible-pfm",
+            "ke-fl-visible-audit",
+            "ke-fl-visible-info",
+            "ke-fl-caught-visible",
+            "ke-fl-caught-whistle",
+            "ke-fl-caught-press",
+            "ke-fl-clean-vote",
+            "ke-fl-fewer-bribes",
+            "ke-fl-trust-cost",
+            "ke-fl-trust-bribes",
+            "ke-fl-trust-vote",
+            "ke-fl-money-cost",
+            "ke-fl-money-caught",
+            "ke-fl-pardon",
+            "ke-fl-taxpayers",
+            "ke-fl-silenced",
+            "ke-p-objective",
+            "ke-p-resist-gap",
+            "ke-p-weakened-gap",
+            "ke-p-funds-gap",
+            "ke-p-mandate-gap",
+            "ke-p-civic-gap",
+            "ke-p-coalition",
+            "ke-p-tracked",
+            "ke-p-champions",
+            "ke-p-budgets",
+            "ke-p-mandates",
+            "ke-pl-coalition",
+            "ke-pl-tracked",
+            "ke-pl-champions",
+            "ke-pl-budgets",
+            "ke-pl-mandates",
+            "ke-pl-coalition-tracked",
+            "ke-pl-coalition-champions",
+            "ke-pl-tracked-objective",
+            "ke-pl-champions-objective",
+            "ke-pl-budgets-objective",
+            "ke-pl-mandates-objective",
+            "ke-t-1-condition",
+            "ke-t-track",
+            "ke-t-1-effect",
+            "ke-t-2-condition",
+            "ke-t-brief",
+            "ke-t-2-effect",
+            "ke-t-3-condition",
+            "ke-t-follow",
+            "ke-t-3-effect",
+            "ke-tl-track",
+            "ke-tl-brief",
+            "ke-tl-follow"
+          ],
+          "note": "AI reconstruction from the Anti-Corruption Helpdesk brief of 15 October 2014."
+        }
+      ]
+    }
+  ],
+  "snapshot": {
+    "projection_version": 4,
+    "release_id": "2026-10-28.1",
+    "snapshot_date": "2026-10-28",
+    "title": "Corruption in Kenya, 2014",
+    "people": [
+      {
+        "name": "David Joseph",
+        "role": "Chose the source and requested this reconstruction; has not endorsed its reasoning"
+      }
+    ],
+    "trees": {
+      "goal": {
+        "nodes": [
+          {
+            "id": "ke-g-goal",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "goal",
+            "text": "Public money in Kenya is raised, spent and audited openly, and people who abuse public office are held to account.",
+            "label": "Public money is used openly and abuse of office is punished.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 1, Query: public financial management",
+                "basis": "inference"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Overview of anti-corruption efforts: the culture of corruption and impunity",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-enforced",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Anti-corruption laws are implemented and enforced, not only passed.",
+            "label": "Anti-corruption laws are enforced, not just passed.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 7–8, Legal framework: robust laws, lacking implementation",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-bodies",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Anti-corruption bodies, courts and auditors are independent and have the powers and resources to act.",
+            "label": "Watchdogs and courts can act independently.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–12, Institutional framework",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-budget",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Citizens and parliament can follow, question and audit how public money is raised and spent.",
+            "label": "Citizens can follow and audit public money.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Public financial management: Open Budget Index",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Public Financial Management Act",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-politics",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Elections and political finance are clean and transparent.",
+            "label": "Elections and party money are clean.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 4–5, Political corruption",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Political finance measures",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-police",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Police serve the public rather than extort it.",
+            "label": "Police serve rather than extort.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 6–7, Police and security",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-voice",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "critical_success_factor",
+            "text": "Journalists and civil society can expose corruption and are listened to.",
+            "label": "Press and civil society can expose corruption.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media; Civil society",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-prosecute",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Corruption cases investigated by the anti-corruption commission reliably reach prosecution, whether the commission prosecutes them itself or forwards them.",
+            "label": "Corruption cases reliably reach prosecution.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Ethics and Anti-Corruption Commission: no prosecutorial powers",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-courts",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Courts have the staff, money and capacity to try corruption cases efficiently.",
+            "label": "Courts can try corruption cases efficiently.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Judiciary: understaffed, underfinanced",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-audit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Audits cover all public spending, including extra-budgetary funds, and their findings lead to action.",
+            "label": "Audits cover all spending and lead to action.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Constitution: unsupported expenditure",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 11–12, Auditor General",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-info",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "People have a working legal right to get public information.",
+            "label": "People can get public information.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Constitution: right of access to information",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-declare",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Officials' asset declarations are checked and acted on, and people convicted of corruption are kept out of public office.",
+            "label": "Asset declarations are checked; convicts are kept out.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Public administration: convicted civil servants",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Public Officers Ethics Act",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-whistle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Whistle-blowers are protected in practice, not only in law.",
+            "label": "Whistle-blowers are protected in practice.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Anti-Corruption and Economic Crimes Act: whistle-blowers",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-campaign",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Campaign spending is limited, its sources are verified and party funds can be traced.",
+            "label": "Campaign money is limited and traceable.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Political finance measures",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-g-oversight",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "necessary_condition",
+            "text": "Independent oversight of the police acts on public complaints and police reform is completed.",
+            "label": "Police oversight acts on complaints.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, Police oversight bodies",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-gl-enforced",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-enforced"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Overview of anti-corruption efforts",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-bodies",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-bodies"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–12, Institutional framework",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-budget",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-budget"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Open Budget Index: hold government accountable",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-politics",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-politics"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 4, Grand corruption and party finance",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-police",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-police"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Police: loss of confidence in law enforcement",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-voice",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-voice"
+            ],
+            "to": "ke-g-goal",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media; Civil society",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-prosecute",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-prosecute"
+            ],
+            "to": "ke-g-bodies",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Ethics and Anti-Corruption Commission",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-courts",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-courts"
+            ],
+            "to": "ke-g-bodies",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Judiciary",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-audit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-audit"
+            ],
+            "to": "ke-g-budget",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 11–12, Auditor General",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-info",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-info"
+            ],
+            "to": "ke-g-budget",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, right of access to information",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-declare",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-declare"
+            ],
+            "to": "ke-g-enforced",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 8–9, Public Officers Ethics Act; Leadership and Integrity Act",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-whistle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-whistle"
+            ],
+            "to": "ke-g-enforced",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, whistle-blower protection",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-campaign",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-campaign"
+            ],
+            "to": "ke-g-politics",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Election Campaign Financing Act",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-gl-oversight",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-g-oversight"
+            ],
+            "to": "ke-g-police",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 12, Independent Policing Oversight Authority",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "ke-g-goal",
+            "work": "check_with_source",
+            "label": "Ask people working on corruption in Kenya whether this goal fits their work.",
+            "note": "The brief answers a question about the state of corruption; the goal is the AI's inference from its focus on public financial management."
+          }
+        ]
+      },
+      "current_reality": {
+        "nodes": [
+          {
+            "id": "ke-r-indices",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "As of 2013, Kenya ranked 136th of 177 countries on Transparency International's Corruption Perceptions Index and had sat between the 10th and 20th percentile for control of corruption in the World Bank's governance indicators since 1996.",
+            "label": "Kenya ranks near the bottom on corruption indices.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 2–3, Extent of corruption",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-history",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "Corruption and looting of state assets were widespread under one-party rule after independence; a government elected in 2002 on an anti-corruption platform was itself caught up in major scandals within two years.",
+            "label": "An anti-corruption government soon faced its own scandals.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 2, Background",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 4, Grand forms of corruption",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-bribery",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "As of 2013, petty bribery was pervasive: 70% of Global Corruption Barometer respondents said they had paid a bribe to at least one of eight public services in the past year.",
+            "label": "Most people paid a bribe for a public service.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 3, Petty and bureaucratic corruption",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-police",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "As of 2013, the police were the institution most affected: 95% of respondents saw them as corrupt and 77% said they had paid them a bribe.",
+            "label": "Police are the most bribed institution.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Sectors affected by corruption",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Police and security",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-business",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "As of 2013, firms were expected to give gifts to win government contracts (about 28%) and construction permits (about 33%), above the continental averages.",
+            "label": "Firms pay for contracts and permits.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 3, Petty and bureaucratic corruption: Enterprise Survey",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-misspent",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Budget money was misappropriated: a 2011 audit found KSh 4.2 billion meant for free primary education lost between 2005 and 2009, and several donors withdrew their support.",
+            "label": "School funds were lost and donors pulled out.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-unsupported",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "The 2012–13 audit of government ministries found nearly KSh 34 billion of public money spent without records, and experts consulted for the brief said officials had not been held accountable.",
+            "label": "KSh 34bn was spent without records.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Constitution: unsupported public expenditure",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-impunity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "As of 2014, senior officials implicated in corruption were rarely prosecuted or convicted; the few convictions were for petty cases with lenient sentences.",
+            "label": "Senior officials are rarely convicted.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Overview of anti-corruption efforts",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Judiciary",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-trust",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Confidence in the government's fight against corruption fell: 70% of respondents rated it effective in 2011, 34% in 2013.",
+            "label": "Trust in the fight fell from 70% to 34%.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Overview of anti-corruption efforts",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-elections",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Elections were marked by irregularities: the disputed 2007 result led to violence that killed more than 1,000 people, and the 2013 election saw vote-buying and corruption charges over the procurement of voter identification devices.",
+            "label": "Elections are marred by fraud and vote-buying.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 2, Background",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Political corruption",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-diluted",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "As of 2014, laws meant to put the 2010 constitution into effect had been diluted, and many anti-corruption laws were not implemented.",
+            "label": "Laws are diluted or not implemented.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 2, Background",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 7–8, Legal framework",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-will",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Political will to tackle corruption was lacking: reform met political resistance, and decision makers did not seek dialogue and mostly ignored civil society recommendations.",
+            "label": "Political will is lacking.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 1, Summary",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Civil society",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-noprosec",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "The Ethics and Anti-Corruption Commission could investigate and recover assets but could not prosecute; it forwarded cases for others to prosecute.",
+            "label": "The commission can't prosecute.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Ethics and Anti-Corruption Commission",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-commission",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "The commission took two years to be fully constituted after 2011, and court disputes over its leadership undermined its ability to pursue its mandate.",
+            "label": "The commission was slow to start and contested.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Ethics and Anti-Corruption Commission",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-courts",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Courts were understaffed, underfinanced and backlogged, and corruption within the judiciary persisted: 58% of respondents reported paying it a bribe.",
+            "label": "Courts are overloaded and themselves corrupt.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Judiciary",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-reinstated",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Officials charged or convicted of corruption were not consistently suspended or barred, and some were reinstated or appointed to new posts while cases were pending.",
+            "label": "Accused officials stay in or return to office.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Public administration",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-declarations",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Asset declarations were not audited or acted on, and asset declaration and vetting were removed from the Leadership and Integrity Act at cabinet level.",
+            "label": "Asset declarations go unchecked.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Public Officers Ethics Act",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Leadership and Integrity Act",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-patronage",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Political parties were institutionally weak and organised around ethnic loyalty and patronage rather than ideas.",
+            "label": "Parties run on ethnic patronage.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 4, Political corruption",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-party-money",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Party and campaign finance was opaque: analysts allege that major procurement scandals raised campaign money, and no campaign finance law applied in the 2013 elections.",
+            "label": "Party and campaign money is opaque.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 4–5, Political corruption",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Political finance measures",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-procurement",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Public procurement favoured well-connected firms and individuals, and security procurement escaped the normal rules and oversight.",
+            "label": "Procurement favours the well-connected.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Public financial management: procurement",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Public Procurement and Disposal Act",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-oversight-gaps",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Budget oversight was thin: parliament and the Auditor General lacked resources and time, and audit reports left out extra-budgetary funds.",
+            "label": "Budget oversight is thin.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Public financial management",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 12, Auditor General",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-r-police-oversight",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "cause",
+            "text": "Police oversight was weak and political interference high; by 2014 about 60% of proposed police reforms had been implemented and 15% of those showed significant impact in communities.",
+            "label": "Police oversight and reform lag.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Police and security",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, Police oversight bodies",
+                "basis": "paraphrase"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-rl-impunity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-diluted",
+              "ke-r-noprosec",
+              "ke-r-courts"
+            ],
+            "to": "ke-r-impunity",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, Overview of anti-corruption efforts",
+                "basis": "reconstruction"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Commission and Judiciary",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-commission",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-commission"
+            ],
+            "to": "ke-r-impunity",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, leadership troubles undermined its mandate",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-reinstated",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-reinstated"
+            ],
+            "to": "ke-r-impunity",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Public administration",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-declarations",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-declarations"
+            ],
+            "to": "ke-r-impunity",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, not an effective mechanism for accountability",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-will-diluted",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-will"
+            ],
+            "to": "ke-r-diluted",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 2, Background: political resistance",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-will-declarations",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-will"
+            ],
+            "to": "ke-r-declarations",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, weakened at cabinet level",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-will-noprosec",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-will"
+            ],
+            "to": "ke-r-noprosec",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, could be given prosecutorial powers by parliament",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-trust",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-impunity"
+            ],
+            "to": "ke-r-trust",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, scandals involving senior members of government",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-misspent",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-oversight-gaps",
+              "ke-r-impunity"
+            ],
+            "to": "ke-r-misspent",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-unsupported",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-oversight-gaps",
+              "ke-r-impunity"
+            ],
+            "to": "ke-r-unsupported",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, officials not held accountable",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-police",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-police-oversight"
+            ],
+            "to": "ke-r-police",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Police and security",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-police-bribery",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-police"
+            ],
+            "to": "ke-r-bribery",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, the institution with the highest prevalence of bribery",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-party-money",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-patronage"
+            ],
+            "to": "ke-r-party-money",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 4, patronage making parties vulnerable to corruption",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-elections",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-party-money"
+            ],
+            "to": "ke-r-elections",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, unverified sums and vote-buying",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-procurement",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-party-money"
+            ],
+            "to": "ke-r-procurement",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 4, procurement scandals used to raise campaign funds",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-rl-business",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-r-procurement"
+            ],
+            "to": "ke-r-business",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 3, gifts to secure a government contract",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "ke-r-impunity",
+            "work": "update_since_2014",
+            "label": "Check what has changed since 2014.",
+            "note": "Every figure and finding here is as of the brief's date, 15 October 2014. Later events, laws and data are not covered."
+          }
+        ]
+      },
+      "conflict": {
+        "nodes": [
+          {
+            "id": "ke-c1-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Free primary education keeps its funding after KSh 4.2 billion of it was misappropriated.",
+            "label": "Free primary education survives the loss.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-c1-donors",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Keep the donors who fund universal primary education on board.",
+            "label": "Keep donor support.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, donors withdrew support and asked for a refund",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-c1-liable",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Hold the people who took the money liable, not taxpayers.",
+            "label": "Make the culprits, not taxpayers, pay.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, civil society caution",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-c1-refund",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "The treasury refunds donors from public funds now.",
+            "label": "Refund donors from the treasury now.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, the treasury had refunded close to US$4 million",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-c1-recover",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "Repayment comes from money recovered from those responsible.",
+            "label": "Repay from money recovered from culprits.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, civil society caution",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-c2-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "Stolen public assets are returned and corruption stops paying.",
+            "label": "Stolen assets return and corruption stops paying.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, Anti-Corruption and Economic Crimes Act amendments",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-c2-quick",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Get stolen assets back quickly, without years in court.",
+            "label": "Recover assets quickly.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, out-of-court settlements to facilitate enforcement",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-c2-deter",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "need",
+            "text": "Show that people who take public money are punished.",
+            "label": "Show that theft is punished.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, failure to prosecute fuels impunity",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-c2-settle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "The commission settles out of court: assets are returned in exchange for dropping proceedings.",
+            "label": "Settle out of court.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, the hotel handed over in exchange for a pardon on civil proceedings",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-c2-pursue",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "prerequisite",
+            "text": "The commission pursues cases through the courts to judgment.",
+            "label": "Pursue cases to judgment.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, as opposed to instituting civil proceedings",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-cl1-donors",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c1-donors"
+            ],
+            "to": "ke-c1-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, donors had given close to US$150 million",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl1-liable",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c1-liable"
+            ],
+            "to": "ke-c1-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, civil society caution",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl1-refund",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c1-refund"
+            ],
+            "to": "ke-c1-donors",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, donors asked for a refund",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl1-recover",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c1-recover"
+            ],
+            "to": "ke-c1-liable",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, civil society caution",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl1-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c1-refund"
+            ],
+            "to": "ke-c1-recover",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "Recovering the money from those responsible would take too long to keep donors on board.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, a dangerous precedent",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl2-quick",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c2-quick"
+            ],
+            "to": "ke-c2-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, facilitate enforcement",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl2-deter",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c2-deter"
+            ],
+            "to": "ke-c2-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, impunity",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl2-settle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c2-settle"
+            ],
+            "to": "ke-c2-quick",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, out-of-court settlements",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl2-pursue",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c2-pursue"
+            ],
+            "to": "ke-c2-deter",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, investigations rarely brought to trial",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-cl2-conflict",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-c2-settle"
+            ],
+            "to": "ke-c2-pursue",
+            "relation": "conflicts_with",
+            "assumptions": [
+              {
+                "text": "A settlement that returns assets has to be paid for with a pardon, so it cannot also deter.",
+                "by": "AI assistant"
+              }
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, in exchange for a pardon",
+                "basis": "reconstruction"
+              }
+            ]
+          }
+        ],
+        "backlog": []
+      },
+      "future_reality": {
+        "nodes": [
+          {
+            "id": "ke-f-prosecute",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Give the Ethics and Anti-Corruption Commission power to prosecute the cases it investigates, which the brief notes parliament could do.",
+            "label": "Give the commission power to prosecute.",
+            "addresses": [
+              "ke-r-noprosec"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, could be given prosecutorial powers by parliament",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-courts",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Fund and staff the courts, including the special magistrates for corruption and economic crimes, to clear corruption cases.",
+            "label": "Resource the courts for corruption cases.",
+            "addresses": [
+              "ke-r-courts"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 11, Judiciary: special magistrates; understaffed, underfinanced",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-integrity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Restore asset declaration and vetting to the Leadership and Integrity Act, check declarations, and keep people charged with or convicted of corruption out of office.",
+            "label": "Restore vetting and check asset declarations.",
+            "addresses": [
+              "ke-r-declarations",
+              "ke-r-reinstated"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, Public administration",
+                "basis": "inference"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 8–9, Public Officers Ethics Act; Leadership and Integrity Act",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-whistle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Pass the whistle-blower protection bill a task force was drafting in 2014.",
+            "label": "Protect whistle-blowers in law.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, a whistle-blower protection bill at its formative stages",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-info",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Pass the law the constitution's right of access to information still lacked in 2014.",
+            "label": "Give the right to information a law.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, no legal framework yet enacted",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-campaign",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Restore spending limits to the Election Campaign Financing Act, and have the electoral commission enforce them and verify donations.",
+            "label": "Limit and verify campaign money.",
+            "addresses": [
+              "ke-r-party-money"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Election Campaign Financing Act",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-pfm",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Put every regulation of the 2012 Public Financial Management Act into effect, including citizen participation and in-year reports on actual spending.",
+            "label": "Put the public finance law fully into effect.",
+            "addresses": [
+              "ke-r-oversight-gaps"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Public Financial Management Act; the IMF on implementation",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-audit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Extend audits to extra-budgetary funds and give the Auditor General the funding and channels to report to the public.",
+            "label": "Audit all funds and report to the public.",
+            "addresses": [
+              "ke-r-oversight-gaps"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 12, Auditor General",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-police",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Complete the police reforms and give the Independent Policing Oversight Authority the resources to act on complaints.",
+            "label": "Finish police reform and fund its oversight.",
+            "addresses": [
+              "ke-r-police-oversight"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, Police oversight bodies",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-settle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Use out-of-court settlements to recover assets only alongside criminal prosecution, so that returning assets never buys a pardon.",
+            "label": "Recover assets without buying pardons.",
+            "addresses": [
+              "ke-c2-settle",
+              "ke-c2-pursue"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, out-of-court settlements",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-recover",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Refund donors where needed to keep programmes running, while pursuing the people responsible and publishing what is recovered.",
+            "label": "Refund now, and recover from the culprits.",
+            "addresses": [
+              "ke-c1-refund",
+              "ke-c1-recover"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-press",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "injection",
+            "text": "Keep the media free of government control: no government board with power to fine journalists and media houses.",
+            "label": "Keep the media free of government control.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media: the 2013 media bills",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-trials",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "More corruption cases involving senior officials reach judgment.",
+            "label": "Senior officials' cases reach judgment.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Commission and Judiciary",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-cost",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Officials who abuse office expect to lose it, their assets and possibly their liberty.",
+            "label": "Abusing office carries a real cost.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, failure to prosecute fuels impunity",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-visible",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Citizens, parliament and auditors can see where public money goes.",
+            "label": "People can see where money goes.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, citizens can monitor actual spending",
+                "basis": "reconstruction"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-caught",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Misuse of public money is detected and reported early.",
+            "label": "Misuse is caught early.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, whistle-blowers; p. 13, media",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-clean-vote",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Campaigns rely less on unverified money and vote-buying.",
+            "label": "Less dirty money in campaigns.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Political finance measures",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-fewer-bribes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "predicted_effect",
+            "text": "Fewer people are asked for bribes by police.",
+            "label": "Fewer police bribes.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 12, the Independent Policing Oversight Authority acts on complaints",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-trust",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "Public confidence in the fight against corruption recovers.",
+            "label": "Trust in the fight recovers.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, confidence decreased tremendously",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-money",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "desirable_effect",
+            "text": "Public money reaches the services it was meant for.",
+            "label": "Money reaches the services it is for.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-pardon",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Out-of-court settlements work as pardons: the brief describes a hotel allegedly built with public money handed to the government in exchange for dropping civil proceedings.",
+            "label": "Settlements work as pardons.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, a hotel handed over for dropped proceedings",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-taxpayers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Refunding donors from public funds makes taxpayers pay for stolen money, a precedent civil society groups warned against.",
+            "label": "Taxpayers pay for stolen money.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, a dangerous precedent",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-silenced",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "undesirable_effect",
+            "text": "Government control of the media, as the 2013 media bills provided, silences reporting on corruption.",
+            "label": "Media control silences reporting.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-f-hearings",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "observation",
+            "text": "Kenya's public budget hearings, first held in 2011 and advertised in newspapers and on community radio, were seen as exemplary.",
+            "label": "Kenya's public budget hearings were exemplary.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Public financial management",
+                "basis": "paraphrase"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-fl-trials",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-prosecute",
+              "ke-f-courts"
+            ],
+            "to": "ke-f-trials",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 10–11, Commission and Judiciary",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-cost-trials",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-trials"
+            ],
+            "to": "ke-f-cost",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, impunity",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-cost-integrity",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-integrity"
+            ],
+            "to": "ke-f-cost",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, convicted civil servants not barred",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-visible-pfm",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-pfm"
+            ],
+            "to": "ke-f-visible",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Public Financial Management Act",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-visible-audit",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-audit"
+            ],
+            "to": "ke-f-visible",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 12, Auditor General",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-visible-info",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-info"
+            ],
+            "to": "ke-f-visible",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, right of access to information",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-caught-visible",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-visible"
+            ],
+            "to": "ke-f-caught",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, Open Budget Index",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-caught-whistle",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-whistle"
+            ],
+            "to": "ke-f-caught",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, whistle-blowers",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-caught-press",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-press"
+            ],
+            "to": "ke-f-caught",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-clean-vote",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-campaign"
+            ],
+            "to": "ke-f-clean-vote",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, Political finance measures",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-fewer-bribes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-police"
+            ],
+            "to": "ke-f-fewer-bribes",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, Police oversight bodies",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-trust-cost",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-cost"
+            ],
+            "to": "ke-f-trust",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, scandals and confidence",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-trust-bribes",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-fewer-bribes"
+            ],
+            "to": "ke-f-trust",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 7, many still have to bribe to get a service",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-trust-vote",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-clean-vote"
+            ],
+            "to": "ke-f-trust",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, elections",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-money-cost",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-cost"
+            ],
+            "to": "ke-f-money",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-money-caught",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-caught"
+            ],
+            "to": "ke-f-money",
+            "relation": "contributes_to",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 5–6, Public financial management",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-pardon",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-settle"
+            ],
+            "to": "ke-f-pardon",
+            "relation": "prevents",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 8, out-of-court settlements",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-taxpayers",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-recover"
+            ],
+            "to": "ke-f-taxpayers",
+            "relation": "prevents",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 6, a dangerous precedent",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-fl-silenced",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-f-press"
+            ],
+            "to": "ke-f-silenced",
+            "relation": "prevents",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Media",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "backlog": []
+      },
+      "prerequisite": {
+        "nodes": [
+          {
+            "id": "ke-p-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "objective",
+            "text": "The anti-corruption reforms the constitution calls for are passed intact and put into effect.",
+            "label": "Reforms are passed intact and put into effect.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 7–8, Legal framework",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-resist-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Political decision makers resist reform and mostly ignore civil society recommendations.",
+            "label": "Decision makers resist and ignore critics.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Civil society",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-weakened-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Bills are weakened before they pass, at cabinet level or by last-minute amendments, as happened to asset declaration and to campaign spending limits.",
+            "label": "Bills are weakened before they pass.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, Leadership and Integrity Act",
+                "basis": "paraphrase"
+              },
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 10, Election Campaign Financing Act",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-funds-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Bodies charged with reform lack funding and resources, which slowed police reform.",
+            "label": "Reform bodies lack money and staff.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, Police oversight bodies",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-mandate-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Oversight bodies dispute their mandates, as when the Inspector General's office proposed taking over the police commission's responsibilities.",
+            "label": "Bodies dispute their mandates.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Police oversight bodies",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-civic-gap",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "obstacle",
+            "text": "Civil society's influence on the political agenda has decreased, and its networks are weak outside Nairobi.",
+            "label": "Civil society has less influence.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Civil society",
+                "basis": "paraphrase"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-coalition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "A broad coalition of civil society, religious organisations and think tanks keeps corruption on the public agenda, building on the National Anti-Corruption Campaign.",
+            "label": "A broad coalition keeps up pressure.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, National Anti-Corruption Campaign",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-tracked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Drafts and amendments of anti-corruption bills are tracked in public, so weakening changes are seen before they pass.",
+            "label": "Bills are tracked so weakening is seen.",
+            "implements": [
+              "ke-f-integrity",
+              "ke-f-campaign"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, bills weakened before passing",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-champions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Parliamentarians committed to fighting corruption carry the bills, with support from networks such as the African Parliamentarians Network Against Corruption.",
+            "label": "Committed MPs carry the bills.",
+            "implements": [
+              "ke-f-prosecute",
+              "ke-f-whistle",
+              "ke-f-info"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 14, African Parliamentarians Network Against Corruption Kenya",
+                "basis": "related"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-budgets",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Courts, the Auditor General and police oversight have budgets secured in law.",
+            "label": "Reform bodies have secure budgets.",
+            "implements": [
+              "ke-f-courts",
+              "ke-f-audit",
+              "ke-f-police"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 11–13, Judiciary, Auditor General, police oversight",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-p-mandates",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "intermediate_objective",
+            "text": "Each oversight body's mandate is settled in law.",
+            "label": "Each body's mandate is settled.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, disagreements over mandates",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-pl-coalition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-coalition"
+            ],
+            "to": "ke-p-civic-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, Some NGOs engage constructively with the state",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-tracked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-tracked"
+            ],
+            "to": "ke-p-weakened-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, bills weakened",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-champions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-champions"
+            ],
+            "to": "ke-p-resist-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 14, APNAC Kenya",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-budgets",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-budgets"
+            ],
+            "to": "ke-p-funds-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13, lack of funding",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-mandates",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-mandates"
+            ],
+            "to": "ke-p-mandate-gap",
+            "relation": "overcomes",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, disagreements over mandates",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-coalition-tracked",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-coalition"
+            ],
+            "to": "ke-p-tracked",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 14, organisations active against corruption",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-coalition-champions",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-coalition"
+            ],
+            "to": "ke-p-champions",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, political decision makers do not seek dialogue",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-tracked-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-tracked"
+            ],
+            "to": "ke-p-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-champions-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-champions"
+            ],
+            "to": "ke-p-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-budgets-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-budgets"
+            ],
+            "to": "ke-p-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 12–13",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-pl-mandates-objective",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-p-mandates"
+            ],
+            "to": "ke-p-objective",
+            "relation": "necessary_for",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "backlog": []
+      },
+      "transition": {
+        "nodes": [
+          {
+            "id": "ke-t-1-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "A bill to put an anti-corruption reform into effect is before parliament.",
+            "label": "A reform bill is before parliament.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, bills to operationalise the constitution",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-t-track",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Publish each draft of the bill side by side and flag any change that weakens it.",
+            "label": "Publish each draft and flag weakening changes.",
+            "implements": [
+              "ke-p-tracked"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10, bills weakened before passing",
+                "basis": "inference"
+              }
+            ],
+            "proposed_role": "Civil society monitors"
+          },
+          {
+            "id": "ke-t-1-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Weakening changes are public before the vote.",
+            "label": "Weakening changes are public before the vote.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-t-2-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "Some members of parliament are committed to the bill.",
+            "label": "Some MPs back the bill.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 14, APNAC Kenya",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-t-brief",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "Brief committed members of parliament and the public on each flagged change, through newspapers and community radio.",
+            "label": "Brief MPs and the public on flagged changes.",
+            "implements": [
+              "ke-p-champions",
+              "ke-p-coalition"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 5, budget hearings advertised in newspapers and community radio",
+                "basis": "related"
+              }
+            ],
+            "proposed_role": "A coalition of civil society and religious organisations"
+          },
+          {
+            "id": "ke-t-2-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Members of parliament are publicly asked to account for weakening changes, and the bill passes with fewer of them.",
+            "label": "The bill passes with fewer weakening changes.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13, civil society criticised watered-down legislation",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-t-3-condition",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "existing_condition",
+            "text": "The bill has become law.",
+            "label": "The bill has become law.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 7–8, laws passed but not implemented",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-t-follow",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "action",
+            "text": "A year on, report whether the law's regulations, budget and mandates have been put into effect, using audit reports and public records.",
+            "label": "A year on, report what has been put into effect.",
+            "implements": [
+              "ke-p-budgets",
+              "ke-p-mandates"
+            ],
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9, all regulations must also be implemented",
+                "basis": "inference"
+              }
+            ],
+            "proposed_role": "Civil society monitors"
+          },
+          {
+            "id": "ke-t-3-effect",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "kind": "expected_effect",
+            "text": "Any gap between the law and its implementation is on public record.",
+            "label": "Implementation gaps are on public record.",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 7–8, implementation lacking",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "links": [
+          {
+            "id": "ke-tl-track",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-t-1-condition",
+              "ke-t-track"
+            ],
+            "to": "ke-t-1-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "pp. 9–10",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-tl-brief",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-t-1-effect",
+              "ke-t-2-condition",
+              "ke-t-brief"
+            ],
+            "to": "ke-t-2-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 13",
+                "basis": "inference"
+              }
+            ]
+          },
+          {
+            "id": "ke-tl-follow",
+            "status": "proposed",
+            "accepted_by": [],
+            "contributors": [
+              {
+                "name": "AI assistant",
+                "role": "assistant"
+              }
+            ],
+            "from": [
+              "ke-t-2-effect",
+              "ke-t-3-condition",
+              "ke-t-follow"
+            ],
+            "to": "ke-t-3-effect",
+            "relation": "produces",
+            "source_refs": [
+              {
+                "source_id": "ti-kenya-2014",
+                "locator": "p. 9",
+                "basis": "inference"
+              }
+            ]
+          }
+        ],
+        "backlog": [
+          {
+            "ref": "ke-t-track",
+            "work": "find_host",
+            "label": "Find a group that would try these steps.",
+            "note": "No group, owner or date is assigned. Existing conditions are illustrative, not observations."
+          }
+        ]
+      }
+    },
+    "feedback": [],
+    "history": [
+      {
+        "release_id": "2026-10-28.1",
+        "date": "2026-10-28",
+        "title": "First proposed reconstruction",
+        "summary": "Transparency International’s 2014 brief on Kenya across all six views: 91 proposed statements and 73 proposed connections, each with a page reference. No endorsement, trial or outcome is recorded.",
+        "changes": [
+          {
+            "type": "added",
+            "refs": [
+              "ke-g-goal",
+              "ke-g-enforced",
+              "ke-g-bodies",
+              "ke-g-budget",
+              "ke-g-politics",
+              "ke-g-police",
+              "ke-g-voice",
+              "ke-g-prosecute",
+              "ke-g-courts",
+              "ke-g-audit",
+              "ke-g-info",
+              "ke-g-declare",
+              "ke-g-whistle",
+              "ke-g-campaign",
+              "ke-g-oversight",
+              "ke-gl-enforced",
+              "ke-gl-bodies",
+              "ke-gl-budget",
+              "ke-gl-politics",
+              "ke-gl-police",
+              "ke-gl-voice",
+              "ke-gl-prosecute",
+              "ke-gl-courts",
+              "ke-gl-audit",
+              "ke-gl-info",
+              "ke-gl-declare",
+              "ke-gl-whistle",
+              "ke-gl-campaign",
+              "ke-gl-oversight",
+              "ke-r-indices",
+              "ke-r-history",
+              "ke-r-bribery",
+              "ke-r-police",
+              "ke-r-business",
+              "ke-r-misspent",
+              "ke-r-unsupported",
+              "ke-r-impunity",
+              "ke-r-trust",
+              "ke-r-elections",
+              "ke-r-diluted",
+              "ke-r-will",
+              "ke-r-noprosec",
+              "ke-r-commission",
+              "ke-r-courts",
+              "ke-r-reinstated",
+              "ke-r-declarations",
+              "ke-r-patronage",
+              "ke-r-party-money",
+              "ke-r-procurement",
+              "ke-r-oversight-gaps",
+              "ke-r-police-oversight",
+              "ke-rl-impunity",
+              "ke-rl-commission",
+              "ke-rl-reinstated",
+              "ke-rl-declarations",
+              "ke-rl-will-diluted",
+              "ke-rl-will-declarations",
+              "ke-rl-will-noprosec",
+              "ke-rl-trust",
+              "ke-rl-misspent",
+              "ke-rl-unsupported",
+              "ke-rl-police",
+              "ke-rl-police-bribery",
+              "ke-rl-party-money",
+              "ke-rl-elections",
+              "ke-rl-procurement",
+              "ke-rl-business",
+              "ke-c1-objective",
+              "ke-c1-donors",
+              "ke-c1-liable",
+              "ke-c1-refund",
+              "ke-c1-recover",
+              "ke-c2-objective",
+              "ke-c2-quick",
+              "ke-c2-deter",
+              "ke-c2-settle",
+              "ke-c2-pursue",
+              "ke-cl1-donors",
+              "ke-cl1-liable",
+              "ke-cl1-refund",
+              "ke-cl1-recover",
+              "ke-cl1-conflict",
+              "ke-cl2-quick",
+              "ke-cl2-deter",
+              "ke-cl2-settle",
+              "ke-cl2-pursue",
+              "ke-cl2-conflict",
+              "ke-f-prosecute",
+              "ke-f-courts",
+              "ke-f-integrity",
+              "ke-f-whistle",
+              "ke-f-info",
+              "ke-f-campaign",
+              "ke-f-pfm",
+              "ke-f-audit",
+              "ke-f-police",
+              "ke-f-settle",
+              "ke-f-recover",
+              "ke-f-press",
+              "ke-f-trials",
+              "ke-f-cost",
+              "ke-f-visible",
+              "ke-f-caught",
+              "ke-f-clean-vote",
+              "ke-f-fewer-bribes",
+              "ke-f-trust",
+              "ke-f-money",
+              "ke-f-pardon",
+              "ke-f-taxpayers",
+              "ke-f-silenced",
+              "ke-f-hearings",
+              "ke-fl-trials",
+              "ke-fl-cost-trials",
+              "ke-fl-cost-integrity",
+              "ke-fl-visible-pfm",
+              "ke-fl-visible-audit",
+              "ke-fl-visible-info",
+              "ke-fl-caught-visible",
+              "ke-fl-caught-whistle",
+              "ke-fl-caught-press",
+              "ke-fl-clean-vote",
+              "ke-fl-fewer-bribes",
+              "ke-fl-trust-cost",
+              "ke-fl-trust-bribes",
+              "ke-fl-trust-vote",
+              "ke-fl-money-cost",
+              "ke-fl-money-caught",
+              "ke-fl-pardon",
+              "ke-fl-taxpayers",
+              "ke-fl-silenced",
+              "ke-p-objective",
+              "ke-p-resist-gap",
+              "ke-p-weakened-gap",
+              "ke-p-funds-gap",
+              "ke-p-mandate-gap",
+              "ke-p-civic-gap",
+              "ke-p-coalition",
+              "ke-p-tracked",
+              "ke-p-champions",
+              "ke-p-budgets",
+              "ke-p-mandates",
+              "ke-pl-coalition",
+              "ke-pl-tracked",
+              "ke-pl-champions",
+              "ke-pl-budgets",
+              "ke-pl-mandates",
+              "ke-pl-coalition-tracked",
+              "ke-pl-coalition-champions",
+              "ke-pl-tracked-objective",
+              "ke-pl-champions-objective",
+              "ke-pl-budgets-objective",
+              "ke-pl-mandates-objective",
+              "ke-t-1-condition",
+              "ke-t-track",
+              "ke-t-1-effect",
+              "ke-t-2-condition",
+              "ke-t-brief",
+              "ke-t-2-effect",
+              "ke-t-3-condition",
+              "ke-t-follow",
+              "ke-t-3-effect",
+              "ke-tl-track",
+              "ke-tl-brief",
+              "ke-tl-follow"
+            ],
+            "note": "AI reconstruction from the Anti-Corruption Helpdesk brief of 15 October 2014."
+          }
+        ]
+      }
+    ],
+    "publication_kind": "source_reconstruction",
+    "authors": {
+      "ti-lindner": {
+        "name": "Samira Lindner, Transparency International",
+        "role": "Author of the Anti-Corruption Helpdesk brief; has not reviewed or endorsed this reconstruction"
+      }
+    },
+    "sources": [
+      {
+        "id": "ti-kenya-2014",
+        "kind": "supplied_document",
+        "author": "ti-lindner",
+        "title": "Overview of corruption and anti-corruption in Kenya · Anti-Corruption Helpdesk brief",
+        "description": "A 16-page brief by Samira Lindner of Transparency International, dated 15 October 2014 and reviewed by Marie Chêne, Casey Kelso and Samuel Kimeu (Transparency International Kenya). It answers a European Commission query on corruption in Kenya with a focus on public financial management, updating a 2012 U4 Helpdesk answer. It draws on indices, surveys and reports from 2011 to 2014. The Anti-Corruption Helpdesk is funded by the European Union; the brief does not necessarily reflect Transparency International’s official position. Page numbers refer to the PDF.",
+        "url": "https://knowledgehub.transparency.org/helpdesk/overview-of-corruption-and-anti-corruption-in-kenya"
+      }
+    ],
+    "views": {
+      "goal": [
+        {
+          "id": "open-money",
+          "title": "Open public money, accountable office",
+          "summary": "The brief asks about corruption with a focus on public financial management. This goal is the AI’s inference from that focus; six conditions under it follow the brief’s sections.",
+          "nodes": [
+            "ke-g-goal",
+            "ke-g-enforced",
+            "ke-g-bodies",
+            "ke-g-budget",
+            "ke-g-politics",
+            "ke-g-police",
+            "ke-g-voice",
+            "ke-g-prosecute",
+            "ke-g-courts",
+            "ke-g-audit",
+            "ke-g-info",
+            "ke-g-declare",
+            "ke-g-whistle",
+            "ke-g-campaign",
+            "ke-g-oversight"
+          ]
+        }
+      ],
+      "current_reality": [
+        {
+          "id": "indices",
+          "title": "How Kenya scored in 2014",
+          "summary": "Two framing observations from the brief: where Kenya stood on corruption indices, and a history of anti-corruption promises followed by scandal. No causal connections are drawn.",
+          "nodes": [
+            "ke-r-indices",
+            "ke-r-history"
+          ]
+        },
+        {
+          "id": "impunity",
+          "title": "Why senior officials went unpunished",
+          "summary": "Diluted laws, a commission that could not prosecute and overloaded courts together let senior officials escape conviction, and public trust fell. Candidate causes, as of 2014.",
+          "nodes": [
+            "ke-r-will",
+            "ke-r-diluted",
+            "ke-r-noprosec",
+            "ke-r-commission",
+            "ke-r-courts",
+            "ke-r-reinstated",
+            "ke-r-declarations",
+            "ke-r-impunity",
+            "ke-r-trust"
+          ]
+        },
+        {
+          "id": "public-money",
+          "title": "Where public money went",
+          "summary": "Thin budget oversight, combined with impunity, left school funds lost and billions spent without records.",
+          "nodes": [
+            "ke-r-oversight-gaps",
+            "ke-r-impunity",
+            "ke-r-misspent",
+            "ke-r-unsupported"
+          ]
+        },
+        {
+          "id": "politics-and-police",
+          "title": "Party money, procurement and the police",
+          "summary": "Patronage parties needed opaque money, which the brief links to procurement scandals and vote-buying. Weak police oversight left the police the most bribed institution.",
+          "nodes": [
+            "ke-r-patronage",
+            "ke-r-party-money",
+            "ke-r-elections",
+            "ke-r-procurement",
+            "ke-r-business",
+            "ke-r-police-oversight",
+            "ke-r-police",
+            "ke-r-bribery"
+          ]
+        }
+      ],
+      "conflict": [
+        {
+          "id": "who-repays",
+          "title": "Who repays stolen school funds?",
+          "summary": "Donors wanted their money back; civil society warned that refunding it from the treasury makes taxpayers pay for theft. The brief records both.",
+          "nodes": [
+            "ke-c1-objective",
+            "ke-c1-donors",
+            "ke-c1-liable",
+            "ke-c1-refund",
+            "ke-c1-recover"
+          ]
+        },
+        {
+          "id": "settle-or-prosecute",
+          "title": "Settle, or prosecute?",
+          "summary": "Out-of-court settlements return assets quickly; the brief’s example traded a hotel for dropped proceedings. Prosecution deters, but slowly.",
+          "nodes": [
+            "ke-c2-objective",
+            "ke-c2-quick",
+            "ke-c2-deter",
+            "ke-c2-settle",
+            "ke-c2-pursue"
+          ]
+        }
+      ],
+      "future_reality": [
+        {
+          "id": "cases-to-judgment",
+          "title": "Bring cases to judgment",
+          "summary": "Prosecution powers, resourced courts and restored vetting could give abuse of office a real cost. Inferred from gaps the brief identifies.",
+          "nodes": [
+            "ke-f-prosecute",
+            "ke-f-courts",
+            "ke-f-integrity",
+            "ke-f-trials",
+            "ke-f-cost",
+            "ke-f-trust",
+            "ke-f-money"
+          ]
+        },
+        {
+          "id": "follow-the-money",
+          "title": "Follow the money",
+          "summary": "Putting the public finance law into effect, auditing every fund, a right to information, whistle-blower protection and a free press could make misuse visible early. Kenya’s budget hearings were already seen as exemplary.",
+          "nodes": [
+            "ke-f-pfm",
+            "ke-f-audit",
+            "ke-f-info",
+            "ke-f-whistle",
+            "ke-f-press",
+            "ke-f-visible",
+            "ke-f-caught",
+            "ke-f-silenced",
+            "ke-f-hearings"
+          ]
+        },
+        {
+          "id": "votes-and-police",
+          "title": "Clean campaigns and police",
+          "summary": "Campaign spending limits and finished police reform address two of the brief’s most visible problems.",
+          "nodes": [
+            "ke-f-campaign",
+            "ke-f-clean-vote",
+            "ke-f-police",
+            "ke-f-fewer-bribes"
+          ]
+        },
+        {
+          "id": "resolving-the-dilemmas",
+          "title": "Ways through the two dilemmas",
+          "summary": "Proposed ways to keep both sides of each dilemma, with the risk each is meant to prevent.",
+          "nodes": [
+            "ke-f-settle",
+            "ke-f-pardon",
+            "ke-f-recover",
+            "ke-f-taxpayers"
+          ]
+        }
+      ],
+      "prerequisite": [
+        {
+          "id": "pass-intact",
+          "title": "Get reforms passed intact",
+          "summary": "Reform has met resistance and been weakened before it passed. A coalition, public tracking of bills and committed MPs could get it through.",
+          "nodes": [
+            "ke-p-objective",
+            "ke-p-civic-gap",
+            "ke-p-coalition",
+            "ke-p-weakened-gap",
+            "ke-p-tracked",
+            "ke-p-resist-gap",
+            "ke-p-champions"
+          ]
+        },
+        {
+          "id": "make-them-work",
+          "title": "Make reformed bodies work",
+          "summary": "Bodies created by reform need secure budgets and settled mandates.",
+          "nodes": [
+            "ke-p-funds-gap",
+            "ke-p-budgets",
+            "ke-p-mandate-gap",
+            "ke-p-mandates"
+          ]
+        }
+      ],
+      "transition": [
+        {
+          "id": "track",
+          "title": "Track the bill",
+          "summary": "Publish each draft and flag weakening changes.",
+          "nodes": [
+            "ke-t-1-condition",
+            "ke-t-track",
+            "ke-t-1-effect"
+          ]
+        },
+        {
+          "id": "brief",
+          "title": "Brief MPs and the public",
+          "summary": "Put flagged changes in front of MPs and voters before the vote.",
+          "nodes": [
+            "ke-t-2-condition",
+            "ke-t-brief",
+            "ke-t-2-effect"
+          ]
+        },
+        {
+          "id": "follow-up",
+          "title": "Follow up a year on",
+          "summary": "Report what has actually been put into effect.",
+          "nodes": [
+            "ke-t-3-condition",
+            "ke-t-follow",
+            "ke-t-3-effect"
+          ]
+        }
+      ]
+    },
+    "overview": [
+      {
+        "type": "cards",
+        "eyebrow": "What has to be true",
+        "title": "Open public money, accountable office",
+        "text": "Laws enforced rather than only passed, watchdogs and courts that can act, a budget citizens can follow, clean elections, police who serve, and a press that can expose corruption. The goal is the AI’s inference from the brief’s focus on public financial management.",
+        "ids": [
+          "ke-g-enforced",
+          "ke-g-bodies",
+          "ke-g-budget",
+          "ke-g-politics",
+          "ke-g-police",
+          "ke-g-voice"
+        ],
+        "link": [
+          "goal.html",
+          "Inspect the goal and its conditions →"
+        ]
+      },
+      {
+        "type": "cards",
+        "eyebrow": "What stood in the way in 2014",
+        "title": "Impunity at the top",
+        "text": "Laws were diluted or not implemented, the anti-corruption commission could not prosecute, and courts were overloaded, so senior officials were rarely convicted. Meanwhile most people paid bribes and public trust in the fight fell from 70% to 34%.",
+        "ids": [
+          "ke-r-impunity",
+          "ke-r-diluted",
+          "ke-r-noprosec",
+          "ke-r-bribery",
+          "ke-r-trust"
+        ],
+        "link": [
+          "in-the-way.html",
+          "Follow the candidate causes →"
+        ]
+      },
+      {
+        "type": "clouds",
+        "eyebrow": "The tension behind the choices",
+        "title": "Two dilemmas the brief records",
+        "text": "Whether to repay donors for stolen school funds from the treasury, and whether to settle out of court to recover assets fast. Each is a proposed reading of the brief.",
+        "featured": "who-repays"
+      },
+      {
+        "type": "cards",
+        "eyebrow": "What could change",
+        "title": "Bring cases to judgment, and follow the money",
+        "text": "Give the commission power to prosecute, resource the courts, restore vetting, put the public finance law into effect and audit every fund. The brief identifies these gaps; the changes are the AI’s inferences from them.",
+        "ids": [
+          "ke-f-prosecute",
+          "ke-f-courts",
+          "ke-f-integrity",
+          "ke-f-pfm",
+          "ke-f-audit"
+        ],
+        "link": [
+          "change.html",
+          "See the proposed changes →"
+        ]
+      },
+      {
+        "type": "cards",
+        "eyebrow": "What must become possible",
+        "title": "Reforms passed intact, bodies that work",
+        "text": "Reform has been weakened before it passed and slowed by lack of money. A coalition, public tracking of bills, committed MPs, secure budgets and settled mandates are proposed conditions, not completed preparations.",
+        "ids": [
+          "ke-p-coalition",
+          "ke-p-tracked",
+          "ke-p-champions",
+          "ke-p-budgets"
+        ],
+        "link": [
+          "prerequisites.html",
+          "Review the obstacles and intermediate objectives →"
+        ]
+      },
+      {
+        "type": "cards",
+        "eyebrow": "How it could be tried",
+        "title": "Track a bill, brief, follow up",
+        "text": "Three illustrative steps for one reform bill. The existing conditions are examples, not observations; nobody is assigned.",
+        "ids": [
+          "ke-t-track",
+          "ke-t-brief",
+          "ke-t-follow"
+        ],
+        "link": [
+          "actions.html",
+          "Follow the three steps →"
+        ]
+      },
+      {
+        "type": "wider",
+        "eyebrow": "A snapshot from 2014",
+        "title": "Kenya as one brief saw it",
+        "text": "The brief was written in October 2014, updating a 2012 answer. Its figures come from indices and surveys of 2011 to 2014. This map does not cover what has happened since."
+      },
+      {
+        "type": "credits",
+        "eyebrow": "Sources and interpretation",
+        "title": "Transparency International’s Anti-Corruption Helpdesk",
+        "text": "Samira Lindner of Transparency International wrote the brief, funded by the European Union. The AI is responsible for selecting, paraphrasing and connecting the material. Every item has a page reference and a labelled basis; source credit is not endorsement."
+      }
+    ],
+    "retired": []
+  },
+  "snapshot_sha256": "aca84afcbe686f2886ca7b7807fed2d7b4e7c726135823808f7bcba38ece0d29"
+}

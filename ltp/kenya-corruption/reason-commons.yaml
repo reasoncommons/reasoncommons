@@ -1,0 +1,1882 @@
+schema_version: 1
+project: Corruption in Kenya, 2014
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+import_context:
+  recorded_on: '2026-10-28'
+  basis: 'One public document: Transparency International Anti-Corruption Helpdesk, Overview of corruption and anti-corruption in Kenya, by Samira Lindner, dated 15 October 2014 (16-page PDF), answering a European Commission query with a focus on public financial management.'
+  standing: Every statement and connection is a proposed AI reconstruction. Approval to implement it (kenya-commons revision 1) is not endorsement of the wording, topology or predictions by David or by Transparency International.
+  scope: 'Kenya as the brief describes it in October 2014, across six perspectives: a goal of open public money and accountable office inferred from the brief''s focus; bribery, misspent funds and impunity with their candidate causes; two dilemmas the brief records; changes inferred from the gaps it identifies, with risks; obstacles to reform; and three illustrative steps.'
+  attribution: Samira Lindner of Transparency International wrote the brief, reviewed by Marie Chêne, Casey Kelso and Samuel Kimeu. The AI selected, paraphrased and connected the material and is responsible for this reconstruction. Figures the brief cites from other indices and surveys are attributed observations, not checked here. People the brief names in connection with allegations are not named. Source credit is not contribution to or endorsement of the commons.
+  limits: Everything describes Kenya as of 2014; nothing since is covered. The brief describes more than it recommends, so the goal and most changes are the AI's inferences from the gaps it identifies. No group, trial, owner or observed outcome is established; existing conditions in the action sequence are illustrative.
+trees:
+  goal:
+    nodes:
+    - id: ke-g-goal
+      kind: goal
+      text: Public money in Kenya is raised, spent and audited openly, and people who abuse public office are held to account.
+      label: Public money is used openly and abuse of office is punished.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 1, Query: public financial management'
+        basis: inference
+      - source_id: ti-kenya-2014
+        locator: 'p. 7, Overview of anti-corruption efforts: the culture of corruption and impunity'
+        basis: reconstruction
+    - id: ke-g-enforced
+      kind: critical_success_factor
+      text: Anti-corruption laws are implemented and enforced, not only passed.
+      label: Anti-corruption laws are enforced, not just passed.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'pp. 7–8, Legal framework: robust laws, lacking implementation'
+        basis: reconstruction
+    - id: ke-g-bodies
+      kind: critical_success_factor
+      text: Anti-corruption bodies, courts and auditors are independent and have the powers and resources to act.
+      label: Watchdogs and courts can act independently.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–12, Institutional framework
+        basis: reconstruction
+    - id: ke-g-budget
+      kind: critical_success_factor
+      text: Citizens and parliament can follow, question and audit how public money is raised and spent.
+      label: Citizens can follow and audit public money.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 5, Public financial management: Open Budget Index'
+        basis: reconstruction
+      - source_id: ti-kenya-2014
+        locator: p. 9, Public Financial Management Act
+        basis: paraphrase
+    - id: ke-g-politics
+      kind: critical_success_factor
+      text: Elections and political finance are clean and transparent.
+      label: Elections and party money are clean.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 4–5, Political corruption
+        basis: reconstruction
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Political finance measures
+        basis: reconstruction
+    - id: ke-g-police
+      kind: critical_success_factor
+      text: Police serve the public rather than extort it.
+      label: Police serve rather than extort.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 6–7, Police and security
+        basis: reconstruction
+    - id: ke-g-voice
+      kind: critical_success_factor
+      text: Journalists and civil society can expose corruption and are listened to.
+      label: Press and civil society can expose corruption.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Media; Civil society
+        basis: reconstruction
+    - id: ke-g-prosecute
+      kind: necessary_condition
+      text: Corruption cases investigated by the anti-corruption commission reliably reach prosecution, whether the commission prosecutes them itself or forwards them.
+      label: Corruption cases reliably reach prosecution.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'pp. 10–11, Ethics and Anti-Corruption Commission: no prosecutorial powers'
+        basis: inference
+    - id: ke-g-courts
+      kind: necessary_condition
+      text: Courts have the staff, money and capacity to try corruption cases efficiently.
+      label: Courts can try corruption cases efficiently.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 11, Judiciary: understaffed, underfinanced'
+        basis: paraphrase
+    - id: ke-g-audit
+      kind: necessary_condition
+      text: Audits cover all public spending, including extra-budgetary funds, and their findings lead to action.
+      label: Audits cover all spending and lead to action.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 8, Constitution: unsupported expenditure'
+        basis: reconstruction
+      - source_id: ti-kenya-2014
+        locator: pp. 11–12, Auditor General
+        basis: reconstruction
+    - id: ke-g-info
+      kind: necessary_condition
+      text: People have a working legal right to get public information.
+      label: People can get public information.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 8, Constitution: right of access to information'
+        basis: paraphrase
+    - id: ke-g-declare
+      kind: necessary_condition
+      text: Officials' asset declarations are checked and acted on, and people convicted of corruption are kept out of public office.
+      label: Asset declarations are checked; convicts are kept out.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 6, Public administration: convicted civil servants'
+        basis: reconstruction
+      - source_id: ti-kenya-2014
+        locator: p. 8, Public Officers Ethics Act
+        basis: reconstruction
+    - id: ke-g-whistle
+      kind: necessary_condition
+      text: Whistle-blowers are protected in practice, not only in law.
+      label: Whistle-blowers are protected in practice.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 8, Anti-Corruption and Economic Crimes Act: whistle-blowers'
+        basis: paraphrase
+    - id: ke-g-campaign
+      kind: necessary_condition
+      text: Campaign spending is limited, its sources are verified and party funds can be traced.
+      label: Campaign money is limited and traceable.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Political finance measures
+        basis: reconstruction
+    - id: ke-g-oversight
+      kind: necessary_condition
+      text: Independent oversight of the police acts on public complaints and police reform is completed.
+      label: Police oversight acts on complaints.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, Police oversight bodies
+        basis: reconstruction
+    links:
+    - id: ke-gl-enforced
+      from:
+      - ke-g-enforced
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, Overview of anti-corruption efforts
+        basis: reconstruction
+    - id: ke-gl-bodies
+      from:
+      - ke-g-bodies
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–12, Institutional framework
+        basis: reconstruction
+    - id: ke-gl-budget
+      from:
+      - ke-g-budget
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 5, Open Budget Index: hold government accountable'
+        basis: paraphrase
+    - id: ke-gl-politics
+      from:
+      - ke-g-politics
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 4, Grand corruption and party finance
+        basis: inference
+    - id: ke-gl-police
+      from:
+      - ke-g-police
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 7, Police: loss of confidence in law enforcement'
+        basis: inference
+    - id: ke-gl-voice
+      from:
+      - ke-g-voice
+      to: ke-g-goal
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Media; Civil society
+        basis: inference
+    - id: ke-gl-prosecute
+      from:
+      - ke-g-prosecute
+      to: ke-g-bodies
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, Ethics and Anti-Corruption Commission
+        basis: inference
+    - id: ke-gl-courts
+      from:
+      - ke-g-courts
+      to: ke-g-bodies
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 11, Judiciary
+        basis: reconstruction
+    - id: ke-gl-audit
+      from:
+      - ke-g-audit
+      to: ke-g-budget
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 11–12, Auditor General
+        basis: reconstruction
+    - id: ke-gl-info
+      from:
+      - ke-g-info
+      to: ke-g-budget
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, right of access to information
+        basis: inference
+    - id: ke-gl-declare
+      from:
+      - ke-g-declare
+      to: ke-g-enforced
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 8–9, Public Officers Ethics Act; Leadership and Integrity Act
+        basis: reconstruction
+    - id: ke-gl-whistle
+      from:
+      - ke-g-whistle
+      to: ke-g-enforced
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, whistle-blower protection
+        basis: inference
+    - id: ke-gl-campaign
+      from:
+      - ke-g-campaign
+      to: ke-g-politics
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Election Campaign Financing Act
+        basis: reconstruction
+    - id: ke-gl-oversight
+      from:
+      - ke-g-oversight
+      to: ke-g-police
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 12, Independent Policing Oversight Authority
+        basis: reconstruction
+    backlog:
+    - ref: ke-g-goal
+      work: check_with_source
+      label: Ask people working on corruption in Kenya whether this goal fits their work.
+      note: The brief answers a question about the state of corruption; the goal is the AI's inference from its focus on public financial management.
+  current_reality:
+    nodes:
+    - id: ke-r-indices
+      kind: observation
+      text: As of 2013, Kenya ranked 136th of 177 countries on Transparency International's Corruption Perceptions Index and had sat between the 10th and 20th percentile for control of corruption in the World Bank's governance indicators since 1996.
+      label: Kenya ranks near the bottom on corruption indices.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 2–3, Extent of corruption
+        basis: paraphrase
+    - id: ke-r-history
+      kind: observation
+      text: Corruption and looting of state assets were widespread under one-party rule after independence; a government elected in 2002 on an anti-corruption platform was itself caught up in major scandals within two years.
+      label: An anti-corruption government soon faced its own scandals.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 2, Background
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 4, Grand forms of corruption
+        basis: paraphrase
+    - id: ke-r-bribery
+      kind: undesirable_effect
+      text: 'As of 2013, petty bribery was pervasive: 70% of Global Corruption Barometer respondents said they had paid a bribe to at least one of eight public services in the past year.'
+      label: Most people paid a bribe for a public service.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 3, Petty and bureaucratic corruption
+        basis: paraphrase
+    - id: ke-r-police
+      kind: undesirable_effect
+      text: 'As of 2013, the police were the institution most affected: 95% of respondents saw them as corrupt and 77% said they had paid them a bribe.'
+      label: Police are the most bribed institution.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, Sectors affected by corruption
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 7, Police and security
+        basis: paraphrase
+    - id: ke-r-business
+      kind: undesirable_effect
+      text: As of 2013, firms were expected to give gifts to win government contracts (about 28%) and construction permits (about 33%), above the continental averages.
+      label: Firms pay for contracts and permits.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 3, Petty and bureaucratic corruption: Enterprise Survey'
+        basis: paraphrase
+    - id: ke-r-misspent
+      kind: undesirable_effect
+      text: 'Budget money was misappropriated: a 2011 audit found KSh 4.2 billion meant for free primary education lost between 2005 and 2009, and several donors withdrew their support.'
+      label: School funds were lost and donors pulled out.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: paraphrase
+    - id: ke-r-unsupported
+      kind: undesirable_effect
+      text: The 2012–13 audit of government ministries found nearly KSh 34 billion of public money spent without records, and experts consulted for the brief said officials had not been held accountable.
+      label: KSh 34bn was spent without records.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 8, Constitution: unsupported public expenditure'
+        basis: paraphrase
+    - id: ke-r-impunity
+      kind: undesirable_effect
+      text: As of 2014, senior officials implicated in corruption were rarely prosecuted or convicted; the few convictions were for petty cases with lenient sentences.
+      label: Senior officials are rarely convicted.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, Overview of anti-corruption efforts
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 11, Judiciary
+        basis: paraphrase
+    - id: ke-r-trust
+      kind: undesirable_effect
+      text: 'Confidence in the government''s fight against corruption fell: 70% of respondents rated it effective in 2011, 34% in 2013.'
+      label: Trust in the fight fell from 70% to 34%.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, Overview of anti-corruption efforts
+        basis: paraphrase
+    - id: ke-r-elections
+      kind: undesirable_effect
+      text: 'Elections were marked by irregularities: the disputed 2007 result led to violence that killed more than 1,000 people, and the 2013 election saw vote-buying and corruption charges over the procurement of voter identification devices.'
+      label: Elections are marred by fraud and vote-buying.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 2, Background
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 5, Political corruption
+        basis: paraphrase
+    - id: ke-r-diluted
+      kind: cause
+      text: As of 2014, laws meant to put the 2010 constitution into effect had been diluted, and many anti-corruption laws were not implemented.
+      label: Laws are diluted or not implemented.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 2, Background
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: pp. 7–8, Legal framework
+        basis: paraphrase
+    - id: ke-r-will
+      kind: cause
+      text: 'Political will to tackle corruption was lacking: reform met political resistance, and decision makers did not seek dialogue and mostly ignored civil society recommendations.'
+      label: Political will is lacking.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 1, Summary
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 13, Civil society
+        basis: paraphrase
+    - id: ke-r-noprosec
+      kind: cause
+      text: The Ethics and Anti-Corruption Commission could investigate and recover assets but could not prosecute; it forwarded cases for others to prosecute.
+      label: The commission can't prosecute.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, Ethics and Anti-Corruption Commission
+        basis: paraphrase
+    - id: ke-r-commission
+      kind: cause
+      text: The commission took two years to be fully constituted after 2011, and court disputes over its leadership undermined its ability to pursue its mandate.
+      label: The commission was slow to start and contested.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 11, Ethics and Anti-Corruption Commission
+        basis: paraphrase
+    - id: ke-r-courts
+      kind: cause
+      text: 'Courts were understaffed, underfinanced and backlogged, and corruption within the judiciary persisted: 58% of respondents reported paying it a bribe.'
+      label: Courts are overloaded and themselves corrupt.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 11, Judiciary
+        basis: paraphrase
+    - id: ke-r-reinstated
+      kind: cause
+      text: Officials charged or convicted of corruption were not consistently suspended or barred, and some were reinstated or appointed to new posts while cases were pending.
+      label: Accused officials stay in or return to office.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, Public administration
+        basis: paraphrase
+    - id: ke-r-declarations
+      kind: cause
+      text: Asset declarations were not audited or acted on, and asset declaration and vetting were removed from the Leadership and Integrity Act at cabinet level.
+      label: Asset declarations go unchecked.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, Public Officers Ethics Act
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 9, Leadership and Integrity Act
+        basis: paraphrase
+    - id: ke-r-patronage
+      kind: cause
+      text: Political parties were institutionally weak and organised around ethnic loyalty and patronage rather than ideas.
+      label: Parties run on ethnic patronage.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 4, Political corruption
+        basis: paraphrase
+    - id: ke-r-party-money
+      kind: cause
+      text: 'Party and campaign finance was opaque: analysts allege that major procurement scandals raised campaign money, and no campaign finance law applied in the 2013 elections.'
+      label: Party and campaign money is opaque.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 4–5, Political corruption
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 9, Political finance measures
+        basis: paraphrase
+    - id: ke-r-procurement
+      kind: cause
+      text: Public procurement favoured well-connected firms and individuals, and security procurement escaped the normal rules and oversight.
+      label: Procurement favours the well-connected.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 6, Public financial management: procurement'
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 9, Public Procurement and Disposal Act
+        basis: paraphrase
+    - id: ke-r-oversight-gaps
+      kind: cause
+      text: 'Budget oversight was thin: parliament and the Auditor General lacked resources and time, and audit reports left out extra-budgetary funds.'
+      label: Budget oversight is thin.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, Public financial management
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 12, Auditor General
+        basis: paraphrase
+    - id: ke-r-police-oversight
+      kind: cause
+      text: Police oversight was weak and political interference high; by 2014 about 60% of proposed police reforms had been implemented and 15% of those showed significant impact in communities.
+      label: Police oversight and reform lag.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, Police and security
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, Police oversight bodies
+        basis: paraphrase
+    links:
+    - id: ke-rl-impunity
+      from:
+      - ke-r-diluted
+      - ke-r-noprosec
+      - ke-r-courts
+      to: ke-r-impunity
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, Overview of anti-corruption efforts
+        basis: reconstruction
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, Commission and Judiciary
+        basis: reconstruction
+    - id: ke-rl-commission
+      from:
+      - ke-r-commission
+      to: ke-r-impunity
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 11, leadership troubles undermined its mandate
+        basis: paraphrase
+    - id: ke-rl-reinstated
+      from:
+      - ke-r-reinstated
+      to: ke-r-impunity
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, Public administration
+        basis: reconstruction
+    - id: ke-rl-declarations
+      from:
+      - ke-r-declarations
+      to: ke-r-impunity
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, not an effective mechanism for accountability
+        basis: reconstruction
+    - id: ke-rl-will-diluted
+      from:
+      - ke-r-will
+      to: ke-r-diluted
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 2, Background: political resistance'
+        basis: reconstruction
+    - id: ke-rl-will-declarations
+      from:
+      - ke-r-will
+      to: ke-r-declarations
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, weakened at cabinet level
+        basis: reconstruction
+    - id: ke-rl-will-noprosec
+      from:
+      - ke-r-will
+      to: ke-r-noprosec
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, could be given prosecutorial powers by parliament
+        basis: inference
+    - id: ke-rl-trust
+      from:
+      - ke-r-impunity
+      to: ke-r-trust
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, scandals involving senior members of government
+        basis: reconstruction
+    - id: ke-rl-misspent
+      from:
+      - ke-r-oversight-gaps
+      - ke-r-impunity
+      to: ke-r-misspent
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+    - id: ke-rl-unsupported
+      from:
+      - ke-r-oversight-gaps
+      - ke-r-impunity
+      to: ke-r-unsupported
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, officials not held accountable
+        basis: inference
+    - id: ke-rl-police
+      from:
+      - ke-r-police-oversight
+      to: ke-r-police
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, Police and security
+        basis: paraphrase
+    - id: ke-rl-police-bribery
+      from:
+      - ke-r-police
+      to: ke-r-bribery
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, the institution with the highest prevalence of bribery
+        basis: inference
+    - id: ke-rl-party-money
+      from:
+      - ke-r-patronage
+      to: ke-r-party-money
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 4, patronage making parties vulnerable to corruption
+        basis: reconstruction
+    - id: ke-rl-elections
+      from:
+      - ke-r-party-money
+      to: ke-r-elections
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, unverified sums and vote-buying
+        basis: paraphrase
+    - id: ke-rl-procurement
+      from:
+      - ke-r-party-money
+      to: ke-r-procurement
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 4, procurement scandals used to raise campaign funds
+        basis: reconstruction
+    - id: ke-rl-business
+      from:
+      - ke-r-procurement
+      to: ke-r-business
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 3, gifts to secure a government contract
+        basis: reconstruction
+    backlog:
+    - ref: ke-r-impunity
+      work: update_since_2014
+      label: Check what has changed since 2014.
+      note: Every figure and finding here is as of the brief's date, 15 October 2014. Later events, laws and data are not covered.
+  conflict:
+    nodes:
+    - id: ke-c1-objective
+      kind: objective
+      text: Free primary education keeps its funding after KSh 4.2 billion of it was misappropriated.
+      label: Free primary education survives the loss.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+    - id: ke-c1-donors
+      kind: need
+      text: Keep the donors who fund universal primary education on board.
+      label: Keep donor support.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, donors withdrew support and asked for a refund
+        basis: reconstruction
+    - id: ke-c1-liable
+      kind: need
+      text: Hold the people who took the money liable, not taxpayers.
+      label: Make the culprits, not taxpayers, pay.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, civil society caution
+        basis: paraphrase
+    - id: ke-c1-refund
+      kind: prerequisite
+      text: The treasury refunds donors from public funds now.
+      label: Refund donors from the treasury now.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, the treasury had refunded close to US$4 million
+        basis: paraphrase
+    - id: ke-c1-recover
+      kind: prerequisite
+      text: Repayment comes from money recovered from those responsible.
+      label: Repay from money recovered from culprits.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, civil society caution
+        basis: inference
+    - id: ke-c2-objective
+      kind: objective
+      text: Stolen public assets are returned and corruption stops paying.
+      label: Stolen assets return and corruption stops paying.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, Anti-Corruption and Economic Crimes Act amendments
+        basis: inference
+    - id: ke-c2-quick
+      kind: need
+      text: Get stolen assets back quickly, without years in court.
+      label: Recover assets quickly.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, out-of-court settlements to facilitate enforcement
+        basis: reconstruction
+    - id: ke-c2-deter
+      kind: need
+      text: Show that people who take public money are punished.
+      label: Show that theft is punished.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, failure to prosecute fuels impunity
+        basis: inference
+    - id: ke-c2-settle
+      kind: prerequisite
+      text: 'The commission settles out of court: assets are returned in exchange for dropping proceedings.'
+      label: Settle out of court.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, the hotel handed over in exchange for a pardon on civil proceedings
+        basis: paraphrase
+    - id: ke-c2-pursue
+      kind: prerequisite
+      text: The commission pursues cases through the courts to judgment.
+      label: Pursue cases to judgment.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, as opposed to instituting civil proceedings
+        basis: inference
+    links:
+    - id: ke-cl1-donors
+      from:
+      - ke-c1-donors
+      to: ke-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, donors had given close to US$150 million
+        basis: reconstruction
+    - id: ke-cl1-liable
+      from:
+      - ke-c1-liable
+      to: ke-c1-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, civil society caution
+        basis: inference
+    - id: ke-cl1-refund
+      from:
+      - ke-c1-refund
+      to: ke-c1-donors
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, donors asked for a refund
+        basis: reconstruction
+    - id: ke-cl1-recover
+      from:
+      - ke-c1-recover
+      to: ke-c1-liable
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, civil society caution
+        basis: reconstruction
+    - id: ke-cl1-conflict
+      from:
+      - ke-c1-refund
+      to: ke-c1-recover
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, a dangerous precedent
+        basis: reconstruction
+      assumptions:
+      - text: Recovering the money from those responsible would take too long to keep donors on board.
+        by: assistant
+    - id: ke-cl2-quick
+      from:
+      - ke-c2-quick
+      to: ke-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, facilitate enforcement
+        basis: reconstruction
+    - id: ke-cl2-deter
+      from:
+      - ke-c2-deter
+      to: ke-c2-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, impunity
+        basis: inference
+    - id: ke-cl2-settle
+      from:
+      - ke-c2-settle
+      to: ke-c2-quick
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, out-of-court settlements
+        basis: reconstruction
+    - id: ke-cl2-pursue
+      from:
+      - ke-c2-pursue
+      to: ke-c2-deter
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 11, investigations rarely brought to trial
+        basis: inference
+    - id: ke-cl2-conflict
+      from:
+      - ke-c2-settle
+      to: ke-c2-pursue
+      relation: conflicts_with
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, in exchange for a pardon
+        basis: reconstruction
+      assumptions:
+      - text: A settlement that returns assets has to be paid for with a pardon, so it cannot also deter.
+        by: assistant
+    backlog: []
+  future_reality:
+    nodes:
+    - id: ke-f-prosecute
+      kind: injection
+      text: Give the Ethics and Anti-Corruption Commission power to prosecute the cases it investigates, which the brief notes parliament could do.
+      label: Give the commission power to prosecute.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, could be given prosecutorial powers by parliament
+        basis: inference
+      addresses:
+      - ke-r-noprosec
+    - id: ke-f-courts
+      kind: injection
+      text: Fund and staff the courts, including the special magistrates for corruption and economic crimes, to clear corruption cases.
+      label: Resource the courts for corruption cases.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 11, Judiciary: special magistrates; understaffed, underfinanced'
+        basis: inference
+      addresses:
+      - ke-r-courts
+    - id: ke-f-integrity
+      kind: injection
+      text: Restore asset declaration and vetting to the Leadership and Integrity Act, check declarations, and keep people charged with or convicted of corruption out of office.
+      label: Restore vetting and check asset declarations.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, Public administration
+        basis: inference
+      - source_id: ti-kenya-2014
+        locator: pp. 8–9, Public Officers Ethics Act; Leadership and Integrity Act
+        basis: inference
+      addresses:
+      - ke-r-declarations
+      - ke-r-reinstated
+    - id: ke-f-whistle
+      kind: injection
+      text: Pass the whistle-blower protection bill a task force was drafting in 2014.
+      label: Protect whistle-blowers in law.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, a whistle-blower protection bill at its formative stages
+        basis: related
+    - id: ke-f-info
+      kind: injection
+      text: Pass the law the constitution's right of access to information still lacked in 2014.
+      label: Give the right to information a law.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, no legal framework yet enacted
+        basis: inference
+    - id: ke-f-campaign
+      kind: injection
+      text: Restore spending limits to the Election Campaign Financing Act, and have the electoral commission enforce them and verify donations.
+      label: Limit and verify campaign money.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Election Campaign Financing Act
+        basis: inference
+      addresses:
+      - ke-r-party-money
+    - id: ke-f-pfm
+      kind: injection
+      text: Put every regulation of the 2012 Public Financial Management Act into effect, including citizen participation and in-year reports on actual spending.
+      label: Put the public finance law fully into effect.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, Public Financial Management Act; the IMF on implementation
+        basis: paraphrase
+      addresses:
+      - ke-r-oversight-gaps
+    - id: ke-f-audit
+      kind: injection
+      text: Extend audits to extra-budgetary funds and give the Auditor General the funding and channels to report to the public.
+      label: Audit all funds and report to the public.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 12, Auditor General
+        basis: inference
+      addresses:
+      - ke-r-oversight-gaps
+    - id: ke-f-police
+      kind: injection
+      text: Complete the police reforms and give the Independent Policing Oversight Authority the resources to act on complaints.
+      label: Finish police reform and fund its oversight.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, Police oversight bodies
+        basis: inference
+      addresses:
+      - ke-r-police-oversight
+    - id: ke-f-settle
+      kind: injection
+      text: Use out-of-court settlements to recover assets only alongside criminal prosecution, so that returning assets never buys a pardon.
+      label: Recover assets without buying pardons.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, out-of-court settlements
+        basis: inference
+      addresses:
+      - ke-c2-settle
+      - ke-c2-pursue
+    - id: ke-f-recover
+      kind: injection
+      text: Refund donors where needed to keep programmes running, while pursuing the people responsible and publishing what is recovered.
+      label: Refund now, and recover from the culprits.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+      addresses:
+      - ke-c1-refund
+      - ke-c1-recover
+    - id: ke-f-press
+      kind: injection
+      text: 'Keep the media free of government control: no government board with power to fine journalists and media houses.'
+      label: Keep the media free of government control.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: 'p. 13, Media: the 2013 media bills'
+        basis: inference
+    - id: ke-f-trials
+      kind: predicted_effect
+      text: More corruption cases involving senior officials reach judgment.
+      label: Senior officials' cases reach judgment.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, Commission and Judiciary
+        basis: inference
+    - id: ke-f-cost
+      kind: predicted_effect
+      text: Officials who abuse office expect to lose it, their assets and possibly their liberty.
+      label: Abusing office carries a real cost.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, failure to prosecute fuels impunity
+        basis: inference
+    - id: ke-f-visible
+      kind: predicted_effect
+      text: Citizens, parliament and auditors can see where public money goes.
+      label: People can see where money goes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, citizens can monitor actual spending
+        basis: reconstruction
+    - id: ke-f-caught
+      kind: predicted_effect
+      text: Misuse of public money is detected and reported early.
+      label: Misuse is caught early.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, whistle-blowers; p. 13, media
+        basis: inference
+    - id: ke-f-clean-vote
+      kind: predicted_effect
+      text: Campaigns rely less on unverified money and vote-buying.
+      label: Less dirty money in campaigns.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Political finance measures
+        basis: inference
+    - id: ke-f-fewer-bribes
+      kind: predicted_effect
+      text: Fewer people are asked for bribes by police.
+      label: Fewer police bribes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 12, the Independent Policing Oversight Authority acts on complaints
+        basis: inference
+    - id: ke-f-trust
+      kind: desirable_effect
+      text: Public confidence in the fight against corruption recovers.
+      label: Trust in the fight recovers.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, confidence decreased tremendously
+        basis: inference
+    - id: ke-f-money
+      kind: desirable_effect
+      text: Public money reaches the services it was meant for.
+      label: Money reaches the services it is for.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+    - id: ke-f-pardon
+      kind: undesirable_effect
+      text: 'Out-of-court settlements work as pardons: the brief describes a hotel allegedly built with public money handed to the government in exchange for dropping civil proceedings.'
+      label: Settlements work as pardons.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, a hotel handed over for dropped proceedings
+        basis: paraphrase
+    - id: ke-f-taxpayers
+      kind: undesirable_effect
+      text: Refunding donors from public funds makes taxpayers pay for stolen money, a precedent civil society groups warned against.
+      label: Taxpayers pay for stolen money.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, a dangerous precedent
+        basis: paraphrase
+    - id: ke-f-silenced
+      kind: undesirable_effect
+      text: Government control of the media, as the 2013 media bills provided, silences reporting on corruption.
+      label: Media control silences reporting.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Media
+        basis: paraphrase
+    - id: ke-f-hearings
+      kind: observation
+      text: Kenya's public budget hearings, first held in 2011 and advertised in newspapers and on community radio, were seen as exemplary.
+      label: Kenya's public budget hearings were exemplary.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, Public financial management
+        basis: paraphrase
+    links:
+    - id: ke-fl-trials
+      from:
+      - ke-f-prosecute
+      - ke-f-courts
+      to: ke-f-trials
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 10–11, Commission and Judiciary
+        basis: inference
+    - id: ke-fl-cost-trials
+      from:
+      - ke-f-trials
+      to: ke-f-cost
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, impunity
+        basis: inference
+    - id: ke-fl-cost-integrity
+      from:
+      - ke-f-integrity
+      to: ke-f-cost
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, convicted civil servants not barred
+        basis: inference
+    - id: ke-fl-visible-pfm
+      from:
+      - ke-f-pfm
+      to: ke-f-visible
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, Public Financial Management Act
+        basis: paraphrase
+    - id: ke-fl-visible-audit
+      from:
+      - ke-f-audit
+      to: ke-f-visible
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 12, Auditor General
+        basis: inference
+    - id: ke-fl-visible-info
+      from:
+      - ke-f-info
+      to: ke-f-visible
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, right of access to information
+        basis: inference
+    - id: ke-fl-caught-visible
+      from:
+      - ke-f-visible
+      to: ke-f-caught
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, Open Budget Index
+        basis: inference
+    - id: ke-fl-caught-whistle
+      from:
+      - ke-f-whistle
+      to: ke-f-caught
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, whistle-blowers
+        basis: inference
+    - id: ke-fl-caught-press
+      from:
+      - ke-f-press
+      to: ke-f-caught
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Media
+        basis: inference
+    - id: ke-fl-clean-vote
+      from:
+      - ke-f-campaign
+      to: ke-f-clean-vote
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, Political finance measures
+        basis: inference
+    - id: ke-fl-fewer-bribes
+      from:
+      - ke-f-police
+      to: ke-f-fewer-bribes
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, Police oversight bodies
+        basis: inference
+    - id: ke-fl-trust-cost
+      from:
+      - ke-f-cost
+      to: ke-f-trust
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, scandals and confidence
+        basis: inference
+    - id: ke-fl-trust-bribes
+      from:
+      - ke-f-fewer-bribes
+      to: ke-f-trust
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 7, many still have to bribe to get a service
+        basis: inference
+    - id: ke-fl-trust-vote
+      from:
+      - ke-f-clean-vote
+      to: ke-f-trust
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, elections
+        basis: inference
+    - id: ke-fl-money-cost
+      from:
+      - ke-f-cost
+      to: ke-f-money
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+    - id: ke-fl-money-caught
+      from:
+      - ke-f-caught
+      to: ke-f-money
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 5–6, Public financial management
+        basis: inference
+    - id: ke-fl-pardon
+      from:
+      - ke-f-settle
+      to: ke-f-pardon
+      relation: prevents
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 8, out-of-court settlements
+        basis: inference
+    - id: ke-fl-taxpayers
+      from:
+      - ke-f-recover
+      to: ke-f-taxpayers
+      relation: prevents
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 6, a dangerous precedent
+        basis: inference
+    - id: ke-fl-silenced
+      from:
+      - ke-f-press
+      to: ke-f-silenced
+      relation: prevents
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Media
+        basis: inference
+    backlog: []
+  prerequisite:
+    nodes:
+    - id: ke-p-objective
+      kind: objective
+      text: The anti-corruption reforms the constitution calls for are passed intact and put into effect.
+      label: Reforms are passed intact and put into effect.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 7–8, Legal framework
+        basis: inference
+    - id: ke-p-resist-gap
+      kind: obstacle
+      text: Political decision makers resist reform and mostly ignore civil society recommendations.
+      label: Decision makers resist and ignore critics.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Civil society
+        basis: paraphrase
+    - id: ke-p-weakened-gap
+      kind: obstacle
+      text: Bills are weakened before they pass, at cabinet level or by last-minute amendments, as happened to asset declaration and to campaign spending limits.
+      label: Bills are weakened before they pass.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, Leadership and Integrity Act
+        basis: paraphrase
+      - source_id: ti-kenya-2014
+        locator: p. 10, Election Campaign Financing Act
+        basis: paraphrase
+    - id: ke-p-funds-gap
+      kind: obstacle
+      text: Bodies charged with reform lack funding and resources, which slowed police reform.
+      label: Reform bodies lack money and staff.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, Police oversight bodies
+        basis: paraphrase
+    - id: ke-p-mandate-gap
+      kind: obstacle
+      text: Oversight bodies dispute their mandates, as when the Inspector General's office proposed taking over the police commission's responsibilities.
+      label: Bodies dispute their mandates.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Police oversight bodies
+        basis: paraphrase
+    - id: ke-p-civic-gap
+      kind: obstacle
+      text: Civil society's influence on the political agenda has decreased, and its networks are weak outside Nairobi.
+      label: Civil society has less influence.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Civil society
+        basis: paraphrase
+    - id: ke-p-coalition
+      kind: intermediate_objective
+      text: A broad coalition of civil society, religious organisations and think tanks keeps corruption on the public agenda, building on the National Anti-Corruption Campaign.
+      label: A broad coalition keeps up pressure.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, National Anti-Corruption Campaign
+        basis: related
+    - id: ke-p-tracked
+      kind: intermediate_objective
+      text: Drafts and amendments of anti-corruption bills are tracked in public, so weakening changes are seen before they pass.
+      label: Bills are tracked so weakening is seen.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, bills weakened before passing
+        basis: inference
+      implements:
+      - ke-f-integrity
+      - ke-f-campaign
+    - id: ke-p-champions
+      kind: intermediate_objective
+      text: Parliamentarians committed to fighting corruption carry the bills, with support from networks such as the African Parliamentarians Network Against Corruption.
+      label: Committed MPs carry the bills.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 14, African Parliamentarians Network Against Corruption Kenya
+        basis: related
+      implements:
+      - ke-f-prosecute
+      - ke-f-whistle
+      - ke-f-info
+    - id: ke-p-budgets
+      kind: intermediate_objective
+      text: Courts, the Auditor General and police oversight have budgets secured in law.
+      label: Reform bodies have secure budgets.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 11–13, Judiciary, Auditor General, police oversight
+        basis: inference
+      implements:
+      - ke-f-courts
+      - ke-f-audit
+      - ke-f-police
+    - id: ke-p-mandates
+      kind: intermediate_objective
+      text: Each oversight body's mandate is settled in law.
+      label: Each body's mandate is settled.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, disagreements over mandates
+        basis: inference
+    links:
+    - id: ke-pl-coalition
+      from:
+      - ke-p-coalition
+      to: ke-p-civic-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, Some NGOs engage constructively with the state
+        basis: inference
+    - id: ke-pl-tracked
+      from:
+      - ke-p-tracked
+      to: ke-p-weakened-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, bills weakened
+        basis: inference
+    - id: ke-pl-champions
+      from:
+      - ke-p-champions
+      to: ke-p-resist-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 14, APNAC Kenya
+        basis: inference
+    - id: ke-pl-budgets
+      from:
+      - ke-p-budgets
+      to: ke-p-funds-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13, lack of funding
+        basis: inference
+    - id: ke-pl-mandates
+      from:
+      - ke-p-mandates
+      to: ke-p-mandate-gap
+      relation: overcomes
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, disagreements over mandates
+        basis: inference
+    - id: ke-pl-coalition-tracked
+      from:
+      - ke-p-coalition
+      to: ke-p-tracked
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 14, organisations active against corruption
+        basis: inference
+    - id: ke-pl-coalition-champions
+      from:
+      - ke-p-coalition
+      to: ke-p-champions
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, political decision makers do not seek dialogue
+        basis: inference
+    - id: ke-pl-tracked-objective
+      from:
+      - ke-p-tracked
+      to: ke-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10
+        basis: inference
+    - id: ke-pl-champions-objective
+      from:
+      - ke-p-champions
+      to: ke-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13
+        basis: inference
+    - id: ke-pl-budgets-objective
+      from:
+      - ke-p-budgets
+      to: ke-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 12–13
+        basis: inference
+    - id: ke-pl-mandates-objective
+      from:
+      - ke-p-mandates
+      to: ke-p-objective
+      relation: necessary_for
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13
+        basis: inference
+    backlog: []
+  transition:
+    nodes:
+    - id: ke-t-1-condition
+      kind: existing_condition
+      text: A bill to put an anti-corruption reform into effect is before parliament.
+      label: A reform bill is before parliament.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, bills to operationalise the constitution
+        basis: inference
+    - id: ke-t-track
+      kind: action
+      text: Publish each draft of the bill side by side and flag any change that weakens it.
+      label: Publish each draft and flag weakening changes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10, bills weakened before passing
+        basis: inference
+      implements:
+      - ke-p-tracked
+      proposed_role: Civil society monitors
+    - id: ke-t-1-effect
+      kind: expected_effect
+      text: Weakening changes are public before the vote.
+      label: Weakening changes are public before the vote.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10
+        basis: inference
+    - id: ke-t-2-condition
+      kind: existing_condition
+      text: Some members of parliament are committed to the bill.
+      label: Some MPs back the bill.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 14, APNAC Kenya
+        basis: inference
+    - id: ke-t-brief
+      kind: action
+      text: Brief committed members of parliament and the public on each flagged change, through newspapers and community radio.
+      label: Brief MPs and the public on flagged changes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 5, budget hearings advertised in newspapers and community radio
+        basis: related
+      implements:
+      - ke-p-champions
+      - ke-p-coalition
+      proposed_role: A coalition of civil society and religious organisations
+    - id: ke-t-2-effect
+      kind: expected_effect
+      text: Members of parliament are publicly asked to account for weakening changes, and the bill passes with fewer of them.
+      label: The bill passes with fewer weakening changes.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13, civil society criticised watered-down legislation
+        basis: inference
+    - id: ke-t-3-condition
+      kind: existing_condition
+      text: The bill has become law.
+      label: The bill has become law.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 7–8, laws passed but not implemented
+        basis: inference
+    - id: ke-t-follow
+      kind: action
+      text: A year on, report whether the law's regulations, budget and mandates have been put into effect, using audit reports and public records.
+      label: A year on, report what has been put into effect.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9, all regulations must also be implemented
+        basis: inference
+      implements:
+      - ke-p-budgets
+      - ke-p-mandates
+      proposed_role: Civil society monitors
+    - id: ke-t-3-effect
+      kind: expected_effect
+      text: Any gap between the law and its implementation is on public record.
+      label: Implementation gaps are on public record.
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 7–8, implementation lacking
+        basis: inference
+    links:
+    - id: ke-tl-track
+      from:
+      - ke-t-1-condition
+      - ke-t-track
+      to: ke-t-1-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: pp. 9–10
+        basis: inference
+    - id: ke-tl-brief
+      from:
+      - ke-t-1-effect
+      - ke-t-2-condition
+      - ke-t-brief
+      to: ke-t-2-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 13
+        basis: inference
+    - id: ke-tl-follow
+      from:
+      - ke-t-2-effect
+      - ke-t-3-condition
+      - ke-t-follow
+      to: ke-t-3-effect
+      relation: produces
+      status: proposed
+      contributions: *id001
+      source_refs:
+      - source_id: ti-kenya-2014
+        locator: p. 9
+        basis: inference
+    backlog:
+    - ref: ke-t-track
+      work: find_host
+      label: Find a group that would try these steps.
+      note: No group, owner or date is assigned. Existing conditions are illustrative, not observations.
