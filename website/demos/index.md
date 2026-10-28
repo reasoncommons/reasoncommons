@@ -59,3 +59,7 @@ These seven mockups explore different visual paradigms for working with shared r
 ## Evolving Prosocial AI
 
 [Evolving Prosocial AI](/demos/reason-commons-in-use/prosocial-ai/index.html) maps Paul Atkins and David Sloan Wilson’s argument that worldviews, not technology, decide whether AI builds or erodes human capability: the extractive pattern at four scales, two dilemmas, the changes that could make cooperation pay, and the authors’ own cautions. Every statement is proposed and carries a page reference.
+
+## Corruption in Kenya, 2014
+
+[Corruption in Kenya, 2014](/demos/reason-commons-in-use/kenya-corruption/index.html) maps Transparency International’s 2014 brief on corruption in Kenya: pervasive bribery, misspent public money, laws that were weakly enforced, and senior officials who were rarely convicted. It also covers two dilemmas the brief records and the changes its gaps suggest. Every statement is proposed, carries a page reference and describes Kenya as of 2014.

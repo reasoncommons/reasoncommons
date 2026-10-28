@@ -93,6 +93,24 @@
       }
     },
     {
+      "slug": "kenya-corruption",
+      "kind": "reconstruction",
+      "registry": "commons/kenya-corruption/publication.json",
+      "source": "../../ltp/kenya-corruption/reason-commons.yaml",
+      "name": "Corruption in Kenya, 2014",
+      "byline": "From Transparency International’s 2014 Anti-Corruption Helpdesk brief · reconstructed by AI",
+      "summary": "Why did senior officials in Kenya so rarely answer for corruption? A proposed map from Transparency International’s 2014 brief on corruption and public money.",
+      "description": "Transparency International’s Anti-Corruption Helpdesk surveyed corruption in Kenya in October 2014: pervasive bribery, misspent public money, strong laws weakly enforced and senior officials rarely convicted. This map follows the brief and infers what could change from the gaps it identifies.",
+      "scope": "91 proposed statements and 73 proposed connections reconstructed by the AI from Transparency International’s brief of 15 October 2014. Every item has a page reference, and everything describes Kenya as of 2014. Transparency International has not reviewed or endorsed the map; figures it cites from other surveys are attributed observations, and people it names in connection with allegations are not named here. No group, trial, owner or observed result is recorded.",
+      "front_page": {
+        "headline": "Follow the money.\nMake abuse of office cost.",
+        "intro": "Most people paid bribes, billions went unrecorded and senior officials were rarely convicted. Explore what stood in the way in Kenya in 2014, and what could change.",
+        "question": "What would make abuse of public office carry a real cost?",
+        "why": "A real case can test whether prosecution powers and resourced courts bring senior officials’ cases to judgment.",
+        "focus_ref": "ke-f-cost"
+      }
+    },
+    {
       "slug": "reason-commons",
       "kind": "real",
       "registry": "publication.json",

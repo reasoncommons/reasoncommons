@@ -104,6 +104,21 @@ SUPPLIED_ABOUT = {
                   '<h3>Reading the source</h3><p>Page references use the PDF’s page numbers, which match the manuscript’s own. An earlier draft of 6 March 2026 was circulated on Substack; this map uses the later accepted version and does not cite the draft.</p>'),
         "excluded": "The manuscript, local file paths, approval receipts and private collaboration notes are not published. No endorsement by the authors, assigned owner, trial commitment or observed outcome is recorded.",
     },
+    "kenya-corruption": {
+        "intro": ('<p>This is a proposed AI reconstruction of Transparency International’s Anti-Corruption Helpdesk brief <em>Overview of corruption and anti-corruption in Kenya</em>, written by Samira Lindner and dated 15 October 2014. '
+                  'The AI is responsible for this map’s selection, wording and connections. Every statement and connection has a page reference and a labelled basis: '
+                  'paraphrase, reconstruction, inference or related point. Transparency International has not reviewed or endorsed it.</p>'),
+        "after": ('<h3>A snapshot from 2014</h3><p>The brief updates a 2012 U4 Helpdesk answer and draws on indices, surveys and reports from 2011 to 2014 (pp. 1, 14–16). '
+                  'Every statement here describes Kenya as of the brief’s date; later events, laws and data are not covered. <a href="items.html#ke-r-impunity">Inspect the central problem →</a></p>'
+                  '<h3>A description, not a programme</h3><p>The brief answers a European Commission question about the state of corruption, with a focus on public financial management (p. 1). It describes far more than it recommends. '
+                  'The goal and most of the proposed changes are therefore the AI’s inferences from gaps the brief identifies, such as a commission without power to prosecute (pp. 10–11) and asset declaration removed from the Leadership and Integrity Act (p. 9), and each says so. '
+                  'The two dilemmas are ones the brief records: repaying donors for stolen school funds (pp. 5–6) and settling out of court (p. 8). <a href="items.html#ke-f-prosecute">Inspect an inferred change →</a></p>'
+                  '<h3>Figures and people</h3><p>The brief’s figures come from other sources, among them the Corruption Perceptions Index, the Global Corruption Barometer, the East African Bribery Index and the World Bank. They appear as attributed observations and have not been checked here. '
+                  'The brief names officials in connection with allegations and charges, several of which were pending in 2014. This map describes those cases by kind and does not name the people.</p>'
+                  '<h3>What counts as progress?</h3><p>No group, owner, baseline or observed outcome is established. The action sequence is illustrative and nobody is assigned.</p>'
+                  '<h3>Reading the source</h3><p>Page references use the PDF’s page numbers. The brief and its <a href="https://knowledgehub.transparencycdn.org/helpdesk/Country_profile_Kenya_2014.pdf">PDF</a> are on Transparency International’s Knowledge Hub; they are paraphrased here, not reproduced. The brief does not necessarily reflect Transparency International’s official position.</p>'),
+        "excluded": "The brief itself, local file paths, approval receipts and private collaboration notes are not published; the source is linked, not reproduced. People the brief names in connection with allegations are not named. No endorsement by Transparency International or its author, assigned owner, trial commitment or observed outcome is recorded.",
+    },
 }
 
 

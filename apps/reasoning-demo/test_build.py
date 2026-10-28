@@ -220,7 +220,8 @@ class SiteTests(unittest.TestCase):
                     *(f"re-membering/{p}.html" for p in pages_ + ["questions"]), "re-membering/reasoning.json",
                     *(f"wisdom-ai/{p}.html" for p in ["index", "map", "goal", "in-the-way", "conflict", "change", "prerequisites", "actions", "items", "questions", "changes", "about"]), "wisdom-ai/reasoning.json",
                     *(f"persistent-systems/{p}.html" for p in pages_ + ["questions"]), "persistent-systems/reasoning.json",
-                    *(f"prosocial-ai/{p}.html" for p in pages_ + ["questions"]), "prosocial-ai/reasoning.json"}
+                    *(f"prosocial-ai/{p}.html" for p in pages_ + ["questions"]), "prosocial-ai/reasoning.json",
+                    *(f"kenya-corruption/{p}.html" for p in pages_ + ["questions"]), "kenya-corruption/reasoning.json"}
         self.assertEqual(set(self.outputs), expected)
 
     def test_our_reviewed_snapshot_is_unchanged(self):
@@ -1109,6 +1110,50 @@ class ProsocialAITests(unittest.TestCase):
         self.assertIn("The source author has not reviewed or endorsed it.", self.outputs["prosocial-ai/index.html"])
 
 
+class KenyaCorruptionTests(unittest.TestCase):
+    """Transparency International's 2014 brief: one public document, dated, with accused people left unnamed."""
+    @classmethod
+    def setUpClass(cls):
+        cls.site, cls.commons = build.load_site()
+        cls.record = next(c for c in cls.commons if c["entry"]["slug"] == "kenya-corruption")
+        cls.registry, cls.data = cls.record["registry"], cls.record["data"]
+        cls.outputs = build.build_files(cls.site, cls.commons)
+
+    @unittest.skipUnless(HAVE_YAML, "PyYAML is needed for the public working file")
+    def test_reconstruction_validates_matches_snapshot_and_stays_proposed(self):
+        helper = build.skill_helpers()
+        state = helper.load(build.HERE / self.record["entry"]["source"])
+        helper.validate(state)
+        self.assertEqual(build.project_reconstruction(state, self.registry), self.data)
+        self.assertEqual(sum(len(t["nodes"]) for t in self.data["trees"].values()), 91)
+        self.assertEqual(sum(len(t["links"]) for t in self.data["trees"].values()), 73)
+        for tree in self.data["trees"].values():
+            for item in tree["nodes"] + tree["links"]:
+                self.assertEqual((item["status"], item["accepted_by"], item["contributors"]), ("proposed", [], [build.ASSISTANT]))
+                self.assertTrue(all(ref["locator"].startswith("p") for ref in item["source_refs"]), item["id"])
+
+    def test_source_is_linked_and_dated(self):
+        source, = self.data["sources"]
+        self.assertTrue(source["url"].startswith("https://knowledgehub.transparency.org/"))
+        self.assertIn("15 October 2014", source["description"])
+        about = self.outputs["kenya-corruption/about.html"]
+        self.assertIn("Read the original", about)
+        self.assertIn("as of the brief’s date", about)
+
+    def test_people_named_in_allegations_are_not_named(self):
+        for name, page in self.outputs.items():
+            if name.startswith("kenya-corruption/"):
+                for person in ("Kenyatta", "Kibaki", "Ruto", "Odinga", "Okemo", "Gichuru", "Ngilu", "Kosgey", "Matemu", "Mututho", "Kimaiyo", "Grand Regency"):
+                    self.assertNotIn(person, page, (name, person))
+
+    def test_pages_do_not_borrow_another_commons_wording(self):
+        for name, page in self.outputs.items():
+            if name.startswith("kenya-corruption/") and name.endswith(".html"):
+                for words in ("Heath", "the talks", "Stephen Le", "Atkins", "credited PDF page"):
+                    self.assertNotIn(words, page, (name, words))
+        self.assertIn("The source author has not reviewed or endorsed it.", self.outputs["kenya-corruption/index.html"])
+
+
 class HistoricalReviewTests(unittest.TestCase):
     def setUp(self):
         self.site, self.commons = build.load_site()
@@ -1312,7 +1357,7 @@ class AssetDeliveryTests(unittest.TestCase):
         style_version=hashlib.sha256(outputs["styles.css"].encode()).hexdigest()[:16]
         script_version=hashlib.sha256(outputs["app.js"].encode()).hexdigest()[:16]
         htmls={name:value for name,value in outputs.items() if name.endswith(".html")}
-        self.assertEqual(len(htmls),86)
+        self.assertEqual(len(htmls),98)
         for name,page in htmls.items():
             self.assertIn('styles.css?v='+style_version,page,name)
             self.assertIn('app.js?v='+script_version,page,name)
