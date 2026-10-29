@@ -131,6 +131,20 @@ def credit_caveat(c):
         return "Source credit does not establish agreement with this wording. Heath commented on an earlier map; this revision awaits her review and endorsement."
     return CREDIT_CAVEAT
 VIEW_NOUNS = {"conflict": "Conflict", "transition": "Action"}
+# A private view is opened from the reader's own disk, so site-wide links go to the live site.
+PUBLIC_ROOT = "https://reasoncommons.com"
+
+
+def site_link(c, path):
+    return (PUBLIC_ROOT if c and c.is_private else "") + path
+
+
+def published(c):
+    return "recorded" if c.is_private else "published"
+
+
+def how_href(c, up):
+    return PUBLIC_ROOT + "/demos/reason-commons-in-use/how-it-works.html" if c and c.is_private else f"{up}how-it-works.html"
 # Colour families shared by cards, diagrams and legends (see styles.css), in the order the map legend lists them.
 FAMILIES = [["goal", "objective"], ["critical_success_factor", "need", "desirable_effect", "expected_effect", "intermediate_objective"],
             ["undesirable_effect", "obstacle"], ["injection"], ["prerequisite", "action"],
@@ -171,6 +185,7 @@ def short_day(value):
 class Commons:
     def __init__(self, data):
         self.__dict__.update(data)
+        self.is_private = data.get("is_private", False)  # A user's own working file, shown on their computer only.
         self.review = data.get("review", {})
         self.front_page = data.get("front_page", {})
         self.items, self.tree_of, self.order = {}, {}, []
@@ -534,6 +549,8 @@ def legend(c, name, shapes):
         parts.append('<span class="lg lg-prevent"><i></i>Is meant to prevent</span>')
     if any(l["relation"] in diagrams.FEEDBACK for l in tree["links"]):
         parts.append('<span class="lg lg-loop"><i></i>Feeds back</span>')
+    if any(diagrams.is_loop(l) and l["relation"] not in diagrams.FEEDBACK for l in tree["links"]):
+        parts.append('<span class="lg lg-loop"><i></i>Loops back</span>')
     if any(diagrams.view_context(tree, set(v["nodes"]))[1] for v in c.views.get(name, [])):
         parts.append('<span class="lg lg-context"><i></i>From another part</span>')
     return f'<div class="legend" aria-label="Key">{"".join(parts)}</div>'
@@ -608,6 +625,12 @@ def brief(c, ident, site):
                    "The original participants have not endorsed this map, and none of the people credited has reviewed its wording.")
         closing = ("Use the ltp skill if available. Read the credited posts before attributing the claim to a participant: the wording is the AI's paraphrase, not theirs. "
                    "Help me develop a question, correction or challenge as a draft; don't treat my interest as endorsement or invent a trial commitment. Copying this brief submits nothing.")
+    elif c.is_private:
+        opening = f"This is from my own Reason Commons working file, {c.source_file}. I want to keep working on one {noun}."
+        closing = ("Use the ltp skill and resume from that working file. Check whether this item has changed since this view was made before proposing anything. "
+                   "Help me work out a question, an observation or a challenge; don't assume I endorse the item.")
+        return (f"{opening}\n\nCommons: {c.title}\nView made: {day(c.date)}\nQuestion: {TREES[name]['question']}\n"
+                f"Item: {ident} ({c.kind_of(ident)})\nStanding when the view was made: {standing}\n\n{wording}\n\n{closing}")
     else:
         opening = f"I'm reading a commons on the Reason Commons demonstration site and want to develop a contribution about one {noun}."
         closing = ("Use the ltp skill if you have it. First establish who I am and whether I can reach the current working record, "
@@ -625,11 +648,16 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
     assets = assets or {}
     style_version = "?v=" + esc(assets["styles"]) if assets.get("styles") else ""
     script_version = "?v=" + esc(assets["script"]) if assets.get("script") else ""
-    links = [("index.html#commons", "Commons", "commons"), ("how-it-works.html", "How it works", "how")]
+    private = bool(c and c.is_private)
+    links = [(f"{up}index.html#commons", "Commons", "commons"), (how_href(c, up), "How it works", "how")]
     current = ' aria-current="page"'
-    nav_html = "".join(f'<a href="{up}{href}"{current if key == nav else ""}>{label}</a>' for href, label, key in links)
+    nav_html = "".join(f'<a href="{href}"{current if key == nav else ""}>{label}</a>' for href, label, key in links)
     banner = ""
-    if c and c.is_example:
+    if private:
+        banner = (f'<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Private view on this computer.</strong> '
+                  f'The ltp skill made these pages from {esc(c.source_file)} on {day(c.date)}. Nothing here is published or sent anywhere. '
+                  f'<a href="{up}{c.slug}/about.html">About this view →</a></div></div>')
+    elif c and c.is_example:
         banner = (f'<div class="example-banner" role="note"><div class="wrap"><strong>Fictional example.</strong> The school, its people and their reports are invented, '
                   f'to show everything a commons can hold. <a href="{up}reason-commons/index.html">See a real commons →</a></div></div>')
     elif c and c.has_analysis:
@@ -669,15 +697,15 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 <a class="skip" href="#main">Skip to content</a>
 {banner}<header class="site-head"><div class="wrap">
 <a class="brand" href="{up}index.html">{LOGO}<span>Reason Commons</span></a>
-<nav class="site-nav" aria-label="Site">{nav_html}<a class="nav-cta" href="/skills">Try the skill <span aria-hidden="true">↗</span></a></nav>
+<nav class="site-nav" aria-label="Site">{nav_html}<a class="nav-cta" href="{site_link(c, "/skills")}">Try the skill <span aria-hidden="true">↗</span></a></nav>
 </div></header>
 <main id="main">
 {body}
 </main>
 <footer class="site-foot"><div class="wrap">
 <div><a class="brand foot-brand" href="{up}index.html">{LOGO}<span>Reason Commons</span></a><p>Thinking that accumulates.<br>A collaboration between Rufus Pollock and David Joseph.</p></div>
-<nav aria-label="Further reading"><a href="/explainers">Read the series</a><a href="/ltp">The method underneath</a><a href="/skills">Use the skill</a><a href="/about">About</a><a href="/demos">More demos</a></nav>
-<p class="foot-note">A static, read-only demonstration. Nothing here is live, and nothing you do here is sent anywhere. <a href="/">Back to the main site ↗</a></p>
+<nav aria-label="Further reading"><a href="{site_link(c, "/explainers")}">Read the series</a><a href="{site_link(c, "/ltp")}">The method underneath</a><a href="{site_link(c, "/skills")}">Use the skill</a><a href="{site_link(c, "/about")}">About</a><a href="{site_link(c, "/demos")}">More demos</a></nav>
+<p class="foot-note">{"A private view made on this computer by the ltp skill. Nothing here is published, and nothing you do here is sent anywhere." if private else "A static, read-only demonstration. Nothing here is live, and nothing you do here is sent anywhere."} <a href="{site_link(c, "/")}">{"Visit the Reason Commons site" if private else "Back to the main site"} ↗</a></p>
 </div></footer>
 </body>
 </html>
@@ -685,6 +713,8 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 
 
 def publication_tag(c):
+    if c.is_private:
+        return '<span class="tag tag-yours">Private view</span>'
     if c.is_reconstruction:
         return '<span class="tag tag-reconstruction">Source reconstruction · Proposed</span>'
     return ('<span class="tag tag-example">Fictional example</span>' if c.is_example
@@ -700,7 +730,9 @@ def commons_head(c, tab, heading=None):
         tabs.append(("questions.html", "Open questions", "questions", str(len(c.open_items()))))
     if c.feedback:
         tabs.append(("learning.html", "Learning", "learning", plural(sum(len(r["reports"]) for r in c.feedback), "report")))
-    tabs += [("changes.html", "Changes", "changes", plural(len(c.history), "release")), ("about.html", "About", "about", "")]
+    if not c.is_private:  # A private view shows the working file as it is now; the skill keeps the history.
+        tabs.append(("changes.html", "Changes", "changes", plural(len(c.history), "release")))
+    tabs.append(("about.html", "About", "about", ""))
     current = ' aria-current="page"'
     tab_html = "".join(f'<a href="{href}"{current if key == tab else ""}>{label}{f" <span>{esc(count)}</span>" if count else ""}</a>'
                        for href, label, key, count in tabs)
@@ -711,7 +743,7 @@ def commons_head(c, tab, heading=None):
     return (f'<div class="ch"><div class="wrap">'
             f'<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#commons">Commons</a><span aria-hidden="true">/</span><span>{esc(c.name)}</span></nav>'
             f'<div class="ch-row"><div>{tag}{title}<p class="ch-by">{esc(c.byline)}</p></div>'
-            f'<p class="ch-meta">Published {day(c.date)}<br><span>Release {esc(c.release_id)}</span></p></div>'
+            f'<p class="ch-meta">{"Made" if c.is_private else "Published"} {day(c.date)}<br><span>{"From " + esc(c.source_file) if c.is_private else "Release " + esc(c.release_id)}</span></p></div>'
             f'<nav class="tabs" aria-label="This commons">{tab_html}</nav></div></div>')
 
 
@@ -782,16 +814,27 @@ def source_detail(c, source, number, where):
 def front_page(c):
     if c.front_page:
         return c.front_page
-    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    goal = goal_node(c)
+    if goal is None:  # A private view may not have a goal yet.
+        return {"headline": c.name, "intro": c.summary, "question": "What are we trying to achieve?",
+                "why": "No goal is recorded yet. Working one out gives the rest of the reasoning something to serve.", "focus_ref": c.order[0]}
     return {"headline": goal.get("label", goal["text"]), "intro": c.summary, "question": "What would make this goal useful to work on together?",
             "why": "Bring an example, a question or a correction to help develop the reasoning.", "focus_ref": goal["id"]}
 
 
+def goal_node(c):
+    return next((n for n in c.trees.get("goal", {"nodes": []})["nodes"] if n["kind"] == "goal"), None)
+
+
+def involve_label(c):
+    return "Keep working" if c.is_private else "Practise contributing" if c.is_example else "Get involved"
+
+
 def purpose_intro(c):
     front = front_page(c)
-    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    goal = goal_node(c)
     headline = "<br>".join(esc(line) for line in front["headline"].splitlines())
-    action = "Practise contributing" if c.is_example else "Get involved"
+    action = involve_label(c)
     goal_label = "The proposed goal" if c.is_reconstruction else "The goal"
     standing = STANDING[c.items[front["focus_ref"]]["status"]]
     source = source_mini(c)
@@ -800,7 +843,7 @@ def purpose_intro(c):
     return f"""<section class="purpose-intro" aria-labelledby="purpose-title">
 <div class="purpose-main"><p class="eyebrow">{esc(c.name)} · {goal_label}</p><h1 id="purpose-title">{headline}</h1>
 <p class="purpose-description">{esc(front["intro"])}</p><div class="purpose-actions"><a class="button" href="#get-involved">{action} <span aria-hidden="true">↓</span></a><a class="text-link" href="map.html">Explore the map <span aria-hidden="true">→</span></a></div>
-<details class="goal-record"><summary>Read the goal of record</summary><blockquote>{esc(goal["text"])}</blockquote><p>{standing_chip(c, goal["status"])} <a href="items.html#{goal["id"]}">Inspect the goal →</a></p>{review_note}</details>{source}</div>
+{f'<details class="goal-record"><summary>Read the goal of record</summary><blockquote>{esc(goal["text"])}</blockquote><p>{standing_chip(c, goal["status"])} <a href="items.html#{goal["id"]}">Inspect the goal →</a></p>{review_note}</details>' if goal else ""}{source}</div>
 <aside class="featured-question" aria-labelledby="featured-question-title"><p class="eyebrow">A question to explore next</p><h2 id="featured-question-title">{esc(front["question"])}</h2><p>{esc(front["why"])}</p>
 <a class="text-link" href="#contribute-example">Bring an example <span aria-hidden="true">↓</span></a><p class="featured-basis">Editorial invitation · {esc(standing.lower())} reasoning<br><a href="items.html#{front["focus_ref"]}">Read the reasoning behind this question →</a></p></aside>
 </section>"""
@@ -816,7 +859,9 @@ def participation(c, site):
         ident = "contribution-brief-" + key
         text = f"Contribution to {c.name}: {title.lower()}.\n\nQuestion to explore: {front['question']}\n\n{prompt}\n\n" + brief(c, front["focus_ref"], site)
         share = ""
-        if not c.is_example:
+        if c.is_private:  # Nothing on a private view points at a public destination.
+            share = '<p class="participation-note">This view is private. Paste the brief into your AI to carry on; nothing is sent from this page.</p>'
+        elif not c.is_example:
             issue_text = (f"Commons: {c.name}\nRelease: {c.release_id}\nContribution: {title}\n\nQuestion to explore: {front['question']}\n"
                           f"Reasoning: {site['base_url']}{c.slug}/items.html#{front['focus_ref']}\n\n{prompt}\n\nMy contribution:\n[Replace this with your example, question or correction.]\n\nSharing this for review does not endorse the current reasoning.")
             url = site["contribution_url"] + "?" + urlencode({"title": f"{c.name}: {title.lower()}", "body": issue_text})
@@ -824,10 +869,11 @@ def participation(c, site):
         else:
             share = '<p class="participation-note">This is an invented example. Use the brief to practise; there is no real group to send it to.</p>'
         options.append(f'<details class="participation-option" id="contribute-{key}"><summary><span><span class="participation-title">{title}</span><span class="participation-prompt">{esc(prompt)}</span></span><span class="toggle-icon" aria-hidden="true">+</span></summary>'
-                       f'<div class="participation-body"><p class="participation-label">Start with a brief for your AI</p><div class="brief-actions"><button class="button button-quiet" type="button" data-copy="{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
+                       f'<div class="participation-body"><p class="participation-label">Start with a brief for your AI</p><div class="brief-actions"><button class="button button-quiet" type="button" data-copy="{ident}" hidden>Copy the brief</button><a class="text-link" href="{site_link(c, "/skills")}">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
                        f'<details class="participation-brief"><summary>Read or copy the brief by hand</summary><pre class="brief" id="{ident}" tabindex="0">{esc(text)}</pre></details>{share}</div></details>')
-    title = "Practise a useful contribution" if c.is_example else "Help this commons move forward"
-    return (f'<section class="participation" id="get-involved" tabindex="-1" aria-labelledby="participation-title"><div class="participation-heading"><div><p class="eyebrow">{"Try it" if c.is_example else "Get involved"}</p><h2 id="participation-title">{title}</h2></div>'
+    title = "Carry on with your AI" if c.is_private else "Practise a useful contribution" if c.is_example else "Help this commons move forward"
+    eyebrow = "Keep working" if c.is_private else "Try it" if c.is_example else "Get involved"
+    return (f'<section class="participation" id="get-involved" tabindex="-1" aria-labelledby="participation-title"><div class="participation-heading"><div><p class="eyebrow">{eyebrow}</p><h2 id="participation-title">{title}</h2></div>'
             '<p>You do not need to agree with the whole map. Start with one thing you can help clarify.</p></div>'
             f'<div class="participation-options">{"".join(options)}</div></section>')
 
@@ -1164,7 +1210,7 @@ def overview(c, site):
                       f'<a class="text-link" href="learning.html">Every report, in full →</a></section>')
     owners = c.open_items()
     if owners:
-        blocks.append(f'<section class="ov"><div class="ov-head"><p class="eyebrow">Unfinished</p><h2>Open questions</h2><p>{plural(len(owners), "published item")} still {"has" if len(owners) == 1 else "have"} questions to work through.</p></div>'
+        blocks.append(f'<section class="ov"><div class="ov-head"><p class="eyebrow">Unfinished</p><h2>Open questions</h2><p>{plural(len(owners), published(c) + " item")} still {"has" if len(owners) == 1 else "have"} questions to work through.</p></div>'
                       f'{question_board(c, limit=2)}<a class="text-link" href="questions.html">All open questions →</a></section>')
     if "transition" in c.trees:
         actions = [n for n in c.trees["transition"]["nodes"] if n["kind"] == "action"]
@@ -1222,11 +1268,13 @@ def map_page(c, site):
         cells.append(f'<a class="mq" href="{TREES[name]["slug"]}.html"><span class="mq-n">{i}</span><span class="mq-thumb">{thumb}</span>'
                      f'<span class="mq-q">{esc(TREES[name]["question"])}</span><span class="mq-a">{esc(TREES[name]["about"])}</span>'
                      f'<span class="mq-c">{plural(len(tree["nodes"]), "statement")} · {state}{f"<br>{detail}" if detail else ""}</span></a>')
-    goal = next(n for n in c.trees["goal"]["nodes"] if n["kind"] == "goal")
+    goal = goal_node(c)
+    count = "six" if len(c.trees) == 6 else str(len(c.trees))
+    goal_quote =f'<blockquote class="map-goal"><span>The {"proposed " if c.is_reconstruction else ""}goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
     body = commons_head(c, "map", heading="compact") + f"""<div class="wrap">
-<section class="page-intro map-intro"><p class="eyebrow">Explore {esc(c.name)}</p><h1>One goal, {"six" if len(c.trees) == 6 else len(c.trees)} questions</h1><p class="lede">Choose a question to explore its reasoning, inspect a statement or bring a contribution.</p><blockquote class="map-goal"><span>The {"proposed " if c.is_reconstruction else ""}goal</span>{esc(goal["text"])}</blockquote><p class="fine">Diagrams use the published statements and connections. <a href="index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} →</a></p></section>
+<section class="page-intro map-intro"><p class="eyebrow">Explore {esc(c.name)}</p><h1>{"One goal, " + count + " questions" if goal else plural(len(c.trees), "question")}</h1><p class="lede">Choose a question to explore its reasoning, inspect a statement or bring a contribution.</p>{goal_quote}<p class="fine">Diagrams use the {"recorded" if c.is_private else "published"} statements and connections. <a href="index.html#get-involved">{involve_label(c)} →</a></p></section>
 <div class="mq-grid">{"".join(cells)}</div>
-<section class="map-key"><h2>What the colours mean</h2><p>Small diagrams show the real shape of each part: boxes are statements coloured by their role, and lines are published connections. Loose boxes have no connection yet.</p>{role_legend(c)}</section>
+<section class="map-key"><h2>What the colours mean</h2><p>Small diagrams show the real shape of each part: boxes are statements coloured by their role, and lines are {published(c)} connections. Loose boxes have no connection yet.</p>{role_legend(c)}</section>
 </div>"""
     return shell(assets=site.get("asset_versions", {}), title=f"Map · {c.name} · Reason Commons", description=f"The {'six' if len(c.trees) == 6 else len(c.trees)} questions of the {c.name} commons.", depth=1, body=body, nav="commons", c=c, page="map")
 
@@ -1254,7 +1302,8 @@ def tree_page(c, name, site):
         outline_parts.append(loose_groups(c, name, [n["id"] for n in tree["nodes"]]))
     if loose:
         heading = "Not yet connected" if pieces else "Statements by role"
-        text = ("These statements have no published connection yet." if pieces else
+        text = (f"These statements have no {published(c)} connection yet." if pieces else
+                "No connections are recorded in this part yet, so the statements are grouped by their role, with no arrows between them." if c.is_private else
                 "No connections in this part have been accepted yet, so the statements are grouped by their role, with no arrows between them.")
         group = f'<section class="loose"><h2>{heading}</h2><p>{text}</p>{loose_groups(c, name, loose)}</section>'
         diagram_parts.append(group)
@@ -1296,7 +1345,7 @@ def tree_page(c, name, site):
 <dl class="q-stats"><div><dt>Statements</dt><dd>{len(tree["nodes"])}</dd></div><div><dt>Connections</dt><dd>{len(tree["links"])}</dd></div>{f'<div><dt>Open questions</dt><dd>{open_count}</dd></div>' if open_count else ''}</dl></section>
 <div class="q-guide"><p><b>How to read it.</b> {esc(reading)}</p>{guide}</div>
 {views}{after}
-<details class="method-note"><summary>Where this comes from</summary><p>In the Logical Thinking Process this view is a {esc(info["method"])}. <a href="../how-it-works.html">How a commons works →</a></p></details>
+<details class="method-note"><summary>Where this comes from</summary><p>In the Logical Thinking Process this view is a {esc(info["method"])}. <a href="{how_href(c, "../")}">How a commons works →</a></p></details>
 {pager}
 </div>"""
     return shell(assets=site.get("asset_versions", {}), title=f'{info["question"]} · {c.name} · Reason Commons', description=f'{info["about"]} From the {c.name} commons.', depth=1, body=body, nav="commons", c=c, page="tree")
@@ -1715,7 +1764,7 @@ def item_detail(c, ident, site):
     near = "" if link else diagrams.neighbourhood(tree, ident, lambda k: c.kind_label(name, k), lambda i: f"#{i}", uniform=c.is_reconstruction)
     where = (figure(near, "Diagram: where this sits") if near else
              '<p class="muted">Its sources and target are shown above, with the relation between them.</p>' if link else
-             '<p class="muted">Not yet connected. No published connection leads into or out of this statement.</p>')
+             f'<p class="muted">Not yet connected. No {published(c)} connection leads into or out of this statement.</p>')
     facts = [("Contributed by", names(x["name"] for x in item["contributors"]))]
     if item.get("proposed_role"):
         facts += [("Who", "Unassigned"), ("Proposed role", item["proposed_role"])]
@@ -1788,16 +1837,17 @@ def item_detail(c, ident, site):
     if history:
         sections.append(f'<section class="d-sec"><h3>History</h3><ul class="notes">{"".join(history)}</ul></section>')
     text = brief(c, ident, site)
-    instruction = ("This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
+    instruction = ("Copy this brief into a conversation with your AI to keep working on this item. Nothing is sent from this page." if c.is_private else
+                   "This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
                    "Copy the brief into your AI to develop a correction or testable question. Distinguish the research question, supplied proposed analysis and supporting evidence; no action commitment is implied." if c.has_analysis else
                    "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
                    "Copy the brief into your AI to draft a question or correction. Check the credited PDF page and distinguish the author's argument from the AI's inference." if c.talks else
                    "Copy the brief into your AI to draft a question or correction. Check the credited page and distinguish the author's argument from the AI's inference." if c.supplied_documents else
                    "Copy the brief into your AI to draft a question or correction. Check the supplied analysis and original passage before attributing a view to anyone." if c.is_reconstruction else
                    "Copy this brief into a conversation with your AI to develop a question, an observation or a challenge. The skill checks the current record first.")
-    contribute = (f'<section class="d-sec d-brief"><h3>{"Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
+    contribute = (f'<section class="d-sec d-brief"><h3>{"Keep working on it with your AI" if c.is_private else "Practise a contribution" if c.is_example else "Bring a contribution to your AI"}</h3>'
                   f'<p>{instruction}</p>'
-                  f'<div class="brief-actions"><button type="button" class="button" data-copy="brief-{ident}" hidden>Copy the brief</button><a class="text-link" href="/skills">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
+                  f'<div class="brief-actions"><button type="button" class="button" data-copy="brief-{ident}" hidden>Copy the brief</button><a class="text-link" href="{site_link(c, "/skills")}">Get the skill ↗</a><span class="copy-status" role="status"></span></div>'
                   f'<details><summary>Read the brief</summary><pre class="brief" id="brief-{ident}" tabindex="0">{esc(text)}</pre></details>'
                   f'<p class="fine">This page is read-only. Copying prepares text; it does not submit anything or give access to the shared record.</p></section>')
     position = c.order.index(ident)
@@ -1870,7 +1920,7 @@ def question_board(c, limit=None):
 def questions_page(c, site):
     owners = c.open_items()
     body = commons_head(c, "questions", heading=False) + f"""<div class="wrap">
-<section class="page-intro"><h1>Open questions</h1><p class="lede">{plural(len(owners), "published item")} with open questions, grouped by the kind of work they need. An item can be accepted and still have work left on it.</p></section>
+<section class="page-intro"><h1>Open questions</h1><p class="lede">{plural(len(owners), published(c) + " item")} with open questions, grouped by the kind of work they need. An item can be accepted and still have work left on it.</p></section>
 {question_board(c)}
 <p class="fine">These come from the commons' own record of unfinished reasoning, and from disputed items. No deadline, owner or priority is shown because none is recorded.</p>
 </div>"""
@@ -2007,6 +2057,9 @@ def about_page(c, site):
     fiction = ('<section class="about-fiction"><h2>This commons is invented</h2><p>Willow Lane Primary, Amara, Grace, Tomasz, Dev and Ruth, and everything they say and report, are fictional. '
                'The commons was written in the skill\'s own file format and checked with the skill\'s validator, to show what a published commons can hold. '
                'Nothing here describes a real school, street or person.</p></section>') if c.is_example else ""
+    if c.is_private:
+        fiction = (f'<section class="ov" id="private"><h2>A private view</h2><p>The ltp skill made these pages on this computer from {esc(c.source_file)}, on {day(c.date)}. '
+                   'Nothing here is published, and nothing you do here is sent anywhere. The pages do not update on their own: ask for the view again after the reasoning changes, and the skill rebuilds them from the working file.</p></section>')
     if c.is_reconstruction:
         def where(source):
             if source.get("kind") == "supplied_analysis":
@@ -2050,6 +2103,8 @@ def about_page(c, site):
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
                 "Accepted reasoning about funding, money and Rufus and David’s own working arrangements, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. Proposed reasoning is published, funding and working arrangements included, and marked as proposed: nobody has accepted it.")
+    if c.is_private:
+        excluded = "Every statement and connection in the working file is here, whatever its standing. Approval receipts for project changes, feedback-sharing settings and how each contribution was captured are not shown."
     if c.is_reconstruction:
         excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
     if c.web_sources:
@@ -2059,7 +2114,9 @@ def about_page(c, site):
     if c.supplied_documents:
         excluded = ("The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
                     if c.talks else SUPPLIED_ABOUT[c.slug]["excluded"])
-    download = '<a class="button button-quiet" href="reasoning.json" download>Download this release <span aria-hidden="true">↓</span></a>'
+    download = f'<a class="button button-quiet" href="reasoning.json" download>Download this {"view" if c.is_private else "release"} <span aria-hidden="true">↓</span></a>'
+    snapshot = (f"These pages show the working file as it was on {day(c.date)}. They do not change when the file does." if c.is_private else
+                f'This is release {esc(c.release_id)}, published {day(c.date)}. {"Earlier wording stays on the Changes page." if len(c.history) > 1 else "It is the first release, so there is no earlier wording to compare yet."}')
     release_text = ""
     if c.is_reconstruction:
         # The host sandboxes HTML without allow-downloads; keep the release readable without scripts.
@@ -2072,10 +2129,10 @@ def about_page(c, site):
 {fiction}
 <div class="about-grid">
 <section><h2>What “accepted for now” means</h2><p>Named people are willing to build on a statement or connection for now. It records their judgement at the time. It does not establish truth, and it does not mean everyone agrees: each item names exactly who accepted it.</p>
-<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example or c.is_reconstruction else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
+<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example or c.is_reconstruction or c.is_private else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
 <h2>What isn't here</h2><p>{esc(excluded)}</p>
-<h2>A snapshot, not a live feed</h2><p>This is release {esc(c.release_id)}, published {day(c.date)}. {"Earlier wording stays on the Changes page." if len(c.history) > 1 else "It is the first release, so there is no earlier wording to compare yet."}</p></section>
-<aside class="about-side"><p class="eyebrow">In this release</p><p class="big-count"><b>{statements}</b> statements <b>{connections}</b> connections</p>
+<h2>A snapshot, not a live feed</h2><p>{snapshot}</p></section>
+<aside class="about-side"><p class="eyebrow">In this {"view" if c.is_private else "release"}</p><p class="big-count"><b>{statements}</b> statements <b>{connections}</b> connections</p>
 <div class="table-wrap"><table class="counts"><thead><tr><th scope="col">Question</th>{head}</tr></thead><tbody>{"".join(rows)}</tbody></table></div>
 <p>{download}</p>
 <p class="fine">{"The JSON contains the published reasoning; the original question hierarchies are preserved above." if c.web_sources else "The release contains exactly what these pages show, as JSON." if c.is_reconstruction else "The download holds exactly what these pages show, as JSON."}</p>{release_text}</aside>
@@ -2093,16 +2150,47 @@ def render(site, normalized, asset_versions=None):
     commons = [Commons(data) for data in normalized]
     outputs = {"index.html": home(site, commons), "how-it-works.html": how_it_works(site, commons)}
     for c in commons:
-        outputs[f"{c.slug}/index.html"] = overview(c, site)
-        outputs[f"{c.slug}/map.html"] = map_page(c, site)
-        for name in TREE_ORDER:
-            if name in c.trees:
-                outputs[f'{c.slug}/{TREES[name]["slug"]}.html'] = tree_page(c, name, site)
-        outputs[f"{c.slug}/items.html"] = items_page(c, site)
-        if c.open_items():
-            outputs[f"{c.slug}/questions.html"] = questions_page(c, site)
-        if c.feedback:
-            outputs[f"{c.slug}/learning.html"] = learning_page(c, site)
-        outputs[f"{c.slug}/changes.html"] = changes_page(c, site)
-        outputs[f"{c.slug}/about.html"] = about_page(c, site)
+        outputs.update(commons_pages(c, site))
     return outputs
+
+
+def commons_pages(c, site):
+    outputs = {f"{c.slug}/index.html": overview(c, site), f"{c.slug}/map.html": map_page(c, site)}
+    for name in TREE_ORDER:
+        if name in c.trees:
+            outputs[f'{c.slug}/{TREES[name]["slug"]}.html'] = tree_page(c, name, site)
+    outputs[f"{c.slug}/items.html"] = items_page(c, site)
+    if c.open_items():
+        outputs[f"{c.slug}/questions.html"] = questions_page(c, site)
+    if c.feedback:
+        outputs[f"{c.slug}/learning.html"] = learning_page(c, site)
+    if not c.is_private:
+        outputs[f"{c.slug}/changes.html"] = changes_page(c, site)
+    outputs[f"{c.slug}/about.html"] = about_page(c, site)
+    return outputs
+
+
+def render_private(site, data, asset_versions=None):
+    """One person's or group's own commons, for their eyes only: a start page and the commons' pages."""
+    site = {**site, "asset_versions": asset_versions or {}}
+    c = Commons({**data, "is_private": True})
+    outputs = {"index.html": private_home(site, c)}
+    outputs.update(commons_pages(c, site))
+    return outputs
+
+
+def private_home(site, c):
+    goal = goal_node(c)
+    statements, connections = c.counts()
+    mix = [s for s in STANDING if any(i["status"] == s for t in c.trees.values() for i in t["nodes"] + t["links"])]
+    quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
+    body = f"""<section class="page-head" id="commons"><div class="wrap">
+<p class="eyebrow">Private view</p><h1>{esc(c.name)}</h1>
+<p class="lede">Your commons as the working file records it now, laid out as pages you can read and click through. Only you can see it, on this computer.</p>
+</div></section>
+<section class="band"><div class="wrap"><h2 class="sr-only">Your commons</h2><div class="cc-grid"><article class="cc">
+<div class="cc-head">{publication_tag(c)}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>{quote}
+<p class="cc-meta">{plural(statements, "statement")} · {plural(connections, "connection")} · {esc(", ".join(STANDING[s].replace(" for now", "").lower() for s in mix))}<br>Made {day(c.date)} from {esc(c.source_file)}</p>
+<div class="cc-actions"><a class="button" href="{c.slug}/index.html">Open the commons <span aria-hidden="true">→</span></a><a class="text-link" href="{c.slug}/map.html">See the map →</a></div>
+</article></div></div></section>"""
+    return shell(assets=site.get("asset_versions", {}), title=f"{c.name} · Private view · Reason Commons", description=c.summary, depth=0, body=body, nav="commons", c=c, page="home")

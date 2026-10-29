@@ -83,6 +83,16 @@ After an accepted change, the helper validates the working YAML and saves one nu
 
 Proposals, disputes and backlog-only edits stay in the working YAML but do not create a new accepted snapshot. The YAML is the source of truth; the diagrams are derived views. The skill normally runs the helper and links both diagrams when accepted reasoning changes. Python with PyYAML is required; the current helper draws its SVG directly without Graphviz or a JavaScript renderer; see [`ltp/references/views.md`](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp/references/views.md) for details.
 
+### See your commons in the browser
+
+To read the whole thing at once, ask:
+
+```text
+Show me our commons in the browser.
+```
+
+The agent turns the working file into pages like the [demonstration commons](/demos/reason-commons-in-use/index.html): an overview, a map, a page for each question and every statement with who contributed it, who accepted it and what is still open. Accepted, proposed and disputed reasoning are all there, each marked. The pages stay on your computer, next to the working file; nothing is published or sent anywhere. Ask again after the reasoning changes to see the new version.
+
 ## Send this to a colleague
 
 ```text

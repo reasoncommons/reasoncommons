@@ -32,6 +32,50 @@ RELATIONS = {"necessary_for": "is needed for", "contributes_to": "contributes to
              "conflicts_with": "conflicts with", "feeds_back_to": "feeds back to", "prevents": "is meant to prevent"}
 STANDINGS = {"accepted": "Accepted for now", "proposed": "Proposed", "disputed": "Disputed"}
 
+
+def is_loop(link):
+    """A loop stays out of the ranking: a feeds-back connection, or one marked `loop` because it closes a loop."""
+    return link["relation"] in FEEDBACK or link.get("loop") is True
+
+
+def loop_links(links):
+    """IDs of the connections that close each loop, found in record order, so a layout can draw them round the side.
+
+    Marking one keeps its relation and wording; only its drawing changes. A published commons marks none.
+    """
+    closing = set()
+    ends = list(dict.fromkeys([s for link in links for s in link["from"]] + [link["to"] for link in links]))
+    while True:
+        ups = defaultdict(list)
+        for link in links:
+            if link["relation"] in LATERAL | FEEDBACK or link["id"] in closing:
+                continue
+            for source in link["from"]:
+                lower, upper = (link["to"], source) if link["relation"] in DOWNWARD else (source, link["to"])
+                ups[lower].append((upper, link["id"]))
+        state, found = {}, None
+        for root in ends:
+            if root in state:
+                continue
+            state[root] = "open"
+            stack = [(root, iter(ups[root]))]
+            while stack and not found:
+                node, edges = stack[-1]
+                step = next(edges, None)
+                if step is None:
+                    state[node] = "done"
+                    stack.pop()
+                elif state.get(step[0]) == "open":
+                    found = step[1]
+                elif step[0] not in state:
+                    state[step[0]] = "open"
+                    stack.append((step[0], iter(ups[step[0]])))
+            if found:
+                break
+        if not found:
+            return closing
+        closing.add(found)
+
 NODE_W, GOAL_W, PAD_X, PAD = 214, 260, 14, 18
 TEXT_SIZE, TEXT_WEIGHT, LINE = 15, 500, 19.5
 KIND_SIZE, KIND_TRACK = 10, 1.1
@@ -176,8 +220,8 @@ def layered(nodes, links, boxes, order):
     ids = list(nodes)
     rank = {i: 0 for i in ids}
     ups, downs = defaultdict(set), defaultdict(set)
-    flow = [l for l in links if l["relation"] not in LATERAL | FEEDBACK]
-    loops = [l for l in links if l["relation"] in FEEDBACK]
+    flow = [l for l in links if l["relation"] not in LATERAL and not is_loop(l)]
+    loops = [l for l in links if is_loop(l)]
     for link in flow:
         for source in link["from"]:
             lower, upper = (link["to"], source) if link["relation"] in DOWNWARD else (source, link["to"])
@@ -471,7 +515,7 @@ def is_hierarchy(ids, links):
     """One root, one parent each, one source per link and only "is needed for": an indented tree draws it without loss."""
     parents = {}
     for link in links:
-        if len(link["from"]) != 1 or link["relation"] != "necessary_for" or link["from"][0] in parents:
+        if len(link["from"]) != 1 or link["relation"] != "necessary_for" or link["from"][0] in parents or is_loop(link):
             return False
         parents[link["from"][0]] = link["to"]
     return len(ids) > 2 and len(parents) == len(ids) - 1
@@ -718,7 +762,7 @@ def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=Fal
         link = path["link"]
         d = rounded(path["points"]) if not path.get("zigzag") else "M" + "L".join(f"{px:g},{py:g}" for px, py in clean(path["points"]))
         cls = ("e" + ("" if uniform else f' is-{link["status"]}') + (" e-conflict" if path.get("conflict") else "") + (" e-down" if link["relation"] in DOWNWARD else "")
-               + (" e-loop" if link["relation"] in FEEDBACK else "") + (" e-prevent" if link["relation"] in BARRED else ""))
+               + (" e-loop" if is_loop(link) else "") + (" e-prevent" if link["relation"] in BARRED else ""))
         cls += " is-focus" if focus == link["id"] else ""
         label = f'Connection, {STANDINGS[link["status"]].lower()}: {RELATIONS.get(link["relation"], link["relation"].replace("_", " "))}'
         if path["arrow"] and link["relation"] in BARRED:
@@ -729,7 +773,7 @@ def svg(shape, nodes, href, title, focus=None, css="", context=None, uniform=Fal
         if path.get("tag"):
             tx, ty = path["tag"]
             tag = (f'<g class="e-tag e-tag-loop"><rect x="{tx - LOOP_TAG_W / 2:g}" y="{ty - 9:g}" width="{LOOP_TAG_W}" height="18" rx="9"/>'
-                   f'<text x="{tx:g}" y="{ty + 4:g}" text-anchor="middle">feeds back</text></g>')
+                   f'<text x="{tx:g}" y="{ty + 4:g}" text-anchor="middle">{"feeds back" if link["relation"] in FEEDBACK else "loops back"}</text></g>')
         elif link["status"] == "disputed" and path["arrow"]:
             mx, my = longest_segment(path["points"])
             tag = f'<g class="e-tag"><rect x="{mx - 30:g}" y="{my - 9:g}" width="60" height="18" rx="9"/><text x="{mx:g}" y="{my + 4:g}" text-anchor="middle">disputed</text></g>'
@@ -853,7 +897,7 @@ def outline(tree, ids, links, href, kind_label, uniform=False):
         if link["relation"] in LATERAL:
             lateral[link["from"][0]].append(link)
             continue
-        if link["relation"] in FEEDBACK:  # A loop is noted beside each source; it never makes a parent.
+        if is_loop(link):  # A loop is noted beside each source; it never makes a parent.
             for source in link["from"]:
                 loops[source].append(link)
             continue
@@ -892,7 +936,7 @@ def outline(tree, ids, links, href, kind_label, uniform=False):
         for link in loops.get(ident, []):
             together = [s for s in link["from"] if s != ident]
             joint = f'with “{esc(names_of(together))}”, ' if together else ""
-            parts.append(f'<p class="o-then o-loop">↺ {joint}<a class="o-rel{standing(link)}" href="{esc(href(link["id"]))}">feeds back to</a>{chip(link["status"])} '
+            parts.append(f'<p class="o-then o-loop">↺ {joint}<a class="o-rel{standing(link)}" href="{esc(href(link["id"]))}">{esc(RELATIONS.get(link["relation"], link["relation"].replace("_", " ")))}</a>{chip(link["status"])} '
                          f'<a href="{esc(href(link["to"]))}">{esc(nodes[link["to"]]["text"])}</a></p>')
         children = []
         for direction, link in sorted(incoming.get(ident, []), key=lambda e: order.get(e[1]["from"][0] if e[0] == "up" else e[1]["to"], 0)):
