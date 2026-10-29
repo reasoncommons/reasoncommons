@@ -21,3 +21,5 @@ jobs:
       - run: pip install pyyaml
       - name: Test reasoning and approval helpers
         run: python3 -m unittest discover -s skills/ltp/tests
+      - name: Check the skill's copy of the demo renderer
+        run: python3 scripts/export-skill-viewer.py --check

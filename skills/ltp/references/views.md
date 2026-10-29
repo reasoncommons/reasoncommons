@@ -47,6 +47,25 @@ Color and text labels distinguish added, changed, removed, and context items. Cr
 
 Update only affected trees. Keep each tree's latest change view when another tree changes, when users switch focus, or during WIP-only turns. The helper reconstructs that tree's latest change from numbered snapshots if an artifact must be regenerated. Keep both HTML views available as optional inspection links when useful or requested, labeled accepted-only; opening an export is not required to continue the conversation. Do not read diagram details aloud unless asked. The companion SVGs contain the same diagrams.
 
+## The whole commons in a browser
+
+```bash
+python3 <skill-directory>/scripts/open_commons.py <working-state.yaml>
+```
+
+This writes the whole working file as the pages the Reason Commons demo site uses for one commons: an overview, a map of the questions, a page for each tree, every statement and connection with its contributors, endorsers, assumptions, challenges and open work, open questions, outcome reports when there are any, and an About page. Unlike the two views above, it shows every standing, each marked as recorded. Every page says it is a private view.
+
+The pages go in `site/` inside the file's hidden directory (`.reason-commons/site/` for `reason-commons.yaml`); `--output-dir` overrides this. The helper prints JSON with `output`, `open` (the overview as a file URL) and the statement, connection and standing counts. A rebuild replaces only the files it wrote before, and it will not write into a non-empty folder it did not make. `--serve` serves the folder on 127.0.0.1 only, on a free port or the one given, and adds the `url` to open; it keeps running until stopped. The Claude desktop app's built-in browser needs this, because it shows a local file without its styles. Start the served helper there through the browser's preview tool, with a `.claude/launch.json` entry such as:
+
+```json
+{"version": "0.0.1", "configurations": [{"name": "commons-view", "runtimeExecutable": "python3",
+  "runtimeArgs": ["<skill-directory>/scripts/open_commons.py", "reason-commons.yaml", "--serve", "8879"], "port": 8879}]}
+```
+
+The view does not change when the working file does. Run the helper again without `--serve` to rebuild the same folder; a running server then serves the new pages on reload.
+
+The renderer is a copy of the demo site's, in the skill's `viewer/` folder; see its README. Like the other generated files, the pages are local: do not commit, publish or send them as part of ordinary facilitation. Publishing a commons is a separate decision about what to share and with whose consent.
+
 ## Failure and retry
 
 Snapshot creation precedes view generation so accepted history is not lost if view generation fails. HTML and SVG files are replaced atomically. If generation fails, report it and rerun the same command; it regenerates views from history without creating a duplicate revision. Retry before making another accepted update when practical, so users can inspect the change they just agreed to.

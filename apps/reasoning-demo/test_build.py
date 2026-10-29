@@ -183,6 +183,28 @@ class DiagramTests(unittest.TestCase):
         self.assertIn("feeds back", svg)
         self.assertEqual(svg.count('class="e-head"'), 3)
 
+    def test_a_marked_loop_goes_round_the_side_and_keeps_its_relation(self):
+        tree = {"name": "current_reality", "nodes": [{"id": i, "kind": "cause", "text": i, "status": "accepted"} for i in "ab"],
+                "links": [{"id": "ab", "from": ["a"], "to": "b", "relation": "contributes_to", "status": "accepted"},
+                          {"id": "ba", "from": ["b"], "to": "a", "relation": "contributes_to", "status": "accepted"}]}
+        self.assertEqual(diagrams.loop_links(tree["links"]), {"ba"})  # The connection that closes the loop, in record order.
+        tree["links"][1]["loop"] = True
+        pieces, shapes, loose, svg = draw(tree)
+        loop = next(p for p in shapes[0]["paths"] if p["link"]["id"] == "ba")
+        self.assertGreater(max(x for x, y in loop["points"]), max(n["x"] + n["w"] for n in shapes[0]["nodes"].values()))
+        self.assertIn("loops back", svg)
+        self.assertNotIn("feeds back", svg)
+        self.assertIn('aria-label="Connection, accepted for now: contributes to"', svg)
+        outline = diagrams.outline(tree, pieces[0]["ids"], pieces[0]["links"], lambda i: f"#{i}", lambda k: k)
+        self.assertIn(">contributes to</a>", outline)
+        self.assertNotIn("feeds back", outline)
+
+    def test_no_published_commons_needs_a_marked_loop(self):
+        site, commons = build.load_site()
+        for record in commons:
+            for name, tree in record["data"]["trees"].items():
+                self.assertEqual(diagrams.loop_links(tree["links"]), set(), f'{record["entry"]["slug"]} {name}')
+
     def test_a_remedy_ends_in_a_bar_not_an_arrow(self):
         tree = {"name": "future_reality", "nodes": [{"id": "risk", "kind": "undesirable_effect", "text": "A risk.", "status": "proposed"},
                                                      {"id": "fix", "kind": "injection", "text": "A remedy.", "status": "proposed"}],
