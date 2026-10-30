@@ -18,7 +18,7 @@ On the questions that matter most, we generate plenty of heat and not much light
 
 <div class="rc-cards rc-cards-2">
 <a class="rc-card" href="/explainers"><span class="rc-card-title">The idea</span><p>Lay out what a goal rests on, what stands in its way and what to do about it, with the whole and the parts kept connected.</p></a>
-<a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts the trees from what you already have, and folds ongoing discussion back in — so it enriches the conversation and improves the tree at the same time.</p></a>
+<a class="rc-card" href="/about"><span class="rc-card-title">The AI tooling we're building</span><p>AI drafts and revises the trees as you talk, keeps each contribution's author, and proposes changes that only people can accept.</p></a>
 <a class="rc-card rc-card-wide" href="/skills"><span class="rc-card-title">Try it</span><p>Install the ltp skill in Claude Code or Codex and talk a real problem through, alone or with your group.</p></a>
 </div>
 
@@ -39,7 +39,7 @@ The rigour comes from the [Logical Thinking Process](/ltp) (LTP), part of the Th
 
 ## About
 
-Reason Commons is a collaboration between **Rufus Pollock** and **David Joseph**. It has three strands: building the AI **tooling**; working with **communities** that already reason hard in public — AI governance, effective altruism, climate; and using **Second Renaissance** as a living laboratory. [More about the project and the people →](/about)
+Reason Commons is a collaboration between **Rufus Pollock** and **David Joseph**. It has three strands: building the AI **tooling**; working with **communities** that already reason hard in public, starting with AI safety and governance, then effective altruism and climate; and trying it out in **Second Renaissance**, which Rufus co-founded. [More about the project and the people →](/about)
 
 <div class="rc-foot">
 <h2>Stay in touch</h2>

@@ -40,12 +40,16 @@
   "contentExclude": [],
   "contentHide": [
     "/dashboard/assets",
-    "/dashboard/projects"
+    "/dashboard/projects",
+    "/alignment",
+    "/claim-tree-annotation-demo",
+    "/dashboard",
+    "/landing-lab"
   ],
   "social": [
     {
       "label": "github",
-      "href": "https://github.com/life-itself/reasoncommons"
+      "href": "https://github.com/reasoncommons/reasoncommons"
     }
   ],
   "showEditLink": true
