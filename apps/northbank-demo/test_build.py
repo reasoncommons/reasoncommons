@@ -88,4 +88,57 @@ class CaseIntegrity(unittest.TestCase):
         for event in self.data['events']:
             self.assertIn(event['scene'][0],html.replace('&#x27;',"'"))
 
+    def test_dated_tree_contains_only_recorded_nodes_and_connections(self):
+        early=build.tree_model(self.state,self.data,'current_reality','2027-01-18')
+        self.assertEqual(set(early['nodes']),{'nb-r-authority','nb-r-incomplete','nb-r-late'})
+        self.assertEqual([l['id'] for l in early['links']],['nb-r-l1'])
+        self.assertEqual(early['links'][0]['from'],['nb-r-authority'])
+        later=build.tree_model(self.state,self.data,'current_reality','2027-01-22')
+        self.assertEqual(later['links'][0]['from'],['nb-r-authority','nb-r-release'])
+        self.assertIn('nb-r-l2',[l['id'] for l in later['links']])
+
+    def test_displayed_connections_and_joint_conditions_match_dated_tree(self):
+        import re
+        for event in self.data['events']:
+            for use in event.get('tree_uses',[]):
+                model=build.tree_model(self.state,self.data,use['tree'],event['date'])
+                html=build.tree_diagram(self.state,self.data,use['tree'],event['date'],use['focus'],use['evidence'])
+                self.assertEqual(set(re.findall(r'data-tree-node="([^"]+)"',html)),set(model['nodes']))
+                self.assertEqual(set(re.findall(r'data-tree-link="([^"]+)"',html)),{l['id'] for l in model['links']})
+                self.assertEqual('class="rt-and"' in html,any(len(l['from'])>1 for l in model['links']))
+                if use['tree']=='transition':self.assertNotIn('may contribute to',html)
+
+    def test_tree_scene_rejects_future_reports_and_missing_focus(self):
+        data=deepcopy(self.data)
+        first=next(e for e in data['events'] if e.get('tree_uses'))
+        first['tree_uses'][0]['evidence'][0]['report']='march2-result'
+        with self.assertRaisesRegex(ValueError,'future report'):
+            build.validate_tree_uses(self.state,data)
+        data=deepcopy(self.data)
+        first=next(e for e in data['events'] if e.get('tree_uses'))
+        first['tree_uses'][0]['focus']=['nb-f-cover']
+        with self.assertRaisesRegex(ValueError,'must exist at this date'):
+            build.validate_tree_uses(self.state,data)
+
+    def test_current_view_draws_trees_and_comparisons_keep_both_versions(self):
+        html=build.current_view(self.state,self.data)
+        for tree in ('current_reality','future_reality','transition'):
+            self.assertIn('data-reasoning-tree="'+tree+'"',html)
+        for day,previous in [('2027-01-22','2027-01-18'),('2027-02-19','2027-02-12')]:
+            event=next(e for e in self.data['events'] if e['date']==day)
+            html=build.tree_use_view(event['tree_uses'][0],event,self.state,self.data)
+            self.assertIn('data-tree-date="'+previous+'"',html)
+            self.assertIn('data-tree-date="'+day+'"',html)
+            self.assertIn('The next move this leads to',html)
+
+    def test_focused_connection_keeps_every_joint_source(self):
+        import re
+        html=build.tree_diagram(self.state,self.data,'future_reality','2027-02-19',['nb-f-l1'],fragment=True)
+        self.assertEqual(set(re.findall(r'data-tree-node="([^"]+)"',html)),{'nb-f-adjustment','nb-f-cover','nb-f-decisions'})
+        self.assertEqual(re.findall(r'data-tree-link="([^"]+)"',html),['nb-f-l1'])
+        self.assertIn('class="rt-and"',html)
+        event=next(e for e in self.data['events'] if e['date']=='2027-02-19')
+        html=build.tree_use_view(event['tree_uses'][0],event,self.state,self.data)
+        self.assertLess(html.index('Client check'),html.index('The connection the group revises'))
+
 if __name__=='__main__':unittest.main()

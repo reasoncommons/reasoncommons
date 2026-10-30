@@ -100,6 +100,7 @@ def validate(state, data):
     require(windows['march1']['end']<windows['march2']['start'],'Closure windows must not overlap.')
     require(qualifies(windows['march1']) and qualifies(windows['march2']), 'Closure needs two qualifying windows.')
     require(not qualifies(windows['followup']), 'The May deterioration must remain visible.')
+    validate_tree_uses(state,data)
     require({x['ref'] for x in data['actions']}=={n['id'] for n in state['trees']['transition']['nodes']}, 'Actions and current reasoning differ.')
 
 def qualifies(window):
@@ -146,18 +147,123 @@ def report_card(r,compact=False):
     correction=f'<p>{"Corrects" if r.get("corrects") else "Later correction"}: <a href="#report-{r.get("corrects",r.get("correction"))}">inspect the linked report →</a></p>' if r.get('corrects') or r.get('correction') else ''
     return f'<article class="report"><span class="eyebrow">Fictional report · {esc(short_date(r["date"]))} · {esc(r["by"])}</span><h3>{esc(r["title"])}</h3><span class="tag neutral">{esc(r["verdict"])}</span>{paragraphs(r["text"])}{correction}{link}</article>'
 
-def mechanism(state,data,when):
-    at=historical(state,data,when)
-    ids=['nb-f-adjustment','nb-f-decisions','nb-f-ready','nb-f-reliable','nb-f-overwork']
-    if not all(x in at for x in ids):return ''
-    joint='nb-f-cover' in at.get('nb-f-l1',{}).get('from',[])
-    def box(ref):
-        n=at[ref]
-        return a(ref,n['text'],'map-node')
-    first=box(ids[0])
-    if joint:first=f'<div class="joint-sources">{first}{box("nb-f-cover")}</div><div class="and">AND</div>'
-    branch=f'<div class="harm-branch"><span class="small-label">Separate possible harmful branch</span>{a("nb-f-adjustment","The adjustment")} <span aria-hidden="true">→</span> {box("nb-f-overwork")}</div>'
-    return f'<figure class="mechanism"><figcaption>Reasoning as worded on {esc(fmt_date(when))} · all connections proposed</figcaption><div class="flow">{first}<div class="flow-arrow">↓ may contribute to</div>{box(ids[1])}<div class="flow-arrow">↓ may contribute to</div>{box(ids[2])}<div class="flow-arrow">↓ may contribute to</div>{box(ids[3])}</div>{branch}</figure>'
+TREE_TITLES = {'goal':'Goal', 'current_reality':'Current Reality tree', 'future_reality':'Future Reality tree', 'transition':'Action dependencies'}
+TREE_KINDS = {'goal':'Goal', 'cause':'Cause', 'undesirable_effect':'Undesirable effect', 'injection':'Injection', 'existing_condition':'Existing condition', 'predicted_effect':'Predicted effect', 'desirable_effect':'Desirable effect', 'action':'Action'}
+
+def tree_model(state, data, tree, when):
+    """Only statements and connections actually captured by this fictional date."""
+    at = historical(state, data, when)
+    nodes = {n['id']:at[n['id']] for n in state['trees'][tree]['nodes'] if n['id'] in at}
+    links = [at[l['id']] for l in state['trees'][tree]['links'] if l['id'] in at]
+    require(all(set(l['from']+[l['to']]) <= set(nodes) for l in links), 'A dated tree has a missing endpoint.')
+    return {'tree':tree, 'when':when, 'nodes':nodes, 'links':links}
+
+def label_lines(text):
+    import textwrap
+    return '<br>'.join(esc(line) for line in textwrap.wrap(text, width=22, break_long_words=False))
+
+def tree_diagram(state, data, tree, when, focus=(), evidence=(), fragment=False):
+    model=tree_model(state,data,tree,when)
+    nodes,links=model['nodes'],model['links']
+    if fragment:
+        links=[link for link in links if link['id'] in focus]
+        require(links,'A connection fragment needs a recorded focused link.')
+        ids={ref for link in links for ref in link['from']+[link['to']]}
+        nodes={ref:node for ref,node in nodes.items() if ref in ids}
+    if not nodes:return ''
+    focus=set(focus)
+    incoming={n:[] for n in nodes}
+    outgoing={n:[] for n in nodes}
+    neighbors={n:set() for n in nodes}
+    for link in links:
+        incoming[link['to']].append(link)
+        for source in link['from']:
+            outgoing[source].append(link)
+            neighbors[source].add(link['to']);neighbors[link['to']].add(source)
+    notes={}
+    for note in evidence:notes.setdefault(note['ref'],[]).append(note)
+    def annotations(ref):
+        out=''
+        for note in notes.get(ref,[]):
+            report=f' · <a href="#report-{esc(note["report"])}">Inspect report →</a>' if note.get('report') else ''
+            out+=f'<aside class="rt-evidence"><span class="small-label">At this point</span><p>{esc(note["text"])}</p><small>{esc(note["source"])}{report}</small></aside>'
+        return out
+    def node_box(ref):
+        n=nodes[ref];selected=ref in focus
+        flag='<span class="rt-focus-label">In discussion</span>' if selected else ''
+        return f'<article class="rt-node{" rt-focused" if selected else ""}" data-tree-node="{esc(ref)}"><a href="#item-{esc(ref)}"><span class="rt-standing">[{esc(n["status"].capitalize())}]</span><span class="rt-kind">{esc(TREE_KINDS[n["kind"]])}</span><strong>{label_lines(n.get("label",n["text"]))}</strong>{flag}</a>{annotations(ref)}</article>'
+    def edge(link):
+        selected=link['id'] in focus
+        label='comes before' if link['relation']=='precedes' else 'may contribute to'
+        flag='<span class="rt-focus-label">In discussion</span>' if selected else ''
+        return f'<div class="rt-edge{" rt-focused" if selected else ""}" data-tree-link="{esc(link["id"])}"><span aria-hidden="true">↓</span><a href="#item-{esc(link["id"])}">{esc(label)}</a>{flag}{annotations(link["id"])}</div>'
+    def path(ref,seen=frozenset()):
+        require(ref not in seen,'A cycle cannot be shown as an action or causal tree.')
+        branches=[]
+        for link in incoming[ref]:
+            sources=''.join(path(source,seen|{ref}) for source in link['from'])
+            if len(link['from'])>1:
+                sources=f'<div class="rt-joint">{sources}</div><div class="rt-and">AND <small>both conditions together</small></div>'
+            branches.append(f'<div class="rt-input">{sources}{edge(link)}</div>')
+        upstream=''.join(branches)
+        if len(branches)>1:upstream=f'<div class="rt-inputs">{upstream}</div>'
+        return f'<div class="rt-path">{upstream}{node_box(ref)}</div>'
+    components=[];remaining=set(nodes)
+    for start in nodes:
+        if start not in remaining:continue
+        component=set();pending=[start]
+        while pending:
+            ref=pending.pop()
+            if ref in component:continue
+            component.add(ref);pending.extend(neighbors[ref]-component)
+        remaining-=component;components.append(component)
+    forests=[]
+    for component in components:
+        sinks=[ref for ref in nodes if ref in component and not outgoing[ref]]
+        require(sinks,'A tree component must have an endpoint.')
+        body=''
+        if len(components)>1 and len(component)==1:
+            condition=nodes[next(iter(component))]['kind']=='existing_condition'
+            question='Recorded condition, not yet connected. Which arrow depends on it?' if condition else 'No explanation connected yet. What would explain this?'
+            body+='<p class="rt-unconnected">'+question+'</p>'
+        for ref in sinks:
+            harm=tree=='future_reality' and nodes[ref]['kind']=='undesirable_effect'
+            if harm:body+='<p class="rt-branch-label">The same adjustment has a possible harmful branch</p>'
+            body+=f'<div class="rt-branch{" rt-harm" if harm else ""}">{path(ref)}</div>'
+        forests.append(f'<div class="rt-component">{body}</div>')
+    caption=f'{TREE_TITLES[tree]} · '+('connection under review · ' if fragment else '')+fmt_date(when)
+    return f'<figure class="reasoning-tree" data-reasoning-tree="{esc(tree)}" data-tree-date="{esc(when)}"><figcaption>{esc(caption)}</figcaption><p class="rt-legend">Follow the arrows downward. Gold marks the question in discussion; the recorded standing remains Proposed.</p>{"".join(forests)}</figure>'
+
+def tree_use_view(use,event,state,data):
+    tree=use['tree'];focus=use['focus']
+    response=f'<div class="rt-response"><span class="small-label">Client check · {esc(use["response_by"])}</span><p>{esc(use["response"])}</p></div>'
+    if use.get('compare_with'):
+        when=use['compare_with']
+        earlier=f'<div class="rt-before"><h4>Earlier connection · {esc(fmt_date(when))}</h4>{tree_diagram(state,data,tree,when,focus,fragment=True)}<details class="record-details"><summary>Show the complete earlier tree</summary>{tree_diagram(state,data,tree,when,focus)}</details></div>'
+        diagram=earlier+response+'<p class="rt-revision">The connection the group revises ↓</p>'+tree_diagram(state,data,tree,event['date'],focus,use['evidence'],fragment=True)
+        diagram+='<details class="record-details"><summary>Show the complete revised tree</summary>'+tree_diagram(state,data,tree,event['date'],focus)+'</details>'
+    else:
+        diagram=tree_diagram(state,data,tree,event['date'],focus,use['evidence'])+response
+    return f'<section class="tree-use"><span class="eyebrow">Using the tree in this meeting</span><h3>{esc(use["question"])}</h3><div class="rt-question"><span class="small-label">Stephen asks</span><p>{esc(use["prompt"])}</p></div>{diagram}<div class="rt-decision"><span class="small-label">The next move this leads to</span><p>{esc(use["decision"])}</p></div></section>'
+
+def validate_tree_uses(state,data):
+    reports={r['id']:r for r in data['reports']}
+    for event in data['events']:
+        for use in event.get('tree_uses',[]):
+            require(use['tree'] in state['trees'],'Unknown tree in a facilitation scene.')
+            for field in ('question','prompt','response_by','response','decision'):
+                require(isinstance(use.get(field),str) and use[field].strip(),f'Tree use needs a concrete {field}.')
+            at=tree_model(state,data,use['tree'],event['date'])
+            ids=set(at['nodes'])|{l['id'] for l in at['links']}
+            require(use.get('focus') and set(use['focus'])<=ids,'A tree focus must exist at this date in this tree.')
+            if use.get('compare_with'):
+                require(use['compare_with']<event['date'],'A comparison must use an earlier tree.')
+            for note in use['evidence']:
+                require(note['ref'] in ids,'Evidence is attached to a future or different-tree item.')
+                if note.get('report'):
+                    require(note['report'] in reports,'Unknown tree evidence report.')
+                    require(reports[note['report']]['date']<=event['date'],'A tree scene reveals a future report.')
+
 
 def event_view(event,state,data):
     items=index(state); reports={x['id']:x for x in data['reports']}; predictions={x['id']:x for x in data['predictions']}; releases={x['id']:x for x in data['releases']}
@@ -178,9 +284,13 @@ def event_view(event,state,data):
         release=f'<aside class="release"><strong>Deliberate internal release · {esc(r["title"])}</strong>{paragraphs(r["note"])}</aside>'
     prev=f'<a href="#entry-{data["events"][i-1]["date"]}">← Previous entry</a>' if i else '<span>Beginning of the engagement</span>'
     nxt=f'<a class="button" href="#entry-{data["events"][i+1]["date"]}">Continue the engagement →</a>' if i+1<len(data['events']) else '<a class="button" href="#progress">Review the progress →</a>'
-    map_html=mechanism(state,data,event['date']) if event.get('map') else ''
+    if i==0:
+        nxt=nxt.replace('Continue the engagement →','Build the first tree →')
+    tree_work=''.join(tree_use_view(use,event,state,data) for use in event.get('tree_uses',[]))
+    if tree_work:
+        changes='<details class="record-details"><summary>Inspect the exact recorded changes and review references</summary>'+changes+'</details>'
     measures=metric_definitions(data,event['date']>='2027-01-18') if event.get('show_metrics') else ''
-    return f'<section class="view" id="entry-{event["date"]}" data-view><div class="entry-meta"><span>Entry {i+1:02} / 13</span><span>{esc(fmt_date(event["date"]))}</span><span class="tag">{esc(event["stage"])}</span></div><h2 tabindex="-1">{esc(event["title"])}</h2><p class="lede">{esc(event["summary"])}</p>{paragraphs(event["scene"])}{dialogue}<h3>Stephen’s facilitation</h3>{paragraphs(event["facilitation"])}<h3>What enters the record</h3>{changes}{measures}{prediction}{report}{map_html}<h3>Why this changed</h3>{paragraphs(event["evidence"])}<div class="next"><span class="small-label">Decision, owner and next review</span>{paragraphs(event["next"])}</div><h3>What keeping the record makes possible</h3>{paragraphs(event["difference"])}{release}<nav class="entry-nav" aria-label="Previous and next entry">{prev}{nxt}</nav></section>'
+    return f'<section class="view" id="entry-{event["date"]}" data-view><div class="entry-meta"><span>Entry {i+1:02} / 13</span><span>{esc(fmt_date(event["date"]))}</span><span class="tag">{esc(event["stage"])}</span></div><h2 tabindex="-1">{esc(event["title"])}</h2><p class="lede">{esc(event["summary"])}</p>{paragraphs(event["scene"])}{tree_work}{dialogue}<h3>Stephen’s facilitation</h3>{paragraphs(event["facilitation"])}<h3>What enters the record</h3>{changes}{measures}{prediction}{report}<h3>Why this changed</h3>{paragraphs(event["evidence"])}<div class="next"><span class="small-label">Decision, owner and next review</span>{paragraphs(event["next"])}</div>{("" if tree_work else "<h3>What keeping the record makes possible</h3>"+paragraphs(event["difference"]))}{release}<nav class="entry-nav" aria-label="Previous and next entry">{prev}{nxt}</nav></section>'
 
 def item_view(ref,item,state,data):
     items=index(state)
@@ -213,16 +323,20 @@ def item_view(ref,item,state,data):
     return f'<section class="view" id="item-{ref}" data-view><a href="#current">← Current commons</a><div class="entry-meta"><span>{esc(TREE_NAMES[item["tree"]])}</span><span>{esc(kind)}</span><span class="tag">Proposed</span></div><h2 tabindex="-1">{esc(heading)}</h2><div class="statement">{body}</div><p class="meta">Illustrative stable ID: <code>{esc(ref)}</code> · Authored by the AI. Fictional agreement is not real endorsement.</p>{owner}<h3>How it connects</h3><ul class="connections">{"".join(neighbors) or "<li>No reasoning connection is recorded here. Its role in the client’s goal is described in the change log.</li>"}</ul>{backlog}<h3>Wording and review history</h3>{history or "<p>No separate review recorded.</p>"}</section>'
 
 def current_view(state,data):
-    items=index(state);last=data['windows'][-1]
-    out='<section class="view" id="current" data-view><span class="eyebrow">One current commons · working update 14 May 2027</span><h2 tabindex="-1">What Northbank is building on now</h2><p class="lede">The current wording, with its history one click away. May’s review has reopened deputy cover; it has not erased March’s improvement.</p><p class="notice">All authored reasoning remains proposed. Client agreements, work and reports belong to the fictional story.</p>'
+    out='<section class="view" id="current" data-view><span class="eyebrow">One current commons · working update 14 May 2027</span><h2 tabindex="-1">The trees the group is working with</h2><p class="lede">Use the causal tree to question an explanation, the future tree to test an adjustment, and the action dependencies to prepare it. Select a statement or arrow to inspect its history.</p><p class="notice">All authored reasoning remains proposed. Reports and client agreements belong to the fictional story.</p>'
+    purposes={'current_reality':'Which proposed connection would we check before choosing a fix?', 'future_reality':'Which condition or expected effect should we check now?', 'transition':'What comes before the next meaningful review?'}
     for tree,content in state['trees'].items():
-        out+=f'<h3>{esc(TREE_NAMES[tree])}</h3><div class="item-grid">'
+        out+=f'<h3>{esc(TREE_NAMES[tree])}</h3>'
+        if tree!='goal':
+            out+=f'<p class="rt-purpose">{esc(purposes[tree])}</p>'+tree_diagram(state,data,tree,'2027-05-14')
+            out+='<details class="record-details"><summary>Read the full statements and action ownership</summary>'
+        out+='<div class="item-grid">'
         for n in content['nodes']:
             action=next((x for x in data['actions'] if x['ref']==n['id']),None)
             owner=f'<span class="meta">{esc(action["owner"])} · {esc(action["state"])}</span>' if action else ''
             out+=f'<a class="item-card" href="#item-{n["id"]}"><span class="small-label">{esc(KINDS[n["kind"]])} · Proposed</span><strong>{esc(n["text"])}</strong>{owner}<span class="item-open">Wording, connections and history →</span></a>'
         out+='</div>'
-        if tree=='future_reality':out+=mechanism(state,data,'2027-05-14')
+        if tree!='goal':out+='</details>'
     out+='<h3>Unfinished work</h3><ul>'
     out+=''.join(f'<li>{a(b["ref"],b["label"])}</li>' for t in state['trees'].values() for b in t['backlog'])
     return out+'</ul><h3>Monitoring after Stephen steps back</h3>'+paragraphs(data['handover'])+'<h3>The upkeep</h3>'+paragraphs(data['upkeep'])+'</section>'
@@ -248,6 +362,12 @@ CSS=r'''
 @media(max-width:520px){.hero,.tabs,.workspace,.footer{margin-left:20px;margin-right:20px}.fiction{font-size:.65rem;padding:9px 15px}.topbar{padding:18px 20px}.toplinks{gap:12px;font-size:.7rem}.brand{font-size:1.1rem}h1{font-size:2.65rem}h2{font-size:2.05rem}.people{display:grid;grid-template-columns:1fr 1fr;gap:13px}.person{font-size:.72rem;align-items:flex-start}.avatar{width:28px;height:28px;min-width:28px;font-size:.55rem}.person small{font-size:.64rem;max-width:120px}.tabs{gap:22px}.tabs a{font-size:.8rem}.workspace{padding-top:20px}.item-grid{grid-template-columns:1fr}.change,.report,.prediction,.statement{padding:16px}.change-head{align-items:flex-start}.change-head a{max-width:115px;text-align:right}.joint-sources{grid-template-columns:1fr}.entry-nav{align-items:flex-start}.entry-nav>a,.entry-nav>span{max-width:55%}.button{padding:10px 12px}.entry-meta{gap:8px;font-size:.67rem}.dialogue{padding:12px 16px}dl{grid-template-columns:1fr;gap:2px}dd{margin-bottom:12px}.mechanism{padding:15px}.table-scroll{max-width:calc(100vw - 40px)}.table-scroll table{min-width:710px}.footer{font-size:.7rem}.toplinks a:first-child{display:none}}
 @media(max-width:520px){.table-scroll{overflow:visible;border:0}.table-scroll table{min-width:0}.table-scroll thead{display:none}.table-scroll table,.table-scroll tbody{display:block}.table-scroll tr{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:4px;margin-bottom:12px;overflow:hidden}.table-scroll th,.table-scroll td{display:block;min-width:0;padding:12px}.table-scroll tbody th,.table-scroll td:last-child{grid-column:1/-1}.table-scroll td::before{content:attr(data-label);display:block;font-size:.62rem;color:var(--muted);margin-bottom:5px}.table-scroll caption{display:block}.table-scroll th small{display:inline;margin-left:8px}.table-scroll td:last-child{border-bottom:0}.hero h1{margin-bottom:.6rem}.hero .intro{font-size:.91rem}.hero{padding-bottom:15px}.people{margin:18px 0 8px}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media print{.timeline,.tabs,.toplinks,.entry-nav,.footer,.mobile-entries{display:none!important}.workspace{display:block;margin:0;padding:0}.js .view[hidden],.view{display:block!important;border-top:1px solid #bbb!important;margin:25px 0!important;padding-top:20px!important}.hero{margin:0}.table-scroll{overflow:visible}table{min-width:0!important}.change,.report,.prediction{break-inside:avoid}a{color:inherit}}
+.tree-use{margin:28px 0 32px;padding:24px;border:1px solid #bac9b9;border-top:4px solid var(--green);border-radius:6px;background:#f1f3eb}.tree-use>h3{font-family:var(--serif);font-size:1.6rem;font-weight:400;line-height:1.25;margin:.5rem 0 20px;letter-spacing:-.02em}.rt-question{border-left:3px solid #6e8c78;padding:4px 16px;margin:15px 0 22px}.rt-question p{font-size:.95rem;margin:.3rem 0}.reasoning-tree{margin:22px 0;background:var(--white);padding:20px 16px;border:1px solid var(--line);border-radius:5px}.reasoning-tree>figcaption{font-size:.8rem;font-weight:650;color:var(--green)}.rt-legend{font-size:.69rem;color:var(--muted);line-height:1.5;margin:7px 0 22px}.rt-component+.rt-component{margin-top:20px;padding-top:18px;border-top:1px solid var(--line)}.rt-path{min-width:0;display:flex;flex-direction:column;align-items:stretch}.rt-node{max-width:350px;width:100%;margin:0 auto;background:#fcfdf8;border:1px dashed #879a87;border-radius:4px;min-width:0}.rt-node>a{display:block;padding:13px 12px;text-align:center;text-decoration:none;color:var(--ink)}.rt-node>a:hover{background:#edf2e7}.rt-standing,.rt-kind{display:block;font-size:.6rem;line-height:1.5;color:var(--muted);letter-spacing:.04em}.rt-kind{text-transform:uppercase;margin:2px 0 7px}.rt-node strong{display:block;font-size:.83rem;line-height:1.5;font-weight:550;overflow-wrap:anywhere}.rt-joint,.rt-inputs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;align-items:end}.rt-joint{padding-bottom:13px;border-bottom:1px dashed #879a87;position:relative}.rt-joint>.rt-path::after{content:'';display:block;height:13px;margin:0 auto -13px;border-left:1px dashed #879a87}.rt-and{align-self:center;text-align:center;margin:9px auto 0;padding:4px 12px;border:1px solid #a6b8a1;border-radius:6px;background:#e8eee3;font-size:.72rem;font-weight:700}.rt-and small{display:block;color:var(--muted);font-weight:400;font-size:.58rem}.rt-edge{max-width:350px;margin:8px auto;display:flex;flex-direction:column;align-items:center;gap:3px;text-align:center;color:var(--muted);font-size:.69rem;padding:5px 8px;min-width:0;width:100%;border-radius:4px}.rt-edge>span[aria-hidden]{font-size:1.1rem;line-height:1.1}.rt-edge>a{font-size:.7rem}.rt-input{min-width:0}.rt-inputs{margin-bottom:8px}.rt-focused{border:2px solid #b37835;background:#fff9ed}.rt-focus-label{display:block;width:max-content;max-width:100%;margin:7px auto 0;padding:2px 6px;background:#f2dfbc;color:#744c1c;font-size:.54rem;text-transform:uppercase;letter-spacing:.06em;font-weight:700;border-radius:3px}.rt-edge .rt-focus-label{margin:0 auto 3px}.rt-evidence{border-top:1px solid #dce0d1;padding:11px 13px;background:#f0f3e9;text-align:left}.rt-evidence p{font-size:.75rem;line-height:1.6;margin:5px 0 8px}.rt-evidence small{display:block;font-size:.62rem;line-height:1.5;color:var(--muted)}.rt-evidence .small-label{font-size:.54rem}.rt-edge .rt-evidence{border:1px solid #dce0d1;width:100%}.rt-branch-label{border-top:1px solid #d8ddce;padding-top:20px;margin:25px 0 15px;font-size:.75rem;font-weight:600;color:#895b2e}.rt-harm>.rt-path>.rt-node{border-color:#b18b63;background:#fcf6ec}.rt-unconnected{font-size:.7rem;padding:10px 13px;border:1px dotted #9d9c8e;color:#6f7066;background:#f4f2e9}.rt-response,.rt-decision{padding:18px 20px;margin:18px 0 0;background:var(--white);border-left:3px solid #9eaf9b}.rt-response p,.rt-decision p{font-size:.9rem;margin:.4rem 0 0}.rt-decision{background:#e1eadd;border-color:var(--green)}.rt-before{margin:18px 0;border:1px solid var(--line);border-radius:5px;background:#f8f6ef}.rt-before>summary{padding:12px 16px;font-size:.78rem;font-weight:650;cursor:pointer}.rt-before>.reasoning-tree{margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:#faf8f1}.rt-revision{text-align:center;margin:25px 0 12px;color:var(--green);font-weight:650;font-size:.8rem}.record-details{margin:20px 0;padding:0 16px 12px;border:1px solid var(--line);border-radius:5px;background:#fdfcf7}.record-details>summary{padding:14px 0;font-size:.8rem;cursor:pointer;font-weight:600}.record-details .change{margin-top:10px}.rt-purpose{font-size:1rem;color:#4c6456;margin:0 0 15px}.record-details .item-grid{padding-top:12px}.rt-before[open]>summary{border-bottom:0}
+@media(max-width:520px){.tree-use{padding:17px 12px;margin:24px 0}.tree-use>h3{font-size:1.4rem}.reasoning-tree{padding:15px 9px}.rt-joint,.rt-inputs{gap:8px}.rt-node>a{padding:10px 7px}.rt-node strong{font-size:.76rem;line-height:1.5}.rt-kind,.rt-standing{font-size:.53rem}.rt-node strong{white-space:normal}.rt-joint .rt-node strong,.rt-inputs .rt-node strong{font-size:.73rem}.rt-question{padding:3px 11px}.rt-question p{font-size:.87rem}.rt-evidence{padding:10px 9px}.rt-evidence p{font-size:.7rem}.rt-evidence small{font-size:.58rem}.rt-response,.rt-decision{padding:15px}.rt-response p,.rt-decision p{font-size:.84rem}.rt-legend{font-size:.63rem}.rt-before>summary{font-size:.7rem;padding:11px 12px}.rt-edge{padding:5px 4px}.rt-inputs .rt-edge>a{font-size:.62rem}.rt-inputs .rt-focus-label{font-size:.47rem;letter-spacing:0}.rt-before>.reasoning-tree{padding:14px 8px}}
+@media print{.tree-use{break-inside:auto}.rt-node,.rt-evidence{break-inside:avoid}.record-details{display:block}.record-details>*{display:block!important}.reasoning-tree{break-inside:auto}}
+
+.rt-before>h4{padding:12px 16px;margin:0;font-size:.78rem}.rt-before>.record-details{margin:0 10px 12px}
+
 '''
 
 JS=r'''
@@ -299,7 +419,7 @@ def render(state,data):
 <header class="topbar"><a class="brand" href="/">Reason Commons</a><nav class="toplinks" aria-label="About this demonstration"><a href="/demos/reason-commons-in-use/index.html">Other commons ↗</a><a href="#sources">Sources &amp; limits</a></nav></header>
 <div class="hero"><span class="eyebrow">A client engagement, from intake to follow-up</span><h1>Northbank Print</h1><p class="intro">Twenty-two people. Two sites. A shared goal: keep delivery promises without hidden overtime.</p><div class="people">{people}</div><p class="scope">Northbank Print · 11 January–2 April 2027 · Follow-up 14 May · One maintained commons</p></div>
 <nav class="tabs" aria-label="Views of the same commons"><a data-tab="changes" href="#entry-2027-01-11">Change log</a><a data-tab="current" href="#current">Current commons</a><a data-tab="progress" href="#progress">Progress &amp; learning</a></nav>
-<div class="workspace"><aside class="timeline"><span class="eyebrow">Follow the engagement</span><label class="skip" for="entry-picker">Choose an engagement entry</label><select class="mobile-entries" id="entry-picker">{options}</select><ol>{timeline}</ol><p class="record-caption">Start with the client’s request. Follow a change into its wording, connection, prediction or report.<br><br>Working updates are separate from the three deliberate internal releases.</p></aside><main id="main" tabindex="-1"><p class="fallback notice">Without JavaScript, all entries, statements and reports remain readable below. Links lead to the corresponding section.</p>{sections}</main></div>
+<div class="workspace"><aside class="timeline"><span class="eyebrow">Follow the engagement</span><label class="skip" for="entry-picker">Choose an engagement entry</label><select class="mobile-entries" id="entry-picker">{options}</select><ol>{timeline}</ol><p class="record-caption">Follow the highlighted statement or arrow. What does Stephen ask? What do clients check? What decision follows?<br><br>Working updates are separate from the three deliberate internal releases.</p></aside><main id="main" tabindex="-1"><p class="fallback notice">Without JavaScript, all entries, statements and reports remain readable below. Links lead to the corresponding section.</p>{sections}</main></div>
 <footer class="footer"><span>A fictional instantiation of AP, prepared for Stephen Le’s consideration.</span><span><a href="reason-commons.yaml" download>Current YAML</a> · <a href="commons.json" download>Case + history JSON</a> · <a href="#sources">Sources</a></span></footer>
 <script id="commons-data" type="application/json">{raw.replace('<',chr(92)+'u003c')}</script><script>{JS}</script></body></html>'''
     return {'index.html':html+'\n','commons.json':raw+'\n','reason-commons.yaml':'# Fictional worked case. All reasoning is assistant-proposed; story endorsements are fictional.\n'+yaml.safe_dump(public,sort_keys=False,allow_unicode=True,width=100000)}

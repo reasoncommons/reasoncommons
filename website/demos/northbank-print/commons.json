@@ -946,7 +946,7 @@
           "Stephen combines six short interviews, an optional questionnaire and existing order records. Twenty of 22 people provide some input. Absence is not endorsement. The baseline shows 20/80 dispatches late, 12/40 prompt decisions, average overtime of 18 hours, and 12 positive voice answers from 20 responses.",
           "Customers’ purchasing systems may make short lead times increasingly normal over two to five years. Supplier dependence creates disruption exposure, but no immediate survival crisis is identified. Machinery safeguards remain mandatory. The office hears customers’ deadlines while the workshop faces materials and transport constraints: heterogeneity matters."
         ],
-        "facilitation": "Stephen asks the group to distinguish observations from explanations. Coordination concerns center on decision-making and fair costs; adaptability on combining scattered information and learning; robustness on dependence on Maya. The AI drafts an explanation blaming delayed information from sales. Rosa recognizes examples, but Ben supplies timestamped emails that challenge the generalization.",
+        "facilitation": "Stephen asks the group to challenge the proposed causal connection rather than agree to a diagnosis as a whole. The assessment still covers coordination, adaptability, robustness and the external environment. The order trace is chosen because it can change the explanation and the next action.",
         "updates": [
           {
             "ref": "nb-r-authority",
@@ -987,7 +987,32 @@
         ],
         "evidence": "Order scans establish late dispatches; they do not establish who caused them. Ben’s emails are counterevidence to the initial explanation, not proof that sales never contributes to a delay. Rosa’s alternative, insufficient press capacity, remains open.",
         "next": "Ben and Rosa bring three changed orders with timestamps on 22 January. Nobody is assigned to “fix sales” while the explanation is disputed.",
-        "difference": "The next session starts from concrete competing accounts, without turning an initial AI interpretation into the client’s accepted diagnosis."
+        "difference": "The next session starts from concrete competing accounts, without turning an initial AI interpretation into the client’s accepted diagnosis.",
+        "tree_uses": [
+          {
+            "tree": "current_reality",
+            "question": "Where does this explanation need checking?",
+            "prompt": "Stephen draws the proposed link from late sharing to incomplete instructions. “Can someone show an order where this arrow does not explain what happened?”",
+            "response_by": "Ben",
+            "response": "He points to the arrow and brings the emails: “On these orders I passed the change on immediately.” Rosa keeps her examples on the table. The group can challenge the explanation without disputing that dispatches are late.",
+            "decision": "Ben and Rosa will trace three orders from receipt to decision to release. The next task is to test the disputed connection; no sales fix is assigned.",
+            "focus": [
+              "nb-r-l1"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-r-l1",
+                "text": "Ben’s timestamped emails challenge the late-sharing explanation.",
+                "source": "Emails supplied during Assess"
+              },
+              {
+                "ref": "nb-r-late",
+                "text": "20/80 dispatches were late. The tree has not yet connected this outcome to the proposed cause.",
+                "source": "Completed baseline, 4–15 January"
+              }
+            ]
+          }
+        ]
       },
       {
         "date": "2027-01-22",
@@ -998,7 +1023,7 @@
           "On two of the three orders, Ben passed on the change immediately. Production still waited: only Maya could approve a revised delivery commitment, and nobody covered her absence. Some jobs entered the queue while that decision remained unresolved.",
           "Several delayed jobs also encountered idle press slots. This weakens a universal “not enough press capacity” explanation, without excluding shortages at peak demand."
         ],
-        "facilitation": "Stephen acknowledges that the draft put the delay in the wrong place and asks for wording that matches the order sequence. The group chooses coordination, especially decision-making, as its initial capacity. Adaptability will supply the feedback loop; robustness matters because authority lacks cover. The environment informs this choice without dictating it.",
+        "facilitation": "The tree makes two different questions visible: where an order waits, and why it is released before the wait is resolved. The group chooses decision-making as its initial coordination issue. Adaptability supplies the feedback loop; robustness matters because authority lacks cover. The environment informs their choice.",
         "updates": [
           {
             "ref": "nb-r-authority",
@@ -1064,6 +1089,34 @@
             "Stephen",
             "Then my draft has put the delay in the wrong place. What wording fits the sequence?"
           ]
+        ],
+        "tree_uses": [
+          {
+            "tree": "current_reality",
+            "question": "If the information arrived promptly, where did the job wait?",
+            "prompt": "Stephen puts the three order traces beside the challenged arrow. “Which box or connection must change to fit the sequence?”",
+            "response_by": "Ben and Rosa",
+            "response": "Two changes were shared promptly but waited for an authorized delivery decision. The group adds a second condition: a job entered production before that decision was settled. Stephen redraws the connection so both conditions meet at AND.",
+            "decision": "The group chooses decision-making as its first coordination issue and traces ten more changed orders. It now has a specific mechanism to investigate: waiting authority together with premature release.",
+            "focus": [
+              "nb-r-l1",
+              "nb-r-authority",
+              "nb-r-release"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-r-authority",
+                "text": "On two of three traced orders, specifications were shared promptly; approval was still pending.",
+                "source": "Three order traces reviewed on 22 January"
+              },
+              {
+                "ref": "nb-r-l1",
+                "text": "The explanation requires both waiting approval AND release before resolution. Neither condition alone establishes incomplete instructions.",
+                "source": "The group’s revised hypothesis"
+              }
+            ],
+            "compare_with": "2027-01-18"
+          }
         ]
       },
       {
@@ -1075,7 +1128,7 @@
           "Stephen introduces the ACT group matrix: the selected capacity, the result they want, their values and helpful actions, difficult thoughts and feelings, habitual responses, and a possible way forward. Ben values dependability but notices the thought “If I ask for time, we’ll lose the customer,” followed by an immediate promise.",
           "Rosa values craftsmanship. Sometimes she stops challenging dates because she expects dismissal. Imani points out that some dates really are impossible. Stephen keeps both possibilities available: discomfort can shape behavior, and the workload concern can be accurate."
         ],
-        "facilitation": "Personal disclosure is voluntary; private matrix sheets stay private. The agreed implication enters the commons: staff can acknowledge urgency while checking a commitment before confirming it. The group chooses a ten-minute daily meeting of the four representatives to settle changed orders. Maya will attend. The possible cost is extra preparation outside shifts.",
+        "facilitation": "Personal disclosure is voluntary and private matrix sheets stay private. The shared implication is practical: acknowledge customer urgency while checking the commitment. Stephen then uses the future tree to work through what that choice might produce, the assumptions under its arrows and the possible workload harm.",
         "updates": [
           {
             "ref": "nb-f-adjustment",
@@ -1169,7 +1222,32 @@
         "evidence": "The proposed mechanism is to discuss changes earlier, settle them, then release workable instructions. The representatives accept testing the meeting; they do not accept that its predicted effects are proven. Their shared record contains working implications, not sensitive personal disclosures.",
         "next": "Rosa prepares the change register. Maya protects meeting time. Imani checks that preparation fits paid shifts. Review readiness on 29 January.",
         "difference": "The adjustment remains connected to what people care about, while its workload risk is available for review alongside its hoped-for benefit.",
-        "map": "early"
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "Why should a daily meeting produce a decision?",
+            "prompt": "Stephen builds the expected chain with the group, one arrow at a time. At the first arrow he asks, “What has to be true for discussing an order to settle it?” Then he follows the separate branch into extra work.",
+            "response_by": "Maya and Imani",
+            "response": "Maya says she will attend and authorize decisions. The group agrees to test the meeting on that assumption. Imani points to the harmful branch: preparing the list must not become unpaid work. They choose that safeguard alongside the hoped-for benefit.",
+            "decision": "Try the bounded meeting, check Maya’s attendance and authorization, and protect paid preparation. The tree supplies the outcomes and harmful branch for the prediction recorded on 29 January.",
+            "focus": [
+              "nb-f-l1",
+              "nb-f-l4"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-l1",
+                "text": "Working assumption: Maya will attend and have time to authorize changed commitments. This has not been tested.",
+                "source": "The fictional adjustment discussion"
+              },
+              {
+                "ref": "nb-f-overwork",
+                "text": "Guardrail: no unpaid work and no pilot week above 18 overtime hours.",
+                "source": "Criteria agreed during Orient"
+              }
+            ]
+          }
+        ]
       },
       {
         "date": "2027-01-29",
@@ -1228,7 +1306,7 @@
           "The complete window shows 16/80 dispatches late, against no more than 12/80 expected. Checking timestamps reduces the first week’s decision figure from 17/20 to 11/20; the second week contributes 10/20, giving 21/40 against 32/40 expected.",
           "Only eight of ten meetings occurred; Maya missed two. A supplier extended paper lead times, affecting four late jobs. Imani identifies two preparation hours outside her paid shift. The second week’s payroll initially showed 17 overtime hours; correcting and paying the work raises it to 19."
         ],
-        "facilitation": "Stephen asks which results concern implementation, which concern the explanation, and which may reflect the environment. The voice pulse has ten positive answers from 16 responses. Four missing answers stay missing. Imani’s concern is treated as accurate information about work, not reluctance to change.",
+        "facilitation": "The first unmet expected effect directs the next inquiry toward implementation and available authority. The voice pulse still has only ten positive answers from 16 responses; four missing answers stay missing. Imani’s workload report is information about the harmful branch, not evidence of resistance to change.",
         "updates": [],
         "evidence": "The correction is appended to the original report. It does not overwrite the 17/20 account. The workload harm has occurred in this instance, and the voice response count is below the required 18. The benefit remains below expectation; neither one cause nor one employee is blamed.",
         "next": "Pause expansion immediately. Maya arranges payment. Rosa and Ben separate unavailable authority, unavailable materials and incomplete instructions before 19 February.",
@@ -1242,6 +1320,40 @@
           "nb-f-decisions",
           "nb-f-reliable",
           "nb-f-overwork"
+        ],
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "Which part of the expected chain did not happen?",
+            "prompt": "Stephen places the original prediction beside the first expected effect. “We expected prompt decisions before dispatch reliability improved. Did the meeting happen, and could the people there authorize an answer?”",
+            "response_by": "Rosa and Imani",
+            "response": "Rosa corrects the first-week count: an acknowledgment was not a qualifying decision. Only eight of ten meetings happened. Imani follows the harmful branch and reports two unpaid preparation hours. Neither report is hidden by the improvement in dispatches.",
+            "decision": "Pause expansion and examine attendance, authority and paid preparation before changing the trial. The first arrow and harmful branch determine what the next review must investigate.",
+            "focus": [
+              "nb-f-l1",
+              "nb-f-l4"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-decisions",
+                "text": "21/40 qualifying decisions; 32/40 expected. The original 17/20 first-week report remains linked to its correction.",
+                "source": "Corrected change register",
+                "report": "correction"
+              },
+              {
+                "ref": "nb-f-reliable",
+                "text": "16/80 late; no more than 12/80 expected. Paper delays affected four late jobs.",
+                "source": "First complete trial report",
+                "report": "trial1-result"
+              },
+              {
+                "ref": "nb-f-overwork",
+                "text": "Two unpaid preparation hours identified and paid; second-week overtime corrected to 19 hours.",
+                "source": "Imani’s report and payroll correction",
+                "report": "trial1-result"
+              }
+            ]
+          }
         ]
       },
       {
@@ -1253,7 +1365,7 @@
           "Stephen prepares from the current snapshot, outstanding questions and overdue actions. The deputy arrangement is still unfinished. AI drafts a preparation brief calling staff “reluctant to use the process.” Imani objects: on two days people used it, but nobody present could authorize the answer.",
           "Stephen withdraws that interpretation. Maya offers bounded delegation: Ben and Rosa may agree routine replans within written production and price limits. Exceptional commitments return to Maya or her named deputy."
         ],
-        "facilitation": "Stephen asks what the people in the room can actually decide. The group changes both the intervention and its mechanism: routine decisions happen when received; the morning meeting handles exceptions. Authority and protected preparation time are joint enabling conditions, not background assumptions.",
+        "facilitation": "Stephen keeps the earlier connection visible while the group replaces it. The revision changes both the action and the condition under which it might work. Fresh agreement to the revised trial concerns that version only; the causal explanation remains proposed.",
         "updates": [
           {
             "ref": "nb-f-adjustment",
@@ -1347,6 +1459,50 @@
             "Stephen",
             "What could the people in the room actually decide?"
           ]
+        ],
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "What was missing from our first arrow?",
+            "prompt": "Stephen returns to the meeting → decision connection. “A discussion happened but an answer could not be authorized. What condition did our arrow leave implicit?”",
+            "response_by": "Imani and Maya",
+            "response": "Imani points out that people used the process without a decision-maker present. Maya offers bounded delegation and deputy cover. The group also includes paid preparation. Stephen redraws the first connection: the revised adjustment AND available authority and paid time may enable prompt decisions.",
+            "decision": "Change the intervention to routine delegation plus exception review. Obtain fresh agreement to that version, then name the preparations and owners before running it.",
+            "focus": [
+              "nb-f-l1",
+              "nb-f-cover",
+              "nb-f-adjustment"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-l1",
+                "text": "The earlier trial produced 21/40 prompt decisions against 32/40 expected. A meeting alone did not reliably supply authority.",
+                "source": "Preserved first trial report",
+                "report": "trial1-result"
+              },
+              {
+                "ref": "nb-f-cover",
+                "text": "Required for the revised trial: authorized deputy cover and paid preparation. These preparations are not yet reported complete.",
+                "source": "Revised trial agreed on 19 February"
+              }
+            ],
+            "compare_with": "2027-02-12"
+          },
+          {
+            "tree": "transition",
+            "question": "What must be done before the revised trial can be reviewed?",
+            "prompt": "Stephen turns the agreed change into a short dependency view. “Who makes authority and paid time available, and what has to be in place before a result is worth reviewing?”",
+            "response_by": "Maya and Rosa",
+            "response": "They take the two preparation actions. The lines say these actions come before the trial review; they do not claim that completing them proves the intervention works. Imani will check the workload burden.",
+            "decision": "Maya defines delegation and a deputy; Maya and Rosa allocate paid preparation before 22 February. The representatives then review results from the revised trial window.",
+            "focus": [
+              "nb-t-authority",
+              "nb-t-time",
+              "nb-t-l1",
+              "nb-t-l2"
+            ],
+            "evidence": []
+          }
         ]
       },
       {
@@ -1372,6 +1528,22 @@
           "nb-f-reliable",
           "nb-f-overwork",
           "nb-f-cover"
+        ],
+        "tree_uses": [
+          {
+            "tree": "transition",
+            "question": "Have we completed the action, or observed its effect?",
+            "prompt": "Stephen follows the preparation actions into the review. “These steps were completed on 22 February. Which days in this report actually used the revised arrangement?”",
+            "response_by": "Rosa",
+            "response": "Most days in the fortnight preceded the revision. She keeps the 14/80 late-dispatch and 24/40 prompt-decision report, but labels the window mixed. Completing the actions does not make that report a clean test.",
+            "decision": "Keep the mixed report and record a new prospective observation window for 1–12 March. Review the effects after that window, using the same guardrails.",
+            "focus": [
+              "nb-t-review",
+              "nb-t-l1",
+              "nb-t-l2"
+            ],
+            "evidence": []
+          }
         ]
       },
       {
@@ -1383,7 +1555,7 @@
           "The window produces 34/40 prompt decisions and 8/80 late dispatches. Seventy-five of 80 jobs enter their agreed slots with complete instructions. Overtime is 16 and 15 hours; there are 16 positive voice answers from 19 responses and no unpaid work reported.",
           "Maya is absent for two days. Five of six requests received during that absence get prompt decisions within the delegation limits. Paper availability has also normalized, and order mix is slightly simpler."
         ],
-        "facilitation": "Stephen asks what improved and what else changed. They distinguish the completed action, a capacity that kept functioning during absence, and the delivery outcome. The pattern supports continuing, but cannot identify a unique cause.",
+        "facilitation": "The group reviews evidence at the different points in the chain, including where evidence is missing. It distinguishes an action completed, authority working during absence and the client’s dispatch outcome. One qualifying fortnight supports continuing; it is not enough for closure.",
         "updates": [],
         "evidence": "The original prediction sits beside the observed counts. The group supports retaining the adjustment without accepting its causal arrows as proved. One qualifying fortnight is not the two required for closure.",
         "next": "Continue unchanged through 26 March with the same expectation and safeguards. Do not expand the trial or redefine success.",
@@ -1395,6 +1567,53 @@
           "nb-f-reliable",
           "nb-f-overwork",
           "nb-f-cover"
+        ],
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "Does the evidence support each step in the chain?",
+            "prompt": "Stephen reads the tree from the adjustment through decisions, ready instructions and dispatches. At each box he asks, “What did we observe here, and what can we still not tell?”",
+            "response_by": "Rosa and Ben",
+            "response": "Delegation kept decisions moving during Maya’s absence. Dispatches improved. Packet readiness was counted, but there is no comparable readiness baseline. Ben also notes easier jobs and restored paper supply, so the tree’s arrows remain hypotheses.",
+            "decision": "Continue unchanged for the second qualifying fortnight. Keep the missing readiness comparison and alternative explanations visible instead of marking the whole chain proved.",
+            "focus": [
+              "nb-f-decisions",
+              "nb-f-ready",
+              "nb-f-reliable"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-cover",
+                "text": "During Maya’s two-day absence, five of six requests received prompt decisions within the delegation limits.",
+                "source": "Implementation check",
+                "report": "march1-result"
+              },
+              {
+                "ref": "nb-f-decisions",
+                "text": "34/40 prompt decisions; at least 32/40 expected.",
+                "source": "Change register",
+                "report": "march1-result"
+              },
+              {
+                "ref": "nb-f-ready",
+                "text": "75/80 packets ready at their slot. No comparable readiness baseline was collected; the amount of improvement is unknown.",
+                "source": "Packet check",
+                "report": "march1-result"
+              },
+              {
+                "ref": "nb-f-reliable",
+                "text": "8/80 late, versus 20/80 at baseline. Easier order mix and normal paper supply may explain part of the result.",
+                "source": "Dispatch report",
+                "report": "march1-result"
+              },
+              {
+                "ref": "nb-f-overwork",
+                "text": "16 and 15 overtime hours; no unpaid work reported. Reporting does not establish that all harm is absent.",
+                "source": "Guardrail check",
+                "report": "march1-result"
+              }
+            ]
+          }
         ]
       },
       {
@@ -1412,13 +1631,39 @@
         "next": "Rosa drafts the handover for 2 April. Imani checks for costs hidden by the aggregate figures; Maya confirms continuing authority and paid time.",
         "difference": "The group can explain its closure decision from preserved criteria and reports, while seeing exactly what the decision does not settle.",
         "report": "march2-result",
-        "map": "late",
         "reviewed_refs": [
           "nb-f-adjustment",
           "nb-f-decisions",
           "nb-f-reliable",
           "nb-f-overwork",
           "nb-f-cover"
+        ],
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "Are we meeting the goal, and what remains unexplained?",
+            "prompt": "Stephen keeps the causal arrows proposed while checking the reports against the original endpoint. “We can meet the agreed criteria without knowing the unique cause. Which conclusion are we entitled to make?”",
+            "response_by": "The representatives",
+            "response": "They accept that two nonoverlapping windows meet the original completion criteria. They retain machine downtime, customer changes, quotation delays and peak capacity as open matters. The mechanism remains open to revision.",
+            "decision": "Prepare handover using the original success criteria. Preserve the open causal questions and monitoring triggers after active support closes.",
+            "focus": [
+              "nb-f-reliable"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-decisions",
+                "text": "35/40 prompt decisions in the second qualifying window.",
+                "source": "Change register",
+                "report": "march2-result"
+              },
+              {
+                "ref": "nb-f-reliable",
+                "text": "7/80 late after 8/80 in the prior window; both meet the ≤10% criterion. Guardrails also meet the agreed thresholds.",
+                "source": "Second qualifying review",
+                "report": "march2-result"
+              }
+            ]
+          }
         ]
       },
       {
@@ -1467,7 +1712,7 @@
           "The 3–14 May window shows 9/80 dispatches late, 33/40 prompt decisions, overtime of 15 and 16 hours, and 15 positive voice answers from 18 responses. A new customer sends more late changes; the deputy is reassigned twice.",
           "One employee says challenging dates now feels like “holding everyone up,” without alleging a specific sanction. The group treats the concern as information to explore. Missing positive answers are not replaced by guesses about why someone answered or stayed silent."
         ],
-        "facilitation": "Stephen asks which supporting condition has become less available. The group reopens deputy cover and how objections are received. They retain the original criteria, March’s qualifying windows and the possibility of environmental effects.",
+        "facilitation": "Revisiting the same condition and outcome separates implementation drift from a verdict on the whole adjustment. The group retains environmental changes and the speaking-up concern as live information, keeps the original criteria and chooses an internal review before the two-window re-engagement trigger is reached.",
         "updates": [],
         "evidence": "This is one failed delivery-and-voice window. The agreed two-window re-engagement trigger has not fired, but the group chooses an internal adjustment now. The May report is a working update after Release 3; no later review result is invented.",
         "next": "Maya restores deputy cover. Imani offers a voluntary discussion. Rosa reviews again on 28 May and invites Stephen if the next window also fails or a safeguard concern warrants it.",
@@ -1487,6 +1732,46 @@
           "nb-f-cover",
           "nb-t-authority",
           "nb-t-review"
+        ],
+        "tree_uses": [
+          {
+            "tree": "future_reality",
+            "question": "Which supporting condition needs checking again?",
+            "prompt": "Stephen reopens the same tree. “Prompt decisions still meet the indicator, but delivery and voice no longer meet their thresholds. Which conditions or explanations should we inspect before abandoning the adjustment?”",
+            "response_by": "Rosa, Ben and Imani",
+            "response": "Rosa points to deputy cover, reassigned twice. Ben reports more late customer changes. Imani brings the concern about challenging dates. They keep all three observations in play; a slipping condition does not prove it caused the delivery result.",
+            "decision": "Restore deputy cover, explore the speaking-up concern and review again on 28 May. Compare the next window with the unchanged criteria before deciding whether to invite Stephen back.",
+            "focus": [
+              "nb-f-cover",
+              "nb-f-reliable"
+            ],
+            "evidence": [
+              {
+                "ref": "nb-f-cover",
+                "text": "Deputy cover was reassigned twice. Check implementation before judging the adjustment as a whole.",
+                "source": "Follow-up implementation report",
+                "report": "followup-result"
+              },
+              {
+                "ref": "nb-f-decisions",
+                "text": "33/40 prompt decisions (82.5%): the early indicator still meets its threshold.",
+                "source": "Change register",
+                "report": "followup-result"
+              },
+              {
+                "ref": "nb-f-reliable",
+                "text": "9/80 late (11.25%): better than baseline, above the completion threshold. A new customer sends more late changes.",
+                "source": "Follow-up dispatch report",
+                "report": "followup-result"
+              },
+              {
+                "ref": "nb-f-overwork",
+                "text": "15 and 16 overtime hours; no unpaid work reported. Separately, only 15 positive voice answers from 18 responses require review.",
+                "source": "Follow-up guardrail reports",
+                "report": "followup-result"
+              }
+            ]
+          }
         ]
       }
     ]
