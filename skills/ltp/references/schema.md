@@ -129,6 +129,28 @@ The PR's **Accepted change proposals** section identifies each receipt by propos
 
 Append receipts; preserve their reply, scope and time when tree items are revised or removed. `node_ids` and `link_ids` identify the approved tree changes, including removed items, and need not still exist in the working tree. Backlog work and other approved artifacts belong in the scope snapshot. Save the receipt and intended tree updates, then validate before implementation. Recording an already-given acceptance or ordinary conversational capture requires no recursive proposal. Receipt-only changes do not create an accepted-reasoning revision.
 
+## Consent to be named when sharing
+
+Before a commons is shared on the Reason Commons site, each person it would name agrees, in the optional top-level `share_consents` list. See [sharing.md](sharing.md).
+
+```yaml
+share_consents:
+  - participant: bob
+    name: Bob Okafor
+    given_at: '2026-10-30T10:05:00+01:00'
+    source: conversation
+    source_text: Yes, share it, and name me as Bob Okafor.
+    recorded_by: alice
+  - participant: carol
+    name: Carol
+    given_at: '2026-10-29T18:00:00Z'
+    source: attested
+    note: Carol agreed by email to Alice, first name only.
+    recorded_by: alice
+```
+
+`participant` and `recorded_by` are configured human participants; `name` is exactly how that person wants to appear, at most 80 characters. `given_at` is a timezone-aware timestamp of when they agreed. `source: conversation` means the person typed it in this session, and `source_text` keeps their words; `source: attested` means they agreed elsewhere, and `note` says where and how, with `recorded_by` vouching for it. The AI cannot consent, and silence or a request to share does not count for anyone else. To withdraw, remove the entry; a commons already on the site then needs a change or removal there too. The latest entry for a participant counts.
+
 ## Snapshots
 
 The helper copies the complete working state, including WIP, into each immutable snapshot triggered by an accepted change. It adds `revision`, `previous_revision` (null for the first), and `change` containing `at`, `driver`, `summary`, and affected `trees`. These fields belong to snapshots; the working file does not need to maintain them. History preserves previous wording and removed items without `superseded_by` or embedded history fields. See [views.md](views.md) for generation and comparison rules.

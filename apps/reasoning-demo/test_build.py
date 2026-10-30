@@ -6,6 +6,7 @@ import importlib.util
 import json
 from pathlib import Path
 import re
+import tempfile
 import unittest
 from urllib.parse import urljoin, urlparse
 
@@ -13,6 +14,9 @@ spec = importlib.util.spec_from_file_location("demo_build", Path(__file__).with_
 build = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(build)
 diagrams, pages = build.diagrams, build.pages
+# The curated site's tests don't depend on what groups have shared; SubmittedCommonsTests checks those.
+REAL_SUBMISSIONS, CURATED_ONLY = build.SUBMISSIONS, tempfile.TemporaryDirectory()
+build.SUBMISSIONS = Path(CURATED_ONLY.name)
 
 try:
     import yaml  # noqa: F401
@@ -1682,6 +1686,143 @@ class PlanTests(unittest.TestCase):
             needs = re.findall(r'<div class="pv-needs"><p>Needs</p><ul>(.*?)</ul></div>', prereq, flags=re.S)
             plan = diagrams.stages(self.commons[slug].trees["prerequisite"])
             self.assertEqual(sum(item.count("<li") for item in needs), sum(len(p) for p in plan["pre"].values()), slug)
+
+
+def shared_commons():
+    """A small commons as the skill would share it: every standing, a loop, a challenge and open work."""
+    def item(ident, status="proposed", by=("Bob",), **extra):
+        accepted = ["Alice Example"] if status in ("accepted", "disputed") else []
+        return {"id": ident, "status": status, "accepted_by": accepted, "contributors": list(by), **extra}
+    return {"submission_version": 1, "slug": "quote-turnaround", "title": "Quote turnaround", "summary": "Getting customers a quote within a day.",
+            "submitted_by": {"name": "Alice Example", "github": "alice-example"}, "licence": "CC-BY-4.0", "released_on": "2026-10-30",
+            "people": [{"name": "Alice Example", "consent": {"given_on": "2026-10-30", "how": "conversation"}},
+                       {"name": "Bob", "consent": {"given_on": "2026-10-29", "how": "attested"}}],
+            "trees": {"goal": {"nodes": [item("g1", "accepted", ("Alice Example",), kind="goal", text="Customers get quotes within a day."),
+                                         item("g2", by=("AI assistant",), kind="necessary_condition", text="Pricing approval takes hours, not days.")],
+                               "links": [item("gl1", by=("AI assistant",), **{"from": ["g2"], "to": "g1", "relation": "necessary_for"})], "backlog": []},
+                      "current_reality": {"nodes": [item("n1", "accepted", kind="undesirable_effect", text="Quotes take three days."),
+                                                    item("n2", "disputed", kind="cause", text="Sales waits for pricing approval.",
+                                                         challenges=[{"text": "Approval is quick now.", "by": "Alice Example"}])],
+                                          "links": [item("l1", **{"from": ["n2"], "to": "n1", "relation": "contributes_to"}),
+                                                    item("l2", **{"from": ["n1"], "to": "n2", "relation": "contributes_to"})],
+                                          "backlog": [{"ref": "l1", "work": "test_causality", "label": "Check whether approval alone explains the wait."}]}}}
+
+
+class SharedCommonsTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.saved = build.SUBMISSIONS
+        build.SUBMISSIONS = Path(self.tmp.name)
+        self.publication = shared_commons()
+        self.add(self.publication)
+        self.site, self.commons = build.load_site()
+        self.outputs = build.build_files(self.site, self.commons)
+
+    def tearDown(self):
+        build.SUBMISSIONS = self.saved
+        self.tmp.cleanup()
+
+    def add(self, publication, folder=None):
+        path = Path(self.tmp.name) / (folder or publication["slug"])
+        path.mkdir(exist_ok=True)
+        (path / "publication.json").write_text(json.dumps(publication))
+        return path
+
+    def test_it_matches_the_skill_schema(self):
+        self.assertEqual(build.submissions.TREE_KINDS, build.TREE_KINDS)
+
+    def test_shared_commons_sit_on_their_own_shelf(self):
+        home = self.outputs["index.html"]
+        self.assertIn('id="shared"', home)
+        self.assertIn("Shared by the people working on them", home)
+        self.assertGreater(home.index('href="quote-turnaround/index.html"'), home.index('id="shared"'))
+        self.assertEqual(home.count('href="quote-turnaround/index.html"'), 2)  # The card's title and its link, once.
+
+    def test_every_page_says_who_shared_it_and_points_contributions_to_them(self):
+        pages_ = {k: v for k, v in self.outputs.items() if k.startswith("quote-turnaround/") and k.endswith(".html")}
+        self.assertIn("quote-turnaround/items.html", pages_)
+        self.assertNotIn("quote-turnaround/changes.html", self.outputs)
+        for name, page in pages_.items():
+            self.assertIn("Shared by its participants.", page, name)
+            self.assertNotIn("Review a public GitHub draft", page, name)
+            self.assertNotIn("Changes <span>", page, name)
+        self.assertIn('href="https://github.com/alice-example">Alice Example on GitHub</a>', pages_["quote-turnaround/index.html"])
+
+    def test_about_lists_consent_licence_and_how_to_ask_for_removal(self):
+        about = self.outputs["quote-turnaround/about.html"]
+        self.assertIn("<b>Alice Example</b> agreed to be named on 30 October 2026, given in the conversation that prepared it.", about)
+        self.assertIn("<b>Bob</b> agreed to be named on 29 October 2026, given elsewhere, as the person who shared it confirms.", about)
+        self.assertIn("https://creativecommons.org/licenses/by/4.0/", about)
+        self.assertIn("issues/new?title=Quote+turnaround%3A+a+change+or+removal", about)
+
+    def test_each_standing_is_shown_as_shared_and_a_loop_is_drawn(self):
+        items = self.outputs["quote-turnaround/items.html"]
+        self.assertIn("Accepted for now by Alice Example", items)
+        self.assertIn("Disputed; earlier accepted by Alice Example", items)
+        self.assertIn("Proposed by AI assistant", items)
+        self.assertIn("Approval is quick now.", items)
+        self.assertIn("Check whether approval alone explains the wait.", self.outputs["quote-turnaround/questions.html"])
+        self.assertIn("loops back", self.outputs["quote-turnaround/in-the-way.html"])
+
+    def test_the_download_is_exactly_what_was_shared(self):
+        self.assertEqual(json.loads(self.outputs["quote-turnaround/reasoning.json"]), self.publication)
+
+    def test_refusals(self):
+        def refused(message, change):
+            data = shared_commons()
+            change(data)
+            with self.assertRaisesRegex(ValueError, message):
+                build.submissions.validate(data, {"gandhi-2-0"})
+        refused("Named without their consent: Carol", lambda d: d["trees"]["goal"]["nodes"][0]["contributors"].append("Carol"))
+        refused("exactly these fields", lambda d: d.update(working_file="reason-commons.yaml"))
+        refused("Unexpected or missing fields", lambda d: d["trees"]["goal"]["nodes"][0].update(mode="voice"))
+        refused("ends must be statements in the same tree", lambda d: d["trees"]["goal"]["links"][0].update(to="n1"))
+        refused("already used", lambda d: d.update(slug="gandhi-2-0"))
+        refused("Invalid slug", lambda d: d.update(slug="Quote Turnaround"))
+        refused("accepted connection needs accepted ends", lambda d: d["trees"]["goal"]["links"][0].update(status="accepted", accepted_by=["Alice Example"]))
+        refused("Only people can accept", lambda d: d["trees"]["goal"]["nodes"][0]["accepted_by"].append("AI assistant"))
+        refused("Only an accepted item lists who accepted it", lambda d: d["trees"]["goal"]["nodes"][1].update(accepted_by=["Bob"]))
+        refused("published under CC-BY-4.0", lambda d: d.update(licence="All rights reserved"))
+        refused("must be named with their consent", lambda d: d.update(people=d["people"][1:]))
+        refused("Invalid kind", lambda d: d["trees"]["goal"]["nodes"][1].update(kind="cause"))
+
+    def test_a_folder_is_named_after_its_slug_and_holds_only_the_file(self):
+        self.add({**shared_commons(), "slug": "other-commons"}, folder="misnamed")
+        with self.assertRaisesRegex(ValueError, "named after its slug"):
+            build.load_site()
+        (Path(self.tmp.name) / "misnamed" / "publication.json").unlink()
+        (Path(self.tmp.name) / "misnamed").rmdir()
+        (Path(self.tmp.name) / "quote-turnaround" / "notes.txt").write_text("private")
+        with self.assertRaisesRegex(ValueError, "may hold only publication.json"):
+            build.load_site()
+
+    def test_a_slug_already_on_the_site_is_refused(self):
+        self.add({**shared_commons(), "slug": "gandhi-2-0"})
+        with self.assertRaisesRegex(ValueError, "already used"):
+            build.load_site()
+
+
+class SubmittedCommonsTests(unittest.TestCase):
+    """Whatever groups have actually shared, in submissions/, reads as shared and is complete."""
+    def test_each_shared_commons_reads_as_shared(self):
+        saved, build.SUBMISSIONS = build.SUBMISSIONS, REAL_SUBMISSIONS
+        try:
+            site, commons = build.load_site()
+            outputs = build.build_files(site, commons)
+        finally:
+            build.SUBMISSIONS = saved
+        for record in commons:
+            if record["entry"]["kind"] != "shared":
+                continue
+            slug, data = record["entry"]["slug"], record["submission"]
+            self.assertIn(f'href="{slug}/index.html"', outputs["index.html"].split('id="shared"', 1)[-1], slug)
+            for name, page in outputs.items():
+                if name.startswith(slug + "/") and name.endswith(".html"):
+                    self.assertIn("Shared by its participants.", page, name)
+                    self.assertNotIn("Review a public GitHub draft", page, name)
+            for tree in data["trees"].values():
+                for item in tree["nodes"] + tree["links"]:
+                    self.assertIn(f'id="{item["id"]}"', outputs[f"{slug}/items.html"], f"{slug} {item['id']}")
 
 
 if __name__ == '__main__':

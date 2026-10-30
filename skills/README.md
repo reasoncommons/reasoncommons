@@ -91,6 +91,24 @@ Show me our commons in the browser.
 
 The agent turns the working file into pages like the [demonstration commons](../website/demos/reason-commons-in-use/index.html): an overview, a map, a page for each question and every statement with who contributed it, who accepted it and what is still open. Accepted, proposed and disputed reasoning are all there, each marked. The pages stay on your computer, next to the working file; nothing is published or sent anywhere. Ask again after the reasoning changes to see the new version.
 
+## Share your commons on the site
+
+When a group wants others to read its commons, ask:
+
+```text
+Help us share our commons on the Reason Commons site.
+```
+
+The agent works through it with you:
+
+1. You choose what goes public: which questions, whether to include proposed or disputed reasoning, and whether to include assumptions, challenges and open questions.
+2. Everyone it would name agrees to be named, under the name they choose. Someone who agreed elsewhere, such as by email, can be vouched for by the person sharing it.
+3. You see a preview on your own computer before anything is shared.
+4. The person sharing it signs in to GitHub themselves. A GitHub account is needed, because the commons arrives as a pull request.
+5. With your go-ahead, the agent opens the pull request. A maintainer reviews it, and once it is merged the commons appears on [the commons page](../website/demos/reason-commons-in-use/index.html), on a shelf of commons shared by the people working on them.
+
+Shared commons are published under [Creative Commons Attribution 4.0](https://creativecommons.org/licenses/by/4.0/): anyone may reuse them with credit to the people named. Reason Commons reviews each one before it appears but doesn't check the reasoning. Anyone named can ask for a change or removal through an issue on [the repository](https://github.com/reasoncommons/reasoncommons/issues); copies already made elsewhere can't be recalled. To share a new version, ask again.
+
 ## Send this to a colleague
 
 ```text

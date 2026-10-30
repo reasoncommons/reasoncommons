@@ -23,6 +23,9 @@ sys.path.insert(0, str(HERE))
 import diagrams  # noqa: E402
 import pages  # noqa: E402
 import revisions  # noqa: E402
+import submissions  # noqa: E402
+
+SUBMISSIONS = HERE / "submissions"  # Commons shared by their participants, one folder each, found without a site.json entry.
 
 TREE_KINDS = {
     "goal": {"goal", "critical_success_factor", "necessary_condition"},
@@ -519,6 +522,13 @@ def load_site():
         review_path = (HERE / entry["registry"]).with_name("review.json")
         review = revisions.validate(read_json(review_path), data, validate_reconstruction) if review_path.exists() else {}
         commons.append({"entry": entry, "registry": registry, "data": data, "review": review})
+    taken = {c["entry"]["slug"] for c in commons}
+    for path in sorted(SUBMISSIONS.glob("*/publication.json")):
+        data = submissions.validate(read_json(path), taken)
+        require(data["slug"] == path.parent.name, f"submissions/{path.parent.name}: the folder must be named after its slug, {data['slug']}")
+        require(sorted(p.name for p in path.parent.iterdir()) == ["publication.json"], f"submissions/{path.parent.name} may hold only publication.json")
+        taken.add(data["slug"])
+        commons.append({"entry": {"slug": data["slug"], "kind": "shared"}, "submission": data})
     return site, commons
 
 
@@ -572,6 +582,8 @@ def publication_archives(registry, current):
 
 def normalize(item):
     """One reading of either projection for the pages; nothing is added that the projection lacks."""
+    if "submission" in item:
+        return submissions.to_pages(item["submission"])
     presentation = item["registry"].get("presentation", {})
     require(isinstance(presentation, dict) and set(presentation) <= {"summary", "description", "scope"}
             and all(isinstance(v, str) and v.strip() for v in presentation.values()), "Invalid reviewed presentation")

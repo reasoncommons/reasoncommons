@@ -150,11 +150,16 @@ def build(state_path, made_at=None):
     data = project(state, state_path.name, made_at)
     outputs = pages.render_private(SITE, data)
     outputs[f"{SLUG}/reasoning.json"] = data["json"]
+    return data, with_assets(outputs)
+
+
+def with_assets(outputs):
+    """The stylesheet, script and fonts every page loads."""
     outputs["styles.css"] = (VIEWER / "styles.css").read_text()
     outputs["app.js"] = (VIEWER / "app.js").read_text()
     for font in sorted((VIEWER / "fonts").iterdir()):
         outputs[f"fonts/{font.name}"] = font.read_bytes()
-    return data, outputs
+    return outputs
 
 
 def write(outputs, out):

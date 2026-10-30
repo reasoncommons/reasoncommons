@@ -139,12 +139,32 @@ def validate_change_acceptances(state, people):
         seen.add(key)
 
 
+def validate_share_consents(state, people):
+    """Each person's own agreement to be named when the commons is shared; see references/sharing.md."""
+    consents = state.get("share_consents", [])
+    require(isinstance(consents, list), "share_consents must be a list.")
+    for index, consent in enumerate(consents):
+        prefix = f"share_consents[{index}]"
+        require(isinstance(consent, dict) and {"participant", "name", "given_at", "source", "recorded_by"} <= set(consent)
+                <= {"participant", "name", "given_at", "source", "source_text", "recorded_by", "note"}, f"{prefix} has missing or unknown fields.")
+        require(consent["participant"] in people and consent["recorded_by"] in people, f"{prefix} must name configured human participants.")
+        name = consent["name"]
+        require(isinstance(name, str) and name.strip() == name and 0 < len(name) <= 80 and name != "AI assistant", f"{prefix}.name must be how the person wants to appear, up to 80 characters.")
+        acceptance_time(consent["given_at"], "given_at", prefix)
+        require(consent["source"] in {"conversation", "attested"}, f"{prefix}.source must be conversation or attested.")
+        if consent["source"] == "conversation":
+            require(isinstance(consent.get("source_text"), str) and consent["source_text"].strip(), f"{prefix}.source_text must keep the person's own words.")
+        else:
+            require(isinstance(consent.get("note"), str) and consent["note"].strip(), f"{prefix}.note must say where and how the consent was given.")
+
+
 def validate(state):
     require(isinstance(state, dict) and state.get("schema_version") == 1, "Expected schema_version: 1.")
     people = state.get("participants", {})
     require(isinstance(people, dict) and "assistant" not in people, "Configure human participants; assistant is reserved.")
     require(state.get("driver") in people, "Driver must be a configured participant.")
     validate_change_acceptances(state, people)
+    validate_share_consents(state, people)
     feedback.validate(state)
     trees = state.get("trees", {})
     require(isinstance(trees, dict) and state.get("active_tree") in trees, "active_tree must exist.")

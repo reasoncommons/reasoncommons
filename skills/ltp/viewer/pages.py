@@ -133,6 +133,10 @@ def credit_caveat(c):
 VIEW_NOUNS = {"conflict": "Conflict", "transition": "Action"}
 # A private view is opened from the reader's own disk, so site-wide links go to the live site.
 PUBLIC_ROOT = "https://reasoncommons.com"
+# A commons shared by its participants: its licence, and how each named person's consent was given.
+SHARED_LICENCE = ("CC-BY-4.0", "https://creativecommons.org/licenses/by/4.0/", "Creative Commons Attribution 4.0")
+CONSENT_HOW = {"conversation": "given in the conversation that prepared it",
+               "attested": "given elsewhere, as the person who shared it confirms"}
 
 
 def site_link(c, path):
@@ -186,6 +190,7 @@ class Commons:
     def __init__(self, data):
         self.__dict__.update(data)
         self.is_private = data.get("is_private", False)  # A user's own working file, shown on their computer only.
+        self.is_shared = data.get("is_shared", False)  # Shared by its own participants; both together is a preview of sharing.
         self.review = data.get("review", {})
         self.front_page = data.get("front_page", {})
         self.items, self.tree_of, self.order = {}, {}, []
@@ -625,6 +630,10 @@ def brief(c, ident, site):
                    "The original participants have not endorsed this map, and none of the people credited has reviewed its wording.")
         closing = ("Use the ltp skill if available. Read the credited posts before attributing the claim to a participant: the wording is the AI's paraphrase, not theirs. "
                    "Help me develop a question, correction or challenge as a draft; don't treat my interest as endorsement or invent a trial commitment. Copying this brief submits nothing.")
+    elif c.is_shared:
+        opening = f"I'm reading {c.name}, a commons its participants shared on the Reason Commons site, and want to develop a contribution about one {noun}."
+        closing = (f"Use the ltp skill if you have it. The people who shared this commons own its reasoning; {c.submitted_by['name']} shared it. "
+                   "Help me work out a question, an observation or a challenge as a draft I could offer them, and don't assume I endorse the item. Copying this brief submits nothing.")
     elif c.is_private:
         opening = f"This is from my own Reason Commons working file, {c.source_file}. I want to keep working on one {noun}."
         closing = ("Use the ltp skill and resume from that working file. Check whether this item has changed since this view was made before proposing anything. "
@@ -653,7 +662,15 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
     current = ' aria-current="page"'
     nav_html = "".join(f'<a href="{href}"{current if key == nav else ""}>{label}</a>' for href, label, key in links)
     banner = ""
-    if private:
+    if private and c.is_shared:
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Preview on this computer.</strong> '
+                  'This is how the commons would look once shared and reviewed. Nothing has been shared yet. '
+                  f'<a href="{up}{c.slug}/about.html">What would be public →</a></div></div>')
+    elif c and c.is_shared:
+        banner = ('<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Shared by its participants.</strong> '
+                  'Reason Commons reviewed the submission but hasn’t checked the reasoning. '
+                  f'<a href="{up}{c.slug}/about.html">Who shared it →</a></div></div>')
+    elif private:
         banner = (f'<div class="reconstruction-banner" role="note"><div class="wrap"><strong>Private view on this computer.</strong> '
                   f'The ltp skill made these pages from {esc(c.source_file)} on {day(c.date)}. Nothing here is published or sent anywhere. '
                   f'<a href="{up}{c.slug}/about.html">About this view →</a></div></div>')
@@ -714,7 +731,9 @@ def shell(*, title, description, depth, body, nav=None, c=None, page="", head=""
 
 def publication_tag(c):
     if c.is_private:
-        return '<span class="tag tag-yours">Private view</span>'
+        return f'<span class="tag tag-yours">{"Preview" if c.is_shared else "Private view"}</span>'
+    if c.is_shared:
+        return '<span class="tag tag-yours">Shared by its participants</span>'
     if c.is_reconstruction:
         return '<span class="tag tag-reconstruction">Source reconstruction · Proposed</span>'
     return ('<span class="tag tag-example">Fictional example</span>' if c.is_example
@@ -730,7 +749,7 @@ def commons_head(c, tab, heading=None):
         tabs.append(("questions.html", "Open questions", "questions", str(len(c.open_items()))))
     if c.feedback:
         tabs.append(("learning.html", "Learning", "learning", plural(sum(len(r["reports"]) for r in c.feedback), "report")))
-    if not c.is_private:  # A private view shows the working file as it is now; the skill keeps the history.
+    if not (c.is_private or c.is_shared):  # The skill keeps the history; a shared commons has no release history here yet.
         tabs.append(("changes.html", "Changes", "changes", plural(len(c.history), "release")))
     tabs.append(("about.html", "About", "about", ""))
     current = ' aria-current="page"'
@@ -743,7 +762,7 @@ def commons_head(c, tab, heading=None):
     return (f'<div class="ch"><div class="wrap">'
             f'<nav class="crumbs" aria-label="Breadcrumb"><a href="../index.html#commons">Commons</a><span aria-hidden="true">/</span><span>{esc(c.name)}</span></nav>'
             f'<div class="ch-row"><div>{tag}{title}<p class="ch-by">{esc(c.byline)}</p></div>'
-            f'<p class="ch-meta">{"Made" if c.is_private else "Published"} {day(c.date)}<br><span>{"From " + esc(c.source_file) if c.is_private else "Release " + esc(c.release_id)}</span></p></div>'
+            f'<p class="ch-meta">{"Made" if c.is_private else "Shared" if c.is_shared else "Published"} {day(c.date)}<br><span>{"From " + esc(c.source_file) if c.is_private else "By " + esc(c.submitted_by["name"]) if c.is_shared else "Release " + esc(c.release_id)}</span></p></div>'
             f'<nav class="tabs" aria-label="This commons">{tab_html}</nav></div></div>')
 
 
@@ -861,6 +880,9 @@ def participation(c, site):
         share = ""
         if c.is_private:  # Nothing on a private view points at a public destination.
             share = '<p class="participation-note">This view is private. Paste the brief into your AI to carry on; nothing is sent from this page.</p>'
+        elif c.is_shared:  # The people who shared it own the reasoning, so contributions go to them.
+            share = (f'<p class="participation-note">To offer what you develop, contact <a href="https://github.com/{esc(c.submitted_by["github"])}">{esc(c.submitted_by["name"])} on GitHub</a>, '
+                     'who shared this commons. Nothing is added to the reasoning automatically.</p>')
         elif not c.is_example:
             issue_text = (f"Commons: {c.name}\nRelease: {c.release_id}\nContribution: {title}\n\nQuestion to explore: {front['question']}\n"
                           f"Reasoning: {site['base_url']}{c.slug}/items.html#{front['focus_ref']}\n\n{prompt}\n\nMy contribution:\n[Replace this with your example, question or correction.]\n\nSharing this for review does not endorse the current reasoning.")
@@ -898,20 +920,33 @@ def overview_sources(c):
 
 # ---------------------------------------------------------------- home
 
+def commons_card(c):
+    goal = next((n for n in c.trees.get("goal", {"nodes": []})["nodes"] if n["kind"] == "goal"), None)
+    statements, connections = c.counts()
+    mix = sorted({i["status"] for t in c.trees.values() for i in t["nodes"] + t["links"]}, key=list(STANDING).index)
+    standing = "all accepted for now" if mix == ["accepted"] else ", ".join(STANDING[s].lower().replace(" for now", "") for s in mix)
+    tag = publication_tag(c)
+    quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
+    return (f'<article class="cc{" cc-example" if c.is_example else ""}">'
+            f'<div class="cc-head">{tag}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>'
+            f'<p class="cc-summary">{esc(front_page(c)["intro"])}</p>{quote}<p class="cc-question"><span>A question to explore</span>{esc(front_page(c)["question"])}</p>'
+            f'<p class="cc-meta">{plural(statements, "statement")} · {plural(connections, "connection")} · {esc(standing)}<br>{"Shared" if c.is_shared else "Published"} {day(c.date)}</p>'
+            f'<div class="cc-actions"><a class="button" href="{c.slug}/index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} <span aria-hidden="true">→</span></a><a class="text-link" href="{c.slug}/index.html">Explore the commons →</a></div>{source_mini(c, c.slug + "/")}</article>')
+
+
+def shared_shelf(commons):
+    """Commons shared by their own participants, kept apart from the ones Reason Commons prepared."""
+    shared = [c for c in commons if c.is_shared]
+    if not shared:
+        return ""
+    return (f'\n<section class="band" id="shared" aria-labelledby="shared-heading"><div class="wrap">'
+            '<div class="band-head"><h2 id="shared-heading">Shared by the people working on them</h2><p>Groups using the skill chose to share these, with everyone named agreeing. '
+            'Each was reviewed before it appeared here, but Reason Commons hasn’t checked the reasoning. <a class="text-link" href="/skills#share-your-commons-on-the-site">Share yours →</a></p></div>'
+            f'<div class="cc-grid">{"".join(commons_card(c) for c in shared)}</div>\n</div></section>')
+
+
 def home(site, commons):
-    cards = []
-    for c in commons:
-        goal = next((n for n in c.trees.get("goal", {"nodes": []})["nodes"] if n["kind"] == "goal"), None)
-        statements, connections = c.counts()
-        mix = sorted({i["status"] for t in c.trees.values() for i in t["nodes"] + t["links"]}, key=list(STANDING).index)
-        standing = "all accepted for now" if mix == ["accepted"] else ", ".join(STANDING[s].lower().replace(" for now", "") for s in mix)
-        tag = publication_tag(c)
-        quote = f'<blockquote class="cc-goal"><span>The goal</span>{esc(goal["text"])}</blockquote>' if goal else ""
-        cards.append(f'<article class="cc{" cc-example" if c.is_example else ""}">'
-                     f'<div class="cc-head">{tag}<h3><a href="{c.slug}/index.html">{esc(c.name)}</a></h3><p class="cc-by">{esc(c.byline)}</p></div>'
-                     f'<p class="cc-summary">{esc(front_page(c)["intro"])}</p>{quote}<p class="cc-question"><span>A question to explore</span>{esc(front_page(c)["question"])}</p>'
-                     f'<p class="cc-meta">{plural(statements, "statement")} · {plural(connections, "connection")} · {esc(standing)}<br>Published {day(c.date)}</p>'
-                     f'<div class="cc-actions"><a class="button" href="{c.slug}/index.html#get-involved">{"Practise contributing" if c.is_example else "Get involved"} <span aria-hidden="true">→</span></a><a class="text-link" href="{c.slug}/index.html">Explore the commons →</a></div>{source_mini(c, c.slug + "/")}</article>')
+    cards = [commons_card(c) for c in commons if not c.is_shared]
     cards.append('<article class="cc cc-yours"><div class="cc-head"><span class="tag tag-yours">Yours</span><h3>Start a commons</h3></div>'
                  '<p class="cc-summary">Bring a goal you share with other people. In conversation, the Reason Commons skill helps you structure the thinking and keeps the record: what you agree, what is still open, and who said what.</p>'
                  '<ol class="cc-steps"><li>Install the skill in your AI</li><li>Describe the goal and what makes it hard</li><li>Accept what you can build on, together</li></ol>'
@@ -932,7 +967,7 @@ def home(site, commons):
 <section class="band" id="commons" aria-labelledby="commons-heading"><div class="wrap">
 <div class="band-head"><h2 id="commons-heading">Commons on this site</h2><p>Read accepted reasoning from our own collaboration, proposed reconstructions from a discussion, supplied talks and a research agenda, and an invented example that includes a trial and reports. Each record says where it comes from and who has accepted what.</p></div>
 <div class="cc-grid">{"".join(cards)}</div>
-</div></section>
+</div></section>{shared_shelf(commons)}
 <section class="band band-steps" aria-labelledby="made-heading"><div class="wrap">
 <div class="band-head"><h2 id="made-heading">How a commons gets made</h2><p>The site is read-only. All the thinking happens in conversation, where the skill keeps the record.</p></div>
 <ol class="steps">
@@ -1837,7 +1872,8 @@ def item_detail(c, ident, site):
     if history:
         sections.append(f'<section class="d-sec"><h3>History</h3><ul class="notes">{"".join(history)}</ul></section>')
     text = brief(c, ident, site)
-    instruction = ("Copy this brief into a conversation with your AI to keep working on this item. Nothing is sent from this page." if c.is_private else
+    instruction = ("Copy this brief into a conversation with your AI to develop a question, an observation or a challenge you could offer the people who shared this commons." if c.is_shared else
+                   "Copy this brief into a conversation with your AI to keep working on this item. Nothing is sent from this page." if c.is_private else
                    "This commons is invented, so there is no one to send anything to. Use the brief to practise with the skill." if c.is_example else
                    "Copy the brief into your AI to develop a correction or testable question. Distinguish the research question, supplied proposed analysis and supporting evidence; no action commitment is implied." if c.has_analysis else
                    "Copy the brief into your AI to draft a question or correction. Compare the source research question with the AI’s proposed answer." if c.web_sources else
@@ -2060,6 +2096,17 @@ def about_page(c, site):
     if c.is_private:
         fiction = (f'<section class="ov" id="private"><h2>A private view</h2><p>The ltp skill made these pages on this computer from {esc(c.source_file)}, on {day(c.date)}. '
                    'Nothing here is published, and nothing you do here is sent anywhere. The pages do not update on their own: ask for the view again after the reasoning changes, and the skill rebuilds them from the working file.</p></section>')
+    if c.is_shared:
+        by, (_, licence_url, licence_name) = c.submitted_by, SHARED_LICENCE
+        consents = "".join(f'<li><p><b>{esc(p["name"])}</b> agreed to be named on {day(p["given_on"])}, {esc(CONSENT_HOW[p["how"]])}.</p></li>' for p in c.consents)
+        removal = site["contribution_url"] + "?" + urlencode({"title": f"{c.name}: a change or removal", "body": f"Commons: {c.name}\nShared: {day(c.date)}\n\nWhat should change or be removed, and why:\n"})
+        preview = '<p><b>This is a preview on this computer. Nothing has been shared yet.</b></p>' if c.is_private else ""
+        fiction = (f'<section class="ov" id="shared"><h2>Shared by its participants</h2>{preview}<p>{esc(by["name"])} shared this commons on {day(c.date)}, from a working record kept with the ltp skill. '
+                   'The people named here chose what to share. Reason Commons reviewed the submission before it appeared, but hasn’t checked the reasoning: “accepted for now” means accepted by the people named on each item.</p>'
+                   f'<h3>Named with their consent</h3><ul class="notes">{consents}</ul>'
+                   f'<h3>Reusing it</h3><p>Shared under <a href="{licence_url}">{licence_name}</a>: you may reuse it if you credit the people named.</p>'
+                   f'<h3>Asking for a change or removal</h3><p>If you’re named here, or think something shouldn’t be public, <a href="{esc(removal)}">open an issue</a>, or contact <a href="https://github.com/{esc(by["github"])}">{esc(by["name"])} on GitHub</a>. '
+                   'A maintainer can take the commons down; copies already made elsewhere can’t be recalled.</p></section>')
     if c.is_reconstruction:
         def where(source):
             if source.get("kind") == "supplied_analysis":
@@ -2103,7 +2150,9 @@ def about_page(c, site):
     excluded = ("Nothing is held back: the example's whole working file is published, apart from how each contribution was captured."
                 if c.is_example else
                 "Accepted reasoning about funding, money and Rufus and David’s own working arrangements, open questions, assumptions and challenges, outcome reports, approval records and working notes stay in the working record. Proposed reasoning is published, funding and working arrangements included, and marked as proposed: nobody has accepted it.")
-    if c.is_private:
+    if c.is_shared:
+        excluded = "Only what the people named chose to share is here. Their working file, how each contribution was captured and their approval records stay with them."
+    elif c.is_private:
         excluded = "Every statement and connection in the working file is here, whatever its standing. Approval receipts for project changes, feedback-sharing settings and how each contribution was captured are not shown."
     if c.is_reconstruction:
         excluded = "The original forum posts, manuscript and source documents are not reproduced here. No participant endorsement, trial owner, budget, baseline, numerical target, feedback commitment or observed result is recorded. The map does not establish one global constraint."
@@ -2115,7 +2164,8 @@ def about_page(c, site):
         excluded = ("The original PDFs, local file paths, approval receipts and private collaboration notes are not published. No participant endorsement, assigned owner, trial commitment or observed outcome is recorded."
                     if c.talks else SUPPLIED_ABOUT[c.slug]["excluded"])
     download = f'<a class="button button-quiet" href="reasoning.json" download>Download this {"view" if c.is_private else "release"} <span aria-hidden="true">↓</span></a>'
-    snapshot = (f"These pages show the working file as it was on {day(c.date)}. They do not change when the file does." if c.is_private else
+    snapshot = (f"This is the version shared on {day(c.date)}. Sharing again replaces it; earlier versions stay in the site’s history on GitHub." if c.is_shared else
+                f"These pages show the working file as it was on {day(c.date)}. They do not change when the file does." if c.is_private else
                 f'This is release {esc(c.release_id)}, published {day(c.date)}. {"Earlier wording stays on the Changes page." if len(c.history) > 1 else "It is the first release, so there is no earlier wording to compare yet."}')
     release_text = ""
     if c.is_reconstruction:
@@ -2129,7 +2179,7 @@ def about_page(c, site):
 {fiction}
 <div class="about-grid">
 <section><h2>What “accepted for now” means</h2><p>Named people are willing to build on a statement or connection for now. It records their judgement at the time. It does not establish truth, and it does not mean everyone agrees: each item names exactly who accepted it.</p>
-<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example or c.is_reconstruction or c.is_private else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
+<h2>Contributed is not the same as accepted</h2><p>Each item records who contributed the idea and, separately, who accepted it. Ideas suggested by the AI are attributed to the AI, and only people can accept anything.{"" if c.is_example or c.is_reconstruction or c.is_private or c.is_shared else " Some statements were imported before contributors were recorded; they say so rather than guessing."}</p>
 <h2>What isn't here</h2><p>{esc(excluded)}</p>
 <h2>A snapshot, not a live feed</h2><p>{snapshot}</p></section>
 <aside class="about-side"><p class="eyebrow">In this {"view" if c.is_private else "release"}</p><p class="big-count"><b>{statements}</b> statements <b>{connections}</b> connections</p>
@@ -2164,7 +2214,7 @@ def commons_pages(c, site):
         outputs[f"{c.slug}/questions.html"] = questions_page(c, site)
     if c.feedback:
         outputs[f"{c.slug}/learning.html"] = learning_page(c, site)
-    if not c.is_private:
+    if not (c.is_private or c.is_shared):
         outputs[f"{c.slug}/changes.html"] = changes_page(c, site)
     outputs[f"{c.slug}/about.html"] = about_page(c, site)
     return outputs
