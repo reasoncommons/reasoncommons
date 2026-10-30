@@ -79,3 +79,6 @@ bd.db
 
 # Dolt is canonical; JSONL is migration/interchange only.
 issues.jsonl
+
+# Added by bd (missing required patterns)
+*.gate.lock*
