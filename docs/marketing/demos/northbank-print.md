@@ -1,0 +1,21 @@
+# Northbank Print: a fictional AP engagement
+
+The local artifact is `website/demos/northbank-print/index.html`. It opens on the first client conversation, not the final map. Thirteen chronological entries follow intake, assessment, correction of a sales-blame explanation, selection of coordination, an ACT-informed adjustment, a disappointing trial, corrected reporting, a workload harm, revised authority and paid time, two qualifying windows, handover and later deterioration. Each consequential entry links into actual current reasoning and preserved item history. The progress view retains original definitions, predictions and all reported windows.
+
+## Reasoning and acceptance
+
+This serves Goal · Critical success factor · Accepted `g-e-picturable-product` (people can picture themselves using the product) and Current Reality · Cause · Accepted `r-e-david-demo-confidence` (David lacks confidence in a coherent demo), as identified in the displayed proposal. Two review backlog entries were added to the existing primary-checkout collaboration record; no existing claim, standing or receipt was rewritten. That historical collaboration snapshot is not copied into the public PR. Its START HERE bead is closed following migration and was left closed.
+
+David Joseph accepted `northbank-commons` revision 1 and requested delivery with the exact typed reply `create the PR`. The receipt was recorded at 2026-10-30T11:59:35Z before implementation, in the case YAML and existing primary-checkout collaboration YAML. Both reasoning states passed `update_views.py` before implementation. The case has fifteen proposed statements and nine proposed connections across four trees, with five open reasoning tasks. No fictional person is configured as a real participant, contributor, endorser or feedback provider. The narrative describes simulated decisions separately; Stephen Le has not endorsed it.
+
+## Sources and boundaries
+
+The two AP PDFs were read from the user-specified `persistent-systems-theory` repository. The overview is internally dated 30 September 2026; the longer summary is internally dated 11 October despite its Oct 16 filename. The source note preserves consequential differences, including heterogeneity, reassessment, group choice and completion criteria. Stephen’s reply was unavailable; only the user’s description informed the presentation. Local static copies of the framework, Willow Lane release history, learning reports and item history were inspected after live access failed. The viewer distinguishes behavior implemented here from proposed facilitation practices and unverified capabilities.
+
+The companion engagement record is deliberate public fiction. Its dates, dialogue, measurements, endorsements and results are invented. Predictions precede their fictional observation windows; they are authored as prospective parts of the fiction, not empirical forecasts made in a real engagement. Times are not presented as tamper-proof. Closure uses two nonoverlapping windows and the original guardrails. Follow-up retains the May failures without redefining earlier success. Improvements do not identify a unique cause.
+
+## Validation
+
+The generator validates references, exact before/after chains, final agreement with canonical YAML, prospective capture order, correction links, denominators, distinct completion windows and action coverage. Tests reject current/history drift, backdated prospective predictions, inadequate voice response counts and unpaid-work completion. They verify public/download/embedded-data agreement, exclusion of real approval receipts, all fragment links and complete static reading content. Browser and website checks are reported in the PR; usefulness for Stephen remains untested. Publishing the production site is outside this implementation.
+
+Local checks: eight integrity tests passed; the canonical/export drift check passed; the website checker found zero errors and zero missing links. Browser inspection verified the opening, corrected explanation, connection history and progress comparison. Real 375px checks passed for the opening and progress view with a 375px document width and no overflow. The Flowershow CLI is unavailable, so a remote Flowershow preview was not claimed. A local preview runs at `http://127.0.0.1:8887/demos/northbank-print/index.html`.
