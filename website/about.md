@@ -16,8 +16,8 @@ There is no app to sign up for. There is [a skill](/skills) you can install in C
 ## Three strands
 
 1. **Tooling.** AI-assisted tooling for creating, maintaining and evolving a group's shared reasoning, with an annotation layer that connects ongoing discussion to it so it stays current.
-2. **Community adoption.** Working with communities already engaged in complex reasoning — AI governance, effective altruism, climate, social movements — to demonstrate the approach and develop the practices that make it stick.
-3. **Living laboratory.** Applying the system within [Second Renaissance](/explainers/second-renaissance-plain/), coordinating strategic thinking across an active community whose valuable contributions currently stay fragmented.
+2. **Community adoption.** Working with communities already engaged in complex reasoning, starting with AI safety and governance, then effective altruism, climate and social movements, to demonstrate the approach and develop the practices that make it stick.
+3. **Our own community.** Trying the approach within [Second Renaissance](/explainers/second-renaissance-plain/), which Rufus co-founded, where valuable contributions currently stay fragmented.
 
 ## Who is behind it
 

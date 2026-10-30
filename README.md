@@ -4,11 +4,13 @@ Reason Commons helps people and groups work out what they are trying to achieve 
 
 Read the public introduction at [reasoncommons.com](https://reasoncommons.com). This repository holds the shared reasoning, project work, installable skills and website. The earlier Reason Commons app (`Promise-Foundation/reason-commons`) is retired; what we offer is skills and integrations.
 
+**Try it:** `npx skills add reasoncommons/reasoncommons -s ltp`, then ask your agent to use the ltp skill on a real goal or problem. **Read one:** [our own commons](https://reasoncommons.com/demos/reason-commons-in-use/reason-commons/index.html), the accepted reasoning behind this project. **Licence:** MIT.
+
 ## Project map
 
 | Area | Purpose | Start here |
 | --- | --- | --- |
-| Shared reasoning | Goals, claims, proposed changes, acceptance and reasoning backlog across the project | Collaboration model in the private [reasoncommons/product](https://github.com/reasoncommons/product) repo (`collab/reason-commons.yaml`, bead `rcp-a4l`), [workflow](docs/beads-reasoning.md) |
+| Shared reasoning | Goals, claims, proposed changes, acceptance and reasoning backlog across the project | [Our own commons](https://reasoncommons.com/demos/reason-commons-in-use/reason-commons/index.html) on the site; the working files are private. [Workflow](docs/beads-reasoning.md) |
 | Project working material | Research, experiments, positioning, plans and references | [Docs map](docs/README.md) |
 | Installable skills | Skills with their own helpers, fixtures and tests | [Installation and usage](skills/README.md) |
 | Runnable applications | Application code, configuration, tests and operating instructions | [Applications](apps/README.md) |
@@ -19,7 +21,7 @@ Read the public introduction at [reasoncommons.com](https://reasoncommons.com). 
 
 ## Working here
 
-Resume the collaboration from `bd --sandbox show reasoncommons-a4l`, then read the working YAML and [Beads/reasoning workflow](docs/beads-reasoning.md). Keep one canonical source for each artifact. Project working documents belong in `docs/`; app- and skill-specific helpers, tests and operating instructions stay with their owner. New shared packages or workspace tooling need an actual shared dependency.
+Contributors, human or agent, start with [AGENTS.md](AGENTS.md) and the [Beads/reasoning workflow](docs/beads-reasoning.md). Keep one canonical source for each artifact. Project working documents belong in `docs/`; app- and skill-specific helpers, tests and operating instructions stay with their owner. New shared packages or workspace tooling need an actual shared dependency.
 
 Install skills from this repository; `.agents/skills/` and local `.claude/skills/` links still resolve to the canonical top-level `skills/` packages. Use the [gold toy fixture](claim-tree-annotation.md) before real applications.
 
