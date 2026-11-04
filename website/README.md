@@ -29,7 +29,6 @@ The way in is a short scrolling series: [why fixes don't stick](/explainers/01-b
 <p class="rc-eyebrow">Demos &amp; experiments — rough, unfinished, illustrative</p>
 
 <div class="rc-cards rc-cards-2">
-<a class="rc-card" href="/demos/goal-aligner/index.html"><span class="rc-card-tag">Experiment</span><span class="rc-card-title">Goal Aligner</span><p>Turning a room's scattered goals into one tree everyone can sign off on.</p></a>
 <a class="rc-card" href="/talk/2r-research-group/slides.html"><span class="rc-card-tag">Talk</span><span class="rc-card-title">A talk that performs the method</span><p>Five acts; the audience experiences the process before hearing its name.</p></a>
 </div>
 
