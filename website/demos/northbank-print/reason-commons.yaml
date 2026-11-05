@@ -1,0 +1,207 @@
+# Fictional worked case. All reasoning is assistant-proposed; story endorsements are fictional.
+schema_version: 1
+project: 'Northbank Print: a fictional Adaptive Persistence engagement'
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+trees:
+  goal:
+    nodes:
+    - id: nb-g-goal
+      kind: goal
+      text: Northbank dispatches standard repeat orders on their promised dates, within paid working time, and people can raise unrealistic commitments without penalty.
+      label: Dispatch reliably within paid time; hear concerns.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+    links: []
+    backlog: []
+  current_reality:
+    nodes:
+    - id: nb-r-authority
+      kind: cause
+      text: Changed orders can wait for an authorized decision after their specifications have been shared.
+      label: Changed orders can wait for authorized decisions.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-release
+      kind: cause
+      text: Some changed jobs are released before their delivery decisions are resolved.
+      label: Some jobs are released before decisions are resolved.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-incomplete
+      kind: undesirable_effect
+      text: Some jobs enter production with incomplete instructions.
+      label: Some jobs enter production with incomplete instructions.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-late
+      kind: undesirable_effect
+      text: Some standard repeat orders are dispatched after their original promised dates.
+      label: Some dispatches miss their original promises.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-r-l1
+      from:
+      - nb-r-authority
+      - nb-r-release
+      to: nb-r-incomplete
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-r-l2
+      from:
+      - nb-r-incomplete
+      to: nb-r-late
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-r-l2
+      work: compare_alternative_explanations
+      label: Separate instruction effects from materials, mix and machine capacity.
+  future_reality:
+    nodes:
+    - id: nb-f-adjustment
+      kind: injection
+      text: Authorized staff resolve routine changed orders when received; the morning meeting handles exceptions requiring a joint decision.
+      label: Delegate routine replans; review exceptions.
+      status: proposed
+      contributions: *id001
+      addresses:
+      - nb-r-authority
+      - nb-r-release
+      - nb-r-late
+    - id: nb-f-cover
+      kind: existing_condition
+      text: A named authorized deputy and paid preparation time are available when needed.
+      label: Provide authorized cover and paid preparation.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-decisions
+      kind: predicted_effect
+      text: Changed orders receive authorized, customer-communicated decisions by the end of the next working day.
+      label: Decide and communicate by the next working day.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-ready
+      kind: predicted_effect
+      text: More jobs enter their agreed production slots with complete instructions.
+      label: More jobs enter their agreed slots ready.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-reliable
+      kind: desirable_effect
+      text: Fewer standard repeat orders are dispatched after their original promised dates.
+      label: Fewer dispatches miss their original promises.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-overwork
+      kind: undesirable_effect
+      text: Coordination work can extend beyond paid working hours.
+      label: Coordination can extend beyond paid hours.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-f-l1
+      from:
+      - nb-f-adjustment
+      - nb-f-cover
+      to: nb-f-decisions
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l2
+      from:
+      - nb-f-decisions
+      to: nb-f-ready
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l3
+      from:
+      - nb-f-ready
+      to: nb-f-reliable
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l4
+      from:
+      - nb-f-adjustment
+      to: nb-f-overwork
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-f-cover
+      work: review_may_cover_gap
+      label: Review why deputy cover became unavailable in May.
+    - ref: nb-f-overwork
+      work: retain_workload_safeguard
+      label: Keep checking for unpaid coordination work.
+  transition:
+    nodes:
+    - id: nb-t-authority
+      kind: action
+      text: Maya defines routine decision boundaries and assigns an authorized deputy before the revised trial starts.
+      label: Maya defines authority and names a deputy.
+      status: proposed
+      contributions: *id001
+      implements:
+      - nb-f-cover
+      - nb-f-adjustment
+    - id: nb-t-time
+      kind: action
+      text: Maya and Rosa allocate paid preparation time before the revised trial starts.
+      label: Maya and Rosa allocate paid preparation time.
+      status: proposed
+      contributions: *id001
+      implements:
+      - nb-f-cover
+      - nb-f-adjustment
+    - id: nb-t-review
+      kind: action
+      text: The representatives compare fortnightly results with the original predictions, implementation conditions and guardrails.
+      label: Representatives review results fortnightly.
+      status: proposed
+      contributions: *id001
+    - id: nb-t-handover
+      kind: action
+      text: Rosa takes over the maintained record and monitoring when active facilitation closes, retaining the agreed reopening triggers.
+      label: Rosa takes over records and monitoring.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-t-l1
+      from:
+      - nb-t-authority
+      to: nb-t-review
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    - id: nb-t-l2
+      from:
+      - nb-t-time
+      to: nb-t-review
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    - id: nb-t-l3
+      from:
+      - nb-t-review
+      to: nb-t-handover
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-t-review
+      work: retain_missing_and_corrected_reports
+      label: Retain missing reports and corrected figures in every review.
+    - ref: nb-t-handover
+      work: review_2027_05_28
+      label: Review the May deterioration on 28 May; this event is not invented as completed.

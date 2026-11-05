@@ -1,0 +1,254 @@
+# Fictional worked case. All reasoning is assistant-proposed. Story endorsements are not real endorsements.
+schema_version: 1
+project: 'Northbank Print: a fictional Adaptive Persistence engagement'
+driver: david
+participants:
+  david: David Joseph
+active_tree: future_reality
+trees:
+  goal:
+    nodes:
+    - id: nb-g-goal
+      kind: goal
+      text: Northbank dispatches standard repeat orders on their promised dates, within paid working time, and people can raise unrealistic commitments without penalty.
+      label: Dispatch reliably within paid time; hear concerns.
+      status: proposed
+      contributions: &id001
+      - by: assistant
+        attribution: assistant
+        mode: text
+    links: []
+    backlog: []
+  current_reality:
+    nodes:
+    - id: nb-r-authority
+      kind: cause
+      text: Changed orders can wait for an authorized decision after their specifications have been shared.
+      label: Changed orders can wait for authorized decisions.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-release
+      kind: cause
+      text: Some changed jobs are released before their delivery decisions are resolved.
+      label: Some jobs are released before decisions are resolved.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-incomplete
+      kind: undesirable_effect
+      text: Some jobs enter production with incomplete instructions.
+      label: Some jobs enter production with incomplete instructions.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-late
+      kind: undesirable_effect
+      text: Some standard repeat orders are dispatched after their original promised dates.
+      label: Some dispatches miss their original promises.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-r-l1
+      from:
+      - nb-r-authority
+      - nb-r-release
+      to: nb-r-incomplete
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-r-l2
+      from:
+      - nb-r-incomplete
+      to: nb-r-late
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-r-l2
+      work: compare_alternative_explanations
+      label: Separate instruction effects from materials, mix and machine capacity.
+  future_reality:
+    nodes:
+    - id: nb-f-adjustment
+      kind: injection
+      text: Authorized staff resolve routine changed orders when received; the morning meeting handles exceptions requiring a joint decision.
+      label: Delegate routine replans; review exceptions.
+      status: proposed
+      contributions: *id001
+      addresses:
+      - nb-r-authority
+      - nb-r-release
+      - nb-r-late
+    - id: nb-f-cover
+      kind: existing_condition
+      text: A named authorized deputy and paid preparation time are available when needed.
+      label: Provide authorized cover and paid preparation.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-decisions
+      kind: predicted_effect
+      text: Changed orders receive authorized, customer-communicated decisions by the end of the next working day.
+      label: Decide and communicate by the next working day.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-ready
+      kind: predicted_effect
+      text: More jobs enter their agreed production slots with complete instructions.
+      label: More jobs enter their agreed slots ready.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-reliable
+      kind: desirable_effect
+      text: Fewer standard repeat orders are dispatched after their original promised dates.
+      label: Fewer dispatches miss their original promises.
+      status: proposed
+      contributions: *id001
+    - id: nb-f-overwork
+      kind: undesirable_effect
+      text: Coordination work can extend beyond paid working hours.
+      label: Coordination can extend beyond paid hours.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-f-l1
+      from:
+      - nb-f-adjustment
+      - nb-f-cover
+      to: nb-f-decisions
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l2
+      from:
+      - nb-f-decisions
+      to: nb-f-ready
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l3
+      from:
+      - nb-f-ready
+      to: nb-f-reliable
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-f-l4
+      from:
+      - nb-f-adjustment
+      to: nb-f-overwork
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-f-cover
+      work: review_may_cover_gap
+      label: Review why deputy cover became unavailable in May.
+    - ref: nb-f-overwork
+      work: retain_workload_safeguard
+      label: Keep checking for unpaid coordination work.
+  transition:
+    nodes:
+    - id: nb-t-authority
+      kind: action
+      text: Maya defines routine decision boundaries and assigns an authorized deputy before the revised trial starts.
+      label: Maya defines authority and names a deputy.
+      status: proposed
+      contributions: *id001
+      implements:
+      - nb-f-cover
+      - nb-f-adjustment
+    - id: nb-t-time
+      kind: action
+      text: Maya and Rosa allocate paid preparation time before the revised trial starts.
+      label: Maya and Rosa allocate paid preparation time.
+      status: proposed
+      contributions: *id001
+      implements:
+      - nb-f-cover
+      - nb-f-adjustment
+    - id: nb-t-review
+      kind: action
+      text: The representatives compare fortnightly results with the original predictions, implementation conditions and guardrails.
+      label: Representatives review results fortnightly.
+      status: proposed
+      contributions: *id001
+    - id: nb-t-handover
+      kind: action
+      text: Rosa takes over the maintained record and monitoring when active facilitation closes, retaining the agreed reopening triggers.
+      label: Rosa takes over records and monitoring.
+      status: proposed
+      contributions: *id001
+    links:
+    - id: nb-t-l1
+      from:
+      - nb-t-authority
+      to: nb-t-review
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    - id: nb-t-l2
+      from:
+      - nb-t-time
+      to: nb-t-review
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    - id: nb-t-l3
+      from:
+      - nb-t-review
+      to: nb-t-handover
+      relation: precedes
+      status: proposed
+      contributions: *id001
+    backlog:
+    - ref: nb-t-review
+      work: retain_missing_and_corrected_reports
+      label: Retain missing reports and corrected figures in every review.
+    - ref: nb-t-handover
+      work: review_2027_05_28
+      label: Review the May deterioration on 28 May; this event is not invented as completed.
+change_acceptances:
+- proposal_ref: northbank-commons
+  proposal_revision: 1
+  by: david
+  recorded_at: '2026-10-30T11:59:35Z'
+  timezone: Europe/Berlin
+  mode: text
+  source: conversation
+  source_text: create the PR
+  scope: 'Implement northbank-commons revision 1 as displayed: create the fictional Northbank Print current commons, thirteen-entry linked change log, preserved versions and predictions, progress reports, downloadable public YAML, self-contained generated viewer and validation. Add the specified review backlog to existing collaboration reasoning without changing existing claims or standings. The human subsequently requested PR delivery with the exact reply recorded here. Preserve private collaboration material outside the public PR.'
+  node_ids:
+  - nb-g-goal
+  - nb-r-authority
+  - nb-r-release
+  - nb-r-incomplete
+  - nb-r-late
+  - nb-f-adjustment
+  - nb-f-cover
+  - nb-f-decisions
+  - nb-f-ready
+  - nb-f-reliable
+  - nb-f-overwork
+  - nb-t-authority
+  - nb-t-time
+  - nb-t-review
+  - nb-t-handover
+  link_ids:
+  - nb-r-l1
+  - nb-r-l2
+  - nb-f-l1
+  - nb-f-l2
+  - nb-f-l3
+  - nb-f-l4
+  - nb-t-l1
+  - nb-t-l2
+  - nb-t-l3
+  approved_paths:
+  - ltp/examples/northbank-print/reason-commons.yaml
+  - ltp/examples/northbank-print/engagement.json
+  - apps/northbank-demo/build.py
+  - apps/northbank-demo/test_build.py
+  - apps/northbank-demo/README.md
+  - website/demos/northbank-print/index.html
+  - website/demos/northbank-print/commons.json
+  - website/demos/northbank-print/reason-commons.yaml
+  - docs/marketing/demos/northbank-print.md
+  - ltp/rufus-david-collab/reason-commons.yaml
