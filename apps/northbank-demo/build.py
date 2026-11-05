@@ -4,6 +4,7 @@ from copy import deepcopy
 from datetime import date
 from html import escape as esc
 import argparse
+import hashlib
 import importlib.util
 import json
 from pathlib import Path
@@ -102,6 +103,110 @@ def validate(state, data):
     require(not qualifies(windows['followup']), 'The May deterioration must remain visible.')
     validate_tree_uses(state,data)
     require({x['ref'] for x in data['actions']}=={n['id'] for n in state['trees']['transition']['nodes']}, 'Actions and current reasoning differ.')
+    validate_ap(state,data)
+
+AP_FACTORS = ('volatility','hazardousness','coordination','adaptability','robustness')
+AP_MATRIX_ORDER = ['A','B','1','2','3','4','C']
+PRESERVED_KEYS = ['metrics','windows','predictions','reports','releases','actions']
+
+def preserved_digest(data):
+    raw=json.dumps({k:data[k] for k in PRESERVED_KEYS},sort_keys=True,ensure_ascii=False,separators=(',',':'))
+    return hashlib.sha256(raw.encode()).hexdigest()
+
+def validate_ap(state,data):
+    """Check dated evidence and the declared method contract, not real-world efficacy."""
+    ap=data['ap']
+    require(ap['format_version']==1,'Unsupported AP record format.')
+    require(ap['stages']==['Orient','Assess','Analyze','Adjust','Repeat'],'The five AP stages must remain explicit.')
+    require(ap['preserved_record_keys']==PRESERVED_KEYS and ap['preserved_records_sha256']==preserved_digest(data),'Historical numerical records or predictions changed.')
+    records={r['id']:r for r in ap['records']}
+    require(len(records)==len(ap['records']),'Duplicate AP record ID.')
+    days={ev['date'] for ev in data['events']}
+    require([r['date'] for r in ap['records']]==sorted(r['date'] for r in ap['records']),'AP records must be chronological.')
+    known={}
+    for event in data['events']:
+        for change in event['updates']:known.setdefault('item:'+change['ref'],event['date'])
+    known.update({'report:'+r['id']:r['date'] for r in data['reports']})
+    for window in data['windows']:
+        known['window:'+window['id']]=('2027-01-18' if window['id']=='baseline' else min(r['date'] for r in data['reports'] if r.get('window')==window['id']))
+    people={p['id'] for p in data['people']}
+    metric_ids={m['id'] for m in data['metrics']}
+    for r in ap['records']:
+        require(r['date'] in days and r['stage'] in ap['stages'],'AP record outside a dated case event or stage.')
+        require(r['question'].strip() and r['decision'].strip() and r['basis'].strip(),'AP records need a question, basis and consequential decision.')
+        # Only previous records, including earlier records on this fictional date, may support a choice.
+        for ref in r['evidence_refs']:
+            require(ref in known,'Unknown AP evidence reference: '+ref)
+            require(known[ref]<=r['date'],'AP record reveals future evidence: '+ref)
+        if r['id'].startswith(('assess-','reassess-')):
+            require(set(r['factors'])==set(AP_FACTORS),'AP assessment must revisit all five factors.')
+            for factor in r['factors'].values():
+                require(all(factor.get(k,'').strip() for k in ('summary','unknowns','next_check')),'AP factor needs findings, uncertainty and a next check.')
+        if 'principles' in r:
+            principles=r['principles']
+            require(len(principles)==24 and len({p['id'] for p in principles})==24,'Expected 24 distinct qualitative principle entries.')
+            for capacity in ('coordination','adaptability','robustness'):
+                require(sum(p['capacity']==capacity for p in principles)==8,'Each capacity needs its eight principle entries.')
+            for p in principles:
+                require(p['assessment'] in ('strength','concern','mixed','unknown'),'Unknown principle assessment judgment.')
+                require(all(p.get(k,'').strip() for k in ('finding','basis','open_question')),'A principle needs its basis and an open question, including unknowns.')
+                require(all(ref in known and known[ref]<=r['date'] for ref in p['evidence_refs']),'Principle reveals unavailable evidence.')
+        if r['id'].startswith('analyze-'):
+            require(all(r['mismatch'].get(k,'').strip() for k in ('demand','capacity','consequence')),'Capacity choice needs an explicit demand/capacity mismatch.')
+            require({a['capacity'] for a in r['alternatives']}=={'coordination','adaptability','robustness'},'Capacity choice must consider the alternatives.')
+            require(r['ownership'].strip() and r['reopen_if'].strip(),'The group must own a revisitable capacity choice.')
+        if 'matrix' in r:
+            require([s['key'] for s in r['matrix']]==AP_MATRIX_ORDER,'The ACT pass must retain A, B, 1, 2, 3, 4 and C in order.')
+            for step in r['matrix']:
+                require(step['question'].strip() and step['response'].strip() and set(step['people'])<=people,'ACT question needs an attributed fictional group response.')
+            c=r['matrix'][-1]
+            require(c.get('acknowledges','').strip() and c.get('commits_to'),'ACT C must acknowledge difficulty and specify chosen action.')
+            require(r['format_choice']['reason'].strip() and r['format_choice']['alternatives'],'Adjustment method/format must be a reasoned choice.')
+            require(r['real_constraints'].strip() and r['commitment_status'].strip(),'ACT must retain real constraints and distinguish commitment from observation.')
+        if 'criteria_refs' in r:require(set(r['criteria_refs'])==metric_ids,'AP agreement and closure must retain all original criteria.')
+        if 'qualifying_windows' in r:
+            windows={w['id']:w for w in data['windows']}
+            chosen=[windows[w] for w in r['qualifying_windows']]
+            require(len(chosen)==2 and chosen[0]['end']<chosen[1]['start'] and all(qualifies(w) for w in chosen),'AP closure needs the two qualifying original windows.')
+            require(r['optional_monitoring'] is True,'Ongoing monitoring is this group’s explicit optional choice.')
+        known['ap:'+r['id']]=r['date']
+    for event in data['events']:
+        require(event['ap_refs'] and all(ref in records and records[ref]['date']==event['date'] for ref in event['ap_refs']),'Every case event needs its own dated AP working record.')
+
+def ap_record_view(r):
+    """Expose the fictional method record, with unknowns and judgments kept visible."""
+    body=f'<p class="meta">{esc(r["basis"])}</p>'
+    if r.get('agreement'):
+        body+=f'<h4>How the issue is agreed</h4>{paragraphs(r["agreement"])}<h4>Scope and endpoint</h4>{paragraphs([r["scope"],r["if_unmet"]])}'
+    if r.get('methods'):
+        body+='<h4>How they gather information</h4><ul>'+''.join(f'<li>{esc(x)}</li>' for x in r['methods'])+'</ul>'+paragraphs(r['participation'])
+    if r.get('outlook'):
+        body+='<h4>Different time horizons</h4>'+''.join(f'<p><strong>{esc(x["horizon"])}</strong> — {esc(x["finding"])} <span class="meta">{esc(x["interpretation"])}</span></p>' for x in r['outlook'])
+    if r.get('factors'):
+        body+='<div class="ap-factors">'+''.join(f'<article><h4>{esc(k.capitalize())}</h4>{paragraphs(v["summary"])}<p><strong>Still unknown:</strong> {esc(v["unknowns"])}</p><p><strong>Check next:</strong> {esc(v["next_check"])}</p></article>' for k,v in r['factors'].items())+'</div>'
+    if r.get('heterogeneity'):body+='<h4>Different environments across the two sites</h4>'+paragraphs(r['heterogeneity'])
+    if r.get('principles'):
+        body+='<details class="ap-principles"><summary>All 24 qualitative principle notes, including unknowns</summary>'
+        for capacity in ('coordination','adaptability','robustness'):
+            body+=f'<h4>{esc(capacity.capitalize())}</h4>'
+            for p in r['principles']:
+                if p['capacity']!=capacity:continue
+                body+=f'<article><strong>{esc(p["name"])}</strong><span class="tag neutral">{esc(p["assessment"])}</span>{paragraphs(p["finding"])}<p><strong>Open question:</strong> {esc(p["open_question"])}</p><p class="meta">{esc(p["basis"])}</p></article>'
+        body+='</details>'
+    if r.get('mismatch'):
+        body+='<div class="ap-mismatch">'+''.join(f'<p><strong>{esc(k.capitalize())}:</strong> {esc(v)}</p>' for k,v in r['mismatch'].items())+'</div>'
+        body+='<h4>Alternatives the group considers</h4>'+''.join(f'<article class="ap-option"><h4>{esc(x["capacity"].capitalize())}</h4><p>{esc(x["demand"])}</p><p>{esc(x["finding"])}</p><p><strong>Judgment:</strong> {esc(x["judgment"])}</p></article>' for x in r['alternatives'])
+        body+=paragraphs(r['ownership'])+'<p><strong>Reopen this choice if:</strong> '+esc(r['reopen_if'])+'</p>'
+    if r.get('matrix'):
+        choice=r['format_choice']
+        body+=f'<h4>Chosen method and format</h4>{paragraphs([choice["method"]+" · "+choice["format"],choice["reason"]])}<p><strong>Alternatives:</strong> {esc("; ".join(choice["alternatives"]))}</p>'
+        body+='<div class="ap-matrix">'+''.join(f'<article data-act-step="{esc(s["key"])}"><span class="small-label">ACT {esc(s["key"])}</span><h4>{esc(s["question"])}</h4>{paragraphs(s["response"])}</article>' for s in r['matrix'])+'</div>'
+        body+=paragraphs([r['real_constraints'],r['commitment_status']])+f'<p class="meta">{esc(choice["limit"])}</p>'
+    for key,title in [('conditions','Readiness conditions'),('risk_choice','The group’s bounded risk choice'),('endpoint','Completion criterion retained'),('ownership','Human responsibilities'),('reopen','Reopening rules'),('limits','Limits of the decision')]:
+        if r.get(key) and not (key=='ownership' and r.get('mismatch')):
+            body+=f'<h4>{title}</h4>'+paragraphs(r[key])
+    body+='<div class="next"><span class="small-label">Group decision and next move</span>'+paragraphs(r['decision'])+'</div>'
+    return f'<section class="ap-record" id="ap-{esc(r["id"])}" data-ap-record="{esc(r["id"])}"><span class="eyebrow">AP working record · {esc(r["stage"])} · {esc(fmt_date(r["date"]))} · fictional</span><h3>{esc(r["question"])}</h3>{body}</section>'
 
 def qualifies(window):
     late,total=window['late']; decisions,requests=window['decisions']; yes,responses,_=window['voice']
@@ -290,7 +395,9 @@ def event_view(event,state,data):
     if tree_work:
         changes='<details class="record-details"><summary>Inspect the exact recorded changes and review references</summary>'+changes+'</details>'
     measures=metric_definitions(data,event['date']>='2027-01-18') if event.get('show_metrics') else ''
-    return f'<section class="view" id="entry-{event["date"]}" data-view><div class="entry-meta"><span>Entry {i+1:02} / 13</span><span>{esc(fmt_date(event["date"]))}</span><span class="tag">{esc(event["stage"])}</span></div><h2 tabindex="-1">{esc(event["title"])}</h2><p class="lede">{esc(event["summary"])}</p>{paragraphs(event["scene"])}{tree_work}{dialogue}<h3>Stephen’s facilitation</h3>{paragraphs(event["facilitation"])}<h3>What enters the record</h3>{changes}{measures}{prediction}{report}<h3>Why this changed</h3>{paragraphs(event["evidence"])}<div class="next"><span class="small-label">Decision, owner and next review</span>{paragraphs(event["next"])}</div>{("" if tree_work else "<h3>What keeping the record makes possible</h3>"+paragraphs(event["difference"]))}{release}<nav class="entry-nav" aria-label="Previous and next entry">{prev}{nxt}</nav></section>'
+    ap_records={r['id']:r for r in data['ap']['records']}
+    ap_work=''.join(ap_record_view(ap_records[ref]) for ref in event['ap_refs'])
+    return f'<section class="view" id="entry-{event["date"]}" data-view><div class="entry-meta"><span>Entry {i+1:02} / 13</span><span>{esc(fmt_date(event["date"]))}</span><span class="tag">{esc(event["stage"])}</span></div><h2 tabindex="-1">{esc(event["title"])}</h2><p class="lede">{esc(event["summary"])}</p>{paragraphs(event["scene"])}{ap_work}{tree_work}{dialogue}<h3>Stephen’s facilitation</h3>{paragraphs(event["facilitation"])}<h3>What enters the record</h3>{changes}{measures}{prediction}{report}<h3>Why this changed</h3>{paragraphs(event["evidence"])}<div class="next"><span class="small-label">Decision, owner and next review</span>{paragraphs(event["next"])}</div>{("" if tree_work else "<h3>What keeping the record makes possible</h3>"+paragraphs(event["difference"]))}{release}<nav class="entry-nav" aria-label="Previous and next entry">{prev}{nxt}</nav></section>'
 
 def item_view(ref,item,state,data):
     items=index(state)
@@ -370,6 +477,11 @@ CSS=r'''
 
 '''
 
+CSS += r'''
+.ap-record{border-top:2px solid var(--line);padding-top:24px;margin:35px 0;scroll-margin-top:24px}.ap-record>h3{margin-top:12px;font-family:var(--serif);font-size:1.65rem;line-height:1.25}.ap-record h4{font-size:.9rem}.ap-factors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:24px 0}.ap-factors>article,.ap-option,.ap-matrix>article,.ap-principles article{padding:18px;background:var(--white);border:1px solid var(--line);border-radius:5px}.ap-factors p,.ap-option p,.ap-principles p{font-size:.85rem;line-height:1.65}.ap-factors h4,.ap-option h4{margin:0 0 10px}.ap-mismatch{padding:18px;background:var(--pale);border-left:3px solid var(--green)}.ap-matrix{display:grid;gap:14px;margin:22px 0}.ap-matrix h4{font-family:var(--serif);font-size:1.2rem;line-height:1.3;margin:8px 0 12px}.ap-matrix p{margin-bottom:0}.ap-principles{margin:24px 0}.ap-principles summary{font-size:.85rem;cursor:pointer}.ap-principles article{margin:12px 0}.ap-principles .tag{margin-left:12px}.ap-option{margin:14px 0}.ap-record .next{margin-bottom:0}
+@media(max-width:650px){.ap-factors{grid-template-columns:1fr}.ap-factors>article,.ap-option,.ap-matrix>article,.ap-principles article{padding:16px}.ap-record>h3{font-size:1.5rem}}
+'''
+
 JS=r'''
 document.documentElement.classList.add('js');
 const views=[...document.querySelectorAll('[data-view]')];
@@ -380,15 +492,17 @@ function route(){
   let id=decodeURIComponent(location.hash.slice(1))||'entry-2027-01-11';
   if(id==='changes')id='entry-2027-01-11';
   if(id==='main'){if(!initial){document.querySelector('#main').focus();return;}id='entry-2027-01-11';}
-  let selected=views.find(v=>v.id===id);
+  const anchor=document.getElementById(id);
+  let selected=views.find(v=>v.id===id)||anchor?.closest('[data-view]');
   if(!selected){id='entry-2027-01-11';selected=views.find(v=>v.id===id);}
+  id=selected.id;
   views.forEach(v=>v.hidden=v!==selected);
   const isEntry=id.startsWith('entry-');
   entries.forEach(a=>{const active=a.hash==='#'+id;a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','step');else a.removeAttribute('aria-current');});
   if(isEntry)picker.value=id;
   document.querySelectorAll('[data-tab]').forEach(a=>{const active=(a.dataset.tab==='changes'&&isEntry)||(a.dataset.tab==='current'&&(id==='current'||id.startsWith('item-')))||(a.dataset.tab==='progress'&&(id==='progress'||id.startsWith('report-')||id.startsWith('prediction-')));a.classList.toggle('active',active);if(active)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current');});
   document.title=(selected.querySelector('h2')?.textContent||'Northbank Print')+' · Northbank Print · Reason Commons';
-  if(!initial){selected.scrollIntoView({block:'start',behavior:'instant'});selected.querySelector('h2')?.focus({preventScroll:true});}
+  if(!initial||anchor&&anchor!==selected){(anchor||selected).scrollIntoView({block:'start',behavior:'instant'});if(!initial)selected.querySelector('h2')?.focus({preventScroll:true});}
   initial=false;
 }
 picker.addEventListener('change',()=>{location.hash=picker.value;});
@@ -416,7 +530,7 @@ def render(state,data):
     html=f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Northbank Print · Reason Commons</title><meta name="description" content="Follow one fictional Adaptive Persistence engagement through its maintained commons, decisions, change history and outcome reports."><style>{CSS}</style></head><body>
 <a class="skip" href="#main">Skip to the commons</a><div class="fiction"><strong>Fictional worked commons</strong> · People, dialogue, dates and outcomes are invented · Read-only</div>
-<header class="topbar"><a class="brand" href="/">Reason Commons</a><nav class="toplinks" aria-label="About this demonstration"><a href="/demos/reason-commons-in-use/index.html">Other commons ↗</a><a href="#sources">Sources &amp; limits</a></nav></header>
+<header class="topbar"><a class="brand" href="/">Reason Commons</a><nav class="toplinks" aria-label="About this demonstration"><a href="/explainers/northbank-print/index.html">Illustrated AP walkthrough ↗</a><a href="#sources">Sources &amp; limits</a></nav></header>
 <div class="hero"><span class="eyebrow">A client engagement, from intake to follow-up</span><h1>Northbank Print</h1><p class="intro">Twenty-two people. Two sites. A shared goal: keep delivery promises without hidden overtime.</p><div class="people">{people}</div><p class="scope">Northbank Print · 11 January–2 April 2027 · Follow-up 14 May · One maintained commons</p></div>
 <nav class="tabs" aria-label="Views of the same commons"><a data-tab="changes" href="#entry-2027-01-11">Change log</a><a data-tab="current" href="#current">Current commons</a><a data-tab="progress" href="#progress">Progress &amp; learning</a></nav>
 <div class="workspace"><aside class="timeline"><span class="eyebrow">Follow the engagement</span><label class="skip" for="entry-picker">Choose an engagement entry</label><select class="mobile-entries" id="entry-picker">{options}</select><ol>{timeline}</ol><p class="record-caption">Follow the highlighted statement or arrow. What does Stephen ask? What do clients check? What decision follows?<br><br>Working updates are separate from the three deliberate internal releases.</p></aside><main id="main" tabindex="-1"><p class="fallback notice">Without JavaScript, all entries, statements and reports remain readable below. Links lead to the corresponding section.</p>{sections}</main></div>
