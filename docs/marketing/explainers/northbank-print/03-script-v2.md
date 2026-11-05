@@ -2,7 +2,7 @@
 
 Northbank Print has twenty-two people and a problem its customers can feel: orders go out after the promised date. Maya, the managing director, asks Stephen to help. Faster production sounds useful. Imani, an operator and staff representative, asks who will absorb the extra work.
 
-Stephen asks what customers should notice, and what employees must be able to rely on. The team chooses a shared goal: dispatch standard repeat orders when promised, within paid working time, while people can challenge unrealistic commitments without penalty. The representatives check the wording with their teams. Bespoke work stays outside the twelve-week trial.
+Stephen asks what customers should notice, and what employees must be able to rely on. The team chooses a shared goal: dispatch standard repeat orders when promised, within paid working time, while people can challenge unrealistic commitments without penalty. The representatives check the wording with their teams. Bespoke work stays outside the twelve-week engagement.
 
 The baseline shows twenty late orders out of eighty: one in four. Only twelve of forty changed-order requests receive an authorized answer, communicated to the customer, by the next working day. An acknowledgment alone does not count.
 

@@ -1,6 +1,6 @@
 # Editorial critique
 
-Proposal: northbank-scroll-story revision 1, accepted by David Joseph with the exact reply “yes”, recorded 2026-11-05T09:19:55Z in the primary workspace's collaboration YAML. This is an adversarial editorial pass by the author, not an independent human review.
+Proposal: northbank-scroll-story revision 1 by David. The acceptance receipt is retained separately in the primary workspace's collaboration YAML. This is an adversarial editorial pass by the author, not an independent human review.
 
 The spine works: an accusation becomes a testable connection; the trial reveals a missing condition; the corrected arrangement earns a bounded handover; follow-up detects drift. Ben and Imani change the explanation with evidence. Preserve those moments and the refusal to manufacture a successful ending.
 

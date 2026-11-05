@@ -24,7 +24,7 @@ Stephen asks what customers should notice, and what employees must be able to re
 
 ### beat-03 · 2027-01-11 · Keep the promise. Protect the people.
 
-The team chooses a shared goal: dispatch standard repeat orders when promised, within paid working time, while people can challenge unrealistic commitments without penalty. The representatives check the wording with their teams. Bespoke work stays outside the twelve-week trial.
+The team chooses a shared goal: dispatch standard repeat orders when promised, within paid working time, while people can challenge unrealistic commitments without penalty. The representatives check the wording with their teams. Bespoke work stays outside the twelve-week engagement.
 
 **Visual:** One proposed Goal statement, with three plain requirements: promised dispatch, paid time and speaking up. Standard repeat orders only.
 
@@ -154,7 +154,7 @@ An AI brief calls staff reluctant to use the process. Imani objects: people used
 
 **Visual:** Return to the first future connection, visibly questioned. Preserve Imani’s challenge to the withdrawn AI interpretation. Do not invent an accepted staff-resistance node.
 
-### beat-25 · 2027-02-19 · Change the arrangement, not the accusation.
+### beat-25 · 2027-02-19 · Give people authority to decide.
 
 The revised arrangement lets Ben and Rosa settle routine replans within written limits when they arrive. Morning meetings handle exceptions. A named authorized deputy and paid preparation time must also be available. The team gives fresh agreement to this changed trial.
 
@@ -166,11 +166,11 @@ Before 22 February, Maya defines the limits and names the deputy. Maya and Rosa 
 
 **Visual:** Transition fragment: Maya defines authority and deputy; Maya and Rosa allocate paid time; each precedes review. Label lines comes before, never causes success. Preparations due before 22 February.
 
-### beat-27 · 2027-02-19 · Prepared does not mean improved.
+### beat-27 · 2027-02-26 · Prepared does not mean improved.
 
 Imani checks the burden. Quote delays stay on the watch list. Completing these actions prepares a trial; it does not establish its effects.
 
-**Visual:** Separate action completion from effects still to be measured. Show two hours moved from nonurgent quotations and a watch item for quote delays.
+**Visual:** The 26 February review looks back at preparations completed before the 22 February restart. Separate action completion from effects still to be measured. Show two hours moved from nonurgent quotations and a watch item for quote delays.
 
 ### beat-28 · 2027-02-26 · This fortnight mixes two approaches.
 
