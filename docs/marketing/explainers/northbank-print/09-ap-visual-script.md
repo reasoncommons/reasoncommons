@@ -66,7 +66,7 @@ Stephen combines interviews, an optional questionnaire and order records. Twenty
 
 **Case record:** `assess-2027-01-18`. **Illustration:** `assessment-method`.
 
-### beat-08 · 2027-01-18 · Assess / Assess · What could change around them?
+### ap-volatility · 2027-01-18 · Assess / Assess · What could change around them?
 
 Customer changes already complicate promises. Purchasing systems could make shorter lead times more common over two to five years; five to ten years is less certain. These are planning possibilities, not forecasts of what will happen.
 
@@ -74,7 +74,7 @@ Customer changes already complicate promises. Purchasing systems could make shor
 
 **Case record:** `assess-2027-01-18`. **Illustration:** `environment-volatility`.
 
-### beat-09 · 2027-01-18 · Assess / Assess · What could threaten people or survival?
+### ap-hazards · 2027-01-18 · Assess / Assess · What could threaten people or survival?
 
 Supplier dependence creates disruption exposure. No immediate survival crisis emerges from this fictional assessment. Workshop machinery remains hazardous, with safeguards mandatory. The office and workshop face different pressures despite sharing the same orders.
 
@@ -82,7 +82,7 @@ Supplier dependence creates disruption exposure. No immediate survival crisis em
 
 **Case record:** `assess-2027-01-18`. **Illustration:** `environment-hazards`.
 
-### beat-10 · 2027-01-18 · Assess / Assess · How well can they respond?
+### ap-capacities · 2027-01-18 · Assess / Assess · How well can they respond?
 
 Coordination looks weak at changed-order decisions. Adaptability has useful local knowledge but little shared review of outcomes. Robustness has established workshop safeguards; cover for key decisions needs investigation. Their principle-by-principle notes retain strengths, concerns and unknowns.
 
@@ -90,7 +90,7 @@ Coordination looks weak at changed-order decisions. Adaptability has useful loca
 
 **Case record:** `assess-2027-01-18`. **Illustration:** `capacity-profile`.
 
-### beat-11 · 2027-01-18 · Assess / Assess · The first explanation is challenged.
+### beat-08 · 2027-01-18 · Assess / Assess · The first explanation is challenged.
 
 An initial explanation blames sales for sharing changes slowly. Ben, the customer services lead, brings timestamped emails that challenge it. Stephen asks the group to trace three orders before assigning a sales fix.
 
@@ -98,7 +98,7 @@ An initial explanation blames sales for sharing changes slowly. Ben, the custome
 
 **Case record:** `assess-2027-01-18`. **Illustration:** `first-cause`.
 
-### beat-12 · 2027-01-22 · Analyze / Analyze · The message arrived. Permission did not.
+### beat-09 · 2027-01-22 · Analyze / Analyze · The message arrived. Permission did not.
 
 On two orders, the message arrived promptly. Approval waited: only Maya could authorize a changed delivery commitment. Some jobs entered production before that decision was settled.
 
@@ -106,7 +106,7 @@ On two orders, the message arrived promptly. Approval waited: only Maya could au
 
 **Case record:** `analyze-2027-01-22`. **Illustration:** `trace`.
 
-### beat-13 · 2027-01-22 · Analyze / Analyze · Two conditions belong in the explanation.
+### beat-10 · 2027-01-22 · Analyze / Analyze · Two conditions belong in the explanation.
 
 The group redraws its explanation. A waiting decision, together with releasing a job before resolution, can leave instructions incomplete. Both conditions belong in this connection.
 
@@ -114,7 +114,7 @@ The group redraws its explanation. A waiting decision, together with releasing a
 
 **Case record:** `analyze-2027-01-22`. **Illustration:** `causal-and`.
 
-### beat-14 · 2027-01-22 · Analyze / Analyze · One mechanism does not explain every miss.
+### beat-11 · 2027-01-22 · Analyze / Analyze · One mechanism does not explain every miss.
 
 Incomplete instructions can contribute to late dispatches. Idle press slots weaken a blanket machinery-shortage explanation. Materials and peak capacity remain live alternatives; no single explanation accounts for every miss.
 
@@ -122,7 +122,7 @@ Incomplete instructions can contribute to late dispatches. Idle press slots weak
 
 **Case record:** `analyze-2027-01-22`. **Illustration:** `causal-next`.
 
-### beat-15 · 2027-01-22 · Analyze / Analyze · Compare what is needed with what is available.
+### ap-mismatch · 2027-01-22 · Analyze / Analyze · Compare what is needed with what is available.
 
 The environment demands workable answers to customer changes. Northbank's decision capacity leaves those answers waiting. Stephen asks the representatives to compare that mismatch with the other demands they have identified.
 
@@ -130,7 +130,7 @@ The environment demands workable answers to customer changes. Northbank's decisi
 
 **Case record:** `analyze-2027-01-22`. **Illustration:** `mismatch`.
 
-### beat-16 · 2027-01-22 · Analyze / Analyze · The group chooses coordination first.
+### beat-12 · 2027-01-22 · Analyze / Analyze · The group chooses coordination first.
 
 They identify no immediate survival crisis requiring a different starting point. Customer change still needs watching; workshop safeguards remain nonnegotiable. The representatives choose decision-making first, with adaptability and robustness supporting that choice.
 
@@ -138,7 +138,7 @@ They identify no immediate survival crisis requiring a different starting point.
 
 **Case record:** `analyze-2027-01-22`. **Illustration:** `capacity-choice`.
 
-### beat-17 · 2027-01-25 · Adjust / Adjust · Choose a way to work on it.
+### ap-method · 2027-01-25 · Adjust / Adjust · Choose a way to work on it.
 
 They choose an ACT group discussion to turn that priority into action. Participation is voluntary. They will record shared practical commitments; personal sheets stay private.
 
@@ -146,7 +146,7 @@ They choose an ACT group discussion to turn that priority into action. Participa
 
 **Case record:** `act-2027-01-25`. **Illustration:** `method-choice`.
 
-### beat-18 · 2027-01-25 · Adjust / Adjust · Which capacity do we want to improve?
+### ap-act-A · 2027-01-25 · Adjust / Adjust · Which capacity do we want to improve?
 
 Stephen starts with the capacity: what do they want to improve together? The group names decision-making across the customer office and workshop, where changed commitments currently stall.
 
@@ -154,7 +154,7 @@ Stephen starts with the capacity: what do they want to improve together? The gro
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-A`.
 
-### beat-19 · 2027-01-25 · Adjust / Adjust · What would improvement look like?
+### ap-act-B · 2027-01-25 · Adjust / Adjust · What would improvement look like?
 
 What would improvement look like? Feasible, authorized answers reach customers promptly. Jobs enter agreed slots ready to run. People can question an unrealistic date without quietly paying for it in overtime.
 
@@ -162,7 +162,7 @@ What would improvement look like? Feasible, authorized answers reach customers p
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-B`.
 
-### beat-20 · 2027-01-25 · Adjust / Adjust · What matters to us here?
+### beat-13 · 2027-01-25 · Adjust / Adjust · What matters to us here?
 
 What matters to them here? Ben names dependability, Rosa craftsmanship, Imani fairness and Maya reliable commitments. The group agrees these values belong together when deciding what to promise.
 
@@ -170,7 +170,7 @@ What matters to them here? Ben names dependability, Rosa craftsmanship, Imani fa
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-1`.
 
-### beat-21 · 2027-01-25 · Adjust / Adjust · How would we act on those values?
+### ap-act-2 · 2027-01-25 · Adjust / Adjust · How would we act on those values?
 
 How would they act on those values? Check before promising. Bring production constraints into the conversation. Raise uncertainty early. Make time for an authorized answer instead of passing an unresolved commitment along.
 
@@ -178,7 +178,7 @@ How would they act on those values? Check before promising. Bring production con
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-2`.
 
-### beat-22 · 2027-01-25 · Adjust / Adjust · What thoughts and feelings get in the way?
+### ap-act-3 · 2027-01-25 · Adjust / Adjust · What thoughts and feelings get in the way?
 
 What thoughts and feelings get in the way? Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Stephen invites the others to contribute without requiring personal disclosure.
 
@@ -186,7 +186,7 @@ What thoughts and feelings get in the way? Ben fears losing a customer when he a
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-3`.
 
-### beat-23 · 2027-01-25 · Adjust / Adjust · What happens when those thoughts take over?
+### beat-14 · 2027-01-25 · Adjust / Adjust · What happens when those thoughts take over?
 
 What happens when those thoughts take over? Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible.
 
@@ -194,7 +194,7 @@ What happens when those thoughts take over? Ben can promise immediately; Rosa ca
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-4`.
 
-### beat-24 · 2027-01-25 · Adjust / Adjust · Acknowledge the discomfort. Choose the action.
+### ap-act-C · 2027-01-25 · Adjust / Adjust · Acknowledge the discomfort. Choose the action.
 
 How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya will attend a morning review. They will test these commitments in the morning review.
 
@@ -202,7 +202,7 @@ How can they acknowledge that discomfort and still act on their values? Ben choo
 
 **Case record:** `act-2027-01-25`. **Illustration:** `matrix-C`.
 
-### beat-25 · 2027-01-25 · Adjust / Adjust · Will discussion produce a decision?
+### beat-15 · 2027-01-25 · Adjust / Adjust · Will discussion produce a decision?
 
 The morning review becomes a bounded trial. A Reason Commons diagram helps them question the expected connection: will discussing a changed order actually produce an authorized decision? Their first assumption is that Maya will attend.
 
@@ -210,7 +210,7 @@ The morning review becomes a bounded trial. A Reason Commons diagram helps them 
 
 **Case record:** `act-2027-01-25`. **Illustration:** `first-future`.
 
-### beat-26 · 2027-01-25 · Adjust / Adjust · Draw the harm before it happens.
+### beat-16 · 2027-01-25 · Adjust / Adjust · Draw the harm before it happens.
 
 Prompt decisions should help produce ready instructions and fewer late dispatches. Preparation could also spill beyond paid hours. They retain the harmful possibility alongside the hoped-for benefit.
 
@@ -218,7 +218,7 @@ Prompt decisions should help produce ready instructions and fewer late dispatche
 
 **Case record:** `act-2027-01-25`. **Illustration:** `harm-branch`.
 
-### beat-27 · 2027-01-29 · Adjust / Adjust · A preparation is still missing.
+### beat-17 · 2027-01-29 · Adjust / Adjust · A preparation is still missing.
 
 Six of ten additional order traces contain unresolved decisions. A shared list and paid meeting time are prepared. Deputy cover is still unfinished; the group knowingly relies on Maya attending during this small first trial.
 
@@ -226,7 +226,7 @@ Six of ten additional order traces contain unresolved decisions. A shared list a
 
 **Case record:** `prepare-2027-01-29`. **Illustration:** `readiness`.
 
-### beat-28 · 2027-01-29 · Adjust / Adjust · Record the trial expectation first.
+### beat-18 · 2027-01-29 · Adjust / Adjust · Record the trial expectation first.
 
 Before starting on 1 February, they record at least thirty-two prompt decisions out of forty and at most twelve late dispatches out of eighty. This initial target leaves the original ten-percent finish line intact. Release 1 preserves the reviewed plan.
 
@@ -234,7 +234,7 @@ Before starting on 1 February, they record at least thirty-two prompt decisions 
 
 **Case record:** `prepare-2027-01-29`. **Illustration:** `prediction-one`.
 
-### beat-29 · 2027-02-05 · Repeat / Assess · An encouraging week. Keep checking.
+### beat-20 · 2027-02-05 · Repeat / Assess · An encouraging week. Keep checking.
 
 After one week, six of forty orders are late and seventeen of twenty decisions are reported prompt. Maya suggests expanding. The group continues the same trial while checking the count.
 
@@ -242,7 +242,7 @@ After one week, six of forty orders are late and seventeen of twenty decisions a
 
 **Case record:** `reassess-2027-02-05`. **Illustration:** `early`.
 
-### beat-30 · 2027-02-12 · Repeat / Assess · Received is not decided.
+### beat-21 · 2027-02-12 · Repeat / Assess · Received is not decided.
 
 Some acknowledgments had counted as decisions. Checking authorization and customer communication changes seventeen to eleven out of twenty. The earlier report remains beside its correction.
 
@@ -250,7 +250,7 @@ Some acknowledgments had counted as decisions. Checking authorization and custom
 
 **Case record:** `reassess-2027-02-12`. **Illustration:** `correction`.
 
-### beat-31 · 2027-02-12 · Repeat / Assess · The full trial misses its prediction.
+### beat-22 · 2027-02-12 · Repeat / Assess · The full trial misses its prediction.
 
 The full fortnight brings twenty-one prompt decisions out of forty and sixteen late dispatches out of eighty. Both miss the prediction. Only eight of ten meetings occurred; Maya missed two. Paper lead times also worsened.
 
@@ -258,7 +258,7 @@ The full fortnight brings twenty-one prompt decisions out of forty and sixteen l
 
 **Case record:** `reassess-2027-02-12`. **Illustration:** `trial-result`.
 
-### beat-32 · 2027-02-12 · Repeat / Assess · The cost was hidden in unpaid time.
+### beat-23 · 2027-02-12 · Repeat / Assess · The cost was hidden in unpaid time.
 
 Imani finds two unpaid preparation hours. Paying and recording them raises the second week's overtime from seventeen to nineteen hours. The pulse has ten positive answers from sixteen responses; four answers remain missing. Expansion pauses.
 
@@ -266,7 +266,7 @@ Imani finds two unpaid preparation hours. Paying and recording them raises the s
 
 **Case record:** `reassess-2027-02-12`. **Illustration:** `harm-observed`.
 
-### beat-33 · 2027-02-12 · Repeat / Analyze · Return to the environment and capacities.
+### ap-reassess-feb · 2027-02-12 · Repeat / Analyze · Return to the environment and capacities.
 
 They return to Assess. Paper delays change the operating conditions; unavailable authority and unpaid preparation expose capacity gaps. The group checks the wider profile before deciding that coordination still needs attention, supported by better cover and learning.
 
@@ -274,7 +274,7 @@ They return to Assess. Paper delays change the operating conditions; unavailable
 
 **Case record:** `reassess-2027-02-12`. **Illustration:** `reassessment`.
 
-### beat-34 · 2027-02-19 · Repeat / Analyze · A meeting cannot lend you authority.
+### beat-24 · 2027-02-19 · Repeat / Analyze · A meeting cannot lend you authority.
 
 An AI brief calls staff reluctant to use the process. Imani challenges it: people used the process, but nobody present could authorize an answer. Stephen withdraws that interpretation.
 
@@ -282,7 +282,7 @@ An AI brief calls staff reluctant to use the process. Imani challenges it: peopl
 
 **Case record:** `analyze-2027-02-19`. **Illustration:** `missing-authority`.
 
-### beat-35 · 2027-02-19 · Repeat / Adjust · Revisit the way forward together.
+### ap-act-revisit · 2027-02-19 · Repeat / Adjust · Revisit the way forward together.
 
 They revisit the ACT commitments. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority or paid time. The revised way forward must make their chosen behaviours possible.
 
@@ -290,7 +290,7 @@ They revisit the ACT commitments. Dependability, craftsmanship and fairness stil
 
 **Case record:** `act-2027-02-19`. **Illustration:** `matrix-revisit`.
 
-### beat-36 · 2027-02-19 · Repeat / Adjust · Give people authority to decide.
+### beat-25 · 2027-02-19 · Repeat / Adjust · Give people authority to decide.
 
 Maya agrees bounded delegation: Ben and Rosa can resolve routine replans when they arrive; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version.
 
@@ -298,7 +298,7 @@ Maya agrees bounded delegation: Ben and Rosa can resolve routine replans when th
 
 **Case record:** `act-2027-02-19`. **Illustration:** `revised-and`.
 
-### beat-37 · 2027-02-19 · Repeat / Adjust · Name the owners before restarting.
+### beat-26 · 2027-02-19 · Repeat / Adjust · Name the owners before restarting.
 
 Before restarting on 22 February, Maya defines limits and names a deputy. Maya and Rosa allocate paid preparation, taking two hours from nonurgent quotation work. Imani checks the burden; quotation delays stay on the watch list.
 
@@ -306,7 +306,7 @@ Before restarting on 22 February, Maya defines limits and names a deputy. Maya a
 
 **Case record:** `act-2027-02-19`. **Illustration:** `actions`.
 
-### beat-38 · 2027-02-26 · Repeat / Assess · Prepared does not mean improved.
+### beat-27 · 2027-02-26 · Repeat / Assess · Prepared does not mean improved.
 
 Completing those actions prepares the new trial. Its effects still need observation. The record distinguishes who did what from whether decisions, working conditions and deliveries improved.
 
@@ -314,7 +314,7 @@ Completing those actions prepares the new trial. Its effects still need observat
 
 **Case record:** `reassess-2027-02-26`. **Illustration:** `prepared`.
 
-### beat-39 · 2027-02-26 · Repeat / Assess · This fortnight mixes two approaches.
+### beat-28 · 2027-02-26 · Repeat / Assess · This fortnight mixes two approaches.
 
 The next report mixes days under both approaches: fourteen of eighty dispatches are late and twenty-four of forty decisions are prompt. Those figures remain, but this mixed period cannot fairly evaluate the revision alone.
 
@@ -322,7 +322,7 @@ The next report mixes days under both approaches: fourteen of eighty dispatches 
 
 **Case record:** `reassess-2027-02-26`. **Illustration:** `mixed`.
 
-### beat-40 · 2027-02-26 · Repeat / Adjust · Give the revision its own test.
+### beat-29 · 2027-02-26 · Repeat / Adjust · Give the revision its own test.
 
 Before March begins, they record a new expectation for 1–12 March: at least thirty-two prompt decisions out of forty, at most eight late dispatches out of eighty, and every original safeguard. Release 2 retains the correction and changed trial.
 
@@ -330,7 +330,7 @@ Before March begins, they record a new expectation for 1–12 March: at least th
 
 **Case record:** `reassess-2027-02-26`. **Illustration:** `prediction-two`.
 
-### beat-41 · 2027-03-12 · Repeat / Assess · Decisions continue while Maya is away.
+### beat-30 · 2027-03-12 · Repeat / Assess · Decisions continue while Maya is away.
 
 The full revised window produces thirty-four prompt decisions out of forty. During Maya's two-day absence, five of six requests still receive prompt decisions. That supports decision cover during a short absence; severe-disruption robustness remains untested.
 
@@ -338,7 +338,7 @@ The full revised window produces thirty-four prompt decisions out of forty. Duri
 
 **Case record:** `reassess-2027-03-12`. **Illustration:** `authority-result`.
 
-### beat-42 · 2027-03-12 · Repeat / Assess · A count needs something to compare with.
+### beat-31 · 2027-03-12 · Repeat / Assess · A count needs something to compare with.
 
 Seventy-five of eighty jobs have complete instructions at their slot. No comparable readiness baseline was collected, so the amount of improvement is unknown. Paper supply also normalizes, and the job mix is slightly easier.
 
@@ -346,7 +346,7 @@ Seventy-five of eighty jobs have complete instructions at their slot. No compara
 
 **Case record:** `reassess-2027-03-12`. **Illustration:** `no-baseline`.
 
-### beat-43 · 2027-03-12 · Repeat / Assess · One qualifying window.
+### beat-32 · 2027-03-12 · Repeat / Assess · One qualifying window.
 
 Eight of eighty orders go out late. Overtime is sixteen and fifteen hours. Sixteen people answer positively about speaking up; nineteen respond. No unpaid work is reported. This first window qualifies.
 
@@ -354,7 +354,7 @@ Eight of eighty orders go out late. Overtime is sixteen and fifteen hours. Sixte
 
 **Case record:** `reassess-2027-03-12`. **Illustration:** `march-one`.
 
-### beat-44 · 2027-03-12 · Repeat / Analyze · Check what has changed around the result.
+### ap-review-march · 2027-03-12 · Repeat / Analyze · Check what has changed around the result.
 
 They reassess the environment and capacities together. Supply is easier; the need for timely decisions remains. Cover worked during a short absence, and reviewed reports support learning. One qualifying fortnight supports continuing unchanged, rather than closing.
 
@@ -362,7 +362,7 @@ They reassess the environment and capacities together. Supply is easier; the nee
 
 **Case record:** `reassess-2027-03-12`. **Illustration:** `reassessment-profile`.
 
-### beat-45 · 2027-03-26 · Repeat / Assess · Two windows meet the original criteria.
+### beat-33 · 2027-03-26 · Repeat / Assess · Two windows meet the original criteria.
 
 The second window produces thirty-five prompt decisions and seven late dispatches. Overtime is fourteen and fifteen hours; seventeen people answer positively, with nineteen responses. No unpaid work is reported. Both consecutive windows meet the original criteria.
 
@@ -370,7 +370,7 @@ The second window produces thirty-five prompt decisions and seven late dispatche
 
 **Case record:** `reassess-2027-03-26`. **Illustration:** `march-two`.
 
-### beat-46 · 2027-04-02 · Repeat / Close · Close when the agreed conditions are met.
+### ap-close · 2027-04-02 · Repeat / Close · Close when the agreed conditions are met.
 
 On 2 April, the group checks those criteria before closing active support. Success follows the agreed conditions rather than the calendar alone. The reports do not establish a unique cause or settle every open question.
 
@@ -378,7 +378,7 @@ On 2 April, the group checks those criteria before closing active support. Succe
 
 **Case record:** `close-2027-04-02`. **Illustration:** `closure`.
 
-### beat-47 · 2027-04-02 · Repeat / Close · Hand over the reason behind the routine.
+### beat-34 · 2027-04-02 · Repeat / Close · Hand over the reason behind the routine.
 
 Rosa takes over the same maintained record: the goal, assessment, choice of capacity, ACT commitments, earlier explanations, predictions and corrected reports. The reason behind the arrangement travels with the routine.
 
@@ -386,7 +386,7 @@ Rosa takes over the same maintained record: the goal, assessment, choice of capa
 
 **Case record:** `close-2027-04-02`. **Illustration:** `record`.
 
-### beat-48 · 2027-04-02 · Repeat / Close · Give the record human owners.
+### beat-35 · 2027-04-02 · Repeat / Close · Give the record human owners.
 
 Ben supplies order figures, Maya checks paid hours and cover, and Imani maintains the anonymous pulse and private concern route. Release 3 marks the reviewed handover. The team chooses to keep fortnightly monitoring after AP closes.
 
@@ -394,7 +394,7 @@ Ben supplies order figures, Maya checks paid hours and cover, and Imani maintain
 
 **Case record:** `close-2027-04-02`. **Illustration:** `stewards`.
 
-### beat-49 · 2027-04-02 · Repeat / Close · Agree what would bring help back.
+### beat-36 · 2027-04-02 · Repeat / Close · Agree what would bring help back.
 
 Unpaid work or reprisal concerns require immediate review and an offer of independent facilitation. Two consecutive failed delivery or speaking-up windows invite Stephen back. The group can ask sooner.
 
@@ -402,7 +402,7 @@ Unpaid work or reprisal concerns require immediate review and an offer of indepe
 
 **Case record:** `close-2027-04-02`. **Illustration:** `triggers`.
 
-### beat-50 · 2027-05-14 · Repeat / Assess · May brings a warning.
+### beat-37 · 2027-05-14 · Repeat / Assess · May brings a warning.
 
 In May, nine of eighty orders are late. Prompt decisions still qualify at thirty-three of forty, and overtime remains within limits. Delivery is better than January, yet above the unchanged completion ceiling.
 
@@ -410,7 +410,7 @@ In May, nine of eighty orders are late. Prompt decisions still qualify at thirty
 
 **Case record:** `reassess-2027-05-14`. **Illustration:** `may-delivery`.
 
-### beat-51 · 2027-05-14 · Repeat / Assess · Listen to the warning from staff, too.
+### beat-38 · 2027-05-14 · Repeat / Assess · Listen to the warning from staff, too.
 
 Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up.
 
@@ -418,7 +418,7 @@ Speaking up slips to fifteen positive answers, with eighteen responses. Deputy c
 
 **Case record:** `reassess-2027-05-14`. **Illustration:** `may-voice`.
 
-### beat-52 · 2027-05-14 · Repeat / Analyze · Compare the new demands with current capacity.
+### ap-review-may · 2027-05-14 · Repeat / Analyze · Compare the new demands with current capacity.
 
 The group reopens the environment-capacity comparison. Customer demands have changed, cover is less available and speaking up needs attention. These observations justify renewed inquiry; none alone proves what caused the drift.
 
@@ -426,7 +426,7 @@ The group reopens the environment-capacity comparison. Customer demands have cha
 
 **Case record:** `reassess-2027-05-14`. **Illustration:** `reassessment-may`.
 
-### beat-53 · 2027-05-14 · Repeat / Adjust · Choose the next action and review.
+### beat-39 · 2027-05-14 · Repeat / Adjust · Choose the next action and review.
 
 They ask Maya to restore cover, offer a voluntary conversation and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached.
 
@@ -434,7 +434,7 @@ They ask Maya to restore cover, offer a voluntary conversation and schedule 28 M
 
 **Case record:** `reassess-2027-05-14`. **Illustration:** `next`.
 
-### beat-54 · 2027-05-14 · Repeat / Pending · The next review has not happened.
+### beat-40 · 2027-05-14 · Repeat / Pending · The next review has not happened.
 
 The next review has not happened.
 
@@ -447,3 +447,5 @@ The next review has not happened.
 The assessment does not reveal the corrected cause before the dated order trace. Capacity choice depends on an explicit environmental-demand versus decision-capacity comparison. The ACT pass retains A, B, 1, 2, 3, 4 and C in the source’s typical order, with a named helpful action and an acknowledged thought in the chosen commitment. The review preserves real constraints and avoids an invented psychological cause. Later passes reassess all five factors and distinguish changed conditions, implementation and observed outcomes. The short-absence result is not a severe-shock test. Closure uses every original criterion; May remains one failed window and the next result stays pending.
 
 The complete qualitative principle record must make unknowns inspectable. It is supporting detail, not a full-screen wall of twenty-four entries. The October summary is the procedural reference; differences from the September overview are named in the source crosswalk.
+
+Published scene bookmarks are preserved; the original separate trial-target bookmark points into the combined prediction view. Display numbers follow the expanded narrative rather than the internal identifiers.

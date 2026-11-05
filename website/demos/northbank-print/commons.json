@@ -935,7 +935,10 @@
             "That we keep the promise without somebody quietly staying late."
           ]
         ],
-        "show_metrics": true
+        "show_metrics": true,
+        "ap_refs": [
+          "orient-2027-01-11"
+        ]
       },
       {
         "date": "2027-01-18",
@@ -1012,6 +1015,9 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "assess-2027-01-18"
         ]
       },
       {
@@ -1117,6 +1123,9 @@
             ],
             "compare_with": "2027-01-18"
           }
+        ],
+        "ap_refs": [
+          "analyze-2027-01-22"
         ]
       },
       {
@@ -1247,6 +1256,9 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "act-2027-01-25"
         ]
       },
       {
@@ -1273,7 +1285,10 @@
         "next": "Start 1 February. Rosa reports decision timestamps, Ben dispatches and Imani safeguards. Preparation may take two hours weekly inside the overtime ceiling; next substantive review is 12 February.",
         "difference": "The group can later compare results with a prediction it made beforehand. Sharing a reviewed release is distinct from saving a working correction.",
         "prediction": "trial-1",
-        "release": "release-1"
+        "release": "release-1",
+        "ap_refs": [
+          "prepare-2027-01-29"
+        ]
       },
       {
         "date": "2027-02-05",
@@ -1295,6 +1310,9 @@
           "nb-f-decisions",
           "nb-f-reliable",
           "nb-f-overwork"
+        ],
+        "ap_refs": [
+          "reassess-2027-02-05"
         ]
       },
       {
@@ -1354,6 +1372,9 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-02-12"
         ]
       },
       {
@@ -1503,6 +1524,11 @@
             ],
             "evidence": []
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-02-19",
+          "analyze-2027-02-19",
+          "act-2027-02-19"
         ]
       },
       {
@@ -1544,6 +1570,9 @@
             ],
             "evidence": []
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-02-26"
         ]
       },
       {
@@ -1614,6 +1643,9 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-03-12"
         ]
       },
       {
@@ -1664,6 +1696,9 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-03-26"
         ]
       },
       {
@@ -1701,7 +1736,10 @@
         "evidence": "Closure follows the original criteria; no outcome has been redefined to fit the results. The record names unresolved questions and the evidence that would reopen them. No autonomous monitoring or reminders are promised.",
         "next": "Rosa maintains weekly updates and fortnightly reviews. Follow-up with Stephen is booked for 14 May. Keep quote delays, coverage and peak demand visible.",
         "difference": "A new steward can retrieve the purpose, limits and authority behind the process. Stephen can step back without leaving an unexplained meeting routine.",
-        "release": "release-3"
+        "release": "release-3",
+        "ap_refs": [
+          "close-2027-04-02"
+        ]
       },
       {
         "date": "2027-05-14",
@@ -1772,8 +1810,1187 @@
               }
             ]
           }
+        ],
+        "ap_refs": [
+          "reassess-2027-05-14"
         ]
       }
-    ]
+    ],
+    "ap": {
+      "format_version": 1,
+      "primary_source": "ap-summary-2026-10-11",
+      "authoring_note": "These AP records were added on 5 November 2026 as explicit authored fiction to demonstrate the source-defined method. They are not recovered interviews, measurements or Stephen Le’s endorsement. Their 2027 dates locate scenes within the fictional chronology.",
+      "sources": [
+        {
+          "id": "ap-summary-2026-10-11",
+          "title": "Adaptive Persistence: A Meta-Protocol for Cooperation",
+          "internal_date": "2026-10-11",
+          "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/AP%20Summary%20Oct%2016%2C%202026%20v1.pdf",
+          "pages": "3–8",
+          "sha256": "26d30cd176fd933aae7f92bce79f8c8b8421e9b76ea037145a06aa5e443f3d50"
+        },
+        {
+          "id": "ap-overview-2026-09-30",
+          "title": "Adaptive Persistence v1",
+          "internal_date": "2026-09-30",
+          "url": "https://github.com/dvdgdn/persistent-systems-theory/blob/main/Adaptive%20Persistence%20v1.pdf",
+          "pages": "1–3",
+          "sha256": "e9235f6a4e4bff86cb324dbf56efa6d5569004b681c043f0f54ebc33e8f7c7b2"
+        }
+      ],
+      "version_choice": "Use the October five-stage process, return to Assess during iteration and retain the case’s original all-criteria endpoint. Retain useful geographic context from September. Source differences are explicit, not silently harmonized.",
+      "preserved_record_keys": [
+        "metrics",
+        "windows",
+        "predictions",
+        "reports",
+        "releases",
+        "actions"
+      ],
+      "preserved_records_sha256": "228f577aca20288ee98f8e74d884bf7c20be6ccd4e582e14679bd9166b0fe059",
+      "stages": [
+        "Orient",
+        "Assess",
+        "Analyze",
+        "Adjust",
+        "Repeat"
+      ],
+      "records": [
+        {
+          "id": "orient-2027-01-11",
+          "date": "2027-01-11",
+          "stage": "Orient",
+          "question": "What issue can everyone work on, and what would count as success?",
+          "decision": "Use the team-checked shared goal and original criteria for standard repeat orders. Include customers and working conditions; investigate competing issues if objections remain.",
+          "evidence_refs": [],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "goal_ref": "nb-g-goal",
+          "criteria_refs": [
+            "delivery",
+            "decisions",
+            "overtime",
+            "voice"
+          ],
+          "concerns": [
+            {
+              "by": "maya",
+              "concern": "Reliable delivery within the existing budget."
+            },
+            {
+              "by": "ben",
+              "concern": "Help customers without impossible commitments."
+            },
+            {
+              "by": "rosa",
+              "concern": "Workable slots and complete instructions."
+            },
+            {
+              "by": "imani",
+              "concern": "Paid time, fair burdens and safe challenge."
+            }
+          ],
+          "agreement": "Representatives take the positive, actionable wording back to their teams. No objections remain after that check; absence or silence alone is not endorsement.",
+          "scope": "Standard repeat orders across the two sites; bespoke work is outside the initial trial.",
+          "if_unmet": "Do not call the AP process complete merely because the contracted support period ends. Agree continued work or an explicit handover of unfinished work."
+        },
+        {
+          "id": "assess-2027-01-18",
+          "date": "2027-01-18",
+          "stage": "Assess",
+          "question": "What does the environment demand, and what can this group currently do?",
+          "decision": "Keep the five-factor profile and its unknowns, then trace the disputed changed-order mechanism before selecting an adjustment.",
+          "evidence_refs": [
+            "ap:orient-2027-01-11",
+            "window:baseline",
+            "item:nb-r-l1"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "methods": [
+            "Six short interviews across leadership and staff",
+            "Optional questionnaire",
+            "Order records, dispatch scans and timestamped emails"
+          ],
+          "participation": "20 of 22 people provide some input; neither completeness nor endorsement is inferred for the two absent contributors.",
+          "factors": {
+            "volatility": {
+              "summary": "Customer changes already affect delivery promises. Purchasing-system changes could increase short-lead-time requests over 2–5 years; the 5–10-year direction is more uncertain.",
+              "unknowns": "These longer-term possibilities are planning hypotheses, not forecasts or measured trends.",
+              "next_check": "Watch changed-request patterns and revisit the outlook; do not infer a long-term shift from one difficult fortnight."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence creates disruption exposure. This limited assessment identifies no immediate business-survival crisis. Workshop machinery is hazardous; existing safeguards remain mandatory.",
+              "unknowns": "No comprehensive safety, supply-contingency or business-continuity audit is claimed.",
+              "next_check": "Escalate an acute threat if it appears; never relax machinery safeguards to meet a dispatch target."
+            },
+            "coordination": {
+              "summary": "Office and workshop see different parts of an order. Only 12/40 changed requests received a qualifying decision; the initial late-sharing explanation is disputed.",
+              "unknowns": "Decision ownership and the mechanism of delay still need tracing. The non-positive speaking-up answers have not been explained.",
+              "next_check": "Trace changed orders with Ben and Rosa before choosing a sales fix."
+            },
+            "adaptability": {
+              "summary": "People hold useful customer and production knowledge. They have little shared practice of comparing consequences against a common definition and revising the arrangement together.",
+              "unknowns": "The assessment does not establish how quickly all teams learn, share lessons or prepare for longer-term change.",
+              "next_check": "Create a bounded review and retain alternative explanations and missing evidence."
+            },
+            "robustness": {
+              "summary": "Operators describe established workshop safeguards. Decision cover and other dependencies need checking; workload leaves limited room for extra coordination.",
+              "unknowns": "A severe-shock test, access audit and full recovery review have not been performed.",
+              "next_check": "Check key decision cover, paid preparation capacity and dependencies before relying on a new routine."
+            }
+          },
+          "principles": [
+            {
+              "id": "coord-autonomy",
+              "capacity": "coordination",
+              "name": "Autonomy",
+              "assessment": "unknown",
+              "finding": "The assessment has not established which external owners, contracts or higher authorities limit Northbank’s freedom to act and make policy. Internal routine decision rights are a related, separate question.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Which decisions can Northbank make independently, and which require permission from an authority outside the group?",
+              "evidence_refs": []
+            },
+            {
+              "id": "coord-costs",
+              "capacity": "coordination",
+              "name": "Benefits and costs",
+              "assessment": "concern",
+              "finding": "Delivery promises affect office and workshop differently. Baseline weekly overtime is 16 and 20 hours across all staff.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Who carries preparation and disruption costs, and is all of that time paid?",
+              "evidence_refs": [
+                "window:baseline"
+              ]
+            },
+            {
+              "id": "coord-conflict",
+              "capacity": "coordination",
+              "name": "Conflict resolution",
+              "assessment": "mixed",
+              "finding": "People can bring competing accounts into this facilitated discussion; ordinary routes for resolving office/workshop disputes are less clear.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "What happens to a disagreement about an infeasible promise outside the workshop?",
+              "evidence_refs": []
+            },
+            {
+              "id": "coord-decisions",
+              "capacity": "coordination",
+              "name": "Decision-making",
+              "assessment": "concern",
+              "finding": "Only 12/40 changed requests meet the agreed prompt-decision definition. The explanation is still being tested.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Where do authorization and customer communication wait?",
+              "evidence_refs": [
+                "window:baseline"
+              ]
+            },
+            {
+              "id": "coord-eyes",
+              "capacity": "coordination",
+              "name": "Eyes",
+              "assessment": "mixed",
+              "finding": "Records and emails can be inspected. Twelve of twenty eligible people answer positively about speaking up.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "What explains the other answers? Do not infer reprisal from a non-positive response.",
+              "evidence_refs": [
+                "window:baseline"
+              ]
+            },
+            {
+              "id": "coord-flags",
+              "capacity": "coordination",
+              "name": "Flags",
+              "assessment": "strength",
+              "finding": "The group now has a shared bounded purpose, named representatives and team-checked completion criteria.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Will that shared purpose remain usable after handover?",
+              "evidence_refs": [
+                "ap:orient-2027-01-11"
+              ]
+            },
+            {
+              "id": "coord-sanctions",
+              "capacity": "coordination",
+              "name": "Graduated sanctions",
+              "assessment": "unknown",
+              "finding": "The engagement has not established how penalties for norm breaches are applied. An unrealistic commitment can be challenged under the trial safeguards.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Are any actual sanctions or reprisal concerns reported? Review immediately if so.",
+              "evidence_refs": []
+            },
+            {
+              "id": "coord-levels",
+              "capacity": "coordination",
+              "name": "Higher and lower levels",
+              "assessment": "unknown",
+              "finding": "The assessment includes leadership and team input across two sites; wider application of all principles at every level has not been established.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Do the same voice and decision practices apply in leadership and within each team?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-insight",
+              "capacity": "adaptability",
+              "name": "Insight",
+              "assessment": "mixed",
+              "finding": "Ben holds customer information and Rosa holds production constraints; the initial accounts do not yet form an agreed explanation.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Can an order trace reconcile their different information?",
+              "evidence_refs": [
+                "item:nb-r-l1"
+              ]
+            },
+            {
+              "id": "adapt-time",
+              "capacity": "adaptability",
+              "name": "Just in time",
+              "assessment": "concern",
+              "finding": "Shared comparison of consequences with a prospective expectation is not yet an established practice in this scenario.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Can the team collect and review a bounded trial promptly without adding unpaid work?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-flexible",
+              "capacity": "adaptability",
+              "name": "Keep flexible",
+              "assessment": "mixed",
+              "finding": "The representatives are willing to question the initial explanation. How easily routine decision rules can change is still unclear.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Who can approve a revised arrangement, and how will its version be agreed?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-learn",
+              "capacity": "adaptability",
+              "name": "Learn",
+              "assessment": "mixed",
+              "finding": "People remember recurring problems locally; a maintained common record is being established.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Can a new steward recover why a rule changed and which questions remain open?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-monitor",
+              "capacity": "adaptability",
+              "name": "Monitor environment",
+              "assessment": "strength",
+              "finding": "Customer services hears changed deadlines and production hears supplier/material constraints.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "How will the two sites combine those signals at later reviews?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-next",
+              "capacity": "adaptability",
+              "name": "Next",
+              "assessment": "unknown",
+              "finding": "The group names possible 2–5- and 5–10-year changes; preparedness for them has not been tested.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Which plausible future conditions would make the present decision arrangement inadequate?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-options",
+              "capacity": "adaptability",
+              "name": "Options",
+              "assessment": "mixed",
+              "finding": "Late sharing and press-capacity accounts remain available for investigation; no intervention has been selected yet.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "What evidence would lead the group to choose a different capacity or adjustment?",
+              "evidence_refs": []
+            },
+            {
+              "id": "adapt-pilot",
+              "capacity": "adaptability",
+              "name": "Pilot",
+              "assessment": "mixed",
+              "finding": "The group has bounded the engagement to standard repeat orders and is willing to test a small change. Effective trial review is not yet demonstrated.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Can the group keep original criteria and stop expansion if a safeguard fails?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-practice",
+              "capacity": "robustness",
+              "name": "Quotidian practice",
+              "assessment": "mixed",
+              "finding": "The fictional workshop has recurring handover practices; whether they embody a shared identity has not been established.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Does the new routine reinforce shared purpose or merely add a meeting?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-recovery",
+              "capacity": "robustness",
+              "name": "Redundancy and recovery",
+              "assessment": "unknown",
+              "finding": "Key decision and recovery cover has not been mapped.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Who can keep essential decisions moving during absence or disruption?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-margins",
+              "capacity": "robustness",
+              "name": "Safety margins",
+              "assessment": "concern",
+              "finding": "Baseline overtime varies and preparation would consume human capacity. No large reserve of spare working time is assumed.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "What paid work is displaced when preparation time is allocated?",
+              "evidence_refs": [
+                "window:baseline"
+              ]
+            },
+            {
+              "id": "robust-test",
+              "capacity": "robustness",
+              "name": "Test the limits",
+              "assessment": "unknown",
+              "finding": "No severe-but-plausible shock exercise is reported.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "What future stress test would be useful? A short absence is not a full resilience test.",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-uncouple",
+              "capacity": "robustness",
+              "name": "Uncouple",
+              "assessment": "unknown",
+              "finding": "Office and workshop depend on shared commitments; the paths by which local failures could spread remain partly unexplored.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Can one unavailable role hold up essential work across both sites?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-authority",
+              "capacity": "robustness",
+              "name": "Visible authority",
+              "assessment": "unknown",
+              "finding": "Authority for critical decisions during disruption has not been fully mapped.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Who has authority when the usual decision-maker is unavailable?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-whatif",
+              "capacity": "robustness",
+              "name": "What-if planning",
+              "assessment": "unknown",
+              "finding": "Supplier exposure is recognized, but a full emergency-responsibility and resource plan is outside the evidence collected so far.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Which responsibilities and resources should be arranged before a serious disruption?",
+              "evidence_refs": []
+            },
+            {
+              "id": "robust-access",
+              "capacity": "robustness",
+              "name": "Zero-trust access",
+              "assessment": "unknown",
+              "finding": "No access-control audit is performed in this bounded delivery engagement. Interpersonal trust is not treated as access verification.",
+              "basis": "Authored fictional interview/record synthesis for this expanded case; not recovered real testimony.",
+              "open_question": "Who can access critical specifications and decision authority, and what checks exist?",
+              "evidence_refs": []
+            }
+          ],
+          "outlook": [
+            {
+              "horizon": "Now",
+              "finding": "Changed specifications complicate ordinary delivery promises.",
+              "interpretation": "Current fictional operating context"
+            },
+            {
+              "horizon": "2–5 years",
+              "finding": "Purchasing systems could make shorter lead times more common.",
+              "interpretation": "Planning hypothesis to monitor"
+            },
+            {
+              "horizon": "5–10 years",
+              "finding": "The direction and size of change are less clear.",
+              "interpretation": "Uncertainty, not a forecast"
+            }
+          ],
+          "heterogeneity": "The customer office hears deadline pressure; the workshop faces material, transport and machine constraints. Two sites do not experience the same environment.",
+          "visual_factors": {
+            "volatility": "Customer change; future direction uncertain",
+            "hazardousness": "Supplier exposure; machine safeguards fixed",
+            "coordination": "12/40 decisions; mechanism disputed",
+            "adaptability": "Useful local knowledge; shared review weak",
+            "robustness": "Workshop safeguards; decision cover unclear"
+          }
+        },
+        {
+          "id": "analyze-2027-01-22",
+          "date": "2027-01-22",
+          "stage": "Analyze",
+          "question": "Which mismatch should the group address first?",
+          "decision": "The representatives choose decision-making within coordination for this bounded issue. Keep adaptability and robustness active as supporting capacities, rather than treating one choice as solving the whole organization.",
+          "evidence_refs": [
+            "ap:assess-2027-01-18",
+            "item:nb-r-authority",
+            "item:nb-r-release",
+            "item:nb-r-l1"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "mismatch": {
+            "demand": "Timely, feasible responses to changed customer commitments.",
+            "capacity": "An authorized answer can wait for Maya while some jobs are released unresolved.",
+            "consequence": "The shared operating conditions and available decision capacity do not fit."
+          },
+          "alternatives": [
+            {
+              "capacity": "coordination",
+              "demand": "Customers need timely, feasible answers to changed requests.",
+              "finding": "Only 12/40 qualifying decisions; traces locate waiting authority and premature release.",
+              "judgment": "Chosen first: decision-making is an immediate gap relevant to the agreed issue."
+            },
+            {
+              "capacity": "adaptability",
+              "demand": "Customer expectations and supplier conditions can change.",
+              "finding": "Local knowledge exists; shared feedback and longer-term preparation need work.",
+              "judgment": "Support the adjustment with a review loop; revisit priority if volatility becomes more demanding."
+            },
+            {
+              "capacity": "robustness",
+              "demand": "Essential work must survive absence and disruption, with employee safety protected.",
+              "finding": "Decision cover is weak. No immediate survival crisis is identified; workshop safeguards remain mandatory.",
+              "judgment": "Provide supporting cover and paid capacity; an acute threat would require a fresh priority decision."
+            }
+          ],
+          "reopen_if": "A new safety/survival threat, substantially different customer/supply conditions or evidence favouring another bottleneck would reopen the choice.",
+          "ownership": "Stephen supplies questions and a draft; the representatives choose and check the interpretation. No numerical ranking or facilitator diagnosis substitutes for their judgment."
+        },
+        {
+          "id": "act-2027-01-25",
+          "date": "2027-01-25",
+          "stage": "Adjust",
+          "question": "How will the group turn its chosen capacity into a workable commitment?",
+          "decision": "The representatives choose the morning review and the named helpful behaviours as a bounded trial. Attendance, authorization and paid preparation remain assumptions to check, not promised effects.",
+          "evidence_refs": [
+            "ap:analyze-2027-01-22"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "format_choice": {
+            "method": "ACT group matrix",
+            "format": "Facilitated in-person discussion with private written reflection and voluntary sharing",
+            "reason": "The four representatives can meet in person in this scenario. Different views can be heard together, while personal sheets stay private and a written route remains available.",
+            "alternatives": [
+              "Private written or email contributions where speaking in the room feels unsafe",
+              "Another suitable adjustment method if the group does not choose ACT"
+            ],
+            "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure."
+          },
+          "matrix": [
+            {
+              "key": "A",
+              "question": "Which capacity do we want to improve together?",
+              "response": "Decision-making across the customer office and workshop.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ]
+            },
+            {
+              "key": "B",
+              "question": "What would improvement look like?",
+              "response": "Feasible authorized answers reach customers promptly; jobs enter agreed slots ready; people can question a date within paid working time.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ]
+            },
+            {
+              "key": "1",
+              "question": "What values matter for this capacity?",
+              "response": "Ben names dependability, Rosa craftsmanship, Imani fairness and Maya reliable commitments. They agree these values should guide promises together.",
+              "people": [
+                "ben",
+                "rosa",
+                "imani",
+                "maya"
+              ],
+              "contributions": [
+                {
+                  "by": "ben",
+                  "value": "Dependability"
+                },
+                {
+                  "by": "rosa",
+                  "value": "Craftsmanship"
+                },
+                {
+                  "by": "imani",
+                  "value": "Fairness"
+                },
+                {
+                  "by": "maya",
+                  "value": "Reliable commitments"
+                }
+              ]
+            },
+            {
+              "key": "2",
+              "question": "How would we act on those values?",
+              "response": "Check before promising, bring production constraints into the conversation, raise uncertainty early and make time for an authorized answer.",
+              "people": [
+                "ben",
+                "rosa",
+                "maya",
+                "imani"
+              ],
+              "helpful_actions": [
+                "Check before promising",
+                "Bring production constraints in",
+                "Raise uncertainty early",
+                "Make time for an authorized answer"
+              ]
+            },
+            {
+              "key": "3",
+              "question": "What thoughts and feelings get in the way?",
+              "response": "Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
+              "people": [
+                "ben",
+                "rosa"
+              ],
+              "examples": [
+                {
+                  "by": "ben",
+                  "thought": "If I ask for time, we could lose the customer."
+                },
+                {
+                  "by": "rosa",
+                  "thought": "My objections may be dismissed."
+                }
+              ]
+            },
+            {
+              "key": "4",
+              "question": "What happens when those thoughts take over?",
+              "response": "Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
+              "people": [
+                "ben",
+                "rosa",
+                "imani"
+              ],
+              "patterns": [
+                {
+                  "by": "ben",
+                  "thought": "Fear of losing the customer",
+                  "response": "Can promise immediately"
+                },
+                {
+                  "by": "rosa",
+                  "thought": "Expecting dismissal",
+                  "response": "Can stop challenging dates"
+                }
+              ]
+            },
+            {
+              "key": "C",
+              "question": "How can we acknowledge this discomfort and still move toward the result?",
+              "response": "Acknowledge customer urgency and the fear of losing business, check a feasible date before promising and return with an authorized answer. Maya will attend a bounded morning review; prepare inside paid shifts.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ],
+              "acknowledges": "Customer urgency, fear of losing business and the discomfort of challenging a date, alongside real capacity and authority constraints.",
+              "commits_to": [
+                "Check a feasible promise before committing",
+                "Return an authorized answer to the customer",
+                "Use the agreed review and paid preparation conditions"
+              ],
+              "example_utterance": "I can see it is urgent. I will check a workable date and get back to you."
+            }
+          ],
+          "commitment_status": "Chosen to test; not a report of changed behaviour.",
+          "real_constraints": "Keep the possibility of an infeasible date, unavailable authority or unpaid work separate from any interpretation about discomfort or resistance."
+        },
+        {
+          "id": "prepare-2027-01-29",
+          "date": "2027-01-29",
+          "stage": "Adjust",
+          "question": "Is the chosen trial ready enough to run, and what remains exposed?",
+          "decision": "Proceed only as the bounded first trial, relying on Maya attending. Retain unfinished deputy cover, protect paid time, and pause expansion for safeguard failures. Record the prediction before the window.",
+          "evidence_refs": [
+            "ap:act-2027-01-25",
+            "item:nb-f-cover"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "conditions": [
+            "Shared list and decision definition available",
+            "Paid meeting time planned",
+            "Maya agrees to attend",
+            "Deputy cover remains unfinished"
+          ],
+          "prediction": "trial-1",
+          "risk_choice": "The team explicitly takes the attendance risk in a small trial; it does not mark missing cover complete.",
+          "endpoint": "The first-trial 12/80 target does not replace the original 10% completion criterion."
+        },
+        {
+          "id": "reassess-2027-02-05",
+          "date": "2027-02-05",
+          "stage": "Repeat",
+          "question": "Does an encouraging first week justify changing the trial?",
+          "decision": "Continue the same bounded trial. Check qualifying decision timestamps before expansion; one week and an unchecked count do not settle the capacity assessment.",
+          "evidence_refs": [
+            "report:early",
+            "ap:prepare-2027-01-29"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "The first week provides little new evidence on medium- or long-term environmental change. Work already underway affects dispatches.",
+              "unknowns": "An easier order mix could contribute to the result.",
+              "next_check": "Retain the same cohort and collect the second week."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence creates disruption exposure. This limited assessment identifies no immediate business-survival crisis. Workshop machinery is hazardous; existing safeguards remain mandatory.",
+              "unknowns": "No comprehensive safety, supply-contingency or business-continuity audit is claimed.",
+              "next_check": "Escalate an acute threat if it appears; never relax machinery safeguards to meet a dispatch target."
+            },
+            "coordination": {
+              "summary": "All five meetings occurred and 17/20 decisions are provisionally reported prompt; the count is not yet verified.",
+              "unknowns": "Authorization and customer communication must still be checked.",
+              "next_check": "Verify the decision definition before expanding."
+            },
+            "adaptability": {
+              "summary": "The group is making an explicit continue-with-checking decision rather than expanding on a good story.",
+              "unknowns": "Its ability to correct and learn from a complete report is still untested.",
+              "next_check": "Check the count and compare the full fortnight with the original expectation."
+            },
+            "robustness": {
+              "summary": "Maya attendance has supported this first week. Deputy cover is still an exposed condition.",
+              "unknowns": "A good week does not demonstrate absence or disruption cover.",
+              "next_check": "Keep cover visible and continue checking paid work."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Little new evidence; order mix may differ",
+            "hazardousness": "Original safety and supply questions retained",
+            "coordination": "17/20 decisions reported; count unverified",
+            "adaptability": "Continue and check before expanding",
+            "robustness": "Maya attended; deputy still missing"
+          }
+        },
+        {
+          "id": "reassess-2027-02-12",
+          "date": "2027-02-12",
+          "stage": "Repeat",
+          "question": "What changed in the environment and capacities during the disappointing trial?",
+          "decision": "Pause expansion, pay and correct the preparation work, and separate unavailable authority, material delays and incomplete instructions. Reconsider the working explanation before choosing a revision.",
+          "evidence_refs": [
+            "report:trial1-result",
+            "report:correction",
+            "ap:prepare-2027-01-29"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "A supplier lengthens paper lead times during the trial. That is a changed operating condition, not proof of a long-term trend.",
+              "unknowns": "How much of the dispatch result it explains remains unresolved.",
+              "next_check": "Trace the four affected late jobs alongside authority and instruction delays."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence is now a concrete disruption exposure. No immediate business-survival crisis is established; machine safeguards remain mandatory.",
+              "unknowns": "The report does not constitute a full safety or continuity audit.",
+              "next_check": "Check for any acute threat and retain safeguards while revising the trial."
+            },
+            "coordination": {
+              "summary": "The corrected result is 21/40 prompt decisions; only 8/10 meetings occurred. Ten positive voice answers and sixteen responses fall short.",
+              "unknowns": "Why each decision waited and why voice answers are missing need inquiry.",
+              "next_check": "Check who could authorize an answer when a meeting occurred."
+            },
+            "adaptability": {
+              "summary": "The group corrects 17/20 to 11/20 and retains both versions. The full result misses its original prediction.",
+              "unknowns": "Correction and review do not themselves establish better future performance.",
+              "next_check": "Use the first unmet expected effect to guide the next inquiry."
+            },
+            "robustness": {
+              "summary": "Maya missed two meetings; deputy cover remains unfinished. Two unpaid preparation hours are identified and paid, taking week two to nineteen overtime hours.",
+              "unknowns": "Other severe disruptions and concealed burdens remain untested.",
+              "next_check": "Provide workable authority, cover and paid preparation before any revised trial."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Paper lead times worsen",
+            "hazardousness": "Disruption exposure; no survival crisis established",
+            "coordination": "21/40 decisions; speaking-up criterion missed",
+            "adaptability": "Correct the count; retain both reports",
+            "robustness": "Absent authority; unpaid preparation found"
+          }
+        },
+        {
+          "id": "reassess-2027-02-19",
+          "date": "2027-02-19",
+          "stage": "Repeat",
+          "question": "Did people fail to use the process, or did the arrangement lack necessary conditions?",
+          "decision": "Retain the structural explanation of missing authority and paid time. Withdraw the unsupported staff-reluctance interpretation, revisit the ACT commitments and choose a feasible revision.",
+          "evidence_refs": [
+            "ap:reassess-2027-02-12",
+            "report:trial1-result",
+            "item:nb-f-cover"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "Paper supply and changed customer requests remain relevant context. No evidence requires abandoning all earlier environmental judgments.",
+              "unknowns": "Their relative contribution to late dispatches remains open.",
+              "next_check": "Keep alternatives alongside the authority explanation."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence creates disruption exposure. This limited assessment identifies no immediate business-survival crisis. Workshop machinery is hazardous; existing safeguards remain mandatory.",
+              "unknowns": "No comprehensive safety, supply-contingency or business-continuity audit is claimed.",
+              "next_check": "Escalate an acute threat if it appears; never relax machinery safeguards to meet a dispatch target."
+            },
+            "coordination": {
+              "summary": "Imani reports that people used the process without anyone present who could authorize the answer.",
+              "unknowns": "The evidence does not establish that all delay has this cause.",
+              "next_check": "Define what the people handling an order may decide."
+            },
+            "adaptability": {
+              "summary": "The group revisits a failed expectation and withdraws an unsupported AI interpretation.",
+              "unknowns": "A better explanation still needs a new trial.",
+              "next_check": "Obtain fresh agreement and a fresh prospective observation window."
+            },
+            "robustness": {
+              "summary": "Missing deputy cover and paid preparation are actionable conditions.",
+              "unknowns": "Whether they will remain available under pressure is untested.",
+              "next_check": "Name owners and verify preparations before restarting."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Materials and demand remain live alternatives",
+            "hazardousness": "Mandatory safeguards remain fixed",
+            "coordination": "People used the process without authority",
+            "adaptability": "Withdraw unsupported staff-reluctance claim",
+            "robustness": "Provide cover and paid preparation"
+          }
+        },
+        {
+          "id": "analyze-2027-02-19",
+          "date": "2027-02-19",
+          "stage": "Analyze",
+          "question": "Does the new evidence change the priority or the conditions for acting on it?",
+          "decision": "Keep decision-making as the first coordination issue. Replace reliance on Maya attendance with bounded delegation and exception review, supported by available cover and paid preparation.",
+          "evidence_refs": [
+            "ap:reassess-2027-02-19",
+            "item:nb-r-authority",
+            "item:nb-f-cover"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "mismatch": {
+            "demand": "Routine replans still need timely feasible answers.",
+            "capacity": "Discussing an order does not give those present authority to settle it.",
+            "consequence": "An unchanged meeting routine cannot supply the missing decision rights."
+          },
+          "alternatives": [
+            {
+              "capacity": "coordination",
+              "demand": "Customers need timely, feasible answers to changed requests.",
+              "finding": "Only 12/40 qualifying decisions; traces locate waiting authority and premature release.",
+              "judgment": "Chosen first: decision-making is an immediate gap relevant to the agreed issue."
+            },
+            {
+              "capacity": "adaptability",
+              "demand": "Customer expectations and supplier conditions can change.",
+              "finding": "Local knowledge exists; shared feedback and longer-term preparation need work.",
+              "judgment": "Support the adjustment with a review loop; revisit priority if volatility becomes more demanding."
+            },
+            {
+              "capacity": "robustness",
+              "demand": "Essential work must survive absence and disruption, with employee safety protected.",
+              "finding": "Decision cover is weak. No immediate survival crisis is identified; workshop safeguards remain mandatory.",
+              "judgment": "Provide supporting cover and paid capacity; an acute threat would require a fresh priority decision."
+            }
+          ],
+          "reopen_if": "New material, safety or demand evidence can still change the priority. The revision does not close those questions.",
+          "ownership": "The representatives choose the revised version; fresh fictional agreement does not prove its causal sufficiency."
+        },
+        {
+          "id": "act-2027-02-19",
+          "date": "2027-02-19",
+          "stage": "Adjust",
+          "question": "How do the same values become a feasible revised commitment?",
+          "decision": "Keep the selected capacity, desired result and shared values. Revise helpful actions and C: bounded routine authority, exception review, a named deputy and paid preparation. Name the owners before restart.",
+          "evidence_refs": [
+            "ap:analyze-2027-02-19",
+            "report:trial1-result"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "format_choice": {
+            "method": "ACT group matrix",
+            "format": "Facilitated in-person discussion with private written reflection and voluntary sharing",
+            "reason": "The four representatives can meet in person in this scenario. Different views can be heard together, while personal sheets stay private and a written route remains available.",
+            "alternatives": [
+              "Private written or email contributions where speaking in the room feels unsafe",
+              "Another suitable adjustment method if the group does not choose ACT"
+            ],
+            "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure."
+          },
+          "matrix": [
+            {
+              "key": "A",
+              "question": "Which capacity do we want to improve together?",
+              "response": "Decision-making across the customer office and workshop.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ]
+            },
+            {
+              "key": "B",
+              "question": "What would improvement look like?",
+              "response": "Feasible authorized answers reach customers promptly; jobs enter agreed slots ready; people can question a date within paid working time.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ]
+            },
+            {
+              "key": "1",
+              "question": "What values matter for this capacity?",
+              "response": "Ben names dependability, Rosa craftsmanship, Imani fairness and Maya reliable commitments. They agree these values should guide promises together.",
+              "people": [
+                "ben",
+                "rosa",
+                "imani",
+                "maya"
+              ],
+              "contributions": [
+                {
+                  "by": "ben",
+                  "value": "Dependability"
+                },
+                {
+                  "by": "rosa",
+                  "value": "Craftsmanship"
+                },
+                {
+                  "by": "imani",
+                  "value": "Fairness"
+                },
+                {
+                  "by": "maya",
+                  "value": "Reliable commitments"
+                }
+              ]
+            },
+            {
+              "key": "2",
+              "question": "How would we act on those values?",
+              "response": "Resolve routine replans within written limits when received. Escalate exceptions, protect paid preparation and make a deputy available.",
+              "people": [
+                "ben",
+                "rosa",
+                "maya",
+                "imani"
+              ],
+              "helpful_actions": [
+                "Resolve routine replans within limits",
+                "Escalate exceptions",
+                "Provide authorized cover",
+                "Protect paid preparation"
+              ]
+            },
+            {
+              "key": "3",
+              "question": "What thoughts and feelings get in the way?",
+              "response": "Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
+              "people": [
+                "ben",
+                "rosa"
+              ],
+              "examples": [
+                {
+                  "by": "ben",
+                  "thought": "If I ask for time, we could lose the customer."
+                },
+                {
+                  "by": "rosa",
+                  "thought": "My objections may be dismissed."
+                }
+              ]
+            },
+            {
+              "key": "4",
+              "question": "What happens when those thoughts take over?",
+              "response": "Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
+              "people": [
+                "ben",
+                "rosa",
+                "imani"
+              ],
+              "patterns": [
+                {
+                  "by": "ben",
+                  "thought": "Fear of losing the customer",
+                  "response": "Can promise immediately"
+                },
+                {
+                  "by": "rosa",
+                  "thought": "Expecting dismissal",
+                  "response": "Can stop challenging dates"
+                }
+              ]
+            },
+            {
+              "key": "C",
+              "question": "How can we acknowledge this discomfort and still move toward the result?",
+              "response": "Keep checking a feasible promise even when urgency feels uncomfortable; give routine decisions written authority and provide cover and paid time so that helpful behaviour is possible.",
+              "people": [
+                "maya",
+                "ben",
+                "rosa",
+                "imani"
+              ],
+              "acknowledges": "Customer urgency, fear of losing business and the discomfort of challenging a date, alongside real capacity and authority constraints.",
+              "commits_to": [
+                "Check a feasible promise before committing",
+                "Return an authorized answer to the customer",
+                "Use the agreed review and paid preparation conditions"
+              ],
+              "example_utterance": "I can see it is urgent. I will check a workable date and get back to you."
+            }
+          ],
+          "commitment_status": "Fresh agreement to a revised trial, not endorsement of proven effects.",
+          "real_constraints": "Staff effort cannot substitute for authorization or paid working time."
+        },
+        {
+          "id": "reassess-2027-02-26",
+          "date": "2027-02-26",
+          "stage": "Repeat",
+          "question": "Which days and conditions does this mixed report actually describe?",
+          "decision": "Retain the mixed report, watch quotation delays, and record Expectation 2 before a clean March window. Completion of preparations is not evidence of the new arrangement’s effects.",
+          "evidence_refs": [
+            "ap:act-2027-02-19",
+            "report:mixed-result"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "Supplier conditions and changed requests still need watching; the fortnight straddles the 22 February change.",
+              "unknowns": "The aggregate cannot isolate the revised approach.",
+              "next_check": "Use a fresh full window and retain contextual changes."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence creates disruption exposure. This limited assessment identifies no immediate business-survival crisis. Workshop machinery is hazardous; existing safeguards remain mandatory.",
+              "unknowns": "No comprehensive safety, supply-contingency or business-continuity audit is claimed.",
+              "next_check": "Escalate an acute threat if it appears; never relax machinery safeguards to meet a dispatch target."
+            },
+            "coordination": {
+              "summary": "Routine replans can now be settled within written limits. The mixed result is 24/40 qualifying decisions.",
+              "unknowns": "That aggregate mostly predates the revised arrangement.",
+              "next_check": "Check authorized and communicated answers in the new window."
+            },
+            "adaptability": {
+              "summary": "The group separates action completion from effects and records a second prospective expectation.",
+              "unknowns": "A fair revised-trial result is not yet available.",
+              "next_check": "Review 1–12 March against the captured expectation."
+            },
+            "robustness": {
+              "summary": "Authority, deputy cover and paid preparation are arranged before restart. Two hours are moved from nonurgent quotations.",
+              "unknowns": "Costs can move elsewhere; quotation delays and continued availability remain open.",
+              "next_check": "Keep Imani checking burden and retain quote delays on the watch list."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Mixed window; context still matters",
+            "hazardousness": "Original safeguards remain fixed",
+            "coordination": "Routine authority arranged; effects not isolated",
+            "adaptability": "Record a clean prospective March window",
+            "robustness": "Cover arranged; quotation costs watched"
+          }
+        },
+        {
+          "id": "reassess-2027-03-12",
+          "date": "2027-03-12",
+          "stage": "Repeat",
+          "question": "Do the improved results fit the environment and capacity evidence?",
+          "decision": "Continue unchanged for a second qualifying fortnight. Keep easier work, normal paper supply, missing readiness baseline and untested severe-shock robustness visible.",
+          "evidence_refs": [
+            "report:march1-result",
+            "ap:reassess-2027-02-26"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "Paper supply normalizes and the job mix is slightly easier. Changed-request demands persist.",
+              "unknowns": "Easier conditions may explain part of the result.",
+              "next_check": "Keep the same definitions and check the next nonoverlapping window."
+            },
+            "hazardousness": {
+              "summary": "No new acute survival or safety threat is identified in the reported window. Mandatory workshop safeguards remain in place.",
+              "unknowns": "This is continuing screening, not a safety certification.",
+              "next_check": "Escalate any new acute threat and preserve the working-time safeguards."
+            },
+            "coordination": {
+              "summary": "34/40 requests receive prompt decisions. Sixteen positive voice answers and nineteen responses meet the agreed threshold.",
+              "unknowns": "Readiness has no comparable baseline; the causal contribution of decisions remains conditional.",
+              "next_check": "Continue checking decision quality and staff voice."
+            },
+            "adaptability": {
+              "summary": "The team compares the original expectation with several points in the mechanism and retains alternative explanations.",
+              "unknowns": "One qualifying window is not enough for closure.",
+              "next_check": "Continue unchanged and review the second window."
+            },
+            "robustness": {
+              "summary": "During Maya’s two-day absence, 5/6 requests receive prompt decisions. Overtime is sixteen and fifteen hours with no unpaid work reported.",
+              "unknowns": "Short-absence cover is supported; severe-shock robustness and permanent absence of harm are untested.",
+              "next_check": "Keep cover, workload and the private concern route under review."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Supply improves; work is slightly easier",
+            "hazardousness": "No new acute threat reported",
+            "coordination": "34/40 decisions; voice meets criterion",
+            "adaptability": "Compare the prediction; retain uncertainty",
+            "robustness": "5/6 decisions in absence; severe shocks untested"
+          }
+        },
+        {
+          "id": "reassess-2027-03-26",
+          "date": "2027-03-26",
+          "stage": "Repeat",
+          "question": "Does a second window satisfy the original conditions without erasing uncertainty?",
+          "decision": "Both March windows qualify. Prepare closure against every original criterion, retain open causal/capacity questions and agree how monitoring will continue if the group wants it.",
+          "evidence_refs": [
+            "report:march2-result",
+            "report:march1-result"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "Customer changes after release and machine downtime remain sources of late orders. Those orders still count against their original promises.",
+              "unknowns": "The revised arrangement does not remove all external or operational variation.",
+              "next_check": "Keep those causes available after handover."
+            },
+            "hazardousness": {
+              "summary": "Supplier dependence creates disruption exposure. This limited assessment identifies no immediate business-survival crisis. Workshop machinery is hazardous; existing safeguards remain mandatory.",
+              "unknowns": "No comprehensive safety, supply-contingency or business-continuity audit is claimed.",
+              "next_check": "Escalate an acute threat if it appears; never relax machinery safeguards to meet a dispatch target."
+            },
+            "coordination": {
+              "summary": "35/40 prompt decisions and seventeen positive voice answers from nineteen responses meet the criteria.",
+              "unknowns": "The counts do not establish that every person can always challenge safely.",
+              "next_check": "Retain anonymous reporting and immediate review of concerns."
+            },
+            "adaptability": {
+              "summary": "Two nonoverlapping windows now support a criteria-based closure decision. Earlier disappointing results remain in the record.",
+              "unknowns": "Long-term persistence of the improvement is not known.",
+              "next_check": "Agree optional monitoring and a later follow-up."
+            },
+            "robustness": {
+              "summary": "Paid overtime is fourteen and fifteen hours; no unpaid work or reprisal concern is reported.",
+              "unknowns": "Peak capacity, quotation delay and stronger disruption tests remain open.",
+              "next_check": "Hand over the supporting conditions, not only the meeting routine."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "Late changes and downtime still occur",
+            "hazardousness": "No new acute threat reported",
+            "coordination": "35/40 decisions; voice meets criterion",
+            "adaptability": "Two windows support criteria-based closure",
+            "robustness": "Paid hours qualify; wider resilience still open"
+          }
+        },
+        {
+          "id": "close-2027-04-02",
+          "date": "2027-04-02",
+          "stage": "Repeat",
+          "question": "Have the original conditions been met, and what does the group choose next?",
+          "decision": "Close active AP support because both March windows meet every original criterion. Retain open questions. The group chooses ongoing monitoring and a follow-up, with named human owners and reopening rules.",
+          "evidence_refs": [
+            "ap:reassess-2027-03-26",
+            "window:march1",
+            "window:march2"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "criteria_refs": [
+            "delivery",
+            "decisions",
+            "overtime",
+            "voice"
+          ],
+          "qualifying_windows": [
+            "march1",
+            "march2"
+          ],
+          "ownership": "Rosa stewards reviewed records; Ben supplies order figures; Maya checks paid time and cover; Imani maintains the anonymous pulse and private concern route.",
+          "optional_monitoring": true,
+          "reopen": "Any unpaid work or reprisal concern receives immediate review and an offer of independent facilitation. Two consecutive failed delivery or voice windows invite Stephen back; the group may ask sooner.",
+          "limits": "These thresholds, two-window rule and monitoring cadence belong to this fictional agreement, not to every AP engagement. Closure does not endorse a unique causal explanation."
+        },
+        {
+          "id": "reassess-2027-05-14",
+          "date": "2027-05-14",
+          "stage": "Repeat",
+          "question": "Which changed demands or unavailable capacities should the group examine now?",
+          "decision": "Choose restoration of deputy cover and a voluntary conversation about speaking up, then review on 28 May. This is one failed delivery-and-voice window; the two-window invitation has not yet fired. No later result is reported.",
+          "evidence_refs": [
+            "report:followup-result",
+            "ap:close-2027-04-02"
+          ],
+          "basis": "Added authored fiction illustrating the AP process; not a recovered consultation record.",
+          "factors": {
+            "volatility": {
+              "summary": "A new customer sends more late changes; the demands on the arrangement have changed.",
+              "unknowns": "It is not established how much this explains the delivery drift.",
+              "next_check": "Examine changed requests alongside implementation and the next window."
+            },
+            "hazardousness": {
+              "summary": "No new acute survival or machinery-safety threat is reported. No unpaid work is reported. The voice concern requires attention.",
+              "unknowns": "No report of harm is not proof that all harm is absent.",
+              "next_check": "Keep the immediate concern route and safety constraints active."
+            },
+            "coordination": {
+              "summary": "33/40 prompt decisions still qualify, but 9/80 late and fifteen positive voice answers from eighteen responses miss their criteria.",
+              "unknowns": "An employee describes questioning dates as holding others up, without alleging a specific sanction.",
+              "next_check": "Explore that concern voluntarily and retain unchanged thresholds."
+            },
+            "adaptability": {
+              "summary": "Monitoring detects drift and the group reopens the same mismatch rather than rewriting March’s success.",
+              "unknowns": "The selected corrective actions and next result are not yet observed.",
+              "next_check": "Compare the next window with the original criteria on 28 May."
+            },
+            "robustness": {
+              "summary": "Deputy cover has been reassigned twice, so a previously available supporting condition is less reliable. Overtime remains within limits.",
+              "unknowns": "Diverted cover alone does not prove the cause of drift.",
+              "next_check": "Ask Maya to restore cover and check its actual availability at the next review."
+            }
+          },
+          "return_to": "Assess → Analyze → Adjust",
+          "evidence_limit": "Review observations and implementation conditions without treating them as proof of a unique cause.",
+          "visual_factors": {
+            "volatility": "New customer sends more late changes",
+            "hazardousness": "Keep safety and concern routes active",
+            "coordination": "33/40 decisions pass; delivery and voice slip",
+            "adaptability": "Reopen inquiry using unchanged criteria",
+            "robustness": "Cover diverted twice; causation remains open"
+          }
+        }
+      ]
+    }
   }
 }

@@ -6,6 +6,7 @@ from pathlib import Path
 import unittest
 import yaml
 import build
+import build_story
 
 class Elements(HTMLParser):
     def __init__(self):
@@ -140,5 +141,73 @@ class CaseIntegrity(unittest.TestCase):
         event=next(e for e in self.data['events'] if e['date']=='2027-02-19')
         html=build.tree_use_view(event['tree_uses'][0],event,self.state,self.data)
         self.assertLess(html.index('Client check'),html.index('The connection the group revises'))
+
+class APIntegrity(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.state,cls.data,cls.story=build_story.load()
+
+    def test_all_five_factors_and_all_principles_have_visible_limits(self):
+        build.validate_ap(self.state,self.data)
+        baseline=next(r for r in self.data['ap']['records'] if r['id']=='assess-2027-01-18')
+        self.assertEqual(len(baseline['principles']),24)
+        self.assertTrue(any(p['assessment']=='unknown' for p in baseline['principles']))
+        data=deepcopy(self.data)
+        del next(r for r in data['ap']['records'] if r['id']=='reassess-2027-03-12')['factors']['hazardousness']
+        with self.assertRaisesRegex(ValueError,'all five factors'):build.validate_ap(self.state,data)
+
+    def test_capacity_choice_requires_the_environment_capacity_bridge(self):
+        data=deepcopy(self.data)
+        del next(r for r in data['ap']['records'] if r['id']=='analyze-2027-01-22')['mismatch']['demand']
+        with self.assertRaisesRegex(ValueError,'explicit demand/capacity mismatch'):build.validate_ap(self.state,data)
+
+    def test_act_requires_the_complete_pass_and_a_workable_C(self):
+        data=deepcopy(self.data)
+        matrix=next(r for r in data['ap']['records'] if r['id']=='act-2027-01-25')['matrix']
+        matrix[-1]['acknowledges']=''
+        with self.assertRaisesRegex(ValueError,'ACT C'):build.validate_ap(self.state,data)
+        data=deepcopy(self.data)
+        next(r for r in data['ap']['records'] if r['id']=='act-2027-01-25')['matrix'].pop(3)
+        with self.assertRaisesRegex(ValueError,'ACT pass'):build.validate_ap(self.state,data)
+
+    def test_assessment_cannot_borrow_a_later_report(self):
+        data=deepcopy(self.data)
+        next(r for r in data['ap']['records'] if r['id']=='assess-2027-01-18')['evidence_refs'].append('report:march2-result')
+        with self.assertRaisesRegex(ValueError,'future evidence'):build.validate_ap(self.state,data)
+
+    def test_method_expansion_cannot_rewrite_the_original_outcome_records(self):
+        data=deepcopy(self.data)
+        next(w for w in data['windows'] if w['id']=='trial1')['decisions']=[32,40]
+        with self.assertRaisesRegex(ValueError,'Historical numerical records'):build.validate_ap(self.state,data)
+
+    def test_expanded_story_is_static_dated_and_retains_published_bookmarks(self):
+        html=build_story.render(self.state,self.data,self.story)
+        parser=Elements();parser.feed(html)
+        self.assertEqual(len(parser.ids),len(set(parser.ids)))
+        self.assertFalse(set(parser.targets)-set(parser.ids))
+        self.assertTrue({f'beat-{i:02}' for i in range(1,41)}<=set(parser.ids))
+        for s in self.story['scenes']:
+            self.assertIn(build_story.e(s['text']),html)
+            self.assertIn('id="'+s['id']+'"',html)
+        embedded=html.split('<script id="northbank-source" type="application/json">',1)[1].split('</script>',1)[0]
+        public=json.loads(embedded)
+        self.assertEqual(public['ap'],self.data['ap'])
+        self.assertEqual(public['windows'],self.data['windows'])
+        self.assertNotIn('change_acceptances',html)
+
+    def test_story_cannot_skip_a_matrix_question_or_reveal_later_work(self):
+        story=deepcopy(self.story)
+        next(s for s in story['scenes'] if s['art']=='matrix-C')['art']='matrix-A'
+        with self.assertRaisesRegex(ValueError,'full ACT pass'):build_story.validate_story(self.state,self.data,story)
+        story=deepcopy(self.story)
+        story['scenes'][0]['ap_ref']='act-2027-02-19'
+        with self.assertRaisesRegex(ValueError,'unavailable AP record'):build_story.validate_story(self.state,self.data,story)
+
+    def test_rendered_method_record_keeps_the_evidence_choice_and_matrix(self):
+        html=build.render(self.state,self.data)['index.html']
+        for r in self.data['ap']['records']:
+            self.assertIn('id="ap-'+r['id']+'"',html)
+            self.assertIn(build.esc(r['decision']),html)
+        self.assertEqual(html.count('data-act-step="C"'),2)
 
 if __name__=='__main__':unittest.main()

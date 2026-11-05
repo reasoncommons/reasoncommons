@@ -1,0 +1,550 @@
+{
+  "format_version": 1,
+  "fictional": true,
+  "script": "docs/marketing/explainers/northbank-print/08-ap-script-v2.md",
+  "scenes": [
+    {
+      "id": "beat-01",
+      "title": "Promises are slipping.",
+      "date": "2027-01-11",
+      "ap_stage": "Orient",
+      "ap_step": "Orient",
+      "art": "opening",
+      "ap_ref": "orient-2027-01-11",
+      "text": "Twenty-two people work at Northbank Print. Orders go out late. Maya, the managing director, asks Stephen for help; Imani, an operator and staff representative, asks who will carry the extra work."
+    },
+    {
+      "id": "beat-02",
+      "title": "Agree the problem together.",
+      "date": "2027-01-11",
+      "ap_stage": "Orient",
+      "ap_step": "Orient",
+      "art": "orient-choice",
+      "ap_ref": "orient-2027-01-11",
+      "text": "The four representatives bring different concerns. Stephen helps them find positive wording everyone can use, then asks them to check it with their teams. No objections remain after that check."
+    },
+    {
+      "id": "beat-03",
+      "title": "Keep the promise. Protect the people.",
+      "date": "2027-01-11",
+      "ap_stage": "Orient",
+      "ap_step": "Orient",
+      "art": "goal",
+      "ap_ref": "orient-2027-01-11",
+      "text": "They choose a shared goal: dispatch standard repeat orders when promised, within paid time, while people can challenge unrealistic commitments without penalty. Bespoke work stays outside this twelve-week engagement."
+    },
+    {
+      "id": "beat-04",
+      "title": "Agree the finish before starting.",
+      "date": "2027-01-11",
+      "ap_stage": "Orient",
+      "ap_step": "Orient",
+      "art": "finish",
+      "ap_ref": "orient-2027-01-11",
+      "text": "They agree the finish before trying a change: two consecutive fortnights with at most ten percent late dispatches and at least eighty percent prompt decisions. Each window needs at least sixty orders."
+    },
+    {
+      "id": "beat-05",
+      "title": "Delivery is only part of success.",
+      "date": "2027-01-11",
+      "ap_stage": "Orient",
+      "ap_step": "Orient",
+      "art": "safeguards",
+      "ap_ref": "orient-2027-01-11",
+      "text": "Delivery cannot come at any price. Weekly overtime across all twenty-two employees must stay within eighteen hours, with no unpaid work. Speaking up needs sixteen positive answers and eighteen responses from twenty eligible employees."
+    },
+    {
+      "id": "beat-06",
+      "title": "One order in four is late.",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "baseline",
+      "ap_ref": "assess-2027-01-18",
+      "text": "The completed baseline shows twenty late dispatches out of eighty. Twelve of forty changed-order requests get an authorized answer, communicated to the customer by the next working day. Acknowledgment alone does not count."
+    },
+    {
+      "id": "beat-07",
+      "title": "Assess the situation before choosing.",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "assessment-method",
+      "ap_ref": "assess-2027-01-18",
+      "text": "Stephen combines interviews, an optional questionnaire and order records. Twenty of twenty-two people contribute some input. The group assesses its environment and three capacities: coordination, adaptability and robustness. Unanswered questions stay visible."
+    },
+    {
+      "id": "ap-volatility",
+      "title": "What could change around them?",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "environment-volatility",
+      "ap_ref": "assess-2027-01-18",
+      "text": "Customer changes already complicate promises. Purchasing systems could make shorter lead times more common over two to five years; five to ten years is less certain. These are planning possibilities, not forecasts of what will happen."
+    },
+    {
+      "id": "ap-hazards",
+      "title": "What could threaten people or survival?",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "environment-hazards",
+      "ap_ref": "assess-2027-01-18",
+      "text": "Supplier dependence creates disruption exposure. No immediate survival crisis emerges from this fictional assessment. Workshop machinery remains hazardous, with safeguards mandatory. The office and workshop face different pressures despite sharing the same orders."
+    },
+    {
+      "id": "ap-capacities",
+      "title": "How well can they respond?",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "capacity-profile",
+      "ap_ref": "assess-2027-01-18",
+      "text": "Coordination looks weak at changed-order decisions. Adaptability has useful local knowledge but little shared review of outcomes. Robustness has established workshop safeguards; cover for key decisions needs investigation. Their principle-by-principle notes retain strengths, concerns and unknowns."
+    },
+    {
+      "id": "beat-08",
+      "title": "The first explanation is challenged.",
+      "date": "2027-01-18",
+      "ap_stage": "Assess",
+      "ap_step": "Assess",
+      "art": "first-cause",
+      "ap_ref": "assess-2027-01-18",
+      "text": "An initial explanation blames sales for sharing changes slowly. Ben, the customer services lead, brings timestamped emails that challenge it. Stephen asks the group to trace three orders before assigning a sales fix."
+    },
+    {
+      "id": "beat-09",
+      "title": "The message arrived. Permission did not.",
+      "date": "2027-01-22",
+      "ap_stage": "Analyze",
+      "ap_step": "Analyze",
+      "art": "trace",
+      "ap_ref": "analyze-2027-01-22",
+      "text": "On two orders, the message arrived promptly. Approval waited: only Maya could authorize a changed delivery commitment. Some jobs entered production before that decision was settled."
+    },
+    {
+      "id": "beat-10",
+      "title": "Two conditions belong in the explanation.",
+      "date": "2027-01-22",
+      "ap_stage": "Analyze",
+      "ap_step": "Analyze",
+      "art": "causal-and",
+      "ap_ref": "analyze-2027-01-22",
+      "text": "The group redraws its explanation. A waiting decision, together with releasing a job before resolution, can leave instructions incomplete. Both conditions belong in this connection."
+    },
+    {
+      "id": "beat-11",
+      "title": "One mechanism does not explain every miss.",
+      "date": "2027-01-22",
+      "ap_stage": "Analyze",
+      "ap_step": "Analyze",
+      "art": "causal-next",
+      "ap_ref": "analyze-2027-01-22",
+      "text": "Incomplete instructions can contribute to late dispatches. Idle press slots weaken a blanket machinery-shortage explanation. Materials and peak capacity remain live alternatives; no single explanation accounts for every miss."
+    },
+    {
+      "id": "ap-mismatch",
+      "title": "Compare what is needed with what is available.",
+      "date": "2027-01-22",
+      "ap_stage": "Analyze",
+      "ap_step": "Analyze",
+      "art": "mismatch",
+      "ap_ref": "analyze-2027-01-22",
+      "text": "The environment demands workable answers to customer changes. Northbank's decision capacity leaves those answers waiting. Stephen asks the representatives to compare that mismatch with the other demands they have identified."
+    },
+    {
+      "id": "beat-12",
+      "title": "The group chooses coordination first.",
+      "date": "2027-01-22",
+      "ap_stage": "Analyze",
+      "ap_step": "Analyze",
+      "art": "capacity-choice",
+      "ap_ref": "analyze-2027-01-22",
+      "text": "They identify no immediate survival crisis requiring a different starting point. Customer change still needs watching; workshop safeguards remain nonnegotiable. The representatives choose decision-making first, with adaptability and robustness supporting that choice."
+    },
+    {
+      "id": "ap-method",
+      "title": "Choose a way to work on it.",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "method-choice",
+      "ap_ref": "act-2027-01-25",
+      "text": "They choose an ACT group discussion to turn that priority into action. Participation is voluntary. They will record shared practical commitments; personal sheets stay private."
+    },
+    {
+      "id": "ap-act-A",
+      "title": "Which capacity do we want to improve?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-A",
+      "ap_ref": "act-2027-01-25",
+      "text": "Stephen starts with the capacity: what do they want to improve together? The group names decision-making across the customer office and workshop, where changed commitments currently stall."
+    },
+    {
+      "id": "ap-act-B",
+      "title": "What would improvement look like?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-B",
+      "ap_ref": "act-2027-01-25",
+      "text": "What would improvement look like? Feasible, authorized answers reach customers promptly. Jobs enter agreed slots ready to run. People can question an unrealistic date without quietly paying for it in overtime."
+    },
+    {
+      "id": "beat-13",
+      "title": "What matters to us here?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-1",
+      "ap_ref": "act-2027-01-25",
+      "text": "What matters to them here? Ben names dependability, Rosa craftsmanship, Imani fairness and Maya reliable commitments. The group agrees these values belong together when deciding what to promise."
+    },
+    {
+      "id": "ap-act-2",
+      "title": "How would we act on those values?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-2",
+      "ap_ref": "act-2027-01-25",
+      "text": "How would they act on those values? Check before promising. Bring production constraints into the conversation. Raise uncertainty early. Make time for an authorized answer instead of passing an unresolved commitment along."
+    },
+    {
+      "id": "ap-act-3",
+      "title": "What thoughts and feelings get in the way?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-3",
+      "ap_ref": "act-2027-01-25",
+      "text": "What thoughts and feelings get in the way? Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Stephen invites the others to contribute without requiring personal disclosure."
+    },
+    {
+      "id": "beat-14",
+      "title": "What happens when those thoughts take over?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-4",
+      "ap_ref": "act-2027-01-25",
+      "text": "What happens when those thoughts take over? Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible."
+    },
+    {
+      "id": "ap-act-C",
+      "title": "Acknowledge the discomfort. Choose the action.",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "matrix-C",
+      "ap_ref": "act-2027-01-25",
+      "text": "How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya will attend a morning review. They will test these commitments in the morning review."
+    },
+    {
+      "id": "beat-15",
+      "title": "Will discussion produce a decision?",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "first-future",
+      "ap_ref": "act-2027-01-25",
+      "text": "The morning review becomes a bounded trial. A Reason Commons diagram helps them question the expected connection: will discussing a changed order actually produce an authorized decision? Their first assumption is that Maya will attend."
+    },
+    {
+      "id": "beat-16",
+      "title": "Draw the harm before it happens.",
+      "date": "2027-01-25",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "harm-branch",
+      "ap_ref": "act-2027-01-25",
+      "text": "Prompt decisions should help produce ready instructions and fewer late dispatches. Preparation could also spill beyond paid hours. They retain the harmful possibility alongside the hoped-for benefit."
+    },
+    {
+      "id": "beat-17",
+      "title": "A preparation is still missing.",
+      "date": "2027-01-29",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "readiness",
+      "ap_ref": "prepare-2027-01-29",
+      "text": "Six of ten additional order traces contain unresolved decisions. A shared list and paid meeting time are prepared. Deputy cover is still unfinished; the group knowingly relies on Maya attending during this small first trial."
+    },
+    {
+      "id": "beat-18",
+      "title": "Record the trial expectation first.",
+      "date": "2027-01-29",
+      "ap_stage": "Adjust",
+      "ap_step": "Adjust",
+      "art": "prediction-one",
+      "ap_ref": "prepare-2027-01-29",
+      "text": "Before starting on 1 February, they record at least thirty-two prompt decisions out of forty and at most twelve late dispatches out of eighty. This initial target leaves the original ten-percent finish line intact. Release 1 preserves the reviewed plan.",
+      "aliases": [
+        "beat-19"
+      ]
+    },
+    {
+      "id": "beat-20",
+      "title": "An encouraging week. Keep checking.",
+      "date": "2027-02-05",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "early",
+      "ap_ref": "reassess-2027-02-05",
+      "text": "After one week, six of forty orders are late and seventeen of twenty decisions are reported prompt. Maya suggests expanding. The group continues the same trial while checking the count."
+    },
+    {
+      "id": "beat-21",
+      "title": "Received is not decided.",
+      "date": "2027-02-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "correction",
+      "ap_ref": "reassess-2027-02-12",
+      "text": "Some acknowledgments had counted as decisions. Checking authorization and customer communication changes seventeen to eleven out of twenty. The earlier report remains beside its correction."
+    },
+    {
+      "id": "beat-22",
+      "title": "The full trial misses its prediction.",
+      "date": "2027-02-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "trial-result",
+      "ap_ref": "reassess-2027-02-12",
+      "text": "The full fortnight brings twenty-one prompt decisions out of forty and sixteen late dispatches out of eighty. Both miss the prediction. Only eight of ten meetings occurred; Maya missed two. Paper lead times also worsened."
+    },
+    {
+      "id": "beat-23",
+      "title": "The cost was hidden in unpaid time.",
+      "date": "2027-02-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "harm-observed",
+      "ap_ref": "reassess-2027-02-12",
+      "text": "Imani finds two unpaid preparation hours. Paying and recording them raises the second week's overtime from seventeen to nineteen hours. The pulse has ten positive answers from sixteen responses; four answers remain missing. Expansion pauses."
+    },
+    {
+      "id": "ap-reassess-feb",
+      "title": "Return to the environment and capacities.",
+      "date": "2027-02-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Analyze",
+      "art": "reassessment",
+      "ap_ref": "reassess-2027-02-12",
+      "text": "They return to Assess. Paper delays change the operating conditions; unavailable authority and unpaid preparation expose capacity gaps. The group checks the wider profile before deciding that coordination still needs attention, supported by better cover and learning."
+    },
+    {
+      "id": "beat-24",
+      "title": "A meeting cannot lend you authority.",
+      "date": "2027-02-19",
+      "ap_stage": "Repeat",
+      "ap_step": "Analyze",
+      "art": "missing-authority",
+      "ap_ref": "analyze-2027-02-19",
+      "text": "An AI brief calls staff reluctant to use the process. Imani challenges it: people used the process, but nobody present could authorize an answer. Stephen withdraws that interpretation."
+    },
+    {
+      "id": "ap-act-revisit",
+      "title": "Revisit the way forward together.",
+      "date": "2027-02-19",
+      "ap_stage": "Repeat",
+      "ap_step": "Adjust",
+      "art": "matrix-revisit",
+      "ap_ref": "act-2027-02-19",
+      "text": "They revisit the ACT commitments. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority or paid time. The revised way forward must make their chosen behaviours possible."
+    },
+    {
+      "id": "beat-25",
+      "title": "Give people authority to decide.",
+      "date": "2027-02-19",
+      "ap_stage": "Repeat",
+      "ap_step": "Adjust",
+      "art": "revised-and",
+      "ap_ref": "act-2027-02-19",
+      "text": "Maya agrees bounded delegation: Ben and Rosa can resolve routine replans when they arrive; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version."
+    },
+    {
+      "id": "beat-26",
+      "title": "Name the owners before restarting.",
+      "date": "2027-02-19",
+      "ap_stage": "Repeat",
+      "ap_step": "Adjust",
+      "art": "actions",
+      "ap_ref": "act-2027-02-19",
+      "text": "Before restarting on 22 February, Maya defines limits and names a deputy. Maya and Rosa allocate paid preparation, taking two hours from nonurgent quotation work. Imani checks the burden; quotation delays stay on the watch list."
+    },
+    {
+      "id": "beat-27",
+      "title": "Prepared does not mean improved.",
+      "date": "2027-02-26",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "prepared",
+      "ap_ref": "reassess-2027-02-26",
+      "text": "Completing those actions prepares the new trial. Its effects still need observation. The record distinguishes who did what from whether decisions, working conditions and deliveries improved."
+    },
+    {
+      "id": "beat-28",
+      "title": "This fortnight mixes two approaches.",
+      "date": "2027-02-26",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "mixed",
+      "ap_ref": "reassess-2027-02-26",
+      "text": "The next report mixes days under both approaches: fourteen of eighty dispatches are late and twenty-four of forty decisions are prompt. Those figures remain, but this mixed period cannot fairly evaluate the revision alone."
+    },
+    {
+      "id": "beat-29",
+      "title": "Give the revision its own test.",
+      "date": "2027-02-26",
+      "ap_stage": "Repeat",
+      "ap_step": "Adjust",
+      "art": "prediction-two",
+      "ap_ref": "reassess-2027-02-26",
+      "text": "Before March begins, they record a new expectation for 1–12 March: at least thirty-two prompt decisions out of forty, at most eight late dispatches out of eighty, and every original safeguard. Release 2 retains the correction and changed trial."
+    },
+    {
+      "id": "beat-30",
+      "title": "Decisions continue while Maya is away.",
+      "date": "2027-03-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "authority-result",
+      "ap_ref": "reassess-2027-03-12",
+      "text": "The full revised window produces thirty-four prompt decisions out of forty. During Maya's two-day absence, five of six requests still receive prompt decisions. That supports decision cover during a short absence; severe-disruption robustness remains untested."
+    },
+    {
+      "id": "beat-31",
+      "title": "A count needs something to compare with.",
+      "date": "2027-03-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "no-baseline",
+      "ap_ref": "reassess-2027-03-12",
+      "text": "Seventy-five of eighty jobs have complete instructions at their slot. No comparable readiness baseline was collected, so the amount of improvement is unknown. Paper supply also normalizes, and the job mix is slightly easier."
+    },
+    {
+      "id": "beat-32",
+      "title": "One qualifying window.",
+      "date": "2027-03-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "march-one",
+      "ap_ref": "reassess-2027-03-12",
+      "text": "Eight of eighty orders go out late. Overtime is sixteen and fifteen hours. Sixteen people answer positively about speaking up; nineteen respond. No unpaid work is reported. This first window qualifies."
+    },
+    {
+      "id": "ap-review-march",
+      "title": "Check what has changed around the result.",
+      "date": "2027-03-12",
+      "ap_stage": "Repeat",
+      "ap_step": "Analyze",
+      "art": "reassessment-profile",
+      "ap_ref": "reassess-2027-03-12",
+      "text": "They reassess the environment and capacities together. Supply is easier; the need for timely decisions remains. Cover worked during a short absence, and reviewed reports support learning. One qualifying fortnight supports continuing unchanged, rather than closing."
+    },
+    {
+      "id": "beat-33",
+      "title": "Two windows meet the original criteria.",
+      "date": "2027-03-26",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "march-two",
+      "ap_ref": "reassess-2027-03-26",
+      "text": "The second window produces thirty-five prompt decisions and seven late dispatches. Overtime is fourteen and fifteen hours; seventeen people answer positively, with nineteen responses. No unpaid work is reported. Both consecutive windows meet the original criteria."
+    },
+    {
+      "id": "ap-close",
+      "title": "Close when the agreed conditions are met.",
+      "date": "2027-04-02",
+      "ap_stage": "Repeat",
+      "ap_step": "Close",
+      "art": "closure",
+      "ap_ref": "close-2027-04-02",
+      "text": "On 2 April, the group checks those criteria before closing active support. Success follows the agreed conditions rather than the calendar alone. The reports do not establish a unique cause or settle every open question."
+    },
+    {
+      "id": "beat-34",
+      "title": "Hand over the reason behind the routine.",
+      "date": "2027-04-02",
+      "ap_stage": "Repeat",
+      "ap_step": "Close",
+      "art": "record",
+      "ap_ref": "close-2027-04-02",
+      "text": "Rosa takes over the same maintained record: the goal, assessment, choice of capacity, ACT commitments, earlier explanations, predictions and corrected reports. The reason behind the arrangement travels with the routine."
+    },
+    {
+      "id": "beat-35",
+      "title": "Give the record human owners.",
+      "date": "2027-04-02",
+      "ap_stage": "Repeat",
+      "ap_step": "Close",
+      "art": "stewards",
+      "ap_ref": "close-2027-04-02",
+      "text": "Ben supplies order figures, Maya checks paid hours and cover, and Imani maintains the anonymous pulse and private concern route. Release 3 marks the reviewed handover. The team chooses to keep fortnightly monitoring after AP closes."
+    },
+    {
+      "id": "beat-36",
+      "title": "Agree what would bring help back.",
+      "date": "2027-04-02",
+      "ap_stage": "Repeat",
+      "ap_step": "Close",
+      "art": "triggers",
+      "ap_ref": "close-2027-04-02",
+      "text": "Unpaid work or reprisal concerns require immediate review and an offer of independent facilitation. Two consecutive failed delivery or speaking-up windows invite Stephen back. The group can ask sooner."
+    },
+    {
+      "id": "beat-37",
+      "title": "May brings a warning.",
+      "date": "2027-05-14",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "may-delivery",
+      "ap_ref": "reassess-2027-05-14",
+      "text": "In May, nine of eighty orders are late. Prompt decisions still qualify at thirty-three of forty, and overtime remains within limits. Delivery is better than January, yet above the unchanged completion ceiling."
+    },
+    {
+      "id": "beat-38",
+      "title": "Listen to the warning from staff, too.",
+      "date": "2027-05-14",
+      "ap_stage": "Repeat",
+      "ap_step": "Assess",
+      "art": "may-voice",
+      "ap_ref": "reassess-2027-05-14",
+      "text": "Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up."
+    },
+    {
+      "id": "ap-review-may",
+      "title": "Compare the new demands with current capacity.",
+      "date": "2027-05-14",
+      "ap_stage": "Repeat",
+      "ap_step": "Analyze",
+      "art": "reassessment-may",
+      "ap_ref": "reassess-2027-05-14",
+      "text": "The group reopens the environment-capacity comparison. Customer demands have changed, cover is less available and speaking up needs attention. These observations justify renewed inquiry; none alone proves what caused the drift."
+    },
+    {
+      "id": "beat-39",
+      "title": "Choose the next action and review.",
+      "date": "2027-05-14",
+      "ap_stage": "Repeat",
+      "ap_step": "Adjust",
+      "art": "next",
+      "ap_ref": "reassess-2027-05-14",
+      "text": "They ask Maya to restore cover, offer a voluntary conversation and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached."
+    },
+    {
+      "id": "beat-40",
+      "title": "The next review has not happened.",
+      "date": "2027-05-14",
+      "ap_stage": "Repeat",
+      "ap_step": "Pending",
+      "art": "pending",
+      "ap_ref": "reassess-2027-05-14",
+      "text": "The next review has not happened."
+    }
+  ]
+}

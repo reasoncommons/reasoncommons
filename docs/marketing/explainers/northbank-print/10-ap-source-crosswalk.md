@@ -36,4 +36,4 @@ All source-defined steps have a fictional example, a choice or an explicit uncer
 
 ## Verification status
 
-This is the pre-build coverage contract reviewed with the visual script. Implementation checks and the actual source audit are recorded in `11-ap-validation.md`. Automated completeness checks cannot authenticate a fictional consultation, establish that ACT was competently facilitated or substitute for Stephen's methodological review and real readers' comprehension.
+This coverage contract was reviewed with the visual script and then checked against the implemented case and all 54 story views. Implementation checks and the actual source audit are recorded in `11-ap-validation.md`. Automated completeness checks cannot authenticate a fictional consultation, establish that ACT was competently facilitated or substitute for Stephen's methodological review and real readers' comprehension.
