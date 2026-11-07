@@ -20,7 +20,7 @@ Reason Commons helps people and groups work out what they are trying to achieve 
 |------|------|
 | Project overview + references | `README.md` |
 | Why this matters | `motivation.md` |
-| Planning — streams, next actions | [GitHub issues](https://github.com/life-itself/reasoncommons/issues) |
+| Planning — streams, next actions | [GitHub issues](https://github.com/reasoncommons/reasoncommons/issues) |
 | Resume the Rufus–David collaboration, funding work | Private repo [reasoncommons/product](https://github.com/reasoncommons/product) (moved 2026-10-21): bead `rcp-a4l` (START HERE) and `collab/reason-commons.yaml` there; workflow in [docs/beads-reasoning.md](docs/beads-reasoning.md) |
 | Internal **gold-standard toy fixture** for testing skills (tree, doc, annotations) | `claim-tree-annotation.md` |
 | Static animated demo of the 4-step vision | `website/claim-tree-annotation-demo/` |
