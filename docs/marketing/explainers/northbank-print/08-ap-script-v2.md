@@ -30,11 +30,11 @@ Incomplete instructions can contribute to late dispatches. Idle press slots weak
 
 The environment demands workable answers to customer changes. Northbank's decision capacity leaves those answers waiting. Stephen asks the representatives to compare that mismatch with the other demands they have identified.
 
-They identify no immediate survival crisis requiring a different starting point. Customer change still needs watching; workshop safeguards remain nonnegotiable. The representatives choose decision-making first, with adaptability and robustness supporting that choice.
+Customer change is real but not rapid, and no immediate survival crisis appears. AP’s typical guidance then permits a coordination focus. The representatives choose decision-making first, with adaptability and robustness supporting it; workshop safeguards remain nonnegotiable.
 
-They choose an ACT group discussion to turn that priority into action. Participation is voluntary. They will record shared practical commitments; personal sheets stay private.
+They choose an ACT group discussion to turn that priority into action, in plain business wording. Participation is voluntary. They start with a lighter pass and can go deeper later. Shared commitments are recorded; personal sheets stay private.
 
-Stephen starts with the capacity: what do they want to improve together? The group names decision-making across the customer office and workshop, where changed commitments currently stall.
+Stephen starts with the capacity: what do they want to improve together? The group names coordination, specifically decision-making across the customer office and workshop, where changed commitments currently stall.
 
 What would improvement look like? Feasible, authorized answers reach customers promptly. Jobs enter agreed slots ready to run. People can question an unrealistic date without quietly paying for it in overtime.
 
@@ -42,11 +42,11 @@ What matters to them here? Ben names dependability, Rosa craftsmanship, Imani fa
 
 How would they act on those values? Check before promising. Bring production constraints into the conversation. Raise uncertainty early. Make time for an authorized answer instead of passing an unresolved commitment along.
 
-What thoughts and feelings get in the way? Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Stephen invites the others to contribute without requiring personal disclosure.
+What thoughts and feelings get in the way? Maya goes first: she worries about answering for promises she has not approved. Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Disclosure stays voluntary.
 
-What happens when those thoughts take over? Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible.
+What happens when those thoughts take over? Maya keeps every changed date for personal approval; Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible.
 
-How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya will attend a morning review. They will test these commitments in the morning review.
+How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya takes a lighter first step: attend a morning review, keeping approval for now.
 
 The morning review becomes a bounded trial. A Reason Commons diagram helps them question the expected connection: will discussing a changed order actually produce an authorized decision? Their first assumption is that Maya will attend.
 
@@ -68,9 +68,11 @@ They return to Assess. Paper delays change the operating conditions; unavailable
 
 An AI brief calls staff reluctant to use the process. Imani challenges it: people used the process, but nobody present could authorize an answer. Stephen withdraws that interpretation.
 
-They revisit the ACT commitments. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority or paid time. The revised way forward must make their chosen behaviours possible.
+Stephen asks why only Maya can authorize a changed date. The tree links the waiting decision to that rule, and the rule to the worry Maya named in box 3. Changing the rule means acknowledging the worry, not overruling it.
 
-Maya agrees bounded delegation: Ben and Rosa can resolve routine replans when they arrive; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version.
+They revisit the matrix, going deeper this time. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority, so Maya returns to box 3 and the worry that keeps approval central.
+
+Acknowledging that worry, Maya delegates: Ben and Rosa can resolve routine replans within written limits; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version.
 
 Before restarting on 22 February, Maya defines limits and names a deputy. Maya and Rosa allocate paid preparation, taking two hours from nonurgent quotation work. Imani checks the burden; quotation delays stay on the watch list.
 
@@ -90,7 +92,7 @@ They reassess the environment and capacities together. Supply is easier; the nee
 
 The second window produces thirty-five prompt decisions and seven late dispatches. Overtime is fourteen and fifteen hours; seventeen people answer positively, with nineteen responses. No unpaid work is reported. Both consecutive windows meet the original criteria.
 
-On 2 April, the group checks those criteria before closing active support. Success follows the agreed conditions rather than the calendar alone. The reports do not establish a unique cause or settle every open question.
+On 2 April, the group checks those criteria before closing active support. Rosa says the office now asks before it promises; Ben no longer dreads asking for time. The reports do not establish a unique cause or settle every open question.
 
 Rosa takes over the same maintained record: the goal, assessment, choice of capacity, ACT commitments, earlier explanations, predictions and corrected reports. The reason behind the arrangement travels with the routine.
 
@@ -100,10 +102,10 @@ Unpaid work or reprisal concerns require immediate review and an offer of indepe
 
 In May, nine of eighty orders are late. Prompt decisions still qualify at thirty-three of forty, and overtime remains within limits. Delivery is better than January, yet above the unchanged completion ceiling.
 
-Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up.
+Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up, close to the thoughts named in box 3.
 
 The group reopens the environment-capacity comparison. Customer demands have changed, cover is less available and speaking up needs attention. These observations justify renewed inquiry; none alone proves what caused the drift.
 
-They ask Maya to restore cover, offer a voluntary conversation and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached.
+They ask Maya to restore cover, offer a voluntary conversation that revisits box 3 and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached.
 
 The next review has not happened.

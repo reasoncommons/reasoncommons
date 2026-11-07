@@ -45,6 +45,18 @@ trees:
       label: Some dispatches miss their original promises.
       status: proposed
       contributions: *id001
+    - id: nb-r-sole-authority
+      kind: cause
+      text: Only Maya can authorize a changed delivery commitment.
+      label: Only Maya can authorize changed commitments.
+      status: proposed
+      contributions: *id001
+    - id: nb-r-approval-worry
+      kind: cause
+      text: Maya worries about answering for delivery promises she has not approved herself.
+      label: Maya worries about promises she has not approved.
+      status: proposed
+      contributions: *id001
     links:
     - id: nb-r-l1
       from:
@@ -61,10 +73,27 @@ trees:
       relation: contributes_to
       status: proposed
       contributions: *id001
+    - id: nb-r-l3
+      from:
+      - nb-r-approval-worry
+      to: nb-r-sole-authority
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
+    - id: nb-r-l4
+      from:
+      - nb-r-sole-authority
+      to: nb-r-authority
+      relation: contributes_to
+      status: proposed
+      contributions: *id001
     backlog:
     - ref: nb-r-l2
       work: compare_alternative_explanations
       label: Separate instruction effects from materials, mix and machine capacity.
+    - ref: nb-r-approval-worry
+      work: watch_authority_drift
+      label: Ask in reviews whether the worry pulls decisions back to Maya.
   future_reality:
     nodes:
     - id: nb-f-adjustment
@@ -75,6 +104,7 @@ trees:
       contributions: *id001
       addresses:
       - nb-r-authority
+      - nb-r-sole-authority
       - nb-r-release
       - nb-r-late
     - id: nb-f-cover

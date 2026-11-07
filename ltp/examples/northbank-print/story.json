@@ -161,7 +161,7 @@
       "ap_step": "Analyze",
       "art": "capacity-choice",
       "ap_ref": "analyze-2027-01-22",
-      "text": "They identify no immediate survival crisis requiring a different starting point. Customer change still needs watching; workshop safeguards remain nonnegotiable. The representatives choose decision-making first, with adaptability and robustness supporting that choice."
+      "text": "Customer change is real but not rapid, and no immediate survival crisis appears. AP’s typical guidance then permits a coordination focus. The representatives choose decision-making first, with adaptability and robustness supporting it; workshop safeguards remain nonnegotiable."
     },
     {
       "id": "ap-method",
@@ -171,7 +171,7 @@
       "ap_step": "Adjust",
       "art": "method-choice",
       "ap_ref": "act-2027-01-25",
-      "text": "They choose an ACT group discussion to turn that priority into action. Participation is voluntary. They will record shared practical commitments; personal sheets stay private."
+      "text": "They choose an ACT group discussion to turn that priority into action, in plain business wording. Participation is voluntary. They start with a lighter pass and can go deeper later. Shared commitments are recorded; personal sheets stay private."
     },
     {
       "id": "ap-act-A",
@@ -181,7 +181,7 @@
       "ap_step": "Adjust",
       "art": "matrix-A",
       "ap_ref": "act-2027-01-25",
-      "text": "Stephen starts with the capacity: what do they want to improve together? The group names decision-making across the customer office and workshop, where changed commitments currently stall."
+      "text": "Stephen starts with the capacity: what do they want to improve together? The group names coordination, specifically decision-making across the customer office and workshop, where changed commitments currently stall."
     },
     {
       "id": "ap-act-B",
@@ -221,7 +221,7 @@
       "ap_step": "Adjust",
       "art": "matrix-3",
       "ap_ref": "act-2027-01-25",
-      "text": "What thoughts and feelings get in the way? Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Stephen invites the others to contribute without requiring personal disclosure."
+      "text": "What thoughts and feelings get in the way? Maya goes first: she worries about answering for promises she has not approved. Ben fears losing a customer when he asks for time. Rosa expects objections to be dismissed. Disclosure stays voluntary."
     },
     {
       "id": "beat-14",
@@ -231,7 +231,7 @@
       "ap_step": "Adjust",
       "art": "matrix-4",
       "ap_ref": "act-2027-01-25",
-      "text": "What happens when those thoughts take over? Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible."
+      "text": "What happens when those thoughts take over? Maya keeps every changed date for personal approval; Ben can promise immediately; Rosa can stop challenging dates. The group recognizes these patterns while retaining Imani's point: some requested dates really are impossible."
     },
     {
       "id": "ap-act-C",
@@ -241,7 +241,7 @@
       "ap_step": "Adjust",
       "art": "matrix-C",
       "ap_ref": "act-2027-01-25",
-      "text": "How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya will attend a morning review. They will test these commitments in the morning review."
+      "text": "How can they acknowledge that discomfort and still act on their values? Ben chooses to acknowledge urgency, check a feasible date and return with an authorized answer. Maya takes a lighter first step: attend a morning review, keeping approval for now."
     },
     {
       "id": "beat-15",
@@ -347,6 +347,16 @@
       "text": "An AI brief calls staff reluctant to use the process. Imani challenges it: people used the process, but nobody present could authorize an answer. Stephen withdraws that interpretation."
     },
     {
+      "id": "ap-authority-root",
+      "title": "Why does authority stay with Maya?",
+      "date": "2027-02-19",
+      "ap_stage": "Repeat",
+      "ap_step": "Analyze",
+      "art": "authority-root",
+      "ap_ref": "analyze-2027-02-19",
+      "text": "Stephen asks why only Maya can authorize a changed date. The tree links the waiting decision to that rule, and the rule to the worry Maya named in box 3. Changing the rule means acknowledging the worry, not overruling it."
+    },
+    {
       "id": "ap-act-revisit",
       "title": "Revisit the way forward together.",
       "date": "2027-02-19",
@@ -354,7 +364,7 @@
       "ap_step": "Adjust",
       "art": "matrix-revisit",
       "ap_ref": "act-2027-02-19",
-      "text": "They revisit the ACT commitments. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority or paid time. The revised way forward must make their chosen behaviours possible."
+      "text": "They revisit the matrix, going deeper this time. Dependability, craftsmanship and fairness still matter. Asking staff to try harder cannot supply authority, so Maya returns to box 3 and the worry that keeps approval central."
     },
     {
       "id": "beat-25",
@@ -364,7 +374,7 @@
       "ap_step": "Adjust",
       "art": "revised-and",
       "ap_ref": "act-2027-02-19",
-      "text": "Maya agrees bounded delegation: Ben and Rosa can resolve routine replans when they arrive; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version."
+      "text": "Acknowledging that worry, Maya delegates: Ben and Rosa can resolve routine replans within written limits; morning meetings handle exceptions. Authorized cover and paid preparation must also be available. The representatives give fresh agreement to this version."
     },
     {
       "id": "beat-26",
@@ -464,7 +474,7 @@
       "ap_step": "Close",
       "art": "closure",
       "ap_ref": "close-2027-04-02",
-      "text": "On 2 April, the group checks those criteria before closing active support. Success follows the agreed conditions rather than the calendar alone. The reports do not establish a unique cause or settle every open question."
+      "text": "On 2 April, the group checks those criteria before closing active support. Rosa says the office now asks before it promises; Ben no longer dreads asking for time. The reports do not establish a unique cause or settle every open question."
     },
     {
       "id": "beat-34",
@@ -514,7 +524,7 @@
       "ap_step": "Assess",
       "art": "may-voice",
       "ap_ref": "reassess-2027-05-14",
-      "text": "Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up."
+      "text": "Speaking up slips to fifteen positive answers, with eighteen responses. Deputy cover was diverted twice; a new customer sends more late changes. One employee says questioning dates feels like holding everyone up, close to the thoughts named in box 3."
     },
     {
       "id": "ap-review-may",
@@ -534,7 +544,7 @@
       "ap_step": "Adjust",
       "art": "next",
       "ap_ref": "reassess-2027-05-14",
-      "text": "They ask Maya to restore cover, offer a voluntary conversation and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached."
+      "text": "They ask Maya to restore cover, offer a voluntary conversation that revisits box 3 and schedule 28 May to review again. One failed window prompts internal adjustment; the agreed two-window return trigger has not been reached."
     },
     {
       "id": "beat-40",

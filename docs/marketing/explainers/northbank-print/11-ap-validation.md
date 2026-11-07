@@ -43,3 +43,12 @@ The Flowershow CLI is unavailable in this environment. The separate remote previ
 ## Remaining review
 
 Stephen has not assessed methodological fidelity, and no real client audience has tested comprehension or usefulness. Both review backlog items remain open. None of the browser checks, source comparisons, tests, publication or implementation approval changes the standing of the fictional reasoning. The next review has not happened inside the story or outside it.
+
+## Revision: northbank-ap-fidelity (7 November 2026)
+
+Validated on 7 November 2026 after implementing `northbank-ap-fidelity` revision 1. Both generators build, and both `--check` modes report agreement between canonical reasoning, history, predictions, exports, the 55-view story, the reviewed script and the generated HTML. Twenty-four integrity tests pass, including three new ones: Maya names the first thought and pattern in both ACT passes, with a lighter first C and a deeper second one; the two new causes enter the current-reality tree on 19 February and not before; and the new view follows the missing-authority view, shows the typical guidance and credits the method's sources. Website exports are current, and the website checker reports 8729 links and assets with zero errors and zero missing links. Metrics, windows, predictions, reports, releases and actions are byte-for-byte unchanged, and every Northbank statement and connection remains proposed.
+
+In a local browser at 1024×768, every scene fits one screen after tightening the new view, box 3 and the capacity choice; the tallest is 757px. At 375px, `scripts/phone-check.mjs` reports no horizontal overflow on the new view, box 4, the capacity choice or closure, and the box 4 patterns stack readably.
+
+Stephen has not reviewed this revision. It is a closer reading of his October summary, not evidence that he recognises the walkthrough as his method.
+

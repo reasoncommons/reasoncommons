@@ -210,4 +210,37 @@ class APIntegrity(unittest.TestCase):
             self.assertIn(build.esc(r['decision']),html)
         self.assertEqual(html.count('data-act-step="C"'),2)
 
+    def test_leader_goes_first_in_both_matrix_passes(self):
+        for rid in ('act-2027-01-25','act-2027-02-19'):
+            matrix={s['key']:s for s in next(r for r in self.data['ap']['records'] if r['id']==rid)['matrix']}
+            self.assertEqual(matrix['3']['examples'][0]['by'],'maya')
+            self.assertEqual(matrix['4']['patterns'][0]['by'],'maya')
+            self.assertIn('Maya',matrix['C']['acknowledges'])
+        first,deeper=[next(r for r in self.data['ap']['records'] if r['id']==rid)['matrix'][-1]['response'] for rid in ('act-2027-01-25','act-2027-02-19')]
+        self.assertIn('lighter first step',first)
+        self.assertIn('delegates',deeper)
+
+    def test_the_worry_enters_the_tree_only_after_the_trial(self):
+        before=build.tree_model(self.state,self.data,'current_reality','2027-02-12')
+        after=build.tree_model(self.state,self.data,'current_reality','2027-02-19')
+        for ref in ('nb-r-approval-worry','nb-r-sole-authority'):
+            self.assertNotIn(ref,before['nodes'])
+            self.assertIn(ref,after['nodes'])
+        links={l['id']:l for l in after['links']}
+        self.assertEqual((links['nb-r-l3']['from'],links['nb-r-l3']['to']),(['nb-r-approval-worry'],'nb-r-sole-authority'))
+        self.assertEqual((links['nb-r-l4']['from'],links['nb-r-l4']['to']),(['nb-r-sole-authority'],'nb-r-authority'))
+        self.assertIn('nb-r-sole-authority',build.index(self.state)['nb-f-adjustment']['addresses'])
+
+    def test_story_asks_why_authority_stays_before_revisiting_the_matrix(self):
+        arts=[s['art'] for s in self.story['scenes']]
+        self.assertEqual(len(arts),55)
+        self.assertEqual(arts.index('authority-root'),arts.index('missing-authority')+1)
+        self.assertLess(arts.index('authority-root'),arts.index('matrix-revisit'))
+        html=build_story.render(self.state,self.data,self.story)
+        self.assertIn('data-ref="nb-r-approval-worry"',html)
+        self.assertIn('→ coordination',html)
+        self.assertNotIn('despite the Oct 16 filename',html)
+        for name in ('ProSocial World','Ostrom','Convergent Facilitation'):
+            self.assertIn(name,html)
+
 if __name__=='__main__':unittest.main()

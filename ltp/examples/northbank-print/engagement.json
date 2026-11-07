@@ -698,10 +698,10 @@
       "title": "What are we willing to try?",
       "summary": "Values and legitimate constraints lead to a bounded daily review, with a harmful branch kept visible.",
       "scene": [
-        "Stephen introduces the ACT group matrix: the selected capacity, the result they want, their values and helpful actions, difficult thoughts and feelings, habitual responses, and a possible way forward. Ben values dependability but notices the thought “If I ask for time, we’ll lose the customer,” followed by an immediate promise.",
+        "Stephen introduces the ACT group matrix: the selected capacity, the result they want, their values and helpful actions, difficult thoughts and feelings, habitual responses, and a possible way forward. Maya goes first: “If someone else commits a date and it slips, the customer will still hold me to it.” So every changed date waits for her approval. Ben values dependability but notices the thought “If I ask for time, we’ll lose the customer,” followed by an immediate promise.",
         "Rosa values craftsmanship. Sometimes she stops challenging dates because she expects dismissal. Imani points out that some dates really are impossible. Stephen keeps both possibilities available: discomfort can shape behavior, and the workload concern can be accurate."
       ],
-      "facilitation": "Personal disclosure is voluntary and private matrix sheets stay private. The shared implication is practical: acknowledge customer urgency while checking the commitment. Stephen then uses the future tree to work through what that choice might produce, the assumptions under its arrows and the possible workload harm.",
+      "facilitation": "Personal disclosure is voluntary and private matrix sheets stay private. The shared implication is practical: acknowledge customer urgency while checking the commitment. Maya takes a lighter first step: she will attend the review but keep approval for now. Stephen then uses the future tree to work through what that choice might produce, the assumptions under its arrows and the possible workload harm.",
       "updates": [
         {
           "ref": "nb-f-adjustment",
@@ -948,9 +948,9 @@
       "summary": "The group revises the adjustment and its causal connection after correcting another AI interpretation.",
       "scene": [
         "Stephen prepares from the current snapshot, outstanding questions and overdue actions. The deputy arrangement is still unfinished. AI drafts a preparation brief calling staff “reluctant to use the process.” Imani objects: on two days people used it, but nobody present could authorize the answer.",
-        "Stephen withdraws that interpretation. Maya offers bounded delegation: Ben and Rosa may agree routine replans within written production and price limits. Exceptional commitments return to Maya or her named deputy."
+        "Stephen withdraws that interpretation and asks why authority stays with Maya. Maya returns to the worry she named in the matrix: answering for promises she has not approved. Acknowledging it, she offers bounded delegation: Ben and Rosa may agree routine replans within written production and price limits. Exceptional commitments return to Maya or her named deputy."
       ],
-      "facilitation": "Stephen keeps the earlier connection visible while the group replaces it. The revision changes both the action and the condition under which it might work. Fresh agreement to the revised trial concerns that version only; the causal explanation remains proposed.",
+      "facilitation": "Stephen keeps the earlier connection visible while the group replaces it. The revision changes both the action and the condition under which it might work. Fresh agreement to the revised trial concerns that version only; the causal explanation remains proposed. The current-reality tree connects the waiting decision to a rule and the rule to a worry named in the matrix, so the delegation and the ACT work address the same cause.",
       "updates": [
         {
           "ref": "nb-f-adjustment",
@@ -982,6 +982,46 @@
             "relation": "contributes_to"
           },
           "note": "Replace the meeting-only connection with a joint condition: adjustment AND available cover and paid preparation."
+        },
+        {
+          "ref": "nb-r-sole-authority",
+          "operation": "Added",
+          "after": {
+            "text": "Only Maya can authorize a changed delivery commitment."
+          },
+          "note": "The 22 January traces found that only Maya could approve a changed date. The group now records why the decision waits."
+        },
+        {
+          "ref": "nb-r-approval-worry",
+          "operation": "Added",
+          "after": {
+            "text": "Maya worries about answering for delivery promises she has not approved herself."
+          },
+          "note": "Named voluntarily by Maya in ACT box 3 on 25 January. A feeling recorded as a proposed cause, not a diagnosis."
+        },
+        {
+          "ref": "nb-r-l4",
+          "operation": "Added",
+          "after": {
+            "from": [
+              "nb-r-sole-authority"
+            ],
+            "to": "nb-r-authority",
+            "relation": "contributes_to"
+          },
+          "note": ""
+        },
+        {
+          "ref": "nb-r-l3",
+          "operation": "Added",
+          "after": {
+            "from": [
+              "nb-r-approval-worry"
+            ],
+            "to": "nb-r-sole-authority",
+            "relation": "contributes_to"
+          },
+          "note": "A worry can help keep a rule in place; it is not the rule’s only reason."
         },
         {
           "ref": "nb-t-authority",
@@ -1072,6 +1112,34 @@
             }
           ],
           "compare_with": "2027-02-12"
+        },
+        {
+          "tree": "current_reality",
+          "question": "Why does authority stay with Maya?",
+          "prompt": "Imani’s correction leaves a prior question. Stephen asks: “Only Maya can authorize a changed date. What keeps that rule where it is?”",
+          "response_by": "Maya",
+          "response": "Maya returns to box 3: “If someone else commits a date and it slips, the customer will still hold me to it.” Stephen adds the rule beneath the waiting decision and the worry beneath the rule. The group treats the worry as one reason the rule persists, not the only one.",
+          "decision": "Acknowledge the worry rather than overrule it. The delegation Maya offers is the deeper step on C: routine replans within written limits, with exceptions reviewed together.",
+          "focus": [
+            "nb-r-l3",
+            "nb-r-l4",
+            "nb-r-approval-worry",
+            "nb-r-sole-authority",
+            "nb-r-authority"
+          ],
+          "evidence": [
+            {
+              "ref": "nb-r-sole-authority",
+              "text": "Two of three traced orders waited for Maya’s approval. In the first trial Maya missed two of ten meetings, and nobody present could authorize an answer.",
+              "source": "22 January order traces and the preserved first trial report",
+              "report": "trial1-result"
+            },
+            {
+              "ref": "nb-r-approval-worry",
+              "text": "Named by Maya in ACT box 3 on 25 January. Chosen voluntarily, not inferred by the facilitator.",
+              "source": "ACT matrix, 25 January"
+            }
+          ]
         },
         {
           "tree": "transition",
@@ -1272,7 +1340,8 @@
       "summary": "Active facilitation closes; stewardship, monitoring and reopening conditions remain explicit.",
       "scene": [
         "The twelve-week engagement ends after two qualifying March windows. The four representatives review the closure wording. Stephen shares Release 3 deliberately; it is a dated reference copy, not a separate commons.",
-        "Rosa takes over stewardship. Ben supplies dispatch and change figures; Maya verifies paid hours; Imani maintains the anonymous pulse and private route for concerns. Working corrections continue to be checked before incorporation."
+        "Rosa takes over stewardship. Ben supplies dispatch and change figures; Maya verifies paid hours; Imani maintains the anonymous pulse and private route for concerns. Working corrections continue to be checked before incorporation.",
+        "Rosa says the office now asks before it promises. Ben says asking for time no longer feels like risking the customer. These are fictional accounts, not measured outcomes."
       ],
       "facilitation": "Stephen asks what would make renewed help useful. The group agrees immediate review for unpaid work or reprisal concerns and an invitation to independent facilitation. Two consecutive failed delivery or voice windows invite Stephen back, with an option to ask sooner.",
       "updates": [
@@ -1317,7 +1386,7 @@
       "facilitation": "Revisiting the same condition and outcome separates implementation drift from a verdict on the whole adjustment. The group retains environmental changes and the speaking-up concern as live information, keeps the original criteria and chooses an internal review before the two-window re-engagement trigger is reached.",
       "updates": [],
       "evidence": "This is one failed delivery-and-voice window. The agreed two-window re-engagement trigger has not fired, but the group chooses an internal adjustment now. The May report is a working update after Release 3; no later review result is invented.",
-      "next": "Maya restores deputy cover. Imani offers a voluntary discussion. Rosa reviews again on 28 May and invites Stephen if the next window also fails or a safeguard concern warrants it.",
+      "next": "Maya restores deputy cover. Imani offers a voluntary discussion that revisits the box 3 thoughts. Rosa reviews again on 28 May and invites Stephen if the next window also fails or a safeguard concern warrants it.",
       "difference": "The history helps distinguish deteriorating implementation conditions from proof that the adjustment never helped. Monitoring after handover drives an actual next decision.",
       "report": "followup-result",
       "dialogue": [
@@ -1821,7 +1890,8 @@
           }
         ],
         "reopen_if": "A new safety/survival threat, substantially different customer/supply conditions or evidence favouring another bottleneck would reopen the choice.",
-        "ownership": "Stephen supplies questions and a draft; the representatives choose and check the interpretation. No numerical ranking or facilitator diagnosis substitutes for their judgment."
+        "ownership": "Stephen supplies questions and a draft; the representatives choose and check the interpretation. No numerical ranking or facilitator diagnosis substitutes for their judgment.",
+        "typical_guidance": "Typical guidance (October summary, p. 6): a more volatile environment emphasises adaptability, a more hazardous one robustness, and one that is neither permits a focus on coordination. Customer change at Northbank is real but not rapid, and no immediate survival crisis is identified, so coordination is permitted first. The guidance informs the group’s choice; it does not make it."
       },
       {
         "id": "act-2027-01-25",
@@ -1841,13 +1911,14 @@
             "Private written or email contributions where speaking in the room feels unsafe",
             "Another suitable adjustment method if the group does not choose ACT"
           ],
-          "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure."
+          "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure.",
+          "language": "Plain business wording for the matrix questions, as the October summary suggests for groups wary of vulnerability. A lighter first pass, with a deeper pass later if needed (summary p. 8)."
         },
         "matrix": [
           {
             "key": "A",
             "question": "Which capacity do we want to improve together?",
-            "response": "Decision-making across the customer office and workshop.",
+            "response": "Coordination, specifically decision-making across the customer office and workshop.",
             "people": [
               "maya",
               "ben",
@@ -1915,12 +1986,17 @@
           {
             "key": "3",
             "question": "What thoughts and feelings get in the way?",
-            "response": "Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
+            "response": "Maya goes first: she worries about answering for promises she has not approved. Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
             "people": [
+              "maya",
               "ben",
               "rosa"
             ],
             "examples": [
+              {
+                "by": "maya",
+                "thought": "If someone else commits a date and it slips, the customer will still hold me to it."
+              },
               {
                 "by": "ben",
                 "thought": "If I ask for time, we could lose the customer."
@@ -1934,13 +2010,19 @@
           {
             "key": "4",
             "question": "What happens when those thoughts take over?",
-            "response": "Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
+            "response": "Maya keeps every changed date for personal approval; Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
             "people": [
+              "maya",
               "ben",
               "rosa",
               "imani"
             ],
             "patterns": [
+              {
+                "by": "maya",
+                "thought": "Fear of answering for others’ promises",
+                "response": "Keeps every changed date for personal approval"
+              },
               {
                 "by": "ben",
                 "thought": "Fear of losing the customer",
@@ -1956,18 +2038,19 @@
           {
             "key": "C",
             "question": "How can we acknowledge this discomfort and still move toward the result?",
-            "response": "Acknowledge customer urgency and the fear of losing business, check a feasible date before promising and return with an authorized answer. Maya will attend a bounded morning review; prepare inside paid shifts.",
+            "response": "Acknowledge customer urgency and the fear of losing business, check a feasible date before promising and return with an authorized answer. Maya takes a lighter first step: attend a bounded morning review, keeping approval for now. Prepare inside paid shifts.",
             "people": [
               "maya",
               "ben",
               "rosa",
               "imani"
             ],
-            "acknowledges": "Customer urgency, fear of losing business and the discomfort of challenging a date, alongside real capacity and authority constraints.",
+            "acknowledges": "Customer urgency, fear of losing business, the discomfort of challenging a date and Maya’s worry about answering for others’ promises, alongside real capacity and authority constraints.",
             "commits_to": [
               "Check a feasible promise before committing",
               "Return an authorized answer to the customer",
-              "Use the agreed review and paid preparation conditions"
+              "Use the agreed review and paid preparation conditions",
+              "Maya attends the bounded morning review, keeping approval for now"
             ],
             "example_utterance": "I can see it is urgent. I will check a workable date and get back to you."
           }
@@ -2187,7 +2270,7 @@
         "date": "2027-02-19",
         "stage": "Adjust",
         "question": "How do the same values become a feasible revised commitment?",
-        "decision": "Keep the selected capacity, desired result and shared values. Revise helpful actions and C: bounded routine authority, exception review, a named deputy and paid preparation. Name the owners before restart.",
+        "decision": "Keep the selected capacity, desired result and shared values. Go deeper on C: Maya acknowledges the worry that kept approval central and delegates routine replans within limits. Add exception review, a named deputy and paid preparation, and name the owners before restart.",
         "evidence_refs": [
           "ap:analyze-2027-02-19",
           "report:trial1-result"
@@ -2201,13 +2284,14 @@
             "Private written or email contributions where speaking in the room feels unsafe",
             "Another suitable adjustment method if the group does not choose ACT"
           ],
-          "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure."
+          "limit": "The source notes that ACT and EFT require training and practice. These authored scenes do not establish facilitator competence or require disclosure.",
+          "language": "A deeper second pass, in the same plain business wording, after the trial shows authority held in place."
         },
         "matrix": [
           {
             "key": "A",
             "question": "Which capacity do we want to improve together?",
-            "response": "Decision-making across the customer office and workshop.",
+            "response": "Coordination, specifically decision-making across the customer office and workshop.",
             "people": [
               "maya",
               "ben",
@@ -2275,12 +2359,17 @@
           {
             "key": "3",
             "question": "What thoughts and feelings get in the way?",
-            "response": "Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
+            "response": "Maya returns to her worry about answering for promises she has not approved. Ben fears losing a customer if he asks for time. Rosa expects objections to be dismissed. These are voluntary fictional examples; others need not disclose personal material.",
             "people": [
+              "maya",
               "ben",
               "rosa"
             ],
             "examples": [
+              {
+                "by": "maya",
+                "thought": "If someone else commits a date and it slips, the customer will still hold me to it."
+              },
               {
                 "by": "ben",
                 "thought": "If I ask for time, we could lose the customer."
@@ -2294,13 +2383,19 @@
           {
             "key": "4",
             "question": "What happens when those thoughts take over?",
-            "response": "Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
+            "response": "Maya keeps every changed date for personal approval; Ben can promise immediately; Rosa can stop challenging dates. These are patterns the group recognizes, not explanations of every problem. Some requested dates really are infeasible.",
             "people": [
+              "maya",
               "ben",
               "rosa",
               "imani"
             ],
             "patterns": [
+              {
+                "by": "maya",
+                "thought": "Fear of answering for others’ promises",
+                "response": "Keeps every changed date for personal approval"
+              },
               {
                 "by": "ben",
                 "thought": "Fear of losing the customer",
@@ -2316,15 +2411,16 @@
           {
             "key": "C",
             "question": "How can we acknowledge this discomfort and still move toward the result?",
-            "response": "Keep checking a feasible promise even when urgency feels uncomfortable; give routine decisions written authority and provide cover and paid time so that helpful behaviour is possible.",
+            "response": "Maya acknowledges the worry about answering for others’ promises and delegates routine replans within written limits. Keep checking a feasible promise even when urgency feels uncomfortable; provide cover and paid time so that helpful behaviour is possible.",
             "people": [
               "maya",
               "ben",
               "rosa",
               "imani"
             ],
-            "acknowledges": "Customer urgency, fear of losing business and the discomfort of challenging a date, alongside real capacity and authority constraints.",
+            "acknowledges": "Customer urgency, fear of losing business, the discomfort of challenging a date and Maya’s worry about answering for others’ promises, alongside real capacity and authority constraints.",
             "commits_to": [
+              "Maya delegates routine replans within written limits and names a deputy",
               "Check a feasible promise before committing",
               "Return an authorized answer to the customer",
               "Use the agreed review and paid preparation conditions"
@@ -2504,14 +2600,15 @@
         "ownership": "Rosa stewards reviewed records; Ben supplies order figures; Maya checks paid time and cover; Imani maintains the anonymous pulse and private concern route.",
         "optional_monitoring": true,
         "reopen": "Any unpaid work or reprisal concern receives immediate review and an offer of independent facilitation. Two consecutive failed delivery or voice windows invite Stephen back; the group may ask sooner.",
-        "limits": "These thresholds, two-window rule and monitoring cadence belong to this fictional agreement, not to every AP engagement. Closure does not endorse a unique causal explanation."
+        "limits": "These thresholds, two-window rule and monitoring cadence belong to this fictional agreement, not to every AP engagement. Closure does not endorse a unique causal explanation.",
+        "relationships": "Rosa says the office now asks before it promises. Ben says asking for time no longer feels like risking the customer. These are fictional accounts of the working relationship, not measured outcomes."
       },
       {
         "id": "reassess-2027-05-14",
         "date": "2027-05-14",
         "stage": "Repeat",
         "question": "Which changed demands or unavailable capacities should the group examine now?",
-        "decision": "Choose restoration of deputy cover and a voluntary conversation about speaking up, then review on 28 May. This is one failed delivery-and-voice window; the two-window invitation has not yet fired. No later result is reported.",
+        "decision": "Choose restoration of deputy cover and a voluntary conversation about speaking up that revisits the box 3 thoughts, then review on 28 May. This is one failed delivery-and-voice window; the two-window invitation has not yet fired. No later result is reported.",
         "evidence_refs": [
           "report:followup-result",
           "ap:close-2027-04-02"
@@ -2531,7 +2628,7 @@
           "coordination": {
             "summary": "33/40 prompt decisions still qualify, but 9/80 late and fifteen positive voice answers from eighteen responses miss their criteria.",
             "unknowns": "An employee describes questioning dates as holding others up, without alleging a specific sanction.",
-            "next_check": "Explore that concern voluntarily and retain unchanged thresholds."
+            "next_check": "Explore that concern voluntarily, alongside the box 3 thoughts named in January, and retain unchanged thresholds."
           },
           "adaptability": {
             "summary": "Monitoring detects drift and the group reopens the same mismatch rather than rewriting March’s success.",

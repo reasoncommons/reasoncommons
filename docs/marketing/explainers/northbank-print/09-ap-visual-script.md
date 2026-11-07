@@ -449,3 +449,18 @@ The assessment does not reveal the corrected cause before the dated order trace.
 The complete qualitative principle record must make unknowns inspectable. It is supporting detail, not a full-screen wall of twenty-four entries. The October summary is the procedural reference; differences from the September overview are named in the source crosswalk.
 
 Published scene bookmarks are preserved; the original separate trial-target bookmark points into the combined prediction view. Display numbers follow the expanded narrative rather than the internal identifiers.
+
+## Revision: northbank-ap-fidelity (7 November 2026)
+
+Under `northbank-ap-fidelity` revision 1 the storyboard above keeps its wording as the record of the first pass. The built story differs from it in these views:
+
+- **16 · capacity choice:** a three-line strip of the summary's typical guidance sits above the capacity list, with Northbank marked on "neither → coordination".
+- **17 · method choice:** the sheet adds "Chosen depth: a lighter first pass, plain business wording".
+- **18 · ACT A:** the selected capacity reads "Coordination", specifically decision-making across office and workshop.
+- **22–23 · ACT 3 and 4:** Maya's thought and pattern come first; box 4 shows three patterns as rows.
+- **24 · ACT C:** the caption names Maya's lighter first step: attend the review, keeping approval.
+- **35 · new, "Why does authority stay with Maya?":** a current-reality chain from Maya's worry, to the rule that only Maya can authorize, to the waiting decision; the note names box 3 on 25 January as the worry's source. Nodes and arrows are tightened so the view fits a 768px-high screen.
+- **36–37 · revisit and delegation:** the second card becomes "Maya's deeper step", and delegation is narrated as acknowledging the worry.
+- **46 · closure:** a slip carries Rosa's line about the office asking before it promises.
+- **52 and 54 · May:** the comment is marked as close to box 3, and the voluntary conversation revisits box 3.
+

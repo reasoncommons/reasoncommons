@@ -195,14 +195,16 @@ def ap_record_view(r):
         body+='</details>'
     if r.get('mismatch'):
         body+='<div class="ap-mismatch">'+''.join(f'<p><strong>{esc(k.capitalize())}:</strong> {esc(v)}</p>' for k,v in r['mismatch'].items())+'</div>'
+        if r.get('typical_guidance'):body+='<h4>Typical guidance and where Northbank sits</h4>'+paragraphs(r['typical_guidance'])
         body+='<h4>Alternatives the group considers</h4>'+''.join(f'<article class="ap-option"><h4>{esc(x["capacity"].capitalize())}</h4><p>{esc(x["demand"])}</p><p>{esc(x["finding"])}</p><p><strong>Judgment:</strong> {esc(x["judgment"])}</p></article>' for x in r['alternatives'])
         body+=paragraphs(r['ownership'])+'<p><strong>Reopen this choice if:</strong> '+esc(r['reopen_if'])+'</p>'
     if r.get('matrix'):
         choice=r['format_choice']
         body+=f'<h4>Chosen method and format</h4>{paragraphs([choice["method"]+" · "+choice["format"],choice["reason"]])}<p><strong>Alternatives:</strong> {esc("; ".join(choice["alternatives"]))}</p>'
+        if choice.get('language'):body+=f'<p><strong>Wording and depth:</strong> {esc(choice["language"])}</p>'
         body+='<div class="ap-matrix">'+''.join(f'<article data-act-step="{esc(s["key"])}"><span class="small-label">ACT {esc(s["key"])}</span><h4>{esc(s["question"])}</h4>{paragraphs(s["response"])}</article>' for s in r['matrix'])+'</div>'
         body+=paragraphs([r['real_constraints'],r['commitment_status']])+f'<p class="meta">{esc(choice["limit"])}</p>'
-    for key,title in [('conditions','Readiness conditions'),('risk_choice','The group’s bounded risk choice'),('endpoint','Completion criterion retained'),('ownership','Human responsibilities'),('reopen','Reopening rules'),('limits','Limits of the decision')]:
+    for key,title in [('conditions','Readiness conditions'),('risk_choice','The group’s bounded risk choice'),('endpoint','Completion criterion retained'),('relationships','What changed between people'),('ownership','Human responsibilities'),('reopen','Reopening rules'),('limits','Limits of the decision')]:
         if r.get(key) and not (key=='ownership' and r.get('mismatch')):
             body+=f'<h4>{title}</h4>'+paragraphs(r[key])
     body+='<div class="next"><span class="small-label">Group decision and next move</span>'+paragraphs(r['decision'])+'</div>'
