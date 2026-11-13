@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
-"""Show a whole commons in the browser, privately: turn a working YAML file into linked pages on this computer.
+"""Show a whole commons in the browser, privately: read a working YAML file in a local workspace.
 
-The file is checked with the skill's own validator, then every tree is written as the pages the Reason Commons
-demo site uses for one commons: accepted, proposed and disputed items as recorded, participants' names,
-assumptions, challenges, open work and outcome reports. Nothing is published or sent anywhere. The pages go to a
+The file is checked with the skill's own validator. The workspace shows the recorded standings, participants,
+assumptions, challenges and open work, with links to detailed diagrams and outcome reports. Nothing is published or sent anywhere. The pages go to a
 `site` folder in the file's hidden directory (`reason-commons.yaml` → `.reason-commons/site/`). `--serve` serves
 them on 127.0.0.1 only, for a browser that will not open local files.
 """
@@ -11,11 +10,14 @@ import argparse
 from copy import deepcopy
 from datetime import datetime, timezone
 from functools import partial
+from hashlib import sha256
+from html import escape
 import http.server
 import importlib.util
 import json
 import os
 from pathlib import Path
+import re
 import sys
 import tempfile
 
@@ -29,6 +31,7 @@ views = importlib.util.module_from_spec(_views_spec)
 _views_spec.loader.exec_module(views)
 
 SLUG = "commons"
+WORKSPACE = f"{SLUG}/workspace.html"
 MANIFEST = ".ltp-site"  # The files this helper wrote, so a rebuild removes only its own stale pages.
 TRACES = ("addresses", "derived_from", "implements")
 ASSISTANT = {"name": "AI assistant", "role": "assistant"}
@@ -82,6 +85,9 @@ def project(state, source_file, made_at):
                     public.update(kind=item["kind"], text=item["text"])
                     if item.get("label"):
                         public["label"] = item["label"]
+                    for field in ("owner", "proposed_role"):
+                        if isinstance(item.get(field), str) and item[field].strip():
+                            public[field] = item[field]
                     for trace in TRACES:
                         refs = [r for r in item.get(trace, []) if r in node_ids]
                         if refs:
@@ -97,7 +103,6 @@ def project(state, source_file, made_at):
         tree["backlog"] =[{k: task[k] for k in ("ref", "work", "label", "note") if k in task}
                            for task in source.get("backlog", []) if task.get("ref") in ids]
         trees[name] = tree
-    require(trees, "No reasoning has been recorded yet, so there is nothing to show.")
     requests = state.get("feedback_requests", [])
     repeated = {r["id"] for r in requests if sum(1 for o in requests if o["id"] == r["id"]) > 1}
     feedback = []
@@ -142,15 +147,48 @@ def project(state, source_file, made_at):
     }
 
 
+def render_workspace(data, state_path, outputs):
+    record = {
+        "view": "private",
+        "title": data["title"],
+        "source_file": data["source_file"],
+        "trees": data["trees"],
+        "storage_key": sha256(os.fsencode(state_path)).hexdigest(),
+        "has_reports": f"{SLUG}/learning.html" in outputs,
+    }
+    # Inlining lets the same workspace open from disk or on the loopback server.
+    # Escape markup in the JSON so working text cannot close the data script.
+    payload = json.dumps(record, ensure_ascii=False, separators=(",", ":")).replace("<", r"\u003c")
+    template = (VIEWER / "workspace.html").read_text(encoding="utf-8")
+    details = ""
+    if f"{SLUG}/map.html" in outputs:
+        details = ' <a href="map.html">Open the diagrams</a>.'
+    fallback = (' You can still <a href="map.html">read the diagrams</a> or '
+                '<a href="items.html">browse the full record</a>.') if details else ""
+    values = {
+        "{{TITLE}}": escape(data["title"]),
+        "{{DETAILS_LINK}}": details,
+        "{{FALLBACK_LINKS}}": fallback,
+        "/*DATA*/": payload,
+    }
+    for token, name in (("/*CSS*/", "workspace.css"), ("/*MODEL*/", "workspace-model.js"),
+                        ("/*APP*/", "workspace-app.js")):
+        values[token] = (VIEWER / name).read_text(encoding="utf-8")
+    tokens = "|".join(map(re.escape, values))
+    return re.sub(tokens, lambda match: values[match[0]], template)
+
+
+
 def build(state_path, made_at=None):
     state_path = Path(state_path).resolve()
     state = views.load(state_path)
     views.validate(state)
     made_at = made_at or datetime.now(timezone.utc).isoformat(timespec="seconds")
     data = project(state, state_path.name, made_at)
-    outputs = pages.render_private(SITE, data)
+    outputs = pages.render_private(SITE, data) if data["trees"] else {}
     outputs[f"{SLUG}/reasoning.json"] = data["json"]
-    return data, with_assets(outputs)
+    outputs[WORKSPACE] = render_workspace(data, state_path, outputs)
+    return data, with_assets(outputs) if data["trees"] else outputs
 
 
 def with_assets(outputs):
@@ -201,13 +239,13 @@ def main():
         for tree in data["trees"].values():
             for item in tree["nodes"] + tree["links"]:
                 standings[item["status"]] = standings.get(item["status"], 0) + 1
-        result = {"output": str(out), "open": (out / SLUG / "index.html").as_uri(),
+        result = {"output": str(out), "open": (out / WORKSPACE).as_uri(),
                   "statements": sum(len(t["nodes"]) for t in data["trees"].values()),
                   "connections": sum(len(t["links"]) for t in data["trees"].values()), "standings": standings}
         server = None
         if args.serve is not None:
             server = http.server.ThreadingHTTPServer(("127.0.0.1", args.serve), partial(QuietHandler, directory=str(out)))
-            result["url"] = f"http://127.0.0.1:{server.server_address[1]}/{SLUG}/index.html"
+            result["url"] = f"http://127.0.0.1:{server.server_address[1]}/{WORKSPACE}"
         print(json.dumps(result, indent=2), flush=True)
     except (ValueError, KeyError, TypeError, AttributeError, OSError, views.yaml.YAMLError) as error:
         print(f"reason-commons: {error}", file=sys.stderr)

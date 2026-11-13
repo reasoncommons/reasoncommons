@@ -122,9 +122,11 @@ After a deliberate edit, refresh only this registry with `refresh_reconstruction
 
 ## A private view for the skill
 
-The ltp skill uses these pages to show a user their own commons in the browser, on their own computer. `pages.render_private` takes one commons and returns a start page and that commons' pages, with `is_private` set. Every page then carries a "Private view on this computer" banner and the footer says nothing is published. Site-wide links go to `https://reasoncommons.com`, the involvement section and item briefs point back to the user's AI and working file rather than the public issue tracker, and there is no Changes page, because the skill keeps the history. Every standing is shown as recorded. A user's file may hold a loop closed by any relation, which the layout would otherwise refuse, so `diagrams.loop_links` finds the connection that closes each loop and the skill marks it `loop`. It is then drawn round the side like a "feeds back to" loop, tagged "loops back", and keeps its own relation everywhere else; a test checks that no published commons needs such a mark. Nothing in `site.json` can select this kind, and the build's projections never set it, so the published site is unaffected; `build.py --check` confirms it.
+The ltp skill opens a user's working file in a private workspace. The layout comes from the Gandhi 2.0 prototype. The workspace shows only the path the recorded references support and links to the detailed diagrams and outcome reports when available. It reads embedded data without requesting assets from the network. Drafts are stored in the browser under a key derived from the source file's canonical path.
 
-The skill's `scripts/open_commons.py` projects the whole working file and calls `render_private`. An installed skill holds only `skills/ltp`, so `python3 scripts/export-skill-viewer.py` copies `pages.py`, `diagrams.py`, `revisions.py`, `styles.css`, `app.js` and the fonts to `skills/ltp/viewer/`. Edit them here, then run the script; its `--check` fails on drift and runs in CI.
+The detailed pages come from `pages.render_private`. They show all standings, use copyable briefs that point back to the user's working file, and keep loops labelled with their original relation. A sharing preview calls the detailed page renderer directly.
+
+Edit the canonical workspace shell in `workspace.html` and its browser code and CSS in `prototypes/gandhi-2-0-workspace/`. Run `python3 scripts/export-skill-viewer.py` to refresh the installed skill's copy and `python3 apps/reasoning-demo/prototypes/gandhi-2-0-workspace/build.py` to refresh the published Gandhi prototype.
 
 ## Commons shared by their participants
 

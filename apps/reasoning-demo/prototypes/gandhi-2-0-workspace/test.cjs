@@ -34,7 +34,7 @@ t('joint connections stay single connections (86 with several sources)', () => {
 t('three feedback loops are kept as loops', () => assert.strictEqual(RC.stats(M).loops, srcLinks.filter(l => l.relation === 'feeds_back_to').length));
 t('standing, proposer and acceptance are reported as recorded', () => {
   const s = RC.stats(M); assert.strictEqual(s.proposed, 487); assert.strictEqual(s.acceptedByAnyone, 0); assert.strictEqual(s.byAI, 487);
-  assert.deepStrictEqual(s.proposers, { 'AI assistant': 487 });
+  assert.deepStrictEqual({ ...s.proposers }, { 'AI assistant': 487 });
 });
 t('every relation and kind in the release has wording', () => {
   srcLinks.forEach(l => assert.ok(RC.REL[l.relation], l.relation));
@@ -88,6 +88,32 @@ t('goal and default problem have no direct recorded connection (so the page must
 t('search finds by wording, person and kind', () => {
   assert.ok(RC.search(M, 'conflict guidance').length); assert.ok(RC.search(M, 'Robert Bunge').length); assert.ok(RC.search(M, 'obstacle').every(id => M.nodes[id]));
   assert.deepStrictEqual(RC.search(M, 'zzzz'), []);
+});
+
+t('the workspace model accepts an empty commons', () => {
+  const empty = RC.build({ trees: {} });
+  assert.deepStrictEqual(empty.trees, []);
+  assert.deepStrictEqual(RC.defaultPath(empty), { problem: null, change: null, step: null, action: null });
+  assert.strictEqual(RC.stats(empty).total, 0);
+  assert.deepStrictEqual(RC.search(empty, 'no match'), []);
+});
+
+t('a partial commons can start at a change and stops at a missing connection', () => {
+  const change = { id: 'constructor', kind: 'injection', text: 'Review intake', status: 'accepted',
+    contributors: [{ name: '__proto__', role: 'human' }], accepted_by: ['Nell'] };
+  const step = { id: 'first-step', kind: 'intermediate_objective', text: 'Pick a reviewer',
+    status: 'proposed', implements: [change.id] };
+  const action = { id: 'action', kind: 'action', text: 'Ask for a volunteer', status: 'disputed' };
+  const partial = RC.build({ trees: {
+    future_reality: { nodes: [change], links: [] },
+    prerequisite: { nodes: [step], links: [] },
+    transition: { nodes: [action], links: [] }
+  }});
+  assert.deepStrictEqual(RC.defaultPath(partial), { problem: null, change: change.id, step: step.id, action: null });
+  assert.strictEqual(RC.pathThrough(partial, {}, action.id), null);
+  assert.strictEqual(RC.item(partial, change.id).label, change.text);
+  assert.strictEqual(RC.stats(partial).proposers.__proto__, 1);
+  assert.deepStrictEqual(RC.search(partial, 'nell'), [change.id]);
 });
 
 // ---- rendered pages (headless Chrome dumps)

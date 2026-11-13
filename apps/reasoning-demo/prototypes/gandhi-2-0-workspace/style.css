@@ -230,3 +230,9 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
   .rel-inspect { margin-left: 0; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+
+/* The private workspace uses system fonts and accommodates arbitrary working-file text. */
+.private-workspace { overflow-wrap: anywhere; }
+.private-workspace .hero h1 { overflow-wrap: anywhere; }
+.private-workspace .list .st { min-width: 0; }
+.private-workspace .nest { margin-left: 0.3rem; padding-left: 0.55rem; }

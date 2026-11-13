@@ -2,6 +2,7 @@
   'use strict';
   var RC = window.RC;
   var D = JSON.parse(document.getElementById('rc-data').textContent);
+  var local = D.view === 'private';
   var M = RC.build(D);
   var S = RC.stats(M);
   var $ = function (s, r) { return (r || document).querySelector(s); };
@@ -12,24 +13,51 @@
 
   // ---------- state
   var store = {};
-  try { store = JSON.parse(localStorage.getItem('rc-g2-workspace') || '{}') || {}; } catch (e) { store = {}; }
-  function save() { try { localStorage.setItem('rc-g2-workspace', JSON.stringify(store)); } catch (e) { /* storage is optional */ } }
+  var storageKey = local ? 'reason-commons-workspace:' + D.storage_key : 'rc-g2-workspace';
+  try { store = JSON.parse(localStorage.getItem(storageKey) || '{}') || {}; } catch (e) { store = {}; }
+  function save() {
+    try { localStorage.setItem(storageKey, JSON.stringify(store)); return true; }
+    catch (e) { return false; }
+  }
   var st = {
     view: 'start', arg: null, sel: null,
     path: RC.normalizePath(M, store.path || RC.defaultPath(M)),
-    trail: [], expand: {}, openWork: 'all', openTree: 'all', notes: Array.isArray(store.notes) ? store.notes : []
+    trail: [], expand: Object.create(null), openWork: 'all', openTree: 'all', notes: Array.isArray(store.notes) ? store.notes : []
   };
 
   // ---------- small helpers
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
   function plural(n, one, many) { return n + ' ' + (n === 1 ? one : (many || one + 's')); }
   function openCount(id) { return (M.backlog[id] || []).length; }
-  function day(s) { var p = String(s).split('-'); var m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+p[1] - 1]; return +p[2] + ' ' + m + ' ' + p[0]; }
-  function hashFor(view) { return '#' + [view].concat([].slice.call(arguments, 1).filter(Boolean)).join('--'); }
+  function day(s) { var p = String(s).slice(0, 10).split('-'); var m = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'][+p[1] - 1]; return +p[2] + ' ' + m + ' ' + p[0]; }
+  function hashFor(view) {
+    var args = [].slice.call(arguments, 1).map(function (part) {
+      if (part == null) return '';
+      var encoded = encodeURIComponent(part).replace(/'/g, '%27');
+      return /(^-|--|-$)/.test(encoded) ? encoded.replace(/-/g, '%2D') : encoded;
+    });
+    while (args.length && !args[args.length - 1]) args.pop();
+    return '#' + [view].concat(args).join('--');
+  }
+  function readHash() {
+    return (location.hash || '#start').slice(1).split('--').map(function (part) {
+      try { return decodeURIComponent(part); } catch (e) { return ''; }
+    });
+  }
+  function taskLabel(task) {
+    return task.label || RC.WORK[task.work] || task.work.replace(/_/g, ' ');
+  }
+  function availablePath(path) {
+    return RC.goalNode(M) || path.problem || path.change || path.step || path.action;
+  }
+  function acceptedNames(x) {
+    return (x.accepted_by || []).map(function (a) { return a.name || a; });
+  }
   function pathHash(p) { return hashFor('path', p.problem, p.change, p.step, p.action); }
   function standingWord(x) {
     var who = (x.contributors || []).map(function (c) { return c.name; }).join(', ') || 'not recorded';
-    return (RC.STANDING[x.status] || x.status) + ' by ' + who;
+    var standing = RC.STANDING[x.status] || x.status;
+    return x.status === 'proposed' ? standing + ' by ' + who : standing;
   }
 
   // A statement as a card. `act` decides what a click does: inspect (default) or refocus the trace.
@@ -37,9 +65,9 @@
     opt = opt || {};
     var n = M.nodes[id]; if (!n) return '<span class="missing">Statement ' + esc(id) + ' is not in this release.</span>';
     var r = RC.role(n), oc = openCount(id);
-    var attr = opt.focus ? 'data-go="' + hashFor('focus', id) + '"' : 'data-sel="' + id + '"';
+    var attr = opt.focus ? 'data-go="' + hashFor('focus', id) + '"' : 'data-sel="' + esc(id) + '"';
     var text = opt.full ? n.text : n.label;
-    return '<button type="button" class="st st-' + r + ' is-' + n.status + (opt.big ? ' st-big' : '') + (opt.small ? ' st-small' : '') + (st.sel === id ? ' sel' : '') + '" ' + attr + ' data-id="' + id + '">' +
+    return '<button type="button" class="st st-' + r + ' is-' + n.status + (opt.big ? ' st-big' : '') + (opt.small ? ' st-small' : '') + (st.sel === id ? ' sel' : '') + '" ' + attr + ' data-id="' + esc(id) + '">' +
       '<span class="st-kind"><span class="gl" aria-hidden="true">' + GLYPH[r] + '</span>' + esc(RC.kindLabel(n)) +
       (opt.tag ? ' <span class="st-tag">' + esc(opt.tag) + '</span>' : '') +
       (oc ? ' <span class="st-open" title="Open questions on this statement">' + plural(oc, 'open question') + '</span>' : '') +
@@ -54,8 +82,9 @@
     var l = M.links[lid], marks = [];
     if ((l.assumptions || []).length) marks.push(plural(l.assumptions.length, 'assumption') + ' recorded');
     if (openCount(lid)) marks.push(plural(openCount(lid), 'open question'));
-    var loop = l.relation === 'feeds_back_to';
-    return '<button type="button" class="rel' + (loop ? ' rel-loop' : '') + (l.relation === 'prevents' ? ' rel-prevents' : '') + (st.sel === lid ? ' sel' : '') + '" data-sel="' + lid + '" data-id="' + lid + '">' +
+    var loop = RC.isLoop(l);
+    marks.unshift(RC.STANDING[l.status] || l.status);
+    return '<button type="button" class="rel' + (loop ? ' rel-loop' : '') + (l.relation === 'prevents' ? ' rel-prevents' : '') + (st.sel === lid ? ' sel' : '') + '" data-sel="' + esc(lid) + '" data-id="' + esc(lid) + '">' +
       '<span class="rel-arrow" aria-hidden="true">' + (loop ? '↺' : '↓') + '</span><span class="rel-word">' + esc(opt.phrase || RC.relPhrase(l)) + '</span>' +
       (marks.length ? '<span class="rel-marks">' + esc(marks.join(' · ')) + '</span>' : '') +
       '<span class="rel-inspect">Inspect this connection</span></button>';
@@ -65,7 +94,39 @@
   }
 
   // ---------- views
+  function pathPreview(goal, path) {
+    var stops = [['In the way', path.problem], ['A change', path.change], ['A first step', path.step], ['An action', path.action]];
+    if (goal && !local) stops.unshift(['Goal', goal.id]);
+    return '<ol class="teaser">' + stops.map(function (stop) {
+      var n = M.nodes[stop[1]];
+      return n ? '<li class="tz tz-' + RC.role(n) + '"><span class="tz-k"><span class="gl" aria-hidden="true">' + GLYPH[RC.role(n)] +
+        '</span>' + esc(stop[0]) + '</span><span class="tz-t">' + esc(n.label) + '</span></li>' : '';
+    }).join('') + '</ol><p><a class="btn btn-primary" href="' + pathHash(path) + '">Follow this path</a></p>';
+  }
+  function questionList() {
+    return '<section aria-labelledby="six-h"><h2 id="six-h">Browse by question</h2><ol class="six">' +
+      M.trees.map(function (T) {
+        var t = D.trees[T.key];
+        return '<li><a href="' + hashFor('q', T.slug) + '"><span class="six-q">' + esc(T.q) + '</span><span class="six-n">' +
+          plural(t.nodes.length, 'statement') + ' · ' + plural(t.backlog.length, 'open question') + '</span></a></li>';
+      }).join('') + '</ol></section>';
+  }
+  function viewPrivateStart() {
+    var goal = RC.goalNode(M), path = st.path;
+    var h = '<header class="hero"><h1 tabindex="-1">' + esc(D.title) + '</h1><p class="lede">From ' + esc(D.source_file) + '</p></header>';
+    if (!S.total) return h + '<p class="empty">No reasoning has been recorded yet.</p>';
+    if (goal) {
+      h += '<section class="goal-block" aria-label="The goal"><p class="eyebrow">The goal</p>' +
+        card(goal.id, { full: true, big: true }) + '</section>';
+    }
+    if (path.problem || path.change || path.step || path.action) {
+      h += '<section aria-labelledby="pt-h"><h2 id="pt-h">One path through the reasoning</h2>' +
+        '<p class="sub">Follow the recorded connections and see where the path ends.</p>' + pathPreview(goal, path) + '</section>';
+    }
+    return h + questionList();
+  }
   function viewStart() {
+    if (local) return viewPrivateStart();
     var gn = RC.goalNode(M), p = RC.defaultPath(M);
     var allProposed = S.proposed === S.total;
     var unassigned = D.trees.transition.nodes.filter(function (n) { return n.kind === 'action'; });
@@ -80,11 +141,8 @@
       D.people.map(function (x) { return '<div><dt>' + esc(x.name) + '</dt><dd>' + esc(x.role) + '.</dd></div>'; }).join('') +
       '<div><dt>What is open</dt><dd>' + S.open + ' open questions are recorded. ' + unassigned.length + ' actions are proposed and none has an owner.</dd></div></dl></section>';
 
-    var stops = [['Goal', gn.id], ['In the way', p.problem], ['A change', p.change], ['A first step', p.step], ['An action', p.action]];
     h += '<section aria-labelledby="pt-h"><p class="eyebrow">Start here</p><h2 id="pt-h">One path, from the goal to a first action</h2>' +
-      '<p class="sub">This is the path the release itself singles out. Each stop is one statement.</p><ol class="teaser">' +
-      stops.map(function (s) { var n = M.nodes[s[1]]; return n ? '<li class="tz tz-' + RC.role(n) + '"><span class="tz-k"><span class="gl" aria-hidden="true">' + GLYPH[RC.role(n)] + '</span>' + esc(s[0]) + '</span><span class="tz-t">' + esc(n.label) + '</span></li>' : ''; }).join('') +
-      '</ol><p><a class="btn btn-primary" href="' + pathHash(p) + '">Follow this path</a></p></section>';
+      '<p class="sub">This is the path the release itself singles out. Each stop is one statement.</p>' + pathPreview(gn, p) + '</section>';
 
     h += '<section aria-labelledby="ways-h"><h2 id="ways-h">Three ways in</h2><div class="ways">' +
       '<a class="way" href="' + pathHash(p) + '"><span class="way-k">New here</span><span class="way-t">Read the argument as one path</span><span class="way-d">Five stops. Swap any stop to see a different problem, change or step.</span></a>' +
@@ -106,7 +164,8 @@
     return h;
   }
 
-  function swap(slot, list, current, noun, lead) {
+  function swap(slot, list, current, lead) {
+    if (local && list.length < 2) return '';
     if (list.length < 2) return '<p class="swap-none">' + esc(lead(list.length)) + '</p>';
     var compare = slot === 'change';
     var rows = list.map(function (id) {
@@ -119,7 +178,7 @@
       } else if (slot === 'problem') {
         extra = '<span class="cmp">' + plural(RC.changesFor(M, id).length, 'change') + ' meant to address it</span>';
       }
-      return '<li><button type="button" class="opt' + (on ? ' on' : '') + '" aria-pressed="' + on + '" data-pick="' + slot + '" data-id="' + id + '"><span class="opt-t">' + esc(n.label) + '</span>' + extra + '</button></li>';
+      return '<li><button type="button" class="opt' + (on ? ' on' : '') + '" aria-pressed="' + on + '" data-pick="' + slot + '" data-id="' + esc(id) + '"><span class="opt-t">' + esc(n.label) + '</span>' + extra + '</button></li>';
     }).join('');
     return '<details class="swap"' + (st.expand['swap-' + slot] ? ' open' : '') + ' data-keep="swap-' + slot + '"><summary>' + esc(lead(list.length)) + ' <span class="swap-cta">Compare and swap</span></summary>' +
       (compare ? '<p class="swap-note">The counts are what the record holds. They are not scores.</p>' : '') + '<ul class="opts">' + rows + '</ul></details>';
@@ -127,94 +186,121 @@
 
   function viewPath() {
     var p = st.path, gn = RC.goalNode(M);
-    var h = '<header class="vh"><p class="eyebrow">One path through the reasoning</p><h1 tabindex="-1">From the goal to a first action</h1>' +
-      '<p class="lede">Each stop is one statement from the record. Each join says how the record connects two stops, in its own direction. Select any card to see its exact wording, sources and open questions.</p></header><ol class="stops">';
+    if (!availablePath(p)) return '<header class="vh"><h1 tabindex="-1">No path recorded yet</h1><p><a href="#start">Back to the commons</a></p></header>';
+    var heading = local ? 'Follow the recorded path' : 'From the goal to a first action';
+    var h = '<header class="vh"><h1 tabindex="-1">' + heading + '</h1><p class="lede">' +
+      'Select a statement to see its exact wording, standing and open questions.</p></header><ol class="stops">';
+    var number = 0;
+    function stopTitle(question) {
+      number += 1;
+      return '<li class="stop"><p class="stop-q"><span class="num">' + number + '</span>' + question + '</p>';
+    }
 
     // 1 goal
-    var csf = M.inc[gn.id].length;
-    h += '<li class="stop"><p class="stop-q"><span class="num">1</span>What are we trying to achieve?</p>' + card(gn.id, { full: true, big: true }) +
-      '<p class="stop-more">' + plural(csf, 'success factor') + ' ' + (csf === 1 ? 'is' : 'are') + ' recorded as needed for it. <a href="#q--goal">See them</a></p></li>';
+    if (gn) {
+      var csf = M.inc[gn.id].filter(function (id) { return M.links[id].relation === 'necessary_for'; }).length;
+      h += stopTitle('What are we trying to achieve?') + card(gn.id, { full: true, big: true }) +
+        '<p class="stop-more">' + plural(csf, 'connection') + ' ' + (csf === 1 ? 'is' : 'are') + ' recorded as needed for it. <a href="#q--goal">See the goal tree</a></p></li>';
+    }
 
-    // join goal - problem
-    var direct = p.problem && RC.hasDirect(M, gn.id, p.problem);
-    h += '<li class="join join-gap"><span class="join-line" aria-hidden="true"></span><p>' + (direct ? 'A connection between this problem and the goal is recorded.' :
-      '<strong>No direct connection is recorded</strong> between the goal and the problem below. The record joins them through the change: its predicted effects are meant to reach the goal.') + '</p></li>';
+    var first = p.problem || p.change || p.step || p.action;
+    if (gn && first) {
+      var direct = RC.hasDirect(M, gn.id, first);
+      var throughChange = p.change && RC.routeToGoal(M, p.change);
+      h += '<li class="join join-gap"><span class="join-line" aria-hidden="true"></span><p>' +
+        (direct ? 'There is a recorded reference between this statement and the goal.' :
+          'No direct connection is recorded between the goal and the next statement.' +
+          (throughChange ? ' See the predicted route from the change to the goal below.' : '')) + '</p></li>';
+    }
 
     // 2 problem
-    var pin = p.problem ? M.inc[p.problem] : [];
-    h += '<li class="stop"><p class="stop-q"><span class="num">2</span>What stands in the way?</p>' + (p.problem ? card(p.problem, { full: true, big: true }) : '<p class="empty">No problem is recorded.</p>') +
-      swap('problem', RC.problems(M), p.problem, 'problem', function (n) { return plural(n, 'problem') + ' ' + (n === 1 ? 'is' : 'are') + ' recorded.'; }) +
-      (p.problem ? '<p class="stop-more">' + (pin.length ? plural(pin.length, 'connection') + ' lead' + (pin.length === 1 ? 's' : '') + ' into this problem' + (pin.some(function (i) { return RC.isJoint(M.links[i]); }) ? ', some from several causes acting together' : '') + '.' : 'No cause is recorded for this problem.') + ' <a href="' + hashFor('focus', p.problem) + '">Why? Trace what leads to it</a></p>' : '') + '</li>';
+    if (p.problem || !local) {
+      var pin = p.problem ? M.inc[p.problem] : [];
+      h += stopTitle('What stands in the way?') + (p.problem ? card(p.problem, { full: true, big: true }) : '<p class="empty">No problem is recorded.</p>') +
+        swap('problem', RC.problems(M), p.problem, function (n) { return plural(n, 'problem') + ' ' + (n === 1 ? 'is' : 'are') + ' recorded.'; }) +
+        (p.problem ? '<p class="stop-more">' + (pin.length ? plural(pin.length, 'connection') + ' lead' + (pin.length === 1 ? 's' : '') + ' into this problem' + (pin.some(function (i) { return RC.isJoint(M.links[i]); }) ? ', some from several causes acting together' : '') + '.' : 'No cause is recorded for this problem.') + ' <a href="' + hashFor('focus', p.problem) + '">Why? Trace what leads to it</a></p>' : '') + '</li>';
+    }
 
     // join problem - change
-    h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The change below <strong>' + RC.XREF.addresses.fwd + '</strong> this problem. <span class="join-kind">A reference between two questions, recorded on the change.</span></p></li>';
+    if (p.change && p.problem) h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The change below <strong>' + RC.XREF.addresses.fwd + '</strong> this problem. <span class="join-kind">A reference between two questions, recorded on the change.</span></p></li>';
 
     // 3 change
-    h += '<li class="stop"><p class="stop-q"><span class="num">3</span>What will we change?</p>';
-    if (p.change) {
-      h += card(p.change, { full: true, big: true });
-      h += swap('change', RC.changesFor(M, p.problem), p.change, 'change', function (n) { return plural(n, 'change') + ' ' + (n === 1 ? 'is' : 'are') + ' meant to address this problem.'; });
-      var from = M.xout[p.change].filter(function (x) { return x.via === 'derived_from'; });
-      if (from.length) h += '<div class="sub-block"><p class="sub-h">Developed from ' + plural(from.length, 'position') + ' in a conflict</p><div class="minis">' + from.map(function (x) { return card(x.to, { small: true }); }).join('') + '</div></div>';
-      var route = RC.routeToGoal(M, p.change);
-      h += '<details class="sub-block"' + (st.expand.route !== false ? ' open' : '') + ' data-keep="route"><summary class="sub-h">' + (route ? 'Predicted route to the goal · ' + plural(route.length, 'connection') + ', none observed' : 'No route from this change to the goal is recorded') + '</summary>';
-      if (route) {
-        h += '<p class="sub-note">The shortest chain of recorded connections. Every effect on it is a prediction.</p><ol class="route">' + route.map(function (lid) {
-          var l = M.links[lid], others;
-          var prev = route.indexOf(lid) === 0 ? p.change : M.links[route[route.indexOf(lid) - 1]].to;
-          others = l.from.filter(function (f) { return f !== prev; });
-          return '<li>' + (others.length ? '<div class="with"><span class="with-h">Together with</span>' + others.map(function (o) { return card(o, { small: true }); }).join('') + '</div>' : '') + relButton(lid) + card(l.to, { small: true }) + '</li>';
-        }).join('') + '</ol>';
-        var anchor = route.length ? M.links[route[route.length - 1]].to : null;
-        if (anchor) h += '<p class="sub-note">The last effect ' + RC.XREF.implements.fwd + ' the goal at stop 1.</p>';
-      }
-      h += '</details>';
-      var risks = RC.risksOf(M, p.change);
-      h += '<details class="sub-block"' + (st.expand.risks ? ' open' : '') + ' data-keep="risks"><summary class="sub-h">' + (risks.length ? plural(risks.length, 'predicted risk') + ' of this change' : 'No risk is recorded for this change') + '</summary>' +
-        (risks.length ? '<ul class="risks">' + risks.map(function (r) {
-          return '<li>' + relButton(r.link) + card(r.risk, { small: true }) + (r.remedies.length ? r.remedies.map(function (rl) { return '<div class="remedy">' + M.links[rl].from.map(function (f) { return card(f, { small: true }); }).join('') + relButton(rl) + '</div>'; }).join('') : '<p class="sub-note">No remedy is recorded for this risk.</p>') + '</li>';
-        }).join('') + '</ul>' : '') + '</details>';
-    } else h += '<p class="empty">No change is recorded as meant to address this problem.</p>';
-    h += '</li>';
+    if (p.change || p.problem || !local) {
+      h += stopTitle('What will we change?');
+      if (p.change) {
+        h += card(p.change, { full: true, big: true });
+        h += swap('change', RC.pathOptions(M, p, 'change'), p.change, function (n) { return plural(n, 'change') + (p.problem ? ' linked to this problem.' : ' recorded.'); });
+        var from = M.xout[p.change].filter(function (ref) {
+          var node = M.nodes[ref.to];
+          return ref.via === 'derived_from' && node.tree === 'conflict' && node.kind === 'prerequisite';
+        });
+        if (from.length) h += '<div class="sub-block"><p class="sub-h">Developed from ' + plural(from.length, 'position') + ' in a conflict</p><div class="minis">' + from.map(function (x) { return card(x.to, { small: true }); }).join('') + '</div></div>';
+        var route = RC.routeToGoal(M, p.change);
+        if (route) {
+          h += '<details class="sub-block"' + (st.expand.route !== false ? ' open' : '') + ' data-keep="route"><summary class="sub-h">Predicted route to the goal · ' + plural(route.length, 'connection') + '</summary>' +
+            '<p class="sub-note">The shortest recorded chain from this change to an effect linked to the goal.</p><ol class="route">' + route.map(function (lid, index) {
+            var l = M.links[lid];
+            var prev = index === 0 ? p.change : M.links[route[index - 1]].to;
+            var others = l.from.filter(function (f) { return f !== prev; });
+            return '<li>' + (others.length ? '<div class="with"><span class="with-h">Together with</span>' + others.map(function (o) { return card(o, { small: true }); }).join('') + '</div>' : '') + relButton(lid) + card(l.to, { small: true }) + '</li>';
+          }).join('') + '</ol>';
+          h += '<p class="sub-note">The last effect ' + RC.XREF.implements.fwd + ' the goal at stop 1.</p></details>';
+        } else if (gn) {
+          h += '<p class="stop-more">No route from this change to the goal is recorded.</p>';
+        }
+        var risks = RC.risksOf(M, p.change);
+        if (risks.length) {
+          h += '<details class="sub-block"' + (st.expand.risks ? ' open' : '') + ' data-keep="risks"><summary class="sub-h">' + plural(risks.length, 'predicted risk') + ' of this change</summary>' +
+            '<ul class="risks">' + risks.map(function (r) {
+              return '<li>' + relButton(r.link) + card(r.risk, { small: true }) + (r.remedies.length ? r.remedies.map(function (rl) { return '<div class="remedy">' + M.links[rl].from.map(function (f) { return card(f, { small: true }); }).join('') + relButton(rl) + '</div>'; }).join('') : '<p class="sub-note">No remedy is recorded for this risk.</p>') + '</li>';
+            }).join('') + '</ul></details>';
+        }
+      } else h += '<p class="empty">' + (p.problem ? 'No change is linked to this problem.' : 'No change is recorded.') + '</p>';
+      h += '</li>';
+    }
 
     // join change - step
-    h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The step below <strong>' + RC.XREF.implements.fwd + '</strong> this change. <span class="join-kind">A reference between two questions, recorded on the step.</span></p></li>';
+    if (p.step && p.change) h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The step below <strong>' + RC.XREF.implements.fwd + '</strong> this change. <span class="join-kind">A reference between two questions, recorded on the step.</span></p></li>';
 
     // 4 step
-    h += '<li class="stop"><p class="stop-q"><span class="num">4</span>What has to happen first?</p>';
-    if (p.step) {
-      h += card(p.step, { full: true, big: true });
-      h += swap('step', RC.stepsFor(M, p.change), p.step, 'step', function (n) { return plural(n, 'first step') + ' ' + (n === 1 ? 'puts' : 'put') + ' this change into practice.'; });
-      var over = M.out[p.step].filter(function (i) { return M.links[i].relation === 'overcomes'; });
-      h += '<div class="sub-block"><p class="sub-h">' + (over.length ? 'The obstacle it gets past' : 'No obstacle is recorded for this step') + '</p>' + over.map(function (i) { return relButton(i) + card(M.links[i].to, { small: true }); }).join('') + '</div>';
-      var needs = M.inc[p.step].filter(function (i) { return M.links[i].relation === 'necessary_for'; });
-      h += '<div class="sub-block"><p class="sub-h">' + (needs.length ? 'What it needs first' : 'Nothing is recorded as needed before this step') + '</p>' + needs.map(function (i) {
-        var l = M.links[i];
-        return '<div class="grp' + (RC.isJoint(l) ? ' grp-joint' : '') + '">' + jointNote(l) + '<div class="grp-nodes">' + l.from.map(function (f) { return card(f, { small: true }); }).join('') + '</div>' + relButton(i) + '</div>';
-      }).join('') + '</div>';
-      var chk = M.backlog[p.step] || [];
-      if (chk.length) h += '<div class="sub-block"><p class="sub-h">Open on this step</p><ul class="oq-mini">' + chk.map(function (b) { return '<li><span class="oq-w">' + esc(RC.WORK[b.work] || b.work) + '</span>' + esc(b.label) + '</li>'; }).join('') + '</ul></div>';
-    } else h += '<p class="empty">No first step is recorded for this change. That gap is part of the record.</p>';
-    h += '</li>';
+    if (p.step || p.change || !local) {
+      h += stopTitle('What has to happen first?');
+      if (p.step) {
+        h += card(p.step, { full: true, big: true });
+        h += swap('step', RC.pathOptions(M, p, 'step'), p.step, function (n) { return plural(n, 'first step') + (p.change ? ' linked to this change.' : ' recorded.'); });
+        var over = M.out[p.step].filter(function (i) { return M.links[i].relation === 'overcomes'; });
+        h += '<div class="sub-block"><p class="sub-h">' + (over.length ? 'The obstacle it gets past' : 'No obstacle is recorded for this step') + '</p>' + over.map(function (i) { return relButton(i) + card(M.links[i].to, { small: true }); }).join('') + '</div>';
+        var needs = M.inc[p.step].filter(function (i) { return M.links[i].relation === 'necessary_for'; });
+        h += '<div class="sub-block"><p class="sub-h">' + (needs.length ? 'What it needs first' : 'Nothing is recorded as needed before this step') + '</p>' + needs.map(function (i) {
+          var l = M.links[i];
+          return '<div class="grp' + (RC.isJoint(l) ? ' grp-joint' : '') + '">' + jointNote(l) + '<div class="grp-nodes">' + l.from.map(function (f) { return card(f, { small: true }); }).join('') + '</div>' + relButton(i) + '</div>';
+        }).join('') + '</div>';
+        var chk = M.backlog[p.step] || [];
+        if (chk.length) h += '<div class="sub-block"><p class="sub-h">Open on this step</p><ul class="oq-mini">' + chk.map(function (b) { return '<li><span class="oq-w">' + esc(RC.WORK[b.work] || b.work) + '</span>' + esc(taskLabel(b)) + '</li>'; }).join('') + '</ul></div>';
+      } else h += '<p class="empty">' + (p.change ? 'No first step is linked to this change.' : 'No first step is shown on this path.') + '</p>';
+      h += '</li>';
+    }
 
     // join step - action
-    h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The action below <strong>' + RC.XREF.implements.fwd + '</strong> this step. <span class="join-kind">A reference between two questions, recorded on the action.</span></p></li>';
+    if (p.action && p.step) h += '<li class="join"><span class="join-line" aria-hidden="true"></span><p><span class="join-arrow" aria-hidden="true">↑</span> The action below <strong>' + RC.XREF.implements.fwd + '</strong> this step. <span class="join-kind">A reference between two questions, recorded on the action.</span></p></li>';
 
     // 5 action
-    h += '<li class="stop"><p class="stop-q"><span class="num">5</span>Who does what?</p>';
-    if (p.action) {
-      var a = M.nodes[p.action];
-      h += card(p.action, { full: true, big: true });
-      h += swap('action', RC.actionsFor(M, p.step), p.action, 'action', function (n) { return plural(n, 'action') + ' ' + (n === 1 ? 'puts' : 'put') + ' this step into practice.'; });
-      h += '<div class="who"><p class="who-h">Who</p><p class="who-v">Unassigned</p><p class="who-n">' + (a.proposed_role ? 'The record suggests a role: <strong>' + esc(a.proposed_role) + '</strong>. That is a suggestion, not a commitment by anyone.' : 'No role is suggested.') + ' No owner, date or resource is recorded.</p></div>';
-      M.out[p.action].forEach(function (i) {
-        var l = M.links[i], others = l.from.filter(function (f) { return f !== p.action; });
-        h += '<div class="sub-block"><p class="sub-h">What it starts from, and what it is meant to produce</p>' + (others.length ? '<div class="with"><span class="with-h">Together with</span>' + others.map(function (o) { return card(o, { small: true }); }).join('') + '</div>' : '') + relButton(i) + card(l.to, { small: true }) + '</div>';
-      });
-    } else h += '<p class="empty">No action is recorded for this step. Nobody is assigned, and nothing here says who should be.</p>' + (p.step ? '' : '');
-    h += '</li></ol>';
-    h += '<aside class="next"><h2>Where next</h2><ul><li><a href="#open">See the ' + S.open + ' open questions</a> and pick one to check.</li><li><a href="' + hashFor('focus', p.change || p.problem) + '">Trace this change</a> to everything it is connected to.</li><li>Select a card, then draft a note on it. Notes stay in this browser.</li></ul></aside>';
-    return h;
+    if (p.action || p.step || !local) {
+      h += stopTitle('Who does what?');
+      if (p.action) {
+        var a = M.nodes[p.action];
+        h += card(p.action, { full: true, big: true });
+        h += swap('action', RC.pathOptions(M, p, 'action'), p.action, function (n) { return plural(n, 'action') + (p.step ? ' linked to this step.' : ' recorded.'); });
+        h += '<div class="who"><p class="who-h">Who</p><p class="who-v">' + esc(a.owner || 'Unassigned') + '</p>' +
+          (a.proposed_role ? '<p class="who-n">Suggested role: <strong>' + esc(a.proposed_role) + '</strong></p>' : '') + '</div>';
+        M.out[p.action].forEach(function (i) {
+          var l = M.links[i], others = l.from.filter(function (f) { return f !== p.action; });
+          h += '<div class="sub-block"><p class="sub-h">What it starts from, and what it is meant to produce</p>' + (others.length ? '<div class="with"><span class="with-h">Together with</span>' + others.map(function (o) { return card(o, { small: true }); }).join('') + '</div>' : '') + relButton(i) + card(l.to, { small: true }) + '</div>';
+        });
+      } else h += '<p class="empty">' + (p.step ? 'No action is linked to this step.' : 'No action is shown on this path.') + '</p>';
+      h += '</li>';
+    }
+    return h + '</ol>';
   }
 
   // Incoming connections of a statement, each as one group so joint sources stay one connection.
@@ -224,7 +310,7 @@
     return '<ul class="grps">' + links.map(function (lid) {
       var l = M.links[lid];
       return '<li class="grp' + (RC.isJoint(l) ? ' grp-joint' : '') + '">' + jointNote(l) + '<div class="grp-nodes">' + l.from.map(function (f) {
-        var key = 'why-' + seen.concat([id, f]).join('>'), looped = seen.indexOf(f) >= 0 || f === id, has = M.inc[f].length;
+        var key = 'why-' + JSON.stringify(seen.concat([id, lid, f])), looped = seen.indexOf(f) >= 0 || f === id, has = M.inc[f].length;
         var open = !!st.expand[key];
         return '<div class="src-node">' + card(f, { focus: true, small: depth > 0 }) +
           (looped ? '<p class="loop-note"><span aria-hidden="true">↺</span> This is already on the chain above: a loop in the record.</p>' :
@@ -236,13 +322,13 @@
 
   function viewFocus() {
     var id = st.arg, n = M.nodes[id];
-    if (!n) return '<header class="vh"><h1 tabindex="-1">That statement is not in this release</h1><p class="lede">The link may come from an earlier release. <a href="#start">Go to the start</a>.</p></header>';
+    if (!n) return '<header class="vh"><h1 tabindex="-1">Statement unavailable</h1><p class="lede">This link may point to an earlier version of the record. <a href="#start">Go to the start</a>.</p></header>';
     var T = RC.tree(n.tree);
     var h = '<header class="vh"><p class="eyebrow"><a href="' + hashFor('q', T.slug) + '">' + esc(T.q) + '</a></p><h1 tabindex="-1" class="h-quiet">Tracing one statement</h1>';
     if (st.trail.length > 1) h += '<nav class="trail" aria-label="Statements you came through"><span>You came through</span><ol>' + st.trail.slice(-5, -1).map(function (t) { return '<li><a href="' + hashFor('focus', t) + '">' + esc(M.nodes[t].label) + '</a></li>'; }).join('') + '</ol></nav>';
     h += '</header>';
-    h += '<section class="dir" aria-labelledby="in-h"><h2 id="in-h">What leads to this</h2><p class="sub">Each group is one connection. Arrows always point from what comes first to what follows.</p>' + incoming(id, [], 0) + '</section>';
-    h += '<section class="focus-card" aria-label="The statement in focus">' + card(id, { full: true, big: true }) + '<p class="claim-type">' + esc(RC.claimType(n)) + ' · ' + esc(standingWord(n)) + ' · accepted by ' + ((n.accepted_by || []).length ? esc(n.accepted_by.join(', ')) : 'nobody yet') + '</p></section>';
+    h += '<section class="dir" aria-labelledby="in-h"><h2 id="in-h">What leads to this</h2><p class="sub">Each group is one recorded connection.</p>' + incoming(id, [], 0) + '</section>';
+    h += '<section class="focus-card" aria-label="The statement in focus">' + card(id, { full: true, big: true }) + '<p class="claim-type">' + esc(RC.claimType(n)) + ' · ' + esc(standingWord(n)) + (acceptedNames(n).length ? ' · ' + (n.status === 'disputed' ? 'earlier accepted by ' : 'accepted by ') + esc(acceptedNames(n).join(', ')) : '') + '</p></section>';
     var outs = M.out[id];
     h += '<section class="dir" aria-labelledby="out-h"><h2 id="out-h">What this leads to</h2>' + (outs.length ? '<ul class="grps">' + outs.map(function (lid) {
       var l = M.links[lid], others = l.from.filter(function (f) { return f !== id; });
@@ -251,7 +337,7 @@
 
     var xo = M.xout[id], xi = M.xin[id];
     if (xo.length || xi.length) {
-      h += '<section class="dir" aria-labelledby="x-h"><h2 id="x-h">Across the six questions</h2><p class="sub">References from a statement under one question to a statement under another.</p>';
+      h += '<section class="dir" aria-labelledby="x-h"><h2 id="x-h">Connections across questions</h2><p class="sub">References from a statement under one question to a statement under another.</p>';
       Object.keys(RC.XREF).forEach(function (via) {
         var o = xo.filter(function (x) { return x.via === via; }), i = xi.filter(function (x) { return x.via === via; });
         function xg(head, ids, key) {
@@ -276,12 +362,19 @@
       var need = nl.from[0], pos = links.filter(function (l) { return l.relation === 'necessary_for' && l.to === need; });
       h += '<div class="cloud-side"><p class="sub-h">Side ' + 'AB'.charAt(k) + '</p>' + pos.map(function (pl) { return card(pl.from[0]) + relButton(pl.id); }).join('') + card(need) + relButton(nl.id) + '</div>';
     });
-    h += '</div>' + (clash ? '<div class="cloud-clash"><span aria-hidden="true">⇄</span> The two positions are recorded as conflicting. ' + '<button type="button" class="linklike" data-sel="' + clash.id + '">Inspect the conflict</button></div>' : '') + '</div>';
+    h += '</div>' + (clash ? '<div class="cloud-clash"><span aria-hidden="true">⇄</span> The two positions are recorded as conflicting. ' + '<button type="button" class="linklike" data-sel="' + esc(clash.id) + '">Inspect the conflict</button></div>' : '') + '</div>';
     return h;
   }
 
   function viewQuestion() {
-    var T = RC.tree(st.arg) || RC.TREES[0], t = D.trees[T.key], parts = (D.views || {})[T.key] || [];
+    var T = RC.tree(st.arg);
+    if (!T || !D.trees[T.key]) return '<header class="vh"><h1 tabindex="-1">No reasoning recorded for this question</h1><p><a href="#start">Back to the commons</a></p></header>';
+    var t = D.trees[T.key], parts = (D.views || {})[T.key] || [];
+    if (local) {
+      return '<header class="vh"><h1 tabindex="-1">' + esc(T.q) + '</h1><p class="lede">' +
+        plural(t.nodes.length, 'statement') + ' · ' + plural(t.links.length, 'connection') + '</p></header>' +
+        '<section class="list" aria-label="Statements">' + t.nodes.map(function (n) { return card(n.id); }).join('') + '</section>';
+    }
     var kinds = {};
     t.nodes.forEach(function (n) { var k = RC.kindLabel(M.nodes[n.id]); kinds[k] = (kinds[k] || 0) + 1; });
     var h = '<header class="vh"><p class="eyebrow">Question ' + (RC.TREES.indexOf(T) + 1) + ' of 6 · ' + esc(T.formal) + '</p><h1 tabindex="-1">' + esc(T.q) + '</h1>' +
@@ -316,29 +409,29 @@
   function viewOpen() {
     var all = [];
     Object.keys(M.backlog).forEach(function (r) { M.backlog[r].forEach(function (b) { all.push(b); }); });
-    var works = {}; all.forEach(function (b) { var w = RC.WORK[b.work] || b.work; works[w] = (works[w] || 0) + 1; });
+    var works = Object.create(null); all.forEach(function (b) { var w = RC.WORK[b.work] || b.work; works[w] = (works[w] || 0) + 1; });
     var list = all.filter(function (b) { return (st.openWork === 'all' || (RC.WORK[b.work] || b.work) === st.openWork) && (st.openTree === 'all' || b.tree === st.openTree); });
     var h = '<header class="vh"><p class="eyebrow">Unsettled, by the record’s own account</p><h1 tabindex="-1">Open questions</h1><p class="lede">' + all.length + ' questions, each tied to one statement or one connection. They are the most useful places to add something.</p></header>';
     h += '<div class="filters" role="group" aria-label="Kind of work"><button type="button" class="chip' + (st.openWork === 'all' ? ' on' : '') + '" aria-pressed="' + (st.openWork === 'all') + '" data-ow="all">All ' + all.length + '</button>' + Object.keys(works).map(function (w) { return '<button type="button" class="chip' + (st.openWork === w ? ' on' : '') + '" aria-pressed="' + (st.openWork === w) + '" data-ow="' + esc(w) + '">' + esc(w) + ' ' + works[w] + '</button>'; }).join('') + '</div>';
-    h += '<div class="filters" role="group" aria-label="Question"><button type="button" class="chip' + (st.openTree === 'all' ? ' on' : '') + '" aria-pressed="' + (st.openTree === 'all') + '" data-ot="all">Any question</button>' + RC.TREES.map(function (T) { return '<button type="button" class="chip' + (st.openTree === T.key ? ' on' : '') + '" aria-pressed="' + (st.openTree === T.key) + '" data-ot="' + T.key + '">' + esc(T.short) + ' ' + D.trees[T.key].backlog.length + '</button>'; }).join('') + '</div>';
+    h += '<div class="filters" role="group" aria-label="Question"><button type="button" class="chip' + (st.openTree === 'all' ? ' on' : '') + '" aria-pressed="' + (st.openTree === 'all') + '" data-ot="all">Any question</button>' + M.trees.map(function (T) { return '<button type="button" class="chip' + (st.openTree === T.key ? ' on' : '') + '" aria-pressed="' + (st.openTree === T.key) + '" data-ot="' + T.key + '">' + esc(T.short) + ' ' + D.trees[T.key].backlog.length + '</button>'; }).join('') + '</div>';
     h += list.length ? '<ul class="oq">' + list.map(function (b) {
       var x = RC.item(M, b.ref);
-      return '<li><p class="oq-w">' + esc(RC.WORK[b.work] || b.work) + ' · ' + esc(RC.tree(b.tree).short) + '</p><p class="oq-l">' + esc(b.label) + '</p>' + (b.note ? '<p class="oq-n">' + esc(b.note) + '</p>' : '') +
-        '<p class="oq-on">About the ' + (x && x.isLink ? 'connection' : 'statement') + ': ' + refLine(b.ref) + '</p><p class="oq-a"><button type="button" class="btn" data-sel="' + b.ref + '" data-id="' + b.ref + '">Inspect it</button> <button type="button" class="btn" data-sel="' + b.ref + '" data-note="1">Draft a note on it</button></p></li>';
+      return '<li><p class="oq-w">' + esc(RC.WORK[b.work] || b.work) + ' · ' + esc(RC.tree(b.tree).short) + '</p><p class="oq-l">' + esc(taskLabel(b)) + '</p>' + (b.note ? '<p class="oq-n">' + esc(b.note) + '</p>' : '') +
+        '<p class="oq-on">About the ' + (x && x.isLink ? 'connection' : 'statement') + ': ' + refLine(b.ref) + '</p><p class="oq-a"><button type="button" class="btn" data-sel="' + esc(b.ref) + '" data-id="' + esc(b.ref) + '">Inspect it</button> <button type="button" class="btn" data-sel="' + esc(b.ref) + '" data-note="1">Draft a note on it</button></p></li>';
     }).join('') + '</ul>' : '<p class="empty">No open question matches these filters.</p>';
     return h;
   }
 
   function noteText(n) {
     var x = RC.item(M, n.ref);
-    return 'Draft contribution (not submitted)\nRecord: ' + D.title + ', release ' + D.release_id + '\nAbout the ' + (x && x.isLink ? 'connection' : 'statement') + ' ' + n.ref + ': ' + (x ? (x.isLink ? x.from.join(' + ') + ' ' + x.relation + ' ' + x.to : '"' + x.text + '"') : '(not in this release)') + '\nType: ' + n.type + '\n\n' + n.text;
+    return 'Draft contribution (not submitted)\nRecord: ' + D.title + (local ? ' · ' + D.source_file : ', release ' + D.release_id) + '\nAbout the ' + (x && x.isLink ? 'connection' : 'statement') + ' ' + n.ref + ': ' + (x ? (x.isLink ? x.from.join(' + ') + ' ' + x.relation + ' ' + x.to : '"' + x.text + '"') : '(not in this release)') + '\nType: ' + n.type + '\n\n' + n.text;
   }
   function noteItem(n) {
     return '<li class="note"><p class="oq-w">' + esc(n.type) + ' · local draft · ' + esc(n.at) + '</p><p class="note-t">' + esc(n.text) + '</p><p class="oq-on">About: ' + refLine(n.ref) + '</p>' +
-      '<p class="oq-a"><button type="button" class="btn" data-copy="' + n.id + '">Copy with its reference</button> <button type="button" class="btn" data-sel="' + n.ref + '">Inspect what it is about</button> <button type="button" class="btn btn-quiet" data-del="' + n.id + '">Delete</button></p></li>';
+      '<p class="oq-a"><button type="button" class="btn" data-copy="' + esc(n.id) + '">Copy with its reference</button> <button type="button" class="btn" data-sel="' + esc(n.ref) + '">Inspect what it is about</button> <button type="button" class="btn btn-quiet" data-del="' + esc(n.id) + '">Delete</button></p></li>';
   }
   function viewNotes() {
-    return '<header class="vh"><p class="eyebrow">Only in this browser</p><h1 tabindex="-1">Your draft notes</h1><p class="lede">This release is read-only. Notes you draft here are stored in this browser and nowhere else. Nothing has been submitted, reviewed or accepted. Copy a note to take it to the group.</p></header>' +
+    return '<header class="vh"><p class="eyebrow">Only in this browser</p><h1 tabindex="-1">Your draft notes</h1><p class="lede">Drafts stay in this browser. Copy a draft to bring it back to the conversation.</p></header>' +
       (st.notes.length ? '<ul class="oq">' + st.notes.map(noteItem).join('') + '</ul>' : '<p class="empty">No notes yet. Select any statement or connection and choose “Draft a note”.</p>');
   }
 
@@ -359,14 +452,14 @@
     var x = st.sel && RC.item(M, st.sel);
     if (!x) {
       return '<div class="insp-empty"><h2>Inspect</h2><p>Select any statement or connection to see its exact wording, who proposed it, who has accepted it, where it comes from and what is still open.</p>' +
-        '<dl class="key"><dt><span class="sw sw-proposed"></span>Dashed edge</dt><dd>Proposed. In this release, everything.</dd><dt><span class="sw sw-accepted"></span>Solid edge</dt><dd>Accepted for now by a named person. None yet.</dd><dt><span class="sw sw-disputed"></span>Double edge</dt><dd>Disputed. None yet.</dd></dl>' +
+        '<dl class="key"><dt><span class="sw sw-proposed"></span>Dashed edge</dt><dd>Proposed</dd><dt><span class="sw sw-accepted"></span>Solid edge</dt><dd>Accepted for now</dd><dt><span class="sw sw-disputed"></span>Double edge</dt><dd>Disputed</dd></dl>' +
         '<dl class="key">' + [['aim', 'An aim'], ['problem', 'A claim about what is wrong now'], ['change', 'A proposed change'], ['predict', 'A prediction, not observed'], ['risk', 'A predicted risk'], ['step', 'A condition to reach first'], ['action', 'A proposed action'], ['need', 'A need or position in a conflict'], ['now', 'Claimed to hold now']].map(function (k) { return '<dt><span class="gl gl-' + k[0] + '" aria-hidden="true">' + GLYPH[k[0]] + '</span></dt><dd>' + k[1] + '</dd>'; }).join('') + '</dl></div>';
     }
     var T = RC.tree(x.tree), h = '<div class="insp-head"><p class="eyebrow">' + (x.isLink ? 'Connection' : esc(RC.kindLabel(x))) + ' · ' + esc(T.q) + '</p><button type="button" class="close" data-close="1" aria-label="Close details">Close</button></div>';
     if (x.isLink) {
-      h += '<div class="link-sent">' + x.from.map(function (f) { return card(f, { small: true }); }).join('') + '<p class="link-rel"><span aria-hidden="true">' + (x.relation === 'feeds_back_to' ? '↺' : '↓') + '</span> ' + esc(RC.relPhrase(x)) + '</p>' + card(x.to, { small: true }) + '</div>';
+      h += '<div class="link-sent">' + x.from.map(function (f) { return card(f, { small: true, full: true }); }).join('') + '<p class="link-rel"><span aria-hidden="true">' + (RC.isLoop(x) ? '↺' : '↓') + '</span> ' + esc(RC.relPhrase(x)) + '</p>' + card(x.to, { small: true, full: true }) + '</div>';
       h += jointNote(x);
-      if (x.relation === 'feeds_back_to') h += '<p class="joint-note"><span aria-hidden="true">↺</span> This connection closes a loop: the effect feeds an earlier cause.</p>';
+      if (RC.isLoop(x)) h += '<p class="joint-note"><span aria-hidden="true">↺</span> This connection loops back in the record.</p>';
       h += '<p class="raw">Recorded as <span class="mono">' + esc(x.relation) + '</span>, from ' + plural(x.from.length, 'statement') + ' to 1.</p>';
     } else {
       h += '<blockquote class="canon"><p>' + esc(x.text) + '</p></blockquote>';
@@ -375,35 +468,39 @@
     }
     h += '<dl class="facts facts-tight"><div><dt>Standing</dt><dd><span class="standing standing-' + esc(x.status) + '">' + esc(RC.STANDING[x.status] || x.status) + '</span></dd></div>' +
       '<div><dt>Proposed by</dt><dd>' + esc((x.contributors || []).map(function (c) { return c.name + (c.role === 'assistant' ? ' (AI)' : ''); }).join(', ') || 'Not recorded') + '</dd></div>' +
-      '<div><dt>Accepted by</dt><dd>' + ((x.accepted_by || []).length ? esc(x.accepted_by.map(function (a) { return a.name || a; }).join(', ')) : 'Nobody yet') + '</dd></div>' +
-      (x.proposed_role ? '<div><dt>Who</dt><dd>Unassigned. Suggested role: ' + esc(x.proposed_role) + '</dd></div>' : '') + '</dl>';
+      '<div><dt>' + (x.status === 'disputed' ? 'Earlier accepted by' : 'Accepted by') + '</dt><dd>' +
+      (acceptedNames(x).length ? esc(acceptedNames(x).join(', ')) : 'Nobody recorded') + '</dd></div>' +
+      (x.owner ? '<div><dt>Who</dt><dd>' + esc(x.owner) + '</dd></div>' : x.proposed_role ? '<div><dt>Who</dt><dd>Unassigned. Suggested role: ' + esc(x.proposed_role) + '</dd></div>' : '') + '</dl>';
 
     if (!x.isLink) {
       var onPath = RC.pathThrough(M, st.path, x.id);
-      h += '<div class="asks"><a class="btn btn-primary" href="' + hashFor('focus', x.id) + '">Why? Trace it</a>' + (onPath ? '<button type="button" class="btn" data-onpath="' + x.id + '">Put it on the path</button>' : '') + '<button type="button" class="btn" data-note="1">Draft a note</button></div>';
+      h += '<div class="asks"><a class="btn btn-primary" href="' + hashFor('focus', x.id) + '">Why? Trace it</a>' + (onPath ? '<button type="button" class="btn" data-onpath="' + esc(x.id) + '">Put it on the path</button>' : '') + '<button type="button" class="btn" data-note="1">Draft a note</button></div>';
     } else h += '<div class="asks"><a class="btn btn-primary" href="' + hashFor('focus', x.to, x.id) + '">Show it in context</a><button type="button" class="btn" data-note="1">Draft a note</button></div>';
 
-    if (x.isLink) {
-      h += '<section><h3>What it assumes</h3>' + ((x.assumptions || []).length ? '<ul class="assume">' + x.assumptions.map(function (a) { return '<li><p>' + esc(a.text) + '</p><p class="by">Recorded by ' + esc(a.by || 'unknown') + '</p></li>'; }).join('') + '</ul>' : '<p class="empty">No assumption is recorded for this connection.</p>') + '</section>';
-    }
+    [['assumptions', 'Assumptions'], ['challenges', 'Challenges']].forEach(function (entry) {
+      var notes = x[entry[0]] || [];
+      if (notes.length) h += '<section><h3>' + entry[1] + '</h3><ul class="assume">' + notes.map(function (note) {
+        return '<li><p>' + esc(note.text) + '</p><p class="by">Recorded by ' + esc(note.by || 'unknown') + '</p></li>';
+      }).join('') + '</ul></section>';
+    });
     var oq = M.backlog[x.id] || [];
-    h += '<section><h3>What is open here</h3>' + (oq.length ? '<ul class="oq-mini">' + oq.map(function (b) { return '<li><span class="oq-w">' + esc(RC.WORK[b.work] || b.work) + '</span><strong>' + esc(b.label) + '</strong>' + (b.note ? '<span class="oq-n">' + esc(b.note) + '</span>' : '') + '</li>'; }).join('') + '</ul>' : '<p class="empty">No open question is recorded on this ' + (x.isLink ? 'connection' : 'statement') + '. That is not the same as it being settled.</p>') + '</section>';
-    h += '<section><h3>Where it comes from</h3>' + sourceList(x.source_refs) + '<p class="by">A credit says where an idea comes from, not that its author agrees with this wording.</p></section>';
+    h += '<section><h3>What is open here</h3>' + (oq.length ? '<ul class="oq-mini">' + oq.map(function (b) { return '<li><span class="oq-w">' + esc(RC.WORK[b.work] || b.work) + '</span><strong>' + esc(taskLabel(b)) + '</strong>' + (b.note ? '<span class="oq-n">' + esc(b.note) + '</span>' : '') + '</li>'; }).join('') + '</ul>' : '<p class="empty">No open question is recorded on this ' + (x.isLink ? 'connection' : 'statement') + '. That is not the same as it being settled.</p>') + '</section>';
+    if (!local || (x.source_refs || []).length) h += '<section><h3>Where it comes from</h3>' + sourceList(x.source_refs) + '<p class="by">A credit says where an idea comes from, not that its author agrees with this wording.</p></section>';
 
     if (!x.isLink) {
       var inc = M.inc[x.id], out = M.out[x.id];
-      h += '<section><h3>Connections</h3>' + (inc.length + out.length ? '<ul class="conn">' + inc.map(function (i) { return '<li><button type="button" class="linklike" data-sel="' + i + '">' + refLine(i) + '</button></li>'; }).join('') + out.map(function (i) { return '<li><button type="button" class="linklike" data-sel="' + i + '">' + refLine(i) + '</button></li>'; }).join('') + '</ul>' : '<p class="empty">No connection is recorded.</p>') + '</section>';
+      h += '<section><h3>Connections</h3>' + (inc.length + out.length ? '<ul class="conn">' + inc.map(function (i) { return '<li><button type="button" class="linklike" data-sel="' + esc(i) + '">' + refLine(i) + '</button></li>'; }).join('') + out.map(function (i) { return '<li><button type="button" class="linklike" data-sel="' + esc(i) + '">' + refLine(i) + '</button></li>'; }).join('') + '</ul>' : '<p class="empty">No connection is recorded.</p>') + '</section>';
       var parts = M.part[x.id] || [];
       if (parts.length) h += '<section><h3>Appears in</h3><p class="by">' + parts.map(function (p) { return '<a href="' + hashFor('q', RC.tree(p.tree).slug) + '">' + esc(p.title) + '</a>'; }).join(' · ') + '</p></section>';
     }
     var hist = M.history[x.id] || [];
-    h += '<section><h3>History</h3>' + (hist.length ? '<ul class="hist-mini">' + hist.map(function (r) { return '<li><span class="mono">' + esc(r.release) + '</span> ' + esc(r.type) + (r.note ? ': ' + esc(r.note) : '') + '</li>'; }).join('') + '</ul>' : '<p class="empty">No change to this item is recorded in the release history.</p>') + '</section>';
+    if (!local || hist.length) h += '<section><h3>History</h3>' + (hist.length ? '<ul class="hist-mini">' + hist.map(function (r) { return '<li><span class="mono">' + esc(r.release) + '</span> ' + esc(r.type) + (r.note ? ': ' + esc(r.note) : '') + '</li>'; }).join('') + '</ul>' : '<p class="empty">No change to this item is recorded in the release history.</p>') + '</section>';
 
     var mine = st.notes.filter(function (n) { return n.ref === x.id; });
     h += '<section id="note-sec"><h3>Your draft notes</h3><p class="by">Stored only in this browser. Not submitted to anyone.</p>' + (mine.length ? '<ul class="oq oq-tight">' + mine.map(noteItem).join('') + '</ul>' : '') +
       '<form id="note-form" class="note-form"><label for="note-type">Kind of note</label><select id="note-type">' + NOTE_TYPES.map(function (t) { return '<option>' + t + '</option>'; }).join('') + '</select>' +
       '<label for="note-text">Your note on this ' + (x.isLink ? 'connection' : 'statement') + '</label><textarea id="note-text" rows="4" placeholder="What did you see, doubt or want checked?"></textarea><button type="submit" class="btn">Save draft in this browser</button><p id="note-msg" class="by" role="status"></p></form></section>';
-    h += '<p class="idline"><span class="mono">' + esc(x.id) + '</span> · release ' + esc(D.release_id) + '</p>';
+    h += '<p class="idline"><span class="mono">' + esc(x.id) + '</span>' + (local ? '' : ' · release ' + esc(D.release_id)) + '</p>';
     return h;
   }
 
@@ -411,9 +508,15 @@
   function renderRail() {
     var cur = st.view === 'q' ? st.arg : null;
     function a(hash, label, on, n) { return '<li><a href="' + hash + '"' + (on ? ' aria-current="page"' : '') + '><span>' + label + '</span>' + (n != null ? '<span class="n">' + n + '</span>' : '') + '</a></li>'; }
-    rail.innerHTML = '<ul>' + a('#start', 'Start', st.view === 'start') + a(pathHash(st.path), 'Follow the path', st.view === 'path') + '</ul><p class="rail-h">Six questions</p><ol>' +
-      RC.TREES.map(function (T) { return a(hashFor('q', T.slug), esc(T.q), cur === T.slug, D.trees[T.key].nodes.length); }).join('') + '</ol><p class="rail-h">Work on it</p><ul>' +
-      a('#open', 'Open questions', st.view === 'open', S.open) + a('#notes', 'Your draft notes', st.view === 'notes', st.notes.length) + '</ul>';
+    var questions = M.trees.map(function (T) { return a(hashFor('q', T.slug), esc(T.q), cur === T.slug, D.trees[T.key].nodes.length); }).join('');
+    rail.innerHTML = '<ul>' + a('#start', 'Start', st.view === 'start') +
+      (availablePath(st.path) ? a(pathHash(st.path), 'Follow the path', st.view === 'path') : '') + '</ul>' +
+      (questions ? '<p class="rail-h">Questions</p><ol>' + questions + '</ol>' : '') +
+      '<p class="rail-h">Work on it</p><ul>' +
+      (S.open ? a('#open', 'Open questions', st.view === 'open', S.open) : '') +
+      (S.total || st.notes.length ? a('#notes', 'Your draft notes', st.view === 'notes', st.notes.length) : '') +
+      (local && S.total ? a('items.html', 'Full record', false) : '') +
+      (D.has_reports ? a('learning.html', 'Outcome reports', false) : '') + '</ul>';
   }
   function renderMain(keepScroll) {
     var v = { start: viewStart, path: viewPath, focus: viewFocus, q: viewQuestion, open: viewOpen, notes: viewNotes }[st.view] || viewStart;
@@ -427,25 +530,35 @@
     [].forEach.call(document.querySelectorAll('[data-id]'), function (el) { el.classList.toggle('sel', el.getAttribute('data-id') === st.sel); });
   }
   function select(id, opts) {
+    if (!RC.item(M, id)) return;
     st.sel = id; renderInsp(true);
     insp.scrollTop = 0;
     if (opts && opts.note) { var t = $('#note-text'); if (t) { t.scrollIntoView({ block: 'center' }); t.focus(); } }
     else if (window.matchMedia('(max-width: 1040px)').matches) { var c = $('.close', insp); if (c) c.focus(); }
   }
   function route(keep) {
-    var parts = (location.hash || '#start').slice(1).split('--');
+    var parts = readHash();
     var view = parts[0];
+    if (view === 'main') {
+      main.focus();
+      return;
+    }
+    st.sel = null;
     if (view === 'path') {
       st.path = RC.normalizePath(M, { problem: parts[1], change: parts[2], step: parts[3], action: parts[4] });
       store.path = st.path; save();
     } else if (view === 'focus') {
       st.arg = parts[1];
-      if (M.nodes[st.arg]) { if (st.trail[st.trail.length - 1] !== st.arg) st.trail.push(st.arg); st.sel = M.links[parts[2]] ? parts[2] : st.arg; }
+      if (M.nodes[st.arg]) {
+        if (st.trail[st.trail.length - 1] !== st.arg) st.trail.push(st.arg);
+        var link = M.links[parts[2]];
+        st.sel = link && link.to === st.arg ? link.id : st.arg;
+      }
     } else if (view === 'q') st.arg = parts[1];
     else if (['start', 'open', 'notes'].indexOf(view) < 0) view = 'start';
     st.view = view;
     document.body.classList.remove('insp-open');
-    renderMain(!!keep); renderInsp(false);
+    renderMain(!!keep); renderInsp(view === 'focus' && st.sel && M.links[st.sel]);
   }
 
   document.addEventListener('click', function (e) {
@@ -459,10 +572,10 @@
       if (location.hash === hsh) renderMain(true); else { st.keep = true; location.hash = hsh; }
       return;
     }
-    if (t.hasAttribute('data-toggle')) { var k = t.getAttribute('data-toggle'); st.expand[k] = !st.expand[k]; renderMain(true); var again = main.querySelector('[data-toggle="' + k.replace(/"/g, '') + '"]'); if (again) again.focus(); return; }
+    if (t.hasAttribute('data-toggle')) { var k = t.getAttribute('data-toggle'); st.expand[k] = !st.expand[k]; renderMain(true); var again = main.querySelector('[data-toggle="' + CSS.escape(k) + '"]'); if (again) again.focus(); return; }
     if (t.hasAttribute('data-ow')) { st.openWork = t.getAttribute('data-ow'); renderMain(true); return; }
     if (t.hasAttribute('data-ot')) { st.openTree = t.getAttribute('data-ot'); renderMain(true); return; }
-    if (t.hasAttribute('data-close')) { document.body.classList.remove('insp-open'); var back = st.sel && main.querySelector('[data-id="' + st.sel + '"]'); if (back) back.focus(); return; }
+    if (t.hasAttribute('data-close')) { document.body.classList.remove('insp-open'); var back = st.sel && main.querySelector('[data-id="' + CSS.escape(st.sel) + '"]'); if (back) back.focus(); return; }
     if (t.hasAttribute('data-onpath')) { var np = RC.pathThrough(M, st.path, t.getAttribute('data-onpath')); if (np) location.hash = pathHash(np); return; }
     if (t.hasAttribute('data-copy')) {
       var n = st.notes.filter(function (x) { return x.id === t.getAttribute('data-copy'); })[0]; if (!n) return;
@@ -470,7 +583,11 @@
       try { navigator.clipboard.writeText(txt).then(function () { done(true); }, function () { done(false); }); } catch (err) { done(false); }
       return;
     }
-    if (t.hasAttribute('data-del')) { st.notes = st.notes.filter(function (x) { return x.id !== t.getAttribute('data-del'); }); store.notes = st.notes; save(); renderMain(true); renderInsp(document.body.classList.contains('insp-open')); return; }
+    if (t.hasAttribute('data-del')) {
+      st.notes = st.notes.filter(function (x) { return x.id !== t.getAttribute('data-del'); });
+      store.notes = st.notes; save(); renderMain(true); renderInsp(document.body.classList.contains('insp-open'));
+      return;
+    }
     if (t.hasAttribute('data-sel')) { select(t.getAttribute('data-sel'), { note: t.hasAttribute('data-note') }); return; }
     if (t.hasAttribute('data-note')) { var ta = $('#note-text'); if (ta) { ta.scrollIntoView({ block: 'center' }); ta.focus(); } }
   });
@@ -481,9 +598,9 @@
     var text = $('#note-text').value.trim(), msg = $('#note-msg');
     if (!text) { msg.textContent = 'Write the note first.'; return; }
     st.notes.unshift({ id: 'n' + Date.now().toString(36), ref: st.sel, type: $('#note-type').value, text: text, at: new Date().toISOString().slice(0, 10) });
-    store.notes = st.notes; save(); renderInsp(document.body.classList.contains('insp-open')); renderRail();
+    store.notes = st.notes; var saved = save(); renderInsp(document.body.classList.contains('insp-open')); renderRail();
     if (st.view === 'notes') renderMain(true);
-    var m = $('#note-msg'); if (m) m.textContent = 'Saved as a local draft. It has not been sent to anyone.';
+    var m = $('#note-msg'); if (m) m.textContent = saved ? 'Saved as a local draft.' : 'This browser could not save the draft. Copy it before closing the page.';
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && document.body.classList.contains('insp-open')) { var c = $('.close', insp); if (c) c.click(); } });
 
@@ -500,7 +617,7 @@
   document.addEventListener('click', function (e) { if (!e.target.closest('.search')) res.hidden = true; else if (e.target.closest('#q-res a')) { res.hidden = true; q.value = ''; } });
 
   // header standing line
-  $('#standing').innerHTML = (S.proposed === S.total ? '<strong>Everything here is proposed.</strong> ' : '') + S.statements + ' statements and ' + S.connections + ' connections, written by an AI from the sources. ' + (S.acceptedByAnyone ? S.acceptedByAnyone + ' accepted by a named person.' : 'Nobody has accepted any of it.') + ' Read-only release ' + esc(D.release_id) + '.';
+  if (!local) $('#standing').innerHTML = (S.proposed === S.total ? '<strong>Everything here is proposed.</strong> ' : '') + S.statements + ' statements and ' + S.connections + ' connections, written by an AI from the sources. ' + (S.acceptedByAnyone ? S.acceptedByAnyone + ' accepted by a named person.' : 'Nobody has accepted any of it.') + ' Read-only release ' + esc(D.release_id) + '.';
 
   window.addEventListener('hashchange', function () { var keep = st.keep; st.keep = false; route(keep); });
   route(); st.ready = true;

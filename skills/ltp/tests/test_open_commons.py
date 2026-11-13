@@ -1,6 +1,7 @@
 """Checks for the private browser view of a whole commons on a small fixture."""
 
 from copy import deepcopy
+from html.parser import HTMLParser
 import importlib.util
 import json
 from pathlib import Path
@@ -20,6 +21,21 @@ SPEC.loader.exec_module(viewer)
 REPO = SKILL.parents[1]
 EXAMPLE = REPO / "apps/reasoning-demo/examples/willow-lane/reason-commons.yaml"
 EXPORT = REPO / "scripts/export-skill-viewer.py"
+
+
+class PageLinks(HTMLParser):
+    def __init__(self, html):
+        super().__init__()
+        self.targets = []
+        self.feed(html)
+
+    def handle_starttag(self, tag, attrs):
+        self.targets.extend(value for name, value in attrs if name in {"href", "src"} and value)
+
+
+def workspace_record(html):
+    payload = re.search(r'<script type="application/json" id="rc-data">(.*?)</script>', html, re.S)
+    return json.loads(payload[1])
 
 
 def said(by, attribution="explicit"):
@@ -65,7 +81,7 @@ class PrivateViewTests(unittest.TestCase):
         self.tmp.cleanup()
 
     def test_every_tree_page_and_the_start_page_are_built(self):
-        for name in ("index.html", "commons/index.html", "commons/map.html", "commons/goal.html", "commons/in-the-way.html",
+        for name in ("index.html", "commons/workspace.html", "commons/index.html", "commons/map.html", "commons/goal.html", "commons/in-the-way.html",
                      "commons/items.html", "commons/questions.html", "commons/about.html", "commons/reasoning.json", "styles.css", "app.js"):
             self.assertIn(name, self.outputs)
         self.assertNotIn("commons/changes.html", self.outputs)  # The view is the file as it is now; the skill keeps the history.
@@ -85,8 +101,9 @@ class PrivateViewTests(unittest.TestCase):
         out = Path(self.tmp.name) / "site"
         viewer.write(self.outputs, out)
         for page in out.rglob("*.html"):
-            for target in re.findall(r'(?:href|src)="([^"#?]+)', page.read_text()):
-                if not target.startswith(("https://", "http://")):
+            for url in PageLinks(page.read_text()).targets:
+                target = re.split(r"[#?]", url, maxsplit=1)[0]
+                if target and not target.startswith(("https://", "http://")):
                     self.assertTrue((page.parent / target).exists(), f"{page.relative_to(out)} links to missing {target}")
 
     def test_every_standing_is_shown_as_recorded_with_names(self):
@@ -114,6 +131,32 @@ class PrivateViewTests(unittest.TestCase):
         for ident in recorded:
             self.assertIn(f'id="{ident}"', items)
 
+    def test_workspace_uses_only_its_commons_projection_and_local_assets(self):
+        workspace = self.html[viewer.WORKSPACE]
+        record = workspace_record(workspace)
+        self.assertEqual(record["trees"], json.loads(self.outputs["commons/reasoning.json"])["trees"])
+        self.assertFalse(record["has_reports"])
+        self.assertIn("map.html", PageLinks(workspace).targets)
+        self.assertNotIn("https://", workspace.split('<script type="application/json"', 1)[0])
+        self.assertNotIn(str(self.state_path), workspace)
+
+    def test_workspace_escapes_working_text_and_scopes_notes_to_the_source_file(self):
+        other = deepcopy(STATE)
+        other["project"] = '<em>Title & notes</em> /*DATA*/'
+        text = '</script><script>window.injected = true</script> /*DATA*/ {{TITLE}}'
+        other["trees"]["goal"]["nodes"][0]["text"] = text
+        with tempfile.TemporaryDirectory() as another_dir:
+            source = fixture(another_dir, other)
+            _, outputs = viewer.build(source)
+            _, rebuilt = viewer.build(source)
+        workspace = outputs[viewer.WORKSPACE]
+        record = workspace_record(workspace)
+        self.assertIn("<title>&lt;em&gt;Title &amp; notes&lt;/em&gt; /*DATA*/", workspace)
+        self.assertNotIn("<script>window.injected", workspace)
+        self.assertEqual(record["trees"]["goal"]["nodes"][0]["text"], text)
+        self.assertEqual(record["storage_key"], workspace_record(rebuilt[viewer.WORKSPACE])["storage_key"])
+        self.assertNotEqual(record["storage_key"], workspace_record(self.html[viewer.WORKSPACE])["storage_key"])
+
     def test_briefs_resume_from_the_working_file(self):
         items = self.html["commons/items.html"]
         self.assertIn("This is from my own Reason Commons working file, reason-commons.yaml.", items)
@@ -132,16 +175,20 @@ class PrivateViewTests(unittest.TestCase):
         self.assertIn("Loops back", outputs["commons/in-the-way.html"])  # The legend explains the drawing.
         self.assertNotIn("feeds back", outputs["commons/items.html"])
 
-    def test_an_empty_file_has_nothing_to_show(self):
+    def test_an_empty_file_opens_an_empty_workspace(self):
         empty = {**STATE, "trees": {"current_reality": {"nodes": [], "links": [], "backlog": []}}}
-        with self.assertRaisesRegex(ValueError, "No reasoning has been recorded yet"):
-            viewer.build(fixture(self.tmp.name, empty))
+        _, outputs = viewer.build(fixture(self.tmp.name, empty))
+        html = outputs[viewer.WORKSPACE]
+        self.assertEqual(workspace_record(html)["trees"], {})
+        self.assertNotIn("map.html", PageLinks(html).targets)
 
     def test_a_commons_without_a_goal_still_opens(self):
         no_goal = {**STATE, "trees": {"current_reality": STATE["trees"]["current_reality"]}}
         _, outputs = viewer.build(fixture(self.tmp.name, no_goal))
         self.assertIn("No goal is recorded yet.", outputs["commons/index.html"])
         self.assertIn("<h1>1 question</h1>", outputs["commons/map.html"])
+        record = workspace_record(outputs[viewer.WORKSPACE])
+        self.assertEqual(list(record["trees"]), ["current_reality"])
 
     def test_a_rebuild_removes_only_its_own_stale_pages(self):
         out = Path(self.tmp.name) / "site"
@@ -167,15 +214,16 @@ class PrivateViewTests(unittest.TestCase):
         report = json.loads(result.stdout)
         out = self.state_path.parent / ".reason-commons" / "site"
         self.assertEqual(report["output"], str(out.resolve()))
-        self.assertEqual(report["open"], (out.resolve() / "commons/index.html").as_uri())
+        self.assertEqual(report["open"], (out.resolve() / viewer.WORKSPACE).as_uri())
         self.assertEqual(report["standings"], {"accepted": 2, "proposed": 4, "disputed": 1})
-        self.assertTrue((out / "commons/index.html").is_file())
+        self.assertTrue((out / viewer.WORKSPACE).is_file())
 
     @unittest.skipUnless(EXAMPLE.is_file(), "The fictional example lives in the Reason Commons repository")
     def test_outcome_reports_get_a_learning_page(self):
         _, outputs = viewer.build(EXAMPLE)
         self.assertIn("commons/learning.html", outputs)
         self.assertIn("What happened when they tried it", outputs["commons/learning.html"])
+        self.assertTrue(workspace_record(outputs[viewer.WORKSPACE])["has_reports"])
 
     @unittest.skipUnless(EXPORT.is_file(), "The renderer's originals live in the Reason Commons repository")
     def test_the_viewer_copy_matches_the_demo_renderer(self):

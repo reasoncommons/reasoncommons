@@ -53,14 +53,18 @@
   var STANDING = { accepted: 'Accepted for now', proposed: 'Proposed', disputed: 'Disputed' };
 
   function build(d) {
-    var M = { d: d, nodes: {}, links: {}, inc: {}, out: {}, xout: {}, xin: {}, backlog: {}, history: {}, part: {}, trees: TREES };
-    TREES.forEach(function (T) {
+    var trees = TREES.filter(function (T) { return Object.hasOwn(d.trees, T.key); });
+    var M = { d: d, trees: trees };
+    ['nodes', 'links', 'inc', 'out', 'xout', 'xin', 'backlog', 'history', 'part'].forEach(function (key) {
+      M[key] = Object.create(null);
+    });
+    trees.forEach(function (T) {
       (d.trees[T.key].nodes || []).forEach(function (n) {
-        var c = Object.assign({}, n); c.tree = T.key; c.isLink = false;
+        var c = Object.assign({}, n, { label: n.label || n.text }); c.tree = T.key; c.isLink = false;
         M.nodes[n.id] = c; M.inc[n.id] = []; M.out[n.id] = []; M.xout[n.id] = []; M.xin[n.id] = [];
       });
     });
-    TREES.forEach(function (T) {
+    trees.forEach(function (T) {
       (d.trees[T.key].links || []).forEach(function (l) {
         var c = Object.assign({}, l); c.tree = T.key; c.isLink = true;
         M.links[l.id] = c;
@@ -133,16 +137,21 @@
 
   function relPhrase(l) { return (l.from.length > 1 ? REL_JOINT[l.relation] : REL[l.relation]) || l.relation; }
   function isJoint(l) { return l.from.length > 1; }
+  function isLoop(l) { return l.loop || l.relation === 'feeds_back_to'; }
 
   // ---- The path: goal, problem, change, step, action. Every option comes from a recorded reference.
   function goalNode(M) { return Object.keys(M.nodes).map(function (i) { return M.nodes[i]; }).filter(function (n) { return n.tree === 'goal' && n.kind === 'goal'; })[0]; }
-  function problems(M) { return M.d.trees.current_reality.nodes.filter(function (n) { return n.kind === 'undesirable_effect'; }).map(function (n) { return n.id; }); }
+  function statementsOf(M, treeKey, kind) {
+    var t = M.d.trees[treeKey];
+    return t ? t.nodes.filter(function (n) { return n.kind === kind; }).map(function (n) { return n.id; }) : [];
+  }
+  function problems(M) { return statementsOf(M, 'current_reality', 'undesirable_effect'); }
   function back(M, id, via, test) {
     return M.xin[id].filter(function (x) { return x.via === via && test(M.nodes[x.from]); }).map(function (x) { return x.from; });
   }
-  function changesFor(M, problem) { return back(M, problem, 'addresses', function (n) { return n.kind === 'injection'; }); }
-  function stepsFor(M, change) { return back(M, change, 'implements', function (n) { return n.tree === 'prerequisite'; }); }
-  function actionsFor(M, step) { return back(M, step, 'implements', function (n) { return n.kind === 'action'; }); }
+  function changesFor(M, problem) { return back(M, problem, 'addresses', function (n) { return n.tree === 'future_reality' && n.kind === 'injection'; }); }
+  function stepsFor(M, change) { return back(M, change, 'implements', function (n) { return n.tree === 'prerequisite' && n.kind === 'intermediate_objective'; }); }
+  function actionsFor(M, step) { return back(M, step, 'implements', function (n) { return n.tree === 'transition' && n.kind === 'action'; }); }
 
   function goalAnchors(M) {
     var gn = goalNode(M);
@@ -150,7 +159,7 @@
   }
   // Shortest recorded chain of "contributes to" connections from a change to the effect that stands for the goal.
   function routeToGoal(M, change) {
-    var anchors = goalAnchors(M), seen = {}, queue = [[change, []]];
+    var anchors = goalAnchors(M), seen = Object.create(null), queue = [[change, []]];
     seen[change] = true;
     while (queue.length) {
       var cur = queue.shift(), id = cur[0], path = cur[1];
@@ -177,24 +186,38 @@
       var l = M.links[i];
       return (l.to === a && l.from.indexOf(b) >= 0) || (l.to === b && l.from.indexOf(a) >= 0);
     });
-    var viaRef = M.xout[a].some(function (x) { return x.to === b; }) || M.xout[b].some(function (x) { return x.to === a; });
+    var viaRef = (M.xout[a] || []).some(function (x) { return x.to === b; }) || (M.xout[b] || []).some(function (x) { return x.to === a; });
     return viaLink || viaRef;
   }
   function firstWithNext(list, next) {
     for (var i = 0; i < list.length; i++) if (next(list[i]).length) return list[i];
     return list[0] || null;
   }
-  // Keep the choices that are still valid; replace the rest with the first recorded option. Never invents a hop.
+  // Begin at the first available stop and extend it only through recorded references.
+  function pathOptions(M, path, slot) {
+    if (slot === 'problem') return problems(M);
+    if (slot === 'change') {
+      return path.problem ? changesFor(M, path.problem) : statementsOf(M, 'future_reality', 'injection');
+    }
+    if (slot === 'step') {
+      if (path.change) return stepsFor(M, path.change);
+      return path.problem ? [] : statementsOf(M, 'prerequisite', 'intermediate_objective');
+    }
+    if (path.step) return actionsFor(M, path.step);
+    return path.problem || path.change ? [] : statementsOf(M, 'transition', 'action');
+  }
   function normalizePath(M, p) {
     p = p || {};
-    var ps = problems(M), r = {};
-    r.problem = ps.indexOf(p.problem) >= 0 ? p.problem : firstWithNext(ps, function (x) { return changesFor(M, x); });
-    var cs = r.problem ? changesFor(M, r.problem) : [];
-    r.change = cs.indexOf(p.change) >= 0 ? p.change : firstWithNext(cs, function (x) { return stepsFor(M, x); });
-    var ss = r.change ? stepsFor(M, r.change) : [];
-    r.step = ss.indexOf(p.step) >= 0 ? p.step : firstWithNext(ss, function (x) { return actionsFor(M, x); });
-    var as = r.step ? actionsFor(M, r.step) : [];
-    r.action = as.indexOf(p.action) >= 0 ? p.action : (as[0] || null);
+    var r = {};
+    ['problem', 'change', 'step', 'action'].forEach(function (slot) {
+      var options = pathOptions(M, r, slot);
+      r[slot] = options.indexOf(p[slot]) >= 0 ? p[slot] : firstWithNext(options, function (id) {
+        if (slot === 'problem') return changesFor(M, id);
+        if (slot === 'change') return stepsFor(M, id);
+        if (slot === 'step') return actionsFor(M, id);
+        return [];
+      });
+    });
     return r;
   }
   // The path the release's own overview singles out.
@@ -211,34 +234,43 @@
   function pathThrough(M, cur, id) {
     var n = M.nodes[id], p = Object.assign({}, cur || {});
     if (!n) return normalizePath(M, p);
-    function refs(via) { return M.xout[id].filter(function (x) { return x.via === via; }).map(function (x) { return x.to; }); }
-    if (n.tree === 'current_reality' && n.kind === 'undesirable_effect') p.problem = id;
-    else if (n.kind === 'injection') {
-      var a = refs('addresses'); if (!a.length) return null;
-      if (a.indexOf(p.problem) < 0) p.problem = a[0]; p.change = id;
-    } else if (n.tree === 'prerequisite') {
-      var c = refs('implements'); if (!c.length) return null;
-      if (c.indexOf(p.change) < 0) p.change = c[0];
-      var q = pathThrough(M, p, p.change); if (!q) return null; p = q; p.step = id;
-    } else if (n.kind === 'action') {
-      var s = refs('implements'); if (!s.length) return null;
-      if (s.indexOf(p.step) < 0) p.step = s[0];
-      var q2 = pathThrough(M, p, p.step); if (!q2) return null; p = q2; p.action = id;
+    function refs(via, treeKey, kind) {
+      return M.xout[id].filter(function (x) {
+        var target = M.nodes[x.to];
+        return x.via === via && target.tree === treeKey && target.kind === kind;
+      }).map(function (x) { return x.to; });
+    }
+    var slot, parent, options;
+    if (n.tree === 'current_reality' && n.kind === 'undesirable_effect') {
+      slot = 'problem';
+    } else if (n.tree === 'future_reality' && n.kind === 'injection') {
+      slot = 'change'; parent = 'problem'; options = refs('addresses', 'current_reality', 'undesirable_effect');
+    } else if (n.tree === 'prerequisite' && n.kind === 'intermediate_objective') {
+      slot = 'step'; parent = 'change'; options = refs('implements', 'future_reality', 'injection');
+    } else if (n.tree === 'transition' && n.kind === 'action') {
+      slot = 'action'; parent = 'step'; options = refs('implements', 'prerequisite', 'intermediate_objective');
     } else return null;
-    return normalizePath(M, p);
+    if (parent && options.length) {
+      var previous = options.indexOf(p[parent]) >= 0 ? p[parent] : options[0];
+      p = pathThrough(M, p, previous);
+      if (!p) return null;
+    }
+    p[slot] = id;
+    var result = normalizePath(M, p);
+    return result[slot] === id ? result : null;
   }
 
   function stats(M) {
     var all = Object.keys(M.nodes).map(function (i) { return M.nodes[i]; }).concat(Object.keys(M.links).map(function (i) { return M.links[i]; }));
-    var s = { statements: Object.keys(M.nodes).length, connections: Object.keys(M.links).length, proposed: 0, accepted: 0, disputed: 0, acceptedByAnyone: 0, byAI: 0, joint: 0, loops: 0, open: 0, proposers: {} };
+    var s = { statements: Object.keys(M.nodes).length, connections: Object.keys(M.links).length, proposed: 0, accepted: 0, disputed: 0, acceptedByAnyone: 0, byAI: 0, joint: 0, loops: 0, open: 0, proposers: Object.create(null) };
     all.forEach(function (x) {
       s[x.status] = (s[x.status] || 0) + 1;
       if ((x.accepted_by || []).length) s.acceptedByAnyone++;
-      var ai = (x.contributors || []).every(function (c) { return c.role === 'assistant'; });
+      var ai = (x.contributors || []).length && x.contributors.every(function (c) { return c.role === 'assistant'; });
       if (ai) s.byAI++;
       (x.contributors || []).forEach(function (c) { s.proposers[c.name] = (s.proposers[c.name] || 0) + 1; });
       if (x.isLink && x.from.length > 1) s.joint++;
-      if (x.isLink && x.relation === 'feeds_back_to') s.loops++;
+      if (x.isLink && isLoop(x)) s.loops++;
     });
     Object.keys(M.backlog).forEach(function (k) { s.open += M.backlog[k].length; });
     s.total = all.length;
@@ -250,7 +282,9 @@
     var words = q.split(/\s+/), hits = [];
     Object.keys(M.nodes).forEach(function (id) {
       var n = M.nodes[id];
-      var people = (n.source_refs || []).map(function (r) { return r.author && M.d.authors[r.author] ? M.d.authors[r.author].name : ''; }).join(' ');
+      var authors = M.d.authors || {};
+      var people = (n.source_refs || []).map(function (r) { return r.author && authors[r.author] ? authors[r.author].name : ''; })
+        .concat((n.contributors || []).map(function (c) { return c.name; }), n.accepted_by || []).join(' ');
       var hay = (n.text + ' ' + n.label + ' ' + kindLabel(n) + ' ' + n.status + ' ' + people + ' ' + id).toLowerCase();
       if (words.every(function (w) { return hay.indexOf(w) >= 0; })) hits.push({ id: id, rank: n.text.toLowerCase().indexOf(words[0]) >= 0 ? 0 : 1 });
     });
@@ -260,9 +294,9 @@
 
   g.RC = {
     TREES: TREES, KIND: KIND, REL: REL, REL_JOINT: REL_JOINT, XREF: XREF, BASIS: BASIS, WORK: WORK, STANDING: STANDING,
-    build: build, item: item, tree: tree, kindLabel: kindLabel, role: role, claimType: claimType, relPhrase: relPhrase, isJoint: isJoint,
+    build: build, item: item, tree: tree, kindLabel: kindLabel, role: role, claimType: claimType, relPhrase: relPhrase, isJoint: isJoint, isLoop: isLoop,
     goalNode: goalNode, problems: problems, changesFor: changesFor, stepsFor: stepsFor, actionsFor: actionsFor, goalAnchors: goalAnchors,
-    routeToGoal: routeToGoal, risksOf: risksOf, hasDirect: hasDirect, normalizePath: normalizePath, defaultPath: defaultPath,
+    routeToGoal: routeToGoal, risksOf: risksOf, hasDirect: hasDirect, normalizePath: normalizePath, pathOptions: pathOptions, defaultPath: defaultPath,
     pathThrough: pathThrough, stats: stats, search: search
   };
 })(typeof window !== 'undefined' ? window : globalThis);

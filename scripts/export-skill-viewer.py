@@ -14,16 +14,24 @@ ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / "apps/reasoning-demo"
 DEST = ROOT / "skills/ltp/viewer"
 FILES = ["pages.py", "diagrams.py", "revisions.py", "submissions.py", "styles.css", "app.js"]
+PROTOTYPE = SOURCE / "prototypes/gandhi-2-0-workspace"
+WORKSPACE = {
+    "workspace.html": SOURCE / "workspace.html",
+    "workspace-app.js": PROTOTYPE / "app.js",
+    "workspace-model.js": PROTOTYPE / "model.js",
+    "workspace.css": PROTOTYPE / "style.css",
+}
 NOTE = """# Viewer
 
 A generated copy of the renderer in `apps/reasoning-demo/` of the Reason Commons repository, so that an installed skill can show a commons in the browser with `scripts/open_commons.py`, and check and preview a commons for sharing with `scripts/share_commons.py`. Do not edit these files here: change the originals and run `python3 scripts/export-skill-viewer.py` from the repository root. `--check` fails when the copy has drifted.
 
-The fonts are Alegreya Sans, under the SIL Open Font License in `fonts/OFL.txt`.
+The workspace shares its styles and browser code with the Gandhi 2.0 prototype. The detailed pages use Alegreya Sans, under the SIL Open Font License in `fonts/OFL.txt`.
 """
 
 
 def expected():
     files = {name: (SOURCE / name).read_bytes() for name in FILES}
+    files.update({name: source.read_bytes() for name, source in WORKSPACE.items()})
     for font in sorted((SOURCE / "fonts").iterdir()):
         files[f"fonts/{font.name}"] = font.read_bytes()
     files["README.md"] = NOTE.encode()

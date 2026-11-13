@@ -89,7 +89,7 @@ To read the whole thing at once, ask:
 Show me our commons in the browser.
 ```
 
-The agent turns the working file into pages like the [demonstration commons](../website/demos/reason-commons-in-use/index.html): an overview, a map, a page for each question and every statement with who contributed it, who accepted it and what is still open. Accepted, proposed and disputed reasoning are all there, each marked. The pages stay on your computer, next to the working file; nothing is published or sent anywhere. Ask again after the reasoning changes to see the new version.
+The agent opens a workspace for your working file. Follow a path through the recorded reasoning, search or trace a statement, and select it to see its exact wording, who contributed it, who accepted it and what is still open. You can also open the detailed diagrams and any outcome reports. The view stays on your computer, next to the working file. Ask again after the reasoning changes to see the new version.
 
 ## Share your commons on the site
 
