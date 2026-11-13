@@ -116,6 +116,67 @@ t('a partial commons can start at a change and stops at a missing connection', (
   assert.deepStrictEqual(RC.search(partial, 'nell'), [change.id]);
 });
 
+t('the goal outline follows recorded dependencies through every level', () => {
+  const tree = {
+    nodes: [
+      { id: 'condition', kind: 'necessary_condition' },
+      { id: 'loose', kind: 'necessary_condition' },
+      { id: 'factor', kind: 'critical_success_factor' },
+      { id: 'goal', kind: 'goal' },
+      { id: 'detail', kind: 'necessary_condition' },
+    ],
+    links: [
+      { id: 'a', from: ['factor'], to: 'goal', relation: 'necessary_for' },
+      { id: 'b', from: ['condition'], to: 'factor', relation: 'necessary_for' },
+      { id: 'c', from: ['detail'], to: 'condition', relation: 'necessary_for' },
+    ],
+  };
+  const outline = RC.questionOutline(tree);
+  assert.deepStrictEqual(outline.branches.map(n => n.id), ['goal']);
+  const [goal] = outline.branches;
+  const [factor] = goal.groups[0].children;
+  const [condition] = factor.groups[0].children;
+  assert.strictEqual(factor.id, 'factor');
+  assert.strictEqual(condition.id, 'condition');
+  assert.strictEqual(condition.groups[0].children[0].id, 'detail');
+  assert.deepStrictEqual(outline.loose, ['loose']);
+});
+
+t('the outline shows shared sources in context and keeps joint causes and feedback intact', () => {
+  const tree = {
+    nodes: ['effect-a', 'effect-b', 'shared', 'joint'].map(id => ({ id })),
+    links: [
+      { id: 'together', from: ['shared', 'joint'], to: 'effect-a', relation: 'contributes_to' },
+      { id: 'second', from: ['shared'], to: 'effect-b', relation: 'contributes_to' },
+      { id: 'return', from: ['effect-b'], to: 'shared', relation: 'contributes_to', loop: true },
+    ],
+  };
+  const { branches, references, loose } = RC.questionOutline(tree);
+  assert.deepStrictEqual(branches.map(n => n.id), ['effect-a', 'effect-b']);
+  assert.deepStrictEqual(branches[0].groups[0].children.map(n => n.id), ['shared', 'joint']);
+  assert.strictEqual(branches[1].groups[0].children[0].repeated, true);
+  assert.deepStrictEqual(references.map(l => l.id), ['return']);
+  assert.deepStrictEqual(loose, []);
+});
+
+t('action stages follow produced effects and explicit order even when the file lists later steps first', () => {
+  const tree = {
+    nodes: ['a3', 'result', 'a2', 'effect', 'a1', 'condition'].map(id => ({ id })),
+    links: [
+      { id: 'later', from: ['effect', 'a2'], to: 'result', relation: 'produces' },
+      { id: 'first', from: ['a1', 'condition'], to: 'effect', relation: 'produces' },
+      { id: 'order', from: ['a2'], to: 'a3', relation: 'precedes' },
+      { id: 'feedback', from: ['result'], to: 'a1', relation: 'feeds_back_to' },
+    ],
+  };
+  const { stages, unordered, references } = RC.actionSequence(tree);
+  assert.deepStrictEqual(stages.map(stage => stage.map(step => step.inputs)), [
+    [['a1', 'condition']], [['effect', 'a2']], [['a3']],
+  ]);
+  assert.deepStrictEqual(unordered, []);
+  assert.deepStrictEqual(references.map(l => l.id), ['order', 'feedback']);
+});
+
 // ---- rendered pages (headless Chrome dumps)
 const ent = s => s.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"');
 for (const f of process.argv.slice(2)) {

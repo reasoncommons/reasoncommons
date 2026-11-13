@@ -180,6 +180,23 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
 /* question pages */
 .part { padding-top: 0.25rem; } .part h2 { margin-top: 0.25rem; } .part .list, .part .cloud { margin-top: 0.9rem; }
 .outline { list-style: none; margin: 0.5rem 0 0; padding: 0 0 0 1rem; border-left: 1px solid var(--line); display: grid; gap: 0.5rem; }
+.outline-roots, .outline-members, .outline-references, .sequence, .sequence-stage > ul {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem;
+}
+.outline-roots { gap: 1.25rem; }
+.outline-group > .outline-members { padding-top: 0.35rem; }
+.outline-group > .joint-note { margin-top: 0.35rem; }
+.outline-sides { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.outline-references { margin-top: 0.75rem; }
+.outline-references li { display: grid; gap: 0.25rem; }
+.sequence { gap: 1.5rem; }
+.sequence-stage > ul { gap: 0.85rem; margin-top: 0.6rem; }
+.sequence-step { display: grid; gap: 0.4rem; border-left: 2px solid var(--line-strong); padding-left: 0.65rem; }
+.sequence-step > .joint-note { margin: 0; }
+@media (max-width: 600px) {
+  .outline-roots .outline { padding-left: 0.55rem; }
+  .outline-roots .outline .outline .outline .outline { padding-left: 0.2rem; }
+}
 .cloud-sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 0.9rem; }
 .cloud-side { display: grid; gap: 0.2rem; align-content: start; }
 .cloud-clash { margin-top: 0.8rem; background: var(--warn-bg); color: var(--warn-ink); padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; }
@@ -234,5 +251,6 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
 /* The private workspace uses system fonts and accommodates arbitrary working-file text. */
 .private-workspace { overflow-wrap: anywhere; }
 .private-workspace .hero h1 { overflow-wrap: anywhere; }
+.private-workspace #rail .n { flex: none; white-space: nowrap; }
 .private-workspace .list .st { min-width: 0; }
 .private-workspace .nest { margin-left: 0.3rem; padding-left: 0.55rem; }

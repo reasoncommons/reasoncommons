@@ -190,6 +190,23 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
 /* question pages */
 .part { padding-top: 0.25rem; } .part h2 { margin-top: 0.25rem; } .part .list, .part .cloud { margin-top: 0.9rem; }
 .outline { list-style: none; margin: 0.5rem 0 0; padding: 0 0 0 1rem; border-left: 1px solid var(--line); display: grid; gap: 0.5rem; }
+.outline-roots, .outline-members, .outline-references, .sequence, .sequence-stage > ul {
+  list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem;
+}
+.outline-roots { gap: 1.25rem; }
+.outline-group > .outline-members { padding-top: 0.35rem; }
+.outline-group > .joint-note { margin-top: 0.35rem; }
+.outline-sides { grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); }
+.outline-references { margin-top: 0.75rem; }
+.outline-references li { display: grid; gap: 0.25rem; }
+.sequence { gap: 1.5rem; }
+.sequence-stage > ul { gap: 0.85rem; margin-top: 0.6rem; }
+.sequence-step { display: grid; gap: 0.4rem; border-left: 2px solid var(--line-strong); padding-left: 0.65rem; }
+.sequence-step > .joint-note { margin: 0; }
+@media (max-width: 600px) {
+  .outline-roots .outline { padding-left: 0.55rem; }
+  .outline-roots .outline .outline .outline .outline { padding-left: 0.2rem; }
+}
 .cloud-sides { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1rem; margin-top: 0.9rem; }
 .cloud-side { display: grid; gap: 0.2rem; align-content: start; }
 .cloud-clash { margin-top: 0.8rem; background: var(--warn-bg); color: var(--warn-ink); padding: 0.5rem 0.75rem; border-radius: 6px; font-size: 0.875rem; }
@@ -244,6 +261,7 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
 /* The private workspace uses system fonts and accommodates arbitrary working-file text. */
 .private-workspace { overflow-wrap: anywhere; }
 .private-workspace .hero h1 { overflow-wrap: anywhere; }
+.private-workspace #rail .n { flex: none; white-space: nowrap; }
 .private-workspace .list .st { min-width: 0; }
 .private-workspace .nest { margin-left: 0.3rem; padding-left: 0.55rem; }
 
@@ -404,6 +422,107 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
   function isJoint(l) { return l.from.length > 1; }
   function isLoop(l) { return l.loop || l.relation === 'feeds_back_to'; }
 
+  // Read dependencies from the goal or effect down to the statements it depends on.
+  function questionOutline(t) {
+    const attached = new Map(t.nodes.map(n => [n.id, []]));
+    const children = new Set();
+    const connected = new Set();
+    const references = [];
+    for (const link of t.links) {
+      [link.to, ...link.from].forEach(id => connected.add(id));
+      if (isLoop(link) || link.relation === 'conflicts_with') {
+        references.push(link);
+        continue;
+      }
+      const downward = link.relation === 'overcomes' && !isJoint(link);
+      const parent = downward ? link.from[0] : link.to;
+      const members = downward ? [link.to] : link.from;
+      attached.get(parent).push({ link, members, downward });
+      members.forEach(id => children.add(id));
+    }
+
+    const expanded = new Set();
+    const ancestors = new Set();
+    function branch(id) {
+      if (ancestors.has(id)) return { id, loop: true, groups: [] };
+      if (expanded.has(id)) return { id, repeated: true, groups: [] };
+      expanded.add(id);
+      ancestors.add(id);
+      const groups = attached.get(id).map(group => ({
+        link: group.link, downward: group.downward, children: group.members.map(branch)
+      }));
+      ancestors.delete(id);
+      return { id, groups };
+    }
+
+    const candidates = t.nodes.filter(n => connected.has(n.id) || n.kind === 'goal' || n.kind === 'objective');
+    const roots = candidates.filter(n => !children.has(n.id));
+    // Read a declared goal or objective first among independent branches.
+    const ordered = roots.filter(n => n.kind === 'goal' || n.kind === 'objective')
+      .concat(roots.filter(n => n.kind !== 'goal' && n.kind !== 'objective'));
+    const branches = ordered.map(n => branch(n.id));
+    // An order-only cycle can have no root. Show each component once and stop at the repeated ancestor.
+    for (const node of candidates) {
+      if (!expanded.has(node.id)) branches.push(branch(node.id));
+    }
+    const loose = t.nodes.filter(n => !expanded.has(n.id)).map(n => n.id);
+    return { branches, references, loose };
+  }
+
+  // Each production is one step, with all its recorded inputs and its effect.
+  function actionSequence(t) {
+    const productions = t.links.filter(l => l.relation === 'produces' && !isLoop(l));
+    const productionIds = new Set(productions.map(link => link.id));
+    const references = t.links.filter(l => !productionIds.has(l.id));
+    const precedence = references.filter(link => link.relation === 'precedes' && !isLoop(link));
+    const order = new Map(t.nodes.map((node, index) => [node.id, index]));
+    const steps = productions.map(link => ({ inputs: link.from, effect: link.to, link }));
+    const represented = new Set(steps.flatMap(step => [...step.inputs, step.effect]));
+    const ordered = new Set(precedence.flatMap(link => [...link.from, link.to]));
+    for (const node of t.nodes) {
+      if (!represented.has(node.id) && ordered.has(node.id)) {
+        steps.push({ inputs: [node.id], effect: null, link: null });
+      }
+    }
+
+    const producers = new Map();
+    const occurrences = new Map();
+    function register(index, id, step) {
+      if (!index.has(id)) index.set(id, []);
+      index.get(id).push(step);
+    }
+    for (const step of steps) {
+      if (step.effect) register(producers, step.effect, step);
+      new Set(step.inputs).forEach(id => register(occurrences, id, step));
+    }
+    const needs = new Map(steps.map(step => [step, new Set(
+      step.inputs.flatMap(id => producers.get(id) || []).filter(other => other !== step)
+    )]));
+    // A "comes before" link also orders actions when neither consumes the other's effect.
+    for (const link of precedence) {
+      const before = link.from.flatMap(id => producers.get(id) || occurrences.get(id) || []);
+      const after = producers.get(link.to) || occurrences.get(link.to) || [];
+      for (const step of after) {
+        before.filter(other => other !== step).forEach(other => needs.get(step).add(other));
+      }
+    }
+
+    const firstInput = step => step.inputs.reduce((first, id) => Math.min(first, order.get(id)), t.nodes.length);
+    const remaining = new Set(steps.sort((a, b) => firstInput(a) - firstInput(b)));
+    const stages = [];
+    while (remaining.size) {
+      const ready = Array.from(remaining).filter(step =>
+        Array.from(needs.get(step)).every(other => !remaining.has(other))
+      );
+      if (!ready.length) break;
+      stages.push(ready);
+      ready.forEach(step => remaining.delete(step));
+    }
+    const connected = new Set(references.flatMap(link => [...link.from, link.to]));
+    const loose = t.nodes.filter(n => !represented.has(n.id) && !connected.has(n.id)).map(n => n.id);
+    return { stages, unordered: Array.from(remaining), references, loose };
+  }
+
   // ---- The path: goal, problem, change, step, action. Every option comes from a recorded reference.
   function goalNode(M) { return Object.keys(M.nodes).map(function (i) { return M.nodes[i]; }).filter(function (n) { return n.tree === 'goal' && n.kind === 'goal'; })[0]; }
   function statementsOf(M, treeKey, kind) {
@@ -560,6 +679,7 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
   g.RC = {
     TREES: TREES, KIND: KIND, REL: REL, REL_JOINT: REL_JOINT, XREF: XREF, BASIS: BASIS, WORK: WORK, STANDING: STANDING,
     build: build, item: item, tree: tree, kindLabel: kindLabel, role: role, claimType: claimType, relPhrase: relPhrase, isJoint: isJoint, isLoop: isLoop,
+    questionOutline: questionOutline, actionSequence: actionSequence,
     goalNode: goalNode, problems: problems, changesFor: changesFor, stepsFor: stepsFor, actionsFor: actionsFor, goalAnchors: goalAnchors,
     routeToGoal: routeToGoal, risksOf: risksOf, hasDirect: hasDirect, normalizePath: normalizePath, pathOptions: pathOptions, defaultPath: defaultPath,
     pathThrough: pathThrough, stats: stats, search: search
@@ -655,7 +775,7 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
     var loop = RC.isLoop(l);
     marks.unshift(RC.STANDING[l.status] || l.status);
     return '<button type="button" class="rel' + (loop ? ' rel-loop' : '') + (l.relation === 'prevents' ? ' rel-prevents' : '') + (st.sel === lid ? ' sel' : '') + '" data-sel="' + esc(lid) + '" data-id="' + esc(lid) + '">' +
-      '<span class="rel-arrow" aria-hidden="true">' + (loop ? '↺' : '↓') + '</span><span class="rel-word">' + esc(opt.phrase || RC.relPhrase(l)) + '</span>' +
+      '<span class="rel-arrow" aria-hidden="true">' + (opt.arrow || (loop ? '↺' : '↓')) + '</span><span class="rel-word">' + esc(opt.phrase || RC.relPhrase(l)) + '</span>' +
       (marks.length ? '<span class="rel-marks">' + esc(marks.join(' · ')) + '</span>' : '') +
       '<span class="rel-inspect">Inspect this connection</span></button>';
   }
@@ -936,6 +1056,77 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
     return h;
   }
 
+  function looseStatements(ids) {
+    if (!ids.length) return '';
+    return '<section class="part"><h2>Unconnected statements</h2><div class="list">' +
+      ids.map(function (id) { return card(id); }).join('') + '</div></section>';
+  }
+
+  function outlineReferences(links) {
+    if (!links.length) return '';
+    var title = 'Other connections';
+    if (links.every(RC.isLoop)) title = 'Feedback loops';
+    if (links.every(function (link) { return link.relation === 'conflicts_with'; })) title = 'Where the positions conflict';
+    function statement(id) {
+      return '<button type="button" class="linklike" data-sel="' + esc(id) + '" data-id="' + esc(id) + '">' +
+        esc(M.nodes[id].label) + '</button>';
+    }
+    return '<section class="part"><h2>' + title + '</h2><ul class="outline-references">' + links.map(function (link) {
+      var arrow = RC.isLoop(link) ? '↺' : link.relation === 'conflicts_with' ? '⇄' : '→';
+      return '<li><p>' + link.from.map(statement).join(' + ') + ' <em>' + esc(RC.relPhrase(link)) + '</em> ' +
+        statement(link.to) + '</p>' + relButton(link.id, { arrow: arrow }) + '</li>';
+    }).join('') + '</ul></section>';
+  }
+
+  function renderQuestionOutline(t, key) {
+    var outline = RC.questionOutline(t);
+
+    function branch(node) {
+      var statement = M.nodes[node.id];
+      var heading = statement.kind === 'goal' || statement.kind === 'objective';
+      var label = node.loop ? 'Loops back to an earlier statement' : node.repeated ? 'Also shown above' : '';
+      var h = '<li>' + card(node.id, { full: heading, big: heading, tag: label });
+      if (node.groups.length) {
+        var sides = key === 'conflict' && statement.kind === 'objective' && node.groups.every(function (group) {
+          return group.link.relation === 'necessary_for' && group.children.length === 1 &&
+            M.nodes[group.children[0].id].kind === 'need';
+        });
+        h += '<ul class="outline' + (sides ? ' outline-sides' : '') + '">' + node.groups.map(function (group) {
+          var joint = RC.isJoint(group.link);
+          return '<li class="outline-group' + (joint ? ' grp-joint' : '') + '">' +
+            relButton(group.link.id, { arrow: group.downward ? '↓' : '↑' }) +
+            (joint ? jointNote(group.link) : '') +
+            '<ul class="outline-members">' + group.children.map(branch).join('') + '</ul></li>';
+        }).join('') + '</ul>';
+      }
+      return h + '</li>';
+    }
+
+    return (outline.branches.length ? '<section aria-label="Reasoning outline"><ul class="outline-roots">' +
+      outline.branches.map(branch).join('') + '</ul></section>' : '') +
+      outlineReferences(outline.references) + looseStatements(outline.loose);
+  }
+
+  function renderActionSequence(t) {
+    var sequence = RC.actionSequence(t);
+    function step(entry) {
+      return '<li class="sequence-step"><div class="list">' + entry.inputs.map(function (id) {
+        return card(id);
+      }).join('') + '</div>' + (entry.link ?
+        jointNote(entry.link) + relButton(entry.link.id) + card(entry.effect) : '') + '</li>';
+    }
+    function stage(entries, title) {
+      return '<li class="sequence-stage"><h2>' + title + '</h2><ul>' + entries.map(step).join('') + '</ul></li>';
+    }
+    var stages = sequence.stages.map(function (entries, index) {
+      return stage(entries, 'Stage ' + (index + 1));
+    });
+    if (sequence.unordered.length) stages.push(stage(sequence.unordered, 'Order unresolved'));
+    return (stages.length ? '<section aria-label="Action sequence"><ol class="sequence">' +
+      stages.join('') + '</ol></section>' : '') +
+      outlineReferences(sequence.references) + looseStatements(sequence.loose);
+  }
+
   function viewQuestion() {
     var T = RC.tree(st.arg);
     if (!T || !D.trees[T.key]) return '<header class="vh"><h1 tabindex="-1">No reasoning recorded for this question</h1><p><a href="#start">Back to the commons</a></p></header>';
@@ -943,7 +1134,7 @@ summary.sub-h { cursor: pointer; margin-bottom: 0; padding: 0.3rem 0; }
     if (local) {
       return '<header class="vh"><h1 tabindex="-1">' + esc(T.q) + '</h1><p class="lede">' +
         plural(t.nodes.length, 'statement') + ' · ' + plural(t.links.length, 'connection') + '</p></header>' +
-        '<section class="list" aria-label="Statements">' + t.nodes.map(function (n) { return card(n.id); }).join('') + '</section>';
+        (T.key === 'transition' ? renderActionSequence(t) : renderQuestionOutline(t, T.key));
     }
     var kinds = {};
     t.nodes.forEach(function (n) { var k = RC.kindLabel(M.nodes[n.id]); kinds[k] = (kinds[k] || 0) + 1; });

@@ -139,6 +139,107 @@
   function isJoint(l) { return l.from.length > 1; }
   function isLoop(l) { return l.loop || l.relation === 'feeds_back_to'; }
 
+  // Read dependencies from the goal or effect down to the statements it depends on.
+  function questionOutline(t) {
+    const attached = new Map(t.nodes.map(n => [n.id, []]));
+    const children = new Set();
+    const connected = new Set();
+    const references = [];
+    for (const link of t.links) {
+      [link.to, ...link.from].forEach(id => connected.add(id));
+      if (isLoop(link) || link.relation === 'conflicts_with') {
+        references.push(link);
+        continue;
+      }
+      const downward = link.relation === 'overcomes' && !isJoint(link);
+      const parent = downward ? link.from[0] : link.to;
+      const members = downward ? [link.to] : link.from;
+      attached.get(parent).push({ link, members, downward });
+      members.forEach(id => children.add(id));
+    }
+
+    const expanded = new Set();
+    const ancestors = new Set();
+    function branch(id) {
+      if (ancestors.has(id)) return { id, loop: true, groups: [] };
+      if (expanded.has(id)) return { id, repeated: true, groups: [] };
+      expanded.add(id);
+      ancestors.add(id);
+      const groups = attached.get(id).map(group => ({
+        link: group.link, downward: group.downward, children: group.members.map(branch)
+      }));
+      ancestors.delete(id);
+      return { id, groups };
+    }
+
+    const candidates = t.nodes.filter(n => connected.has(n.id) || n.kind === 'goal' || n.kind === 'objective');
+    const roots = candidates.filter(n => !children.has(n.id));
+    // Read a declared goal or objective first among independent branches.
+    const ordered = roots.filter(n => n.kind === 'goal' || n.kind === 'objective')
+      .concat(roots.filter(n => n.kind !== 'goal' && n.kind !== 'objective'));
+    const branches = ordered.map(n => branch(n.id));
+    // An order-only cycle can have no root. Show each component once and stop at the repeated ancestor.
+    for (const node of candidates) {
+      if (!expanded.has(node.id)) branches.push(branch(node.id));
+    }
+    const loose = t.nodes.filter(n => !expanded.has(n.id)).map(n => n.id);
+    return { branches, references, loose };
+  }
+
+  // Each production is one step, with all its recorded inputs and its effect.
+  function actionSequence(t) {
+    const productions = t.links.filter(l => l.relation === 'produces' && !isLoop(l));
+    const productionIds = new Set(productions.map(link => link.id));
+    const references = t.links.filter(l => !productionIds.has(l.id));
+    const precedence = references.filter(link => link.relation === 'precedes' && !isLoop(link));
+    const order = new Map(t.nodes.map((node, index) => [node.id, index]));
+    const steps = productions.map(link => ({ inputs: link.from, effect: link.to, link }));
+    const represented = new Set(steps.flatMap(step => [...step.inputs, step.effect]));
+    const ordered = new Set(precedence.flatMap(link => [...link.from, link.to]));
+    for (const node of t.nodes) {
+      if (!represented.has(node.id) && ordered.has(node.id)) {
+        steps.push({ inputs: [node.id], effect: null, link: null });
+      }
+    }
+
+    const producers = new Map();
+    const occurrences = new Map();
+    function register(index, id, step) {
+      if (!index.has(id)) index.set(id, []);
+      index.get(id).push(step);
+    }
+    for (const step of steps) {
+      if (step.effect) register(producers, step.effect, step);
+      new Set(step.inputs).forEach(id => register(occurrences, id, step));
+    }
+    const needs = new Map(steps.map(step => [step, new Set(
+      step.inputs.flatMap(id => producers.get(id) || []).filter(other => other !== step)
+    )]));
+    // A "comes before" link also orders actions when neither consumes the other's effect.
+    for (const link of precedence) {
+      const before = link.from.flatMap(id => producers.get(id) || occurrences.get(id) || []);
+      const after = producers.get(link.to) || occurrences.get(link.to) || [];
+      for (const step of after) {
+        before.filter(other => other !== step).forEach(other => needs.get(step).add(other));
+      }
+    }
+
+    const firstInput = step => step.inputs.reduce((first, id) => Math.min(first, order.get(id)), t.nodes.length);
+    const remaining = new Set(steps.sort((a, b) => firstInput(a) - firstInput(b)));
+    const stages = [];
+    while (remaining.size) {
+      const ready = Array.from(remaining).filter(step =>
+        Array.from(needs.get(step)).every(other => !remaining.has(other))
+      );
+      if (!ready.length) break;
+      stages.push(ready);
+      ready.forEach(step => remaining.delete(step));
+    }
+    const connected = new Set(references.flatMap(link => [...link.from, link.to]));
+    const loose = t.nodes.filter(n => !represented.has(n.id) && !connected.has(n.id)).map(n => n.id);
+    return { stages, unordered: Array.from(remaining), references, loose };
+  }
+
   // ---- The path: goal, problem, change, step, action. Every option comes from a recorded reference.
   function goalNode(M) { return Object.keys(M.nodes).map(function (i) { return M.nodes[i]; }).filter(function (n) { return n.tree === 'goal' && n.kind === 'goal'; })[0]; }
   function statementsOf(M, treeKey, kind) {
@@ -295,6 +396,7 @@
   g.RC = {
     TREES: TREES, KIND: KIND, REL: REL, REL_JOINT: REL_JOINT, XREF: XREF, BASIS: BASIS, WORK: WORK, STANDING: STANDING,
     build: build, item: item, tree: tree, kindLabel: kindLabel, role: role, claimType: claimType, relPhrase: relPhrase, isJoint: isJoint, isLoop: isLoop,
+    questionOutline: questionOutline, actionSequence: actionSequence,
     goalNode: goalNode, problems: problems, changesFor: changesFor, stepsFor: stepsFor, actionsFor: actionsFor, goalAnchors: goalAnchors,
     routeToGoal: routeToGoal, risksOf: risksOf, hasDirect: hasDirect, normalizePath: normalizePath, pathOptions: pathOptions, defaultPath: defaultPath,
     pathThrough: pathThrough, stats: stats, search: search

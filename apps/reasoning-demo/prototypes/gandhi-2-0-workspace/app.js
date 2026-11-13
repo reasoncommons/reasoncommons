@@ -85,7 +85,7 @@
     var loop = RC.isLoop(l);
     marks.unshift(RC.STANDING[l.status] || l.status);
     return '<button type="button" class="rel' + (loop ? ' rel-loop' : '') + (l.relation === 'prevents' ? ' rel-prevents' : '') + (st.sel === lid ? ' sel' : '') + '" data-sel="' + esc(lid) + '" data-id="' + esc(lid) + '">' +
-      '<span class="rel-arrow" aria-hidden="true">' + (loop ? '↺' : '↓') + '</span><span class="rel-word">' + esc(opt.phrase || RC.relPhrase(l)) + '</span>' +
+      '<span class="rel-arrow" aria-hidden="true">' + (opt.arrow || (loop ? '↺' : '↓')) + '</span><span class="rel-word">' + esc(opt.phrase || RC.relPhrase(l)) + '</span>' +
       (marks.length ? '<span class="rel-marks">' + esc(marks.join(' · ')) + '</span>' : '') +
       '<span class="rel-inspect">Inspect this connection</span></button>';
   }
@@ -366,6 +366,77 @@
     return h;
   }
 
+  function looseStatements(ids) {
+    if (!ids.length) return '';
+    return '<section class="part"><h2>Unconnected statements</h2><div class="list">' +
+      ids.map(function (id) { return card(id); }).join('') + '</div></section>';
+  }
+
+  function outlineReferences(links) {
+    if (!links.length) return '';
+    var title = 'Other connections';
+    if (links.every(RC.isLoop)) title = 'Feedback loops';
+    if (links.every(function (link) { return link.relation === 'conflicts_with'; })) title = 'Where the positions conflict';
+    function statement(id) {
+      return '<button type="button" class="linklike" data-sel="' + esc(id) + '" data-id="' + esc(id) + '">' +
+        esc(M.nodes[id].label) + '</button>';
+    }
+    return '<section class="part"><h2>' + title + '</h2><ul class="outline-references">' + links.map(function (link) {
+      var arrow = RC.isLoop(link) ? '↺' : link.relation === 'conflicts_with' ? '⇄' : '→';
+      return '<li><p>' + link.from.map(statement).join(' + ') + ' <em>' + esc(RC.relPhrase(link)) + '</em> ' +
+        statement(link.to) + '</p>' + relButton(link.id, { arrow: arrow }) + '</li>';
+    }).join('') + '</ul></section>';
+  }
+
+  function renderQuestionOutline(t, key) {
+    var outline = RC.questionOutline(t);
+
+    function branch(node) {
+      var statement = M.nodes[node.id];
+      var heading = statement.kind === 'goal' || statement.kind === 'objective';
+      var label = node.loop ? 'Loops back to an earlier statement' : node.repeated ? 'Also shown above' : '';
+      var h = '<li>' + card(node.id, { full: heading, big: heading, tag: label });
+      if (node.groups.length) {
+        var sides = key === 'conflict' && statement.kind === 'objective' && node.groups.every(function (group) {
+          return group.link.relation === 'necessary_for' && group.children.length === 1 &&
+            M.nodes[group.children[0].id].kind === 'need';
+        });
+        h += '<ul class="outline' + (sides ? ' outline-sides' : '') + '">' + node.groups.map(function (group) {
+          var joint = RC.isJoint(group.link);
+          return '<li class="outline-group' + (joint ? ' grp-joint' : '') + '">' +
+            relButton(group.link.id, { arrow: group.downward ? '↓' : '↑' }) +
+            (joint ? jointNote(group.link) : '') +
+            '<ul class="outline-members">' + group.children.map(branch).join('') + '</ul></li>';
+        }).join('') + '</ul>';
+      }
+      return h + '</li>';
+    }
+
+    return (outline.branches.length ? '<section aria-label="Reasoning outline"><ul class="outline-roots">' +
+      outline.branches.map(branch).join('') + '</ul></section>' : '') +
+      outlineReferences(outline.references) + looseStatements(outline.loose);
+  }
+
+  function renderActionSequence(t) {
+    var sequence = RC.actionSequence(t);
+    function step(entry) {
+      return '<li class="sequence-step"><div class="list">' + entry.inputs.map(function (id) {
+        return card(id);
+      }).join('') + '</div>' + (entry.link ?
+        jointNote(entry.link) + relButton(entry.link.id) + card(entry.effect) : '') + '</li>';
+    }
+    function stage(entries, title) {
+      return '<li class="sequence-stage"><h2>' + title + '</h2><ul>' + entries.map(step).join('') + '</ul></li>';
+    }
+    var stages = sequence.stages.map(function (entries, index) {
+      return stage(entries, 'Stage ' + (index + 1));
+    });
+    if (sequence.unordered.length) stages.push(stage(sequence.unordered, 'Order unresolved'));
+    return (stages.length ? '<section aria-label="Action sequence"><ol class="sequence">' +
+      stages.join('') + '</ol></section>' : '') +
+      outlineReferences(sequence.references) + looseStatements(sequence.loose);
+  }
+
   function viewQuestion() {
     var T = RC.tree(st.arg);
     if (!T || !D.trees[T.key]) return '<header class="vh"><h1 tabindex="-1">No reasoning recorded for this question</h1><p><a href="#start">Back to the commons</a></p></header>';
@@ -373,7 +444,7 @@
     if (local) {
       return '<header class="vh"><h1 tabindex="-1">' + esc(T.q) + '</h1><p class="lede">' +
         plural(t.nodes.length, 'statement') + ' · ' + plural(t.links.length, 'connection') + '</p></header>' +
-        '<section class="list" aria-label="Statements">' + t.nodes.map(function (n) { return card(n.id); }).join('') + '</section>';
+        (T.key === 'transition' ? renderActionSequence(t) : renderQuestionOutline(t, T.key));
     }
     var kinds = {};
     t.nodes.forEach(function (n) { var k = RC.kindLabel(M.nodes[n.id]); kinds[k] = (kinds[k] || 0) + 1; });
