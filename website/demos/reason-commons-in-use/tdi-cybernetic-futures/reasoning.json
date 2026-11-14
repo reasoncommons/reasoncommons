@@ -1,0 +1,1911 @@
+{
+  "submission_version": 1,
+  "slug": "tdi-cybernetic-futures",
+  "title": "TDI — Cybernetic Futures",
+  "summary": "A working commons for how TDI could use collective inquiry and local experiments to shape flourishing futures.",
+  "submitted_by": {
+    "name": "David Joseph",
+    "github": "dvdgdn"
+  },
+  "licence": "CC-BY-4.0",
+  "released_on": "2026-11-14",
+  "people": [
+    {
+      "name": "David Joseph",
+      "consent": {
+        "given_on": "2026-11-14",
+        "how": "conversation"
+      }
+    },
+    {
+      "name": "Margeret Heath",
+      "consent": {
+        "given_on": "2026-11-14",
+        "how": "attested"
+      }
+    },
+    {
+      "name": "Krishan Mathis",
+      "consent": {
+        "given_on": "2026-11-14",
+        "how": "attested"
+      }
+    }
+  ],
+  "trees": {
+    "goal": {
+      "nodes": [
+        {
+          "id": "tdi-goal",
+          "kind": "goal",
+          "text": "TDI helps communities, organisations and institutions sense change, imagine futures and act together toward human and ecological flourishing within planetary boundaries. The working boundary is TDI’s network, its projects and the groups it works with.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "TDI helps groups shape flourishing futures together."
+        },
+        {
+          "id": "tdi-plural",
+          "kind": "critical_success_factor",
+          "text": "Researchers and practitioners across fields work together on nonlinear, interconnected problems and choose methods that fit the situation.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "People across fields investigate shared problems."
+        },
+        {
+          "id": "tdi-agency",
+          "kind": "critical_success_factor",
+          "text": "Participants exercise individual and collective agency through distributed deliberation and steering, including where AI supports their work.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Participants retain agency in shaping their futures."
+        },
+        {
+          "id": "tdi-action",
+          "kind": "critical_success_factor",
+          "text": "TDI translates collective inquiry into usable guidance, tools and context-driven local experiments, and publishes what it learns with attribution.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Groups can put shared insights to work locally."
+        },
+        {
+          "id": "tdi-critique",
+          "kind": "necessary_condition",
+          "text": "Groups can articulate the strongest counterarguments to scenarios and identify evidence that could revise inherited systems claims.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Groups can challenge the ideas they work with."
+        },
+        {
+          "id": "tdi-capabilities",
+          "kind": "necessary_condition",
+          "text": "TDI can find contributors across disciplines and sectors, identify what they can bring, and connect them around a concrete inquiry.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "The network can draw on and connect different capabilities."
+        },
+        {
+          "id": "tdi-rights",
+          "kind": "necessary_condition",
+          "text": "Participants and local groups can influence the questions, priorities and action that concern them.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Local participants can influence decisions and shape their work."
+        },
+        {
+          "id": "tdi-language",
+          "kind": "necessary_condition",
+          "text": "Knowledge is translated into shared language, guidance and tools that the intended communities, organisations or institutions can adapt.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Outputs are usable by their intended audiences."
+        },
+        {
+          "id": "tdi-attribution",
+          "kind": "necessary_condition",
+          "text": "TDI shares collective outputs and preserves authorship of individual concepts, papers and contributions.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Contributors retain attribution when work is shared."
+        },
+        {
+          "id": "tdi-reusable",
+          "kind": "necessary_condition",
+          "text": "TDI publishes infrastructure, methods or protocols that others can implement.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Other groups can put TDI’s published methods to use."
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-plural-goal",
+          "from": [
+            "tdi-plural"
+          ],
+          "to": "tdi-goal",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "TDI’s contribution depends on bringing perspectives together that can reveal interactions a single field would miss.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-agency-goal",
+          "from": [
+            "tdi-agency"
+          ],
+          "to": "tdi-goal",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Acting together toward flourishing requires affected participants to shape the choices made.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-action-goal",
+          "from": [
+            "tdi-action"
+          ],
+          "to": "tdi-goal",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "TDI contributes to changed futures through action informed by inquiry.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-critique-plural",
+          "from": [
+            "tdi-critique"
+          ],
+          "to": "tdi-plural",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Cross-field work only serves this inquiry if participants can question the assumptions of the fields involved.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-capability-plural",
+          "from": [
+            "tdi-capabilities"
+          ],
+          "to": "tdi-plural",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The collaboration requires access to and coordination of relevant differences in expertise.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-rights-agency",
+          "from": [
+            "tdi-rights"
+          ],
+          "to": "tdi-agency",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Participants exercise distributed agency only if they can influence the work that affects them.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-language-action",
+          "from": [
+            "tdi-language"
+          ],
+          "to": "tdi-action",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Local users need to understand and adapt the shared output before they can apply it.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-attribution-action",
+          "from": [
+            "tdi-attribution"
+          ],
+          "to": "tdi-action",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Attribution is part of the draft’s intended practice of publishing what TDI learns.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-reusable-action",
+          "from": [
+            "tdi-reusable"
+          ],
+          "to": "tdi-action",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "TDI’s goal includes enabling local use beyond the people who developed the method.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-goal",
+          "work": "define_first_success",
+          "note": "What observable outcome in the first two months would give founding participants reason to continue? Test whether the working boundary includes the groups whose agency or conditions would change."
+        },
+        {
+          "ref": "tdi-agency",
+          "work": "test_governance",
+          "note": "Clarify how the core group, contributors and public participants share decision rights, and how independent funding would support those rights."
+        },
+        {
+          "ref": "tdi-plural",
+          "work": "clarify_network_role",
+          "note": "Work through whether TDI should perform any metasystem functions, how it would connect to other groups, and where its skills and interests meet an unmet need."
+        },
+        {
+          "ref": "tdi-attribution",
+          "work": "clarify_publication_boundary",
+          "note": "Agree what is collectively publishable, who can consent to the release of local material, and when named attribution is appropriate."
+        }
+      ]
+    },
+    "current_reality": {
+      "nodes": [
+        {
+          "id": "tdi-interdependence",
+          "kind": "cause",
+          "text": "The draft treats climate and biodiversity loss, inequality, strained democracies and AI-driven change as interdependent challenges.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "The challenges span systems and interact."
+        },
+        {
+          "id": "tdi-fragmentation",
+          "kind": "cause",
+          "text": "The draft diagnoses fragmentation among disciplines, methods and institutions trying to respond to the polycrisis.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Relevant expertise and responses are fragmented."
+        },
+        {
+          "id": "tdi-missed-interactions",
+          "kind": "cause",
+          "text": "An inquiry confined to one domain may omit feedback and spillovers that materially change the assessment of a response.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "A narrow inquiry may miss effects across domains."
+        },
+        {
+          "id": "tdi-response-gap",
+          "kind": "undesirable_effect",
+          "text": "The draft argues that existing responses are fragmented relative to the interconnected problems they address.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Responses fail to address parts of interconnected problems."
+        },
+        {
+          "id": "tdi-conference-gap",
+          "kind": "undesirable_effect",
+          "text": "The invitation raises the experience of leaving a conference wishing the discussion could turn into something. The draft supplies no named instance or frequency.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Some conference conversations do not lead to follow-through."
+        },
+        {
+          "id": "tdi-method-demand",
+          "kind": "observation",
+          "text": "The draft says communities and mission-driven groups want methods that help them shape their futures together. It gives no named case of unmet demand.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "The draft reports demand for collective methods."
+        },
+        {
+          "id": "tdi-practice-gap",
+          "kind": "undesirable_effect",
+          "text": "The impulse argues that systems societies leave futuring work undone and futurists leave collective-intelligence work undone. It supplies no comparison of specific organisations.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Systems inquiry and futures work seldom happen together."
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-missed-path",
+          "from": [
+            "tdi-interdependence",
+            "tdi-fragmentation"
+          ],
+          "to": "tdi-missed-interactions",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Important feedbacks cross domains and coordination is too weak to bring those effects into a single inquiry.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-response-path",
+          "from": [
+            "tdi-missed-interactions"
+          ],
+          "to": "tdi-response-gap",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Omitted interactions materially affect the outcomes of the response.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-practice-gap-path",
+          "from": [
+            "tdi-fragmentation"
+          ],
+          "to": "tdi-practice-gap",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The relevant communities have few routines for working across the two practices.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-response-path",
+          "work": "test_diagnosis",
+          "note": "Find an actual response that missed a specific cross-domain interaction and check whether fragmented expertise, institutional incentives or some other cause best explains it."
+        },
+        {
+          "ref": "tdi-conference-gap",
+          "work": "find_concrete_case",
+          "note": "Identify an inquiry that stalled after a gathering. Check where follow-through broke down before linking it to a cause."
+        },
+        {
+          "ref": "tdi-method-demand",
+          "work": "verify_demand",
+          "note": "Identify groups already making a decision, the methods they have tried, and what those methods leave unresolved."
+        },
+        {
+          "ref": "tdi-practice-gap",
+          "work": "check_comparison",
+          "note": "Look for groups already combining these practices and determine which gap remains on the first question TDI chooses."
+        }
+      ]
+    },
+    "conflict": {
+      "nodes": [
+        {
+          "id": "tdi-cloud-objective",
+          "kind": "objective",
+          "text": "TDI sustains a viable collaborative network that turns inquiry into outputs and local action.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "TDI sustains viable collective inquiry and action.",
+          "derived_from": [
+            "tdi-goal"
+          ]
+        },
+        {
+          "id": "tdi-cloud-continuity",
+          "kind": "need",
+          "text": "The network needs someone to maintain continuity, frame inquiries and see shared outputs through.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "The network needs continuity and coordinated delivery."
+        },
+        {
+          "id": "tdi-cloud-autonomy",
+          "kind": "need",
+          "text": "Contributors and local groups need scope to exercise agency in a peer-to-peer network.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Participants need distributed influence and autonomy."
+        },
+        {
+          "id": "tdi-cloud-centre",
+          "kind": "prerequisite",
+          "text": "One possible response to the need for continuity is to give the core final authority over shared priorities and outputs.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Give the core final say over shared priorities."
+        },
+        {
+          "id": "tdi-cloud-distribute",
+          "kind": "prerequisite",
+          "text": "One possible response to the need for agency is to distribute final authority over the same shared priorities and outputs.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Keep final authority over shared priorities distributed."
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-cloud-continuity-goal",
+          "from": [
+            "tdi-cloud-continuity"
+          ],
+          "to": "tdi-cloud-objective",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The collaboration cannot sustain inquiry if responsibility for common work continually lapses.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cloud-autonomy-goal",
+          "from": [
+            "tdi-cloud-autonomy"
+          ],
+          "to": "tdi-cloud-objective",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The network’s intended viability includes meaningful autonomy and distributed steering.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cloud-centre-need",
+          "from": [
+            "tdi-cloud-centre"
+          ],
+          "to": "tdi-cloud-continuity",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Test the assumption that coordination and delivery require the core to hold final authority.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cloud-distribute-need",
+          "from": [
+            "tdi-cloud-distribute"
+          ],
+          "to": "tdi-cloud-autonomy",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Test whether participants require final authority on all shared priorities to exercise meaningful agency.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cloud-conflict",
+          "from": [
+            "tdi-cloud-centre"
+          ],
+          "to": "tdi-cloud-distribute",
+          "relation": "conflicts_with",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The conflict applies when the two arrangements claim final authority over the same decisions.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-cloud-conflict",
+          "work": "test_decision_rights",
+          "note": "This is an inferred design tension. Test whether a core can steward process, a swarm can decide shared priorities and local groups can decide what they enact. Ask whether a specific decision has actually produced conflict."
+        }
+      ]
+    },
+    "future_reality": {
+      "nodes": [
+        {
+          "id": "tdi-cycle",
+          "kind": "injection",
+          "text": "Use a murmuration to map perspectives and needs, a swarm to choose priorities and create an output, and a later gathering to share results from local work. The draft aims for four online events a year.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Use gatherings to map, decide and return to local work.",
+          "addresses": [
+            "tdi-conference-gap",
+            "tdi-response-gap",
+            "tdi-practice-gap"
+          ]
+        },
+        {
+          "id": "tdi-local-condition",
+          "kind": "existing_condition",
+          "text": "A participating group has the authority, time and resources to try the output in its own setting and bring back what happened.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "A participating group can try an output locally."
+        },
+        {
+          "id": "tdi-local-learning",
+          "kind": "desirable_effect",
+          "text": "At least one group uses a TDI output in a real decision or experiment and reports what it could use, what it changed and what it could not use.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Local trials reveal how the shared output works."
+        },
+        {
+          "id": "tdi-imaginarium",
+          "kind": "injection",
+          "text": "Develop the AI-supported Imaginarium to help groups develop their own approaches while attending to consequences, boundaries and human agency.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Use BICCI to support group inquiry."
+        },
+        {
+          "id": "tdi-ai-risk",
+          "kind": "undesirable_effect",
+          "text": "Participants may defer to the AI’s framing and spend less time considering alternatives raised by other participants.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "AI framing may narrow participant choices."
+        },
+        {
+          "id": "tdi-agency-lab",
+          "kind": "injection",
+          "text": "The Agency Futures Lab proposes a six-month Frame, Explore, Construct, Stress-test, Translate and Act cycle across public institutions, work, everyday life, and geopolitics, security and ecological viability. It would produce scenarios and audience-specific guidance.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Explore human agency through participatory scenarios."
+        },
+        {
+          "id": "tdi-regrounding",
+          "kind": "injection",
+          "text": "Recover the Viable System Model’s original claims, test them against current knowledge, identify blind spots and say what evidence could revise or disconfirm them before extending the protocol to other systems theories.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Use the Viable System Model as a worked case."
+        },
+        {
+          "id": "tdi-ecologies",
+          "kind": "injection",
+          "text": "Study interactions among people, AI agents, algorithms, robots, digital institutions and hybrid collectives to develop ways to protect human agency and support democratic viability.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Study how human and synthetic actors co-evolve."
+        },
+        {
+          "id": "tdi-observatories",
+          "kind": "injection",
+          "text": "Develop distributed cybernetic observatories that detect weak signals and changing patterns across domains.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Sense emerging change across domains."
+        },
+        {
+          "id": "tdi-mapping",
+          "kind": "predicted_effect",
+          "text": "A murmuration can reveal relevant needs, assumptions and perspectives that the inquiry would otherwise omit.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "A gathering surfaces perspectives that affect the inquiry.",
+          "addresses": [
+            "tdi-missed-interactions"
+          ]
+        },
+        {
+          "id": "tdi-shared-output",
+          "kind": "predicted_effect",
+          "text": "A swarm can use the map to agree priorities and make an output suited to a real local decision or test.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "A swarm produces an output a group can try.",
+          "addresses": [
+            "tdi-conference-gap"
+          ]
+        },
+        {
+          "id": "tdi-use-input",
+          "kind": "existing_condition",
+          "text": "People who would use or be affected by the output have ways to explain their context, challenge assumptions and shape the output.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Intended users contribute their needs and constraints."
+        },
+        {
+          "id": "tdi-revision",
+          "kind": "desirable_effect",
+          "text": "Participants use feedback from local trials to revise the output or the way TDI conducts collective inquiry.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Experience from local work improves the shared method.",
+          "derived_from": [
+            "tdi-action"
+          ]
+        },
+        {
+          "id": "tdi-scenarios-stress",
+          "kind": "predicted_effect",
+          "text": "Scenario construction and stress-testing can make agency trade-offs visible across time horizons and identify choices target audiences can act on.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Scenarios expose agency risks and options."
+        },
+        {
+          "id": "tdi-vsm-evidence",
+          "kind": "predicted_effect",
+          "text": "The worked case can turn disagreements about the Viable System Model into specific claims, blind spots and evidence that could change them.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The VSM review yields claims that can be tested."
+        },
+        {
+          "id": "tdi-ecology-design",
+          "kind": "predicted_effect",
+          "text": "Study of real human and synthetic actor ecologies can reveal mechanisms and design choices that affect human agency and democratic viability.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Cases reveal choices that affect human agency."
+        },
+        {
+          "id": "tdi-signal-use",
+          "kind": "predicted_effect",
+          "text": "A signal drawn from distributed observatories could lead a group to investigate or respond earlier when it can interpret and act on it.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Shared signals prompt a useful inquiry or decision."
+        },
+        {
+          "id": "tdi-bicci-benefit",
+          "kind": "desirable_effect",
+          "text": "With AI-supported facilitation, participants can surface more relevant alternatives and make their own judgments about them.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Participants develop more alternatives they can assess.",
+          "derived_from": [
+            "tdi-agency"
+          ]
+        },
+        {
+          "id": "tdi-bicci-control",
+          "kind": "existing_condition",
+          "text": "Participants can tell which suggestions came from AI and can correct, reject or supplement them before decisions are made.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Participants can inspect and revise AI-generated framing."
+        },
+        {
+          "id": "tdi-authority-trial",
+          "kind": "injection",
+          "text": "Test an arrangement where the core maintains continuity, a swarm sets priorities within a clear remit, and local groups decide what they enact.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Give stewardship, priority-setting and local action explicit owners.",
+          "derived_from": [
+            "tdi-cloud-continuity",
+            "tdi-cloud-autonomy"
+          ]
+        },
+        {
+          "id": "tdi-authority-effect",
+          "kind": "predicted_effect",
+          "text": "Continuity and shared delivery improve while participants retain meaningful influence and local groups decide how to act.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Coordination continues with meaningful local discretion."
+        },
+        {
+          "id": "tdi-network-bridges",
+          "kind": "injection",
+          "text": "Develop densely connected networks with long-range bridges so ideas and practices can travel across groups.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Build dense ties and bridges between groups."
+        },
+        {
+          "id": "tdi-spread",
+          "kind": "predicted_effect",
+          "text": "A practice that works in one setting may be adopted or modified by groups reached through network bridges.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Other groups pick up and adapt a useful practice."
+        },
+        {
+          "id": "tdi-cadence",
+          "kind": "injection",
+          "text": "The impulse proposes four sessions a year with a floor of three, two exploratory sessions up front, and an online-first format. Other research can continue as participants choose.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Run four online sessions a year with a floor of three.",
+          "derived_from": [
+            "tdi-cycle"
+          ]
+        },
+        {
+          "id": "tdi-protocol-revision",
+          "kind": "predicted_effect",
+          "text": "The proposed April–June cycle revises the method based on breakdowns in the first cycle.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "The second cycle can test a protocol revised after the first."
+        },
+        {
+          "id": "tdi-regional-loop",
+          "kind": "injection",
+          "text": "The longer-term vision uses the metaphor of an antenna array. Regional groups tune in together, return to local work, and reconvene six months later.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Regional groups share signals, act locally and reconvene.",
+          "derived_from": [
+            "tdi-network-bridges",
+            "tdi-cycle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-ai-risk-path",
+          "from": [
+            "tdi-imaginarium"
+          ],
+          "to": "tdi-ai-risk",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "This risk depends on how prominently the AI frames the inquiry and how easily participants can add, challenge or reject its suggestions.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cycle-map",
+          "from": [
+            "tdi-cycle",
+            "tdi-use-input"
+          ],
+          "to": "tdi-mapping",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The people who matter have access and channels that make differences in perspective visible.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-map-output",
+          "from": [
+            "tdi-mapping",
+            "tdi-cycle"
+          ],
+          "to": "tdi-shared-output",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The swarm can translate mapped needs into a clear priority and has scope to make something usable.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-output-use",
+          "from": [
+            "tdi-shared-output",
+            "tdi-local-condition"
+          ],
+          "to": "tdi-local-learning",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The local group can adapt the output and has an actual opportunity to use it in the first cycle.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-local-revision",
+          "from": [
+            "tdi-local-learning"
+          ],
+          "to": "tdi-revision",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The network reviews reports and has capacity and authority to revise what it publishes or how it works.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-scenario-path",
+          "from": [
+            "tdi-agency-lab",
+            "tdi-use-input"
+          ],
+          "to": "tdi-scenarios-stress",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The scenario cycle includes meaningful challenge and users with real experience of the decisions.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-vsm-path",
+          "from": [
+            "tdi-regrounding"
+          ],
+          "to": "tdi-vsm-evidence",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The researchers can access source claims and connect each major claim to an empirical or conceptual test.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-ecology-path",
+          "from": [
+            "tdi-ecologies"
+          ],
+          "to": "tdi-ecology-design",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Cases are specific enough to compare institutional or technical choices and observe agency effects.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-observatory-path",
+          "from": [
+            "tdi-observatories"
+          ],
+          "to": "tdi-signal-use",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Someone can assess the signal in context and has an actual decision or inquiry that it could inform.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-bicci-benefit-path",
+          "from": [
+            "tdi-imaginarium",
+            "tdi-bicci-control"
+          ],
+          "to": "tdi-bicci-benefit",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The group can turn AI suggestions into inspectable alternatives and retains discretion over which to pursue.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-authority-path",
+          "from": [
+            "tdi-authority-trial"
+          ],
+          "to": "tdi-authority-effect",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Authority is clear enough to coordinate work and decisions about shared priorities are visible and challengeable.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-spread-path",
+          "from": [
+            "tdi-network-bridges",
+            "tdi-revision"
+          ],
+          "to": "tdi-spread",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The practice shows enough utility to warrant adoption, and the bridges reach groups that can adapt it.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-protocol-revision-path",
+          "from": [
+            "tdi-cadence",
+            "tdi-revision"
+          ],
+          "to": "tdi-protocol-revision",
+          "relation": "contributes_to",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Participants document what broke and can carry those lessons into the next cycle.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-output-use",
+          "work": "specify_first_trial",
+          "note": "Choose a first topic, a real local setting, a feedback provider and an observation opportunity. Check whether a publishable output in about two months can also be used in practice."
+        },
+        {
+          "ref": "tdi-ai-risk-path",
+          "work": "test_negative_branch",
+          "note": "If the first experiment uses BICCI, ask the same participants about useful alternatives it surfaced and any alternatives they stopped considering. Agree who can judge both outcomes."
+        },
+        {
+          "ref": "tdi-agency-lab",
+          "work": "compare_founding_projects",
+          "note": "Compare the three founding projects and the seed inquiries on access to a real case, capacity to produce something usable, and ability to learn within the first cycle."
+        },
+        {
+          "ref": "tdi-observatories",
+          "work": "specify_use_of_signals",
+          "note": "Identify who would act on a signal, what decision it would inform, and how the network would distinguish a useful signal from noise."
+        },
+        {
+          "ref": "tdi-spread-path",
+          "work": "test_diffusion",
+          "note": "Trace actual adoption through a bridge before treating diffusion or a positive tipping point as an outcome."
+        },
+        {
+          "ref": "tdi-authority-path",
+          "work": "test_governance",
+          "note": "Compare evidence of delivery, participant influence and local discretion under an explicit allocation of rights."
+        },
+        {
+          "ref": "tdi-scenarios-stress",
+          "work": "evaluate_scenario_guidance",
+          "note": "Find a decision-maker who can assess whether the scenarios reveal a relevant option or trade-off."
+        },
+        {
+          "ref": "tdi-imaginarium",
+          "work": "specify_ai_use",
+          "note": "Translate the call for intensive AI use in slide 6 into a specific facilitation practice. Check it against the slide 12 aim of helping groups think and the risk of narrowing participant choices."
+        },
+        {
+          "ref": "tdi-regional-loop",
+          "work": "test_regional_cycle",
+          "note": "Define what regions exchange, who acts locally, and what six-month follow-up would show. A university-hosted symposium is conditional on critical mass."
+        }
+      ]
+    },
+    "prerequisite": {
+      "nodes": [
+        {
+          "id": "tdi-first-output",
+          "kind": "objective",
+          "text": "Choose and investigate a first topic collaboratively and publish an output within about two months.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Publish a first collaborative output in about two months.",
+          "derived_from": [
+            "tdi-action"
+          ]
+        },
+        {
+          "id": "tdi-topic-open",
+          "kind": "obstacle",
+          "text": "The discussion draft leaves the first topic for founding participants to decide.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "The first topic is still open in the draft."
+        },
+        {
+          "id": "tdi-topic-choice",
+          "kind": "intermediate_objective",
+          "text": "Founding participants choose a question a defined group can use and that TDI can investigate within the first cycle.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Choose a first topic with a tractable question.",
+          "implements": [
+            "tdi-cycle"
+          ]
+        },
+        {
+          "id": "tdi-cap-map-gap",
+          "kind": "obstacle",
+          "text": "The draft calls for contributor presentations and capability mapping. The skills and time available for a particular first topic remain to be established.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The capabilities available for a first topic are unclear."
+        },
+        {
+          "id": "tdi-cap-map",
+          "kind": "intermediate_objective",
+          "text": "Hear contributor presentations and map capabilities relevant to possible first inquiries.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath",
+            "Krishan Mathis"
+          ],
+          "label": "Map who can contribute and what they can take on."
+        },
+        {
+          "id": "tdi-responsibility",
+          "kind": "intermediate_objective",
+          "text": "Identify who is responsible for convening, preparing the output, challenging its claims and approving it for publication.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Assign responsibility for delivery and review."
+        },
+        {
+          "id": "tdi-access",
+          "kind": "intermediate_objective",
+          "text": "Identify a publication route that makes the first output accessible and preserves authorship where appropriate.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Find a place to publish the output with attribution.",
+          "derived_from": [
+            "tdi-attribution"
+          ]
+        },
+        {
+          "id": "tdi-method",
+          "kind": "intermediate_objective",
+          "text": "Select methods suited to the question and identify what evidence and perspectives the inquiry needs.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Agree how to investigate the chosen question."
+        },
+        {
+          "id": "tdi-protocol",
+          "kind": "intermediate_objective",
+          "text": "The impulse proposes writing protocol v0.1 in December around the chosen question, before the January–February cycle.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Write protocol v0.1 against the selected topic.",
+          "implements": [
+            "tdi-cycle"
+          ]
+        },
+        {
+          "id": "tdi-offers",
+          "kind": "intermediate_objective",
+          "text": "Identify the question each person wants answered and what they would actually do. Relevant offers include methods, a host, funding routes, technical help, and teaching materials.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Identify a first-cycle team and concrete offers.",
+          "implements": [
+            "tdi-cycle"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-topic-overcome",
+          "from": [
+            "tdi-topic-choice"
+          ],
+          "to": "tdi-topic-open",
+          "relation": "overcomes",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Selecting a topic resolves the open first-topic decision.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-cap-overcome",
+          "from": [
+            "tdi-cap-map"
+          ],
+          "to": "tdi-cap-map-gap",
+          "relation": "overcomes",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Describe actual capability and availability, including limits.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-topic-prereq",
+          "from": [
+            "tdi-topic-choice"
+          ],
+          "to": "tdi-first-output",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "A topic determines what the group investigates and publishes.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-method-prereq",
+          "from": [
+            "tdi-method"
+          ],
+          "to": "tdi-first-output",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "An investigated output needs a method for gathering and assessing its material.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-owner-prereq",
+          "from": [
+            "tdi-responsibility"
+          ],
+          "to": "tdi-first-output",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Some participants must own delivery and review, even when decision rights are distributed.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-access-prereq",
+          "from": [
+            "tdi-access"
+          ],
+          "to": "tdi-first-output",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Publication requires an accessible route and permission to share the material.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-topic-protocol",
+          "from": [
+            "tdi-topic-choice"
+          ],
+          "to": "tdi-protocol",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "A protocol written against a question depends on having specified that question.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-offers-delivery",
+          "from": [
+            "tdi-offers"
+          ],
+          "to": "tdi-responsibility",
+          "relation": "necessary_for",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "First-cycle delivery depends on knowing which contributors are available and what they can take on.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-topic-choice",
+          "work": "prioritize_candidates",
+          "note": "Compare the founding projects and seed inquiries against available contributors, a real user or decision, and a two-month scope. The draft’s seeds include space-sector questions, climate learning, local parallel economies, AI-supported collective-intelligence research and testing a viable system in practice."
+        },
+        {
+          "ref": "tdi-cap-map",
+          "work": "test_dependency",
+          "note": "Check whether capability mapping is needed before the first topic can be chosen or whether a committed group can start while the wider map develops."
+        },
+        {
+          "ref": "tdi-offers",
+          "work": "scope_dependencies",
+          "note": "Check which offers are needed for this inquiry. The impulse leaves legal form, name, membership, money and formal role appointments outside the open session’s decision scope."
+        },
+        {
+          "ref": "tdi-first-output",
+          "work": "reconcile_output_dates",
+          "note": "The Nov 13 draft calls for a published output in about two months. The Nov 14 impulse calls for a December topic producing something in February and lists March publication as proposed. Clarify what must exist in February and what review or release work March allows."
+        }
+      ]
+    },
+    "transition": {
+      "nodes": [
+        {
+          "id": "tdi-start",
+          "kind": "existing_condition",
+          "text": "Founding participants have a discussion draft, three founding projects and seed inquiries. The first collaborative topic remains open in the draft.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Margeret Heath"
+          ],
+          "label": "Founders have a draft and several candidate inquiries."
+        },
+        {
+          "id": "tdi-start-need",
+          "kind": "need",
+          "text": "The group needs a focused inquiry it can assign, investigate and put to use within the intended time.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The first cycle needs a scope people can deliver."
+        },
+        {
+          "id": "tdi-frame",
+          "kind": "action",
+          "text": "Use contributor presentations and an exploratory gathering to map people, needs and questions. Compare topics against the first-cycle scope. Invite each participant to bring a question and one concrete offer.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Map capabilities and compare candidate inquiries.",
+          "implements": [
+            "tdi-cap-map",
+            "tdi-topic-choice"
+          ]
+        },
+        {
+          "id": "tdi-framed",
+          "kind": "expected_effect",
+          "text": "The group can point to a first inquiry, intended audience, scope, available contributors and a decision about what to produce.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "A topic, intended user and scope become visible."
+        },
+        {
+          "id": "tdi-make-need",
+          "kind": "need",
+          "text": "The intended audience needs an output that addresses its constraints and that an identified group can try.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The selected inquiry needs a usable output."
+        },
+        {
+          "id": "tdi-make",
+          "kind": "action",
+          "text": "Use the agreed protocol, confirm ownership, challenge the strongest claims and prepare an attributed output that a local group can use.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Convene a swarm to investigate and produce the output.",
+          "implements": [
+            "tdi-cycle",
+            "tdi-responsibility",
+            "tdi-method",
+            "tdi-topic-choice"
+          ]
+        },
+        {
+          "id": "tdi-published",
+          "kind": "expected_effect",
+          "text": "The output is accessible to its intended audience and its proposed use is explicit.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "An attributed first output is available to try."
+        },
+        {
+          "id": "tdi-return-need",
+          "kind": "need",
+          "text": "The group needs evidence about what the output enables and what problems it creates so it can decide whether and how to revise it.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "TDI needs feedback from a real use."
+        },
+        {
+          "id": "tdi-return",
+          "kind": "action",
+          "text": "Agree who can try the output, when they can observe its effects, and how they will report useful results and unexpected costs. Review those reports at a subsequent gathering.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Invite a local trial and review what happened.",
+          "implements": [
+            "tdi-cycle"
+          ]
+        },
+        {
+          "id": "tdi-report",
+          "kind": "expected_effect",
+          "text": "The group receives a report about the local decision or experiment and can identify which proposed effects remain open.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The group can review attributed experience of local use."
+        },
+        {
+          "id": "tdi-protocol-action",
+          "kind": "action",
+          "text": "Write protocol v0.1 against the chosen topic, drawing on concrete offers from participants. Specify how the group will gather, analyse and produce its first output.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "Write a first protocol with the chosen topic and team.",
+          "implements": [
+            "tdi-protocol",
+            "tdi-offers"
+          ]
+        },
+        {
+          "id": "tdi-protocol-ready",
+          "kind": "expected_effect",
+          "text": "The group can begin the January–February cycle with a usable protocol tied to its December topic.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "The team has a protocol for the first full cycle."
+        },
+        {
+          "id": "tdi-produced",
+          "kind": "expected_effect",
+          "text": "The slide calls for the December topic to produce something in February. It lists public release separately in March.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "Krishan Mathis"
+          ],
+          "label": "The first cycle produces something by February."
+        },
+        {
+          "id": "tdi-release",
+          "kind": "action",
+          "text": "Work through review, attribution and release permissions for the first output, with March as the proposed publication month.",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "label": "Review the first output and prepare it for publication.",
+          "implements": [
+            "tdi-access"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "id": "tdi-frame-result",
+          "from": [
+            "tdi-start",
+            "tdi-start-need",
+            "tdi-frame"
+          ],
+          "to": "tdi-framed",
+          "relation": "produces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Participants can make a topic decision and at least one inquiry fits the available capacity.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-make-result",
+          "from": [
+            "tdi-protocol-ready",
+            "tdi-make-need",
+            "tdi-make"
+          ],
+          "to": "tdi-produced",
+          "relation": "produces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The team can complete an output within the first cycle using the agreed protocol.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-return-result",
+          "from": [
+            "tdi-published",
+            "tdi-return-need",
+            "tdi-return"
+          ],
+          "to": "tdi-report",
+          "relation": "produces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "A local group can use the output and a named person has an opportunity to observe and report.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-protocol-result",
+          "from": [
+            "tdi-framed",
+            "tdi-protocol-action"
+          ],
+          "to": "tdi-protocol-ready",
+          "relation": "produces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "The group agrees how to do the work and the people who will do it can use the protocol.",
+              "by": "AI assistant"
+            }
+          ]
+        },
+        {
+          "id": "tdi-release-result",
+          "from": [
+            "tdi-produced",
+            "tdi-release"
+          ],
+          "to": "tdi-published",
+          "relation": "produces",
+          "status": "proposed",
+          "accepted_by": [],
+          "contributors": [
+            "AI assistant"
+          ],
+          "assumptions": [
+            {
+              "text": "Review and release permissions are resolved and an accessible publication route is available.",
+              "by": "AI assistant"
+            }
+          ]
+        }
+      ],
+      "backlog": [
+        {
+          "ref": "tdi-frame",
+          "work": "confirm_sequence",
+          "note": "Check scope and responsibility for the first six months, including agreement on vision, the entry point and two exploratory events. The draft does not establish which milestones must precede one another."
+        },
+        {
+          "ref": "tdi-return",
+          "work": "identify_feedback_provider",
+          "note": "Record a feedback provider, observation opportunity and expected effects once a trial is chosen. Compare the first cycle with the second-half plans for a report, audience-specific guidance, pilots, organisation and funding decisions, and symposium planning."
+        },
+        {
+          "ref": "tdi-protocol-action",
+          "work": "verify_session_outcome",
+          "note": "Check what the November session actually agreed or amended, and whether a next Friday session date was fixed. The slides supply neither the date nor a record of agreement."
+        }
+      ]
+    }
+  }
+}
