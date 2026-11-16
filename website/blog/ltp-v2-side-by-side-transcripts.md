@@ -1,11 +1,11 @@
 ---
-title: "Two versions of the ltp skill, side by side: transcripts"
+title: "Drafting first vs asking first: transcripts"
 created: 2026-11-16
 date: 2026-11-16
 authors: ["rufus-pollock"]
 ---
 
-# Two versions of the ltp skill: transcripts
+# Drafting first vs asking first: transcripts
 
 Full transcripts behind [the comparison](ltp-v2-side-by-side.md). Both runs used the same brief and the same four user turns. "Sam" and the garden are made up, and a model played the assistant in each run, following one skill each.
 
