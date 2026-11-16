@@ -237,7 +237,7 @@
     }
     const connected = new Set(references.flatMap(link => [...link.from, link.to]));
     const loose = t.nodes.filter(n => !represented.has(n.id) && !connected.has(n.id)).map(n => n.id);
-    return { stages, unordered: Array.from(remaining), references, loose };
+    return { stages, unordered: Array.from(remaining), references, loose, needs };
   }
 
   // ---- The path: goal, problem, change, step, action. Every option comes from a recorded reference.
@@ -361,6 +361,91 @@
     return result[slot] === id ? result : null;
   }
 
+  // ---- Where to start. Which action comes before which is read from recorded connections only.
+  function reach(start, next) {
+    const seen = new Set(), queue = [...next(start)];
+    while (queue.length) {
+      const item = queue.shift();
+      if (seen.has(item)) continue;
+      seen.add(item);
+      queue.push(...next(item));
+    }
+    return seen;
+  }
+  // The action tree's own order comes first: an action comes after those whose effects its production uses.
+  // Where that says nothing about two actions, the steps decide: an action comes after one whose step its own step needs.
+  // A pair the record orders both ways is left unordered.
+  function actionOrder(M) {
+    if (M.order) return M.order;
+    const ids = statementsOf(M, 'transition', 'action');
+    const empty = () => new Map(ids.map(id => [id, new Set()]));
+    const direct = empty(), viaSteps = empty(), before = empty();
+    const isAction = id => direct.has(id);
+
+    const t = M.d.trees.transition;
+    if (t) {
+      const needs = actionSequence(t).needs;
+      for (const step of needs.keys()) {
+        const earlier = reach(step, other => needs.get(other));
+        for (const later of step.inputs.filter(isAction)) {
+          for (const other of earlier) {
+            if (other === step) continue;
+            other.inputs.filter(isAction).forEach(id => { if (id !== later) direct.get(later).add(id); });
+          }
+        }
+      }
+    }
+
+    const stepNeeds = new Map();
+    for (const link of (M.d.trees.prerequisite || { links: [] }).links || []) {
+      if (link.relation !== 'necessary_for' || isLoop(link)) continue;
+      if (!stepNeeds.has(link.to)) stepNeeds.set(link.to, []);
+      stepNeeds.get(link.to).push(...link.from);
+    }
+    const stepsOf = id => M.xout[id].filter(x => x.via === 'implements' && M.nodes[x.to] && M.nodes[x.to].tree === 'prerequisite').map(x => x.to);
+    const neededFirst = new Map(ids.map(id => {
+      const all = new Set();
+      stepsOf(id).forEach(step => reach(step, other => stepNeeds.get(other) || []).forEach(other => all.add(other)));
+      return [id, all];
+    }));
+    for (const later of ids) {
+      for (const id of ids) {
+        if (id !== later && stepsOf(id).some(step => neededFirst.get(later).has(step))) viaSteps.get(later).add(id);
+      }
+    }
+
+    for (const later of ids) {
+      for (const id of ids) {
+        if (id === later) continue;
+        const source = direct.get(later).has(id) || direct.get(id).has(later) ? direct : viaSteps;
+        if (source.get(later).has(id) && !source.get(id).has(later)) before.get(later).add(id);
+      }
+    }
+
+    const order = { ids, start: null, basis: 'listed', ready: [], before: Object.create(null), after: Object.create(null) };
+    ids.forEach(id => { order.after[id] = []; });
+    for (const id of ids) {
+      const earlier = reach(id, other => before.get(other));
+      order.before[id] = ids.filter(other => other !== id && earlier.has(other));
+    }
+    ids.forEach(id => order.before[id].forEach(other => order.after[other].push(id)));
+    order.ready = ids.filter(id => !order.before[id].length);
+    // With no order recorded, or an order that leaves nothing to start with, the first action listed stands in.
+    if (ids.some(id => order.before[id].length) && order.ready.length) {
+      order.basis = 'order';
+      order.start = order.ready.reduce((best, id) => order.after[id].length > order.after[best].length ? id : best);
+    } else {
+      order.start = ids[0] || null;
+    }
+    M.order = order;
+    return order;
+  }
+  // The path that leads back from the starting action, keeping whatever fits of the path the release singles out.
+  function startPath(M) {
+    var base = defaultPath(M), start = actionOrder(M).start;
+    return (start && pathThrough(M, base, start)) || base;
+  }
+
   function stats(M) {
     var all = Object.keys(M.nodes).map(function (i) { return M.nodes[i]; }).concat(Object.keys(M.links).map(function (i) { return M.links[i]; }));
     var s = { statements: Object.keys(M.nodes).length, connections: Object.keys(M.links).length, proposed: 0, accepted: 0, disputed: 0, acceptedByAnyone: 0, byAI: 0, joint: 0, loops: 0, open: 0, proposers: Object.create(null) };
@@ -399,6 +484,6 @@
     questionOutline: questionOutline, actionSequence: actionSequence,
     goalNode: goalNode, problems: problems, changesFor: changesFor, stepsFor: stepsFor, actionsFor: actionsFor, goalAnchors: goalAnchors,
     routeToGoal: routeToGoal, risksOf: risksOf, hasDirect: hasDirect, normalizePath: normalizePath, pathOptions: pathOptions, defaultPath: defaultPath,
-    pathThrough: pathThrough, stats: stats, search: search
+    pathThrough: pathThrough, actionOrder: actionOrder, startPath: startPath, stats: stats, search: search
   };
 })(typeof window !== 'undefined' ? window : globalThis);
