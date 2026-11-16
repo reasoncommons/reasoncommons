@@ -42,11 +42,12 @@ An installed copy includes the skill's helper script and references, so installa
 
 Previously installed `reason-commons`? Install `ltp` and remove the old skill from your agent to avoid duplicate discovery. Existing `reason-commons.yaml` working files and their history remain compatible.
 
-## The skill
+## The skills
 
 | Skill | What it does | Use it when |
 |-------|--------------|-------------|
 | [`ltp`](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp/SKILL.md) | Helps people work through a goal or problem in conversation and turn it into agreed next steps, keeping who said what, what is still unfinished, what was accepted and diagrams of it | You want to think through a goal, problem, conflict, proposed change, obstacle or action with one person or a group |
+| [`ltp-v2`](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp-v2/SKILL.md) (experimental) | A faster version: drafts the goal tree straight away from an SCQ or a short prompt, works through the trees in a fixed order, critiques drafts before showing them, shows trees as plain text and keeps a readable summary next to the state file. Runs only when called by name: `/ltp-v2` | You want a quick first draft to correct, rather than building it up one question at a time. Install with `-s ltp-v2` |
 
 ## Start a reasoning conversation
 
