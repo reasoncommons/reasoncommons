@@ -9,6 +9,8 @@ authors: ["rufus-pollock"]
 
 **The new `ltp-v2` skill drafts and lets you correct; the original `ltp` asks and then records your answer. On the same small problem, v2 reached a list of actions in four turns. The original was still checking the assumption those actions depend on.**
 
+![The same brief, first reply: the original ltp opens with an introduction and a question; ltp-v2 opens with a draft goal tree and a short critique](/changelog/images/2026-11-16-ltp-v2-first-reply.png)
+
 Both are skills for AI agents such as Claude Code and Codex. They help you work out what you are trying to achieve, what is getting in the way, and what to do about it. Underneath they use the Logical Thinking Process: a goal and what must be true to reach it, what's going wrong and why, the conflicts that keep a problem stuck (two needs that pull against each other), and the changes and actions that resolve them.
 
 ## What changed in v2
@@ -22,7 +24,7 @@ I looked back over a month of my own sessions with the original skill. Again and
 5. **It shows trees as plain text** narrow enough not to wrap in a chat window, and keeps a readable summary next to its saved state.
 6. **It has fewer approval steps.** No introduction screen, and "roughly right" counts as a yes.
 
-The original `ltp` is unchanged and still the default. ([Changelog entry](/changelog/2026-11-16-ltp-v2).)
+The original `ltp` is unchanged and still the default. ([Changelog entry](/changelog/2026-11-16-ltp-v2); [the skill](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp-v2/SKILL.md); [how to install it](/skills#try-the-faster-version-ltp-v2).)
 
 ## How each runs
 

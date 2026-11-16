@@ -42,6 +42,19 @@ An installed copy includes the skill's helper script and references, so installa
 
 Previously installed `reason-commons`? Install `ltp` and remove the old skill from your agent to avoid duplicate discovery. Existing `reason-commons.yaml` working files and their history remain compatible.
 
+## Try the faster version: ltp-v2
+
+`ltp-v2` is an experimental, draft-first version. It drafts your goal straight away from a brief, notes or one sentence, works through the problem in a fixed order, critiques its drafts before showing them, pushes back, and ends on actions to take. Trees are plain text that fits a chat window, and it keeps a readable summary next to its saved state. See [how the two compare](/blog/ltp-v2-side-by-side).
+
+Install it alongside `ltp`, which it borrows its file format and checker from:
+
+```sh
+npx skills add reasoncommons/reasoncommons -s ltp
+npx skills add reasoncommons/reasoncommons -s ltp-v2
+```
+
+It runs only when you ask for it by name. In Claude Code type `/ltp-v2`; in Codex, `$ltp-v2`. Then give it a brief or say in a sentence what you are trying to achieve. The skill itself: [skills/ltp-v2/SKILL.md](https://github.com/reasoncommons/reasoncommons/blob/main/skills/ltp-v2/SKILL.md).
+
 ## The skills
 
 | Skill | What it does | Use it when |
