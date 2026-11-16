@@ -26,7 +26,7 @@ Work through the trees in this order. Show a one-line marker at the top of each 
    - First list all candidate conflicts in a small table: conflict, the undesirable effects it explains, status, recommendation. Then work through them one at a time.
    - Before drafting a cloud, check that each "want" (D and D') actually happens, with the user or the data. Never invent one. If no real conflict shows up, say so and go back to current reality, or straight to injections, rather than forcing a cloud.
    - Each cloud ends with the assumption that keeps it stuck and an injection that breaks it.
-4. **Future reality.** Once the clouds are done, give a short summary only: the injections, their main effects, the top risks. The user usually doesn't review this closely.
+4. **Future reality.** Once the clouds are done, give a short summary: the injections, their main effects, the top risks. The user usually doesn't review this closely; offer the full version if they want it.
 5. **Prerequisites and actions.** Obstacles, then a short list of concrete actions. Lead with the result: **here are the actions to take**. Flag only major issues.
 
 Users can skip or reorder stages; follow them.
@@ -35,10 +35,8 @@ Users can skip or reorder stages; follow them.
 
 The goal matters most; spend the effort here.
 
-- **Check whose goal it is.** A goal about one person is often really a goal for a collaboration or a team. Check the system boundary before drafting.
-- **Stay neutral on causes.** Don't lift the SCQ's question or its guessed cause into the goal (e.g. "more autonomy" when autonomy is only a hypothesis). Name the system and its desired outcome; current reality will test the causes.
-- **Stay as specific as the SCQ.** Keep the subject at the centre, set in their relationships, not a generic organisational aim. Watch for over-correcting to generic after widening the boundary.
-- **Offer 2 or 3 wordings** with a recommendation when the user says the goal is the important part. Each option must be a real alternative, not the same idea restated in abstract terms.
+- **Check whose goal it is.** A goal about one person is often really a goal for a team or collaboration.
+- **Offer 2 or 3 real alternative wordings** with a recommendation when the goal is in doubt.
 - **Flag the 2 or 3 least certain points** briefly after each draft.
 
 ## Each draft
@@ -52,11 +50,11 @@ The goal matters most; spend the effort here.
 ## Display
 
 - **Reply shape:** a one-sentence TL;DR, then the draft, then **You:** at most 3 asks, each with a recommendation, then **Decided:** one-liners for the small choices you made.
-- **Keep it narrow.** Trees and clouds are plain ASCII in a code block, at most 75 characters a line (chat code blocks wrap at about 79). ASCII characters plus `✓ ~ ✗` status marks; no box-drawing. Plain words, no node IDs in the text the user reads. Where a diagram would get wide, use a small table or a short tree instead. No rendered diagrams unless asked.
+- **Keep it narrow.** Trees and clouds are plain ASCII in a code block, at most 70 characters a line, so nothing wraps in a chat window. ASCII characters plus `✓ ~ ✗` status marks; no box-drawing. Plain words, no node IDs in the text the user reads. No rendered diagrams unless asked.
 - **Goal tree**, as a folder-style outline:
 
 ```
-G  <goal, wrapped well before 75 characters,
+G  <goal, wrapped well before 70 characters,
    continued with an indent>
 
 CSF1 <critical success factor>
@@ -87,7 +85,7 @@ Injection:  <change that removes the assumption>
 - **YAML** is the full state. Once the goal is accepted, create it if none exists, per the schema (subject, participants, driver), using the file the user names or `ltp/reason-commons.yaml` beside the project's material; say where it is once. Write new nodes as `proposed` with who contributed them; mark them `accepted` when the user OKs them ("go", "yes", "go with your recs"). Save after each change; don't narrate saves.
 - **Validate** with `python3 <skill-directory>/../ltp/scripts/update_views.py <state.yaml>`. It needs PyYAML. If `import yaml` fails, make a throwaway venv (`python3 -m venv <tmp>/venv && <tmp>/venv/bin/pip install pyyaml`) and use its python; don't stop the session over it.
 - **Merging nodes:** when two nodes merge, keep the survivor and add a note on it quoting the merged statement and its contributor, so the merge stays traceable.
-- **Readable summary.** Keep a human-readable Markdown file next to the YAML, separate from both the YAML and the project's main file (default `ltp/README.md`). Write it at the end of each stage and always at the end of the session. Contents, in order:
+- **Readable summary.** Keep a human-readable Markdown summary. Ask the user once where it should go, e.g. a section in the project's main file or its own file next to the YAML (`ltp/README.md`). Write it at the end of each stage and always at the end of the session. Contents, in order:
   1. One paragraph: when the LTP ran, its standing ("accepted for now", not proof), and a link to the YAML.
   2. **TL;DR:** goal, likely core drivers, what we'll do.
   3. **Goal tree** as ASCII with ✓ ~ ✗ status and its date.
