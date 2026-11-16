@@ -13,7 +13,7 @@ Unpolished by design. These are here to show the idea in motion and to try thing
 
 ## Another way to read a commons
 
-[The Gandhi 2.0 workspace](/demos/gandhi-2-0-workspace/index.html) is a prototype reader for the [Gandhi 2.0 commons](/demos/reason-commons-in-use/gandhi-2-0/index.html). It leads with one path from the goal to a first action, lets you swap any stop, traces any statement one connection at a time, and keeps wording, sources and standing beside you. It shows the same record and adds nothing to it. Untested with readers.
+[The Gandhi 2.0 workspace](/demos/gandhi-2-0-workspace/index.html) is a prototype reader for the [Gandhi 2.0 commons](/demos/reason-commons-in-use/gandhi-2-0/index.html). It opens on the goal, the action to start with and why that action comes first. Four lines say how the action serves the goal, and each opens to show what is behind it or to swap in an alternative. You can trace any statement one connection at a time, with wording, sources and standing beside you. It shows the same record and adds nothing to it. Untested with readers.
 
 ## Possible ways into Reason Commons
 

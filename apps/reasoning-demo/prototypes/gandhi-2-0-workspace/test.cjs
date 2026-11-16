@@ -64,6 +64,45 @@ t('every path option is a recorded reference; every problem/change/step/action c
   assert.ok(combos > 50);
 });
 t('the default path is the one the release singles out', () => assert.deepStrictEqual(RC.defaultPath(M), { problem: 'g2-r-u03', change: 'g2-f-guidance', step: 'g2-p-p07', action: 'g2-t-a4-action' }));
+t('the starting action is the one nothing comes before; the order is read from the steps the actions serve', () => {
+  const o = RC.actionOrder(M);
+  assert.strictEqual(o.basis, 'order'); assert.strictEqual(o.start, 'g2-t-select'); assert.deepStrictEqual(o.ready, ['g2-t-select']);
+  assert.deepStrictEqual(o.before['g2-t-select'], []); assert.strictEqual(o.after['g2-t-select'].length, 7);
+  assert.deepStrictEqual(o.before['g2-t-a4-action'], ['g2-t-select', 'g2-t-a2-action', 'g2-t-a3-action']);
+  o.ids.forEach(a => o.before[a].forEach(b => { assert.ok(!o.before[b].includes(a), a + ' and ' + b + ' ordered both ways'); assert.ok(o.after[b].includes(a)); }));
+  // The action tree records no order here, so each ordered pair must rest on a step one action serves being needed for a step the other serves.
+  const needs = new Map(); src.trees.prerequisite.links.filter(l => l.relation === 'necessary_for').forEach(l => needs.set(l.to, (needs.get(l.to) || []).concat(l.from)));
+  const earlier = step => { const seen = new Set(), queue = [...(needs.get(step) || [])]; while (queue.length) { const x = queue.shift(); if (!seen.has(x)) { seen.add(x); queue.push(...(needs.get(x) || [])); } } return seen; };
+  const direct = (a, b) => M.nodes[a].implements.some(s => [...earlier(s)].some(x => M.nodes[b].implements.includes(x)));
+  o.ids.forEach(a => o.before[a].forEach(b => assert.ok(direct(a, b) || o.before[a].some(c => o.before[c].includes(b)), b + ' before ' + a)));
+});
+t('the starting path leads back from the starting action and keeps what fits of the path the release singles out', () => {
+  assert.deepStrictEqual(RC.startPath(M), { problem: 'g2-r-u03', change: 'g2-f-guidance', step: 'g2-p-case', action: 'g2-t-select' });
+  assert.ok(M.nodes['g2-t-select'].implements.includes('g2-p-case')); assert.ok(M.nodes['g2-p-case'].implements.includes('g2-f-guidance'));
+});
+t('the action tree’s own order decides before the steps do (TDI)', () => {
+  const page = fs.readFileSync(path.join(root, 'website/demos/tdi-cybernetic-futures-workspace/index.html'), 'utf8');
+  const T = RC.build(JSON.parse(page.match(/<script type="application\/json" id="rc-data">([\s\S]*?)<\/script>/)[1]));
+  const o = RC.actionOrder(T), stage = {};
+  RC.actionSequence(T.d.trees.transition).stages.forEach((steps, i) => steps.forEach(s => s.inputs.forEach(id => { stage[id] = i; })));
+  assert.strictEqual(o.basis, 'order'); assert.strictEqual(o.start, 'tdi-frame'); assert.strictEqual(o.after['tdi-frame'].length, 4);
+  o.ids.forEach(id => assert.strictEqual(o.before[id].length, stage[id], id));
+  assert.ok(o.before['tdi-make'].includes('tdi-protocol-action')); assert.ok(!o.before['tdi-protocol-action'].includes('tdi-make'));
+  assert.strictEqual(RC.startPath(T).action, 'tdi-frame');
+});
+t('with no order recorded the first action listed stands in, and the model says so', () => {
+  const action = id => ({ id, kind: 'action', text: id, status: 'proposed' });
+  const none = RC.actionOrder(RC.build({ trees: { transition: { nodes: [action('b'), action('a')], links: [] } } }));
+  assert.strictEqual(none.basis, 'listed'); assert.strictEqual(none.start, 'b'); assert.deepStrictEqual(none.ready, ['b', 'a']); assert.deepStrictEqual(none.after.b, []);
+  const effect = id => ({ id, kind: 'expected_effect', text: id, status: 'proposed' });
+  const loop = RC.actionOrder(RC.build({ trees: { transition: { nodes: [action('a'), effect('x'), action('b'), effect('y')], links: [
+    { id: 'l1', from: ['a', 'y'], to: 'x', relation: 'produces', status: 'proposed' }, { id: 'l2', from: ['b', 'x'], to: 'y', relation: 'produces', status: 'proposed' }] } } }));
+  assert.strictEqual(loop.basis, 'listed'); assert.deepStrictEqual(loop.before.a, []); assert.deepStrictEqual(loop.before.b, []);
+  assert.strictEqual(RC.actionOrder(RC.build({ trees: {} })).start, null);
+  const two = RC.actionOrder(RC.build({ trees: { transition: { nodes: [action('late'), effect('made'), action('early')], links: [
+    { id: 'p1', from: ['early'], to: 'made', relation: 'produces', status: 'proposed' }, { id: 'p2', from: ['late', 'made'], to: 'done', relation: 'produces', status: 'proposed' }] } } }));
+  assert.strictEqual(two.start, 'early'); assert.deepStrictEqual(two.before.late, ['early']);
+});
 t('a broken or foreign path id is replaced by a recorded option, never kept', () => {
   const p = RC.normalizePath(M, { problem: 'nope', change: 'g2-t-select', step: 'x', action: 'y' });
   assert.ok(RC.problems(M).includes(p.problem)); assert.ok(RC.changesFor(M, p.problem).includes(p.change)); assert.ok(RC.stepsFor(M, p.change).includes(p.step));
