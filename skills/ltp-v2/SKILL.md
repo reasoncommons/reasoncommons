@@ -80,6 +80,22 @@ Assumption: <why D and D' seem incompatible>
 Injection:  <change that removes the assumption>
 ```
 
+- **Show every cloud in chat**, drawn, not only in the summary file; a cloud described in prose is a cloud the user hasn't seen. Compact style is fine and often clearer, e.g.:
+
+```
+         B Our work is distinctive    D Rufus's hours go to
+       / (original, one story) ----   making and thinking
+A Grow                                (pieces, ideas, strands)
+  into a                                   ^ limited
+  movement                                 v hours
+       \ C Enough of the right   ---- D' Rufus's hours go to
+         people find us, return        running the system
+```
+
+- Under each cloud, lay out its own weakest assumption, injection and main risk as short bullets. Mark the weakest arrow `[!]`.
+- Clouds stay ASCII unless the user explicitly asks for an image or file format. "A proper diagram" means draw the ASCII cloud, not switch to SVG.
+- Don't redraw or reprint accepted clouds; show only the ones under discussion.
+
 ## Save
 
 - **YAML** is the full state. Once the goal is accepted, create it if none exists, per the schema (subject, participants, driver), using the file the user names or `ltp/reason-commons.yaml` beside the project's material; say where it is once. Write new nodes as `proposed` with who contributed them; mark them `accepted` when the user OKs them ("go", "yes", "go with your recs"). Save after each change; don't narrate saves.
